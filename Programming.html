@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 R Tidyverse Programming Basics | Hydroinformatics at VT</title>
+  <meta name="description" content="This bookdown contains notes and exercises for a course in hydroinformatics at Virginia Tech." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 R Tidyverse Programming Basics | Hydroinformatics at VT" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This bookdown contains notes and exercises for a course in hydroinformatics at Virginia Tech." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 R Tidyverse Programming Basics | Hydroinformatics at VT" />
+  
+  <meta name="twitter:description" content="This bookdown contains notes and exercises for a course in hydroinformatics at Virginia Tech." />
+  
+
+<meta name="author" content="JP Gannon" />
+
+
+<meta name="date" content="2021-02-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="Plotting.html"/>
+<link rel="next" href="introactivity.html"/>
+<script src="libs/header-attrs-2.4.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="Plotting.html"><a href="Plotting.html"><i class="fa fa-check"></i><b>2</b> Intro to Plotting</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="Plotting.html"><a href="Plotting.html#download-and-install-tidyverse-library"><i class="fa fa-check"></i><b>2.1</b> Download and install tidyverse library</a></li>
+<li class="chapter" data-level="2.2" data-path="Plotting.html"><a href="Plotting.html#reading-data"><i class="fa fa-check"></i><b>2.2</b> Reading data</a></li>
+<li class="chapter" data-level="2.3" data-path="Plotting.html"><a href="Plotting.html#our-first-ggplot"><i class="fa fa-check"></i><b>2.3</b> Our first ggplot</a></li>
+<li class="chapter" data-level="2.4" data-path="Plotting.html"><a href="Plotting.html#change-point-type"><i class="fa fa-check"></i><b>2.4</b> Change point type</a></li>
+<li class="chapter" data-level="2.5" data-path="Plotting.html"><a href="Plotting.html#set-colors"><i class="fa fa-check"></i><b>2.5</b> Set colors</a></li>
+<li class="chapter" data-level="2.6" data-path="Plotting.html"><a href="Plotting.html#controlling-color-with-a-third-variable-and-other-functions"><i class="fa fa-check"></i><b>2.6</b> Controlling color with a third variable and other functions</a></li>
+<li class="chapter" data-level="2.7" data-path="Plotting.html"><a href="Plotting.html#plotting-multiple-groups"><i class="fa fa-check"></i><b>2.7</b> Plotting multiple groups</a></li>
+<li class="chapter" data-level="2.8" data-path="Plotting.html"><a href="Plotting.html#facets"><i class="fa fa-check"></i><b>2.8</b> Facets</a></li>
+<li class="chapter" data-level="2.9" data-path="Plotting.html"><a href="Plotting.html#two-variable-faceting"><i class="fa fa-check"></i><b>2.9</b> Two variable faceting</a></li>
+<li class="chapter" data-level="2.10" data-path="Plotting.html"><a href="Plotting.html#boxplots"><i class="fa fa-check"></i><b>2.10</b> Boxplots</a></li>
+<li class="chapter" data-level="2.11" data-path="Plotting.html"><a href="Plotting.html#more-about-color-size-etc"><i class="fa fa-check"></i><b>2.11</b> More about color, size, etc</a></li>
+<li class="chapter" data-level="2.12" data-path="Plotting.html"><a href="Plotting.html#multiple-geoms"><i class="fa fa-check"></i><b>2.12</b> Multiple geoms</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Programming.html"><a href="Programming.html"><i class="fa fa-check"></i><b>3</b> R Tidyverse Programming Basics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="Programming.html"><a href="Programming.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="Programming.html"><a href="Programming.html#you-can-use-r-as-a-calculator"><i class="fa fa-check"></i><b>3.2</b> You can use R as a calculator</a></li>
+<li class="chapter" data-level="3.3" data-path="Programming.html"><a href="Programming.html#you-can-create-new-objects-using--"><i class="fa fa-check"></i><b>3.3</b> You can create new objects using &lt;-</a></li>
+<li class="chapter" data-level="3.4" data-path="Programming.html"><a href="Programming.html#using-functions"><i class="fa fa-check"></i><b>3.4</b> Using functions</a></li>
+<li class="chapter" data-level="3.5" data-path="Programming.html"><a href="Programming.html#read-in-some-data."><i class="fa fa-check"></i><b>3.5</b> Read in some data.</a></li>
+<li class="chapter" data-level="3.6" data-path="Programming.html"><a href="Programming.html#wait-hold-up.-what-is-a-tibble"><i class="fa fa-check"></i><b>3.6</b> Wait, hold up. What is a tibble?</a></li>
+<li class="chapter" data-level="3.7" data-path="Programming.html"><a href="Programming.html#data-wrangling-in-dplyr"><i class="fa fa-check"></i><b>3.7</b> Data wrangling in dplyr</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="Programming.html"><a href="Programming.html#filter---returns-rows-that-meet-specified-conditions"><i class="fa fa-check"></i><b>3.7.1</b> filter() - returns rows that meet specified conditions</a></li>
+<li class="chapter" data-level="3.7.2" data-path="Programming.html"><a href="Programming.html#arrange---reorders-rows"><i class="fa fa-check"></i><b>3.7.2</b> arrange() - reorders rows</a></li>
+<li class="chapter" data-level="3.7.3" data-path="Programming.html"><a href="Programming.html#select---pull-out-variables-columns"><i class="fa fa-check"></i><b>3.7.3</b> select() - pull out variables (columns)</a></li>
+<li class="chapter" data-level="3.7.4" data-path="Programming.html"><a href="Programming.html#mutate---create-new-variables-columns-or-reformat-existing-ones"><i class="fa fa-check"></i><b>3.7.4</b> mutate() - create new variables (columns) or reformat existing ones</a></li>
+<li class="chapter" data-level="3.7.5" data-path="Programming.html"><a href="Programming.html#summarize---collapse-groups-of-values-into-summary-stats"><i class="fa fa-check"></i><b>3.7.5</b> summarize() - collapse groups of values into summary stats</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="Programming.html"><a href="Programming.html#filter"><i class="fa fa-check"></i><b>3.8</b> Filter</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="Programming.html"><a href="Programming.html#multiple-conditions"><i class="fa fa-check"></i><b>3.8.1</b> Multiple conditions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="Programming.html"><a href="Programming.html#arrange"><i class="fa fa-check"></i><b>3.9</b> Arrange</a></li>
+<li class="chapter" data-level="3.10" data-path="Programming.html"><a href="Programming.html#select"><i class="fa fa-check"></i><b>3.10</b> Select</a></li>
+<li class="chapter" data-level="3.11" data-path="Programming.html"><a href="Programming.html#mutate"><i class="fa fa-check"></i><b>3.11</b> Mutate</a></li>
+<li class="chapter" data-level="3.12" data-path="Programming.html"><a href="Programming.html#summarize"><i class="fa fa-check"></i><b>3.12</b> Summarize</a></li>
+<li class="chapter" data-level="3.13" data-path="Programming.html"><a href="Programming.html#multiple-operations-with-pipes"><i class="fa fa-check"></i><b>3.13</b> Multiple operations with pipes</a>
+<ul>
+<li class="chapter" data-level="3.13.1" data-path="Programming.html"><a href="Programming.html#lets-say-we-want-to-tell-r-to-make-a-pbj-sandwich-by-using-the-pbbread-jbread-and-joinslices-functions-and-the-data-ingredients.-if-we-do-this-saving-each-step-if-would-look-like-this"><i class="fa fa-check"></i><b>3.13.1</b> Let’s say we want to tell R to make a PB&amp;J sandwich by using the pbbread(), jbread(), and joinslices() functions and the data “ingredients.” If we do this saving each step if would look like this:</a></li>
+<li class="chapter" data-level="3.13.2" data-path="Programming.html"><a href="Programming.html#if-we-nest-the-functions-together-we-get-this"><i class="fa fa-check"></i><b>3.13.2</b> If we nest the functions together we get this</a></li>
+<li class="chapter" data-level="3.13.3" data-path="Programming.html"><a href="Programming.html#using-the-pipe-it-would-look-like-this"><i class="fa fa-check"></i><b>3.13.3</b> Using the pipe it would look like this</a></li>
+<li class="chapter" data-level="3.13.4" data-path="Programming.html"><a href="Programming.html#when-you-use-the-pipe-it-basically-takes-whatever-came-out-of-the-first-function-and-puts-it-into-the-data-argument-for-the-next-one"><i class="fa fa-check"></i><b>3.13.4</b> When you use the pipe, it basically takes whatever came out of the first function and puts it into the data argument for the next one</a></li>
+</ul></li>
+<li class="chapter" data-level="3.14" data-path="Programming.html"><a href="Programming.html#save-your-results-to-a-new-tibble"><i class="fa fa-check"></i><b>3.14</b> Save your results to a new tibble</a></li>
+<li class="chapter" data-level="3.15" data-path="Programming.html"><a href="Programming.html#what-about-nas"><i class="fa fa-check"></i><b>3.15</b> What about NAs?</a></li>
+<li class="chapter" data-level="3.16" data-path="Programming.html"><a href="Programming.html#what-are-some-things-you-think-ill-ask-you-to-do-for-the-activity-next-class"><i class="fa fa-check"></i><b>3.16</b> What are some things you think I’ll ask you to do for the activity next class?</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="introactivity.html"><a href="introactivity.html"><i class="fa fa-check"></i><b>4</b> Intro Skills Activity</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="introactivity.html"><a href="introactivity.html#problem-1"><i class="fa fa-check"></i><b>4.1</b> Problem 1</a></li>
+<li class="chapter" data-level="4.2" data-path="introactivity.html"><a href="introactivity.html#problem-2"><i class="fa fa-check"></i><b>4.2</b> Problem 2</a></li>
+<li class="chapter" data-level="4.3" data-path="introactivity.html"><a href="introactivity.html#problem-3"><i class="fa fa-check"></i><b>4.3</b> Problem 3</a></li>
+<li class="chapter" data-level="4.4" data-path="introactivity.html"><a href="introactivity.html#problem-4"><i class="fa fa-check"></i><b>4.4</b> Problem 4</a></li>
+<li class="chapter" data-level="4.5" data-path="introactivity.html"><a href="introactivity.html#problem-5"><i class="fa fa-check"></i><b>4.5</b> Problem 5</a></li>
+<li class="chapter" data-level="4.6" data-path="introactivity.html"><a href="introactivity.html#problem-6"><i class="fa fa-check"></i><b>4.6</b> Problem 6</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="stats.html"><a href="stats.html"><i class="fa fa-check"></i><b>5</b> Intro/Review of Basic Statistics</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="stats.html"><a href="stats.html#reading-for-this-section-statistical-methods-in-water-resources-chapter-1"><i class="fa fa-check"></i><b>5.1</b> Reading for this section: Statistical Methods in Water Resources: Chapter 1</a></li>
+<li class="chapter" data-level="5.2" data-path="stats.html"><a href="stats.html#questions-for-today"><i class="fa fa-check"></i><b>5.2</b> Questions for today:</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="stats.html"><a href="stats.html#what-is-the-difference-between-a-sample-and-a-population"><i class="fa fa-check"></i><b>5.2.1</b> What is the difference between a sample and a population?</a></li>
+<li class="chapter" data-level="5.2.2" data-path="stats.html"><a href="stats.html#how-do-we-look-at-the-distribution-of-data-in-a-sample"><i class="fa fa-check"></i><b>5.2.2</b> How do we look at the distribution of data in a sample?</a></li>
+<li class="chapter" data-level="5.2.3" data-path="stats.html"><a href="stats.html#how-do-we-measure-aspects-of-a-distribution"><i class="fa fa-check"></i><b>5.2.3</b> How do we measure aspects of a distribution?</a></li>
+<li class="chapter" data-level="5.2.4" data-path="stats.html"><a href="stats.html#what-is-a-normal-distribution"><i class="fa fa-check"></i><b>5.2.4</b> What is a normal distribution?</a></li>
+<li class="chapter" data-level="5.2.5" data-path="stats.html"><a href="stats.html#stack-plots-to-compare-histogram-and-pdf"><i class="fa fa-check"></i><b>5.2.5</b> Stack plots to compare histogram and pdf</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="stats.html"><a href="stats.html#what-is-the-difference-between-a-sample-and-a-population."><i class="fa fa-check"></i><b>5.3</b> What is the difference between a sample and a population.</a></li>
+<li class="chapter" data-level="5.4" data-path="stats.html"><a href="stats.html#measuring-our-sample-distribution-central-tendency."><i class="fa fa-check"></i><b>5.4</b> Measuring our sample distribution: central tendency.</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="stats.html"><a href="stats.html#so-whats-a-weighted-average"><i class="fa fa-check"></i><b>5.4.1</b> So what’s a weighted average?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="stats.html"><a href="stats.html#measures-of-variability"><i class="fa fa-check"></i><b>5.5</b> Measures of variability</a></li>
+<li class="chapter" data-level="5.6" data-path="stats.html"><a href="stats.html#what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one"><i class="fa fa-check"></i><b>5.6</b> What is a normal distribution and how can we determine if we have one?</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html"><i class="fa fa-check"></i><b>6</b> Intro Stats Activity</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#load-the-tidyverse-and-patchwork-libraries-and-read-in-the-flashy-and-pine-datasets."><i class="fa fa-check"></i><b>6.1</b> 1. Load the tidyverse and patchwork libraries and read in the Flashy and Pine datasets.</a></li>
+<li class="chapter" data-level="6.2" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#using-the-flashy-dataset-make-a-pdf-of-the-average-basin-rainfall-pptavg_basin-for-the-northeast-aggecoregion.-on-that-pdf-add-vertical-lines-showing-the-mean-median-standard-deviation-and-iqr.-make-each-a-different-color-and-note-which-is-which-in-a-typed-answer-below-this-question.-or-if-you-want-an-extra-challenged-make-a-custom-legend-that-shows-this"><i class="fa fa-check"></i><b>6.2</b> 2. Using the flashy dataset, make a pdf of the average basin rainfall (PPTAVG_BASIN) for the NorthEast AGGECOREGION. On that pdf, add vertical lines showing the mean, median, standard deviation, and IQR. Make each a different color and note which is which in a typed answer below this question. (or if you want an extra challenged, make a custom legend that shows this)</a></li>
+<li class="chapter" data-level="6.3" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#perform-a-shapiro-wilk-test-for-normality-on-the-data-from-question-2.-using-the-results-from-that-test-and-the-plot-and-stats-from-question-2-discuss-whether-or-not-the-distribution-is-normal."><i class="fa fa-check"></i><b>6.3</b> 3. Perform a Shapiro-Wilk test for normality on the data from question 2. Using the results from that test and the plot and stats from question 2, discuss whether or not the distribution is normal.</a></li>
+<li class="chapter" data-level="6.4" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#make-a-plot-that-shows-the-distribution-of-the-data-from-the-pine-watershed-and-the-nfdr-watershed-two-pdfs-on-the-same-plot.-log-the-x-axis."><i class="fa fa-check"></i><b>6.4</b> 4. Make a plot that shows the distribution of the data from the PINE watershed and the NFDR watershed (two pdfs on the same plot). Log the x axis.</a></li>
+<li class="chapter" data-level="6.5" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#you-want-to-compare-how-variable-the-discharge-is-in-each-of-the-watersheds-in-question-4.-which-measure-of-spread-would-you-use-and-why-if-you-wanted-to-measure-the-central-tendency-which-measure-would-you-use-and-why"><i class="fa fa-check"></i><b>6.5</b> 5. You want to compare how variable the discharge is in each of the watersheds in question 4. Which measure of spread would you use and why? If you wanted to measure the central tendency which measure would you use and why?</a></li>
+<li class="chapter" data-level="6.6" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#compute-3-measures-of-spread-and-2-measures-of-central-tendency-for-the-pine-and-nfdr-watershed.-hint-use-group_by-and-summarize-be-sure-your-code-outputs-the-result.-which-watershed-has-higher-flow-which-one-has-more-variable-flow-how-do-you-know"><i class="fa fa-check"></i><b>6.6</b> 6. Compute 3 measures of spread and 2 measures of central tendency for the PINE and NFDR watershed. (hint: use group_by() and summarize()) Be sure your code outputs the result. Which watershed has higher flow? Which one has more variable flow? How do you know?</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="getdata.html"><a href="getdata.html"><i class="fa fa-check"></i><b>7</b> Joins, Pivots, and USGS dataRetrieval</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="getdata.html"><a href="getdata.html#goals-for-today"><i class="fa fa-check"></i><b>7.1</b> Goals for today</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="getdata.html"><a href="getdata.html#get-familiar-with-the-dataretrieval-package"><i class="fa fa-check"></i><b>7.1.1</b> 1. Get familiar with the dataRetrieval package</a></li>
+<li class="chapter" data-level="7.1.2" data-path="getdata.html"><a href="getdata.html#learn-about-long-vs.-wide-data-and-how-to-change-between-them"><i class="fa fa-check"></i><b>7.1.2</b> 2. Learn about long vs. wide data and how to change between them</a></li>
+<li class="chapter" data-level="7.1.3" data-path="getdata.html"><a href="getdata.html#brief-intro-to-joins"><i class="fa fa-check"></i><b>7.1.3</b> 3. Brief intro to joins</a></li>
+<li class="chapter" data-level="7.1.4" data-path="getdata.html"><a href="getdata.html#prep-question-how-would-you-get-data-from-the-usgs-non-r"><i class="fa fa-check"></i><b>7.1.4</b> Prep question: How would you get data from the USGS (non-R)?</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="getdata.html"><a href="getdata.html#install-the-dataretrieval-package.-load-it-and-the-tidyverse."><i class="fa fa-check"></i><b>7.2</b> Install the dataRetrieval package. Load it and the tidyverse.</a></li>
+<li class="chapter" data-level="7.3" data-path="getdata.html"><a href="getdata.html#exploring-what-dataretrieval-can-do."><i class="fa fa-check"></i><b>7.3</b> Exploring what dataRetrieval can do.</a></li>
+<li class="chapter" data-level="7.4" data-path="getdata.html"><a href="getdata.html#so-how-do-you-find-the-site-ids-for-downloading-data"><i class="fa fa-check"></i><b>7.4</b> So how do you find the site ids for downloading data?</a></li>
+<li class="chapter" data-level="7.5" data-path="getdata.html"><a href="getdata.html#ok-lets-download-some-data"><i class="fa fa-check"></i><b>7.5</b> OK let’s download some data!</a></li>
+<li class="chapter" data-level="7.6" data-path="getdata.html"><a href="getdata.html#pivoting-wide-and-long-data"><i class="fa fa-check"></i><b>7.6</b> Pivoting: wide and long data</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="getdata.html"><a href="getdata.html#long"><i class="fa fa-check"></i><b>7.6.1</b> LONG</a></li>
+<li class="chapter" data-level="7.6.2" data-path="getdata.html"><a href="getdata.html#wide"><i class="fa fa-check"></i><b>7.6.2</b> WIDE</a></li>
+<li class="chapter" data-level="7.6.3" data-path="getdata.html"><a href="getdata.html#why"><i class="fa fa-check"></i><b>7.6.3</b> Why?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="joinpivotDR.html"><a href="joinpivotDR.html"><i class="fa fa-check"></i><b>8</b> Joins Pivots dataRetrieval Activity</a>
+<ul>
+<li class="chapter" data-level="8.0.1" data-path="joinpivotDR.html"><a href="joinpivotDR.html#load-the-tidyverse-dataretrieval-and-patchwork-packages."><i class="fa fa-check"></i><b>8.0.1</b> Load the tidyverse, dataRetrieval, and patchwork packages.</a></li>
+<li class="chapter" data-level="8.0.2" data-path="joinpivotDR.html"><a href="joinpivotDR.html#using-readnwisqw-read-all-the-chloride-00940-data-for-the-new-river-at-radford-03171000."><i class="fa fa-check"></i><b>8.0.2</b> 1. Using readNWISqw(), read all the chloride (00940) data for the New River at Radford (03171000).</a></li>
+<li class="chapter" data-level="8.0.3" data-path="joinpivotDR.html"><a href="joinpivotDR.html#use-the-head-function-to-print-the-beginning-of-the-output-from-readnwisqw."><i class="fa fa-check"></i><b>8.0.3</b> Use the head() function to print the beginning of the output from readNWISqw.</a></li>
+<li class="chapter" data-level="8.0.4" data-path="joinpivotDR.html"><a href="joinpivotDR.html#using-the-readnwisdv-daily-values-function-download-discharge-00060-temperature-00003-and-specific-conductivity-00095-for-the-new-river-at-radford-from-2007-to-2009-regular-year."><i class="fa fa-check"></i><b>8.0.4</b> 2. Using the readNWISdv (daily values) function, download discharge (00060), temperature (00003), and specific conductivity (00095) for the New River at Radford from 2007 to 2009 (regular year).</a></li>
+<li class="chapter" data-level="8.0.5" data-path="joinpivotDR.html"><a href="joinpivotDR.html#use-renamenwiscolumns-to-rename-the-output-of-the-download."><i class="fa fa-check"></i><b>8.0.5</b> Use renameNWIScolumns() to rename the output of the download.</a></li>
+<li class="chapter" data-level="8.0.6" data-path="joinpivotDR.html"><a href="joinpivotDR.html#use-head-to-show-the-beginning-of-the-results-of-your-download."><i class="fa fa-check"></i><b>8.0.6</b> Use head() to show the beginning of the results of your download.</a></li>
+<li class="chapter" data-level="8.0.7" data-path="joinpivotDR.html"><a href="joinpivotDR.html#do-a-left-join-on-newphys-and-newriver-to-add-the-chloride-data-to-the-daily-discharge-temp-and-conductivity-data.-hint-you-will-join-on-the-date."><i class="fa fa-check"></i><b>8.0.7</b> 3. Do a left join on newphys and newriver to add the chloride data to the daily discharge, temp, and conductivity data. hint: you will join on the date.</a></li>
+<li class="chapter" data-level="8.0.8" data-path="joinpivotDR.html"><a href="joinpivotDR.html#preview-your-data-below-the-chunk-using-head"><i class="fa fa-check"></i><b>8.0.8</b> Preview your data below the chunk using head()</a></li>
+<li class="chapter" data-level="8.0.9" data-path="joinpivotDR.html"><a href="joinpivotDR.html#create-a-line-plot-of-date-x-and-flow-y.-create-a-scatter-plot-of-date-x-and-chloride-concentration-y.-put-the-graphs-on-top-of-each-other-using-the-patchwork-library."><i class="fa fa-check"></i><b>8.0.9</b> 4. Create a line plot of Date (x) and Flow (y). Create a scatter plot of Date (x) and chloride concentration (y). Put the graphs on top of each other using the patchwork library.</a></li>
+<li class="chapter" data-level="8.0.10" data-path="joinpivotDR.html"><a href="joinpivotDR.html#create-a-scatter-plot-of-specific-conductivity-y-and-chloride-x.-challenge-what-could-you-do-to-get-rid-of-the-warning-this-plot-generates-about-nas."><i class="fa fa-check"></i><b>8.0.10</b> 5. Create a scatter plot of Specific Conductivity (y) and Chloride (x). Challenge: what could you do to get rid of the warning this plot generates about NAs.</a></li>
+<li class="chapter" data-level="8.0.11" data-path="joinpivotDR.html"><a href="joinpivotDR.html#read-in-the-gg-chem-subset-data-and-plot-mg_e1-x-vs-ca_e1-y-as-points."><i class="fa fa-check"></i><b>8.0.11</b> 6. Read in the GG chem subset data and plot Mg_E1 (x) vs Ca_E1 (y) as points.</a></li>
+<li class="chapter" data-level="8.0.12" data-path="joinpivotDR.html"><a href="joinpivotDR.html#we-want-to-look-at-concentrations-of-each-element-in-the-6-dataset-along-the-stream-distance-which-is-difficult-in-the-current-format.-pivot-the-data-into-a-long-format-the-data-from-ca-mg-and-na-_e1-columns-should-be-pivoted."><i class="fa fa-check"></i><b>8.0.12</b> 7. We want to look at concentrations of each element in the #6 dataset along the stream (Distance), which is difficult in the current format. Pivot the data into a long format, the data from Ca, Mg, and Na _E1 columns should be pivoted.</a></li>
+<li class="chapter" data-level="8.0.13" data-path="joinpivotDR.html"><a href="joinpivotDR.html#make-line-plots-of-each-element-where-y-is-the-concentration-and-x-is-distance.-use-facet_wrap-to-create-a-separate-plot-for-each-element-and-use-the-scales-argument-of-facet_wrap-to-allow-each-plot-to-have-different-y-limits."><i class="fa fa-check"></i><b>8.0.13</b> Make line plots of each element where y is the concentration and x is distance. Use facet_wrap() to create a separate plot for each element and use the “scales” argument of facet_wrap to allow each plot to have different y limits.</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="Summative1.html"><a href="Summative1.html"><i class="fa fa-check"></i><b>9</b> Summative Activity 1</a>
+<ul>
+<li class="chapter" data-level="9.0.1" data-path="Summative1.html"><a href="Summative1.html#instructions"><i class="fa fa-check"></i><b>9.0.1</b> Instructions</a></li>
+<li class="chapter" data-level="9.1" data-path="Summative1.html"><a href="Summative1.html#load-the-tidyverse-lubridate-and-dataretrieval-packages."><i class="fa fa-check"></i><b>9.1</b> 1. Load the tidyverse, lubridate, and dataRetrieval packages.</a></li>
+<li class="chapter" data-level="9.2" data-path="Summative1.html"><a href="Summative1.html#read-in-the-mcdonald-hollow-dataset-in-the-project-folder."><i class="fa fa-check"></i><b>9.2</b> 2. Read in the McDonald Hollow dataset in the project folder.</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="Summative1.html"><a href="Summative1.html#what-are-the-data-types-of-the-first-three-columns"><i class="fa fa-check"></i><b>9.2.1</b> What are the data types of the first three columns?</a></li>
+<li class="chapter" data-level="9.2.2" data-path="Summative1.html"><a href="Summative1.html#how-long-is-the-data-number-of-rows"><i class="fa fa-check"></i><b>9.2.2</b> How long is the data (number of rows)?</a></li>
+<li class="chapter" data-level="9.2.3" data-path="Summative1.html"><a href="Summative1.html#what-is-the-name-of-the-last-column"><i class="fa fa-check"></i><b>9.2.3</b> What is the name of the last column?</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="Summative1.html"><a href="Summative1.html#plot-the-stage-of-the-stream-stage_m_pt-on-the-y-axis-as-a-line-and-the-date-on-the-x.-these-stage-data-are-in-meters-convert-them-to-centimeters-for-the-plot."><i class="fa fa-check"></i><b>9.3</b> 3. Plot the stage of the stream (Stage_m_pt) on the y axis as a line and the date on the x. These stage data are in meters, convert them to centimeters for the plot.</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="Summative1.html"><a href="Summative1.html#for-all-plots-in-this-test-label-axes-properly-and-use-a-theme-other-than-the-default."><i class="fa fa-check"></i><b>9.3.1</b> For all plots in this test, label axes properly and use a theme other than the default.</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="Summative1.html"><a href="Summative1.html#we-want-to-look-at-the-big-event-that-happens-from-november-11-2020-to-november-27-2020.-filter-the-dataset-down-to-this-time-frame-and-save-it-separately.-make-a-plot-with-the-same-setup-as-in-3-with-these-newly-saved-data."><i class="fa fa-check"></i><b>9.4</b> 4. We want to look at the big event that happens from November 11, 2020 to November 27, 2020. Filter the dataset down to this time frame and save it separately. Make a plot with the same setup as in #3 with these newly saved data.</a></li>
+<li class="chapter" data-level="9.5" data-path="Summative1.html"><a href="Summative1.html#for-this-storm-we-are-curious-about-how-conductivity-changes-with-the-stream-level.-to-do-this-make-a-scatter-plot-that-shows-stage-on-the-x-axis-and-specific-conductivity-spc_mscm-on-the-y.-units-mscm-color-the-points-on-the-plot-using-the-datetime-column.-use-the-plot-to-describe-how-specific-conductivity-changes-with-stream-stage-throughout-the-storm.-not-functionally-just-how-the-values-change"><i class="fa fa-check"></i><b>9.5</b> 5. For this storm, we are curious about how conductivity changes with the stream level. To do this, make a scatter plot that shows Stage on the x axis and specific conductivity (SpC_mScm) on the y. (units: mScm) Color the points on the plot using the datetime column. Use the plot to describe how specific conductivity changes with stream stage throughout the storm. (not functionally, just how the values change)</a></li>
+<li class="chapter" data-level="9.6" data-path="Summative1.html"><a href="Summative1.html#continuing-to-look-at-the-storm-as-an-exploratory-data-analysis-we-want-to-create-a-plot-that-shows-all-the-parameters-measured.-to-do-this-pivot-the-storm-event-data-so-there-is-a-column-that-has-the-values-for-all-the-parameters-measured-as-individual-rows-along-with-another-column-that-identifies-the-type-of-measurement.-then-use-facet_wrap-with-the-name-column-or-whatever-you-call-it-as-the-facet.-be-sure-to-set-the-parameters-of-facet_wrap-such-that-the-y-axes-are-all-allowed-to-be-different-ranges."><i class="fa fa-check"></i><b>9.6</b> 6. Continuing to look at the storm, as an exploratory data analysis, we want to create a plot that shows all the parameters measured. To do this, pivot the STORM EVENT data so there is a column that has the values for all the parameters measured as individual rows, along with another column that identifies the type of measurement. Then use facet_wrap with the “name” column (or whatever you call it) as the facet. Be sure to set the parameters of facet_wrap such that the y axes are all allowed to be different ranges.</a></li>
+<li class="chapter" data-level="9.7" data-path="Summative1.html"><a href="Summative1.html#we-want-to-create-a-table-that-clearly-shows-the-differences-in-water-temperature-for-the-three-months-at-the-two-locations-flow-and-pool-in-the-full-data-set-not-the-storm-subset.-to-do-this-create-a-new-column-in-the-full-dataset-called-month-and-set-it-equal-to-the-month-of-the-datetime-column-using-the-month-function.-then-group-your-dataset-by-month-and-summarize-temperature-at-each-location-by-mean.-save-these-results-to-a-new-object-and-output-it-so-it-appears-below-your-chunk-when-you-knit.-be-sure-the-object-has-descriptive-column-names."><i class="fa fa-check"></i><b>9.7</b> 7. We want to create a table that clearly shows the differences in water temperature for the three months at the two locations (flow and pool) in the FULL data set (not the storm subset). To do this: Create a new column in the full dataset called “month” and set it equal to the month of the datetime column using the month() function. Then group your dataset by month and summarize temperature at each location by mean. Save these results to a new object and output it so it appears below your chunk when you knit. Be sure the object has descriptive column names.</a></li>
+<li class="chapter" data-level="9.8" data-path="Summative1.html"><a href="Summative1.html#plot-the-distribution-of-the-flow-temperature-and-show-as-vertical-lines-on-the-plot-the-mean-median-and-iqr.-be-careful-about-how-you-show-iqr.-look-at-the-definition-and-then-think-about-how-you-would-put-it-on-the-plot.-describe-in-the-text-above-the-chunk-what-color-is-what-statistic-in-the-plot.-using-the-shape-of-the-distribution-and-the-measures-you-plotted-explain-why-you-think-the-distribution-is-normal-or-not.-what-statistical-test-could-you-perform-to-see-if-it-is-normal"><i class="fa fa-check"></i><b>9.8</b> 8. Plot the distribution of the flow temperature and show as vertical lines on the plot the mean, median, and IQR. Be careful about how you show IQR. Look at the definition and then think about how you would put it on the plot. Describe in the text above the chunk what color is what statistic in the plot. Using the shape of the distribution and the measures you plotted, explain why you think the distribution is normal or not. What statistical test could you perform to see if it is normal?</a></li>
+<li class="chapter" data-level="9.9" data-path="Summative1.html"><a href="Summative1.html#in-this-question-we-will-get-and-format-data-for-three-usgs-gages."><i class="fa fa-check"></i><b>9.9</b> 9. In this question we will get and format data for three USGS gages.</a>
+<ul>
+<li class="chapter" data-level="9.9.1" data-path="Summative1.html"><a href="Summative1.html#a.-read-and-save-the-gage-information-for-the-three-gages-using-readnwissite."><i class="fa fa-check"></i><b>9.9.1</b> a. Read and save the gage information for the three gages using readNWISsite().</a></li>
+<li class="chapter" data-level="9.9.2" data-path="Summative1.html"><a href="Summative1.html#b.-use-the-readnwisdv-function-to-read-and-save-the-daily-discharge-values-for-the-following-three-gages-for-the-2020-water-year-10-01-2019-to-9-30-2020.-and-then-use-the-renamenwiscolumns-function-to-make-the-names-human-friendly."><i class="fa fa-check"></i><b>9.9.2</b> b. Use the readNWISdv() function to read and save the daily discharge values for the following three gages for the 2020 water year (10-01-2019 to 9-30-2020). And then use the renameNWIScolumns() function to make the names human-friendly.</a></li>
+<li class="chapter" data-level="9.9.3" data-path="Summative1.html"><a href="Summative1.html#c.-join-the-gage-site-information-from-a-to-the-data-from-b-so-you-can-reference-the-gages-by-their-names."><i class="fa fa-check"></i><b>9.9.3</b> c. Join the gage site information from (a) to the data from (b) so you can reference the gages by their names.</a></li>
+</ul></li>
+<li class="chapter" data-level="9.10" data-path="Summative1.html"><a href="Summative1.html#using-the-data-from-9-plot-flow-on-the-y-axis-and-date-on-the-x-axis-showing-the-data-as-a-line-and-coloring-by-gage-name."><i class="fa fa-check"></i><b>9.10</b> 10. Using the data from #9, Plot flow on the y axis and date on the x axis, showing the data as a line, and coloring by gage name.</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="fdcs.html"><a href="fdcs.html"><i class="fa fa-check"></i><b>10</b> Flow Duration Curves</a></li>
+<li class="chapter" data-level="11" data-path="lfas.html"><a href="lfas.html"><i class="fa fa-check"></i><b>11</b> Low Flow Analysis</a></li>
+<li class="chapter" data-level="12" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>12</b> Flood Frequency Analysis</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="floods.html"><a href="floods.html#challenge-create-a-function"><i class="fa fa-check"></i><b>12.1</b> Challenge: Create a function</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>13</b> Introduction</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Hydroinformatics at VT</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="Programming" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> R Tidyverse Programming Basics</h1>
+<div id="introduction" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Introduction</h2>
+<p>We have messed around with plotting a bit and you’ve seen a little of what R can do. So now let’s review or introduce you to some basics. Even if you have worked in R before, it is good to be remind of/practice with this stuff, so stay tuned in!</p>
+<p>This exercise covers most of the same principles as two chapters in R for Data Science</p>
+<p>Workflow: basics (<a href="https://r4ds.had.co.nz/workflow-basics.html" class="uri">https://r4ds.had.co.nz/workflow-basics.html</a>)</p>
+<p>Data transformation (<a href="https://r4ds.had.co.nz/transform.html" class="uri">https://r4ds.had.co.nz/transform.html</a>)</p>
+</div>
+<div id="you-can-use-r-as-a-calculator" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> You can use R as a calculator</h2>
+<p>If you just type numbers and operators in, R will spit out the results</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="Programming.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+</div>
+<div id="you-can-create-new-objects-using--" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> You can create new objects using &lt;-</h2>
+<p>Yea yea, = does the same thing. But use &lt;-. We will call &lt;- assignment or assignment operator. When we are coding in R we use &lt;- to assign values to objects and = to set values for parameters in functions. Using &lt;- helps us differentiate between the two. Norms for formatting are important because they help us understand what code is doing, especially when stuff gets complex.</p>
+<p>Oh, one more thing: Surround operators with spaces. Don’t code like a gorilla.</p>
+<p>x &lt;- 1 looks better than x&lt;-1 and if you disagree you are wrong.</p>
+<p>You can assign single numbers or entire chunks of data using &lt;-</p>
+<p>So if you had an object called my_data and wanted to copy it into my_new_data you could do:</p>
+<p>my_new_data &lt;- my_data</p>
+<p>You can then recall/print the values in an object by just typing the name by itself.</p>
+<p>In the code chunk below, assign a 3 to the object “y” and then print it out.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="Programming.html#cb32-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb32-2"><a href="Programming.html#cb32-2" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>If you want to assign multiple values, you have to put them in the function c() c means combine. R doesn’t know what to do if you just give it a bunch of values with space or commas, but if you put them as arguments in the combine function, it’ll make them into a vector.</p>
+<p>Any time you need to use several values, even passing as an argument to a function, you have to put them in c() or it won’t work.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="Programming.html#cb34-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
+<span id="cb34-2"><a href="Programming.html#cb34-2" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
+<pre><code>## [1] 1 2 3 4</code></pre>
+<p>When you are creating objects, try to give them meaningful names so you can remember what they are. You can’t have spaces or operators that mean something else as part of a name. And remember, everything is case sensitive.</p>
+<p>Assign the value 5.4 to water_pH and then try to recall it by typing “water_ph”</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="Programming.html#cb36-1" aria-hidden="true" tabindex="-1"></a>water_pH <span class="ot">&lt;-</span> <span class="fl">5.4</span></span>
+<span id="cb36-2"><a href="Programming.html#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="Programming.html#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co">#water_ph</span></span></code></pre></div>
+<p>You can also set objects equal to strings, or values that have letters in them. To do this you just have to put the value in quotes, otherwise R will think it is an object name and tell you it doesn’t exist.</p>
+<p>Try: name &lt;- “JP” and then name &lt;- JP</p>
+<p>What happens if you forget the ending parenthesis?</p>
+<p>Try: name &lt;- "JP</p>
+<p>R can be cryptic with it’s error messages or other responses, but once you get used to them, you know exactly what is wrong when they pop up.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="Programming.html#cb37-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="st">&quot;JP&quot;</span></span>
+<span id="cb37-2"><a href="Programming.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co">#name &lt;- JP</span></span></code></pre></div>
+</div>
+<div id="using-functions" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Using functions</h2>
+<p><img src="images/function%20syntax.png" /></p>
+<p>As an example, let’s try the seq() function, which creates a sequence of numbers.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="Programming.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="Programming.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#or</span></span>
+<span id="cb40-2"><a href="Programming.html#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="Programming.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="Programming.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">#or</span></span>
+<span id="cb42-2"><a href="Programming.html#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="Programming.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="Programming.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#what does this do</span></span>
+<span id="cb44-2"><a href="Programming.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">10</span>,<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>##  [1] 10  9  8  7  6  5  4  3  2  1</code></pre>
+</div>
+<div id="read-in-some-data." class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Read in some data.</h2>
+<p>For the following demonstration we will use the RBI data from a sample of USGS gages we used last class. First we will load the tidyverse library, everything we have done so far is in base R.</p>
+<p>Important: read_csv() is the tidyverse csv reading function, the base R function is read.csv(). read.csv() will not read your data in as a tibble, which is the format used by tidyverse functions.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="Programming.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb46-2"><a href="Programming.html#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="Programming.html#cb46-3" aria-hidden="true" tabindex="-1"></a>rbi <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Flashy_Dat_Subset.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## ── Column specification ────────────────────────────────────────────────────────
+## cols(
+##   .default = col_double(),
+##   STANAME = col_character(),
+##   STATE = col_character(),
+##   CLASS = col_character(),
+##   AGGECOREGION = col_character()
+## )
+## ℹ Use `spec()` for the full column specifications.</code></pre>
+</div>
+<div id="wait-hold-up.-what-is-a-tibble" class="section level2" number="3.6">
+<h2><span class="header-section-number">3.6</span> Wait, hold up. What is a tibble?</h2>
+<p>Good question. It’s a fancy way to store data that works well with tidyverse functions. Let’s look at the rbi tibble.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="Programming.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rbi)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 26
+##   site_no    RBI RBIrank STANAME DRAIN_SQKM HUC02 LAT_GAGE LNG_GAGE STATE CLASS
+##     &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
+## 1 1013500 0.0584      35 Fish R…     2253.      1     47.2    -68.6 ME    Ref  
+## 2 1021480 0.208      300 Old St…       76.7     1     44.9    -67.7 ME    Ref  
+## 3 1022500 0.198      286 Narrag…      574.      1     44.6    -67.9 ME    Ref  
+## 4 1029200 0.132      183 Seboei…      445.      1     46.1    -68.6 ME    Ref  
+## 5 1030500 0.114      147 Mattaw…     3676.      1     45.5    -68.3 ME    Ref  
+## 6 1031300 0.297      489 Piscat…      304.      1     45.3    -69.6 ME    Ref  
+## # … with 16 more variables: AGGECOREGION &lt;chr&gt;, PPTAVG_BASIN &lt;dbl&gt;,
+## #   PPTAVG_SITE &lt;dbl&gt;, T_AVG_BASIN &lt;dbl&gt;, T_AVG_SITE &lt;dbl&gt;, T_MAX_BASIN &lt;dbl&gt;,
+## #   T_MAXSTD_BASIN &lt;dbl&gt;, T_MAX_SITE &lt;dbl&gt;, T_MIN_BASIN &lt;dbl&gt;,
+## #   T_MINSTD_BASIN &lt;dbl&gt;, T_MIN_SITE &lt;dbl&gt;, PET &lt;dbl&gt;, SNOW_PCT_PRECIP &lt;dbl&gt;,
+## #   PRECIP_SEAS_IND &lt;dbl&gt;, FLOWYRS_1990_2009 &lt;dbl&gt;, wy00_09 &lt;dbl&gt;</code></pre>
+<p>Now read in the same data with read.csv() which will NOT read the data as a tibble. How is it different? Output each one in the Console.</p>
+<p>Knowing the data type for each column is super helpful for a few reasons…. let’s talk about them.</p>
+<p>Types: int, dbl, fctr, char, logical</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="Programming.html#cb50-1" aria-hidden="true" tabindex="-1"></a>rbi_NT <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Flashy_Dat_Subset.csv&quot;</span>)</span>
+<span id="cb50-2"><a href="Programming.html#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="Programming.html#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rbi_NT)</span></code></pre></div>
+<pre><code>##   site_no        RBI RBIrank                                     STANAME
+## 1 1013500 0.05837454      35            Fish River near Fort Kent, Maine
+## 2 1021480 0.20797008     300               Old Stream near Wesley, Maine
+## 3 1022500 0.19805382     286     Narraguagus River at Cherryfield, Maine
+## 4 1029200 0.13151299     183         Seboeis River near Shin Pond, Maine
+## 5 1030500 0.11350485     147 Mattawamkeag River near Mattawamkeag, Maine
+## 6 1031300 0.29718786     489       Piscataquis River at Blanchard, Maine
+##   DRAIN_SQKM HUC02 LAT_GAGE  LNG_GAGE STATE CLASS AGGECOREGION PPTAVG_BASIN
+## 1     2252.7     1 47.23739 -68.58264    ME   Ref    NorthEast        97.42
+## 2       76.7     1 44.93694 -67.73611    ME   Ref    NorthEast       115.39
+## 3      573.6     1 44.60797 -67.93524    ME   Ref    NorthEast       120.07
+## 4      444.9     1 46.14306 -68.63361    ME   Ref    NorthEast       102.19
+## 5     3676.2     1 45.50097 -68.30596    ME   Ref    NorthEast       108.19
+## 6      304.4     1 45.26722 -69.58389    ME   Ref    NorthEast       119.83
+##   PPTAVG_SITE T_AVG_BASIN T_AVG_SITE T_MAX_BASIN T_MAXSTD_BASIN T_MAX_SITE
+## 1       93.53        3.00        3.0        9.67          0.202       10.0
+## 2      117.13        5.71        5.8       11.70          0.131       11.9
+## 3      129.56        5.95        6.3       11.90          0.344       12.2
+## 4      103.24        3.61        4.0        9.88          0.231       10.4
+## 5      113.13        4.82        5.4       10.75          0.554       11.7
+## 6      120.93        3.60        4.2        9.57          0.431       11.0
+##   T_MIN_BASIN T_MINSTD_BASIN T_MIN_SITE   PET SNOW_PCT_PRECIP PRECIP_SEAS_IND
+## 1       -2.49          0.269       -2.7 504.7            36.9           0.102
+## 2       -0.85          0.123       -0.6 554.2            39.5           0.046
+## 3        0.06          0.873        1.4 553.1            38.2           0.047
+## 4       -2.13          0.216       -1.5 513.0            36.4           0.070
+## 5       -1.49          0.251       -1.2 540.8            37.2           0.033
+## 6       -2.46          0.268       -1.7 495.8            40.2           0.030
+##   FLOWYRS_1990_2009 wy00_09
+## 1                20      10
+## 2                11      10
+## 3                20      10
+## 4                11      10
+## 5                20      10
+## 6                13      10</code></pre>
+</div>
+<div id="data-wrangling-in-dplyr" class="section level2" number="3.7">
+<h2><span class="header-section-number">3.7</span> Data wrangling in dplyr</h2>
+<p>If you forget syntax or what the following functions do, here is an excellent cheat sheet: <a href="https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf" class="uri">https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf</a></p>
+<p>We will demo five functions below:</p>
+<div id="filter---returns-rows-that-meet-specified-conditions" class="section level3" number="3.7.1">
+<h3><span class="header-section-number">3.7.1</span> filter() - returns rows that meet specified conditions</h3>
+</div>
+<div id="arrange---reorders-rows" class="section level3" number="3.7.2">
+<h3><span class="header-section-number">3.7.2</span> arrange() - reorders rows</h3>
+</div>
+<div id="select---pull-out-variables-columns" class="section level3" number="3.7.3">
+<h3><span class="header-section-number">3.7.3</span> select() - pull out variables (columns)</h3>
+</div>
+<div id="mutate---create-new-variables-columns-or-reformat-existing-ones" class="section level3" number="3.7.4">
+<h3><span class="header-section-number">3.7.4</span> mutate() - create new variables (columns) or reformat existing ones</h3>
+</div>
+<div id="summarize---collapse-groups-of-values-into-summary-stats" class="section level3" number="3.7.5">
+<h3><span class="header-section-number">3.7.5</span> summarize() - collapse groups of values into summary stats</h3>
+<p>With all of these, the first argument is the data and then the arguments after that specify what you want the function to do.</p>
+<p><img src="images/dplyr%20functions.png" /></p>
+</div>
+</div>
+<div id="filter" class="section level2" number="3.8">
+<h2><span class="header-section-number">3.8</span> Filter</h2>
+<p>Write an expression that returns data in rbi for the state of Maine (ME)</p>
+<p>Operators:<br />
+== equal<br />
+!= not equal<br />
+&gt;= , &lt;= greater than or equal to, less than or equal to<br />
+&gt;, &lt; greater than or less then<br />
+%in% included in a list of values<br />
+&amp; and<br />
+| or</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="Programming.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(rbi, STATE <span class="sc">==</span> <span class="st">&quot;ME&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 13 x 26
+##    site_no    RBI RBIrank STANAME DRAIN_SQKM HUC02 LAT_GAGE LNG_GAGE STATE CLASS
+##      &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
+##  1 1013500 0.0584      35 Fish R…     2253.      1     47.2    -68.6 ME    Ref  
+##  2 1021480 0.208      300 Old St…       76.7     1     44.9    -67.7 ME    Ref  
+##  3 1022500 0.198      286 Narrag…      574.      1     44.6    -67.9 ME    Ref  
+##  4 1029200 0.132      183 Seboei…      445.      1     46.1    -68.6 ME    Ref  
+##  5 1030500 0.114      147 Mattaw…     3676.      1     45.5    -68.3 ME    Ref  
+##  6 1031300 0.297      489 Piscat…      304.      1     45.3    -69.6 ME    Ref  
+##  7 1031500 0.320      545 Piscat…      769       1     45.2    -69.3 ME    Ref  
+##  8 1037380 0.318      537 Ducktr…       39       1     44.3    -69.1 ME    Ref  
+##  9 1044550 0.242      360 Spence…      500.      1     45.3    -70.2 ME    Ref  
+## 10 1047000 0.344      608 Carrab…      909.      1     44.9    -70.0 ME    Ref  
+## 11 1054200 0.492      805 Wild R…      181       1     44.4    -71.0 ME    Ref  
+## 12 1055000 0.450      762 Swift …      251.      1     44.6    -70.6 ME    Ref  
+## 13 1057000 0.326      561 Little…      191.      1     44.3    -70.5 ME    Ref  
+## # … with 16 more variables: AGGECOREGION &lt;chr&gt;, PPTAVG_BASIN &lt;dbl&gt;,
+## #   PPTAVG_SITE &lt;dbl&gt;, T_AVG_BASIN &lt;dbl&gt;, T_AVG_SITE &lt;dbl&gt;, T_MAX_BASIN &lt;dbl&gt;,
+## #   T_MAXSTD_BASIN &lt;dbl&gt;, T_MAX_SITE &lt;dbl&gt;, T_MIN_BASIN &lt;dbl&gt;,
+## #   T_MINSTD_BASIN &lt;dbl&gt;, T_MIN_SITE &lt;dbl&gt;, PET &lt;dbl&gt;, SNOW_PCT_PRECIP &lt;dbl&gt;,
+## #   PRECIP_SEAS_IND &lt;dbl&gt;, FLOWYRS_1990_2009 &lt;dbl&gt;, wy00_09 &lt;dbl&gt;</code></pre>
+<div id="multiple-conditions" class="section level3" number="3.8.1">
+<h3><span class="header-section-number">3.8.1</span> Multiple conditions</h3>
+<p>How many gages are there in Maine with an rbi greater than 0.25</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="Programming.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(rbi, STATE <span class="sc">==</span> <span class="st">&quot;ME&quot;</span> <span class="sc">&amp;</span> RBI <span class="sc">&gt;</span> <span class="fl">0.25</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 7 x 26
+##   site_no   RBI RBIrank STANAME DRAIN_SQKM HUC02 LAT_GAGE LNG_GAGE STATE CLASS
+##     &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
+## 1 1031300 0.297     489 Piscat…       304.     1     45.3    -69.6 ME    Ref  
+## 2 1031500 0.320     545 Piscat…       769      1     45.2    -69.3 ME    Ref  
+## 3 1037380 0.318     537 Ducktr…        39      1     44.3    -69.1 ME    Ref  
+## 4 1047000 0.344     608 Carrab…       909.     1     44.9    -70.0 ME    Ref  
+## 5 1054200 0.492     805 Wild R…       181      1     44.4    -71.0 ME    Ref  
+## 6 1055000 0.450     762 Swift …       251.     1     44.6    -70.6 ME    Ref  
+## 7 1057000 0.326     561 Little…       191.     1     44.3    -70.5 ME    Ref  
+## # … with 16 more variables: AGGECOREGION &lt;chr&gt;, PPTAVG_BASIN &lt;dbl&gt;,
+## #   PPTAVG_SITE &lt;dbl&gt;, T_AVG_BASIN &lt;dbl&gt;, T_AVG_SITE &lt;dbl&gt;, T_MAX_BASIN &lt;dbl&gt;,
+## #   T_MAXSTD_BASIN &lt;dbl&gt;, T_MAX_SITE &lt;dbl&gt;, T_MIN_BASIN &lt;dbl&gt;,
+## #   T_MINSTD_BASIN &lt;dbl&gt;, T_MIN_SITE &lt;dbl&gt;, PET &lt;dbl&gt;, SNOW_PCT_PRECIP &lt;dbl&gt;,
+## #   PRECIP_SEAS_IND &lt;dbl&gt;, FLOWYRS_1990_2009 &lt;dbl&gt;, wy00_09 &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<div id="arrange" class="section level2" number="3.9">
+<h2><span class="header-section-number">3.9</span> Arrange</h2>
+<p>Arrange sorts by a column in your dataset.</p>
+<p>Sort the rbi data by the RBI column in ascending and then descending order</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="Programming.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(rbi, RBI)</span></code></pre></div>
+<pre><code>## # A tibble: 49 x 26
+##    site_no    RBI RBIrank STANAME DRAIN_SQKM HUC02 LAT_GAGE LNG_GAGE STATE CLASS
+##      &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
+##  1 1305500 0.0464      18 SWAN R…       21.3     2     40.8    -73.0 NY    Non-…
+##  2 1013500 0.0584      35 Fish R…     2253.      1     47.2    -68.6 ME    Ref  
+##  3 1306460 0.0587      37 CONNET…       55.7     2     40.8    -73.2 NY    Non-…
+##  4 1030500 0.114      147 Mattaw…     3676.      1     45.5    -68.3 ME    Ref  
+##  5 1029200 0.132      183 Seboei…      445.      1     46.1    -68.6 ME    Ref  
+##  6 1117468 0.172      244 BEAVER…       25.3     1     41.5    -71.6 RI    Ref  
+##  7 1022500 0.198      286 Narrag…      574.      1     44.6    -67.9 ME    Ref  
+##  8 1021480 0.208      300 Old St…       76.7     1     44.9    -67.7 ME    Ref  
+##  9 1162500 0.213      311 PRIEST…       49.7     1     42.7    -72.1 MA    Ref  
+## 10 1117370 0.230      338 QUEEN …       50.5     1     41.5    -71.6 RI    Ref  
+## # … with 39 more rows, and 16 more variables: AGGECOREGION &lt;chr&gt;,
+## #   PPTAVG_BASIN &lt;dbl&gt;, PPTAVG_SITE &lt;dbl&gt;, T_AVG_BASIN &lt;dbl&gt;, T_AVG_SITE &lt;dbl&gt;,
+## #   T_MAX_BASIN &lt;dbl&gt;, T_MAXSTD_BASIN &lt;dbl&gt;, T_MAX_SITE &lt;dbl&gt;,
+## #   T_MIN_BASIN &lt;dbl&gt;, T_MINSTD_BASIN &lt;dbl&gt;, T_MIN_SITE &lt;dbl&gt;, PET &lt;dbl&gt;,
+## #   SNOW_PCT_PRECIP &lt;dbl&gt;, PRECIP_SEAS_IND &lt;dbl&gt;, FLOWYRS_1990_2009 &lt;dbl&gt;,
+## #   wy00_09 &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="Programming.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(rbi, <span class="fu">desc</span>(RBI))</span></code></pre></div>
+<pre><code>## # A tibble: 49 x 26
+##    site_no   RBI RBIrank STANAME DRAIN_SQKM HUC02 LAT_GAGE LNG_GAGE STATE CLASS
+##      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
+##  1 1311500 0.856    1017 VALLEY…       18.1     2     40.7    -73.7 NY    Non-…
+##  2 1054200 0.492     805 Wild R…      181       1     44.4    -71.0 ME    Ref  
+##  3 1187300 0.487     800 HUBBAR…       53.9     1     42.0    -72.9 MA    Ref  
+##  4 1105600 0.484     797 OLD SW…       12.7     1     42.2    -70.9 MA    Non-…
+##  5 1055000 0.450     762 Swift …      251.      1     44.6    -70.6 ME    Ref  
+##  6 1195100 0.430     744 INDIAN…       14.8     1     41.3    -72.5 CT    Ref  
+##  7 1181000 0.420     732 WEST B…      244.      1     42.2    -72.9 MA    Ref  
+##  8 1350000 0.414     721 SCHOHA…      612.      2     42.3    -74.4 NY    Ref  
+##  9 1121000 0.404     710 MOUNT …       70.3     1     41.8    -72.2 CT    Ref  
+## 10 1169000 0.395     688 NORTH …      231.      1     42.6    -72.7 MA    Ref  
+## # … with 39 more rows, and 16 more variables: AGGECOREGION &lt;chr&gt;,
+## #   PPTAVG_BASIN &lt;dbl&gt;, PPTAVG_SITE &lt;dbl&gt;, T_AVG_BASIN &lt;dbl&gt;, T_AVG_SITE &lt;dbl&gt;,
+## #   T_MAX_BASIN &lt;dbl&gt;, T_MAXSTD_BASIN &lt;dbl&gt;, T_MAX_SITE &lt;dbl&gt;,
+## #   T_MIN_BASIN &lt;dbl&gt;, T_MINSTD_BASIN &lt;dbl&gt;, T_MIN_SITE &lt;dbl&gt;, PET &lt;dbl&gt;,
+## #   SNOW_PCT_PRECIP &lt;dbl&gt;, PRECIP_SEAS_IND &lt;dbl&gt;, FLOWYRS_1990_2009 &lt;dbl&gt;,
+## #   wy00_09 &lt;dbl&gt;</code></pre>
+</div>
+<div id="select" class="section level2" number="3.10">
+<h2><span class="header-section-number">3.10</span> Select</h2>
+<p>There are two many columns! You will often want to do this when you are manipulating the structure of your data and need to trim it down to only include what you will use.</p>
+<p>Select Site name, state, and RBI from the rbi data</p>
+<p>Note they come back in the order you put them in in the function, not the order they were in in the original data.</p>
+<p>You can do a lot more with select, especially when you need to select a bunch of columns but don’t want to type them all out. But we don’t need to cover all that today. For a taste though, if you want to select a group of columns you can specify the first and last with a colon in between (first:last) and it’ll return all of them. Select the rbi columns from site_no to DRAIN_SQKM.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="Programming.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(rbi, STANAME, STATE, RBI)</span></code></pre></div>
+<pre><code>## # A tibble: 49 x 3
+##    STANAME                                      STATE    RBI
+##    &lt;chr&gt;                                        &lt;chr&gt;  &lt;dbl&gt;
+##  1 Fish River near Fort Kent, Maine             ME    0.0584
+##  2 Old Stream near Wesley, Maine                ME    0.208 
+##  3 Narraguagus River at Cherryfield, Maine      ME    0.198 
+##  4 Seboeis River near Shin Pond, Maine          ME    0.132 
+##  5 Mattawamkeag River near Mattawamkeag, Maine  ME    0.114 
+##  6 Piscataquis River at Blanchard, Maine        ME    0.297 
+##  7 Piscataquis River near Dover-Foxcroft, Maine ME    0.320 
+##  8 Ducktrap River near Lincolnville, Maine      ME    0.318 
+##  9 Spencer Stream near Grand Falls, Maine       ME    0.242 
+## 10 Carrabassett River near North Anson, Maine   ME    0.344 
+## # … with 39 more rows</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="Programming.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(rbi, site_no<span class="sc">:</span>DRAIN_SQKM)</span></code></pre></div>
+<pre><code>## # A tibble: 49 x 5
+##    site_no    RBI RBIrank STANAME                                     DRAIN_SQKM
+##      &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                                            &lt;dbl&gt;
+##  1 1013500 0.0584      35 Fish River near Fort Kent, Maine                2253. 
+##  2 1021480 0.208      300 Old Stream near Wesley, Maine                     76.7
+##  3 1022500 0.198      286 Narraguagus River at Cherryfield, Maine          574. 
+##  4 1029200 0.132      183 Seboeis River near Shin Pond, Maine              445. 
+##  5 1030500 0.114      147 Mattawamkeag River near Mattawamkeag, Maine     3676. 
+##  6 1031300 0.297      489 Piscataquis River at Blanchard, Maine            304. 
+##  7 1031500 0.320      545 Piscataquis River near Dover-Foxcroft, Mai…      769  
+##  8 1037380 0.318      537 Ducktrap River near Lincolnville, Maine           39  
+##  9 1044550 0.242      360 Spencer Stream near Grand Falls, Maine           500. 
+## 10 1047000 0.344      608 Carrabassett River near North Anson, Maine       909. 
+## # … with 39 more rows</code></pre>
+</div>
+<div id="mutate" class="section level2" number="3.11">
+<h2><span class="header-section-number">3.11</span> Mutate</h2>
+<p>Use mutate to add new columns based on additional ones. Common uses are to create a column of data in different units, or to calculate something based on two columns. You can also use it to just update a column, by naming the new column the same as the original one (but be careful because you’ll lose the original one!). I commonly use this when I am changing the datatype of a column, say from a character to a factor or a string to a date.</p>
+<p>Create a new column in rbi called T_RANGE by subtracting T_MIN_SITE from T_MAX_SITE</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="Programming.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(rbi, <span class="at">T_RANGE =</span> T_MAX_SITE <span class="sc">-</span> T_MIN_SITE)</span></code></pre></div>
+<pre><code>## # A tibble: 49 x 27
+##    site_no    RBI RBIrank STANAME DRAIN_SQKM HUC02 LAT_GAGE LNG_GAGE STATE CLASS
+##      &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
+##  1 1013500 0.0584      35 Fish R…     2253.      1     47.2    -68.6 ME    Ref  
+##  2 1021480 0.208      300 Old St…       76.7     1     44.9    -67.7 ME    Ref  
+##  3 1022500 0.198      286 Narrag…      574.      1     44.6    -67.9 ME    Ref  
+##  4 1029200 0.132      183 Seboei…      445.      1     46.1    -68.6 ME    Ref  
+##  5 1030500 0.114      147 Mattaw…     3676.      1     45.5    -68.3 ME    Ref  
+##  6 1031300 0.297      489 Piscat…      304.      1     45.3    -69.6 ME    Ref  
+##  7 1031500 0.320      545 Piscat…      769       1     45.2    -69.3 ME    Ref  
+##  8 1037380 0.318      537 Ducktr…       39       1     44.3    -69.1 ME    Ref  
+##  9 1044550 0.242      360 Spence…      500.      1     45.3    -70.2 ME    Ref  
+## 10 1047000 0.344      608 Carrab…      909.      1     44.9    -70.0 ME    Ref  
+## # … with 39 more rows, and 17 more variables: AGGECOREGION &lt;chr&gt;,
+## #   PPTAVG_BASIN &lt;dbl&gt;, PPTAVG_SITE &lt;dbl&gt;, T_AVG_BASIN &lt;dbl&gt;, T_AVG_SITE &lt;dbl&gt;,
+## #   T_MAX_BASIN &lt;dbl&gt;, T_MAXSTD_BASIN &lt;dbl&gt;, T_MAX_SITE &lt;dbl&gt;,
+## #   T_MIN_BASIN &lt;dbl&gt;, T_MINSTD_BASIN &lt;dbl&gt;, T_MIN_SITE &lt;dbl&gt;, PET &lt;dbl&gt;,
+## #   SNOW_PCT_PRECIP &lt;dbl&gt;, PRECIP_SEAS_IND &lt;dbl&gt;, FLOWYRS_1990_2009 &lt;dbl&gt;,
+## #   wy00_09 &lt;dbl&gt;, T_RANGE &lt;dbl&gt;</code></pre>
+<p>When downloading data from the USGS through R, you have to enter the gage ID as a character, even though they are all made up of numbers. So to practice doing this, update the site_no column to be a character datatype</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="Programming.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(rbi, <span class="at">site_no =</span> <span class="fu">as.character</span>(site_no))</span></code></pre></div>
+<pre><code>## # A tibble: 49 x 26
+##    site_no    RBI RBIrank STANAME DRAIN_SQKM HUC02 LAT_GAGE LNG_GAGE STATE CLASS
+##    &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
+##  1 1013500 0.0584      35 Fish R…     2253.      1     47.2    -68.6 ME    Ref  
+##  2 1021480 0.208      300 Old St…       76.7     1     44.9    -67.7 ME    Ref  
+##  3 1022500 0.198      286 Narrag…      574.      1     44.6    -67.9 ME    Ref  
+##  4 1029200 0.132      183 Seboei…      445.      1     46.1    -68.6 ME    Ref  
+##  5 1030500 0.114      147 Mattaw…     3676.      1     45.5    -68.3 ME    Ref  
+##  6 1031300 0.297      489 Piscat…      304.      1     45.3    -69.6 ME    Ref  
+##  7 1031500 0.320      545 Piscat…      769       1     45.2    -69.3 ME    Ref  
+##  8 1037380 0.318      537 Ducktr…       39       1     44.3    -69.1 ME    Ref  
+##  9 1044550 0.242      360 Spence…      500.      1     45.3    -70.2 ME    Ref  
+## 10 1047000 0.344      608 Carrab…      909.      1     44.9    -70.0 ME    Ref  
+## # … with 39 more rows, and 16 more variables: AGGECOREGION &lt;chr&gt;,
+## #   PPTAVG_BASIN &lt;dbl&gt;, PPTAVG_SITE &lt;dbl&gt;, T_AVG_BASIN &lt;dbl&gt;, T_AVG_SITE &lt;dbl&gt;,
+## #   T_MAX_BASIN &lt;dbl&gt;, T_MAXSTD_BASIN &lt;dbl&gt;, T_MAX_SITE &lt;dbl&gt;,
+## #   T_MIN_BASIN &lt;dbl&gt;, T_MINSTD_BASIN &lt;dbl&gt;, T_MIN_SITE &lt;dbl&gt;, PET &lt;dbl&gt;,
+## #   SNOW_PCT_PRECIP &lt;dbl&gt;, PRECIP_SEAS_IND &lt;dbl&gt;, FLOWYRS_1990_2009 &lt;dbl&gt;,
+## #   wy00_09 &lt;dbl&gt;</code></pre>
+</div>
+<div id="summarize" class="section level2" number="3.12">
+<h2><span class="header-section-number">3.12</span> Summarize</h2>
+<p>Summarize will perform an operation on all of your data, or groups if you assign groups.</p>
+<p>Use summarize to compute the mean, min, and max rbi</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="Programming.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(rbi, <span class="at">meanrbi =</span> <span class="fu">mean</span>(RBI), <span class="at">maxrbi =</span> <span class="fu">max</span>(RBI), <span class="at">minrbi =</span> <span class="fu">min</span>(RBI))</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 3
+##   meanrbi maxrbi minrbi
+##     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1   0.316  0.856 0.0464</code></pre>
+<p>Now use the group function to group by state and then summarize in the same way as above</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="Programming.html#cb70-1" aria-hidden="true" tabindex="-1"></a>rbistate <span class="ot">&lt;-</span> <span class="fu">group_by</span>(rbi, STATE)</span>
+<span id="cb70-2"><a href="Programming.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(rbistate, <span class="at">meanrbi =</span> <span class="fu">mean</span>(RBI), <span class="at">maxrbi =</span> <span class="fu">max</span>(RBI), <span class="at">minrbi =</span> <span class="fu">min</span>(RBI))</span></code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre><code>## # A tibble: 7 x 4
+##   STATE meanrbi maxrbi minrbi
+##   &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1 CT      0.366  0.430 0.295 
+## 2 MA      0.367  0.487 0.213 
+## 3 ME      0.269  0.492 0.0584
+## 4 NH      0.336  0.368 0.265 
+## 5 NY      0.342  0.856 0.0464
+## 6 RI      0.201  0.230 0.172 
+## 7 VT      0.299  0.365 0.231</code></pre>
+</div>
+<div id="multiple-operations-with-pipes" class="section level2" number="3.13">
+<h2><span class="header-section-number">3.13</span> Multiple operations with pipes</h2>
+<p>The pipe operator %&gt;% allows you to perform multiple operations in a sequence without saving intermediate steps. Not only is this more efficient, but structuring operations with pipes is also more intuitive than nesting functions within functions (the other way you can do multiple operations).</p>
+<div id="lets-say-we-want-to-tell-r-to-make-a-pbj-sandwich-by-using-the-pbbread-jbread-and-joinslices-functions-and-the-data-ingredients.-if-we-do-this-saving-each-step-if-would-look-like-this" class="section level3" number="3.13.1">
+<h3><span class="header-section-number">3.13.1</span> Let’s say we want to tell R to make a PB&amp;J sandwich by using the pbbread(), jbread(), and joinslices() functions and the data “ingredients.” If we do this saving each step if would look like this:</h3>
+<p>sando &lt;- pbbread(ingredients)</p>
+<p>sando &lt;- jbread(sando)</p>
+<p>sando &lt;- joinslices(sando)</p>
+</div>
+<div id="if-we-nest-the-functions-together-we-get-this" class="section level3" number="3.13.2">
+<h3><span class="header-section-number">3.13.2</span> If we nest the functions together we get this</h3>
+<p>joinslice(jbread(pbbread(ingredients)))</p>
+<p>Efficient… but tough to read/interpret</p>
+</div>
+<div id="using-the-pipe-it-would-look-like-this" class="section level3" number="3.13.3">
+<h3><span class="header-section-number">3.13.3</span> Using the pipe it would look like this</h3>
+<p>ingredients %&gt;%<br />
+pbbread() %&gt;%<br />
+jbread() %&gt;%<br />
+joinslices()</p>
+<p>Much easier to follow!</p>
+</div>
+<div id="when-you-use-the-pipe-it-basically-takes-whatever-came-out-of-the-first-function-and-puts-it-into-the-data-argument-for-the-next-one" class="section level3" number="3.13.4">
+<h3><span class="header-section-number">3.13.4</span> When you use the pipe, it basically takes whatever came out of the first function and puts it into the data argument for the next one</h3>
+<p><strong>so rbi %&gt;% group_by(STATE) is the same as group_by(rbi, STATE)</strong></p>
+<p>Take the groupby and summarize code from above and perform the operation using the pipe</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="Programming.html#cb73-1" aria-hidden="true" tabindex="-1"></a>rbi <span class="sc">%&gt;%</span></span>
+<span id="cb73-2"><a href="Programming.html#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(STATE) <span class="sc">%&gt;%</span></span>
+<span id="cb73-3"><a href="Programming.html#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">meanrbi =</span> <span class="fu">mean</span>(RBI), <span class="at">maxrbi =</span> <span class="fu">max</span>(RBI), <span class="at">minrbi =</span> <span class="fu">min</span>(RBI))</span></code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre><code>## # A tibble: 7 x 4
+##   STATE meanrbi maxrbi minrbi
+##   &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1 CT      0.366  0.430 0.295 
+## 2 MA      0.367  0.487 0.213 
+## 3 ME      0.269  0.492 0.0584
+## 4 NH      0.336  0.368 0.265 
+## 5 NY      0.342  0.856 0.0464
+## 6 RI      0.201  0.230 0.172 
+## 7 VT      0.299  0.365 0.231</code></pre>
+</div>
+</div>
+<div id="save-your-results-to-a-new-tibble" class="section level2" number="3.14">
+<h2><span class="header-section-number">3.14</span> Save your results to a new tibble</h2>
+<p>We have just been writing everything to the screen so we can see what we are doing… In order to save anything we do with these functions to work with it later, we just have to use the assignment operator (&lt;-) to store the data.</p>
+<p>One kind of awesome thing about the assignment operator is that it works both ways…</p>
+<p>x &lt;- 3 and 3 -&gt; x do the same thing (WHAT?!)</p>
+<p>So you can do the assignment at the beginning of the end of your dplyr workings, whatever you like best.</p>
+<p>Use the assignment operator to save the summary table you just made.</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="Programming.html#cb76-1" aria-hidden="true" tabindex="-1"></a>stateRBIs <span class="ot">&lt;-</span> rbi <span class="sc">%&gt;%</span></span>
+<span id="cb76-2"><a href="Programming.html#cb76-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(STATE) <span class="sc">%&gt;%</span></span>
+<span id="cb76-3"><a href="Programming.html#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">meanrbi =</span> <span class="fu">mean</span>(RBI), <span class="at">maxrbi =</span> <span class="fu">max</span>(RBI), <span class="at">minrbi =</span> <span class="fu">min</span>(RBI))</span></code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="Programming.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Notice when you do this it doesn&#39;t output the result... </span></span>
+<span id="cb78-2"><a href="Programming.html#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="co"># You can see what you did by clickon in stateRBIs in your environment panel</span></span>
+<span id="cb78-3"><a href="Programming.html#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="co"># or just type stateRBIs</span></span>
+<span id="cb78-4"><a href="Programming.html#cb78-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-5"><a href="Programming.html#cb78-5" aria-hidden="true" tabindex="-1"></a>stateRBIs</span></code></pre></div>
+<pre><code>## # A tibble: 7 x 4
+##   STATE meanrbi maxrbi minrbi
+##   &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1 CT      0.366  0.430 0.295 
+## 2 MA      0.367  0.487 0.213 
+## 3 ME      0.269  0.492 0.0584
+## 4 NH      0.336  0.368 0.265 
+## 5 NY      0.342  0.856 0.0464
+## 6 RI      0.201  0.230 0.172 
+## 7 VT      0.299  0.365 0.231</code></pre>
+</div>
+<div id="what-about-nas" class="section level2" number="3.15">
+<h2><span class="header-section-number">3.15</span> What about NAs?</h2>
+<p>We will talk more about this when we discuss stats, but some operations will fail if there are NA’s in the data. If appropriate, you can tell functions like mean() to ignore NAs. You can also use drop_na() if you’re working with a tibble. But be aware if you use that and save the result, drop_na() gets rid of the whole row, not just the NA. Because what would you replace it with…. an NA?</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="Programming.html#cb80-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="cn">NA</span>)</span>
+<span id="cb80-2"><a href="Programming.html#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 2.5</code></pre>
+</div>
+<div id="what-are-some-things-you-think-ill-ask-you-to-do-for-the-activity-next-class" class="section level2" number="3.16">
+<h2><span class="header-section-number">3.16</span> What are some things you think I’ll ask you to do for the activity next class?</h2>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="Plotting.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introactivity.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Hydroinformatics_Bookdown.pdf", "Hydroinformatics_Bookdown.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

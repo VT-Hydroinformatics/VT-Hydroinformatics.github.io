@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Intro/Review of Basic Statistics | Hydroinformatics at VT</title>
+  <meta name="description" content="This bookdown contains notes and exercises for a course in hydroinformatics at Virginia Tech." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Intro/Review of Basic Statistics | Hydroinformatics at VT" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This bookdown contains notes and exercises for a course in hydroinformatics at Virginia Tech." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Intro/Review of Basic Statistics | Hydroinformatics at VT" />
+  
+  <meta name="twitter:description" content="This bookdown contains notes and exercises for a course in hydroinformatics at Virginia Tech." />
+  
+
+<meta name="author" content="JP Gannon" />
+
+
+<meta name="date" content="2021-02-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introactivity.html"/>
+<link rel="next" href="intro-stats-activity.html"/>
+<script src="libs/header-attrs-2.4.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="Plotting.html"><a href="Plotting.html"><i class="fa fa-check"></i><b>2</b> Intro to Plotting</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="Plotting.html"><a href="Plotting.html#download-and-install-tidyverse-library"><i class="fa fa-check"></i><b>2.1</b> Download and install tidyverse library</a></li>
+<li class="chapter" data-level="2.2" data-path="Plotting.html"><a href="Plotting.html#reading-data"><i class="fa fa-check"></i><b>2.2</b> Reading data</a></li>
+<li class="chapter" data-level="2.3" data-path="Plotting.html"><a href="Plotting.html#our-first-ggplot"><i class="fa fa-check"></i><b>2.3</b> Our first ggplot</a></li>
+<li class="chapter" data-level="2.4" data-path="Plotting.html"><a href="Plotting.html#change-point-type"><i class="fa fa-check"></i><b>2.4</b> Change point type</a></li>
+<li class="chapter" data-level="2.5" data-path="Plotting.html"><a href="Plotting.html#set-colors"><i class="fa fa-check"></i><b>2.5</b> Set colors</a></li>
+<li class="chapter" data-level="2.6" data-path="Plotting.html"><a href="Plotting.html#controlling-color-with-a-third-variable-and-other-functions"><i class="fa fa-check"></i><b>2.6</b> Controlling color with a third variable and other functions</a></li>
+<li class="chapter" data-level="2.7" data-path="Plotting.html"><a href="Plotting.html#plotting-multiple-groups"><i class="fa fa-check"></i><b>2.7</b> Plotting multiple groups</a></li>
+<li class="chapter" data-level="2.8" data-path="Plotting.html"><a href="Plotting.html#facets"><i class="fa fa-check"></i><b>2.8</b> Facets</a></li>
+<li class="chapter" data-level="2.9" data-path="Plotting.html"><a href="Plotting.html#two-variable-faceting"><i class="fa fa-check"></i><b>2.9</b> Two variable faceting</a></li>
+<li class="chapter" data-level="2.10" data-path="Plotting.html"><a href="Plotting.html#boxplots"><i class="fa fa-check"></i><b>2.10</b> Boxplots</a></li>
+<li class="chapter" data-level="2.11" data-path="Plotting.html"><a href="Plotting.html#more-about-color-size-etc"><i class="fa fa-check"></i><b>2.11</b> More about color, size, etc</a></li>
+<li class="chapter" data-level="2.12" data-path="Plotting.html"><a href="Plotting.html#multiple-geoms"><i class="fa fa-check"></i><b>2.12</b> Multiple geoms</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Programming.html"><a href="Programming.html"><i class="fa fa-check"></i><b>3</b> R Tidyverse Programming Basics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="Programming.html"><a href="Programming.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="Programming.html"><a href="Programming.html#you-can-use-r-as-a-calculator"><i class="fa fa-check"></i><b>3.2</b> You can use R as a calculator</a></li>
+<li class="chapter" data-level="3.3" data-path="Programming.html"><a href="Programming.html#you-can-create-new-objects-using--"><i class="fa fa-check"></i><b>3.3</b> You can create new objects using &lt;-</a></li>
+<li class="chapter" data-level="3.4" data-path="Programming.html"><a href="Programming.html#using-functions"><i class="fa fa-check"></i><b>3.4</b> Using functions</a></li>
+<li class="chapter" data-level="3.5" data-path="Programming.html"><a href="Programming.html#read-in-some-data."><i class="fa fa-check"></i><b>3.5</b> Read in some data.</a></li>
+<li class="chapter" data-level="3.6" data-path="Programming.html"><a href="Programming.html#wait-hold-up.-what-is-a-tibble"><i class="fa fa-check"></i><b>3.6</b> Wait, hold up. What is a tibble?</a></li>
+<li class="chapter" data-level="3.7" data-path="Programming.html"><a href="Programming.html#data-wrangling-in-dplyr"><i class="fa fa-check"></i><b>3.7</b> Data wrangling in dplyr</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="Programming.html"><a href="Programming.html#filter---returns-rows-that-meet-specified-conditions"><i class="fa fa-check"></i><b>3.7.1</b> filter() - returns rows that meet specified conditions</a></li>
+<li class="chapter" data-level="3.7.2" data-path="Programming.html"><a href="Programming.html#arrange---reorders-rows"><i class="fa fa-check"></i><b>3.7.2</b> arrange() - reorders rows</a></li>
+<li class="chapter" data-level="3.7.3" data-path="Programming.html"><a href="Programming.html#select---pull-out-variables-columns"><i class="fa fa-check"></i><b>3.7.3</b> select() - pull out variables (columns)</a></li>
+<li class="chapter" data-level="3.7.4" data-path="Programming.html"><a href="Programming.html#mutate---create-new-variables-columns-or-reformat-existing-ones"><i class="fa fa-check"></i><b>3.7.4</b> mutate() - create new variables (columns) or reformat existing ones</a></li>
+<li class="chapter" data-level="3.7.5" data-path="Programming.html"><a href="Programming.html#summarize---collapse-groups-of-values-into-summary-stats"><i class="fa fa-check"></i><b>3.7.5</b> summarize() - collapse groups of values into summary stats</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="Programming.html"><a href="Programming.html#filter"><i class="fa fa-check"></i><b>3.8</b> Filter</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="Programming.html"><a href="Programming.html#multiple-conditions"><i class="fa fa-check"></i><b>3.8.1</b> Multiple conditions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="Programming.html"><a href="Programming.html#arrange"><i class="fa fa-check"></i><b>3.9</b> Arrange</a></li>
+<li class="chapter" data-level="3.10" data-path="Programming.html"><a href="Programming.html#select"><i class="fa fa-check"></i><b>3.10</b> Select</a></li>
+<li class="chapter" data-level="3.11" data-path="Programming.html"><a href="Programming.html#mutate"><i class="fa fa-check"></i><b>3.11</b> Mutate</a></li>
+<li class="chapter" data-level="3.12" data-path="Programming.html"><a href="Programming.html#summarize"><i class="fa fa-check"></i><b>3.12</b> Summarize</a></li>
+<li class="chapter" data-level="3.13" data-path="Programming.html"><a href="Programming.html#multiple-operations-with-pipes"><i class="fa fa-check"></i><b>3.13</b> Multiple operations with pipes</a>
+<ul>
+<li class="chapter" data-level="3.13.1" data-path="Programming.html"><a href="Programming.html#lets-say-we-want-to-tell-r-to-make-a-pbj-sandwich-by-using-the-pbbread-jbread-and-joinslices-functions-and-the-data-ingredients.-if-we-do-this-saving-each-step-if-would-look-like-this"><i class="fa fa-check"></i><b>3.13.1</b> Let’s say we want to tell R to make a PB&amp;J sandwich by using the pbbread(), jbread(), and joinslices() functions and the data “ingredients.” If we do this saving each step if would look like this:</a></li>
+<li class="chapter" data-level="3.13.2" data-path="Programming.html"><a href="Programming.html#if-we-nest-the-functions-together-we-get-this"><i class="fa fa-check"></i><b>3.13.2</b> If we nest the functions together we get this</a></li>
+<li class="chapter" data-level="3.13.3" data-path="Programming.html"><a href="Programming.html#using-the-pipe-it-would-look-like-this"><i class="fa fa-check"></i><b>3.13.3</b> Using the pipe it would look like this</a></li>
+<li class="chapter" data-level="3.13.4" data-path="Programming.html"><a href="Programming.html#when-you-use-the-pipe-it-basically-takes-whatever-came-out-of-the-first-function-and-puts-it-into-the-data-argument-for-the-next-one"><i class="fa fa-check"></i><b>3.13.4</b> When you use the pipe, it basically takes whatever came out of the first function and puts it into the data argument for the next one</a></li>
+</ul></li>
+<li class="chapter" data-level="3.14" data-path="Programming.html"><a href="Programming.html#save-your-results-to-a-new-tibble"><i class="fa fa-check"></i><b>3.14</b> Save your results to a new tibble</a></li>
+<li class="chapter" data-level="3.15" data-path="Programming.html"><a href="Programming.html#what-about-nas"><i class="fa fa-check"></i><b>3.15</b> What about NAs?</a></li>
+<li class="chapter" data-level="3.16" data-path="Programming.html"><a href="Programming.html#what-are-some-things-you-think-ill-ask-you-to-do-for-the-activity-next-class"><i class="fa fa-check"></i><b>3.16</b> What are some things you think I’ll ask you to do for the activity next class?</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="introactivity.html"><a href="introactivity.html"><i class="fa fa-check"></i><b>4</b> Intro Skills Activity</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="introactivity.html"><a href="introactivity.html#problem-1"><i class="fa fa-check"></i><b>4.1</b> Problem 1</a></li>
+<li class="chapter" data-level="4.2" data-path="introactivity.html"><a href="introactivity.html#problem-2"><i class="fa fa-check"></i><b>4.2</b> Problem 2</a></li>
+<li class="chapter" data-level="4.3" data-path="introactivity.html"><a href="introactivity.html#problem-3"><i class="fa fa-check"></i><b>4.3</b> Problem 3</a></li>
+<li class="chapter" data-level="4.4" data-path="introactivity.html"><a href="introactivity.html#problem-4"><i class="fa fa-check"></i><b>4.4</b> Problem 4</a></li>
+<li class="chapter" data-level="4.5" data-path="introactivity.html"><a href="introactivity.html#problem-5"><i class="fa fa-check"></i><b>4.5</b> Problem 5</a></li>
+<li class="chapter" data-level="4.6" data-path="introactivity.html"><a href="introactivity.html#problem-6"><i class="fa fa-check"></i><b>4.6</b> Problem 6</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="stats.html"><a href="stats.html"><i class="fa fa-check"></i><b>5</b> Intro/Review of Basic Statistics</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="stats.html"><a href="stats.html#reading-for-this-section-statistical-methods-in-water-resources-chapter-1"><i class="fa fa-check"></i><b>5.1</b> Reading for this section: Statistical Methods in Water Resources: Chapter 1</a></li>
+<li class="chapter" data-level="5.2" data-path="stats.html"><a href="stats.html#questions-for-today"><i class="fa fa-check"></i><b>5.2</b> Questions for today:</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="stats.html"><a href="stats.html#what-is-the-difference-between-a-sample-and-a-population"><i class="fa fa-check"></i><b>5.2.1</b> What is the difference between a sample and a population?</a></li>
+<li class="chapter" data-level="5.2.2" data-path="stats.html"><a href="stats.html#how-do-we-look-at-the-distribution-of-data-in-a-sample"><i class="fa fa-check"></i><b>5.2.2</b> How do we look at the distribution of data in a sample?</a></li>
+<li class="chapter" data-level="5.2.3" data-path="stats.html"><a href="stats.html#how-do-we-measure-aspects-of-a-distribution"><i class="fa fa-check"></i><b>5.2.3</b> How do we measure aspects of a distribution?</a></li>
+<li class="chapter" data-level="5.2.4" data-path="stats.html"><a href="stats.html#what-is-a-normal-distribution"><i class="fa fa-check"></i><b>5.2.4</b> What is a normal distribution?</a></li>
+<li class="chapter" data-level="5.2.5" data-path="stats.html"><a href="stats.html#stack-plots-to-compare-histogram-and-pdf"><i class="fa fa-check"></i><b>5.2.5</b> Stack plots to compare histogram and pdf</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="stats.html"><a href="stats.html#what-is-the-difference-between-a-sample-and-a-population."><i class="fa fa-check"></i><b>5.3</b> What is the difference between a sample and a population.</a></li>
+<li class="chapter" data-level="5.4" data-path="stats.html"><a href="stats.html#measuring-our-sample-distribution-central-tendency."><i class="fa fa-check"></i><b>5.4</b> Measuring our sample distribution: central tendency.</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="stats.html"><a href="stats.html#so-whats-a-weighted-average"><i class="fa fa-check"></i><b>5.4.1</b> So what’s a weighted average?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="stats.html"><a href="stats.html#measures-of-variability"><i class="fa fa-check"></i><b>5.5</b> Measures of variability</a></li>
+<li class="chapter" data-level="5.6" data-path="stats.html"><a href="stats.html#what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one"><i class="fa fa-check"></i><b>5.6</b> What is a normal distribution and how can we determine if we have one?</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html"><i class="fa fa-check"></i><b>6</b> Intro Stats Activity</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#load-the-tidyverse-and-patchwork-libraries-and-read-in-the-flashy-and-pine-datasets."><i class="fa fa-check"></i><b>6.1</b> 1. Load the tidyverse and patchwork libraries and read in the Flashy and Pine datasets.</a></li>
+<li class="chapter" data-level="6.2" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#using-the-flashy-dataset-make-a-pdf-of-the-average-basin-rainfall-pptavg_basin-for-the-northeast-aggecoregion.-on-that-pdf-add-vertical-lines-showing-the-mean-median-standard-deviation-and-iqr.-make-each-a-different-color-and-note-which-is-which-in-a-typed-answer-below-this-question.-or-if-you-want-an-extra-challenged-make-a-custom-legend-that-shows-this"><i class="fa fa-check"></i><b>6.2</b> 2. Using the flashy dataset, make a pdf of the average basin rainfall (PPTAVG_BASIN) for the NorthEast AGGECOREGION. On that pdf, add vertical lines showing the mean, median, standard deviation, and IQR. Make each a different color and note which is which in a typed answer below this question. (or if you want an extra challenged, make a custom legend that shows this)</a></li>
+<li class="chapter" data-level="6.3" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#perform-a-shapiro-wilk-test-for-normality-on-the-data-from-question-2.-using-the-results-from-that-test-and-the-plot-and-stats-from-question-2-discuss-whether-or-not-the-distribution-is-normal."><i class="fa fa-check"></i><b>6.3</b> 3. Perform a Shapiro-Wilk test for normality on the data from question 2. Using the results from that test and the plot and stats from question 2, discuss whether or not the distribution is normal.</a></li>
+<li class="chapter" data-level="6.4" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#make-a-plot-that-shows-the-distribution-of-the-data-from-the-pine-watershed-and-the-nfdr-watershed-two-pdfs-on-the-same-plot.-log-the-x-axis."><i class="fa fa-check"></i><b>6.4</b> 4. Make a plot that shows the distribution of the data from the PINE watershed and the NFDR watershed (two pdfs on the same plot). Log the x axis.</a></li>
+<li class="chapter" data-level="6.5" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#you-want-to-compare-how-variable-the-discharge-is-in-each-of-the-watersheds-in-question-4.-which-measure-of-spread-would-you-use-and-why-if-you-wanted-to-measure-the-central-tendency-which-measure-would-you-use-and-why"><i class="fa fa-check"></i><b>6.5</b> 5. You want to compare how variable the discharge is in each of the watersheds in question 4. Which measure of spread would you use and why? If you wanted to measure the central tendency which measure would you use and why?</a></li>
+<li class="chapter" data-level="6.6" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#compute-3-measures-of-spread-and-2-measures-of-central-tendency-for-the-pine-and-nfdr-watershed.-hint-use-group_by-and-summarize-be-sure-your-code-outputs-the-result.-which-watershed-has-higher-flow-which-one-has-more-variable-flow-how-do-you-know"><i class="fa fa-check"></i><b>6.6</b> 6. Compute 3 measures of spread and 2 measures of central tendency for the PINE and NFDR watershed. (hint: use group_by() and summarize()) Be sure your code outputs the result. Which watershed has higher flow? Which one has more variable flow? How do you know?</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="getdata.html"><a href="getdata.html"><i class="fa fa-check"></i><b>7</b> Joins, Pivots, and USGS dataRetrieval</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="getdata.html"><a href="getdata.html#goals-for-today"><i class="fa fa-check"></i><b>7.1</b> Goals for today</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="getdata.html"><a href="getdata.html#get-familiar-with-the-dataretrieval-package"><i class="fa fa-check"></i><b>7.1.1</b> 1. Get familiar with the dataRetrieval package</a></li>
+<li class="chapter" data-level="7.1.2" data-path="getdata.html"><a href="getdata.html#learn-about-long-vs.-wide-data-and-how-to-change-between-them"><i class="fa fa-check"></i><b>7.1.2</b> 2. Learn about long vs. wide data and how to change between them</a></li>
+<li class="chapter" data-level="7.1.3" data-path="getdata.html"><a href="getdata.html#brief-intro-to-joins"><i class="fa fa-check"></i><b>7.1.3</b> 3. Brief intro to joins</a></li>
+<li class="chapter" data-level="7.1.4" data-path="getdata.html"><a href="getdata.html#prep-question-how-would-you-get-data-from-the-usgs-non-r"><i class="fa fa-check"></i><b>7.1.4</b> Prep question: How would you get data from the USGS (non-R)?</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="getdata.html"><a href="getdata.html#install-the-dataretrieval-package.-load-it-and-the-tidyverse."><i class="fa fa-check"></i><b>7.2</b> Install the dataRetrieval package. Load it and the tidyverse.</a></li>
+<li class="chapter" data-level="7.3" data-path="getdata.html"><a href="getdata.html#exploring-what-dataretrieval-can-do."><i class="fa fa-check"></i><b>7.3</b> Exploring what dataRetrieval can do.</a></li>
+<li class="chapter" data-level="7.4" data-path="getdata.html"><a href="getdata.html#so-how-do-you-find-the-site-ids-for-downloading-data"><i class="fa fa-check"></i><b>7.4</b> So how do you find the site ids for downloading data?</a></li>
+<li class="chapter" data-level="7.5" data-path="getdata.html"><a href="getdata.html#ok-lets-download-some-data"><i class="fa fa-check"></i><b>7.5</b> OK let’s download some data!</a></li>
+<li class="chapter" data-level="7.6" data-path="getdata.html"><a href="getdata.html#pivoting-wide-and-long-data"><i class="fa fa-check"></i><b>7.6</b> Pivoting: wide and long data</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="getdata.html"><a href="getdata.html#long"><i class="fa fa-check"></i><b>7.6.1</b> LONG</a></li>
+<li class="chapter" data-level="7.6.2" data-path="getdata.html"><a href="getdata.html#wide"><i class="fa fa-check"></i><b>7.6.2</b> WIDE</a></li>
+<li class="chapter" data-level="7.6.3" data-path="getdata.html"><a href="getdata.html#why"><i class="fa fa-check"></i><b>7.6.3</b> Why?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="joinpivotDR.html"><a href="joinpivotDR.html"><i class="fa fa-check"></i><b>8</b> Joins Pivots dataRetrieval Activity</a>
+<ul>
+<li class="chapter" data-level="8.0.1" data-path="joinpivotDR.html"><a href="joinpivotDR.html#load-the-tidyverse-dataretrieval-and-patchwork-packages."><i class="fa fa-check"></i><b>8.0.1</b> Load the tidyverse, dataRetrieval, and patchwork packages.</a></li>
+<li class="chapter" data-level="8.0.2" data-path="joinpivotDR.html"><a href="joinpivotDR.html#using-readnwisqw-read-all-the-chloride-00940-data-for-the-new-river-at-radford-03171000."><i class="fa fa-check"></i><b>8.0.2</b> 1. Using readNWISqw(), read all the chloride (00940) data for the New River at Radford (03171000).</a></li>
+<li class="chapter" data-level="8.0.3" data-path="joinpivotDR.html"><a href="joinpivotDR.html#use-the-head-function-to-print-the-beginning-of-the-output-from-readnwisqw."><i class="fa fa-check"></i><b>8.0.3</b> Use the head() function to print the beginning of the output from readNWISqw.</a></li>
+<li class="chapter" data-level="8.0.4" data-path="joinpivotDR.html"><a href="joinpivotDR.html#using-the-readnwisdv-daily-values-function-download-discharge-00060-temperature-00003-and-specific-conductivity-00095-for-the-new-river-at-radford-from-2007-to-2009-regular-year."><i class="fa fa-check"></i><b>8.0.4</b> 2. Using the readNWISdv (daily values) function, download discharge (00060), temperature (00003), and specific conductivity (00095) for the New River at Radford from 2007 to 2009 (regular year).</a></li>
+<li class="chapter" data-level="8.0.5" data-path="joinpivotDR.html"><a href="joinpivotDR.html#use-renamenwiscolumns-to-rename-the-output-of-the-download."><i class="fa fa-check"></i><b>8.0.5</b> Use renameNWIScolumns() to rename the output of the download.</a></li>
+<li class="chapter" data-level="8.0.6" data-path="joinpivotDR.html"><a href="joinpivotDR.html#use-head-to-show-the-beginning-of-the-results-of-your-download."><i class="fa fa-check"></i><b>8.0.6</b> Use head() to show the beginning of the results of your download.</a></li>
+<li class="chapter" data-level="8.0.7" data-path="joinpivotDR.html"><a href="joinpivotDR.html#do-a-left-join-on-newphys-and-newriver-to-add-the-chloride-data-to-the-daily-discharge-temp-and-conductivity-data.-hint-you-will-join-on-the-date."><i class="fa fa-check"></i><b>8.0.7</b> 3. Do a left join on newphys and newriver to add the chloride data to the daily discharge, temp, and conductivity data. hint: you will join on the date.</a></li>
+<li class="chapter" data-level="8.0.8" data-path="joinpivotDR.html"><a href="joinpivotDR.html#preview-your-data-below-the-chunk-using-head"><i class="fa fa-check"></i><b>8.0.8</b> Preview your data below the chunk using head()</a></li>
+<li class="chapter" data-level="8.0.9" data-path="joinpivotDR.html"><a href="joinpivotDR.html#create-a-line-plot-of-date-x-and-flow-y.-create-a-scatter-plot-of-date-x-and-chloride-concentration-y.-put-the-graphs-on-top-of-each-other-using-the-patchwork-library."><i class="fa fa-check"></i><b>8.0.9</b> 4. Create a line plot of Date (x) and Flow (y). Create a scatter plot of Date (x) and chloride concentration (y). Put the graphs on top of each other using the patchwork library.</a></li>
+<li class="chapter" data-level="8.0.10" data-path="joinpivotDR.html"><a href="joinpivotDR.html#create-a-scatter-plot-of-specific-conductivity-y-and-chloride-x.-challenge-what-could-you-do-to-get-rid-of-the-warning-this-plot-generates-about-nas."><i class="fa fa-check"></i><b>8.0.10</b> 5. Create a scatter plot of Specific Conductivity (y) and Chloride (x). Challenge: what could you do to get rid of the warning this plot generates about NAs.</a></li>
+<li class="chapter" data-level="8.0.11" data-path="joinpivotDR.html"><a href="joinpivotDR.html#read-in-the-gg-chem-subset-data-and-plot-mg_e1-x-vs-ca_e1-y-as-points."><i class="fa fa-check"></i><b>8.0.11</b> 6. Read in the GG chem subset data and plot Mg_E1 (x) vs Ca_E1 (y) as points.</a></li>
+<li class="chapter" data-level="8.0.12" data-path="joinpivotDR.html"><a href="joinpivotDR.html#we-want-to-look-at-concentrations-of-each-element-in-the-6-dataset-along-the-stream-distance-which-is-difficult-in-the-current-format.-pivot-the-data-into-a-long-format-the-data-from-ca-mg-and-na-_e1-columns-should-be-pivoted."><i class="fa fa-check"></i><b>8.0.12</b> 7. We want to look at concentrations of each element in the #6 dataset along the stream (Distance), which is difficult in the current format. Pivot the data into a long format, the data from Ca, Mg, and Na _E1 columns should be pivoted.</a></li>
+<li class="chapter" data-level="8.0.13" data-path="joinpivotDR.html"><a href="joinpivotDR.html#make-line-plots-of-each-element-where-y-is-the-concentration-and-x-is-distance.-use-facet_wrap-to-create-a-separate-plot-for-each-element-and-use-the-scales-argument-of-facet_wrap-to-allow-each-plot-to-have-different-y-limits."><i class="fa fa-check"></i><b>8.0.13</b> Make line plots of each element where y is the concentration and x is distance. Use facet_wrap() to create a separate plot for each element and use the “scales” argument of facet_wrap to allow each plot to have different y limits.</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="Summative1.html"><a href="Summative1.html"><i class="fa fa-check"></i><b>9</b> Summative Activity 1</a>
+<ul>
+<li class="chapter" data-level="9.0.1" data-path="Summative1.html"><a href="Summative1.html#instructions"><i class="fa fa-check"></i><b>9.0.1</b> Instructions</a></li>
+<li class="chapter" data-level="9.1" data-path="Summative1.html"><a href="Summative1.html#load-the-tidyverse-lubridate-and-dataretrieval-packages."><i class="fa fa-check"></i><b>9.1</b> 1. Load the tidyverse, lubridate, and dataRetrieval packages.</a></li>
+<li class="chapter" data-level="9.2" data-path="Summative1.html"><a href="Summative1.html#read-in-the-mcdonald-hollow-dataset-in-the-project-folder."><i class="fa fa-check"></i><b>9.2</b> 2. Read in the McDonald Hollow dataset in the project folder.</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="Summative1.html"><a href="Summative1.html#what-are-the-data-types-of-the-first-three-columns"><i class="fa fa-check"></i><b>9.2.1</b> What are the data types of the first three columns?</a></li>
+<li class="chapter" data-level="9.2.2" data-path="Summative1.html"><a href="Summative1.html#how-long-is-the-data-number-of-rows"><i class="fa fa-check"></i><b>9.2.2</b> How long is the data (number of rows)?</a></li>
+<li class="chapter" data-level="9.2.3" data-path="Summative1.html"><a href="Summative1.html#what-is-the-name-of-the-last-column"><i class="fa fa-check"></i><b>9.2.3</b> What is the name of the last column?</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="Summative1.html"><a href="Summative1.html#plot-the-stage-of-the-stream-stage_m_pt-on-the-y-axis-as-a-line-and-the-date-on-the-x.-these-stage-data-are-in-meters-convert-them-to-centimeters-for-the-plot."><i class="fa fa-check"></i><b>9.3</b> 3. Plot the stage of the stream (Stage_m_pt) on the y axis as a line and the date on the x. These stage data are in meters, convert them to centimeters for the plot.</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="Summative1.html"><a href="Summative1.html#for-all-plots-in-this-test-label-axes-properly-and-use-a-theme-other-than-the-default."><i class="fa fa-check"></i><b>9.3.1</b> For all plots in this test, label axes properly and use a theme other than the default.</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="Summative1.html"><a href="Summative1.html#we-want-to-look-at-the-big-event-that-happens-from-november-11-2020-to-november-27-2020.-filter-the-dataset-down-to-this-time-frame-and-save-it-separately.-make-a-plot-with-the-same-setup-as-in-3-with-these-newly-saved-data."><i class="fa fa-check"></i><b>9.4</b> 4. We want to look at the big event that happens from November 11, 2020 to November 27, 2020. Filter the dataset down to this time frame and save it separately. Make a plot with the same setup as in #3 with these newly saved data.</a></li>
+<li class="chapter" data-level="9.5" data-path="Summative1.html"><a href="Summative1.html#for-this-storm-we-are-curious-about-how-conductivity-changes-with-the-stream-level.-to-do-this-make-a-scatter-plot-that-shows-stage-on-the-x-axis-and-specific-conductivity-spc_mscm-on-the-y.-units-mscm-color-the-points-on-the-plot-using-the-datetime-column.-use-the-plot-to-describe-how-specific-conductivity-changes-with-stream-stage-throughout-the-storm.-not-functionally-just-how-the-values-change"><i class="fa fa-check"></i><b>9.5</b> 5. For this storm, we are curious about how conductivity changes with the stream level. To do this, make a scatter plot that shows Stage on the x axis and specific conductivity (SpC_mScm) on the y. (units: mScm) Color the points on the plot using the datetime column. Use the plot to describe how specific conductivity changes with stream stage throughout the storm. (not functionally, just how the values change)</a></li>
+<li class="chapter" data-level="9.6" data-path="Summative1.html"><a href="Summative1.html#continuing-to-look-at-the-storm-as-an-exploratory-data-analysis-we-want-to-create-a-plot-that-shows-all-the-parameters-measured.-to-do-this-pivot-the-storm-event-data-so-there-is-a-column-that-has-the-values-for-all-the-parameters-measured-as-individual-rows-along-with-another-column-that-identifies-the-type-of-measurement.-then-use-facet_wrap-with-the-name-column-or-whatever-you-call-it-as-the-facet.-be-sure-to-set-the-parameters-of-facet_wrap-such-that-the-y-axes-are-all-allowed-to-be-different-ranges."><i class="fa fa-check"></i><b>9.6</b> 6. Continuing to look at the storm, as an exploratory data analysis, we want to create a plot that shows all the parameters measured. To do this, pivot the STORM EVENT data so there is a column that has the values for all the parameters measured as individual rows, along with another column that identifies the type of measurement. Then use facet_wrap with the “name” column (or whatever you call it) as the facet. Be sure to set the parameters of facet_wrap such that the y axes are all allowed to be different ranges.</a></li>
+<li class="chapter" data-level="9.7" data-path="Summative1.html"><a href="Summative1.html#we-want-to-create-a-table-that-clearly-shows-the-differences-in-water-temperature-for-the-three-months-at-the-two-locations-flow-and-pool-in-the-full-data-set-not-the-storm-subset.-to-do-this-create-a-new-column-in-the-full-dataset-called-month-and-set-it-equal-to-the-month-of-the-datetime-column-using-the-month-function.-then-group-your-dataset-by-month-and-summarize-temperature-at-each-location-by-mean.-save-these-results-to-a-new-object-and-output-it-so-it-appears-below-your-chunk-when-you-knit.-be-sure-the-object-has-descriptive-column-names."><i class="fa fa-check"></i><b>9.7</b> 7. We want to create a table that clearly shows the differences in water temperature for the three months at the two locations (flow and pool) in the FULL data set (not the storm subset). To do this: Create a new column in the full dataset called “month” and set it equal to the month of the datetime column using the month() function. Then group your dataset by month and summarize temperature at each location by mean. Save these results to a new object and output it so it appears below your chunk when you knit. Be sure the object has descriptive column names.</a></li>
+<li class="chapter" data-level="9.8" data-path="Summative1.html"><a href="Summative1.html#plot-the-distribution-of-the-flow-temperature-and-show-as-vertical-lines-on-the-plot-the-mean-median-and-iqr.-be-careful-about-how-you-show-iqr.-look-at-the-definition-and-then-think-about-how-you-would-put-it-on-the-plot.-describe-in-the-text-above-the-chunk-what-color-is-what-statistic-in-the-plot.-using-the-shape-of-the-distribution-and-the-measures-you-plotted-explain-why-you-think-the-distribution-is-normal-or-not.-what-statistical-test-could-you-perform-to-see-if-it-is-normal"><i class="fa fa-check"></i><b>9.8</b> 8. Plot the distribution of the flow temperature and show as vertical lines on the plot the mean, median, and IQR. Be careful about how you show IQR. Look at the definition and then think about how you would put it on the plot. Describe in the text above the chunk what color is what statistic in the plot. Using the shape of the distribution and the measures you plotted, explain why you think the distribution is normal or not. What statistical test could you perform to see if it is normal?</a></li>
+<li class="chapter" data-level="9.9" data-path="Summative1.html"><a href="Summative1.html#in-this-question-we-will-get-and-format-data-for-three-usgs-gages."><i class="fa fa-check"></i><b>9.9</b> 9. In this question we will get and format data for three USGS gages.</a>
+<ul>
+<li class="chapter" data-level="9.9.1" data-path="Summative1.html"><a href="Summative1.html#a.-read-and-save-the-gage-information-for-the-three-gages-using-readnwissite."><i class="fa fa-check"></i><b>9.9.1</b> a. Read and save the gage information for the three gages using readNWISsite().</a></li>
+<li class="chapter" data-level="9.9.2" data-path="Summative1.html"><a href="Summative1.html#b.-use-the-readnwisdv-function-to-read-and-save-the-daily-discharge-values-for-the-following-three-gages-for-the-2020-water-year-10-01-2019-to-9-30-2020.-and-then-use-the-renamenwiscolumns-function-to-make-the-names-human-friendly."><i class="fa fa-check"></i><b>9.9.2</b> b. Use the readNWISdv() function to read and save the daily discharge values for the following three gages for the 2020 water year (10-01-2019 to 9-30-2020). And then use the renameNWIScolumns() function to make the names human-friendly.</a></li>
+<li class="chapter" data-level="9.9.3" data-path="Summative1.html"><a href="Summative1.html#c.-join-the-gage-site-information-from-a-to-the-data-from-b-so-you-can-reference-the-gages-by-their-names."><i class="fa fa-check"></i><b>9.9.3</b> c. Join the gage site information from (a) to the data from (b) so you can reference the gages by their names.</a></li>
+</ul></li>
+<li class="chapter" data-level="9.10" data-path="Summative1.html"><a href="Summative1.html#using-the-data-from-9-plot-flow-on-the-y-axis-and-date-on-the-x-axis-showing-the-data-as-a-line-and-coloring-by-gage-name."><i class="fa fa-check"></i><b>9.10</b> 10. Using the data from #9, Plot flow on the y axis and date on the x axis, showing the data as a line, and coloring by gage name.</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="fdcs.html"><a href="fdcs.html"><i class="fa fa-check"></i><b>10</b> Flow Duration Curves</a></li>
+<li class="chapter" data-level="11" data-path="lfas.html"><a href="lfas.html"><i class="fa fa-check"></i><b>11</b> Low Flow Analysis</a></li>
+<li class="chapter" data-level="12" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>12</b> Flood Frequency Analysis</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="floods.html"><a href="floods.html#challenge-create-a-function"><i class="fa fa-check"></i><b>12.1</b> Challenge: Create a function</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>13</b> Introduction</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Hydroinformatics at VT</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="stats" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Intro/Review of Basic Statistics</h1>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="stats.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb82-2"><a href="stats.html#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span></code></pre></div>
+<pre><code>## Warning: package &#39;patchwork&#39; was built under R version 3.6.2</code></pre>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="stats.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_classic</span>())</span></code></pre></div>
+<div id="reading-for-this-section-statistical-methods-in-water-resources-chapter-1" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Reading for this section: Statistical Methods in Water Resources: Chapter 1</h2>
+<p><a href="https://pubs.usgs.gov/tm/04/a03/tm4a3.pdf" class="uri">https://pubs.usgs.gov/tm/04/a03/tm4a3.pdf</a></p>
+</div>
+<div id="questions-for-today" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Questions for today:</h2>
+<div id="what-is-the-difference-between-a-sample-and-a-population" class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> What is the difference between a sample and a population?</h3>
+</div>
+<div id="how-do-we-look-at-the-distribution-of-data-in-a-sample" class="section level3" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> How do we look at the distribution of data in a sample?</h3>
+</div>
+<div id="how-do-we-measure-aspects-of-a-distribution" class="section level3" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> How do we measure aspects of a distribution?</h3>
+</div>
+<div id="what-is-a-normal-distribution" class="section level3" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> What is a normal distribution?</h3>
+<p>First let’s generate some synthetic data and talk about how to visualize it.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="stats.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co">#generate a normal distribution</span></span>
+<span id="cb85-2"><a href="stats.html#cb85-2" aria-hidden="true" tabindex="-1"></a>ExNorm <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb85-3"><a href="stats.html#cb85-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
+<span id="cb85-4"><a href="stats.html#cb85-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-5"><a href="stats.html#cb85-5" aria-hidden="true" tabindex="-1"></a><span class="co">#look at distributions</span></span>
+<span id="cb85-6"><a href="stats.html#cb85-6" aria-hidden="true" tabindex="-1"></a><span class="co">#histogram</span></span>
+<span id="cb85-7"><a href="stats.html#cb85-7" aria-hidden="true" tabindex="-1"></a>ExNorm <span class="sc">%&gt;%</span></span>
+<span id="cb85-8"><a href="stats.html#cb85-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
+<span id="cb85-9"><a href="stats.html#cb85-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="stats.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pdf</span></span>
+<span id="cb87-2"><a href="stats.html#cb87-2" aria-hidden="true" tabindex="-1"></a>ExNorm <span class="sc">%&gt;%</span></span>
+<span id="cb87-3"><a href="stats.html#cb87-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
+<span id="cb87-4"><a href="stats.html#cb87-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density</span>()</span></code></pre></div>
+<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-42-2.png" width="672" /></p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="stats.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Let&#39;s generate a plot that makes comparing these two easier</span></span></code></pre></div>
+</div>
+<div id="stack-plots-to-compare-histogram-and-pdf" class="section level3" number="5.2.5">
+<h3><span class="header-section-number">5.2.5</span> Stack plots to compare histogram and pdf</h3>
+<p>We will save each plot as ggplot object and then output them using the patchwork package (loaded in the setup chunk).</p>
+<p>What is the difference between a histogram and a pdf?<br />
+What features of the histogram are preserved? Which are lost?</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="stats.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co">#histogram</span></span>
+<span id="cb89-2"><a href="stats.html#cb89-2" aria-hidden="true" tabindex="-1"></a>exhist <span class="ot">&lt;-</span> ExNorm <span class="sc">%&gt;%</span></span>
+<span id="cb89-3"><a href="stats.html#cb89-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
+<span id="cb89-4"><a href="stats.html#cb89-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
+<span id="cb89-5"><a href="stats.html#cb89-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-6"><a href="stats.html#cb89-6" aria-hidden="true" tabindex="-1"></a><span class="co">#pdf</span></span>
+<span id="cb89-7"><a href="stats.html#cb89-7" aria-hidden="true" tabindex="-1"></a>expdf <span class="ot">&lt;-</span> ExNorm <span class="sc">%&gt;%</span></span>
+<span id="cb89-8"><a href="stats.html#cb89-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
+<span id="cb89-9"><a href="stats.html#cb89-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density</span>()</span>
+<span id="cb89-10"><a href="stats.html#cb89-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-11"><a href="stats.html#cb89-11" aria-hidden="true" tabindex="-1"></a><span class="co">#put the plots side by side with + or on top of each other with /</span></span>
+<span id="cb89-12"><a href="stats.html#cb89-12" aria-hidden="true" tabindex="-1"></a>exhist<span class="sc">/</span>expdf</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+</div>
+</div>
+<div id="what-is-the-difference-between-a-sample-and-a-population." class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> What is the difference between a sample and a population.</h2>
+<p>Simply put: a population is the thing you are trying to measure. A sample is the data you measure in an effort to measure the population. A sample is a subset of a population.</p>
+<p>Let’s write some code for an example:</p>
+<p>We will create a POPULATION that is a large set of numbers. Think of this is as the concentration of Calcium in every bit of water in a lake. Then we will create a SAMPLE by randomly grabbing values from the POPULATION. This simulates us going around in a boat and taking grab samples in an effort to figure out the concentration of calcium in the lake.</p>
+<p>We can then run this code a bunch of times, you’ll get a different sample each time. You can also take a smaller or larger number of samples by changing “size” in the sample() function.</p>
+<p>How does your sample distribution look similar or different from the population?<br />
+Why does the sample change every time you run it?<br />
+What happens as you increase or decrease the number of samples?<br />
+What happens if you set the number of samples to the size of the population?</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="stats.html#cb91-1" aria-hidden="true" tabindex="-1"></a>all_the_water <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span>
+<span id="cb91-2"><a href="stats.html#cb91-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-3"><a href="stats.html#cb91-3" aria-hidden="true" tabindex="-1"></a>sample_of_water <span class="ot">&lt;-</span> <span class="fu">sample</span>(all_the_water<span class="sc">$</span>value, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span>
+<span id="cb91-4"><a href="stats.html#cb91-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-5"><a href="stats.html#cb91-5" aria-hidden="true" tabindex="-1"></a>population_hist <span class="ot">&lt;-</span> all_the_water <span class="sc">%&gt;%</span></span>
+<span id="cb91-6"><a href="stats.html#cb91-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value))<span class="sc">+</span></span>
+<span id="cb91-7"><a href="stats.html#cb91-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
+<span id="cb91-8"><a href="stats.html#cb91-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Population: All the water in the lake&quot;</span>)</span>
+<span id="cb91-9"><a href="stats.html#cb91-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-10"><a href="stats.html#cb91-10" aria-hidden="true" tabindex="-1"></a>sample_hist <span class="ot">&lt;-</span> sample_of_water <span class="sc">%&gt;%</span></span>
+<span id="cb91-11"><a href="stats.html#cb91-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value))<span class="sc">+</span></span>
+<span id="cb91-12"><a href="stats.html#cb91-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
+<span id="cb91-13"><a href="stats.html#cb91-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Your sample of the lake&quot;</span>)</span>
+<span id="cb91-14"><a href="stats.html#cb91-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-15"><a href="stats.html#cb91-15" aria-hidden="true" tabindex="-1"></a>population_hist <span class="sc">+</span> sample_hist</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+</div>
+<div id="measuring-our-sample-distribution-central-tendency." class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Measuring our sample distribution: central tendency.</h2>
+<p>When we take a sample of a population, there are a few things we will want to measure about the distribution of values: where is the middle, how variable is it, and is it skewed to one side or another?</p>
+<p>The first of these, “where is the middle?” is addressed with measures of central tendency. We will discuss three possible ways to measure this. The mean, median, and weighted mean.</p>
+<p>To explain the importance of choosing between the mean and median, we will first import some discharge data. Read in the PINE discharge data.</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="stats.html#cb93-1" aria-hidden="true" tabindex="-1"></a>pineQ <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PINE_Jan-Mar_2010.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## ── Column specification ────────────────────────────────────────────────────────
+## cols(
+##   StationID = col_character(),
+##   cfs = col_double(),
+##   surrogate = col_character(),
+##   datetime = col_datetime(format = &quot;&quot;),
+##   year = col_double(),
+##   quarter = col_double(),
+##   month = col_double(),
+##   day = col_double()
+## )</code></pre>
+<p>To find the mean (average), you just sum up all the values in your sample and divide by the number of values.</p>
+<p>To find the median, you put the values IN ORDER, and choose the middle value. The middle value is the one where there are the same number of values higher than that value as there are values lower than it.</p>
+<p>Because it uses the order of the values rather than just the values themselves, the median is resistant to skewed distributions. This means it is less effected by very large or very small values compared to most values in the sample data.</p>
+<p>Let’s look at our normal distribution from earlier (ExNorm) compared to the Pine watershed discharge (pineQ)</p>
+<p>Note that distributions like pineQ, that are positively skewed, are very common in environmental data.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="stats.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate mean and median for cfs in pineQ and values in ExNorm</span></span>
+<span id="cb95-2"><a href="stats.html#cb95-2" aria-hidden="true" tabindex="-1"></a>pineMean <span class="ot">&lt;-</span> <span class="fu">mean</span>(pineQ<span class="sc">$</span>cfs)</span>
+<span id="cb95-3"><a href="stats.html#cb95-3" aria-hidden="true" tabindex="-1"></a>pineMedian <span class="ot">&lt;-</span> <span class="fu">median</span>(pineQ<span class="sc">$</span>cfs)</span>
+<span id="cb95-4"><a href="stats.html#cb95-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-5"><a href="stats.html#cb95-5" aria-hidden="true" tabindex="-1"></a>xmean <span class="ot">&lt;-</span> <span class="fu">mean</span>(ExNorm<span class="sc">$</span>value)</span>
+<span id="cb95-6"><a href="stats.html#cb95-6" aria-hidden="true" tabindex="-1"></a>xmedian <span class="ot">&lt;-</span> <span class="fu">median</span>(ExNorm<span class="sc">$</span>value)</span>
+<span id="cb95-7"><a href="stats.html#cb95-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-8"><a href="stats.html#cb95-8" aria-hidden="true" tabindex="-1"></a><span class="co">#plot mean and median on the ExNorm distribution</span></span>
+<span id="cb95-9"><a href="stats.html#cb95-9" aria-hidden="true" tabindex="-1"></a>Ex <span class="ot">&lt;-</span> ExNorm <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
+<span id="cb95-10"><a href="stats.html#cb95-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
+<span id="cb95-11"><a href="stats.html#cb95-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> xmean, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)<span class="sc">+</span></span>
+<span id="cb95-12"><a href="stats.html#cb95-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> xmedian, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb95-13"><a href="stats.html#cb95-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-14"><a href="stats.html#cb95-14" aria-hidden="true" tabindex="-1"></a><span class="co">#plot mean and median on the pineQ discharge histogram</span></span>
+<span id="cb95-15"><a href="stats.html#cb95-15" aria-hidden="true" tabindex="-1"></a>PineP <span class="ot">&lt;-</span> pineQ <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(cfs)) <span class="sc">+</span></span>
+<span id="cb95-16"><a href="stats.html#cb95-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
+<span id="cb95-17"><a href="stats.html#cb95-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> pineMean, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)<span class="sc">+</span></span>
+<span id="cb95-18"><a href="stats.html#cb95-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> pineMedian, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb95-19"><a href="stats.html#cb95-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-20"><a href="stats.html#cb95-20" aria-hidden="true" tabindex="-1"></a>Ex <span class="sc">/</span> PineP  </span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<div id="so-whats-a-weighted-average" class="section level3" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> So what’s a weighted average?</h3>
+<p>When you compute a standard mean or median, you are giving equal weight to each measurement. Adding up all the values in a sample and dividing by the number of samples is the same as multiplying each value by 1/# of samples. For instance if you had ten samples, to calculate the mean you would add them up and divide by 10. This is the same as multiplying each value by 1/10 and then adding them up. Each value is equally weighted at 1/10.</p>
+<p>There are certain situations in which this is not the ideal way to calculate an average. A common one in hydrology is that you have samples that are supposed to represent different portions of an area. One sample may be taken to measure a forest type that takes up 100 ha of a watershed while another sample represents a forest type that only takes up 4 ha. You may not want to simply average those values!</p>
+<p>Another example is precipitation gages. In the image below, you see there are 5 rain gages. To get a precipitation number for the watershed, we could just average them, or we could assume they represent an area of the watershed and then weight their values by the area they represent. One method of designating the areas is by using Theissen polygons (the middle watershed). Another method of weighting is isohyetal contours, but we won’t worry about that for now!</p>
+<p>In the weighted situation, we find the average by multiplying each precipitation values by the proportion of the watershed it represents, shown by the Thiessen polygons, and then add them all together. Let’s do an example.</p>
+<p><img src="images/theissen.png" title="Different types of area averaging" alt="Different types of area averaging" />source: <a href="https://edx.hydrolearn.org/assets/courseware/v1/e5dc65098f1e8c5faacae0e171e28ccf/asset-v1:HydroLearn+HydroLearn401+2019_S2+type@asset+block/l2_image004.png" class="uri">https://edx.hydrolearn.org/assets/courseware/v1/e5dc65098f1e8c5faacae0e171e28ccf/asset-v1:HydroLearn+HydroLearn401+2019_S2+type@asset+block/l2_image004.png</a></p>
+<p>The precip values for the watershed above are 4.5, 5.5, 5.8, 4.7, and 3.0</p>
+<p>We will assume the proportions of the watershed that each gauge represents are 0.20, 0.15, 0.40, 0.15, 0.10, respectively (or 20%, 15%, 40%, 15%, 10%)</p>
+<p>Write some code to compute the regular mean precip from the values, and then the weighted mean.</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="stats.html#cb97-1" aria-hidden="true" tabindex="-1"></a>precip <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">4.5</span>, <span class="fl">5.5</span>, <span class="fl">5.8</span>, <span class="fl">4.7</span>, <span class="fl">3.0</span>)</span>
+<span id="cb97-2"><a href="stats.html#cb97-2" aria-hidden="true" tabindex="-1"></a>weights <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.15</span>, <span class="fl">0.4</span>, <span class="fl">0.15</span>, <span class="fl">0.1</span>)</span>
+<span id="cb97-3"><a href="stats.html#cb97-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-4"><a href="stats.html#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(precip)</span></code></pre></div>
+<pre><code>## [1] 4.7</code></pre>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="stats.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(precip <span class="sc">*</span> weights)</span></code></pre></div>
+<pre><code>## [1] 5.05</code></pre>
+</div>
+</div>
+<div id="measures-of-variability" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> Measures of variability</h2>
+<p>Measures of variability allow us to measure the width of our sample data histogram or pdf. If all the values in our sample are close together, we would have small measures of variability, and a pointy pdf/histogram. If they vary more, we would have larger measures of variability and a broad pdf/histogram.</p>
+<p>We will explore four measures of variability:</p>
+<div id="variance" class="section level4" number="5.5.0.1">
+<h4><span class="header-section-number">5.5.0.1</span> Variance:</h4>
+<p>Sum of the squared difference of each value from the mean divided by the number of samples minus 1. var()</p>
+<p><a href="https://pubs.usgs.gov/tm/04/a03/tm4a3.pdf"><img src="images/Screen%20Shot%202021-01-25%20at%2010.29.45%20AM.png" alt="Formula for variance (from USGS statistics book linked)" /></a></p>
+</div>
+<div id="standard-deviation" class="section level4" number="5.5.0.2">
+<h4><span class="header-section-number">5.5.0.2</span> Standard deviation:</h4>
+<p>The square root of the variance sd()</p>
+<p>**Both variance and standard deviation are sensitive to outliers.</p>
+</div>
+<div id="cv-coefficient-of-variation" class="section level4" number="5.5.0.3">
+<h4><span class="header-section-number">5.5.0.3</span> CV: Coefficient of Variation</h4>
+<p>is simply the standard deviation divided by the mean of the data. Because you divide by the mean, CV is dimensionless. This allows you to use it to compare the variation in samples with very different magnitudes.</p>
+</div>
+<div id="iqr-interquartile-range" class="section level4" number="5.5.0.4">
+<h4><span class="header-section-number">5.5.0.4</span> IQR: Interquartile Range</h4>
+<p>is resistant to outliers because it works like a median. It measures the range of the middle 50% of the data in your distribution. So the IQR is the difference between the value between the 75th and 25th percentiles of your data, where the 75th percentile means 75% of the data is BELOW that value and the 25th percentile means 25% is below that value. Using the same vocabulary, the median is the same as the 50th percentile of the data.</p>
+<p>If you ask R for the QUANTILES of your sample data, it will give you the values at which 0%, 25%, 50%, 75%, and 100% of the data are below. These are the 1,2,3,4, and 5th quantiles. Therefore, the IQR is the difference between the 4th and 2nd quantile.</p>
+<p>Okay, code time.</p>
+<p>First, let’s explore how changing the variability of a distribution changes the shape of it’s distribution. Create a plot a random normal distribution using rnorm() and set sd to different numbers. Make the mean of the distribution 0, the sample size 300, and the standard deviation 1 to start. Then increase the standard deviation incrementally to 10 and see what happens. Make the limits of the x axis on the plot -30 to 30.</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="stats.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">300</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> as_tibble <span class="sc">%&gt;%</span></span>
+<span id="cb101-2"><a href="stats.html#cb101-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value))<span class="sc">+</span></span>
+<span id="cb101-3"><a href="stats.html#cb101-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density</span>()<span class="sc">+</span></span>
+<span id="cb101-4"><a href="stats.html#cb101-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">30</span>,<span class="dv">30</span>))</span></code></pre></div>
+<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<p>Now let’s calculate the standard deviation, variance, coefficient of variation, and IQR of the Pine discharge data.</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="stats.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co">#standard deviation</span></span>
+<span id="cb102-2"><a href="stats.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
+<pre><code>## [1] 84.47625</code></pre>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="stats.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co">#variance</span></span>
+<span id="cb104-2"><a href="stats.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
+<pre><code>## [1] 7136.237</code></pre>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="stats.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co">#coefficient of variation</span></span>
+<span id="cb106-2"><a href="stats.html#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(pineQ<span class="sc">$</span>cfs)<span class="sc">/</span><span class="fu">mean</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
+<pre><code>## [1] 2.800221</code></pre>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="stats.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co">#IQR using the IQR funciton</span></span>
+<span id="cb108-2"><a href="stats.html#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
+<pre><code>## [1] 8.1325</code></pre>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="stats.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co">#IQR using the quantile function</span></span>
+<span id="cb110-2"><a href="stats.html#cb110-2" aria-hidden="true" tabindex="-1"></a>quants <span class="ot">&lt;-</span> <span class="fu">quantile</span>(pineQ<span class="sc">$</span>cfs)</span>
+<span id="cb110-3"><a href="stats.html#cb110-3" aria-hidden="true" tabindex="-1"></a>quants[<span class="dv">4</span>] <span class="sc">-</span> quants[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>##    75% 
+## 8.1325</code></pre>
+</div>
+<div id="what-about-how-lopsided-the-distribution-is" class="section level4" number="5.5.0.5">
+<h4><span class="header-section-number">5.5.0.5</span> What about how lopsided the distribution is?</h4>
+<p>There are several ways to measure this as well, but we are just going to look at one: The Quartile skew. The quartile skew is the difference between the upper quartiles (50th-75th) and the lower quartiles (25th-50th) divided by the IQR (75th-25th).</p>
+<div class="figure">
+<img src="images/Screen%20Shot%202021-01-25%20at%2011.27.14%20AM.png" alt="" />
+<p class="caption">Quartile skew from USGS Stats Book linked above</p>
+</div>
+<p>Let’s look at the quartile skew of the two distributions we’ve been measuring. Calculate it for the pineQ discharge data and the random normal distribution we generated.</p>
+<p>Which one is more skewed?</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="stats.html#cb112-1" aria-hidden="true" tabindex="-1"></a>quantsP <span class="ot">&lt;-</span> <span class="fu">quantile</span>(pineQ<span class="sc">$</span>cfs)</span>
+<span id="cb112-2"><a href="stats.html#cb112-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb112-3"><a href="stats.html#cb112-3" aria-hidden="true" tabindex="-1"></a>((quantsP[<span class="dv">3</span>]<span class="sc">-</span>quantsP[<span class="dv">2</span>]) <span class="sc">-</span> (quantsP[<span class="dv">2</span>] <span class="sc">-</span> quantsP[<span class="dv">1</span>])) <span class="sc">/</span> quantsP[<span class="dv">3</span>] <span class="sc">-</span> quantsP[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>##       50% 
+## -4.837233</code></pre>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="stats.html#cb114-1" aria-hidden="true" tabindex="-1"></a>quantsX <span class="ot">&lt;-</span> <span class="fu">quantile</span>(ExNorm<span class="sc">$</span>value)</span>
+<span id="cb114-2"><a href="stats.html#cb114-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-3"><a href="stats.html#cb114-3" aria-hidden="true" tabindex="-1"></a>((quantsX[<span class="dv">3</span>]<span class="sc">-</span>quantsX[<span class="dv">2</span>]) <span class="sc">-</span> (quantsX[<span class="dv">2</span>] <span class="sc">-</span> quantsX[<span class="dv">1</span>])) <span class="sc">/</span> quantsX[<span class="dv">3</span>] <span class="sc">-</span> quantsX[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>##       50% 
+## -2.718904</code></pre>
+</div>
+</div>
+<div id="what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one" class="section level2" number="5.6">
+<h2><span class="header-section-number">5.6</span> What is a normal distribution and how can we determine if we have one?</h2>
+<p>The distribution we generated with rnorm() is a normal distribution. The distribution of pineQ discharge is not normal. Now that we’ve looked at different ways to characterize distributions, we have the vocabulary to describe why.</p>
+<p>Normal distributions:</p>
+<p>mean = median, half values to the right, half to the left</p>
+<p>symmetric (not skewed)</p>
+<p>Many statistical tests require that the distribution of the data you put into them is normally distributed. BE CAREFUL! There are also tests that use ranked data. Similar to how the median is resistant to outliers, these rank-based tests are resistant to non-normal data. Two popular ones are Kruskal-Wallis and Wilcoxon rank-sum.</p>
+<p>But how far off can you be before you don’t consider a distribution normal? Seems like a judgement call!</p>
+<p>R to the rescue! There is a built in test for normality called shapiro.test(), which performs the Shapiro-Wilk test of normality. The hypothesis this test tests is “The distribution is normal.” So if this function returns a p-value less than 0.05, you reject that hypothesis and your function is NOT normal.</p>
+<p>You can also make a quantile-quantile plot. A straight line on this plot indicates a normal distribution, a non-straight line indicates it is not normal.</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="stats.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  pineQ$cfs
+## W = 0.27155, p-value &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="stats.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
+<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introactivity.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="intro-stats-activity.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Hydroinformatics_Bookdown.pdf", "Hydroinformatics_Bookdown.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
