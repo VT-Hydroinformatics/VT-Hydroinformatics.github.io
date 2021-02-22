@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Intro/Review of Basic Statistics | Hydroinformatics at VT</title>
+  <title>Chapter 5 Introduction to Basic Statistics | Hydroinformatics at VT</title>
   <meta name="description" content="This bookdown contains notes and exercises for a course in hydroinformatics at Virginia Tech." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Intro/Review of Basic Statistics | Hydroinformatics at VT" />
+  <meta property="og:title" content="Chapter 5 Introduction to Basic Statistics | Hydroinformatics at VT" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Intro/Review of Basic Statistics | Hydroinformatics at VT" />
+  <meta name="twitter:title" content="Chapter 5 Introduction to Basic Statistics | Hydroinformatics at VT" />
   
   <meta name="twitter:description" content="This bookdown contains notes and exercises for a course in hydroinformatics at Virginia Tech." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="JP Gannon" />
 
 
-<meta name="date" content="2021-02-19" />
+<meta name="date" content="2021-02-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="introactivity.html"/>
-<link rel="next" href="intro-stats-activity.html"/>
+<link rel="next" href="statsactivity.html"/>
 <script src="libs/header-attrs-2.4.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -132,10 +132,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">Hydroinformatics</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.0.1" data-path="index.html"><a href="index.html#table-of-contents"><i class="fa fa-check"></i><b>1.0.1</b> Table of contents:</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="Plotting.html"><a href="Plotting.html"><i class="fa fa-check"></i><b>2</b> Intro to Plotting</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="Plotting.html"><a href="Plotting.html#download-and-install-tidyverse-library"><i class="fa fa-check"></i><b>2.1</b> Download and install tidyverse library</a></li>
@@ -153,7 +156,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="Programming.html"><a href="Programming.html"><i class="fa fa-check"></i><b>3</b> R Tidyverse Programming Basics</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="Programming.html"><a href="Programming.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.1" data-path="Programming.html"><a href="Programming.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
 <li class="chapter" data-level="3.2" data-path="Programming.html"><a href="Programming.html#you-can-use-r-as-a-calculator"><i class="fa fa-check"></i><b>3.2</b> You can use R as a calculator</a></li>
 <li class="chapter" data-level="3.3" data-path="Programming.html"><a href="Programming.html#you-can-create-new-objects-using--"><i class="fa fa-check"></i><b>3.3</b> You can create new objects using &lt;-</a></li>
 <li class="chapter" data-level="3.4" data-path="Programming.html"><a href="Programming.html#using-functions"><i class="fa fa-check"></i><b>3.4</b> Using functions</a></li>
@@ -195,7 +198,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5" data-path="introactivity.html"><a href="introactivity.html#problem-5"><i class="fa fa-check"></i><b>4.5</b> Problem 5</a></li>
 <li class="chapter" data-level="4.6" data-path="introactivity.html"><a href="introactivity.html#problem-6"><i class="fa fa-check"></i><b>4.6</b> Problem 6</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="stats.html"><a href="stats.html"><i class="fa fa-check"></i><b>5</b> Intro/Review of Basic Statistics</a>
+<li class="chapter" data-level="5" data-path="stats.html"><a href="stats.html"><i class="fa fa-check"></i><b>5</b> Introduction to Basic Statistics</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="stats.html"><a href="stats.html#reading-for-this-section-statistical-methods-in-water-resources-chapter-1"><i class="fa fa-check"></i><b>5.1</b> Reading for this section: Statistical Methods in Water Resources: Chapter 1</a></li>
 <li class="chapter" data-level="5.2" data-path="stats.html"><a href="stats.html#questions-for-today"><i class="fa fa-check"></i><b>5.2</b> Questions for today:</a>
@@ -214,14 +217,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5" data-path="stats.html"><a href="stats.html#measures-of-variability"><i class="fa fa-check"></i><b>5.5</b> Measures of variability</a></li>
 <li class="chapter" data-level="5.6" data-path="stats.html"><a href="stats.html#what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one"><i class="fa fa-check"></i><b>5.6</b> What is a normal distribution and how can we determine if we have one?</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html"><i class="fa fa-check"></i><b>6</b> Intro Stats Activity</a>
+<li class="chapter" data-level="6" data-path="statsactivity.html"><a href="statsactivity.html"><i class="fa fa-check"></i><b>6</b> Intro Stats Activity</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#load-the-tidyverse-and-patchwork-libraries-and-read-in-the-flashy-and-pine-datasets."><i class="fa fa-check"></i><b>6.1</b> 1. Load the tidyverse and patchwork libraries and read in the Flashy and Pine datasets.</a></li>
-<li class="chapter" data-level="6.2" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#using-the-flashy-dataset-make-a-pdf-of-the-average-basin-rainfall-pptavg_basin-for-the-northeast-aggecoregion.-on-that-pdf-add-vertical-lines-showing-the-mean-median-standard-deviation-and-iqr.-make-each-a-different-color-and-note-which-is-which-in-a-typed-answer-below-this-question.-or-if-you-want-an-extra-challenged-make-a-custom-legend-that-shows-this"><i class="fa fa-check"></i><b>6.2</b> 2. Using the flashy dataset, make a pdf of the average basin rainfall (PPTAVG_BASIN) for the NorthEast AGGECOREGION. On that pdf, add vertical lines showing the mean, median, standard deviation, and IQR. Make each a different color and note which is which in a typed answer below this question. (or if you want an extra challenged, make a custom legend that shows this)</a></li>
-<li class="chapter" data-level="6.3" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#perform-a-shapiro-wilk-test-for-normality-on-the-data-from-question-2.-using-the-results-from-that-test-and-the-plot-and-stats-from-question-2-discuss-whether-or-not-the-distribution-is-normal."><i class="fa fa-check"></i><b>6.3</b> 3. Perform a Shapiro-Wilk test for normality on the data from question 2. Using the results from that test and the plot and stats from question 2, discuss whether or not the distribution is normal.</a></li>
-<li class="chapter" data-level="6.4" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#make-a-plot-that-shows-the-distribution-of-the-data-from-the-pine-watershed-and-the-nfdr-watershed-two-pdfs-on-the-same-plot.-log-the-x-axis."><i class="fa fa-check"></i><b>6.4</b> 4. Make a plot that shows the distribution of the data from the PINE watershed and the NFDR watershed (two pdfs on the same plot). Log the x axis.</a></li>
-<li class="chapter" data-level="6.5" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#you-want-to-compare-how-variable-the-discharge-is-in-each-of-the-watersheds-in-question-4.-which-measure-of-spread-would-you-use-and-why-if-you-wanted-to-measure-the-central-tendency-which-measure-would-you-use-and-why"><i class="fa fa-check"></i><b>6.5</b> 5. You want to compare how variable the discharge is in each of the watersheds in question 4. Which measure of spread would you use and why? If you wanted to measure the central tendency which measure would you use and why?</a></li>
-<li class="chapter" data-level="6.6" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#compute-3-measures-of-spread-and-2-measures-of-central-tendency-for-the-pine-and-nfdr-watershed.-hint-use-group_by-and-summarize-be-sure-your-code-outputs-the-result.-which-watershed-has-higher-flow-which-one-has-more-variable-flow-how-do-you-know"><i class="fa fa-check"></i><b>6.6</b> 6. Compute 3 measures of spread and 2 measures of central tendency for the PINE and NFDR watershed. (hint: use group_by() and summarize()) Be sure your code outputs the result. Which watershed has higher flow? Which one has more variable flow? How do you know?</a></li>
+<li class="chapter" data-level="6.1" data-path="statsactivity.html"><a href="statsactivity.html#load-the-tidyverse-and-patchwork-libraries-and-read-in-the-flashy-and-pine-datasets."><i class="fa fa-check"></i><b>6.1</b> 1. Load the tidyverse and patchwork libraries and read in the Flashy and Pine datasets.</a></li>
+<li class="chapter" data-level="6.2" data-path="statsactivity.html"><a href="statsactivity.html#using-the-flashy-dataset-make-a-pdf-of-the-average-basin-rainfall-pptavg_basin-for-the-northeast-aggecoregion.-on-that-pdf-add-vertical-lines-showing-the-mean-median-standard-deviation-and-iqr.-make-each-a-different-color-and-note-which-is-which-in-a-typed-answer-below-this-question.-or-if-you-want-an-extra-challenged-make-a-custom-legend-that-shows-this"><i class="fa fa-check"></i><b>6.2</b> 2. Using the flashy dataset, make a pdf of the average basin rainfall (PPTAVG_BASIN) for the NorthEast AGGECOREGION. On that pdf, add vertical lines showing the mean, median, standard deviation, and IQR. Make each a different color and note which is which in a typed answer below this question. (or if you want an extra challenged, make a custom legend that shows this)</a></li>
+<li class="chapter" data-level="6.3" data-path="statsactivity.html"><a href="statsactivity.html#perform-a-shapiro-wilk-test-for-normality-on-the-data-from-question-2.-using-the-results-from-that-test-and-the-plot-and-stats-from-question-2-discuss-whether-or-not-the-distribution-is-normal."><i class="fa fa-check"></i><b>6.3</b> 3. Perform a Shapiro-Wilk test for normality on the data from question 2. Using the results from that test and the plot and stats from question 2, discuss whether or not the distribution is normal.</a></li>
+<li class="chapter" data-level="6.4" data-path="statsactivity.html"><a href="statsactivity.html#make-a-plot-that-shows-the-distribution-of-the-data-from-the-pine-watershed-and-the-nfdr-watershed-two-pdfs-on-the-same-plot.-log-the-x-axis."><i class="fa fa-check"></i><b>6.4</b> 4. Make a plot that shows the distribution of the data from the PINE watershed and the NFDR watershed (two pdfs on the same plot). Log the x axis.</a></li>
+<li class="chapter" data-level="6.5" data-path="statsactivity.html"><a href="statsactivity.html#you-want-to-compare-how-variable-the-discharge-is-in-each-of-the-watersheds-in-question-4.-which-measure-of-spread-would-you-use-and-why-if-you-wanted-to-measure-the-central-tendency-which-measure-would-you-use-and-why"><i class="fa fa-check"></i><b>6.5</b> 5. You want to compare how variable the discharge is in each of the watersheds in question 4. Which measure of spread would you use and why? If you wanted to measure the central tendency which measure would you use and why?</a></li>
+<li class="chapter" data-level="6.6" data-path="statsactivity.html"><a href="statsactivity.html#compute-3-measures-of-spread-and-2-measures-of-central-tendency-for-the-pine-and-nfdr-watershed.-hint-use-group_by-and-summarize-be-sure-your-code-outputs-the-result.-which-watershed-has-higher-flow-which-one-has-more-variable-flow-how-do-you-know"><i class="fa fa-check"></i><b>6.6</b> 6. Compute 3 measures of spread and 2 measures of central tendency for the PINE and NFDR watershed. (hint: use group_by() and summarize()) Be sure your code outputs the result. Which watershed has higher flow? Which one has more variable flow? How do you know?</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="getdata.html"><a href="getdata.html"><i class="fa fa-check"></i><b>7</b> Joins, Pivots, and USGS dataRetrieval</a>
 <ul>
@@ -287,12 +290,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.10" data-path="Summative1.html"><a href="Summative1.html#using-the-data-from-9-plot-flow-on-the-y-axis-and-date-on-the-x-axis-showing-the-data-as-a-line-and-coloring-by-gage-name."><i class="fa fa-check"></i><b>9.10</b> 10. Using the data from #9, Plot flow on the y axis and date on the x axis, showing the data as a line, and coloring by gage name.</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="fdcs.html"><a href="fdcs.html"><i class="fa fa-check"></i><b>10</b> Flow Duration Curves</a></li>
-<li class="chapter" data-level="11" data-path="lfas.html"><a href="lfas.html"><i class="fa fa-check"></i><b>11</b> Low Flow Analysis</a></li>
-<li class="chapter" data-level="12" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>12</b> Flood Frequency Analysis</a>
+<li class="chapter" data-level="11" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html"><i class="fa fa-check"></i><b>11</b> Flow Duration Curves</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="floods.html"><a href="floods.html#challenge-create-a-function"><i class="fa fa-check"></i><b>12.1</b> Challenge: Create a function</a></li>
+<li class="chapter" data-level="11.1" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#get-data"><i class="fa fa-check"></i><b>11.1</b> Get data</a></li>
+<li class="chapter" data-level="11.2" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#review-describe-the-distribution"><i class="fa fa-check"></i><b>11.2</b> Review: describe the distribution</a></li>
+<li class="chapter" data-level="11.3" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#ecdfs"><i class="fa fa-check"></i><b>11.3</b> ECDFs</a></li>
+<li class="chapter" data-level="11.4" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#calculate-flow-exceedence-probabilities"><i class="fa fa-check"></i><b>11.4</b> Calculate flow exceedence probabilities</a></li>
+<li class="chapter" data-level="11.5" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#plot-a-flow-duration-curve-using-the-probabilities"><i class="fa fa-check"></i><b>11.5</b> Plot a Flow Duration Curve using the probabilities</a></li>
+<li class="chapter" data-level="11.6" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#make-an-almost-fdc-with-stat_ecdf"><i class="fa fa-check"></i><b>11.6</b> Make an almost FDC with stat_ecdf</a></li>
+<li class="chapter" data-level="11.7" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#example-use-of-an-fdc"><i class="fa fa-check"></i><b>11.7</b> Example use of an FDC</a></li>
+<li class="chapter" data-level="11.8" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#compare-to-a-boxplot-of-the-same-data"><i class="fa fa-check"></i><b>11.8</b> Compare to a boxplot of the same data</a></li>
+<li class="chapter" data-level="11.9" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#challenge-examining-flow-regime-change-at-the-grand-canyon"><i class="fa fa-check"></i><b>11.9</b> Challenge: Examining flow regime change at the Grand Canyon</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>13</b> Introduction</a></li>
+<li class="chapter" data-level="12" data-path="lfas.html"><a href="lfas.html"><i class="fa fa-check"></i><b>12</b> Low Flow Analysis</a></li>
+<li class="chapter" data-level="13" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>13</b> Flood Frequency Analysis</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="floods.html"><a href="floods.html#challenge-create-a-function"><i class="fa fa-check"></i><b>13.1</b> Challenge: Create a function</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>14</b> Introduction</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -314,11 +329,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="stats" class="section level1" number="5">
-<h1><span class="header-section-number">Chapter 5</span> Intro/Review of Basic Statistics</h1>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="stats.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb82-2"><a href="stats.html#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span></code></pre></div>
+<h1><span class="header-section-number">Chapter 5</span> Introduction to Basic Statistics</h1>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="stats.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb81-2"><a href="stats.html#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span></code></pre></div>
 <pre><code>## Warning: package &#39;patchwork&#39; was built under R version 3.6.2</code></pre>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="stats.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_classic</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="stats.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_classic</span>())</span></code></pre></div>
 <div id="reading-for-this-section-statistical-methods-in-water-resources-chapter-1" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Reading for this section: Statistical Methods in Water Resources: Chapter 1</h2>
 <p><a href="https://pubs.usgs.gov/tm/04/a03/tm4a3.pdf" class="uri">https://pubs.usgs.gov/tm/04/a03/tm4a3.pdf</a></p>
@@ -337,41 +352,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="what-is-a-normal-distribution" class="section level3" number="5.2.4">
 <h3><span class="header-section-number">5.2.4</span> What is a normal distribution?</h3>
 <p>First let’s generate some synthetic data and talk about how to visualize it.</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="stats.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co">#generate a normal distribution</span></span>
-<span id="cb85-2"><a href="stats.html#cb85-2" aria-hidden="true" tabindex="-1"></a>ExNorm <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb85-3"><a href="stats.html#cb85-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
-<span id="cb85-4"><a href="stats.html#cb85-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb85-5"><a href="stats.html#cb85-5" aria-hidden="true" tabindex="-1"></a><span class="co">#look at distributions</span></span>
-<span id="cb85-6"><a href="stats.html#cb85-6" aria-hidden="true" tabindex="-1"></a><span class="co">#histogram</span></span>
-<span id="cb85-7"><a href="stats.html#cb85-7" aria-hidden="true" tabindex="-1"></a>ExNorm <span class="sc">%&gt;%</span></span>
-<span id="cb85-8"><a href="stats.html#cb85-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
-<span id="cb85-9"><a href="stats.html#cb85-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="stats.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co">#generate a normal distribution</span></span>
+<span id="cb84-2"><a href="stats.html#cb84-2" aria-hidden="true" tabindex="-1"></a>ExNorm <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb84-3"><a href="stats.html#cb84-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
+<span id="cb84-4"><a href="stats.html#cb84-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-5"><a href="stats.html#cb84-5" aria-hidden="true" tabindex="-1"></a><span class="co">#look at distributions</span></span>
+<span id="cb84-6"><a href="stats.html#cb84-6" aria-hidden="true" tabindex="-1"></a><span class="co">#histogram</span></span>
+<span id="cb84-7"><a href="stats.html#cb84-7" aria-hidden="true" tabindex="-1"></a>ExNorm <span class="sc">%&gt;%</span></span>
+<span id="cb84-8"><a href="stats.html#cb84-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
+<span id="cb84-9"><a href="stats.html#cb84-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="stats.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pdf</span></span>
-<span id="cb87-2"><a href="stats.html#cb87-2" aria-hidden="true" tabindex="-1"></a>ExNorm <span class="sc">%&gt;%</span></span>
-<span id="cb87-3"><a href="stats.html#cb87-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
-<span id="cb87-4"><a href="stats.html#cb87-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="stats.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pdf</span></span>
+<span id="cb86-2"><a href="stats.html#cb86-2" aria-hidden="true" tabindex="-1"></a>ExNorm <span class="sc">%&gt;%</span></span>
+<span id="cb86-3"><a href="stats.html#cb86-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
+<span id="cb86-4"><a href="stats.html#cb86-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density</span>()</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-42-2.png" width="672" /></p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="stats.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Let&#39;s generate a plot that makes comparing these two easier</span></span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="stats.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Let&#39;s generate a plot that makes comparing these two easier</span></span></code></pre></div>
 </div>
 <div id="stack-plots-to-compare-histogram-and-pdf" class="section level3" number="5.2.5">
 <h3><span class="header-section-number">5.2.5</span> Stack plots to compare histogram and pdf</h3>
 <p>We will save each plot as ggplot object and then output them using the patchwork package (loaded in the setup chunk).</p>
 <p>What is the difference between a histogram and a pdf?<br />
 What features of the histogram are preserved? Which are lost?</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="stats.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co">#histogram</span></span>
-<span id="cb89-2"><a href="stats.html#cb89-2" aria-hidden="true" tabindex="-1"></a>exhist <span class="ot">&lt;-</span> ExNorm <span class="sc">%&gt;%</span></span>
-<span id="cb89-3"><a href="stats.html#cb89-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
-<span id="cb89-4"><a href="stats.html#cb89-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
-<span id="cb89-5"><a href="stats.html#cb89-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-6"><a href="stats.html#cb89-6" aria-hidden="true" tabindex="-1"></a><span class="co">#pdf</span></span>
-<span id="cb89-7"><a href="stats.html#cb89-7" aria-hidden="true" tabindex="-1"></a>expdf <span class="ot">&lt;-</span> ExNorm <span class="sc">%&gt;%</span></span>
-<span id="cb89-8"><a href="stats.html#cb89-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
-<span id="cb89-9"><a href="stats.html#cb89-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density</span>()</span>
-<span id="cb89-10"><a href="stats.html#cb89-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-11"><a href="stats.html#cb89-11" aria-hidden="true" tabindex="-1"></a><span class="co">#put the plots side by side with + or on top of each other with /</span></span>
-<span id="cb89-12"><a href="stats.html#cb89-12" aria-hidden="true" tabindex="-1"></a>exhist<span class="sc">/</span>expdf</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="stats.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co">#histogram</span></span>
+<span id="cb88-2"><a href="stats.html#cb88-2" aria-hidden="true" tabindex="-1"></a>exhist <span class="ot">&lt;-</span> ExNorm <span class="sc">%&gt;%</span></span>
+<span id="cb88-3"><a href="stats.html#cb88-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
+<span id="cb88-4"><a href="stats.html#cb88-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
+<span id="cb88-5"><a href="stats.html#cb88-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-6"><a href="stats.html#cb88-6" aria-hidden="true" tabindex="-1"></a><span class="co">#pdf</span></span>
+<span id="cb88-7"><a href="stats.html#cb88-7" aria-hidden="true" tabindex="-1"></a>expdf <span class="ot">&lt;-</span> ExNorm <span class="sc">%&gt;%</span></span>
+<span id="cb88-8"><a href="stats.html#cb88-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
+<span id="cb88-9"><a href="stats.html#cb88-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density</span>()</span>
+<span id="cb88-10"><a href="stats.html#cb88-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-11"><a href="stats.html#cb88-11" aria-hidden="true" tabindex="-1"></a><span class="co">#put the plots side by side with + or on top of each other with /</span></span>
+<span id="cb88-12"><a href="stats.html#cb88-12" aria-hidden="true" tabindex="-1"></a>exhist<span class="sc">/</span>expdf</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
 </div>
@@ -386,21 +401,21 @@ What features of the histogram are preserved? Which are lost?</p>
 Why does the sample change every time you run it?<br />
 What happens as you increase or decrease the number of samples?<br />
 What happens if you set the number of samples to the size of the population?</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="stats.html#cb91-1" aria-hidden="true" tabindex="-1"></a>all_the_water <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span>
-<span id="cb91-2"><a href="stats.html#cb91-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-3"><a href="stats.html#cb91-3" aria-hidden="true" tabindex="-1"></a>sample_of_water <span class="ot">&lt;-</span> <span class="fu">sample</span>(all_the_water<span class="sc">$</span>value, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span>
-<span id="cb91-4"><a href="stats.html#cb91-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-5"><a href="stats.html#cb91-5" aria-hidden="true" tabindex="-1"></a>population_hist <span class="ot">&lt;-</span> all_the_water <span class="sc">%&gt;%</span></span>
-<span id="cb91-6"><a href="stats.html#cb91-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value))<span class="sc">+</span></span>
-<span id="cb91-7"><a href="stats.html#cb91-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
-<span id="cb91-8"><a href="stats.html#cb91-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Population: All the water in the lake&quot;</span>)</span>
-<span id="cb91-9"><a href="stats.html#cb91-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-10"><a href="stats.html#cb91-10" aria-hidden="true" tabindex="-1"></a>sample_hist <span class="ot">&lt;-</span> sample_of_water <span class="sc">%&gt;%</span></span>
-<span id="cb91-11"><a href="stats.html#cb91-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value))<span class="sc">+</span></span>
-<span id="cb91-12"><a href="stats.html#cb91-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
-<span id="cb91-13"><a href="stats.html#cb91-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Your sample of the lake&quot;</span>)</span>
-<span id="cb91-14"><a href="stats.html#cb91-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-15"><a href="stats.html#cb91-15" aria-hidden="true" tabindex="-1"></a>population_hist <span class="sc">+</span> sample_hist</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="stats.html#cb90-1" aria-hidden="true" tabindex="-1"></a>all_the_water <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span>
+<span id="cb90-2"><a href="stats.html#cb90-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-3"><a href="stats.html#cb90-3" aria-hidden="true" tabindex="-1"></a>sample_of_water <span class="ot">&lt;-</span> <span class="fu">sample</span>(all_the_water<span class="sc">$</span>value, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span>
+<span id="cb90-4"><a href="stats.html#cb90-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-5"><a href="stats.html#cb90-5" aria-hidden="true" tabindex="-1"></a>population_hist <span class="ot">&lt;-</span> all_the_water <span class="sc">%&gt;%</span></span>
+<span id="cb90-6"><a href="stats.html#cb90-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value))<span class="sc">+</span></span>
+<span id="cb90-7"><a href="stats.html#cb90-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
+<span id="cb90-8"><a href="stats.html#cb90-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Population: All the water in the lake&quot;</span>)</span>
+<span id="cb90-9"><a href="stats.html#cb90-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-10"><a href="stats.html#cb90-10" aria-hidden="true" tabindex="-1"></a>sample_hist <span class="ot">&lt;-</span> sample_of_water <span class="sc">%&gt;%</span></span>
+<span id="cb90-11"><a href="stats.html#cb90-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value))<span class="sc">+</span></span>
+<span id="cb90-12"><a href="stats.html#cb90-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
+<span id="cb90-13"><a href="stats.html#cb90-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Your sample of the lake&quot;</span>)</span>
+<span id="cb90-14"><a href="stats.html#cb90-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-15"><a href="stats.html#cb90-15" aria-hidden="true" tabindex="-1"></a>population_hist <span class="sc">+</span> sample_hist</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
@@ -410,7 +425,7 @@ What happens if you set the number of samples to the size of the population?</p>
 <p>When we take a sample of a population, there are a few things we will want to measure about the distribution of values: where is the middle, how variable is it, and is it skewed to one side or another?</p>
 <p>The first of these, “where is the middle?” is addressed with measures of central tendency. We will discuss three possible ways to measure this. The mean, median, and weighted mean.</p>
 <p>To explain the importance of choosing between the mean and median, we will first import some discharge data. Read in the PINE discharge data.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="stats.html#cb93-1" aria-hidden="true" tabindex="-1"></a>pineQ <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PINE_Jan-Mar_2010.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="stats.html#cb92-1" aria-hidden="true" tabindex="-1"></a>pineQ <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PINE_Jan-Mar_2010.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## ── Column specification ────────────────────────────────────────────────────────
 ## cols(
@@ -428,26 +443,26 @@ What happens if you set the number of samples to the size of the population?</p>
 <p>Because it uses the order of the values rather than just the values themselves, the median is resistant to skewed distributions. This means it is less effected by very large or very small values compared to most values in the sample data.</p>
 <p>Let’s look at our normal distribution from earlier (ExNorm) compared to the Pine watershed discharge (pineQ)</p>
 <p>Note that distributions like pineQ, that are positively skewed, are very common in environmental data.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="stats.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate mean and median for cfs in pineQ and values in ExNorm</span></span>
-<span id="cb95-2"><a href="stats.html#cb95-2" aria-hidden="true" tabindex="-1"></a>pineMean <span class="ot">&lt;-</span> <span class="fu">mean</span>(pineQ<span class="sc">$</span>cfs)</span>
-<span id="cb95-3"><a href="stats.html#cb95-3" aria-hidden="true" tabindex="-1"></a>pineMedian <span class="ot">&lt;-</span> <span class="fu">median</span>(pineQ<span class="sc">$</span>cfs)</span>
-<span id="cb95-4"><a href="stats.html#cb95-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-5"><a href="stats.html#cb95-5" aria-hidden="true" tabindex="-1"></a>xmean <span class="ot">&lt;-</span> <span class="fu">mean</span>(ExNorm<span class="sc">$</span>value)</span>
-<span id="cb95-6"><a href="stats.html#cb95-6" aria-hidden="true" tabindex="-1"></a>xmedian <span class="ot">&lt;-</span> <span class="fu">median</span>(ExNorm<span class="sc">$</span>value)</span>
-<span id="cb95-7"><a href="stats.html#cb95-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-8"><a href="stats.html#cb95-8" aria-hidden="true" tabindex="-1"></a><span class="co">#plot mean and median on the ExNorm distribution</span></span>
-<span id="cb95-9"><a href="stats.html#cb95-9" aria-hidden="true" tabindex="-1"></a>Ex <span class="ot">&lt;-</span> ExNorm <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
-<span id="cb95-10"><a href="stats.html#cb95-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
-<span id="cb95-11"><a href="stats.html#cb95-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> xmean, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)<span class="sc">+</span></span>
-<span id="cb95-12"><a href="stats.html#cb95-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> xmedian, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb95-13"><a href="stats.html#cb95-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-14"><a href="stats.html#cb95-14" aria-hidden="true" tabindex="-1"></a><span class="co">#plot mean and median on the pineQ discharge histogram</span></span>
-<span id="cb95-15"><a href="stats.html#cb95-15" aria-hidden="true" tabindex="-1"></a>PineP <span class="ot">&lt;-</span> pineQ <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(cfs)) <span class="sc">+</span></span>
-<span id="cb95-16"><a href="stats.html#cb95-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
-<span id="cb95-17"><a href="stats.html#cb95-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> pineMean, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)<span class="sc">+</span></span>
-<span id="cb95-18"><a href="stats.html#cb95-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> pineMedian, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb95-19"><a href="stats.html#cb95-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-20"><a href="stats.html#cb95-20" aria-hidden="true" tabindex="-1"></a>Ex <span class="sc">/</span> PineP  </span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="stats.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate mean and median for cfs in pineQ and values in ExNorm</span></span>
+<span id="cb94-2"><a href="stats.html#cb94-2" aria-hidden="true" tabindex="-1"></a>pineMean <span class="ot">&lt;-</span> <span class="fu">mean</span>(pineQ<span class="sc">$</span>cfs)</span>
+<span id="cb94-3"><a href="stats.html#cb94-3" aria-hidden="true" tabindex="-1"></a>pineMedian <span class="ot">&lt;-</span> <span class="fu">median</span>(pineQ<span class="sc">$</span>cfs)</span>
+<span id="cb94-4"><a href="stats.html#cb94-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-5"><a href="stats.html#cb94-5" aria-hidden="true" tabindex="-1"></a>xmean <span class="ot">&lt;-</span> <span class="fu">mean</span>(ExNorm<span class="sc">$</span>value)</span>
+<span id="cb94-6"><a href="stats.html#cb94-6" aria-hidden="true" tabindex="-1"></a>xmedian <span class="ot">&lt;-</span> <span class="fu">median</span>(ExNorm<span class="sc">$</span>value)</span>
+<span id="cb94-7"><a href="stats.html#cb94-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-8"><a href="stats.html#cb94-8" aria-hidden="true" tabindex="-1"></a><span class="co">#plot mean and median on the ExNorm distribution</span></span>
+<span id="cb94-9"><a href="stats.html#cb94-9" aria-hidden="true" tabindex="-1"></a>Ex <span class="ot">&lt;-</span> ExNorm <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
+<span id="cb94-10"><a href="stats.html#cb94-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
+<span id="cb94-11"><a href="stats.html#cb94-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> xmean, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)<span class="sc">+</span></span>
+<span id="cb94-12"><a href="stats.html#cb94-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> xmedian, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb94-13"><a href="stats.html#cb94-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-14"><a href="stats.html#cb94-14" aria-hidden="true" tabindex="-1"></a><span class="co">#plot mean and median on the pineQ discharge histogram</span></span>
+<span id="cb94-15"><a href="stats.html#cb94-15" aria-hidden="true" tabindex="-1"></a>PineP <span class="ot">&lt;-</span> pineQ <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(cfs)) <span class="sc">+</span></span>
+<span id="cb94-16"><a href="stats.html#cb94-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
+<span id="cb94-17"><a href="stats.html#cb94-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> pineMean, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)<span class="sc">+</span></span>
+<span id="cb94-18"><a href="stats.html#cb94-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> pineMedian, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb94-19"><a href="stats.html#cb94-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-20"><a href="stats.html#cb94-20" aria-hidden="true" tabindex="-1"></a>Ex <span class="sc">/</span> PineP  </span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
@@ -461,12 +476,12 @@ What happens if you set the number of samples to the size of the population?</p>
 <p>The precip values for the watershed above are 4.5, 5.5, 5.8, 4.7, and 3.0</p>
 <p>We will assume the proportions of the watershed that each gauge represents are 0.20, 0.15, 0.40, 0.15, 0.10, respectively (or 20%, 15%, 40%, 15%, 10%)</p>
 <p>Write some code to compute the regular mean precip from the values, and then the weighted mean.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="stats.html#cb97-1" aria-hidden="true" tabindex="-1"></a>precip <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">4.5</span>, <span class="fl">5.5</span>, <span class="fl">5.8</span>, <span class="fl">4.7</span>, <span class="fl">3.0</span>)</span>
-<span id="cb97-2"><a href="stats.html#cb97-2" aria-hidden="true" tabindex="-1"></a>weights <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.15</span>, <span class="fl">0.4</span>, <span class="fl">0.15</span>, <span class="fl">0.1</span>)</span>
-<span id="cb97-3"><a href="stats.html#cb97-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-4"><a href="stats.html#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(precip)</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="stats.html#cb96-1" aria-hidden="true" tabindex="-1"></a>precip <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">4.5</span>, <span class="fl">5.5</span>, <span class="fl">5.8</span>, <span class="fl">4.7</span>, <span class="fl">3.0</span>)</span>
+<span id="cb96-2"><a href="stats.html#cb96-2" aria-hidden="true" tabindex="-1"></a>weights <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.15</span>, <span class="fl">0.4</span>, <span class="fl">0.15</span>, <span class="fl">0.1</span>)</span>
+<span id="cb96-3"><a href="stats.html#cb96-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-4"><a href="stats.html#cb96-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(precip)</span></code></pre></div>
 <pre><code>## [1] 4.7</code></pre>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="stats.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(precip <span class="sc">*</span> weights)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="stats.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(precip <span class="sc">*</span> weights)</span></code></pre></div>
 <pre><code>## [1] 5.05</code></pre>
 </div>
 </div>
@@ -494,27 +509,27 @@ What happens if you set the number of samples to the size of the population?</p>
 <p>If you ask R for the QUANTILES of your sample data, it will give you the values at which 0%, 25%, 50%, 75%, and 100% of the data are below. These are the 1,2,3,4, and 5th quantiles. Therefore, the IQR is the difference between the 4th and 2nd quantile.</p>
 <p>Okay, code time.</p>
 <p>First, let’s explore how changing the variability of a distribution changes the shape of it’s distribution. Create a plot a random normal distribution using rnorm() and set sd to different numbers. Make the mean of the distribution 0, the sample size 300, and the standard deviation 1 to start. Then increase the standard deviation incrementally to 10 and see what happens. Make the limits of the x axis on the plot -30 to 30.</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="stats.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">300</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> as_tibble <span class="sc">%&gt;%</span></span>
-<span id="cb101-2"><a href="stats.html#cb101-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value))<span class="sc">+</span></span>
-<span id="cb101-3"><a href="stats.html#cb101-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density</span>()<span class="sc">+</span></span>
-<span id="cb101-4"><a href="stats.html#cb101-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">30</span>,<span class="dv">30</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="stats.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">300</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> as_tibble <span class="sc">%&gt;%</span></span>
+<span id="cb100-2"><a href="stats.html#cb100-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value))<span class="sc">+</span></span>
+<span id="cb100-3"><a href="stats.html#cb100-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density</span>()<span class="sc">+</span></span>
+<span id="cb100-4"><a href="stats.html#cb100-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">30</span>,<span class="dv">30</span>))</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
 <p>Now let’s calculate the standard deviation, variance, coefficient of variation, and IQR of the Pine discharge data.</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="stats.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co">#standard deviation</span></span>
-<span id="cb102-2"><a href="stats.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="stats.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co">#standard deviation</span></span>
+<span id="cb101-2"><a href="stats.html#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
 <pre><code>## [1] 84.47625</code></pre>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="stats.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co">#variance</span></span>
-<span id="cb104-2"><a href="stats.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="stats.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co">#variance</span></span>
+<span id="cb103-2"><a href="stats.html#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
 <pre><code>## [1] 7136.237</code></pre>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="stats.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co">#coefficient of variation</span></span>
-<span id="cb106-2"><a href="stats.html#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(pineQ<span class="sc">$</span>cfs)<span class="sc">/</span><span class="fu">mean</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="stats.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co">#coefficient of variation</span></span>
+<span id="cb105-2"><a href="stats.html#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(pineQ<span class="sc">$</span>cfs)<span class="sc">/</span><span class="fu">mean</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
 <pre><code>## [1] 2.800221</code></pre>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="stats.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co">#IQR using the IQR funciton</span></span>
-<span id="cb108-2"><a href="stats.html#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="stats.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co">#IQR using the IQR funciton</span></span>
+<span id="cb107-2"><a href="stats.html#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
 <pre><code>## [1] 8.1325</code></pre>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="stats.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co">#IQR using the quantile function</span></span>
-<span id="cb110-2"><a href="stats.html#cb110-2" aria-hidden="true" tabindex="-1"></a>quants <span class="ot">&lt;-</span> <span class="fu">quantile</span>(pineQ<span class="sc">$</span>cfs)</span>
-<span id="cb110-3"><a href="stats.html#cb110-3" aria-hidden="true" tabindex="-1"></a>quants[<span class="dv">4</span>] <span class="sc">-</span> quants[<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="stats.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co">#IQR using the quantile function</span></span>
+<span id="cb109-2"><a href="stats.html#cb109-2" aria-hidden="true" tabindex="-1"></a>quants <span class="ot">&lt;-</span> <span class="fu">quantile</span>(pineQ<span class="sc">$</span>cfs)</span>
+<span id="cb109-3"><a href="stats.html#cb109-3" aria-hidden="true" tabindex="-1"></a>quants[<span class="dv">4</span>] <span class="sc">-</span> quants[<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>##    75% 
 ## 8.1325</code></pre>
 </div>
@@ -527,16 +542,16 @@ What happens if you set the number of samples to the size of the population?</p>
 </div>
 <p>Let’s look at the quartile skew of the two distributions we’ve been measuring. Calculate it for the pineQ discharge data and the random normal distribution we generated.</p>
 <p>Which one is more skewed?</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="stats.html#cb112-1" aria-hidden="true" tabindex="-1"></a>quantsP <span class="ot">&lt;-</span> <span class="fu">quantile</span>(pineQ<span class="sc">$</span>cfs)</span>
-<span id="cb112-2"><a href="stats.html#cb112-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb112-3"><a href="stats.html#cb112-3" aria-hidden="true" tabindex="-1"></a>((quantsP[<span class="dv">3</span>]<span class="sc">-</span>quantsP[<span class="dv">2</span>]) <span class="sc">-</span> (quantsP[<span class="dv">2</span>] <span class="sc">-</span> quantsP[<span class="dv">1</span>])) <span class="sc">/</span> quantsP[<span class="dv">3</span>] <span class="sc">-</span> quantsP[<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="stats.html#cb111-1" aria-hidden="true" tabindex="-1"></a>quantsP <span class="ot">&lt;-</span> <span class="fu">quantile</span>(pineQ<span class="sc">$</span>cfs)</span>
+<span id="cb111-2"><a href="stats.html#cb111-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-3"><a href="stats.html#cb111-3" aria-hidden="true" tabindex="-1"></a>((quantsP[<span class="dv">3</span>]<span class="sc">-</span>quantsP[<span class="dv">2</span>]) <span class="sc">-</span> (quantsP[<span class="dv">2</span>] <span class="sc">-</span> quantsP[<span class="dv">1</span>])) <span class="sc">/</span> quantsP[<span class="dv">3</span>] <span class="sc">-</span> quantsP[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>##       50% 
 ## -4.837233</code></pre>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="stats.html#cb114-1" aria-hidden="true" tabindex="-1"></a>quantsX <span class="ot">&lt;-</span> <span class="fu">quantile</span>(ExNorm<span class="sc">$</span>value)</span>
-<span id="cb114-2"><a href="stats.html#cb114-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb114-3"><a href="stats.html#cb114-3" aria-hidden="true" tabindex="-1"></a>((quantsX[<span class="dv">3</span>]<span class="sc">-</span>quantsX[<span class="dv">2</span>]) <span class="sc">-</span> (quantsX[<span class="dv">2</span>] <span class="sc">-</span> quantsX[<span class="dv">1</span>])) <span class="sc">/</span> quantsX[<span class="dv">3</span>] <span class="sc">-</span> quantsX[<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="stats.html#cb113-1" aria-hidden="true" tabindex="-1"></a>quantsX <span class="ot">&lt;-</span> <span class="fu">quantile</span>(ExNorm<span class="sc">$</span>value)</span>
+<span id="cb113-2"><a href="stats.html#cb113-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-3"><a href="stats.html#cb113-3" aria-hidden="true" tabindex="-1"></a>((quantsX[<span class="dv">3</span>]<span class="sc">-</span>quantsX[<span class="dv">2</span>]) <span class="sc">-</span> (quantsX[<span class="dv">2</span>] <span class="sc">-</span> quantsX[<span class="dv">1</span>])) <span class="sc">/</span> quantsX[<span class="dv">3</span>] <span class="sc">-</span> quantsX[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>##       50% 
-## -2.718904</code></pre>
+## -2.228068</code></pre>
 </div>
 </div>
 <div id="what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one" class="section level2" number="5.6">
@@ -549,13 +564,13 @@ What happens if you set the number of samples to the size of the population?</p>
 <p>But how far off can you be before you don’t consider a distribution normal? Seems like a judgement call!</p>
 <p>R to the rescue! There is a built in test for normality called shapiro.test(), which performs the Shapiro-Wilk test of normality. The hypothesis this test tests is “The distribution is normal.” So if this function returns a p-value less than 0.05, you reject that hypothesis and your function is NOT normal.</p>
 <p>You can also make a quantile-quantile plot. A straight line on this plot indicates a normal distribution, a non-straight line indicates it is not normal.</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="stats.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="stats.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  pineQ$cfs
 ## W = 0.27155, p-value &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="stats.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="stats.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
 
 </div>
@@ -566,7 +581,7 @@ What happens if you set the number of samples to the size of the population?</p>
         </div>
       </div>
 <a href="introactivity.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="intro-stats-activity.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="statsactivity.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

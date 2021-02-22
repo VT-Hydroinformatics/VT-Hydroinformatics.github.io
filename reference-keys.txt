@@ -1,6 +1,7 @@
 fig:nice-fig
 tab:nice-tab
-prerequisites
+introduction
+table-of-contents
 Plotting
 download-and-install-tidyverse-library
 reading-data
@@ -15,7 +16,7 @@ boxplots
 more-about-color-size-etc
 multiple-geoms
 Programming
-introduction
+introduction-1
 you-can-use-r-as-a-calculator
 you-can-create-new-objects-using--
 using-functions
@@ -66,7 +67,7 @@ cv-coefficient-of-variation
 iqr-interquartile-range
 what-about-how-lopsided-the-distribution-is
 what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one
-intro-stats-activity
+statsactivity
 load-the-tidyverse-and-patchwork-libraries-and-read-in-the-flashy-and-pine-datasets.
 using-the-flashy-dataset-make-a-pdf-of-the-average-basin-rainfall-pptavg_basin-for-the-northeast-aggecoregion.-on-that-pdf-add-vertical-lines-showing-the-mean-median-standard-deviation-and-iqr.-make-each-a-different-color-and-note-which-is-which-in-a-typed-answer-below-this-question.-or-if-you-want-an-extra-challenged-make-a-custom-legend-that-shows-this
 perform-a-shapiro-wilk-test-for-normality-on-the-data-from-question-2.-using-the-results-from-that-test-and-the-plot-and-stats-from-question-2-discuss-whether-or-not-the-distribution-is-normal.
@@ -123,6 +124,16 @@ b.-use-the-readnwisdv-function-to-read-and-save-the-daily-discharge-values-for-t
 c.-join-the-gage-site-information-from-a-to-the-data-from-b-so-you-can-reference-the-gages-by-their-names.
 using-the-data-from-9-plot-flow-on-the-y-axis-and-date-on-the-x-axis-showing-the-data-as-a-line-and-coloring-by-gage-name.
 fdcs
+flow-duration-curves
+get-data
+review-describe-the-distribution
+ecdfs
+calculate-flow-exceedence-probabilities
+plot-a-flow-duration-curve-using-the-probabilities
+make-an-almost-fdc-with-stat_ecdf
+example-use-of-an-fdc
+compare-to-a-boxplot-of-the-same-data
+challenge-examining-flow-regime-change-at-the-grand-canyon
 lfas
 floods
 challenge-create-a-function

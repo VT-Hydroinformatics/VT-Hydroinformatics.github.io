@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 12 Flood Frequency Analysis | Hydroinformatics at VT</title>
+  <title>Chapter 13 Flood Frequency Analysis | Hydroinformatics at VT</title>
   <meta name="description" content="This bookdown contains notes and exercises for a course in hydroinformatics at Virginia Tech." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 12 Flood Frequency Analysis | Hydroinformatics at VT" />
+  <meta property="og:title" content="Chapter 13 Flood Frequency Analysis | Hydroinformatics at VT" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 12 Flood Frequency Analysis | Hydroinformatics at VT" />
+  <meta name="twitter:title" content="Chapter 13 Flood Frequency Analysis | Hydroinformatics at VT" />
   
   <meta name="twitter:description" content="This bookdown contains notes and exercises for a course in hydroinformatics at Virginia Tech." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="JP Gannon" />
 
 
-<meta name="date" content="2021-02-19" />
+<meta name="date" content="2021-02-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -132,10 +132,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">Hydroinformatics</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.0.1" data-path="index.html"><a href="index.html#table-of-contents"><i class="fa fa-check"></i><b>1.0.1</b> Table of contents:</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="Plotting.html"><a href="Plotting.html"><i class="fa fa-check"></i><b>2</b> Intro to Plotting</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="Plotting.html"><a href="Plotting.html#download-and-install-tidyverse-library"><i class="fa fa-check"></i><b>2.1</b> Download and install tidyverse library</a></li>
@@ -153,7 +156,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="Programming.html"><a href="Programming.html"><i class="fa fa-check"></i><b>3</b> R Tidyverse Programming Basics</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="Programming.html"><a href="Programming.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.1" data-path="Programming.html"><a href="Programming.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
 <li class="chapter" data-level="3.2" data-path="Programming.html"><a href="Programming.html#you-can-use-r-as-a-calculator"><i class="fa fa-check"></i><b>3.2</b> You can use R as a calculator</a></li>
 <li class="chapter" data-level="3.3" data-path="Programming.html"><a href="Programming.html#you-can-create-new-objects-using--"><i class="fa fa-check"></i><b>3.3</b> You can create new objects using &lt;-</a></li>
 <li class="chapter" data-level="3.4" data-path="Programming.html"><a href="Programming.html#using-functions"><i class="fa fa-check"></i><b>3.4</b> Using functions</a></li>
@@ -195,7 +198,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5" data-path="introactivity.html"><a href="introactivity.html#problem-5"><i class="fa fa-check"></i><b>4.5</b> Problem 5</a></li>
 <li class="chapter" data-level="4.6" data-path="introactivity.html"><a href="introactivity.html#problem-6"><i class="fa fa-check"></i><b>4.6</b> Problem 6</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="stats.html"><a href="stats.html"><i class="fa fa-check"></i><b>5</b> Intro/Review of Basic Statistics</a>
+<li class="chapter" data-level="5" data-path="stats.html"><a href="stats.html"><i class="fa fa-check"></i><b>5</b> Introduction to Basic Statistics</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="stats.html"><a href="stats.html#reading-for-this-section-statistical-methods-in-water-resources-chapter-1"><i class="fa fa-check"></i><b>5.1</b> Reading for this section: Statistical Methods in Water Resources: Chapter 1</a></li>
 <li class="chapter" data-level="5.2" data-path="stats.html"><a href="stats.html#questions-for-today"><i class="fa fa-check"></i><b>5.2</b> Questions for today:</a>
@@ -214,14 +217,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5" data-path="stats.html"><a href="stats.html#measures-of-variability"><i class="fa fa-check"></i><b>5.5</b> Measures of variability</a></li>
 <li class="chapter" data-level="5.6" data-path="stats.html"><a href="stats.html#what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one"><i class="fa fa-check"></i><b>5.6</b> What is a normal distribution and how can we determine if we have one?</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html"><i class="fa fa-check"></i><b>6</b> Intro Stats Activity</a>
+<li class="chapter" data-level="6" data-path="statsactivity.html"><a href="statsactivity.html"><i class="fa fa-check"></i><b>6</b> Intro Stats Activity</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#load-the-tidyverse-and-patchwork-libraries-and-read-in-the-flashy-and-pine-datasets."><i class="fa fa-check"></i><b>6.1</b> 1. Load the tidyverse and patchwork libraries and read in the Flashy and Pine datasets.</a></li>
-<li class="chapter" data-level="6.2" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#using-the-flashy-dataset-make-a-pdf-of-the-average-basin-rainfall-pptavg_basin-for-the-northeast-aggecoregion.-on-that-pdf-add-vertical-lines-showing-the-mean-median-standard-deviation-and-iqr.-make-each-a-different-color-and-note-which-is-which-in-a-typed-answer-below-this-question.-or-if-you-want-an-extra-challenged-make-a-custom-legend-that-shows-this"><i class="fa fa-check"></i><b>6.2</b> 2. Using the flashy dataset, make a pdf of the average basin rainfall (PPTAVG_BASIN) for the NorthEast AGGECOREGION. On that pdf, add vertical lines showing the mean, median, standard deviation, and IQR. Make each a different color and note which is which in a typed answer below this question. (or if you want an extra challenged, make a custom legend that shows this)</a></li>
-<li class="chapter" data-level="6.3" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#perform-a-shapiro-wilk-test-for-normality-on-the-data-from-question-2.-using-the-results-from-that-test-and-the-plot-and-stats-from-question-2-discuss-whether-or-not-the-distribution-is-normal."><i class="fa fa-check"></i><b>6.3</b> 3. Perform a Shapiro-Wilk test for normality on the data from question 2. Using the results from that test and the plot and stats from question 2, discuss whether or not the distribution is normal.</a></li>
-<li class="chapter" data-level="6.4" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#make-a-plot-that-shows-the-distribution-of-the-data-from-the-pine-watershed-and-the-nfdr-watershed-two-pdfs-on-the-same-plot.-log-the-x-axis."><i class="fa fa-check"></i><b>6.4</b> 4. Make a plot that shows the distribution of the data from the PINE watershed and the NFDR watershed (two pdfs on the same plot). Log the x axis.</a></li>
-<li class="chapter" data-level="6.5" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#you-want-to-compare-how-variable-the-discharge-is-in-each-of-the-watersheds-in-question-4.-which-measure-of-spread-would-you-use-and-why-if-you-wanted-to-measure-the-central-tendency-which-measure-would-you-use-and-why"><i class="fa fa-check"></i><b>6.5</b> 5. You want to compare how variable the discharge is in each of the watersheds in question 4. Which measure of spread would you use and why? If you wanted to measure the central tendency which measure would you use and why?</a></li>
-<li class="chapter" data-level="6.6" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#compute-3-measures-of-spread-and-2-measures-of-central-tendency-for-the-pine-and-nfdr-watershed.-hint-use-group_by-and-summarize-be-sure-your-code-outputs-the-result.-which-watershed-has-higher-flow-which-one-has-more-variable-flow-how-do-you-know"><i class="fa fa-check"></i><b>6.6</b> 6. Compute 3 measures of spread and 2 measures of central tendency for the PINE and NFDR watershed. (hint: use group_by() and summarize()) Be sure your code outputs the result. Which watershed has higher flow? Which one has more variable flow? How do you know?</a></li>
+<li class="chapter" data-level="6.1" data-path="statsactivity.html"><a href="statsactivity.html#load-the-tidyverse-and-patchwork-libraries-and-read-in-the-flashy-and-pine-datasets."><i class="fa fa-check"></i><b>6.1</b> 1. Load the tidyverse and patchwork libraries and read in the Flashy and Pine datasets.</a></li>
+<li class="chapter" data-level="6.2" data-path="statsactivity.html"><a href="statsactivity.html#using-the-flashy-dataset-make-a-pdf-of-the-average-basin-rainfall-pptavg_basin-for-the-northeast-aggecoregion.-on-that-pdf-add-vertical-lines-showing-the-mean-median-standard-deviation-and-iqr.-make-each-a-different-color-and-note-which-is-which-in-a-typed-answer-below-this-question.-or-if-you-want-an-extra-challenged-make-a-custom-legend-that-shows-this"><i class="fa fa-check"></i><b>6.2</b> 2. Using the flashy dataset, make a pdf of the average basin rainfall (PPTAVG_BASIN) for the NorthEast AGGECOREGION. On that pdf, add vertical lines showing the mean, median, standard deviation, and IQR. Make each a different color and note which is which in a typed answer below this question. (or if you want an extra challenged, make a custom legend that shows this)</a></li>
+<li class="chapter" data-level="6.3" data-path="statsactivity.html"><a href="statsactivity.html#perform-a-shapiro-wilk-test-for-normality-on-the-data-from-question-2.-using-the-results-from-that-test-and-the-plot-and-stats-from-question-2-discuss-whether-or-not-the-distribution-is-normal."><i class="fa fa-check"></i><b>6.3</b> 3. Perform a Shapiro-Wilk test for normality on the data from question 2. Using the results from that test and the plot and stats from question 2, discuss whether or not the distribution is normal.</a></li>
+<li class="chapter" data-level="6.4" data-path="statsactivity.html"><a href="statsactivity.html#make-a-plot-that-shows-the-distribution-of-the-data-from-the-pine-watershed-and-the-nfdr-watershed-two-pdfs-on-the-same-plot.-log-the-x-axis."><i class="fa fa-check"></i><b>6.4</b> 4. Make a plot that shows the distribution of the data from the PINE watershed and the NFDR watershed (two pdfs on the same plot). Log the x axis.</a></li>
+<li class="chapter" data-level="6.5" data-path="statsactivity.html"><a href="statsactivity.html#you-want-to-compare-how-variable-the-discharge-is-in-each-of-the-watersheds-in-question-4.-which-measure-of-spread-would-you-use-and-why-if-you-wanted-to-measure-the-central-tendency-which-measure-would-you-use-and-why"><i class="fa fa-check"></i><b>6.5</b> 5. You want to compare how variable the discharge is in each of the watersheds in question 4. Which measure of spread would you use and why? If you wanted to measure the central tendency which measure would you use and why?</a></li>
+<li class="chapter" data-level="6.6" data-path="statsactivity.html"><a href="statsactivity.html#compute-3-measures-of-spread-and-2-measures-of-central-tendency-for-the-pine-and-nfdr-watershed.-hint-use-group_by-and-summarize-be-sure-your-code-outputs-the-result.-which-watershed-has-higher-flow-which-one-has-more-variable-flow-how-do-you-know"><i class="fa fa-check"></i><b>6.6</b> 6. Compute 3 measures of spread and 2 measures of central tendency for the PINE and NFDR watershed. (hint: use group_by() and summarize()) Be sure your code outputs the result. Which watershed has higher flow? Which one has more variable flow? How do you know?</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="getdata.html"><a href="getdata.html"><i class="fa fa-check"></i><b>7</b> Joins, Pivots, and USGS dataRetrieval</a>
 <ul>
@@ -287,12 +290,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.10" data-path="Summative1.html"><a href="Summative1.html#using-the-data-from-9-plot-flow-on-the-y-axis-and-date-on-the-x-axis-showing-the-data-as-a-line-and-coloring-by-gage-name."><i class="fa fa-check"></i><b>9.10</b> 10. Using the data from #9, Plot flow on the y axis and date on the x axis, showing the data as a line, and coloring by gage name.</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="fdcs.html"><a href="fdcs.html"><i class="fa fa-check"></i><b>10</b> Flow Duration Curves</a></li>
-<li class="chapter" data-level="11" data-path="lfas.html"><a href="lfas.html"><i class="fa fa-check"></i><b>11</b> Low Flow Analysis</a></li>
-<li class="chapter" data-level="12" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>12</b> Flood Frequency Analysis</a>
+<li class="chapter" data-level="11" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html"><i class="fa fa-check"></i><b>11</b> Flow Duration Curves</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="floods.html"><a href="floods.html#challenge-create-a-function"><i class="fa fa-check"></i><b>12.1</b> Challenge: Create a function</a></li>
+<li class="chapter" data-level="11.1" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#get-data"><i class="fa fa-check"></i><b>11.1</b> Get data</a></li>
+<li class="chapter" data-level="11.2" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#review-describe-the-distribution"><i class="fa fa-check"></i><b>11.2</b> Review: describe the distribution</a></li>
+<li class="chapter" data-level="11.3" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#ecdfs"><i class="fa fa-check"></i><b>11.3</b> ECDFs</a></li>
+<li class="chapter" data-level="11.4" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#calculate-flow-exceedence-probabilities"><i class="fa fa-check"></i><b>11.4</b> Calculate flow exceedence probabilities</a></li>
+<li class="chapter" data-level="11.5" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#plot-a-flow-duration-curve-using-the-probabilities"><i class="fa fa-check"></i><b>11.5</b> Plot a Flow Duration Curve using the probabilities</a></li>
+<li class="chapter" data-level="11.6" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#make-an-almost-fdc-with-stat_ecdf"><i class="fa fa-check"></i><b>11.6</b> Make an almost FDC with stat_ecdf</a></li>
+<li class="chapter" data-level="11.7" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#example-use-of-an-fdc"><i class="fa fa-check"></i><b>11.7</b> Example use of an FDC</a></li>
+<li class="chapter" data-level="11.8" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#compare-to-a-boxplot-of-the-same-data"><i class="fa fa-check"></i><b>11.8</b> Compare to a boxplot of the same data</a></li>
+<li class="chapter" data-level="11.9" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#challenge-examining-flow-regime-change-at-the-grand-canyon"><i class="fa fa-check"></i><b>11.9</b> Challenge: Examining flow regime change at the Grand Canyon</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>13</b> Introduction</a></li>
+<li class="chapter" data-level="12" data-path="lfas.html"><a href="lfas.html"><i class="fa fa-check"></i><b>12</b> Low Flow Analysis</a></li>
+<li class="chapter" data-level="13" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>13</b> Flood Frequency Analysis</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="floods.html"><a href="floods.html#challenge-create-a-function"><i class="fa fa-check"></i><b>13.1</b> Challenge: Create a function</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>14</b> Introduction</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -313,29 +328,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="floods" class="section level1" number="12">
-<h1><span class="header-section-number">Chapter 12</span> Flood Frequency Analysis</h1>
+<div id="floods" class="section level1" number="13">
+<h1><span class="header-section-number">Chapter 13</span> Flood Frequency Analysis</h1>
 <p>Load packages</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="floods.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb183-2"><a href="floods.html#cb183-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dataRetrieval)</span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="floods.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb184-2"><a href="floods.html#cb184-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dataRetrieval)</span></code></pre></div>
 <p>Get peak flow data and plot it</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="floods.html#cb184-1" aria-hidden="true" tabindex="-1"></a>radford <span class="ot">&lt;-</span> <span class="st">&quot;03171000&quot;</span></span>
-<span id="cb184-2"><a href="floods.html#cb184-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb184-3"><a href="floods.html#cb184-3" aria-hidden="true" tabindex="-1"></a>peakflows <span class="ot">&lt;-</span> <span class="fu">readNWISpeak</span>(radford, <span class="at">startDate =</span> <span class="st">&quot;1950-01-01&quot;</span>)</span>
-<span id="cb184-4"><a href="floods.html#cb184-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb184-5"><a href="floods.html#cb184-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(peakflows, <span class="fu">aes</span>(peak_dt, peak_va))<span class="sc">+</span></span>
-<span id="cb184-6"><a href="floods.html#cb184-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="floods.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create rank column (minus flips the ranking)</span></span>
-<span id="cb185-2"><a href="floods.html#cb185-2" aria-hidden="true" tabindex="-1"></a><span class="co">#then clean it up, pull out only peak value, date, rank</span></span>
-<span id="cb185-3"><a href="floods.html#cb185-3" aria-hidden="true" tabindex="-1"></a>peakflows <span class="ot">&lt;-</span> peakflows <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ranks =</span> <span class="fu">rank</span>(<span class="sc">-</span>peak_va)) <span class="sc">%&gt;%</span></span>
-<span id="cb185-4"><a href="floods.html#cb185-4" aria-hidden="true" tabindex="-1"></a>              <span class="fu">select</span>(peak_dt, peak_va, ranks)</span>
-<span id="cb185-5"><a href="floods.html#cb185-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb185-6"><a href="floods.html#cb185-6" aria-hidden="true" tabindex="-1"></a><span class="co">#look at it</span></span>
-<span id="cb185-7"><a href="floods.html#cb185-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(peakflows, <span class="fu">aes</span>(peak_dt, peak_va, <span class="at">color =</span> ranks))<span class="sc">+</span></span>
-<span id="cb185-8"><a href="floods.html#cb185-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="floods.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(peakflows)</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="floods.html#cb185-1" aria-hidden="true" tabindex="-1"></a>radford <span class="ot">&lt;-</span> <span class="st">&quot;03171000&quot;</span></span>
+<span id="cb185-2"><a href="floods.html#cb185-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb185-3"><a href="floods.html#cb185-3" aria-hidden="true" tabindex="-1"></a>peakflows <span class="ot">&lt;-</span> <span class="fu">readNWISpeak</span>(radford, <span class="at">startDate =</span> <span class="st">&quot;1950-01-01&quot;</span>)</span>
+<span id="cb185-4"><a href="floods.html#cb185-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb185-5"><a href="floods.html#cb185-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(peakflows, <span class="fu">aes</span>(peak_dt, peak_va))<span class="sc">+</span></span>
+<span id="cb185-6"><a href="floods.html#cb185-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="floods.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create rank column (minus flips the ranking)</span></span>
+<span id="cb186-2"><a href="floods.html#cb186-2" aria-hidden="true" tabindex="-1"></a><span class="co">#then clean it up, pull out only peak value, date, rank</span></span>
+<span id="cb186-3"><a href="floods.html#cb186-3" aria-hidden="true" tabindex="-1"></a>peakflows <span class="ot">&lt;-</span> peakflows <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ranks =</span> <span class="fu">rank</span>(<span class="sc">-</span>peak_va)) <span class="sc">%&gt;%</span></span>
+<span id="cb186-4"><a href="floods.html#cb186-4" aria-hidden="true" tabindex="-1"></a>              <span class="fu">select</span>(peak_dt, peak_va, ranks)</span>
+<span id="cb186-5"><a href="floods.html#cb186-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb186-6"><a href="floods.html#cb186-6" aria-hidden="true" tabindex="-1"></a><span class="co">#look at it</span></span>
+<span id="cb186-7"><a href="floods.html#cb186-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(peakflows, <span class="fu">aes</span>(peak_dt, peak_va, <span class="at">color =</span> ranks))<span class="sc">+</span></span>
+<span id="cb186-8"><a href="floods.html#cb186-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-104-1.png" width="672" /></p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="floods.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(peakflows)</span></code></pre></div>
 <pre><code>##      peak_dt peak_va ranks
 ## 1 1950-12-08   62200  14.0
 ## 2 1952-03-11   28100  53.0
@@ -356,18 +371,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr />
 <p>Return period</p>
 <p>Tp = 1/(1-p)</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="floods.html#cb188-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">length</span>(peakflows<span class="sc">$</span>peak_dt)</span>
-<span id="cb188-2"><a href="floods.html#cb188-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fl">0.44</span></span>
-<span id="cb188-3"><a href="floods.html#cb188-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb188-4"><a href="floods.html#cb188-4" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate exceedence/non-exceedence with gringorten and return period</span></span>
-<span id="cb188-5"><a href="floods.html#cb188-5" aria-hidden="true" tabindex="-1"></a>peakflows <span class="ot">&lt;-</span> peakflows <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">qi =</span> (ranks <span class="sc">-</span> a) <span class="sc">/</span> (N <span class="sc">+</span> <span class="dv">1</span> <span class="sc">-</span> (<span class="dv">2</span><span class="sc">*</span>a))) <span class="sc">%&gt;%</span></span>
-<span id="cb188-6"><a href="floods.html#cb188-6" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">mutate</span>(<span class="at">pi =</span> <span class="dv">1</span> <span class="sc">-</span> qi) <span class="sc">%&gt;%</span></span>
-<span id="cb188-7"><a href="floods.html#cb188-7" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">mutate</span>(<span class="at">TpEst =</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>pi))</span>
-<span id="cb188-8"><a href="floods.html#cb188-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb188-9"><a href="floods.html#cb188-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Plot peak flows on y and est return period on the x</span></span>
-<span id="cb188-10"><a href="floods.html#cb188-10" aria-hidden="true" tabindex="-1"></a>peakflows <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> TpEst, <span class="at">y =</span> peak_va)) <span class="sc">+</span></span>
-<span id="cb188-11"><a href="floods.html#cb188-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="floods.html#cb189-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">length</span>(peakflows<span class="sc">$</span>peak_dt)</span>
+<span id="cb189-2"><a href="floods.html#cb189-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fl">0.44</span></span>
+<span id="cb189-3"><a href="floods.html#cb189-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb189-4"><a href="floods.html#cb189-4" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate exceedence/non-exceedence with gringorten and return period</span></span>
+<span id="cb189-5"><a href="floods.html#cb189-5" aria-hidden="true" tabindex="-1"></a>peakflows <span class="ot">&lt;-</span> peakflows <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">qi =</span> (ranks <span class="sc">-</span> a) <span class="sc">/</span> (N <span class="sc">+</span> <span class="dv">1</span> <span class="sc">-</span> (<span class="dv">2</span><span class="sc">*</span>a))) <span class="sc">%&gt;%</span></span>
+<span id="cb189-6"><a href="floods.html#cb189-6" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">mutate</span>(<span class="at">pi =</span> <span class="dv">1</span> <span class="sc">-</span> qi) <span class="sc">%&gt;%</span></span>
+<span id="cb189-7"><a href="floods.html#cb189-7" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">mutate</span>(<span class="at">TpEst =</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>pi))</span>
+<span id="cb189-8"><a href="floods.html#cb189-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb189-9"><a href="floods.html#cb189-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Plot peak flows on y and est return period on the x</span></span>
+<span id="cb189-10"><a href="floods.html#cb189-10" aria-hidden="true" tabindex="-1"></a>peakflows <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> TpEst, <span class="at">y =</span> peak_va)) <span class="sc">+</span></span>
+<span id="cb189-11"><a href="floods.html#cb189-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
 <p>Need to fit these data to a distribution in order to make a continuous relationship we can use to predict the discharge of specific return intervals.</p>
 <p>There are many distributions but a common one used is the Gumbel extreme value distribution.</p>
 <p><img src="images/gumbel.png" title="Gumbel Distribution" alt="Gumbel Distribution" />
@@ -377,104 +392,104 @@ x is observed discharge data, u and x are parameters that shape the distribution
 <img src="images/gumbelparams.png" title="Gumbel parameters" width="248" alt="" />
 <p class="caption">Gumbel parameters</p>
 </div>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="floods.html#cb189-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(peakflows<span class="sc">$</span>peak_va)</span>
-<span id="cb189-2"><a href="floods.html#cb189-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb189-3"><a href="floods.html#cb189-3" aria-hidden="true" tabindex="-1"></a>sx <span class="ot">&lt;-</span> <span class="fu">sd</span>(peakflows<span class="sc">$</span>peak_va)</span>
-<span id="cb189-4"><a href="floods.html#cb189-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb189-5"><a href="floods.html#cb189-5" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> (<span class="fu">sqrt</span>(<span class="dv">6</span>)<span class="sc">*</span>sx) <span class="sc">/</span> pi</span>
-<span id="cb189-6"><a href="floods.html#cb189-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb189-7"><a href="floods.html#cb189-7" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> xbar <span class="sc">-</span> (<span class="fl">0.5772</span> <span class="sc">*</span> alpha)</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="floods.html#cb190-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(peakflows<span class="sc">$</span>peak_va)</span>
+<span id="cb190-2"><a href="floods.html#cb190-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb190-3"><a href="floods.html#cb190-3" aria-hidden="true" tabindex="-1"></a>sx <span class="ot">&lt;-</span> <span class="fu">sd</span>(peakflows<span class="sc">$</span>peak_va)</span>
+<span id="cb190-4"><a href="floods.html#cb190-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb190-5"><a href="floods.html#cb190-5" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> (<span class="fu">sqrt</span>(<span class="dv">6</span>)<span class="sc">*</span>sx) <span class="sc">/</span> pi</span>
+<span id="cb190-6"><a href="floods.html#cb190-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb190-7"><a href="floods.html#cb190-7" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> xbar <span class="sc">-</span> (<span class="fl">0.5772</span> <span class="sc">*</span> alpha)</span></code></pre></div>
 <p>Now that we have the parameters that best represent our data as a Gumbel Distribution, we can use the formula to create the theoretical values for the return interval according to that distribution.</p>
 <p><img src="images/gumbel.png" title="Gumbel Distribution" alt="Gumbel Distribution" /> First calculate p theoretical with the equation above.</p>
 <p>Then calculate Tp theoretical (the return period) as T was calculated above Tp = 1 / (1-p)</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="floods.html#cb190-1" aria-hidden="true" tabindex="-1"></a>peakflows <span class="ot">&lt;-</span> peakflows <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">pTheoretical =</span> </span>
-<span id="cb190-2"><a href="floods.html#cb190-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="fu">exp</span>(<span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>((peak_va <span class="sc">-</span> u) <span class="sc">/</span> alpha)))) <span class="sc">%&gt;%</span></span>
-<span id="cb190-3"><a href="floods.html#cb190-3" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">mutate</span>(<span class="at">TpTheoretical =</span> (<span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>pTheoretical)))</span>
-<span id="cb190-4"><a href="floods.html#cb190-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb190-5"><a href="floods.html#cb190-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb190-6"><a href="floods.html#cb190-6" aria-hidden="true" tabindex="-1"></a>peakflows <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> TpEst, <span class="at">y =</span> peak_va, <span class="at">color =</span> <span class="st">&quot;Estimated&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb190-7"><a href="floods.html#cb190-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb190-8"><a href="floods.html#cb190-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> TpTheoretical, <span class="at">y =</span> peak_va, <span class="at">color =</span> <span class="st">&quot;Theoretical&quot;</span>))<span class="sc">+</span></span>
-<span id="cb190-9"><a href="floods.html#cb190-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Annual Peak Flows&quot;</span>)<span class="sc">+</span></span>
-<span id="cb190-10"><a href="floods.html#cb190-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Return Period&quot;</span>)<span class="sc">+</span></span>
-<span id="cb190-11"><a href="floods.html#cb190-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() </span></code></pre></div>
-<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="floods.html#cb191-1" aria-hidden="true" tabindex="-1"></a>peakflows <span class="ot">&lt;-</span> peakflows <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">pTheoretical =</span> </span>
+<span id="cb191-2"><a href="floods.html#cb191-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="fu">exp</span>(<span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>((peak_va <span class="sc">-</span> u) <span class="sc">/</span> alpha)))) <span class="sc">%&gt;%</span></span>
+<span id="cb191-3"><a href="floods.html#cb191-3" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">mutate</span>(<span class="at">TpTheoretical =</span> (<span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>pTheoretical)))</span>
+<span id="cb191-4"><a href="floods.html#cb191-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-5"><a href="floods.html#cb191-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-6"><a href="floods.html#cb191-6" aria-hidden="true" tabindex="-1"></a>peakflows <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> TpEst, <span class="at">y =</span> peak_va, <span class="at">color =</span> <span class="st">&quot;Estimated&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb191-7"><a href="floods.html#cb191-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb191-8"><a href="floods.html#cb191-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> TpTheoretical, <span class="at">y =</span> peak_va, <span class="at">color =</span> <span class="st">&quot;Theoretical&quot;</span>))<span class="sc">+</span></span>
+<span id="cb191-9"><a href="floods.html#cb191-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Annual Peak Flows&quot;</span>)<span class="sc">+</span></span>
+<span id="cb191-10"><a href="floods.html#cb191-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Return Period&quot;</span>)<span class="sc">+</span></span>
+<span id="cb191-11"><a href="floods.html#cb191-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() </span></code></pre></div>
+<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
 <p>Make the same plot but show the theoretical values as a line and log the x axis with limits set to 1 - 100.</p>
 <p>With this plot you could look up the return period for any flood or the discharge level for any return period.</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="floods.html#cb191-1" aria-hidden="true" tabindex="-1"></a>peakflows <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> TpEst, <span class="at">y =</span> peak_va, <span class="at">color =</span> <span class="st">&quot;Estimated&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb191-2"><a href="floods.html#cb191-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb191-3"><a href="floods.html#cb191-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">x =</span> TpTheoretical, <span class="at">y =</span> peak_va, <span class="at">color =</span> <span class="st">&quot;Theoretical&quot;</span>))<span class="sc">+</span></span>
-<span id="cb191-4"><a href="floods.html#cb191-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Annual Peak Flows&quot;</span>)<span class="sc">+</span></span>
-<span id="cb191-5"><a href="floods.html#cb191-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Return Period&quot;</span>)<span class="sc">+</span></span>
-<span id="cb191-6"><a href="floods.html#cb191-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">100</span>))<span class="sc">+</span></span>
-<span id="cb191-7"><a href="floods.html#cb191-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="floods.html#cb192-1" aria-hidden="true" tabindex="-1"></a>peakflows <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> TpEst, <span class="at">y =</span> peak_va, <span class="at">color =</span> <span class="st">&quot;Estimated&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb192-2"><a href="floods.html#cb192-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb192-3"><a href="floods.html#cb192-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">x =</span> TpTheoretical, <span class="at">y =</span> peak_va, <span class="at">color =</span> <span class="st">&quot;Theoretical&quot;</span>))<span class="sc">+</span></span>
+<span id="cb192-4"><a href="floods.html#cb192-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Annual Peak Flows&quot;</span>)<span class="sc">+</span></span>
+<span id="cb192-5"><a href="floods.html#cb192-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Return Period&quot;</span>)<span class="sc">+</span></span>
+<span id="cb192-6"><a href="floods.html#cb192-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">100</span>))<span class="sc">+</span></span>
+<span id="cb192-7"><a href="floods.html#cb192-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <pre><code>## Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
-<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
+<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-108-1.png" width="672" /></p>
 <p>We can create a function that returns the return period for a flood of any magnitude for the gage we are investigating. Creating functions is a great way to streamline your workflow. You can write a function that performs an operation you need to perform a bunch of times, then just use the function rather than re-writing the code.</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="floods.html#cb194-1" aria-hidden="true" tabindex="-1"></a>ReturnPeriod <span class="ot">&lt;-</span> <span class="cf">function</span>(flow, u, alpha){</span>
-<span id="cb194-2"><a href="floods.html#cb194-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb194-3"><a href="floods.html#cb194-3" aria-hidden="true" tabindex="-1"></a>  pTheoretical <span class="ot">=</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>((flow <span class="sc">-</span> u) <span class="sc">/</span> alpha)))</span>
-<span id="cb194-4"><a href="floods.html#cb194-4" aria-hidden="true" tabindex="-1"></a>  TpTheoretical <span class="ot">=</span> (<span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>pTheoretical))</span>
-<span id="cb194-5"><a href="floods.html#cb194-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb194-6"><a href="floods.html#cb194-6" aria-hidden="true" tabindex="-1"></a>  TpTheoretical</span>
-<span id="cb194-7"><a href="floods.html#cb194-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb194-8"><a href="floods.html#cb194-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb194-9"><a href="floods.html#cb194-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ReturnPeriod</span>(<span class="dv">120000</span>, u, alpha)</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="floods.html#cb195-1" aria-hidden="true" tabindex="-1"></a>ReturnPeriod <span class="ot">&lt;-</span> <span class="cf">function</span>(flow, u, alpha){</span>
+<span id="cb195-2"><a href="floods.html#cb195-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb195-3"><a href="floods.html#cb195-3" aria-hidden="true" tabindex="-1"></a>  pTheoretical <span class="ot">=</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>((flow <span class="sc">-</span> u) <span class="sc">/</span> alpha)))</span>
+<span id="cb195-4"><a href="floods.html#cb195-4" aria-hidden="true" tabindex="-1"></a>  TpTheoretical <span class="ot">=</span> (<span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>pTheoretical))</span>
+<span id="cb195-5"><a href="floods.html#cb195-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb195-6"><a href="floods.html#cb195-6" aria-hidden="true" tabindex="-1"></a>  TpTheoretical</span>
+<span id="cb195-7"><a href="floods.html#cb195-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb195-8"><a href="floods.html#cb195-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-9"><a href="floods.html#cb195-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ReturnPeriod</span>(<span class="dv">120000</span>, u, alpha)</span></code></pre></div>
 <pre><code>## [1] 88.25008</code></pre>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="floods.html#cb196-1" aria-hidden="true" tabindex="-1"></a>Flows <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">25000</span>, <span class="dv">150000</span>, <span class="at">by =</span> <span class="dv">1000</span>)</span>
-<span id="cb196-2"><a href="floods.html#cb196-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-3"><a href="floods.html#cb196-3" aria-hidden="true" tabindex="-1"></a>RPFlows <span class="ot">&lt;-</span> <span class="fu">ReturnPeriod</span>(Flows, u, alpha)</span>
-<span id="cb196-4"><a href="floods.html#cb196-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-5"><a href="floods.html#cb196-5" aria-hidden="true" tabindex="-1"></a>newline <span class="ot">&lt;-</span> <span class="fu">tibble</span>(Flows, RPFlows)</span>
-<span id="cb196-6"><a href="floods.html#cb196-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-7"><a href="floods.html#cb196-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(newline, <span class="fu">aes</span>(<span class="at">x =</span> RPFlows, <span class="at">y =</span> Flows))<span class="sc">+</span></span>
-<span id="cb196-8"><a href="floods.html#cb196-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_smooth</span>()<span class="sc">+</span></span>
-<span id="cb196-9"><a href="floods.html#cb196-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ylab</span>(<span class="st">&quot;Annual Peak Flows&quot;</span>)<span class="sc">+</span></span>
-<span id="cb196-10"><a href="floods.html#cb196-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">xlab</span>(<span class="st">&quot;Return Period&quot;</span>)<span class="sc">+</span></span>
-<span id="cb196-11"><a href="floods.html#cb196-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_x_log10</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">100</span>))<span class="sc">+</span></span>
-<span id="cb196-12"><a href="floods.html#cb196-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_classic</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="floods.html#cb197-1" aria-hidden="true" tabindex="-1"></a>Flows <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">25000</span>, <span class="dv">150000</span>, <span class="at">by =</span> <span class="dv">1000</span>)</span>
+<span id="cb197-2"><a href="floods.html#cb197-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb197-3"><a href="floods.html#cb197-3" aria-hidden="true" tabindex="-1"></a>RPFlows <span class="ot">&lt;-</span> <span class="fu">ReturnPeriod</span>(Flows, u, alpha)</span>
+<span id="cb197-4"><a href="floods.html#cb197-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb197-5"><a href="floods.html#cb197-5" aria-hidden="true" tabindex="-1"></a>newline <span class="ot">&lt;-</span> <span class="fu">tibble</span>(Flows, RPFlows)</span>
+<span id="cb197-6"><a href="floods.html#cb197-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb197-7"><a href="floods.html#cb197-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(newline, <span class="fu">aes</span>(<span class="at">x =</span> RPFlows, <span class="at">y =</span> Flows))<span class="sc">+</span></span>
+<span id="cb197-8"><a href="floods.html#cb197-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_smooth</span>()<span class="sc">+</span></span>
+<span id="cb197-9"><a href="floods.html#cb197-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ylab</span>(<span class="st">&quot;Annual Peak Flows&quot;</span>)<span class="sc">+</span></span>
+<span id="cb197-10"><a href="floods.html#cb197-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">xlab</span>(<span class="st">&quot;Return Period&quot;</span>)<span class="sc">+</span></span>
+<span id="cb197-11"><a href="floods.html#cb197-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_x_log10</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">100</span>))<span class="sc">+</span></span>
+<span id="cb197-12"><a href="floods.html#cb197-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_classic</span>()</span></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <pre><code>## Warning: Removed 28 rows containing non-finite values (stat_smooth).</code></pre>
-<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
-<div id="challenge-create-a-function" class="section level2" number="12.1">
-<h2><span class="header-section-number">12.1</span> Challenge: Create a function</h2>
+<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
+<div id="challenge-create-a-function" class="section level2" number="13.1">
+<h2><span class="header-section-number">13.1</span> Challenge: Create a function</h2>
 <p>Create a function that returns the theoretical return period for a given flood magnitude when given the the flood magnitude you want to investigate, the gage id, startdate, and enddate for the records you want.</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="floods.html#cb199-1" aria-hidden="true" tabindex="-1"></a>RPusgs <span class="ot">&lt;-</span> <span class="cf">function</span>(magnitude, gageid, startDate, endDate){</span>
-<span id="cb199-2"><a href="floods.html#cb199-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb199-3"><a href="floods.html#cb199-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Read data from USGS</span></span>
-<span id="cb199-4"><a href="floods.html#cb199-4" aria-hidden="true" tabindex="-1"></a>  peakflows <span class="ot">&lt;-</span> <span class="fu">readNWISpeak</span>(gageid, <span class="at">startDate =</span> startDate, <span class="at">endDate =</span> endDate)</span>
-<span id="cb199-5"><a href="floods.html#cb199-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb199-6"><a href="floods.html#cb199-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Create rank column and clean up</span></span>
-<span id="cb199-7"><a href="floods.html#cb199-7" aria-hidden="true" tabindex="-1"></a>  peakflows <span class="ot">&lt;-</span> peakflows <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ranks =</span> <span class="fu">rank</span>(<span class="sc">-</span>peak_va)) <span class="sc">%&gt;%</span></span>
-<span id="cb199-8"><a href="floods.html#cb199-8" aria-hidden="true" tabindex="-1"></a>              <span class="fu">select</span>(peak_dt, peak_va, ranks)</span>
-<span id="cb199-9"><a href="floods.html#cb199-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb199-10"><a href="floods.html#cb199-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Set N and a constants</span></span>
-<span id="cb199-11"><a href="floods.html#cb199-11" aria-hidden="true" tabindex="-1"></a>  N <span class="ot">&lt;-</span> <span class="fu">length</span>(peakflows<span class="sc">$</span>peak_dt)</span>
-<span id="cb199-12"><a href="floods.html#cb199-12" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fl">0.44</span></span>
-<span id="cb199-13"><a href="floods.html#cb199-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb199-14"><a href="floods.html#cb199-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">#calculate exceedence/non-exceedence with gringorten and return period estimates</span></span>
-<span id="cb199-15"><a href="floods.html#cb199-15" aria-hidden="true" tabindex="-1"></a>  peakflows <span class="ot">&lt;-</span> peakflows <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">qi =</span> (ranks <span class="sc">-</span> a) <span class="sc">/</span> (N <span class="sc">+</span> <span class="dv">1</span> <span class="sc">-</span> (<span class="dv">2</span><span class="sc">*</span>a))) <span class="sc">%&gt;%</span></span>
-<span id="cb199-16"><a href="floods.html#cb199-16" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">mutate</span>(<span class="at">pi =</span> <span class="dv">1</span> <span class="sc">-</span> qi) <span class="sc">%&gt;%</span></span>
-<span id="cb199-17"><a href="floods.html#cb199-17" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">mutate</span>(<span class="at">TpEst =</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>pi))</span>
-<span id="cb199-18"><a href="floods.html#cb199-18" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb199-19"><a href="floods.html#cb199-19" aria-hidden="true" tabindex="-1"></a>  <span class="co">#calculate parameters for Gumbel distribution</span></span>
-<span id="cb199-20"><a href="floods.html#cb199-20" aria-hidden="true" tabindex="-1"></a>  xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(peakflows<span class="sc">$</span>peak_va)</span>
-<span id="cb199-21"><a href="floods.html#cb199-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb199-22"><a href="floods.html#cb199-22" aria-hidden="true" tabindex="-1"></a>  sx <span class="ot">&lt;-</span> <span class="fu">sd</span>(peakflows<span class="sc">$</span>peak_va)</span>
-<span id="cb199-23"><a href="floods.html#cb199-23" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb199-24"><a href="floods.html#cb199-24" aria-hidden="true" tabindex="-1"></a>  alpha <span class="ot">&lt;-</span> (<span class="fu">sqrt</span>(<span class="dv">6</span>)<span class="sc">*</span>sx) <span class="sc">/</span> pi</span>
-<span id="cb199-25"><a href="floods.html#cb199-25" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb199-26"><a href="floods.html#cb199-26" aria-hidden="true" tabindex="-1"></a>  u <span class="ot">&lt;-</span> xbar <span class="sc">-</span> (<span class="fl">0.5772</span> <span class="sc">*</span> alpha)</span>
-<span id="cb199-27"><a href="floods.html#cb199-27" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb199-28"><a href="floods.html#cb199-28" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Calculate p and Tp (return interval) with Gumbel distribution</span></span>
-<span id="cb199-29"><a href="floods.html#cb199-29" aria-hidden="true" tabindex="-1"></a>  pTheoretical <span class="ot">=</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>((magnitude <span class="sc">-</span> u) <span class="sc">/</span> alpha)))</span>
-<span id="cb199-30"><a href="floods.html#cb199-30" aria-hidden="true" tabindex="-1"></a>  TpTheoretical <span class="ot">=</span> (<span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>pTheoretical))</span>
-<span id="cb199-31"><a href="floods.html#cb199-31" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb199-32"><a href="floods.html#cb199-32" aria-hidden="true" tabindex="-1"></a>  TpTheoretical</span>
-<span id="cb199-33"><a href="floods.html#cb199-33" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb199-34"><a href="floods.html#cb199-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb199-35"><a href="floods.html#cb199-35" aria-hidden="true" tabindex="-1"></a><span class="fu">RPusgs</span>(<span class="dv">120000</span>, radford, <span class="st">&quot;1950-01-01&quot;</span>, <span class="st">&quot;2021-01-01&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="floods.html#cb200-1" aria-hidden="true" tabindex="-1"></a>RPusgs <span class="ot">&lt;-</span> <span class="cf">function</span>(magnitude, gageid, startDate, endDate){</span>
+<span id="cb200-2"><a href="floods.html#cb200-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb200-3"><a href="floods.html#cb200-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Read data from USGS</span></span>
+<span id="cb200-4"><a href="floods.html#cb200-4" aria-hidden="true" tabindex="-1"></a>  peakflows <span class="ot">&lt;-</span> <span class="fu">readNWISpeak</span>(gageid, <span class="at">startDate =</span> startDate, <span class="at">endDate =</span> endDate)</span>
+<span id="cb200-5"><a href="floods.html#cb200-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-6"><a href="floods.html#cb200-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Create rank column and clean up</span></span>
+<span id="cb200-7"><a href="floods.html#cb200-7" aria-hidden="true" tabindex="-1"></a>  peakflows <span class="ot">&lt;-</span> peakflows <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ranks =</span> <span class="fu">rank</span>(<span class="sc">-</span>peak_va)) <span class="sc">%&gt;%</span></span>
+<span id="cb200-8"><a href="floods.html#cb200-8" aria-hidden="true" tabindex="-1"></a>              <span class="fu">select</span>(peak_dt, peak_va, ranks)</span>
+<span id="cb200-9"><a href="floods.html#cb200-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb200-10"><a href="floods.html#cb200-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Set N and a constants</span></span>
+<span id="cb200-11"><a href="floods.html#cb200-11" aria-hidden="true" tabindex="-1"></a>  N <span class="ot">&lt;-</span> <span class="fu">length</span>(peakflows<span class="sc">$</span>peak_dt)</span>
+<span id="cb200-12"><a href="floods.html#cb200-12" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fl">0.44</span></span>
+<span id="cb200-13"><a href="floods.html#cb200-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-14"><a href="floods.html#cb200-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">#calculate exceedence/non-exceedence with gringorten and return period estimates</span></span>
+<span id="cb200-15"><a href="floods.html#cb200-15" aria-hidden="true" tabindex="-1"></a>  peakflows <span class="ot">&lt;-</span> peakflows <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">qi =</span> (ranks <span class="sc">-</span> a) <span class="sc">/</span> (N <span class="sc">+</span> <span class="dv">1</span> <span class="sc">-</span> (<span class="dv">2</span><span class="sc">*</span>a))) <span class="sc">%&gt;%</span></span>
+<span id="cb200-16"><a href="floods.html#cb200-16" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">mutate</span>(<span class="at">pi =</span> <span class="dv">1</span> <span class="sc">-</span> qi) <span class="sc">%&gt;%</span></span>
+<span id="cb200-17"><a href="floods.html#cb200-17" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">mutate</span>(<span class="at">TpEst =</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>pi))</span>
+<span id="cb200-18"><a href="floods.html#cb200-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb200-19"><a href="floods.html#cb200-19" aria-hidden="true" tabindex="-1"></a>  <span class="co">#calculate parameters for Gumbel distribution</span></span>
+<span id="cb200-20"><a href="floods.html#cb200-20" aria-hidden="true" tabindex="-1"></a>  xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(peakflows<span class="sc">$</span>peak_va)</span>
+<span id="cb200-21"><a href="floods.html#cb200-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-22"><a href="floods.html#cb200-22" aria-hidden="true" tabindex="-1"></a>  sx <span class="ot">&lt;-</span> <span class="fu">sd</span>(peakflows<span class="sc">$</span>peak_va)</span>
+<span id="cb200-23"><a href="floods.html#cb200-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb200-24"><a href="floods.html#cb200-24" aria-hidden="true" tabindex="-1"></a>  alpha <span class="ot">&lt;-</span> (<span class="fu">sqrt</span>(<span class="dv">6</span>)<span class="sc">*</span>sx) <span class="sc">/</span> pi</span>
+<span id="cb200-25"><a href="floods.html#cb200-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb200-26"><a href="floods.html#cb200-26" aria-hidden="true" tabindex="-1"></a>  u <span class="ot">&lt;-</span> xbar <span class="sc">-</span> (<span class="fl">0.5772</span> <span class="sc">*</span> alpha)</span>
+<span id="cb200-27"><a href="floods.html#cb200-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb200-28"><a href="floods.html#cb200-28" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Calculate p and Tp (return interval) with Gumbel distribution</span></span>
+<span id="cb200-29"><a href="floods.html#cb200-29" aria-hidden="true" tabindex="-1"></a>  pTheoretical <span class="ot">=</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>((magnitude <span class="sc">-</span> u) <span class="sc">/</span> alpha)))</span>
+<span id="cb200-30"><a href="floods.html#cb200-30" aria-hidden="true" tabindex="-1"></a>  TpTheoretical <span class="ot">=</span> (<span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>pTheoretical))</span>
+<span id="cb200-31"><a href="floods.html#cb200-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb200-32"><a href="floods.html#cb200-32" aria-hidden="true" tabindex="-1"></a>  TpTheoretical</span>
+<span id="cb200-33"><a href="floods.html#cb200-33" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb200-34"><a href="floods.html#cb200-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-35"><a href="floods.html#cb200-35" aria-hidden="true" tabindex="-1"></a><span class="fu">RPusgs</span>(<span class="dv">120000</span>, radford, <span class="st">&quot;1950-01-01&quot;</span>, <span class="st">&quot;2021-01-01&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] 88.25008</code></pre>
 
 </div>

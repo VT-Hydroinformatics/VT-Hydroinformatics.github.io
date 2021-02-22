@@ -24,7 +24,7 @@
 <meta name="author" content="JP Gannon" />
 
 
-<meta name="date" content="2021-02-19" />
+<meta name="date" content="2021-02-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="Summative1.html"/>
-<link rel="next" href="lfas.html"/>
+<link rel="next" href="flow-duration-curves.html"/>
 <script src="libs/header-attrs-2.4.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -132,10 +132,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">Hydroinformatics</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.0.1" data-path="index.html"><a href="index.html#table-of-contents"><i class="fa fa-check"></i><b>1.0.1</b> Table of contents:</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="Plotting.html"><a href="Plotting.html"><i class="fa fa-check"></i><b>2</b> Intro to Plotting</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="Plotting.html"><a href="Plotting.html#download-and-install-tidyverse-library"><i class="fa fa-check"></i><b>2.1</b> Download and install tidyverse library</a></li>
@@ -153,7 +156,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="Programming.html"><a href="Programming.html"><i class="fa fa-check"></i><b>3</b> R Tidyverse Programming Basics</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="Programming.html"><a href="Programming.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.1" data-path="Programming.html"><a href="Programming.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
 <li class="chapter" data-level="3.2" data-path="Programming.html"><a href="Programming.html#you-can-use-r-as-a-calculator"><i class="fa fa-check"></i><b>3.2</b> You can use R as a calculator</a></li>
 <li class="chapter" data-level="3.3" data-path="Programming.html"><a href="Programming.html#you-can-create-new-objects-using--"><i class="fa fa-check"></i><b>3.3</b> You can create new objects using &lt;-</a></li>
 <li class="chapter" data-level="3.4" data-path="Programming.html"><a href="Programming.html#using-functions"><i class="fa fa-check"></i><b>3.4</b> Using functions</a></li>
@@ -195,7 +198,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5" data-path="introactivity.html"><a href="introactivity.html#problem-5"><i class="fa fa-check"></i><b>4.5</b> Problem 5</a></li>
 <li class="chapter" data-level="4.6" data-path="introactivity.html"><a href="introactivity.html#problem-6"><i class="fa fa-check"></i><b>4.6</b> Problem 6</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="stats.html"><a href="stats.html"><i class="fa fa-check"></i><b>5</b> Intro/Review of Basic Statistics</a>
+<li class="chapter" data-level="5" data-path="stats.html"><a href="stats.html"><i class="fa fa-check"></i><b>5</b> Introduction to Basic Statistics</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="stats.html"><a href="stats.html#reading-for-this-section-statistical-methods-in-water-resources-chapter-1"><i class="fa fa-check"></i><b>5.1</b> Reading for this section: Statistical Methods in Water Resources: Chapter 1</a></li>
 <li class="chapter" data-level="5.2" data-path="stats.html"><a href="stats.html#questions-for-today"><i class="fa fa-check"></i><b>5.2</b> Questions for today:</a>
@@ -214,14 +217,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5" data-path="stats.html"><a href="stats.html#measures-of-variability"><i class="fa fa-check"></i><b>5.5</b> Measures of variability</a></li>
 <li class="chapter" data-level="5.6" data-path="stats.html"><a href="stats.html#what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one"><i class="fa fa-check"></i><b>5.6</b> What is a normal distribution and how can we determine if we have one?</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html"><i class="fa fa-check"></i><b>6</b> Intro Stats Activity</a>
+<li class="chapter" data-level="6" data-path="statsactivity.html"><a href="statsactivity.html"><i class="fa fa-check"></i><b>6</b> Intro Stats Activity</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#load-the-tidyverse-and-patchwork-libraries-and-read-in-the-flashy-and-pine-datasets."><i class="fa fa-check"></i><b>6.1</b> 1. Load the tidyverse and patchwork libraries and read in the Flashy and Pine datasets.</a></li>
-<li class="chapter" data-level="6.2" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#using-the-flashy-dataset-make-a-pdf-of-the-average-basin-rainfall-pptavg_basin-for-the-northeast-aggecoregion.-on-that-pdf-add-vertical-lines-showing-the-mean-median-standard-deviation-and-iqr.-make-each-a-different-color-and-note-which-is-which-in-a-typed-answer-below-this-question.-or-if-you-want-an-extra-challenged-make-a-custom-legend-that-shows-this"><i class="fa fa-check"></i><b>6.2</b> 2. Using the flashy dataset, make a pdf of the average basin rainfall (PPTAVG_BASIN) for the NorthEast AGGECOREGION. On that pdf, add vertical lines showing the mean, median, standard deviation, and IQR. Make each a different color and note which is which in a typed answer below this question. (or if you want an extra challenged, make a custom legend that shows this)</a></li>
-<li class="chapter" data-level="6.3" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#perform-a-shapiro-wilk-test-for-normality-on-the-data-from-question-2.-using-the-results-from-that-test-and-the-plot-and-stats-from-question-2-discuss-whether-or-not-the-distribution-is-normal."><i class="fa fa-check"></i><b>6.3</b> 3. Perform a Shapiro-Wilk test for normality on the data from question 2. Using the results from that test and the plot and stats from question 2, discuss whether or not the distribution is normal.</a></li>
-<li class="chapter" data-level="6.4" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#make-a-plot-that-shows-the-distribution-of-the-data-from-the-pine-watershed-and-the-nfdr-watershed-two-pdfs-on-the-same-plot.-log-the-x-axis."><i class="fa fa-check"></i><b>6.4</b> 4. Make a plot that shows the distribution of the data from the PINE watershed and the NFDR watershed (two pdfs on the same plot). Log the x axis.</a></li>
-<li class="chapter" data-level="6.5" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#you-want-to-compare-how-variable-the-discharge-is-in-each-of-the-watersheds-in-question-4.-which-measure-of-spread-would-you-use-and-why-if-you-wanted-to-measure-the-central-tendency-which-measure-would-you-use-and-why"><i class="fa fa-check"></i><b>6.5</b> 5. You want to compare how variable the discharge is in each of the watersheds in question 4. Which measure of spread would you use and why? If you wanted to measure the central tendency which measure would you use and why?</a></li>
-<li class="chapter" data-level="6.6" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#compute-3-measures-of-spread-and-2-measures-of-central-tendency-for-the-pine-and-nfdr-watershed.-hint-use-group_by-and-summarize-be-sure-your-code-outputs-the-result.-which-watershed-has-higher-flow-which-one-has-more-variable-flow-how-do-you-know"><i class="fa fa-check"></i><b>6.6</b> 6. Compute 3 measures of spread and 2 measures of central tendency for the PINE and NFDR watershed. (hint: use group_by() and summarize()) Be sure your code outputs the result. Which watershed has higher flow? Which one has more variable flow? How do you know?</a></li>
+<li class="chapter" data-level="6.1" data-path="statsactivity.html"><a href="statsactivity.html#load-the-tidyverse-and-patchwork-libraries-and-read-in-the-flashy-and-pine-datasets."><i class="fa fa-check"></i><b>6.1</b> 1. Load the tidyverse and patchwork libraries and read in the Flashy and Pine datasets.</a></li>
+<li class="chapter" data-level="6.2" data-path="statsactivity.html"><a href="statsactivity.html#using-the-flashy-dataset-make-a-pdf-of-the-average-basin-rainfall-pptavg_basin-for-the-northeast-aggecoregion.-on-that-pdf-add-vertical-lines-showing-the-mean-median-standard-deviation-and-iqr.-make-each-a-different-color-and-note-which-is-which-in-a-typed-answer-below-this-question.-or-if-you-want-an-extra-challenged-make-a-custom-legend-that-shows-this"><i class="fa fa-check"></i><b>6.2</b> 2. Using the flashy dataset, make a pdf of the average basin rainfall (PPTAVG_BASIN) for the NorthEast AGGECOREGION. On that pdf, add vertical lines showing the mean, median, standard deviation, and IQR. Make each a different color and note which is which in a typed answer below this question. (or if you want an extra challenged, make a custom legend that shows this)</a></li>
+<li class="chapter" data-level="6.3" data-path="statsactivity.html"><a href="statsactivity.html#perform-a-shapiro-wilk-test-for-normality-on-the-data-from-question-2.-using-the-results-from-that-test-and-the-plot-and-stats-from-question-2-discuss-whether-or-not-the-distribution-is-normal."><i class="fa fa-check"></i><b>6.3</b> 3. Perform a Shapiro-Wilk test for normality on the data from question 2. Using the results from that test and the plot and stats from question 2, discuss whether or not the distribution is normal.</a></li>
+<li class="chapter" data-level="6.4" data-path="statsactivity.html"><a href="statsactivity.html#make-a-plot-that-shows-the-distribution-of-the-data-from-the-pine-watershed-and-the-nfdr-watershed-two-pdfs-on-the-same-plot.-log-the-x-axis."><i class="fa fa-check"></i><b>6.4</b> 4. Make a plot that shows the distribution of the data from the PINE watershed and the NFDR watershed (two pdfs on the same plot). Log the x axis.</a></li>
+<li class="chapter" data-level="6.5" data-path="statsactivity.html"><a href="statsactivity.html#you-want-to-compare-how-variable-the-discharge-is-in-each-of-the-watersheds-in-question-4.-which-measure-of-spread-would-you-use-and-why-if-you-wanted-to-measure-the-central-tendency-which-measure-would-you-use-and-why"><i class="fa fa-check"></i><b>6.5</b> 5. You want to compare how variable the discharge is in each of the watersheds in question 4. Which measure of spread would you use and why? If you wanted to measure the central tendency which measure would you use and why?</a></li>
+<li class="chapter" data-level="6.6" data-path="statsactivity.html"><a href="statsactivity.html#compute-3-measures-of-spread-and-2-measures-of-central-tendency-for-the-pine-and-nfdr-watershed.-hint-use-group_by-and-summarize-be-sure-your-code-outputs-the-result.-which-watershed-has-higher-flow-which-one-has-more-variable-flow-how-do-you-know"><i class="fa fa-check"></i><b>6.6</b> 6. Compute 3 measures of spread and 2 measures of central tendency for the PINE and NFDR watershed. (hint: use group_by() and summarize()) Be sure your code outputs the result. Which watershed has higher flow? Which one has more variable flow? How do you know?</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="getdata.html"><a href="getdata.html"><i class="fa fa-check"></i><b>7</b> Joins, Pivots, and USGS dataRetrieval</a>
 <ul>
@@ -287,12 +290,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.10" data-path="Summative1.html"><a href="Summative1.html#using-the-data-from-9-plot-flow-on-the-y-axis-and-date-on-the-x-axis-showing-the-data-as-a-line-and-coloring-by-gage-name."><i class="fa fa-check"></i><b>9.10</b> 10. Using the data from #9, Plot flow on the y axis and date on the x axis, showing the data as a line, and coloring by gage name.</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="fdcs.html"><a href="fdcs.html"><i class="fa fa-check"></i><b>10</b> Flow Duration Curves</a></li>
-<li class="chapter" data-level="11" data-path="lfas.html"><a href="lfas.html"><i class="fa fa-check"></i><b>11</b> Low Flow Analysis</a></li>
-<li class="chapter" data-level="12" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>12</b> Flood Frequency Analysis</a>
+<li class="chapter" data-level="11" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html"><i class="fa fa-check"></i><b>11</b> Flow Duration Curves</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="floods.html"><a href="floods.html#challenge-create-a-function"><i class="fa fa-check"></i><b>12.1</b> Challenge: Create a function</a></li>
+<li class="chapter" data-level="11.1" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#get-data"><i class="fa fa-check"></i><b>11.1</b> Get data</a></li>
+<li class="chapter" data-level="11.2" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#review-describe-the-distribution"><i class="fa fa-check"></i><b>11.2</b> Review: describe the distribution</a></li>
+<li class="chapter" data-level="11.3" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#ecdfs"><i class="fa fa-check"></i><b>11.3</b> ECDFs</a></li>
+<li class="chapter" data-level="11.4" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#calculate-flow-exceedence-probabilities"><i class="fa fa-check"></i><b>11.4</b> Calculate flow exceedence probabilities</a></li>
+<li class="chapter" data-level="11.5" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#plot-a-flow-duration-curve-using-the-probabilities"><i class="fa fa-check"></i><b>11.5</b> Plot a Flow Duration Curve using the probabilities</a></li>
+<li class="chapter" data-level="11.6" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#make-an-almost-fdc-with-stat_ecdf"><i class="fa fa-check"></i><b>11.6</b> Make an almost FDC with stat_ecdf</a></li>
+<li class="chapter" data-level="11.7" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#example-use-of-an-fdc"><i class="fa fa-check"></i><b>11.7</b> Example use of an FDC</a></li>
+<li class="chapter" data-level="11.8" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#compare-to-a-boxplot-of-the-same-data"><i class="fa fa-check"></i><b>11.8</b> Compare to a boxplot of the same data</a></li>
+<li class="chapter" data-level="11.9" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#challenge-examining-flow-regime-change-at-the-grand-canyon"><i class="fa fa-check"></i><b>11.9</b> Challenge: Examining flow regime change at the Grand Canyon</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>13</b> Introduction</a></li>
+<li class="chapter" data-level="12" data-path="lfas.html"><a href="lfas.html"><i class="fa fa-check"></i><b>12</b> Low Flow Analysis</a></li>
+<li class="chapter" data-level="13" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>13</b> Flood Frequency Analysis</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="floods.html"><a href="floods.html#challenge-create-a-function"><i class="fa fa-check"></i><b>13.1</b> Challenge: Create a function</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>14</b> Introduction</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -315,107 +330,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="fdcs" class="section level1" number="10">
 <h1><span class="header-section-number">Chapter 10</span> Flow Duration Curves</h1>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="fdcs.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb160-2"><a href="fdcs.html#cb160-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dataRetrieval)</span>
-<span id="cb160-3"><a href="fdcs.html#cb160-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb160-4"><a href="fdcs.html#cb160-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb160-5"><a href="fdcs.html#cb160-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb160-6"><a href="fdcs.html#cb160-6" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_classic</span>())</span></code></pre></div>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="fdcs.html#cb161-1" aria-hidden="true" tabindex="-1"></a>siteno <span class="ot">&lt;-</span> <span class="st">&quot;02138500&quot;</span> <span class="co">#Linville NC</span></span>
-<span id="cb161-2"><a href="fdcs.html#cb161-2" aria-hidden="true" tabindex="-1"></a>startDate <span class="ot">&lt;-</span> <span class="st">&quot;1960-01-01&quot;</span></span>
-<span id="cb161-3"><a href="fdcs.html#cb161-3" aria-hidden="true" tabindex="-1"></a>endDate <span class="ot">&lt;-</span> <span class="st">&quot;2020-01-01&quot;</span></span>
-<span id="cb161-4"><a href="fdcs.html#cb161-4" aria-hidden="true" tabindex="-1"></a>parameter <span class="ot">&lt;-</span> <span class="st">&quot;00060&quot;</span></span>
-<span id="cb161-5"><a href="fdcs.html#cb161-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb161-6"><a href="fdcs.html#cb161-6" aria-hidden="true" tabindex="-1"></a>Qdat <span class="ot">&lt;-</span> <span class="fu">readNWISdv</span>(siteno, parameter, startDate, endDate) <span class="sc">%&gt;%</span> </span>
-<span id="cb161-7"><a href="fdcs.html#cb161-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">renameNWISColumns</span>()</span>
-<span id="cb161-8"><a href="fdcs.html#cb161-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb161-9"><a href="fdcs.html#cb161-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb161-10"><a href="fdcs.html#cb161-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Look at the data</span></span>
-<span id="cb161-11"><a href="fdcs.html#cb161-11" aria-hidden="true" tabindex="-1"></a>Qdat <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Date, <span class="at">y =</span> Flow))<span class="sc">+</span></span>
-<span id="cb161-12"><a href="fdcs.html#cb161-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
-<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-86-1.png" width="672" /></p>
-<p>How can we look at the distribution of the flow data?</p>
-<p>What is the median flow value?
-What does this tell us about flow at that river? How often is the river at or below that value?
-Could you pick that number off the plot?
-What about the flow the river is at or above only 5% of the time?</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="fdcs.html#cb162-1" aria-hidden="true" tabindex="-1"></a>Qdat <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(Flow))<span class="sc">+</span></span>
-<span id="cb162-2"><a href="fdcs.html#cb162-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density</span>()<span class="sc">+</span></span>
-<span id="cb162-3"><a href="fdcs.html#cb162-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>()</span></code></pre></div>
-<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-87-1.png" width="672" />
-Let’s look at an Empirical Cumulative Density Function (ECDF) of the data. What does this show?</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="fdcs.html#cb163-1" aria-hidden="true" tabindex="-1"></a>Qdat <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(Flow))<span class="sc">+</span></span>
-<span id="cb163-2"><a href="fdcs.html#cb163-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_ecdf</span>()<span class="sc">+</span></span>
-<span id="cb163-3"><a href="fdcs.html#cb163-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>()</span></code></pre></div>
-<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-88-1.png" width="672" /></p>
-<p>Exceedence probability (P)
-P = 100 * [M / (n + 1)]
-P = Probability a flow is equalled or exceeded
-M = Ranked position of the flow
-n = total number of observations in data record</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="fdcs.html#cb164-1" aria-hidden="true" tabindex="-1"></a>Qdat <span class="ot">&lt;-</span> Qdat <span class="sc">%&gt;%</span></span>
-<span id="cb164-2"><a href="fdcs.html#cb164-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">rank</span>(<span class="sc">-</span>Flow)) <span class="sc">%&gt;%</span> <span class="co">#Flow is negative to make high flows ranked low (#1)</span></span>
-<span id="cb164-3"><a href="fdcs.html#cb164-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">P =</span> <span class="dv">100</span> <span class="sc">*</span> (rank <span class="sc">/</span> (<span class="fu">length</span>(Flow) <span class="sc">+</span> <span class="dv">1</span>)))</span>
-<span id="cb164-4"><a href="fdcs.html#cb164-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb164-5"><a href="fdcs.html#cb164-5" aria-hidden="true" tabindex="-1"></a>Qdat <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> P, <span class="at">y =</span> Flow))<span class="sc">+</span></span>
-<span id="cb164-6"><a href="fdcs.html#cb164-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb164-7"><a href="fdcs.html#cb164-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()<span class="sc">+</span></span>
-<span id="cb164-8"><a href="fdcs.html#cb164-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;% Time flow equalled or exceeded&quot;</span>)<span class="sc">+</span></span>
-<span id="cb164-9"><a href="fdcs.html#cb164-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Q (cfs)&quot;</span>)</span></code></pre></div>
-<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-89-1.png" width="672" /></p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="fdcs.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Can you make the ECDF plot look like this?</span></span>
-<span id="cb165-2"><a href="fdcs.html#cb165-2" aria-hidden="true" tabindex="-1"></a>Qdat <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(Flow))<span class="sc">+</span></span>
-<span id="cb165-3"><a href="fdcs.html#cb165-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_ecdf</span>()<span class="sc">+</span></span>
-<span id="cb165-4"><a href="fdcs.html#cb165-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>()<span class="sc">+</span></span>
-<span id="cb165-5"><a href="fdcs.html#cb165-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
-<span id="cb165-6"><a href="fdcs.html#cb165-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Q (cfs)&quot;</span>)<span class="sc">+</span></span>
-<span id="cb165-7"><a href="fdcs.html#cb165-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Probability flow is not exceeded&quot;</span>)</span></code></pre></div>
-<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-90-1.png" width="672" />
-It looked like the flow regime may have shifted a bit in the data. Let’s use flow duratoin curves to examine potential differences. We can come up with groups and then use group_by to run the analysis by groups instead of the whole dataset</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="fdcs.html#cb166-1" aria-hidden="true" tabindex="-1"></a>Qdat <span class="ot">&lt;-</span> Qdat <span class="sc">%&gt;%</span></span>
-<span id="cb166-2"><a href="fdcs.html#cb166-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">year</span>(Date)) <span class="sc">%&gt;%</span></span>
-<span id="cb166-3"><a href="fdcs.html#cb166-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">period =</span> <span class="fu">case_when</span>( year <span class="sc">&lt;=</span> <span class="dv">1980</span> <span class="sc">~</span> <span class="st">&quot;1960-1980&quot;</span>,</span>
-<span id="cb166-4"><a href="fdcs.html#cb166-4" aria-hidden="true" tabindex="-1"></a>                             year <span class="sc">&gt;</span> <span class="dv">1980</span> <span class="sc">&amp;</span> year <span class="sc">&lt;=</span> <span class="dv">2000</span> <span class="sc">~</span> <span class="st">&quot;1980-2000&quot;</span>,</span>
-<span id="cb166-5"><a href="fdcs.html#cb166-5" aria-hidden="true" tabindex="-1"></a>                             year <span class="sc">&gt;</span> <span class="dv">2000</span> <span class="sc">~</span> <span class="st">&quot;2000-2020&quot;</span>))</span>
-<span id="cb166-6"><a href="fdcs.html#cb166-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb166-7"><a href="fdcs.html#cb166-7" aria-hidden="true" tabindex="-1"></a>Qdat <span class="ot">&lt;-</span> Qdat <span class="sc">%&gt;%</span></span>
-<span id="cb166-8"><a href="fdcs.html#cb166-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(period) <span class="sc">%&gt;%</span></span>
-<span id="cb166-9"><a href="fdcs.html#cb166-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">rank</span>(<span class="sc">-</span>Flow)) <span class="sc">%&gt;%</span> </span>
-<span id="cb166-10"><a href="fdcs.html#cb166-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">P =</span> <span class="dv">100</span> <span class="sc">*</span> (rank <span class="sc">/</span> (<span class="fu">length</span>(Flow) <span class="sc">+</span> <span class="dv">1</span>)))</span>
-<span id="cb166-11"><a href="fdcs.html#cb166-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb166-12"><a href="fdcs.html#cb166-12" aria-hidden="true" tabindex="-1"></a>Qdat <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> P, <span class="at">y =</span> Flow, <span class="at">color =</span> period))<span class="sc">+</span></span>
-<span id="cb166-13"><a href="fdcs.html#cb166-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb166-14"><a href="fdcs.html#cb166-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()<span class="sc">+</span></span>
-<span id="cb166-15"><a href="fdcs.html#cb166-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;% Time flow equalled or exceeded&quot;</span>)<span class="sc">+</span></span>
-<span id="cb166-16"><a href="fdcs.html#cb166-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Q (cfs)&quot;</span>)</span></code></pre></div>
-<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
-<p>Show change in flow regime from dam removal –09521000 Hoover dam closed 1936 changes big enough to see without logging</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="fdcs.html#cb167-1" aria-hidden="true" tabindex="-1"></a>siteid <span class="ot">&lt;-</span> <span class="st">&quot;12301933&quot;</span></span>
-<span id="cb167-2"><a href="fdcs.html#cb167-2" aria-hidden="true" tabindex="-1"></a>startDate <span class="ot">&lt;-</span> <span class="st">&quot;1905-10-01&quot;</span></span>
-<span id="cb167-3"><a href="fdcs.html#cb167-3" aria-hidden="true" tabindex="-1"></a>endDate <span class="ot">&lt;-</span> <span class="st">&quot;1965-01-01&quot;</span></span>
-<span id="cb167-4"><a href="fdcs.html#cb167-4" aria-hidden="true" tabindex="-1"></a>parameter <span class="ot">&lt;-</span> <span class="st">&quot;00060&quot;</span></span>
-<span id="cb167-5"><a href="fdcs.html#cb167-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb167-6"><a href="fdcs.html#cb167-6" aria-hidden="true" tabindex="-1"></a>WS <span class="ot">&lt;-</span> <span class="fu">readNWISdv</span>(siteid, parameter)<span class="sc">%&gt;%</span><span class="co">#, startDate, endDate) %&gt;% </span></span>
-<span id="cb167-7"><a href="fdcs.html#cb167-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">renameNWISColumns</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb167-8"><a href="fdcs.html#cb167-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">year</span>(Date)) <span class="sc">%&gt;%</span></span>
-<span id="cb167-9"><a href="fdcs.html#cb167-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">period =</span> <span class="fu">case_when</span>( year <span class="sc">&lt;=</span> <span class="dv">1936</span> <span class="sc">~</span> <span class="st">&quot;Pre Dam&quot;</span>,</span>
-<span id="cb167-10"><a href="fdcs.html#cb167-10" aria-hidden="true" tabindex="-1"></a>                             year <span class="sc">&gt;</span> <span class="dv">1936</span>  <span class="sc">~</span> <span class="st">&quot;Post Dam&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb167-11"><a href="fdcs.html#cb167-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(period) <span class="sc">%&gt;%</span></span>
-<span id="cb167-12"><a href="fdcs.html#cb167-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">rank</span>(<span class="sc">-</span>Flow)) <span class="sc">%&gt;%</span> </span>
-<span id="cb167-13"><a href="fdcs.html#cb167-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">P =</span> <span class="dv">100</span> <span class="sc">*</span> (rank <span class="sc">/</span> (<span class="fu">length</span>(Flow) <span class="sc">+</span> <span class="dv">1</span>)))</span>
-<span id="cb167-14"><a href="fdcs.html#cb167-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb167-15"><a href="fdcs.html#cb167-15" aria-hidden="true" tabindex="-1"></a>flow <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(WS, <span class="fu">aes</span>(Date, Flow))<span class="sc">+</span><span class="co">#, color = period))+</span></span>
-<span id="cb167-16"><a href="fdcs.html#cb167-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span>
-<span id="cb167-17"><a href="fdcs.html#cb167-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb167-18"><a href="fdcs.html#cb167-18" aria-hidden="true" tabindex="-1"></a>fdc <span class="ot">&lt;-</span> WS <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> P, <span class="at">y =</span> Flow, <span class="at">color =</span> period))<span class="sc">+</span></span>
-<span id="cb167-19"><a href="fdcs.html#cb167-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb167-20"><a href="fdcs.html#cb167-20" aria-hidden="true" tabindex="-1"></a>  <span class="co">#scale_y_log10()+</span></span>
-<span id="cb167-21"><a href="fdcs.html#cb167-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;% Time flow equalled or exceeded&quot;</span>)<span class="sc">+</span></span>
-<span id="cb167-22"><a href="fdcs.html#cb167-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Q (cfs)&quot;</span>)</span>
-<span id="cb167-23"><a href="fdcs.html#cb167-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb167-24"><a href="fdcs.html#cb167-24" aria-hidden="true" tabindex="-1"></a>flow <span class="sc">/</span> (fdc <span class="sc">+</span> fdc)</span></code></pre></div>
-<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-92-1.png" width="672" /></p>
-
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="fdcs.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb159-2"><a href="fdcs.html#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dataRetrieval)</span>
+<span id="cb159-3"><a href="fdcs.html#cb159-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb159-4"><a href="fdcs.html#cb159-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb159-5"><a href="fdcs.html#cb159-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb159-6"><a href="fdcs.html#cb159-6" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_classic</span>())</span></code></pre></div>
 </div>
             </section>
 
@@ -423,7 +343,7 @@ It looked like the flow regime may have shifted a bit in the data. Let’s use f
         </div>
       </div>
 <a href="Summative1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="lfas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="flow-duration-curves.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

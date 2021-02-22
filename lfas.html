@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 11 Low Flow Analysis | Hydroinformatics at VT</title>
+  <title>Chapter 12 Low Flow Analysis | Hydroinformatics at VT</title>
   <meta name="description" content="This bookdown contains notes and exercises for a course in hydroinformatics at Virginia Tech." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 11 Low Flow Analysis | Hydroinformatics at VT" />
+  <meta property="og:title" content="Chapter 12 Low Flow Analysis | Hydroinformatics at VT" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 11 Low Flow Analysis | Hydroinformatics at VT" />
+  <meta name="twitter:title" content="Chapter 12 Low Flow Analysis | Hydroinformatics at VT" />
   
   <meta name="twitter:description" content="This bookdown contains notes and exercises for a course in hydroinformatics at Virginia Tech." />
   
@@ -24,14 +24,14 @@
 <meta name="author" content="JP Gannon" />
 
 
-<meta name="date" content="2021-02-19" />
+<meta name="date" content="2021-02-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="fdcs.html"/>
+<link rel="prev" href="flow-duration-curves.html"/>
 <link rel="next" href="floods.html"/>
 <script src="libs/header-attrs-2.4.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -132,10 +132,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">Hydroinformatics</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.0.1" data-path="index.html"><a href="index.html#table-of-contents"><i class="fa fa-check"></i><b>1.0.1</b> Table of contents:</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="Plotting.html"><a href="Plotting.html"><i class="fa fa-check"></i><b>2</b> Intro to Plotting</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="Plotting.html"><a href="Plotting.html#download-and-install-tidyverse-library"><i class="fa fa-check"></i><b>2.1</b> Download and install tidyverse library</a></li>
@@ -153,7 +156,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="Programming.html"><a href="Programming.html"><i class="fa fa-check"></i><b>3</b> R Tidyverse Programming Basics</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="Programming.html"><a href="Programming.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.1" data-path="Programming.html"><a href="Programming.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
 <li class="chapter" data-level="3.2" data-path="Programming.html"><a href="Programming.html#you-can-use-r-as-a-calculator"><i class="fa fa-check"></i><b>3.2</b> You can use R as a calculator</a></li>
 <li class="chapter" data-level="3.3" data-path="Programming.html"><a href="Programming.html#you-can-create-new-objects-using--"><i class="fa fa-check"></i><b>3.3</b> You can create new objects using &lt;-</a></li>
 <li class="chapter" data-level="3.4" data-path="Programming.html"><a href="Programming.html#using-functions"><i class="fa fa-check"></i><b>3.4</b> Using functions</a></li>
@@ -195,7 +198,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5" data-path="introactivity.html"><a href="introactivity.html#problem-5"><i class="fa fa-check"></i><b>4.5</b> Problem 5</a></li>
 <li class="chapter" data-level="4.6" data-path="introactivity.html"><a href="introactivity.html#problem-6"><i class="fa fa-check"></i><b>4.6</b> Problem 6</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="stats.html"><a href="stats.html"><i class="fa fa-check"></i><b>5</b> Intro/Review of Basic Statistics</a>
+<li class="chapter" data-level="5" data-path="stats.html"><a href="stats.html"><i class="fa fa-check"></i><b>5</b> Introduction to Basic Statistics</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="stats.html"><a href="stats.html#reading-for-this-section-statistical-methods-in-water-resources-chapter-1"><i class="fa fa-check"></i><b>5.1</b> Reading for this section: Statistical Methods in Water Resources: Chapter 1</a></li>
 <li class="chapter" data-level="5.2" data-path="stats.html"><a href="stats.html#questions-for-today"><i class="fa fa-check"></i><b>5.2</b> Questions for today:</a>
@@ -214,14 +217,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5" data-path="stats.html"><a href="stats.html#measures-of-variability"><i class="fa fa-check"></i><b>5.5</b> Measures of variability</a></li>
 <li class="chapter" data-level="5.6" data-path="stats.html"><a href="stats.html#what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one"><i class="fa fa-check"></i><b>5.6</b> What is a normal distribution and how can we determine if we have one?</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html"><i class="fa fa-check"></i><b>6</b> Intro Stats Activity</a>
+<li class="chapter" data-level="6" data-path="statsactivity.html"><a href="statsactivity.html"><i class="fa fa-check"></i><b>6</b> Intro Stats Activity</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#load-the-tidyverse-and-patchwork-libraries-and-read-in-the-flashy-and-pine-datasets."><i class="fa fa-check"></i><b>6.1</b> 1. Load the tidyverse and patchwork libraries and read in the Flashy and Pine datasets.</a></li>
-<li class="chapter" data-level="6.2" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#using-the-flashy-dataset-make-a-pdf-of-the-average-basin-rainfall-pptavg_basin-for-the-northeast-aggecoregion.-on-that-pdf-add-vertical-lines-showing-the-mean-median-standard-deviation-and-iqr.-make-each-a-different-color-and-note-which-is-which-in-a-typed-answer-below-this-question.-or-if-you-want-an-extra-challenged-make-a-custom-legend-that-shows-this"><i class="fa fa-check"></i><b>6.2</b> 2. Using the flashy dataset, make a pdf of the average basin rainfall (PPTAVG_BASIN) for the NorthEast AGGECOREGION. On that pdf, add vertical lines showing the mean, median, standard deviation, and IQR. Make each a different color and note which is which in a typed answer below this question. (or if you want an extra challenged, make a custom legend that shows this)</a></li>
-<li class="chapter" data-level="6.3" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#perform-a-shapiro-wilk-test-for-normality-on-the-data-from-question-2.-using-the-results-from-that-test-and-the-plot-and-stats-from-question-2-discuss-whether-or-not-the-distribution-is-normal."><i class="fa fa-check"></i><b>6.3</b> 3. Perform a Shapiro-Wilk test for normality on the data from question 2. Using the results from that test and the plot and stats from question 2, discuss whether or not the distribution is normal.</a></li>
-<li class="chapter" data-level="6.4" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#make-a-plot-that-shows-the-distribution-of-the-data-from-the-pine-watershed-and-the-nfdr-watershed-two-pdfs-on-the-same-plot.-log-the-x-axis."><i class="fa fa-check"></i><b>6.4</b> 4. Make a plot that shows the distribution of the data from the PINE watershed and the NFDR watershed (two pdfs on the same plot). Log the x axis.</a></li>
-<li class="chapter" data-level="6.5" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#you-want-to-compare-how-variable-the-discharge-is-in-each-of-the-watersheds-in-question-4.-which-measure-of-spread-would-you-use-and-why-if-you-wanted-to-measure-the-central-tendency-which-measure-would-you-use-and-why"><i class="fa fa-check"></i><b>6.5</b> 5. You want to compare how variable the discharge is in each of the watersheds in question 4. Which measure of spread would you use and why? If you wanted to measure the central tendency which measure would you use and why?</a></li>
-<li class="chapter" data-level="6.6" data-path="intro-stats-activity.html"><a href="intro-stats-activity.html#compute-3-measures-of-spread-and-2-measures-of-central-tendency-for-the-pine-and-nfdr-watershed.-hint-use-group_by-and-summarize-be-sure-your-code-outputs-the-result.-which-watershed-has-higher-flow-which-one-has-more-variable-flow-how-do-you-know"><i class="fa fa-check"></i><b>6.6</b> 6. Compute 3 measures of spread and 2 measures of central tendency for the PINE and NFDR watershed. (hint: use group_by() and summarize()) Be sure your code outputs the result. Which watershed has higher flow? Which one has more variable flow? How do you know?</a></li>
+<li class="chapter" data-level="6.1" data-path="statsactivity.html"><a href="statsactivity.html#load-the-tidyverse-and-patchwork-libraries-and-read-in-the-flashy-and-pine-datasets."><i class="fa fa-check"></i><b>6.1</b> 1. Load the tidyverse and patchwork libraries and read in the Flashy and Pine datasets.</a></li>
+<li class="chapter" data-level="6.2" data-path="statsactivity.html"><a href="statsactivity.html#using-the-flashy-dataset-make-a-pdf-of-the-average-basin-rainfall-pptavg_basin-for-the-northeast-aggecoregion.-on-that-pdf-add-vertical-lines-showing-the-mean-median-standard-deviation-and-iqr.-make-each-a-different-color-and-note-which-is-which-in-a-typed-answer-below-this-question.-or-if-you-want-an-extra-challenged-make-a-custom-legend-that-shows-this"><i class="fa fa-check"></i><b>6.2</b> 2. Using the flashy dataset, make a pdf of the average basin rainfall (PPTAVG_BASIN) for the NorthEast AGGECOREGION. On that pdf, add vertical lines showing the mean, median, standard deviation, and IQR. Make each a different color and note which is which in a typed answer below this question. (or if you want an extra challenged, make a custom legend that shows this)</a></li>
+<li class="chapter" data-level="6.3" data-path="statsactivity.html"><a href="statsactivity.html#perform-a-shapiro-wilk-test-for-normality-on-the-data-from-question-2.-using-the-results-from-that-test-and-the-plot-and-stats-from-question-2-discuss-whether-or-not-the-distribution-is-normal."><i class="fa fa-check"></i><b>6.3</b> 3. Perform a Shapiro-Wilk test for normality on the data from question 2. Using the results from that test and the plot and stats from question 2, discuss whether or not the distribution is normal.</a></li>
+<li class="chapter" data-level="6.4" data-path="statsactivity.html"><a href="statsactivity.html#make-a-plot-that-shows-the-distribution-of-the-data-from-the-pine-watershed-and-the-nfdr-watershed-two-pdfs-on-the-same-plot.-log-the-x-axis."><i class="fa fa-check"></i><b>6.4</b> 4. Make a plot that shows the distribution of the data from the PINE watershed and the NFDR watershed (two pdfs on the same plot). Log the x axis.</a></li>
+<li class="chapter" data-level="6.5" data-path="statsactivity.html"><a href="statsactivity.html#you-want-to-compare-how-variable-the-discharge-is-in-each-of-the-watersheds-in-question-4.-which-measure-of-spread-would-you-use-and-why-if-you-wanted-to-measure-the-central-tendency-which-measure-would-you-use-and-why"><i class="fa fa-check"></i><b>6.5</b> 5. You want to compare how variable the discharge is in each of the watersheds in question 4. Which measure of spread would you use and why? If you wanted to measure the central tendency which measure would you use and why?</a></li>
+<li class="chapter" data-level="6.6" data-path="statsactivity.html"><a href="statsactivity.html#compute-3-measures-of-spread-and-2-measures-of-central-tendency-for-the-pine-and-nfdr-watershed.-hint-use-group_by-and-summarize-be-sure-your-code-outputs-the-result.-which-watershed-has-higher-flow-which-one-has-more-variable-flow-how-do-you-know"><i class="fa fa-check"></i><b>6.6</b> 6. Compute 3 measures of spread and 2 measures of central tendency for the PINE and NFDR watershed. (hint: use group_by() and summarize()) Be sure your code outputs the result. Which watershed has higher flow? Which one has more variable flow? How do you know?</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="getdata.html"><a href="getdata.html"><i class="fa fa-check"></i><b>7</b> Joins, Pivots, and USGS dataRetrieval</a>
 <ul>
@@ -287,12 +290,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.10" data-path="Summative1.html"><a href="Summative1.html#using-the-data-from-9-plot-flow-on-the-y-axis-and-date-on-the-x-axis-showing-the-data-as-a-line-and-coloring-by-gage-name."><i class="fa fa-check"></i><b>9.10</b> 10. Using the data from #9, Plot flow on the y axis and date on the x axis, showing the data as a line, and coloring by gage name.</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="fdcs.html"><a href="fdcs.html"><i class="fa fa-check"></i><b>10</b> Flow Duration Curves</a></li>
-<li class="chapter" data-level="11" data-path="lfas.html"><a href="lfas.html"><i class="fa fa-check"></i><b>11</b> Low Flow Analysis</a></li>
-<li class="chapter" data-level="12" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>12</b> Flood Frequency Analysis</a>
+<li class="chapter" data-level="11" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html"><i class="fa fa-check"></i><b>11</b> Flow Duration Curves</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="floods.html"><a href="floods.html#challenge-create-a-function"><i class="fa fa-check"></i><b>12.1</b> Challenge: Create a function</a></li>
+<li class="chapter" data-level="11.1" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#get-data"><i class="fa fa-check"></i><b>11.1</b> Get data</a></li>
+<li class="chapter" data-level="11.2" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#review-describe-the-distribution"><i class="fa fa-check"></i><b>11.2</b> Review: describe the distribution</a></li>
+<li class="chapter" data-level="11.3" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#ecdfs"><i class="fa fa-check"></i><b>11.3</b> ECDFs</a></li>
+<li class="chapter" data-level="11.4" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#calculate-flow-exceedence-probabilities"><i class="fa fa-check"></i><b>11.4</b> Calculate flow exceedence probabilities</a></li>
+<li class="chapter" data-level="11.5" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#plot-a-flow-duration-curve-using-the-probabilities"><i class="fa fa-check"></i><b>11.5</b> Plot a Flow Duration Curve using the probabilities</a></li>
+<li class="chapter" data-level="11.6" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#make-an-almost-fdc-with-stat_ecdf"><i class="fa fa-check"></i><b>11.6</b> Make an almost FDC with stat_ecdf</a></li>
+<li class="chapter" data-level="11.7" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#example-use-of-an-fdc"><i class="fa fa-check"></i><b>11.7</b> Example use of an FDC</a></li>
+<li class="chapter" data-level="11.8" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#compare-to-a-boxplot-of-the-same-data"><i class="fa fa-check"></i><b>11.8</b> Compare to a boxplot of the same data</a></li>
+<li class="chapter" data-level="11.9" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#challenge-examining-flow-regime-change-at-the-grand-canyon"><i class="fa fa-check"></i><b>11.9</b> Challenge: Examining flow regime change at the Grand Canyon</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>13</b> Introduction</a></li>
+<li class="chapter" data-level="12" data-path="lfas.html"><a href="lfas.html"><i class="fa fa-check"></i><b>12</b> Low Flow Analysis</a></li>
+<li class="chapter" data-level="13" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>13</b> Flood Frequency Analysis</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="floods.html"><a href="floods.html#challenge-create-a-function"><i class="fa fa-check"></i><b>13.1</b> Challenge: Create a function</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>14</b> Introduction</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -313,59 +328,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lfas" class="section level1" number="11">
-<h1><span class="header-section-number">Chapter 11</span> Low Flow Analysis</h1>
+<div id="lfas" class="section level1" number="12">
+<h1><span class="header-section-number">Chapter 12</span> Low Flow Analysis</h1>
 <p>Analysis based on: <a href="https://github.com/DEQdsobota/Oregon7Q10/blob/master/R/Oregon7Q10.R" class="uri">https://github.com/DEQdsobota/Oregon7Q10/blob/master/R/Oregon7Q10.R</a> And: <a href="https://nepis.epa.gov/Exe/ZyPDF.cgi?Dockey=P100BK6P.txt" class="uri">https://nepis.epa.gov/Exe/ZyPDF.cgi?Dockey=P100BK6P.txt</a></p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="lfas.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="lfas.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)</span></code></pre></div>
 <pre><code>## Warning: package &#39;zoo&#39; was built under R version 3.6.2</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;zoo&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
 ## 
 ##     as.Date, as.Date.numeric</code></pre>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="lfas.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb172-2"><a href="lfas.html#cb172-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dataRetrieval)</span>
-<span id="cb172-3"><a href="lfas.html#cb172-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb172-4"><a href="lfas.html#cb172-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="lfas.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb173-2"><a href="lfas.html#cb173-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dataRetrieval)</span>
+<span id="cb173-3"><a href="lfas.html#cb173-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb173-4"><a href="lfas.html#cb173-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span></code></pre></div>
 <p>“The 1Q10 and 7Q10 are both hydrologically based design flows. The 1Q10 is the lowest 1-day average flow that occurs (on average) once every 10 years. The 7Q10 is the lowest 7-day average flow that occurs (on average) once every 10 years.” (<a href="https://www.epa.gov/ceam/definition-and-characteristics-low-flows#1Q10" class="uri">https://www.epa.gov/ceam/definition-and-characteristics-low-flows#1Q10</a>)</p>
 <p>7Q10</p>
 <p>Once every 10 years: probability = 0.1 per year 7 day average flow based on daily flow</p>
 <p>Download daily data for gage 02138500 Linville NC 1922-1984<br />
 1Q10: 13.4 cfs<br />
 7Q10: 16.4 cfs</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="lfas.html#cb173-1" aria-hidden="true" tabindex="-1"></a>siteno <span class="ot">&lt;-</span> <span class="st">&quot;02138500&quot;</span></span>
-<span id="cb173-2"><a href="lfas.html#cb173-2" aria-hidden="true" tabindex="-1"></a>startDate <span class="ot">&lt;-</span> <span class="st">&quot;1922-01-01&quot;</span></span>
-<span id="cb173-3"><a href="lfas.html#cb173-3" aria-hidden="true" tabindex="-1"></a>endDate <span class="ot">&lt;-</span> <span class="st">&quot;1984-01-01&quot;</span></span>
-<span id="cb173-4"><a href="lfas.html#cb173-4" aria-hidden="true" tabindex="-1"></a>parameter <span class="ot">&lt;-</span> <span class="st">&quot;00060&quot;</span></span>
-<span id="cb173-5"><a href="lfas.html#cb173-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb173-6"><a href="lfas.html#cb173-6" aria-hidden="true" tabindex="-1"></a>Qdat <span class="ot">&lt;-</span> <span class="fu">readNWISdv</span>(siteno, parameter, startDate, endDate) <span class="sc">%&gt;%</span> </span>
-<span id="cb173-7"><a href="lfas.html#cb173-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">renameNWISColumns</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="lfas.html#cb174-1" aria-hidden="true" tabindex="-1"></a>siteno <span class="ot">&lt;-</span> <span class="st">&quot;02138500&quot;</span></span>
+<span id="cb174-2"><a href="lfas.html#cb174-2" aria-hidden="true" tabindex="-1"></a>startDate <span class="ot">&lt;-</span> <span class="st">&quot;1922-01-01&quot;</span></span>
+<span id="cb174-3"><a href="lfas.html#cb174-3" aria-hidden="true" tabindex="-1"></a>endDate <span class="ot">&lt;-</span> <span class="st">&quot;1984-01-01&quot;</span></span>
+<span id="cb174-4"><a href="lfas.html#cb174-4" aria-hidden="true" tabindex="-1"></a>parameter <span class="ot">&lt;-</span> <span class="st">&quot;00060&quot;</span></span>
+<span id="cb174-5"><a href="lfas.html#cb174-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb174-6"><a href="lfas.html#cb174-6" aria-hidden="true" tabindex="-1"></a>Qdat <span class="ot">&lt;-</span> <span class="fu">readNWISdv</span>(siteno, parameter, startDate, endDate) <span class="sc">%&gt;%</span> </span>
+<span id="cb174-7"><a href="lfas.html#cb174-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">renameNWISColumns</span>()</span></code></pre></div>
 <p>Create X day rolling average for 7 Q 10, 7 day rolling average</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="lfas.html#cb174-1" aria-hidden="true" tabindex="-1"></a>Xday <span class="ot">&lt;-</span> <span class="dv">7</span></span>
-<span id="cb174-2"><a href="lfas.html#cb174-2" aria-hidden="true" tabindex="-1"></a>YrecInt <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb174-3"><a href="lfas.html#cb174-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-4"><a href="lfas.html#cb174-4" aria-hidden="true" tabindex="-1"></a>Qdat <span class="ot">&lt;-</span> Qdat <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">xdaymean =</span> <span class="fu">rollmean</span>(Flow, </span>
-<span id="cb174-5"><a href="lfas.html#cb174-5" aria-hidden="true" tabindex="-1"></a>                                            Xday, </span>
-<span id="cb174-6"><a href="lfas.html#cb174-6" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">fill =</span> <span class="cn">NA</span>, </span>
-<span id="cb174-7"><a href="lfas.html#cb174-7" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">na.rm =</span> F, </span>
-<span id="cb174-8"><a href="lfas.html#cb174-8" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">align =</span> <span class="st">&quot;right&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="lfas.html#cb175-1" aria-hidden="true" tabindex="-1"></a>Xday <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb175-2"><a href="lfas.html#cb175-2" aria-hidden="true" tabindex="-1"></a>YrecInt <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb175-3"><a href="lfas.html#cb175-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb175-4"><a href="lfas.html#cb175-4" aria-hidden="true" tabindex="-1"></a>Qdat <span class="ot">&lt;-</span> Qdat <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">xdaymean =</span> <span class="fu">rollmean</span>(Flow, </span>
+<span id="cb175-5"><a href="lfas.html#cb175-5" aria-hidden="true" tabindex="-1"></a>                                            Xday, </span>
+<span id="cb175-6"><a href="lfas.html#cb175-6" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">fill =</span> <span class="cn">NA</span>, </span>
+<span id="cb175-7"><a href="lfas.html#cb175-7" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">na.rm =</span> F, </span>
+<span id="cb175-8"><a href="lfas.html#cb175-8" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">align =</span> <span class="st">&quot;right&quot;</span>))</span></code></pre></div>
 <p>Calculate lowest mean value (in the moving window) per year add ranks</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="lfas.html#cb175-1" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="ot">&lt;-</span> Qdat <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">year</span>(Date)) <span class="sc">%&gt;%</span></span>
-<span id="cb175-2"><a href="lfas.html#cb175-2" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb175-3"><a href="lfas.html#cb175-3" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">summarize</span>(<span class="at">minQ =</span> <span class="fu">min</span>(xdaymean, <span class="at">na.rm =</span> T), </span>
-<span id="cb175-4"><a href="lfas.html#cb175-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">lenDat =</span> <span class="fu">length</span>(Flow),</span>
-<span id="cb175-5"><a href="lfas.html#cb175-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">lenNAs =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(xdaymean))) <span class="sc">%&gt;%</span></span>
-<span id="cb175-6"><a href="lfas.html#cb175-6" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">filter</span>(lenDat <span class="sc">&gt;</span> <span class="dv">328</span> <span class="sc">&amp;</span> lenNAs<span class="sc">/</span>lenDat <span class="sc">&lt;</span> <span class="fl">0.1</span>) <span class="co">#missing less than 10% of each year and 10% or fewer NAs</span></span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="lfas.html#cb176-1" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="ot">&lt;-</span> Qdat <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">year</span>(Date)) <span class="sc">%&gt;%</span></span>
+<span id="cb176-2"><a href="lfas.html#cb176-2" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb176-3"><a href="lfas.html#cb176-3" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">summarize</span>(<span class="at">minQ =</span> <span class="fu">min</span>(xdaymean, <span class="at">na.rm =</span> T), </span>
+<span id="cb176-4"><a href="lfas.html#cb176-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">lenDat =</span> <span class="fu">length</span>(Flow),</span>
+<span id="cb176-5"><a href="lfas.html#cb176-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">lenNAs =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(xdaymean))) <span class="sc">%&gt;%</span></span>
+<span id="cb176-6"><a href="lfas.html#cb176-6" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">filter</span>(lenDat <span class="sc">&gt;</span> <span class="dv">328</span> <span class="sc">&amp;</span> lenNAs<span class="sc">/</span>lenDat <span class="sc">&lt;</span> <span class="fl">0.1</span>) <span class="co">#missing less than 10% of each year and 10% or fewer NAs</span></span></code></pre></div>
 <pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="lfas.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add rank column and return interval column</span></span>
-<span id="cb177-2"><a href="lfas.html#cb177-2" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="ot">&lt;-</span> QyearlyMins <span class="sc">%&gt;%</span> </span>
-<span id="cb177-3"><a href="lfas.html#cb177-3" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">rank</span>(minQ, <span class="at">ties.method =</span> <span class="st">&quot;first&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb177-4"><a href="lfas.html#cb177-4" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="at">ReturnInterval =</span> (<span class="fu">length</span>(rank) <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>rank) <span class="sc">%&gt;%</span></span>
-<span id="cb177-5"><a href="lfas.html#cb177-5" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="at">ExceedProb =</span> <span class="dv">1</span><span class="sc">/</span>ReturnInterval)</span>
-<span id="cb177-6"><a href="lfas.html#cb177-6" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb177-7"><a href="lfas.html#cb177-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(QyearlyMins, <span class="fu">aes</span>(<span class="at">x =</span> ReturnInterval, <span class="at">y =</span> minQ))<span class="sc">+</span></span>
-<span id="cb177-8"><a href="lfas.html#cb177-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="lfas.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add rank column and return interval column</span></span>
+<span id="cb178-2"><a href="lfas.html#cb178-2" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="ot">&lt;-</span> QyearlyMins <span class="sc">%&gt;%</span> </span>
+<span id="cb178-3"><a href="lfas.html#cb178-3" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">rank</span>(minQ, <span class="at">ties.method =</span> <span class="st">&quot;first&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb178-4"><a href="lfas.html#cb178-4" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="at">ReturnInterval =</span> (<span class="fu">length</span>(rank) <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>rank) <span class="sc">%&gt;%</span></span>
+<span id="cb178-5"><a href="lfas.html#cb178-5" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="at">ExceedProb =</span> <span class="dv">1</span><span class="sc">/</span>ReturnInterval)</span>
+<span id="cb178-6"><a href="lfas.html#cb178-6" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb178-7"><a href="lfas.html#cb178-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(QyearlyMins, <span class="fu">aes</span>(<span class="at">x =</span> ReturnInterval, <span class="at">y =</span> minQ))<span class="sc">+</span></span>
+<span id="cb178-8"><a href="lfas.html#cb178-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-98-1.png" width="672" /></p>
 <p><a href="https://water.usgs.gov/osw/bulletin17b/dl_flow.pdf" class="uri">https://water.usgs.gov/osw/bulletin17b/dl_flow.pdf</a></p>
 <p>Pearson Type III</p>
 <p>Flow = exp(Xbar + KS)</p>
@@ -380,37 +395,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Standard normal variate</p>
 <p>z = 4.91 * ((1 / y) ^ 0.14 - (1 - (1 / y)) ^ 0.14)</p>
 <p>y = recurrence interval</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="lfas.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Measures of the distribution</span></span>
-<span id="cb178-2"><a href="lfas.html#cb178-2" aria-hidden="true" tabindex="-1"></a>Xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">log</span>(QyearlyMins<span class="sc">$</span>minQ))</span>
-<span id="cb178-3"><a href="lfas.html#cb178-3" aria-hidden="true" tabindex="-1"></a>S    <span class="ot">&lt;-</span> <span class="fu">sd</span>(<span class="fu">log</span>(QyearlyMins<span class="sc">$</span>minQ))</span>
-<span id="cb178-4"><a href="lfas.html#cb178-4" aria-hidden="true" tabindex="-1"></a>g    <span class="ot">&lt;-</span> <span class="fu">skewness</span>(<span class="fu">log</span>(QyearlyMins<span class="sc">$</span>minQ))</span>
-<span id="cb178-5"><a href="lfas.html#cb178-5" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb178-6"><a href="lfas.html#cb178-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb178-7"><a href="lfas.html#cb178-7" aria-hidden="true" tabindex="-1"></a><span class="co">#apply this to the data so we can see how it fits</span></span>
-<span id="cb178-8"><a href="lfas.html#cb178-8" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="ot">&lt;-</span> QyearlyMins <span class="sc">%&gt;%</span> </span>
-<span id="cb178-9"><a href="lfas.html#cb178-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">z =</span> <span class="fl">4.91</span> <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">/</span> ReturnInterval) <span class="sc">^</span> <span class="fl">0.14</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">1</span> <span class="sc">/</span> ReturnInterval) <span class="sc">^</span> <span class="fl">0.14</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb178-10"><a href="lfas.html#cb178-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">K =</span> (<span class="dv">2</span> <span class="sc">/</span> g) <span class="sc">*</span> (((<span class="dv">1</span> <span class="sc">+</span> (g <span class="sc">*</span> z) <span class="sc">/</span> <span class="dv">6</span> <span class="sc">-</span> (g <span class="sc">^</span> <span class="dv">2</span>) <span class="sc">/</span> <span class="dv">36</span>) <span class="sc">^</span> <span class="dv">3</span>) <span class="sc">-</span> <span class="dv">1</span>) ) <span class="sc">%&gt;%</span></span>
-<span id="cb178-11"><a href="lfas.html#cb178-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Qfit =</span> <span class="fu">exp</span>(Xbar <span class="sc">+</span> K <span class="sc">*</span> S))</span>
-<span id="cb178-12"><a href="lfas.html#cb178-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb178-13"><a href="lfas.html#cb178-13" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="sc">%&gt;%</span> </span>
-<span id="cb178-14"><a href="lfas.html#cb178-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ReturnInterval, <span class="at">y =</span> minQ, <span class="at">color =</span> <span class="st">&quot;Estimated&quot;</span>))<span class="sc">+</span></span>
-<span id="cb178-15"><a href="lfas.html#cb178-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb178-16"><a href="lfas.html#cb178-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">x =</span> ReturnInterval, <span class="at">y =</span> Qfit, <span class="at">color =</span> <span class="st">&quot;Fitted&quot;</span>))<span class="sc">+</span></span>
-<span id="cb178-17"><a href="lfas.html#cb178-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
-<span id="cb178-18"><a href="lfas.html#cb178-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>()<span class="sc">+</span></span>
-<span id="cb178-19"><a href="lfas.html#cb178-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;X day yearly minimum&quot;</span>)<span class="sc">+</span></span>
-<span id="cb178-20"><a href="lfas.html#cb178-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Return Interval&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="lfas.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Measures of the distribution</span></span>
+<span id="cb179-2"><a href="lfas.html#cb179-2" aria-hidden="true" tabindex="-1"></a>Xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">log</span>(QyearlyMins<span class="sc">$</span>minQ))</span>
+<span id="cb179-3"><a href="lfas.html#cb179-3" aria-hidden="true" tabindex="-1"></a>S    <span class="ot">&lt;-</span> <span class="fu">sd</span>(<span class="fu">log</span>(QyearlyMins<span class="sc">$</span>minQ))</span>
+<span id="cb179-4"><a href="lfas.html#cb179-4" aria-hidden="true" tabindex="-1"></a>g    <span class="ot">&lt;-</span> <span class="fu">skewness</span>(<span class="fu">log</span>(QyearlyMins<span class="sc">$</span>minQ))</span>
+<span id="cb179-5"><a href="lfas.html#cb179-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb179-6"><a href="lfas.html#cb179-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb179-7"><a href="lfas.html#cb179-7" aria-hidden="true" tabindex="-1"></a><span class="co">#apply this to the data so we can see how it fits</span></span>
+<span id="cb179-8"><a href="lfas.html#cb179-8" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="ot">&lt;-</span> QyearlyMins <span class="sc">%&gt;%</span> </span>
+<span id="cb179-9"><a href="lfas.html#cb179-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">z =</span> <span class="fl">4.91</span> <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">/</span> ReturnInterval) <span class="sc">^</span> <span class="fl">0.14</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">1</span> <span class="sc">/</span> ReturnInterval) <span class="sc">^</span> <span class="fl">0.14</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb179-10"><a href="lfas.html#cb179-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">K =</span> (<span class="dv">2</span> <span class="sc">/</span> g) <span class="sc">*</span> (((<span class="dv">1</span> <span class="sc">+</span> (g <span class="sc">*</span> z) <span class="sc">/</span> <span class="dv">6</span> <span class="sc">-</span> (g <span class="sc">^</span> <span class="dv">2</span>) <span class="sc">/</span> <span class="dv">36</span>) <span class="sc">^</span> <span class="dv">3</span>) <span class="sc">-</span> <span class="dv">1</span>) ) <span class="sc">%&gt;%</span></span>
+<span id="cb179-11"><a href="lfas.html#cb179-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Qfit =</span> <span class="fu">exp</span>(Xbar <span class="sc">+</span> K <span class="sc">*</span> S))</span>
+<span id="cb179-12"><a href="lfas.html#cb179-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-13"><a href="lfas.html#cb179-13" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="sc">%&gt;%</span> </span>
+<span id="cb179-14"><a href="lfas.html#cb179-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ReturnInterval, <span class="at">y =</span> minQ, <span class="at">color =</span> <span class="st">&quot;Estimated&quot;</span>))<span class="sc">+</span></span>
+<span id="cb179-15"><a href="lfas.html#cb179-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb179-16"><a href="lfas.html#cb179-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">x =</span> ReturnInterval, <span class="at">y =</span> Qfit, <span class="at">color =</span> <span class="st">&quot;Fitted&quot;</span>))<span class="sc">+</span></span>
+<span id="cb179-17"><a href="lfas.html#cb179-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb179-18"><a href="lfas.html#cb179-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>()<span class="sc">+</span></span>
+<span id="cb179-19"><a href="lfas.html#cb179-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;X day yearly minimum&quot;</span>)<span class="sc">+</span></span>
+<span id="cb179-20"><a href="lfas.html#cb179-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Return Interval&quot;</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-97-1.png" width="672" /></p>
+<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
 <p>Calculate 7Q10 or whatever we want following the xQy format and the values of x and y above</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="lfas.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="co">#xQy ei: 7Q10</span></span>
-<span id="cb180-2"><a href="lfas.html#cb180-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> YrecInt</span>
-<span id="cb180-3"><a href="lfas.html#cb180-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb180-4"><a href="lfas.html#cb180-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Find these values based on established relationships</span></span>
-<span id="cb180-5"><a href="lfas.html#cb180-5" aria-hidden="true" tabindex="-1"></a>z    <span class="ot">&lt;-</span> <span class="fl">4.91</span> <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">/</span> y) <span class="sc">^</span> <span class="fl">0.14</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">1</span> <span class="sc">/</span> y) <span class="sc">^</span> <span class="fl">0.14</span>)</span>
-<span id="cb180-6"><a href="lfas.html#cb180-6" aria-hidden="true" tabindex="-1"></a>K    <span class="ot">&lt;-</span> (<span class="dv">2</span> <span class="sc">/</span> g) <span class="sc">*</span> (((<span class="dv">1</span> <span class="sc">+</span> (g <span class="sc">*</span> z) <span class="sc">/</span> <span class="dv">6</span> <span class="sc">-</span> (g <span class="sc">^</span> <span class="dv">2</span>) <span class="sc">/</span> <span class="dv">36</span>) <span class="sc">^</span> <span class="dv">3</span>) <span class="sc">-</span> <span class="dv">1</span>) </span>
-<span id="cb180-7"><a href="lfas.html#cb180-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb180-8"><a href="lfas.html#cb180-8" aria-hidden="true" tabindex="-1"></a>PearsonxQy <span class="ot">&lt;-</span> <span class="fu">exp</span>(Xbar <span class="sc">+</span> K <span class="sc">*</span> S)</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="lfas.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="co">#xQy ei: 7Q10</span></span>
+<span id="cb181-2"><a href="lfas.html#cb181-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> YrecInt</span>
+<span id="cb181-3"><a href="lfas.html#cb181-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb181-4"><a href="lfas.html#cb181-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Find these values based on established relationships</span></span>
+<span id="cb181-5"><a href="lfas.html#cb181-5" aria-hidden="true" tabindex="-1"></a>z    <span class="ot">&lt;-</span> <span class="fl">4.91</span> <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">/</span> y) <span class="sc">^</span> <span class="fl">0.14</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">1</span> <span class="sc">/</span> y) <span class="sc">^</span> <span class="fl">0.14</span>)</span>
+<span id="cb181-6"><a href="lfas.html#cb181-6" aria-hidden="true" tabindex="-1"></a>K    <span class="ot">&lt;-</span> (<span class="dv">2</span> <span class="sc">/</span> g) <span class="sc">*</span> (((<span class="dv">1</span> <span class="sc">+</span> (g <span class="sc">*</span> z) <span class="sc">/</span> <span class="dv">6</span> <span class="sc">-</span> (g <span class="sc">^</span> <span class="dv">2</span>) <span class="sc">/</span> <span class="dv">36</span>) <span class="sc">^</span> <span class="dv">3</span>) <span class="sc">-</span> <span class="dv">1</span>) </span>
+<span id="cb181-7"><a href="lfas.html#cb181-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb181-8"><a href="lfas.html#cb181-8" aria-hidden="true" tabindex="-1"></a>PearsonxQy <span class="ot">&lt;-</span> <span class="fu">exp</span>(Xbar <span class="sc">+</span> K <span class="sc">*</span> S)</span></code></pre></div>
 <p>Distribution-free method</p>
 <p>The expression for xQy is:</p>
 <pre><code>xQy = (1-e) X(ml) + eX(m2)
@@ -423,19 +438,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           e = (n+l)/y - [(n+l)/y]
           This method is only appropriate when the desired return period is less than n/5 years
           </code></pre>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="lfas.html#cb182-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> Xday</span>
-<span id="cb182-2"><a href="lfas.html#cb182-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> YrecInt</span>
-<span id="cb182-3"><a href="lfas.html#cb182-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(QyearlyMins<span class="sc">$</span>minQ)</span>
-<span id="cb182-4"><a href="lfas.html#cb182-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb182-5"><a href="lfas.html#cb182-5" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">trunc</span>((n <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>y)</span>
-<span id="cb182-6"><a href="lfas.html#cb182-6" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">trunc</span>(((n <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>y) <span class="sc">+</span> <span class="dv">1</span>)</span>
-<span id="cb182-7"><a href="lfas.html#cb182-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb182-8"><a href="lfas.html#cb182-8" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> ((n <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>y) <span class="sc">-</span> m1</span>
-<span id="cb182-9"><a href="lfas.html#cb182-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb182-10"><a href="lfas.html#cb182-10" aria-hidden="true" tabindex="-1"></a>Xm1 <span class="ot">&lt;-</span> QyearlyMins<span class="sc">$</span>minQ[QyearlyMins<span class="sc">$</span>rank <span class="sc">==</span> m1]</span>
-<span id="cb182-11"><a href="lfas.html#cb182-11" aria-hidden="true" tabindex="-1"></a>Xm2 <span class="ot">&lt;-</span> QyearlyMins<span class="sc">$</span>minQ[QyearlyMins<span class="sc">$</span>rank <span class="sc">==</span> m2]</span>
-<span id="cb182-12"><a href="lfas.html#cb182-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb182-13"><a href="lfas.html#cb182-13" aria-hidden="true" tabindex="-1"></a>DFxQy <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">-</span>e) <span class="sc">*</span> Xm1 <span class="sc">+</span> e <span class="sc">*</span> Xm2</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="lfas.html#cb183-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> Xday</span>
+<span id="cb183-2"><a href="lfas.html#cb183-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> YrecInt</span>
+<span id="cb183-3"><a href="lfas.html#cb183-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(QyearlyMins<span class="sc">$</span>minQ)</span>
+<span id="cb183-4"><a href="lfas.html#cb183-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-5"><a href="lfas.html#cb183-5" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">trunc</span>((n <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>y)</span>
+<span id="cb183-6"><a href="lfas.html#cb183-6" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">trunc</span>(((n <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>y) <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb183-7"><a href="lfas.html#cb183-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-8"><a href="lfas.html#cb183-8" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> ((n <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>y) <span class="sc">-</span> m1</span>
+<span id="cb183-9"><a href="lfas.html#cb183-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-10"><a href="lfas.html#cb183-10" aria-hidden="true" tabindex="-1"></a>Xm1 <span class="ot">&lt;-</span> QyearlyMins<span class="sc">$</span>minQ[QyearlyMins<span class="sc">$</span>rank <span class="sc">==</span> m1]</span>
+<span id="cb183-11"><a href="lfas.html#cb183-11" aria-hidden="true" tabindex="-1"></a>Xm2 <span class="ot">&lt;-</span> QyearlyMins<span class="sc">$</span>minQ[QyearlyMins<span class="sc">$</span>rank <span class="sc">==</span> m2]</span>
+<span id="cb183-12"><a href="lfas.html#cb183-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-13"><a href="lfas.html#cb183-13" aria-hidden="true" tabindex="-1"></a>DFxQy <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">-</span>e) <span class="sc">*</span> Xm1 <span class="sc">+</span> e <span class="sc">*</span> Xm2</span></code></pre></div>
 
 </div>
             </section>
@@ -443,7 +458,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="fdcs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="flow-duration-curves.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="floods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

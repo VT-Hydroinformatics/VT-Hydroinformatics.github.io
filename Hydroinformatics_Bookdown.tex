@@ -116,7 +116,7 @@
 
 \title{Hydroinformatics at VT}
 \author{JP Gannon}
-\date{2021-02-19}
+\date{2021-02-22}
 
 \begin{document}
 \maketitle
@@ -125,18 +125,36 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\hypertarget{prerequisites}{%
-\chapter{Prerequisites}\label{prerequisites}}
+\hypertarget{introduction}{%
+\chapter{Introduction}\label{introduction}}
 
 There will be information here about rerequisite resources and suggested readings.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{install.packages}\NormalTok{(}\StringTok{"bookdown"}\NormalTok{)}
-\CommentTok{\# or the development version}
-\CommentTok{\# devtools::install\_github("rstudio/bookdown")}
-\end{Highlighting}
-\end{Shaded}
+\hypertarget{table-of-contents}{%
+\subsection{Table of contents:}\label{table-of-contents}}
+
+\textbf{\ref{Plotting} \protect\hyperlink{Plotting}{Intro to Plotting}}:
+\emph{Introduction to plotting with ggplot.}\\
+\textbf{\ref{Programming} \protect\hyperlink{Programming}{R Tidyverse Programming Basics}}:
+\emph{Introduction to basic R syntax and dplyr verbs.}\\
+\textbf{\ref{introactivity} \protect\hyperlink{introactivity}{Intro Skills Activity}}:
+\emph{Activity to practice basic plotting and programming.}\\
+\textbf{\ref{stats} \protect\hyperlink{stats}{Introduction to Basic Statistics}}:
+\emph{Introcutiong to basic ways to measure a data distribution.}\\
+\textbf{\ref{statsactivity} \protect\hyperlink{statsactivity}{Intro Stats Activity}}:
+\emph{Activity to practice basic statistics concepts.}\\
+\textbf{\ref{getdata} \protect\hyperlink{getdata}{Joins, Pivots, and USGS dataRetrieval}}:
+\emph{Joins and Pivots, using USGS dataRetrieval to generate examples.}\\
+\textbf{\ref{joinpivotDR} \protect\hyperlink{joinpivotDR}{Joins Pivots dataRetrieval Activity}}:
+\emph{Activity to practice Joins, Pivots, and dataRetrieval.}\\
+\textbf{\ref{Summative1} \protect\hyperlink{Summative1}{Summative Activity 1}}:
+\emph{First summative assessment/practice.}\\
+\textbf{\ref{fdcs} \protect\hyperlink{flow-duration-curves}{Flow Duration Curves}}:
+\emph{Building and exploring flow duration curves.}\\
+\textbf{\ref{lfas} \protect\hyperlink{lfas}{Low Flow Analysis}}:
+\emph{How to calculate low-flow statistics (ex: 7Q10, 1Q10).}\\
+\textbf{\ref{floods} \protect\hyperlink{floods}{Flood Frequency Analysis}}:
+\emph{Flood frequency analysis and making your own functions.}
 
 \hypertarget{Plotting}{%
 \chapter{Intro to Plotting}\label{Plotting}}
@@ -307,7 +325,7 @@ Now let's make the same plot but show the data as points, using the pch paramete
 
 We can also ``easily'' change the color. Easily is in quotes because this often trips people up. If you put color = ``blue'' in the aesthetic function, think about what that is telling ggplot. It says ``control the color using''blue"". That doesn't make a whole lot of sense, so neither does the output\ldots{} Try it.
 
-What happens is that if color = ``blue'' is in the aesthetic, ggplot creates a new column of data, basically, and fills it with ``blue''. So it is like you had a column in your data filled with the value ``blue''. So it uses that data, and sets the color equal to the first default color in the ggplot color palette, which is red. It kind of feels like R is trolling you\ldots{} doesn't it.
+What happens is that if color = ``blue'' is in the aesthetic, you are telling R that the color used in the geom represents ``blue''. This is very useful if you have multiple geoms in your plot, are coloring them differently, and are building a legend. But if you are just trying to color the points, it kind of feels like R is trolling you\ldots{} doesn't it?
 
 Take the color = ``blue'' out of the aesthetic and you're golden.
 
@@ -463,8 +481,8 @@ Finally: You can add multiple geoms to the same plot. Examples of when you might
 \hypertarget{Programming}{%
 \chapter{R Tidyverse Programming Basics}\label{Programming}}
 
-\hypertarget{introduction}{%
-\section{Introduction}\label{introduction}}
+\hypertarget{introduction-1}{%
+\section{Introduction}\label{introduction-1}}
 
 We have messed around with plotting a bit and you've seen a little of what R can do. So now let's review or introduce you to some basics. Even if you have worked in R before, it is good to be remind of/practice with this stuff, so stay tuned in!
 
@@ -888,7 +906,7 @@ Sort the rbi data by the RBI column in ascending and then descending order
 \hypertarget{select}{%
 \section{Select}\label{select}}
 
-There are two many columns! You will often want to do this when you are manipulating the structure of your data and need to trim it down to only include what you will use.
+There are too many columns! You will often want to do this when you are manipulating the structure of your data and need to trim it down to only include what you will use.
 
 Select Site name, state, and RBI from the rbi data
 
@@ -1237,7 +1255,7 @@ Take the tibble from problem 5. Create a new column that is the Range of the PET
 Be sure your code outputs the tibble.
 
 \hypertarget{stats}{%
-\chapter{Intro/Review of Basic Statistics}\label{stats}}
+\chapter{Introduction to Basic Statistics}\label{stats}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1647,8 +1665,8 @@ Which one is more skewed?
 \end{Shaded}
 
 \begin{verbatim}
-##      50% 
-## -2.22705
+##       50% 
+## -1.637813
 \end{verbatim}
 
 \hypertarget{what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one}{%
@@ -1692,8 +1710,8 @@ You can also make a quantile-quantile plot. A straight line on this plot indicat
 
 \includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-51-1.pdf}
 
-\hypertarget{intro-stats-activity}{%
-\chapter{Intro Stats Activity}\label{intro-stats-activity}}
+\hypertarget{statsactivity}{%
+\chapter{Intro Stats Activity}\label{statsactivity}}
 
 Address each of the questions in the code chunk below and/or by typing outside the chunk (for written answers).
 
@@ -1844,7 +1862,7 @@ Remember, all the parameter codes and site names get passed to dataRetrieval fun
 ## 4           dv   00095   00003 145685         NA           wat        <NA>
 ##    srs_id access_cd begin_date   end_date count_nu
 ## 2 1645597         0 2006-12-20 2009-03-18      704
-## 3 1645423         0 1907-10-01 2021-02-18    32648
+## 3 1645423         0 1907-10-01 2021-02-21    32651
 ## 4 1646694         0 2006-12-20 2008-09-29      534
 \end{verbatim}
 
@@ -1919,7 +1937,7 @@ So in the chunk below let's get add information about the parameters in dataAvai
 ## 3           dv   00095   00003 145685         NA           wat        <NA>
 ##    srs_id access_cd begin_date   end_date count_nu parameter_group_nm
 ## 1 1645597         0 2006-12-20 2009-03-18      704           Physical
-## 2 1645423         0 1907-10-01 2021-02-18    32648           Physical
+## 2 1645423         0 1907-10-01 2021-02-21    32651           Physical
 ## 3 1646694         0 2006-12-20 2008-09-29      534           Physical
 ##                                                                                 parameter_nm
 ## 1                                                        Temperature, water, degrees Celsius
@@ -1953,7 +1971,7 @@ So in the chunk below let's get add information about the parameters in dataAvai
 ## 3 03171000 NEW RIVER AT RADFORD, VA   00095     Specific conductance
 ##   parameter_units begin_date   end_date
 ## 1           deg C 2006-12-20 2009-03-18
-## 2           ft3/s 1907-10-01 2021-02-18
+## 2           ft3/s 1907-10-01 2021-02-21
 ## 3      uS/cm @25C 2006-12-20 2008-09-29
 \end{verbatim}
 
@@ -2003,27 +2021,27 @@ Below we will look at two other ways to get sites: using a bounding box of a geo
 ## 20      USGS 03170000                 LITTLE RIVER AT GRAYSONTOWN, VA
 ## 21      USGS 03169500             LITTLE RIVER NEAR COPPER VALLEY, VA
 ##    site_tp_cd dec_lat_va dec_long_va colocated           queryTime
-## 1          ST   36.88873   -81.34733     FALSE 2021-02-19 11:17:12
-## 2          ST   37.18428   -81.32982     FALSE 2021-02-19 11:17:12
-## 3          ST   37.27151   -81.30482     FALSE 2021-02-19 11:17:12
-## 4          ST   37.25595   -81.28177     FALSE 2021-02-19 11:17:12
-## 5          ST   36.85984   -80.98036     FALSE 2021-02-19 11:17:12
-## 6          ST   36.75985   -80.95619     FALSE 2021-02-19 11:17:12
-## 7          ST   36.83485   -80.95258     FALSE 2021-02-19 11:17:12
-## 8          SP   36.93429   -80.90313     FALSE 2021-02-19 11:17:12
-## 9          ST   36.93095   -80.90036     FALSE 2021-02-19 11:17:12
-## 10         SP   36.93068   -80.89619     FALSE 2021-02-19 11:17:12
-## 11         ST   36.93901   -80.88730     FALSE 2021-02-19 11:17:12
-## 12         ST   37.30568   -80.84980     FALSE 2021-02-19 11:17:12
-## 13         ST   37.04734   -80.77618     FALSE 2021-02-19 11:17:12
-## 14         ST   36.93762   -80.74563     FALSE 2021-02-19 11:17:12
-## 15         ST   36.88901   -80.72757     FALSE 2021-02-19 11:17:12
-## 16         ST   37.24179   -80.71090     FALSE 2021-02-19 11:17:12
-## 17         ST   37.26818   -80.70951     FALSE 2021-02-19 11:17:12
-## 18         ST   37.28957   -80.61673     FALSE 2021-02-19 11:17:12
-## 19         ST   37.14179   -80.56922     FALSE 2021-02-19 11:17:12
-## 20         ST   37.03763   -80.55672     FALSE 2021-02-19 11:17:12
-## 21         ST   36.99652   -80.52144     FALSE 2021-02-19 11:17:12
+## 1          ST   36.88873   -81.34733     FALSE 2021-02-22 11:31:44
+## 2          ST   37.18428   -81.32982     FALSE 2021-02-22 11:31:44
+## 3          ST   37.27151   -81.30482     FALSE 2021-02-22 11:31:44
+## 4          ST   37.25595   -81.28177     FALSE 2021-02-22 11:31:44
+## 5          ST   36.85984   -80.98036     FALSE 2021-02-22 11:31:44
+## 6          ST   36.75985   -80.95619     FALSE 2021-02-22 11:31:44
+## 7          ST   36.83485   -80.95258     FALSE 2021-02-22 11:31:44
+## 8          SP   36.93429   -80.90313     FALSE 2021-02-22 11:31:44
+## 9          ST   36.93095   -80.90036     FALSE 2021-02-22 11:31:44
+## 10         SP   36.93068   -80.89619     FALSE 2021-02-22 11:31:44
+## 11         ST   36.93901   -80.88730     FALSE 2021-02-22 11:31:44
+## 12         ST   37.30568   -80.84980     FALSE 2021-02-22 11:31:44
+## 13         ST   37.04734   -80.77618     FALSE 2021-02-22 11:31:44
+## 14         ST   36.93762   -80.74563     FALSE 2021-02-22 11:31:44
+## 15         ST   36.88901   -80.72757     FALSE 2021-02-22 11:31:44
+## 16         ST   37.24179   -80.71090     FALSE 2021-02-22 11:31:44
+## 17         ST   37.26818   -80.70951     FALSE 2021-02-22 11:31:44
+## 18         ST   37.28957   -80.61673     FALSE 2021-02-22 11:31:44
+## 19         ST   37.14179   -80.56922     FALSE 2021-02-22 11:31:44
+## 20         ST   37.03763   -80.55672     FALSE 2021-02-22 11:31:44
+## 21         ST   36.99652   -80.52144     FALSE 2021-02-22 11:31:44
 \end{verbatim}
 
 \begin{Shaded}
@@ -2197,7 +2215,7 @@ In the chunk below we will look to see what sites have data for nitrate and chlo
 
 \begin{verbatim}
 ##   [1] "#"                                                                                                                                            
-##   [2] "# File created on 2021-02-19 11:17:18 EST"                                                                                                    
+##   [2] "# File created on 2021-02-22 11:31:49 EST"                                                                                                    
 ##   [3] "#"                                                                                                                                            
 ##   [4] "# U.S. Geological Survey"                                                                                                                     
 ##   [5] "# "                                                                                                                                           
@@ -2701,6 +2719,20 @@ Discharge in cubic feet per second (cfs) code: 00060
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{flow-duration-curves}{%
+\chapter{Flow Duration Curves}\label{flow-duration-curves}}
+
+Alright team. So far we have learned to wrangle data, make plots, and look at data distributions. Now it is time to put all that knowledge to use.
+
+We are on our way to doing analyses of extreme discharge events: low flow statistics and flood. But in order to do that, we need to understand a common way to look at data distributions in hydrology: the flow duration curve. As you'll see below, this is basically just a different way of looking at a pdf, and it can take some getting used to. But it is also a very useful tool!
+
+\hypertarget{get-data}{%
+\section{Get data}\label{get-data}}
+
+To start, let's grab the USGS discharge data for the gage in Linville NC from 1960 to 2020.
+
+We will download the data using USGS dataRetrieval and look at a line plot.
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{siteno }\OtherTok{\textless{}{-}} \StringTok{"02138500"} \CommentTok{\#Linville NC}
@@ -2711,7 +2743,6 @@ Discharge in cubic feet per second (cfs) code: 00060
 \NormalTok{Qdat }\OtherTok{\textless{}{-}} \FunctionTok{readNWISdv}\NormalTok{(siteno, parameter, startDate, endDate) }\SpecialCharTok{\%\textgreater{}\%} 
   \FunctionTok{renameNWISColumns}\NormalTok{()}
 
-
 \CommentTok{\#Look at the data}
 \NormalTok{Qdat }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Date, }\AttributeTok{y =}\NormalTok{ Flow))}\SpecialCharTok{+}
   \FunctionTok{geom\_line}\NormalTok{()}
@@ -2720,46 +2751,79 @@ Discharge in cubic feet per second (cfs) code: 00060
 
 \includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-86-1.pdf}
 
-How can we look at the distribution of the flow data?
+\hypertarget{review-describe-the-distribution}{%
+\section{Review: describe the distribution}\label{review-describe-the-distribution}}
 
-What is the median flow value?
-What does this tell us about flow at that river? How often is the river at or below that value?
-Could you pick that number off the plot?
-What about the flow the river is at or above only 5\% of the time?
+Make a plot to view the distribution of the discharge data.
+
+What is the median flow value? What does this tell us about flow at that river? How often is the river at or below that value? Could you pick that number off the plot? What about the flow the river is at or above only 5\% of the time?
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{Qdat }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Flow))}\SpecialCharTok{+}
   \FunctionTok{stat\_density}\NormalTok{()}\SpecialCharTok{+}
-  \FunctionTok{scale\_x\_log10}\NormalTok{()}
+  \FunctionTok{scale\_x\_log10}\NormalTok{()}\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =} \FunctionTok{median}\NormalTok{(Qdat}\SpecialCharTok{$}\NormalTok{Flow), }\AttributeTok{color =} \StringTok{"red"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-87-1.pdf}
-Let's look at an Empirical Cumulative Density Function (ECDF) of the data. What does this show?
+
+\hypertarget{ecdfs}{%
+\section{ECDFs}\label{ecdfs}}
+
+Let's look at an Empirical Cumulative Density Function (ECDF) of the data.
+
+Look at this carefully, what does it show? How is it different from the pdf of the data?
+
+Plot the median again. Without the line on the plot, how would you tell where the median is?
+
+Given your answer to the question above, can you determine the flow the river is at or above only 25\% of the time? Think carefully about what the y axis of the ECDF means.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{Qdat }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Flow))}\SpecialCharTok{+}
   \FunctionTok{stat\_ecdf}\NormalTok{()}\SpecialCharTok{+}
-  \FunctionTok{scale\_x\_log10}\NormalTok{()}
+  \FunctionTok{scale\_x\_log10}\NormalTok{()}\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =} \FunctionTok{median}\NormalTok{(Qdat}\SpecialCharTok{$}\NormalTok{Flow), }\AttributeTok{color =} \StringTok{"red"}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =} \FunctionTok{quantile}\NormalTok{(Qdat}\SpecialCharTok{$}\NormalTok{Flow)[}\DecValTok{4}\NormalTok{], }\AttributeTok{color =} \StringTok{"blue"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-88-1.pdf}
 
-Exceedence probability (P)
-P = 100 * {[}M / (n + 1){]}
-P = Probability a flow is equalled or exceeded
-M = Ranked position of the flow
-n = total number of observations in data record
+\hypertarget{calculate-flow-exceedence-probabilities}{%
+\section{Calculate flow exceedence probabilities}\label{calculate-flow-exceedence-probabilities}}
+
+It is common to look at a similar representation of flow distributions in hydrology, but with flow on the Y axis and ``\% time flow is equaled or exceeded'' on the X axis. There are a number of ways we could make this plot: for example we could transform the axes of the plot above or we could use the function that results from the ECDF function in R to calculate exceedence probabilities at flow throughout our range of flows. But for our purposes, we are just going to calculate it manually.
+
+We are going to calculate our own exceedence probabilities because knowing how to do this will hopefully help us understand what a flow duration curve is AND we will need to do similar things in our high and low flow analyses.
+
+The formula for exceedence probability (P) is below. What do we need to calculate this?
+
+Exceedence probability (P), Probability a flow is equaled or exceeded P = 100 * {[}M / (n + 1){]} M = Ranked position of the flow n = total number of observations in data record
+
+Here's a description of what we will do: Pass our Qdat data to mutate and create a new column that is equal to the ranks of the discharge column. Then pass that result to mutate again and create another column equal to the 100 times the rank of each discharge divided by the length of the record (use length()) + 1.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{Qdat }\OtherTok{\textless{}{-}}\NormalTok{ Qdat }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{mutate}\NormalTok{(}\AttributeTok{rank =} \FunctionTok{rank}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{Flow)) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\#Flow is negative to make high flows ranked low (\#1)}
   \FunctionTok{mutate}\NormalTok{(}\AttributeTok{P =} \DecValTok{100} \SpecialCharTok{*}\NormalTok{ (rank }\SpecialCharTok{/}\NormalTok{ (}\FunctionTok{length}\NormalTok{(Flow) }\SpecialCharTok{+} \DecValTok{1}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
 
+\hypertarget{plot-a-flow-duration-curve-using-the-probabilities}{%
+\section{Plot a Flow Duration Curve using the probabilities}\label{plot-a-flow-duration-curve-using-the-probabilities}}
+
+Now construct the following plot: A line with P on the x axis and flow on the y axis. Name the x axis ``\% Time flow equaled or exceeded'' and log the y axis.
+
+That's a flow duration curve!
+
+Questions about the flow duration curve: How often is a flow of 100 cfs exceeded at this gage? Is flow more variable for flows exceeded 0-25\% or of the time or 75-100\% of the time? How can you tell? These data are daily observations. Given that, what is a more accurate name for the x axis? What would the X axis be called if we were using maximum yearly data?
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \NormalTok{Qdat }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ P, }\AttributeTok{y =}\NormalTok{ Flow))}\SpecialCharTok{+}
   \FunctionTok{geom\_line}\NormalTok{()}\SpecialCharTok{+}
   \FunctionTok{scale\_y\_log10}\NormalTok{()}\SpecialCharTok{+}
@@ -2768,22 +2832,39 @@ n = total number of observations in data record
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-89-1.pdf}
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-90-1.pdf}
+
+\hypertarget{make-an-almost-fdc-with-stat_ecdf}{%
+\section{Make an almost FDC with stat\_ecdf}\label{make-an-almost-fdc-with-stat_ecdf}}
+
+Below is an example of making a very similar plot with the stat\_ecdf() geometry in ggplot. Notice how similar the result is to the one we calculated manually.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#Can you make the ECDF plot look like this?}
 \NormalTok{Qdat }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Flow))}\SpecialCharTok{+}
   \FunctionTok{stat\_ecdf}\NormalTok{()}\SpecialCharTok{+}
   \FunctionTok{scale\_x\_log10}\NormalTok{()}\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_reverse}\NormalTok{()}\SpecialCharTok{+}
   \FunctionTok{coord\_flip}\NormalTok{()}\SpecialCharTok{+}
   \FunctionTok{xlab}\NormalTok{(}\StringTok{"Q (cfs)"}\NormalTok{)}\SpecialCharTok{+}
   \FunctionTok{ylab}\NormalTok{(}\StringTok{"Probability flow is not exceeded"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-90-1.pdf}
-It looked like the flow regime may have shifted a bit in the data. Let's use flow duratoin curves to examine potential differences. We can come up with groups and then use group\_by to run the analysis by groups instead of the whole dataset
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-91-1.pdf}
+
+\hypertarget{example-use-of-an-fdc}{%
+\section{Example use of an FDC}\label{example-use-of-an-fdc}}
+
+Let's explore one potential use of flow duration curves: examining the differences between two sets of flow data.
+
+From the line plot of the discharge, it looked like the flow regime may have shifted a bit in the data between the early years and newer data. Let's use flow duration curves to examine potential differences. We can come up with groups and then use group\_by to run the analysis by groups instead of the whole dataset.
+
+We are introducing a new function here called case\_when(). This allows you to assign values to a new column based on values in another column. In our case, we are going to name different time period in our data.
+
+We will then group the data by these periods and calculate exceedence probabilities for each. The procedure works the same, except we add a group\_by statement before we create the rank and P columns. Then, when we plot, we can just tell ggplot to create different colored lines based on the time period names and it will plot a separate flow duration curve for each. Tidyverse FOR THE WIN!
+
+Describe the differences in flow regime you see between the three periods.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2806,18 +2887,38 @@ It looked like the flow regime may have shifted a bit in the data. Let's use flo
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-91-1.pdf}
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-92-1.pdf}
 
-Show change in flow regime from dam removal --09521000 Hoover dam closed 1936 changes big enough to see without logging
+\hypertarget{compare-to-a-boxplot-of-the-same-data}{%
+\section{Compare to a boxplot of the same data}\label{compare-to-a-boxplot-of-the-same-data}}
+
+We are really just looking at the data distribution here. Remember another good way to compare distributions is a boxplot. Let's create a boxplot showing flows from these time periods. (we will also mess with the dimensions of the plot so the boxes aren't so wide, using fig.width and fig.height in the ``` header above the code chunk)
+
+What are the advantages/disadvantages of the flow duration curves vs.~boxplots?
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{siteid }\OtherTok{\textless{}{-}} \StringTok{"12301933"}
+\NormalTok{Qdat }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ period, }\AttributeTok{y =}\NormalTok{ Flow)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{()}\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_log10}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-93-1.pdf}
+
+\hypertarget{challenge-examining-flow-regime-change-at-the-grand-canyon}{%
+\section{Challenge: Examining flow regime change at the Grand Canyon}\label{challenge-examining-flow-regime-change-at-the-grand-canyon}}
+
+The USGS Gage ``Colorado River at Yuma, AZ'' is below the Hoover dam. The Hoover Dam closed in 1936, changing the flow of the Colorado River. Load average daily discharge data from 10-01-1905 to 10-01-1965. Use a line plot of discharge and flow duration curves to examine the differences in discharge for the periods: 1905 - 1936, 1937 - 1965.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{siteid }\OtherTok{\textless{}{-}} \StringTok{"09521000"}
 \NormalTok{startDate }\OtherTok{\textless{}{-}} \StringTok{"1905{-}10{-}01"}
-\NormalTok{endDate }\OtherTok{\textless{}{-}} \StringTok{"1965{-}01{-}01"}
+\NormalTok{endDate }\OtherTok{\textless{}{-}} \StringTok{"1965{-}10{-}01"}
 \NormalTok{parameter }\OtherTok{\textless{}{-}} \StringTok{"00060"}
 
-\NormalTok{WS }\OtherTok{\textless{}{-}} \FunctionTok{readNWISdv}\NormalTok{(siteid, parameter)}\SpecialCharTok{\%\textgreater{}\%}\CommentTok{\#, startDate, endDate) \%\textgreater{}\% }
+\NormalTok{WS }\OtherTok{\textless{}{-}} \FunctionTok{readNWISdv}\NormalTok{(siteid, parameter, startDate, endDate) }\SpecialCharTok{\%\textgreater{}\%} 
   \FunctionTok{renameNWISColumns}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{mutate}\NormalTok{(}\AttributeTok{year =} \FunctionTok{year}\NormalTok{(Date)) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{mutate}\NormalTok{(}\AttributeTok{period =} \FunctionTok{case\_when}\NormalTok{( year }\SpecialCharTok{\textless{}=} \DecValTok{1936} \SpecialCharTok{\textasciitilde{}} \StringTok{"Pre Dam"}\NormalTok{,}
@@ -2827,7 +2928,8 @@ Show change in flow regime from dam removal --09521000 Hoover dam closed 1936 ch
   \FunctionTok{mutate}\NormalTok{(}\AttributeTok{P =} \DecValTok{100} \SpecialCharTok{*}\NormalTok{ (rank }\SpecialCharTok{/}\NormalTok{ (}\FunctionTok{length}\NormalTok{(Flow) }\SpecialCharTok{+} \DecValTok{1}\NormalTok{)))}
 
 \NormalTok{flow }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(WS, }\FunctionTok{aes}\NormalTok{(Date, Flow))}\SpecialCharTok{+}\CommentTok{\#, color = period))+}
-  \FunctionTok{geom\_line}\NormalTok{()}
+  \FunctionTok{geom\_line}\NormalTok{()}\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Q (cfs)"}\NormalTok{)}
 
 \NormalTok{fdc }\OtherTok{\textless{}{-}}\NormalTok{ WS }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ P, }\AttributeTok{y =}\NormalTok{ Flow, }\AttributeTok{color =}\NormalTok{ period))}\SpecialCharTok{+}
   \FunctionTok{geom\_line}\NormalTok{()}\SpecialCharTok{+}
@@ -2835,11 +2937,11 @@ Show change in flow regime from dam removal --09521000 Hoover dam closed 1936 ch
   \FunctionTok{xlab}\NormalTok{(}\StringTok{"\% Time flow equalled or exceeded"}\NormalTok{)}\SpecialCharTok{+}
   \FunctionTok{ylab}\NormalTok{(}\StringTok{"Q (cfs)"}\NormalTok{)}
 
-\NormalTok{flow }\SpecialCharTok{/}\NormalTok{ (fdc }\SpecialCharTok{+}\NormalTok{ fdc)}
+\NormalTok{flow }\SpecialCharTok{/}\NormalTok{ (fdc }\SpecialCharTok{+} \FunctionTok{plot\_spacer}\NormalTok{())}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-92-1.pdf}
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-94-1.pdf}
 
 \hypertarget{lfas}{%
 \chapter{Low Flow Analysis}\label{lfas}}
@@ -2943,7 +3045,7 @@ Calculate lowest mean value (in the moving window) per year add ranks
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-96-1.pdf}
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-98-1.pdf}
 
 \url{https://water.usgs.gov/osw/bulletin17b/dl_flow.pdf}
 
@@ -3002,7 +3104,7 @@ y = recurrence interval
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 \end{verbatim}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-97-1.pdf}
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-99-1.pdf}
 
 Calculate 7Q10 or whatever we want following the xQy format and the values of x and y above
 
@@ -3079,7 +3181,7 @@ Get peak flow data and plot it
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-101-1.pdf}
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-103-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3094,7 +3196,7 @@ Get peak flow data and plot it
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-102-1.pdf}
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-104-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3152,7 +3254,7 @@ Tp = 1/(1-p)
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-103-1.pdf}
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-105-1.pdf}
 
 Need to fit these data to a distribution in order to make a continuous relationship we can use to predict the discharge of specific return intervals.
 
@@ -3203,7 +3305,7 @@ Then calculate Tp theoretical (the return period) as T was calculated above Tp =
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-105-1.pdf}
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-107-1.pdf}
 
 Make the same plot but show the theoretical values as a line and log the x axis with limits set to 1 - 100.
 
@@ -3229,7 +3331,7 @@ With this plot you could look up the return period for any flood or the discharg
 ## Warning: Removed 1 rows containing missing values (geom_point).
 \end{verbatim}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-106-1.pdf}
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-108-1.pdf}
 
 We can create a function that returns the return period for a flood of any magnitude for the gage we are investigating. Creating functions is a great way to streamline your workflow. You can write a function that performs an operation you need to perform a bunch of times, then just use the function rather than re-writing the code.
 
@@ -3276,7 +3378,7 @@ We can create a function that returns the return period for a flood of any magni
 ## Warning: Removed 28 rows containing non-finite values (stat_smooth).
 \end{verbatim}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-107-1.pdf}
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-109-1.pdf}
 
 \hypertarget{challenge-create-a-function}{%
 \section{Challenge: Create a function}\label{challenge-create-a-function}}
