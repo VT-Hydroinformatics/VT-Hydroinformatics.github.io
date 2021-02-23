@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 13 Flood Frequency Analysis | Hydroinformatics at VT</title>
+  <title>Chapter 14 Flood Frequency Analysis | Hydroinformatics at VT</title>
   <meta name="description" content="This bookdown contains notes and exercises for a course in hydroinformatics at Virginia Tech." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 13 Flood Frequency Analysis | Hydroinformatics at VT" />
+  <meta property="og:title" content="Chapter 14 Flood Frequency Analysis | Hydroinformatics at VT" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 13 Flood Frequency Analysis | Hydroinformatics at VT" />
+  <meta name="twitter:title" content="Chapter 14 Flood Frequency Analysis | Hydroinformatics at VT" />
   
   <meta name="twitter:description" content="This bookdown contains notes and exercises for a course in hydroinformatics at Virginia Tech." />
   
@@ -24,14 +24,14 @@
 <meta name="author" content="JP Gannon" />
 
 
-<meta name="date" content="2021-02-22" />
+<meta name="date" content="2021-02-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="lfas.html"/>
+<link rel="prev" href="low-flow-analyses.html"/>
 <link rel="next" href="intro.html"/>
 <script src="libs/header-attrs-2.4.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -303,11 +303,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.9" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#challenge-examining-flow-regime-change-at-the-grand-canyon"><i class="fa fa-check"></i><b>11.9</b> Challenge: Examining flow regime change at the Grand Canyon</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="lfas.html"><a href="lfas.html"><i class="fa fa-check"></i><b>12</b> Low Flow Analysis</a></li>
-<li class="chapter" data-level="13" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>13</b> Flood Frequency Analysis</a>
+<li class="chapter" data-level="13" data-path="low-flow-analyses.html"><a href="low-flow-analyses.html"><i class="fa fa-check"></i><b>13</b> Low Flow Analyses</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="floods.html"><a href="floods.html#challenge-create-a-function"><i class="fa fa-check"></i><b>13.1</b> Challenge: Create a function</a></li>
+<li class="chapter" data-level="13.1" data-path="low-flow-analyses.html"><a href="low-flow-analyses.html#what-is-a-xqy-flow"><i class="fa fa-check"></i><b>13.1</b> What is a xQy flow?</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>14</b> Introduction</a></li>
+<li class="chapter" data-level="14" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>14</b> Flood Frequency Analysis</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="floods.html"><a href="floods.html#challenge-create-a-function"><i class="fa fa-check"></i><b>14.1</b> Challenge: Create a function</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>15</b> Introduction</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -328,8 +332,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="floods" class="section level1" number="13">
-<h1><span class="header-section-number">Chapter 13</span> Flood Frequency Analysis</h1>
+<div id="floods" class="section level1" number="14">
+<h1><span class="header-section-number">Chapter 14</span> Flood Frequency Analysis</h1>
 <p>Load packages</p>
 <div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="floods.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb184-2"><a href="floods.html#cb184-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dataRetrieval)</span></code></pre></div>
@@ -452,8 +456,8 @@ x is observed discharge data, u and x are parameters that shape the distribution
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <pre><code>## Warning: Removed 28 rows containing non-finite values (stat_smooth).</code></pre>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
-<div id="challenge-create-a-function" class="section level2" number="13.1">
-<h2><span class="header-section-number">13.1</span> Challenge: Create a function</h2>
+<div id="challenge-create-a-function" class="section level2" number="14.1">
+<h2><span class="header-section-number">14.1</span> Challenge: Create a function</h2>
 <p>Create a function that returns the theoretical return period for a given flood magnitude when given the the flood magnitude you want to investigate, the gage id, startdate, and enddate for the records you want.</p>
 <div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="floods.html#cb200-1" aria-hidden="true" tabindex="-1"></a>RPusgs <span class="ot">&lt;-</span> <span class="cf">function</span>(magnitude, gageid, startDate, endDate){</span>
 <span id="cb200-2"><a href="floods.html#cb200-2" aria-hidden="true" tabindex="-1"></a>  </span>
@@ -499,7 +503,7 @@ x is observed discharge data, u and x are parameters that shape the distribution
           </div>
         </div>
       </div>
-<a href="lfas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="low-flow-analyses.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="intro.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

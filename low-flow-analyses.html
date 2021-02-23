@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 12 Low Flow Analysis | Hydroinformatics at VT</title>
+  <title>Chapter 13 Low Flow Analyses | Hydroinformatics at VT</title>
   <meta name="description" content="This bookdown contains notes and exercises for a course in hydroinformatics at Virginia Tech." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 12 Low Flow Analysis | Hydroinformatics at VT" />
+  <meta property="og:title" content="Chapter 13 Low Flow Analyses | Hydroinformatics at VT" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 12 Low Flow Analysis | Hydroinformatics at VT" />
+  <meta name="twitter:title" content="Chapter 13 Low Flow Analyses | Hydroinformatics at VT" />
   
   <meta name="twitter:description" content="This bookdown contains notes and exercises for a course in hydroinformatics at Virginia Tech." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="flow-duration-curves.html"/>
-<link rel="next" href="low-flow-analyses.html"/>
+<link rel="prev" href="lfas.html"/>
+<link rel="next" href="floods.html"/>
 <script src="libs/header-attrs-2.4.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -332,29 +332,128 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lfas" class="section level1" number="12">
-<h1><span class="header-section-number">Chapter 12</span> Low Flow Analysis</h1>
-<p>Analysis based on: <a href="https://github.com/DEQdsobota/Oregon7Q10/blob/master/R/Oregon7Q10.R" class="uri">https://github.com/DEQdsobota/Oregon7Q10/blob/master/R/Oregon7Q10.R</a>
-And: <a href="https://nepis.epa.gov/Exe/ZyPDF.cgi?Dockey=P100BK6P.txt" class="uri">https://nepis.epa.gov/Exe/ZyPDF.cgi?Dockey=P100BK6P.txt</a></p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="lfas.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)</span></code></pre></div>
-<pre><code>## Warning: package &#39;zoo&#39; was built under R version 3.6.2</code></pre>
-<pre><code>## 
-## Attaching package: &#39;zoo&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     as.Date, as.Date.numeric</code></pre>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="lfas.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb173-2"><a href="lfas.html#cb173-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dataRetrieval)</span>
-<span id="cb173-3"><a href="lfas.html#cb173-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb173-4"><a href="lfas.html#cb173-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span></code></pre></div>
+<div id="low-flow-analyses" class="section level1" number="13">
+<h1><span class="header-section-number">Chapter 13</span> Low Flow Analyses</h1>
+<div id="what-is-a-xqy-flow" class="section level2" number="13.1">
+<h2><span class="header-section-number">13.1</span> What is a xQy flow?</h2>
+<p>“The 1Q10 and 7Q10 are both hydrologically based design flows. The 1Q10 is the lowest 1-day average flow that occurs (on average) once every 10 years. The 7Q10 is the lowest 7-day average flow that occurs (on average) once every 10 years.” -EPA <a href="https://www.epa.gov/ceam/definition-and-characteristics-low-flows#1Q10" class="uri">https://www.epa.gov/ceam/definition-and-characteristics-low-flows#1Q10</a></p>
+<p>7Q10</p>
+<p>Once every 10 years: probability = 0.1 per year
+7 day average flow based on daily flow</p>
+<p>Download daily data for gage 02138500 Linville NC 1922-1984</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="low-flow-analyses.html#cb174-1" aria-hidden="true" tabindex="-1"></a>siteno <span class="ot">&lt;-</span> <span class="st">&quot;02138500&quot;</span></span>
+<span id="cb174-2"><a href="low-flow-analyses.html#cb174-2" aria-hidden="true" tabindex="-1"></a>startDate <span class="ot">&lt;-</span> <span class="st">&quot;1922-01-01&quot;</span></span>
+<span id="cb174-3"><a href="low-flow-analyses.html#cb174-3" aria-hidden="true" tabindex="-1"></a>endDate <span class="ot">&lt;-</span> <span class="st">&quot;1984-01-01&quot;</span></span>
+<span id="cb174-4"><a href="low-flow-analyses.html#cb174-4" aria-hidden="true" tabindex="-1"></a>parameter <span class="ot">&lt;-</span> <span class="st">&quot;00060&quot;</span></span>
+<span id="cb174-5"><a href="low-flow-analyses.html#cb174-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb174-6"><a href="low-flow-analyses.html#cb174-6" aria-hidden="true" tabindex="-1"></a>Qdat <span class="ot">&lt;-</span> <span class="fu">readNWISdv</span>(siteno, parameter, startDate, endDate) <span class="sc">%&gt;%</span> </span>
+<span id="cb174-7"><a href="low-flow-analyses.html#cb174-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">renameNWISColumns</span>()</span></code></pre></div>
+<p>Create X day rolling average for 7 Q 10, 7 day rolling average</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="low-flow-analyses.html#cb175-1" aria-hidden="true" tabindex="-1"></a>Xday <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb175-2"><a href="low-flow-analyses.html#cb175-2" aria-hidden="true" tabindex="-1"></a>YrecInt <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb175-3"><a href="low-flow-analyses.html#cb175-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb175-4"><a href="low-flow-analyses.html#cb175-4" aria-hidden="true" tabindex="-1"></a>Qdat <span class="ot">&lt;-</span> Qdat <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">xdaymean =</span> <span class="fu">rollmean</span>(Flow, </span>
+<span id="cb175-5"><a href="low-flow-analyses.html#cb175-5" aria-hidden="true" tabindex="-1"></a>                                            Xday, </span>
+<span id="cb175-6"><a href="low-flow-analyses.html#cb175-6" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">fill =</span> <span class="cn">NA</span>, </span>
+<span id="cb175-7"><a href="low-flow-analyses.html#cb175-7" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">na.rm =</span> F, </span>
+<span id="cb175-8"><a href="low-flow-analyses.html#cb175-8" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">align =</span> <span class="st">&quot;right&quot;</span>))</span></code></pre></div>
+<p>Calculate lowest mean value (in the moving window) per year add ranks</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="low-flow-analyses.html#cb176-1" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="ot">&lt;-</span> Qdat <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">year</span>(Date)) <span class="sc">%&gt;%</span></span>
+<span id="cb176-2"><a href="low-flow-analyses.html#cb176-2" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb176-3"><a href="low-flow-analyses.html#cb176-3" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">summarize</span>(<span class="at">minQ =</span> <span class="fu">min</span>(xdaymean, <span class="at">na.rm =</span> T), </span>
+<span id="cb176-4"><a href="low-flow-analyses.html#cb176-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">lenDat =</span> <span class="fu">length</span>(Flow),</span>
+<span id="cb176-5"><a href="low-flow-analyses.html#cb176-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">lenNAs =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(xdaymean))) <span class="sc">%&gt;%</span></span>
+<span id="cb176-6"><a href="low-flow-analyses.html#cb176-6" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">filter</span>(lenDat <span class="sc">&gt;</span> <span class="dv">328</span> <span class="sc">&amp;</span> lenNAs<span class="sc">/</span>lenDat <span class="sc">&lt;</span> <span class="fl">0.1</span>) <span class="co">#missing less than 10% of each year and 10% or fewer NAs</span></span></code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="low-flow-analyses.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add rank column and return interval column</span></span>
+<span id="cb178-2"><a href="low-flow-analyses.html#cb178-2" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="ot">&lt;-</span> QyearlyMins <span class="sc">%&gt;%</span> </span>
+<span id="cb178-3"><a href="low-flow-analyses.html#cb178-3" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">rank</span>(minQ, <span class="at">ties.method =</span> <span class="st">&quot;first&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb178-4"><a href="low-flow-analyses.html#cb178-4" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="at">ReturnInterval =</span> (<span class="fu">length</span>(rank) <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>rank) <span class="sc">%&gt;%</span></span>
+<span id="cb178-5"><a href="low-flow-analyses.html#cb178-5" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="at">ExceedProb =</span> <span class="dv">1</span><span class="sc">/</span>ReturnInterval)</span>
+<span id="cb178-6"><a href="low-flow-analyses.html#cb178-6" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb178-7"><a href="low-flow-analyses.html#cb178-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(QyearlyMins, <span class="fu">aes</span>(<span class="at">x =</span> ReturnInterval, <span class="at">y =</span> minQ))<span class="sc">+</span></span>
+<span id="cb178-8"><a href="low-flow-analyses.html#cb178-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-98-1.png" width="672" /></p>
+<p><a href="https://water.usgs.gov/osw/bulletin17b/dl_flow.pdf" class="uri">https://water.usgs.gov/osw/bulletin17b/dl_flow.pdf</a></p>
+<p>Pearson Type III</p>
+<p>Flow = exp(Xbar + KS)</p>
+<p>where:</p>
+<p>Xbar = mean of the log discharge you are investigating</p>
+<p>K = frequency factor</p>
+<p>S = standard deviation of log discharges</p>
+<p>Frequency Factor</p>
+<p><span class="math inline">\(K = (2 / g) * ((1 +( g * z)) / 6 - ((g ^ 2) / 36)) ^ 3 - 1)\)</span></p>
+<p>Skewness</p>
+<p>g = skewness() from moments package</p>
+<p>Standard normal variate</p>
+<p>z = 4.91 * ((1 / y) ^ 0.14 - (1 - (1 / y)) ^ 0.14)</p>
+<p>y = recurrence interval</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="low-flow-analyses.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Measures of the distribution</span></span>
+<span id="cb179-2"><a href="low-flow-analyses.html#cb179-2" aria-hidden="true" tabindex="-1"></a>Xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">log</span>(QyearlyMins<span class="sc">$</span>minQ))</span>
+<span id="cb179-3"><a href="low-flow-analyses.html#cb179-3" aria-hidden="true" tabindex="-1"></a>S    <span class="ot">&lt;-</span> <span class="fu">sd</span>(<span class="fu">log</span>(QyearlyMins<span class="sc">$</span>minQ))</span>
+<span id="cb179-4"><a href="low-flow-analyses.html#cb179-4" aria-hidden="true" tabindex="-1"></a>g    <span class="ot">&lt;-</span> <span class="fu">skewness</span>(<span class="fu">log</span>(QyearlyMins<span class="sc">$</span>minQ))</span>
+<span id="cb179-5"><a href="low-flow-analyses.html#cb179-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb179-6"><a href="low-flow-analyses.html#cb179-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb179-7"><a href="low-flow-analyses.html#cb179-7" aria-hidden="true" tabindex="-1"></a><span class="co">#apply this to the data so we can see how it fits</span></span>
+<span id="cb179-8"><a href="low-flow-analyses.html#cb179-8" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="ot">&lt;-</span> QyearlyMins <span class="sc">%&gt;%</span> </span>
+<span id="cb179-9"><a href="low-flow-analyses.html#cb179-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">z =</span> <span class="fl">4.91</span> <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">/</span> ReturnInterval) <span class="sc">^</span> <span class="fl">0.14</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">1</span> <span class="sc">/</span> ReturnInterval) <span class="sc">^</span> <span class="fl">0.14</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb179-10"><a href="low-flow-analyses.html#cb179-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">K =</span> (<span class="dv">2</span> <span class="sc">/</span> g) <span class="sc">*</span> (((<span class="dv">1</span> <span class="sc">+</span> (g <span class="sc">*</span> z) <span class="sc">/</span> <span class="dv">6</span> <span class="sc">-</span> (g <span class="sc">^</span> <span class="dv">2</span>) <span class="sc">/</span> <span class="dv">36</span>) <span class="sc">^</span> <span class="dv">3</span>) <span class="sc">-</span> <span class="dv">1</span>) ) <span class="sc">%&gt;%</span></span>
+<span id="cb179-11"><a href="low-flow-analyses.html#cb179-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Qfit =</span> <span class="fu">exp</span>(Xbar <span class="sc">+</span> K <span class="sc">*</span> S))</span>
+<span id="cb179-12"><a href="low-flow-analyses.html#cb179-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-13"><a href="low-flow-analyses.html#cb179-13" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="sc">%&gt;%</span> </span>
+<span id="cb179-14"><a href="low-flow-analyses.html#cb179-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ReturnInterval, <span class="at">y =</span> minQ, <span class="at">color =</span> <span class="st">&quot;Estimated&quot;</span>))<span class="sc">+</span></span>
+<span id="cb179-15"><a href="low-flow-analyses.html#cb179-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb179-16"><a href="low-flow-analyses.html#cb179-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">x =</span> ReturnInterval, <span class="at">y =</span> Qfit, <span class="at">color =</span> <span class="st">&quot;Fitted&quot;</span>))<span class="sc">+</span></span>
+<span id="cb179-17"><a href="low-flow-analyses.html#cb179-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb179-18"><a href="low-flow-analyses.html#cb179-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>()<span class="sc">+</span></span>
+<span id="cb179-19"><a href="low-flow-analyses.html#cb179-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;X day yearly minimum&quot;</span>)<span class="sc">+</span></span>
+<span id="cb179-20"><a href="low-flow-analyses.html#cb179-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Return Interval&quot;</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
+<p>Calculate 7Q10 or whatever we want following the xQy format and the values of x and y above</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="low-flow-analyses.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="co">#xQy ei: 7Q10</span></span>
+<span id="cb181-2"><a href="low-flow-analyses.html#cb181-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> YrecInt</span>
+<span id="cb181-3"><a href="low-flow-analyses.html#cb181-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb181-4"><a href="low-flow-analyses.html#cb181-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Find these values based on established relationships</span></span>
+<span id="cb181-5"><a href="low-flow-analyses.html#cb181-5" aria-hidden="true" tabindex="-1"></a>z    <span class="ot">&lt;-</span> <span class="fl">4.91</span> <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">/</span> y) <span class="sc">^</span> <span class="fl">0.14</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">1</span> <span class="sc">/</span> y) <span class="sc">^</span> <span class="fl">0.14</span>)</span>
+<span id="cb181-6"><a href="low-flow-analyses.html#cb181-6" aria-hidden="true" tabindex="-1"></a>K    <span class="ot">&lt;-</span> (<span class="dv">2</span> <span class="sc">/</span> g) <span class="sc">*</span> (((<span class="dv">1</span> <span class="sc">+</span> (g <span class="sc">*</span> z) <span class="sc">/</span> <span class="dv">6</span> <span class="sc">-</span> (g <span class="sc">^</span> <span class="dv">2</span>) <span class="sc">/</span> <span class="dv">36</span>) <span class="sc">^</span> <span class="dv">3</span>) <span class="sc">-</span> <span class="dv">1</span>) </span>
+<span id="cb181-7"><a href="low-flow-analyses.html#cb181-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb181-8"><a href="low-flow-analyses.html#cb181-8" aria-hidden="true" tabindex="-1"></a>PearsonxQy <span class="ot">&lt;-</span> <span class="fu">exp</span>(Xbar <span class="sc">+</span> K <span class="sc">*</span> S)</span></code></pre></div>
+<p>Distribution-free method</p>
+<p>The expression for xQy is:</p>
+<pre><code>xQy = (1-e) X(ml) + eX(m2)
+
+          where: [] indicates value is truncated
+          X(m) = the m-th lowest annual low flow of record
+          ml = [(n+1)/y]
+          m2 = [(n+l)/y] + 1
+          [z] = the largest integer less than or equal to z
+          e = (n+l)/y - [(n+l)/y]
+          This method is only appropriate when the desired return period is less than n/5 years
+          </code></pre>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="low-flow-analyses.html#cb183-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> Xday</span>
+<span id="cb183-2"><a href="low-flow-analyses.html#cb183-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> YrecInt</span>
+<span id="cb183-3"><a href="low-flow-analyses.html#cb183-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(QyearlyMins<span class="sc">$</span>minQ)</span>
+<span id="cb183-4"><a href="low-flow-analyses.html#cb183-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-5"><a href="low-flow-analyses.html#cb183-5" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">trunc</span>((n <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>y)</span>
+<span id="cb183-6"><a href="low-flow-analyses.html#cb183-6" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">trunc</span>(((n <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>y) <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb183-7"><a href="low-flow-analyses.html#cb183-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-8"><a href="low-flow-analyses.html#cb183-8" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> ((n <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>y) <span class="sc">-</span> m1</span>
+<span id="cb183-9"><a href="low-flow-analyses.html#cb183-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-10"><a href="low-flow-analyses.html#cb183-10" aria-hidden="true" tabindex="-1"></a>Xm1 <span class="ot">&lt;-</span> QyearlyMins<span class="sc">$</span>minQ[QyearlyMins<span class="sc">$</span>rank <span class="sc">==</span> m1]</span>
+<span id="cb183-11"><a href="low-flow-analyses.html#cb183-11" aria-hidden="true" tabindex="-1"></a>Xm2 <span class="ot">&lt;-</span> QyearlyMins<span class="sc">$</span>minQ[QyearlyMins<span class="sc">$</span>rank <span class="sc">==</span> m2]</span>
+<span id="cb183-12"><a href="low-flow-analyses.html#cb183-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-13"><a href="low-flow-analyses.html#cb183-13" aria-hidden="true" tabindex="-1"></a>DFxQy <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">-</span>e) <span class="sc">*</span> Xm1 <span class="sc">+</span> e <span class="sc">*</span> Xm2</span></code></pre></div>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="flow-duration-curves.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="low-flow-analyses.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="lfas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="floods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

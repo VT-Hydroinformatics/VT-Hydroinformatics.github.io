@@ -135,6 +135,8 @@ example-use-of-an-fdc
 compare-to-a-boxplot-of-the-same-data
 challenge-examining-flow-regime-change-at-the-grand-canyon
 lfas
+low-flow-analyses
+what-is-a-xqy-flow
 floods
 challenge-create-a-function
 intro

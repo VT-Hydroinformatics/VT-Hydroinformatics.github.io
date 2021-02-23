@@ -24,7 +24,7 @@
 <meta name="author" content="JP Gannon" />
 
 
-<meta name="date" content="2021-02-22" />
+<meta name="date" content="2021-02-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -303,11 +303,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.9" data-path="flow-duration-curves.html"><a href="flow-duration-curves.html#challenge-examining-flow-regime-change-at-the-grand-canyon"><i class="fa fa-check"></i><b>11.9</b> Challenge: Examining flow regime change at the Grand Canyon</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="lfas.html"><a href="lfas.html"><i class="fa fa-check"></i><b>12</b> Low Flow Analysis</a></li>
-<li class="chapter" data-level="13" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>13</b> Flood Frequency Analysis</a>
+<li class="chapter" data-level="13" data-path="low-flow-analyses.html"><a href="low-flow-analyses.html"><i class="fa fa-check"></i><b>13</b> Low Flow Analyses</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="floods.html"><a href="floods.html#challenge-create-a-function"><i class="fa fa-check"></i><b>13.1</b> Challenge: Create a function</a></li>
+<li class="chapter" data-level="13.1" data-path="low-flow-analyses.html"><a href="low-flow-analyses.html#what-is-a-xqy-flow"><i class="fa fa-check"></i><b>13.1</b> What is a xQy flow?</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>14</b> Introduction</a></li>
+<li class="chapter" data-level="14" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>14</b> Flood Frequency Analysis</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="floods.html"><a href="floods.html#challenge-create-a-function"><i class="fa fa-check"></i><b>14.1</b> Challenge: Create a function</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>15</b> Introduction</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -389,32 +393,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4           dv   00095   00003 145685         NA           wat        &lt;NA&gt;
 ##    srs_id access_cd begin_date   end_date count_nu
 ## 2 1645597         0 2006-12-20 2009-03-18      704
-## 3 1645423         0 1907-10-01 2021-02-21    32651
+## 3 1645423         0 1907-10-01 2021-02-22    32652
 ## 4 1646694         0 2006-12-20 2008-09-29      534</code></pre>
 <p>When we look at what whatNWISdata returns, we see it gives us parameter codes, but doesn’t tell us what they mean. This is a common attribute of databases: you use a common identifier but then have the full information in a lookup file. In this case, the look-up information telling us what the parameter codes mean is in “parameterCdFile” which loads with the dataRetrieval package.</p>
 <p>So, you could look at that and see what the parameters mean.</p>
 <p>OR We could have R do it and add a column that tells us what the parameters mean. Enter JOINS!</p>
 <p>Joins allow us to combine the data from two different data sets that have a column in common. At its most basic, a join looks for a matching row with the same key in both datasets (for example, a USGS gage number) and then combines the rows. So now you have all the data from both sets, matched on the key.</p>
 <p>But you have to make some decisions: what if a key value exists in one set but not the other? Do you just drop that observation? Do you add an NA? Let’s look at the different options.</p>
-<p>The following images from from the R for Data Science book linked above (<a href="https://r4ds.had.co.nz/relational-data.html" class="uri">https://r4ds.had.co.nz/relational-data.html</a>)</p>
-<p>Take for example the two data sets, x and y. The colored numbers are the key values and the x and y values are the data.</p>
-<p><img src="images/join-setup2.png" title="Join setup" width="233" alt="Join Setup" /> source: <a href="https://d33wubrfki0l68.cloudfront.net/108c0749d084c03103f8e1e8276c20e06357b124/5f113/diagrams/join-setup.png" class="uri">https://d33wubrfki0l68.cloudfront.net/108c0749d084c03103f8e1e8276c20e06357b124/5f113/diagrams/join-setup.png</a></p>
-<p>Note the 1 &amp; 2 keys match up, but 3 and 4 only exist in one data set or the other.</p>
-<p>The first way to deal with this is an inner join: inner_join() In an inner join, you only keep records that match. So the rows for 3 and 4 will be dropped because there is no corresponding data in the other set. See below:</p>
-<p><img src="images/join-inner.png" title="Inner Join" width="458" alt="Inner Join" /> source: <a href="https://d33wubrfki0l68.cloudfront.net/3abea0b730526c3f053a3838953c35a0ccbe8980/7f29b/diagrams/join-inner.png" class="uri">https://d33wubrfki0l68.cloudfront.net/3abea0b730526c3f053a3838953c35a0ccbe8980/7f29b/diagrams/join-inner.png</a>)</p>
+<p>Take for example the two data sets, FlowTable and SizeTable. The SiteName values are the key values and the MeanFlow and WSsize values are the data.</p>
+<div class="figure">
+<img src="images/joinsetup.png" title="Join setup" width="400" alt="" />
+<p class="caption">Join Setup</p>
+</div>
+<p>Note River1 and River2 match up, but River3 and River5 only exist in one data set or the other.</p>
+<p>The first way to deal with this is an inner join: inner_join() In an inner join, you only keep records that match. So the rows for River3 and River5 will be dropped because there is no corresponding data in the other set. See below:</p>
+<div class="figure">
+<img src="images/innerjoin.png" title="Inner Join" alt="" />
+<p class="caption">Inner Join</p>
+</div>
 <p>But what if you don’t want to lose the values in one or the other or both?!</p>
 <p>For instance, let’s say you have a bunch of discharge data for a stream, and then chemistry grab samples. You want to join the chemistry to the discharge based on the dates and times they were taken. But when you do this, you don’t want to delete all the discharge data where there is no chemistry! We need another option. Enter OUTER JOINS</p>
-<p><img src="images/join-outer.png" width="309" alt="Outer Joins" />source: <a href="https://d33wubrfki0l68.cloudfront.net/9c12ca9e12ed26a7c5d2aa08e36d2ac4fb593f1e/79980/diagrams/join-outer.png" class="uri">https://d33wubrfki0l68.cloudfront.net/9c12ca9e12ed26a7c5d2aa08e36d2ac4fb593f1e/79980/diagrams/join-outer.png</a></p>
-<p>The image above shows the three outer joins:</p>
 <p>LEFT JOIN, left_join(): Preserves all values from the LEFT data set, and pastes on the matching ones from the right. This creates NAs where there is a value on the left but not the right. (this is what you’d want to do in the discharge - chemistry example above)</p>
+<div class="figure">
+<img src="images/leftjoin1.png" title="Left Join" alt="" />
+<p class="caption">Left Join</p>
+</div>
 <p>RIGHT JOIN, right_join(): Preserves all values from the RIGHT data set, and pastes on the matching ones from the left. This creates NAs where there is a values on the right but not the left.</p>
+<div class="figure">
+<img src="images/rightjoin.png" title="Right Join" alt="" />
+<p class="caption">Right Join</p>
+</div>
 <p>FULL JOIN, full_join(): KEEP EVERYTHING! The hoarder of the joins. No matching record on the left? create an NA on the right! No matching value on the right? Create an NA on the left! NAs for everyone!</p>
+<div class="figure">
+<img src="images/fulljoin.png" title="Full Join" alt="" />
+<p class="caption">Full Join</p>
+</div>
 <p>When you do this in R, you use the functions identified in the descriptions with the following syntax:</p>
 <div id="if-the-column-is-named-the-same-in-both-data-sets-xxx_joinleft_tibble-right_tibble-by-key_column" class="section level4" number="7.3.0.1">
 <h4><span class="header-section-number">7.3.0.1</span> if the column is named the same in both data sets xxx_join(left_tibble, right_tibble, by = “key_column”)</h4>
 </div>
 <div id="if-the-column-is-named-differently-in-both-data-sets-xxx_joinleft_tibble-right_tibble-by-cleft_key-right_key" class="section level4" number="7.3.0.2">
 <h4><span class="header-section-number">7.3.0.2</span> if the column is named differently in both data sets xxx_join(left_tibble, right_tibble, by = c(“left_key” = “right_key”)</h4>
+<div class="figure">
+<img src="images/leftjoin2.png" title="Left Join with differing column names" alt="" />
+<p class="caption">Left Join Differing Col Names</p>
+</div>
 <p>Note in both of the above, when you specify which column to use as “by” you have to put it in quotes.</p>
 <p>So in the chunk below let’s get add information about the parameters in dataAvailable by joining it with the key file: parameterCdFile. The column with the parameter codes is called parm_cd in dataAvailable and parameter_cd in parameterCdFile</p>
 <div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="getdata.html#cb126-1" aria-hidden="true" tabindex="-1"></a>dataAvailable <span class="ot">&lt;-</span> <span class="fu">left_join</span>(dataAvailable, parameterCdFile, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;parm_cd&quot;</span> <span class="ot">=</span> <span class="st">&quot;parameter_cd&quot;</span>))</span>
@@ -434,7 +457,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3           dv   00095   00003 145685         NA           wat        &lt;NA&gt;
 ##    srs_id access_cd begin_date   end_date count_nu parameter_group_nm
 ## 1 1645597         0 2006-12-20 2009-03-18      704           Physical
-## 2 1645423         0 1907-10-01 2021-02-21    32651           Physical
+## 2 1645423         0 1907-10-01 2021-02-22    32652           Physical
 ## 3 1646694         0 2006-12-20 2008-09-29      534           Physical
 ##                                                                                 parameter_nm
 ## 1                                                        Temperature, water, degrees Celsius
@@ -460,7 +483,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3 03171000 NEW RIVER AT RADFORD, VA   00095     Specific conductance
 ##   parameter_units begin_date   end_date
 ## 1           deg C 2006-12-20 2009-03-18
-## 2           ft3/s 1907-10-01 2021-02-21
+## 2           ft3/s 1907-10-01 2021-02-22
 ## 3      uS/cm @25C 2006-12-20 2008-09-29</code></pre>
 </div>
 </div>
@@ -501,27 +524,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 20      USGS 03170000                 LITTLE RIVER AT GRAYSONTOWN, VA
 ## 21      USGS 03169500             LITTLE RIVER NEAR COPPER VALLEY, VA
 ##    site_tp_cd dec_lat_va dec_long_va colocated           queryTime
-## 1          ST   36.88873   -81.34733     FALSE 2021-02-22 11:30:57
-## 2          ST   37.18428   -81.32982     FALSE 2021-02-22 11:30:57
-## 3          ST   37.27151   -81.30482     FALSE 2021-02-22 11:30:57
-## 4          ST   37.25595   -81.28177     FALSE 2021-02-22 11:30:57
-## 5          ST   36.85984   -80.98036     FALSE 2021-02-22 11:30:57
-## 6          ST   36.75985   -80.95619     FALSE 2021-02-22 11:30:57
-## 7          ST   36.83485   -80.95258     FALSE 2021-02-22 11:30:57
-## 8          SP   36.93429   -80.90313     FALSE 2021-02-22 11:30:57
-## 9          ST   36.93095   -80.90036     FALSE 2021-02-22 11:30:57
-## 10         SP   36.93068   -80.89619     FALSE 2021-02-22 11:30:57
-## 11         ST   36.93901   -80.88730     FALSE 2021-02-22 11:30:57
-## 12         ST   37.30568   -80.84980     FALSE 2021-02-22 11:30:57
-## 13         ST   37.04734   -80.77618     FALSE 2021-02-22 11:30:57
-## 14         ST   36.93762   -80.74563     FALSE 2021-02-22 11:30:57
-## 15         ST   36.88901   -80.72757     FALSE 2021-02-22 11:30:57
-## 16         ST   37.24179   -80.71090     FALSE 2021-02-22 11:30:57
-## 17         ST   37.26818   -80.70951     FALSE 2021-02-22 11:30:57
-## 18         ST   37.28957   -80.61673     FALSE 2021-02-22 11:30:57
-## 19         ST   37.14179   -80.56922     FALSE 2021-02-22 11:30:57
-## 20         ST   37.03763   -80.55672     FALSE 2021-02-22 11:30:57
-## 21         ST   36.99652   -80.52144     FALSE 2021-02-22 11:30:57</code></pre>
+## 1          ST   36.88873   -81.34733     FALSE 2021-02-23 07:55:36
+## 2          ST   37.18428   -81.32982     FALSE 2021-02-23 07:55:36
+## 3          ST   37.27151   -81.30482     FALSE 2021-02-23 07:55:36
+## 4          ST   37.25595   -81.28177     FALSE 2021-02-23 07:55:36
+## 5          ST   36.85984   -80.98036     FALSE 2021-02-23 07:55:36
+## 6          ST   36.75985   -80.95619     FALSE 2021-02-23 07:55:36
+## 7          ST   36.83485   -80.95258     FALSE 2021-02-23 07:55:36
+## 8          SP   36.93429   -80.90313     FALSE 2021-02-23 07:55:36
+## 9          ST   36.93095   -80.90036     FALSE 2021-02-23 07:55:36
+## 10         SP   36.93068   -80.89619     FALSE 2021-02-23 07:55:36
+## 11         ST   36.93901   -80.88730     FALSE 2021-02-23 07:55:36
+## 12         ST   37.30568   -80.84980     FALSE 2021-02-23 07:55:36
+## 13         ST   37.04734   -80.77618     FALSE 2021-02-23 07:55:36
+## 14         ST   36.93762   -80.74563     FALSE 2021-02-23 07:55:36
+## 15         ST   36.88901   -80.72757     FALSE 2021-02-23 07:55:36
+## 16         ST   37.24179   -80.71090     FALSE 2021-02-23 07:55:36
+## 17         ST   37.26818   -80.70951     FALSE 2021-02-23 07:55:36
+## 18         ST   37.28957   -80.61673     FALSE 2021-02-23 07:55:36
+## 19         ST   37.14179   -80.56922     FALSE 2021-02-23 07:55:36
+## 20         ST   37.03763   -80.55672     FALSE 2021-02-23 07:55:36
+## 21         ST   36.99652   -80.52144     FALSE 2021-02-23 07:55:36</code></pre>
 <div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="getdata.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="co">#find sites with other criteria, VA, less than 20 sqmi, other criteria can be used..</span></span>
 <span id="cb132-2"><a href="getdata.html#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="co">#check out the CRAN documentation</span></span>
 <span id="cb132-3"><a href="getdata.html#cb132-3" aria-hidden="true" tabindex="-1"></a>smallVA <span class="ot">&lt;-</span> <span class="fu">readNWISdata</span>(<span class="at">service =</span> <span class="st">&quot;dv&quot;</span>,</span>
@@ -587,8 +610,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Long and wide data are more efficient for different things. Think about plotting a data set with 10 stream gages. If they are in a long format, you can just add color = Gage to your ggplot aes(). If they are in a wide format, meaning each gage has it’s own column, you’d have to write a new geom for EACH gage, because they’re all in separate columns.</p>
 <p>Now imagine you want to do some math to create new data: let’s say cases divided by population in the second image below…. How would you even do that using the data on the left? With the wide data on the right it is simply mutate(casesPERpop = cases / population).</p>
 <p>Finally, which table is easier to read in TABLE format (not a plot) in each of the two images below? Wide data is much more fitting for tables.</p>
-<p><img src="images/longer.png" width="556" alt="Pivoting `table4` into a longer, tidy form." /> source: <a href="https://d33wubrfki0l68.cloudfront.net/3aea19108d39606bbe49981acda07696c0c7fcd8/2de65/images/tidy-9.png" class="uri">https://d33wubrfki0l68.cloudfront.net/3aea19108d39606bbe49981acda07696c0c7fcd8/2de65/images/tidy-9.png</a></p>
-<p><img src="images/wider.png" width="518" alt="Pivoting `table2` into a “wider,” tidy form." /> source: <a href="https://d33wubrfki0l68.cloudfront.net/8350f0dda414629b9d6c354f87acf5c5f722be43/bcb84/images/tidy-8.png" class="uri">https://d33wubrfki0l68.cloudfront.net/8350f0dda414629b9d6c354f87acf5c5f722be43/bcb84/images/tidy-8.png</a></p>
+<div class="figure">
+<img src="images/pivot_longer.png" title="Pivoting to a longer format" alt="" />
+<p class="caption">Pivoting to a longer format</p>
+</div>
+<div class="figure">
+<img src="images/pivot_wider.png" title="Pivoting to a wider format" alt="" />
+<p class="caption">Pivoting to a wider format</p>
+</div>
 <p>dplyr, part of the tidyverse, has functions to convert data between wide and long data. I have to look up the syntax every single time I use them. But they are VERY useful.</p>
 <p>Back to our original question: I want to subtract the flow at Ivanhoe from the flow at Radford on the new river to see how much flow increases between the two sites through time.</p>
 <p>To do this I am going to use pivot_wider() to give Ivanhoe and Radford discharges their own column.</p>
@@ -623,7 +652,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb139-13"><a href="getdata.html#cb139-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb139-14"><a href="getdata.html#cb139-14" aria-hidden="true" tabindex="-1"></a><span class="fu">comment</span>(wqdat)</span></code></pre></div>
 <pre><code>##   [1] &quot;#&quot;                                                                                                                                            
-##   [2] &quot;# File created on 2021-02-22 11:31:06 EST&quot;                                                                                                    
+##   [2] &quot;# File created on 2021-02-23 07:55:44 EST&quot;                                                                                                    
 ##   [3] &quot;#&quot;                                                                                                                                            
 ##   [4] &quot;# U.S. Geological Survey&quot;                                                                                                                     
 ##   [5] &quot;# &quot;                                                                                                                                           
