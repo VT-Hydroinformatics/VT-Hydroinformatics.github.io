@@ -105,6 +105,13 @@ example-use-of-an-fdc
 compare-to-a-boxplot-of-the-same-data
 challenge-examining-flow-regime-change-at-the-grand-canyon
 lfas
-what-is-a-xqy-flow
+what-are-low-flow-statistics
+get-data-1
+create-the-x-days-average-flow-record
+look-at-what-a-rolling-mean-does.
+calculate-yearly-minimums
+calculate-return-interval
+fit-to-pearson-type-ii-distribution
+distribution-free-method
 floods
 challenge-create-a-function

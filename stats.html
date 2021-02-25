@@ -24,7 +24,7 @@
 <meta name="author" content="JP Gannon" />
 
 
-<meta name="date" content="2021-02-24" />
+<meta name="date" content="2021-02-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -264,9 +264,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.8" data-path="fdcs.html"><a href="fdcs.html#compare-to-a-boxplot-of-the-same-data"><i class="fa fa-check"></i><b>10.8</b> Compare to a boxplot of the same data</a></li>
 <li class="chapter" data-level="10.9" data-path="fdcs.html"><a href="fdcs.html#challenge-examining-flow-regime-change-at-the-grand-canyon"><i class="fa fa-check"></i><b>10.9</b> Challenge: Examining flow regime change at the Grand Canyon</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="lfas.html"><a href="lfas.html"><i class="fa fa-check"></i><b>11</b> DRAFT Low Flow Analysis</a>
+<li class="chapter" data-level="11" data-path="lfas.html"><a href="lfas.html"><i class="fa fa-check"></i><b>11</b> Low Flow Analysis</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="lfas.html"><a href="lfas.html#what-is-a-xqy-flow"><i class="fa fa-check"></i><b>11.1</b> What is a xQy flow?</a></li>
+<li class="chapter" data-level="11.1" data-path="lfas.html"><a href="lfas.html#what-are-low-flow-statistics"><i class="fa fa-check"></i><b>11.1</b> What are low flow statistics?</a></li>
+<li class="chapter" data-level="11.2" data-path="lfas.html"><a href="lfas.html#get-data-1"><i class="fa fa-check"></i><b>11.2</b> Get data</a></li>
+<li class="chapter" data-level="11.3" data-path="lfas.html"><a href="lfas.html#create-the-x-days-average-flow-record"><i class="fa fa-check"></i><b>11.3</b> Create the X days average flow record</a></li>
+<li class="chapter" data-level="11.4" data-path="lfas.html"><a href="lfas.html#look-at-what-a-rolling-mean-does."><i class="fa fa-check"></i><b>11.4</b> Look at what a rolling mean does.</a></li>
+<li class="chapter" data-level="11.5" data-path="lfas.html"><a href="lfas.html#calculate-yearly-minimums"><i class="fa fa-check"></i><b>11.5</b> Calculate yearly minimums</a></li>
+<li class="chapter" data-level="11.6" data-path="lfas.html"><a href="lfas.html#calculate-return-interval"><i class="fa fa-check"></i><b>11.6</b> Calculate return interval</a></li>
+<li class="chapter" data-level="11.7" data-path="lfas.html"><a href="lfas.html#fit-to-pearson-type-ii-distribution"><i class="fa fa-check"></i><b>11.7</b> Fit to Pearson Type II distribution</a></li>
+<li class="chapter" data-level="11.8" data-path="lfas.html"><a href="lfas.html#distribution-free-method"><i class="fa fa-check"></i><b>11.8</b> Distribution-free method</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>12</b> DRAFT Flood Frequency Analysis</a>
 <ul>
@@ -507,7 +514,7 @@ What happens if you set the number of samples to the size of the population?</p>
 <span id="cb113-2"><a href="stats.html#cb113-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb113-3"><a href="stats.html#cb113-3" aria-hidden="true" tabindex="-1"></a>((quantsX[<span class="dv">3</span>]<span class="sc">-</span>quantsX[<span class="dv">2</span>]) <span class="sc">-</span> (quantsX[<span class="dv">2</span>] <span class="sc">-</span> quantsX[<span class="dv">1</span>])) <span class="sc">/</span> quantsX[<span class="dv">3</span>] <span class="sc">-</span> quantsX[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>##       50% 
-## -1.612692</code></pre>
+## -2.227734</code></pre>
 </div>
 </div>
 <div id="what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one" class="section level2" number="5.6">

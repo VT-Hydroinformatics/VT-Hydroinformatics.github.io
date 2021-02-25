@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8 ACTIVITY Joins Pivots dataRetrieval | Hydroinformatics at VT</title>
+  <title>Chapter 12 Calculate return interval | Hydroinformatics at VT</title>
   <meta name="description" content="This bookdown contains notes and exercises for a course in hydroinformatics at Virginia Tech." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 8 ACTIVITY Joins Pivots dataRetrieval | Hydroinformatics at VT" />
+  <meta property="og:title" content="Chapter 12 Calculate return interval | Hydroinformatics at VT" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 ACTIVITY Joins Pivots dataRetrieval | Hydroinformatics at VT" />
+  <meta name="twitter:title" content="Chapter 12 Calculate return interval | Hydroinformatics at VT" />
   
   <meta name="twitter:description" content="This bookdown contains notes and exercises for a course in hydroinformatics at Virginia Tech." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="getdata.html"/>
-<link rel="next" href="Summative1.html"/>
+<link rel="prev" href="lfas.html"/>
+<link rel="next" href="floods.html"/>
 <script src="libs/header-attrs-2.4.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -264,20 +264,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.8" data-path="fdcs.html"><a href="fdcs.html#compare-to-a-boxplot-of-the-same-data"><i class="fa fa-check"></i><b>10.8</b> Compare to a boxplot of the same data</a></li>
 <li class="chapter" data-level="10.9" data-path="fdcs.html"><a href="fdcs.html#challenge-examining-flow-regime-change-at-the-grand-canyon"><i class="fa fa-check"></i><b>10.9</b> Challenge: Examining flow regime change at the Grand Canyon</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="lfas.html"><a href="lfas.html"><i class="fa fa-check"></i><b>11</b> Low Flow Analysis</a>
+<li class="chapter" data-level="11" data-path="lfas.html"><a href="lfas.html"><i class="fa fa-check"></i><b>11</b> DRAFT Low Flow Analysis</a>
 <ul>
 <li class="chapter" data-level="11.1" data-path="lfas.html"><a href="lfas.html#what-are-low-flow-statistics"><i class="fa fa-check"></i><b>11.1</b> What are low flow statistics?</a></li>
 <li class="chapter" data-level="11.2" data-path="lfas.html"><a href="lfas.html#get-data-1"><i class="fa fa-check"></i><b>11.2</b> Get data</a></li>
 <li class="chapter" data-level="11.3" data-path="lfas.html"><a href="lfas.html#create-the-x-days-average-flow-record"><i class="fa fa-check"></i><b>11.3</b> Create the X days average flow record</a></li>
 <li class="chapter" data-level="11.4" data-path="lfas.html"><a href="lfas.html#look-at-what-a-rolling-mean-does."><i class="fa fa-check"></i><b>11.4</b> Look at what a rolling mean does.</a></li>
-<li class="chapter" data-level="11.5" data-path="lfas.html"><a href="lfas.html#calculate-yearly-minimums"><i class="fa fa-check"></i><b>11.5</b> Calculate yearly minimums</a></li>
-<li class="chapter" data-level="11.6" data-path="lfas.html"><a href="lfas.html#calculate-return-interval"><i class="fa fa-check"></i><b>11.6</b> Calculate return interval</a></li>
-<li class="chapter" data-level="11.7" data-path="lfas.html"><a href="lfas.html#fit-to-pearson-type-ii-distribution"><i class="fa fa-check"></i><b>11.7</b> Fit to Pearson Type II distribution</a></li>
-<li class="chapter" data-level="11.8" data-path="lfas.html"><a href="lfas.html#distribution-free-method"><i class="fa fa-check"></i><b>11.8</b> Distribution-free method</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>12</b> DRAFT Flood Frequency Analysis</a>
+<li class="chapter" data-level="12" data-path="calculate-return-interval.html"><a href="calculate-return-interval.html"><i class="fa fa-check"></i><b>12</b> Calculate return interval</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="floods.html"><a href="floods.html#challenge-create-a-function"><i class="fa fa-check"></i><b>12.1</b> Challenge: Create a function</a></li>
+<li class="chapter" data-level="12.1" data-path="calculate-return-interval.html"><a href="calculate-return-interval.html#fit-to-pearson-type-ii-distribution"><i class="fa fa-check"></i><b>12.1</b> Fit to Pearson Type II distribution</a></li>
+<li class="chapter" data-level="12.2" data-path="calculate-return-interval.html"><a href="calculate-return-interval.html#distribution-free-method"><i class="fa fa-check"></i><b>12.2</b> Distribution-free method</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>13</b> DRAFT Flood Frequency Analysis</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="floods.html"><a href="floods.html#challenge-create-a-function"><i class="fa fa-check"></i><b>13.1</b> Challenge: Create a function</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -299,42 +300,128 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="joinpivotDR" class="section level1" number="8">
-<h1><span class="header-section-number">Chapter 8</span> ACTIVITY Joins Pivots dataRetrieval</h1>
-<p>Get this document at the template repository on github: <a href="https://github.com/VT-Hydroinformatics/7-Activity-Joins-Pivots_dataRetrieval" class="uri">https://github.com/VT-Hydroinformatics/7-Activity-Joins-Pivots_dataRetrieval</a></p>
-<div id="load-the-tidyverse-dataretrieval-and-patchwork-packages." class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> Load the tidyverse, dataRetrieval, and patchwork packages.</h2>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="joinpivotDR.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb142-2"><a href="joinpivotDR.html#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dataRetrieval)</span>
-<span id="cb142-3"><a href="joinpivotDR.html#cb142-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span></code></pre></div>
+<div id="calculate-return-interval" class="section level1" number="12">
+<h1><span class="header-section-number">Chapter 12</span> Calculate return interval</h1>
+<p>Now that we have an object that contains our yearly minimum flows, we can calculate the return interval as</p>
+<p><span class="math inline">\(Return Interval = (n + 1) / rank\)</span></p>
+<p>Where n is the number of records in the data (number of years) and rank is the rank of each year’s low flow (lowest flow = rank 1 and so on). We can calculate the rank with the rank() function in base R. In the rank function we will specify that in the case of a tie, the first value gets the lower rank using ties.method = “first.”</p>
+<p>We can then transform that to an exceedence probability as</p>
+<p><span class="math inline">\(Exceedence Probability = 1 / Return Interval\)</span></p>
+<p>Once we calculate the return interval and exceedence probability we will plot the return interval against the minimum discharge.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="calculate-return-interval.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add rank column and return interval column</span></span>
+<span id="cb25-2"><a href="calculate-return-interval.html#cb25-2" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="ot">&lt;-</span> QyearlyMins <span class="sc">%&gt;%</span> </span>
+<span id="cb25-3"><a href="calculate-return-interval.html#cb25-3" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">rank</span>(minQ, <span class="at">ties.method =</span> <span class="st">&quot;first&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb25-4"><a href="calculate-return-interval.html#cb25-4" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="at">ReturnInterval =</span> (<span class="fu">length</span>(rank) <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>rank) <span class="sc">%&gt;%</span></span>
+<span id="cb25-5"><a href="calculate-return-interval.html#cb25-5" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="at">ExceedProb =</span> <span class="dv">1</span><span class="sc">/</span>ReturnInterval)</span>
+<span id="cb25-6"><a href="calculate-return-interval.html#cb25-6" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb25-7"><a href="calculate-return-interval.html#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(QyearlyMins, <span class="fu">aes</span>(<span class="at">x =</span> ReturnInterval, <span class="at">y =</span> minQ))<span class="sc">+</span></span>
+<span id="cb25-8"><a href="calculate-return-interval.html#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<strong>Challenge question</strong> How is this similar to a flow duration curve? Could you make a “flow duration curve” from these data? What would it tell you?</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="calculate-return-interval.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(QyearlyMins, <span class="fu">aes</span>(<span class="at">x =</span> ExceedProb, <span class="at">y =</span> minQ))<span class="sc">+</span></span>
+<span id="cb26-2"><a href="calculate-return-interval.html#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<div id="fit-to-pearson-type-ii-distribution" class="section level2" number="12.1">
+<h2><span class="header-section-number">12.1</span> Fit to Pearson Type II distribution</h2>
+<p>Source for these calculations:
+<a href="https://water.usgs.gov/osw/bulletin17b/dl_flow.pdf" class="uri">https://water.usgs.gov/osw/bulletin17b/dl_flow.pdf</a></p>
+<p>We now have everything we need to calculate what the 10-year return interval flow is (the 0.1 probability flow). To do this, we have to fit a distribution to our data and then use that fitted distribution to predict the value of the 10-year return interval flow.</p>
+<p>This may sound a little complex, but let’s think about it this way:
+* You have some data, let’s say: heights of students at Virginia Tech
+* You did some tests on it and know it is a normal distribution
+* If you measure the mean and standard deviation of that distribution, you could create a “fitted” representation of your distrubtion by generating a normal distribution with the same mean and standard deviation with the rnorm() function.
+* Now you could plot that fitted, synthetic distribution as an ECDF and read the plot to determine, say, 10% of students (0.1 probability) are at or above what height?</p>
+<p>Assume the average height from your data was 65 inches and the standard deviation was 6 inches (this is 100% made up), let’s look at it.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="calculate-return-interval.html#cb27-1" aria-hidden="true" tabindex="-1"></a>fitteddistribution <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">65</span>, <span class="at">sd =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="calculate-return-interval.html#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
+<span id="cb27-3"><a href="calculate-return-interval.html#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="calculate-return-interval.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fitteddistribution, <span class="fu">aes</span>(<span class="at">x =</span> value))<span class="sc">+</span></span>
+<span id="cb27-5"><a href="calculate-return-interval.html#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_ecdf</span>()<span class="sc">+</span></span>
+<span id="cb27-6"><a href="calculate-return-interval.html#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;height (in)&quot;</span>)<span class="sc">+</span></span>
+<span id="cb27-7"><a href="calculate-return-interval.html#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;probability&quot;</span>)</span></code></pre></div>
+<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>To get our 10 year return perio (0.1 exceedence probability) we are going to do the same thing, except we know the distribution of the data isn’t normal, so we have to use a different distribution.</p>
+<p>There are a bunch of “extreme value” distributions used in these type of analyses. When we talk about floods we will use the Gumbel distribution, for example. For this type of analysis, it is common to use the Pearson Type III distribution.</p>
+<p>A representative fit of this distribution can be calculated as seen below. Where we used mean and standard deviation in our normal distribution example, this distribution is described (fit) with the mean of the logged discharges (Xbar), the frequency factor (K), the standard deviation of the log discharges (S), skewness (g), and the standard normal variate (z).</p>
+<p><strong>Pearson Type III</strong></p>
+<p><span class="math inline">\(Flow = exp(Xbar + KS)\)</span></p>
+<p>where:</p>
+<p>Xbar = mean of the log discharge you are investigating</p>
+<p>K = frequency factor</p>
+<p>S = standard deviation of log discharges</p>
+<p><strong>Frequency Factor</strong></p>
+<p><span class="math inline">\(K = (2 / g) * ((1 +( g * z)) / 6 - ((g ^ 2) / 36)) ^ 3 - 1)\)</span></p>
+<p><strong>Skewness</strong></p>
+<p><span class="math inline">\(g = skewness() from moments package\)</span></p>
+<p><strong>Standard normal variate</strong></p>
+<p><span class="math inline">\(z = 4.91 * ((1 / y) ^ 0.14 - (1 - (1 / y)) ^ 0.14)\)</span></p>
+<p>y = recurrence interval</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="calculate-return-interval.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Measures of the distribution</span></span>
+<span id="cb28-2"><a href="calculate-return-interval.html#cb28-2" aria-hidden="true" tabindex="-1"></a>Xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">log</span>(QyearlyMins<span class="sc">$</span>minQ))</span>
+<span id="cb28-3"><a href="calculate-return-interval.html#cb28-3" aria-hidden="true" tabindex="-1"></a>S    <span class="ot">&lt;-</span> <span class="fu">sd</span>(<span class="fu">log</span>(QyearlyMins<span class="sc">$</span>minQ))</span>
+<span id="cb28-4"><a href="calculate-return-interval.html#cb28-4" aria-hidden="true" tabindex="-1"></a>g    <span class="ot">&lt;-</span> <span class="fu">skewness</span>(<span class="fu">log</span>(QyearlyMins<span class="sc">$</span>minQ))</span>
+<span id="cb28-5"><a href="calculate-return-interval.html#cb28-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb28-6"><a href="calculate-return-interval.html#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate z, K, to plot the fitted Pearson Type III</span></span>
+<span id="cb28-7"><a href="calculate-return-interval.html#cb28-7" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="ot">&lt;-</span> QyearlyMins <span class="sc">%&gt;%</span> </span>
+<span id="cb28-8"><a href="calculate-return-interval.html#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">z =</span> <span class="fl">4.91</span> <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">/</span> ReturnInterval) <span class="sc">^</span> <span class="fl">0.14</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">1</span> <span class="sc">/</span> ReturnInterval) <span class="sc">^</span> <span class="fl">0.14</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb28-9"><a href="calculate-return-interval.html#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">K =</span> (<span class="dv">2</span> <span class="sc">/</span> g) <span class="sc">*</span> (((<span class="dv">1</span> <span class="sc">+</span> (g <span class="sc">*</span> z) <span class="sc">/</span> <span class="dv">6</span> <span class="sc">-</span> (g <span class="sc">^</span> <span class="dv">2</span>) <span class="sc">/</span> <span class="dv">36</span>) <span class="sc">^</span> <span class="dv">3</span>) <span class="sc">-</span> <span class="dv">1</span>) ) <span class="sc">%&gt;%</span></span>
+<span id="cb28-10"><a href="calculate-return-interval.html#cb28-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Qfit =</span> <span class="fu">exp</span>(Xbar <span class="sc">+</span> K <span class="sc">*</span> S))</span></code></pre></div>
+<p>Let’s look our results and see how they fit. Plot the return interval on the x axis and flow on the y. Plot minQ, the minimum Q data, and Qfit, the data from the the model fit.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="calculate-return-interval.html#cb29-1" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href="calculate-return-interval.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ReturnInterval, <span class="at">y =</span> minQ, <span class="at">color =</span> <span class="st">&quot;Estimated&quot;</span>))<span class="sc">+</span></span>
+<span id="cb29-3"><a href="calculate-return-interval.html#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb29-4"><a href="calculate-return-interval.html#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">x =</span> ReturnInterval, <span class="at">y =</span> Qfit, <span class="at">color =</span> <span class="st">&quot;Fitted&quot;</span>))<span class="sc">+</span></span>
+<span id="cb29-5"><a href="calculate-return-interval.html#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb29-6"><a href="calculate-return-interval.html#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>()<span class="sc">+</span></span>
+<span id="cb29-7"><a href="calculate-return-interval.html#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;X day yearly minimum&quot;</span>)<span class="sc">+</span></span>
+<span id="cb29-8"><a href="calculate-return-interval.html#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Return Interval&quot;</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>Above we calculated z, K and the flow for each return interval in our data record to see how the distribution fit our data. We can see it fits quite well.</p>
+<p>We can use the same calculations as we used on the entire record to calculate a specific return period of interest. In our case, the 10 year return period for the 7Q10.</p>
+<p>We will set y equal to YrecInt, which we set above. This way we can just change it at the top of the code to run whatever xQy metric we want.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="calculate-return-interval.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#xQy ei: 7Q10</span></span>
+<span id="cb31-2"><a href="calculate-return-interval.html#cb31-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> YrecInt</span>
+<span id="cb31-3"><a href="calculate-return-interval.html#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="calculate-return-interval.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Find these values based on established relationships</span></span>
+<span id="cb31-5"><a href="calculate-return-interval.html#cb31-5" aria-hidden="true" tabindex="-1"></a>z    <span class="ot">&lt;-</span> <span class="fl">4.91</span> <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">/</span> y) <span class="sc">^</span> <span class="fl">0.14</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">1</span> <span class="sc">/</span> y) <span class="sc">^</span> <span class="fl">0.14</span>)</span>
+<span id="cb31-6"><a href="calculate-return-interval.html#cb31-6" aria-hidden="true" tabindex="-1"></a>K    <span class="ot">&lt;-</span> (<span class="dv">2</span> <span class="sc">/</span> g) <span class="sc">*</span> (((<span class="dv">1</span> <span class="sc">+</span> (g <span class="sc">*</span> z) <span class="sc">/</span> <span class="dv">6</span> <span class="sc">-</span> (g <span class="sc">^</span> <span class="dv">2</span>) <span class="sc">/</span> <span class="dv">36</span>) <span class="sc">^</span> <span class="dv">3</span>) <span class="sc">-</span> <span class="dv">1</span>) </span>
+<span id="cb31-7"><a href="calculate-return-interval.html#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="calculate-return-interval.html#cb31-8" aria-hidden="true" tabindex="-1"></a>PearsonxQy <span class="ot">&lt;-</span> <span class="fu">exp</span>(Xbar <span class="sc">+</span> K <span class="sc">*</span> S)</span>
+<span id="cb31-9"><a href="calculate-return-interval.html#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="calculate-return-interval.html#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Low flow stat (7Q10 in exercise)</span></span>
+<span id="cb31-11"><a href="calculate-return-interval.html#cb31-11" aria-hidden="true" tabindex="-1"></a>PearsonxQy</span></code></pre></div>
+<pre><code>## [1] 16.70488</code></pre>
 </div>
-<div id="problem-1-2" class="section level2" number="8.2">
-<h2><span class="header-section-number">8.2</span> Problem 1</h2>
-<p>Using readNWISqw(), read all the chloride (00940) data for the New River at Radford (03171000). Use the head() function to print the beginning of the output from readNWISqw.</p>
-</div>
-<div id="problem-2-2" class="section level2" number="8.3">
-<h2><span class="header-section-number">8.3</span> Problem 2</h2>
-<p>Using the readNWISdv (daily values) function, download discharge (00060), temperature (00003), and specific conductivity (00095) for the New River at Radford from 2007 to 2009 (regular year). Use renameNWIScolumns() to rename the output of the download. Use head() to show the beginning of the results of your download.</p>
-</div>
-<div id="problem-3-2" class="section level2" number="8.4">
-<h2><span class="header-section-number">8.4</span> Problem 3</h2>
-<p>Do a left join on newphys and newriver to add the chloride data to the daily discharge, temp, and conductivity data. hint: you will join on the date. Preview your data below the chunk using head().</p>
-</div>
-<div id="problem-4-2" class="section level2" number="8.5">
-<h2><span class="header-section-number">8.5</span> Problem 4</h2>
-<p>Create a line plot of Date (x) and Flow (y). Create a scatter plot of Date (x) and chloride concentration (y). Put the graphs on top of each other using the patchwork library.</p>
-</div>
-<div id="problem-5-2" class="section level2" number="8.6">
-<h2><span class="header-section-number">8.6</span> Problem 5</h2>
-<p>Create a scatter plot of Specific Conductivity (y) and Chloride (x). Challenge: what could you do to get rid of the warning this plot generates about NAs.</p>
-</div>
-<div id="problem-6-2" class="section level2" number="8.7">
-<h2><span class="header-section-number">8.7</span> Problem 6</h2>
-<p>Read in the GG chem subset data and plot Mg_E1 (x) vs Ca_E1 (y) as points.</p>
-</div>
-<div id="problem-7" class="section level2" number="8.8">
-<h2><span class="header-section-number">8.8</span> Problem 7</h2>
-<p>We want to look at concentrations of each element in the #6 dataset along the stream (Distance), which is difficult in the current format. Pivot the data into a long format, the data from Ca, Mg, and Na _E1 columns should be pivoted. Make line plots of each element where y is the concentration and x is distance. Use facet_wrap() to create a separate plot for each element and use the “scales” argument of facet_wrap to allow each plot to have different y limits.</p>
+<div id="distribution-free-method" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> Distribution-free method</h2>
+<p>We won’t go over this in the same detail, but the xQy flow can also be calculated using a formula that does not assume a specific distribution. The expression, and code to perform it, is below.</p>
+<p><strong>The expression for xQy is:</strong></p>
+<p><span class="math inline">\(xQy = (1-e) X(m1) + eX(m2)\)</span></p>
+<p>where:
+[ ] indicates the value is truncated
+X(m) = the m-th lowest annual low flow of record
+m1 = [(n+1)/y]
+m2 = [(n+l)/y] + 1
+[z] = the largest integer less than or equal to z
+e = (n+l)/y - [(n+l)/y]</p>
+<p>This method is only appropriate when the desired return period is less than n/5 years</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="calculate-return-interval.html#cb33-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> Xday</span>
+<span id="cb33-2"><a href="calculate-return-interval.html#cb33-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> YrecInt</span>
+<span id="cb33-3"><a href="calculate-return-interval.html#cb33-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(QyearlyMins<span class="sc">$</span>minQ)</span>
+<span id="cb33-4"><a href="calculate-return-interval.html#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="calculate-return-interval.html#cb33-5" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">trunc</span>((n <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>y)</span>
+<span id="cb33-6"><a href="calculate-return-interval.html#cb33-6" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">trunc</span>(((n <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>y) <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb33-7"><a href="calculate-return-interval.html#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-8"><a href="calculate-return-interval.html#cb33-8" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> ((n <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>y) <span class="sc">-</span> m1</span>
+<span id="cb33-9"><a href="calculate-return-interval.html#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-10"><a href="calculate-return-interval.html#cb33-10" aria-hidden="true" tabindex="-1"></a>Xm1 <span class="ot">&lt;-</span> QyearlyMins<span class="sc">$</span>minQ[QyearlyMins<span class="sc">$</span>rank <span class="sc">==</span> m1]</span>
+<span id="cb33-11"><a href="calculate-return-interval.html#cb33-11" aria-hidden="true" tabindex="-1"></a>Xm2 <span class="ot">&lt;-</span> QyearlyMins<span class="sc">$</span>minQ[QyearlyMins<span class="sc">$</span>rank <span class="sc">==</span> m2]</span>
+<span id="cb33-12"><a href="calculate-return-interval.html#cb33-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-13"><a href="calculate-return-interval.html#cb33-13" aria-hidden="true" tabindex="-1"></a>DFxQy <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">-</span>e) <span class="sc">*</span> Xm1 <span class="sc">+</span> e <span class="sc">*</span> Xm2</span>
+<span id="cb33-14"><a href="calculate-return-interval.html#cb33-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-15"><a href="calculate-return-interval.html#cb33-15" aria-hidden="true" tabindex="-1"></a>DFxQy</span></code></pre></div>
+<pre><code>## [1] 15</code></pre>
 
 </div>
 </div>
@@ -343,8 +430,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="getdata.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="Summative1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="lfas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="floods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

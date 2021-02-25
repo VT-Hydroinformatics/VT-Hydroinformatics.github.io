@@ -24,7 +24,7 @@
 <meta name="author" content="JP Gannon" />
 
 
-<meta name="date" content="2021-02-24" />
+<meta name="date" content="2021-02-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -264,9 +264,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.8" data-path="fdcs.html"><a href="fdcs.html#compare-to-a-boxplot-of-the-same-data"><i class="fa fa-check"></i><b>10.8</b> Compare to a boxplot of the same data</a></li>
 <li class="chapter" data-level="10.9" data-path="fdcs.html"><a href="fdcs.html#challenge-examining-flow-regime-change-at-the-grand-canyon"><i class="fa fa-check"></i><b>10.9</b> Challenge: Examining flow regime change at the Grand Canyon</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="lfas.html"><a href="lfas.html"><i class="fa fa-check"></i><b>11</b> DRAFT Low Flow Analysis</a>
+<li class="chapter" data-level="11" data-path="lfas.html"><a href="lfas.html"><i class="fa fa-check"></i><b>11</b> Low Flow Analysis</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="lfas.html"><a href="lfas.html#what-is-a-xqy-flow"><i class="fa fa-check"></i><b>11.1</b> What is a xQy flow?</a></li>
+<li class="chapter" data-level="11.1" data-path="lfas.html"><a href="lfas.html#what-are-low-flow-statistics"><i class="fa fa-check"></i><b>11.1</b> What are low flow statistics?</a></li>
+<li class="chapter" data-level="11.2" data-path="lfas.html"><a href="lfas.html#get-data-1"><i class="fa fa-check"></i><b>11.2</b> Get data</a></li>
+<li class="chapter" data-level="11.3" data-path="lfas.html"><a href="lfas.html#create-the-x-days-average-flow-record"><i class="fa fa-check"></i><b>11.3</b> Create the X days average flow record</a></li>
+<li class="chapter" data-level="11.4" data-path="lfas.html"><a href="lfas.html#look-at-what-a-rolling-mean-does."><i class="fa fa-check"></i><b>11.4</b> Look at what a rolling mean does.</a></li>
+<li class="chapter" data-level="11.5" data-path="lfas.html"><a href="lfas.html#calculate-yearly-minimums"><i class="fa fa-check"></i><b>11.5</b> Calculate yearly minimums</a></li>
+<li class="chapter" data-level="11.6" data-path="lfas.html"><a href="lfas.html#calculate-return-interval"><i class="fa fa-check"></i><b>11.6</b> Calculate return interval</a></li>
+<li class="chapter" data-level="11.7" data-path="lfas.html"><a href="lfas.html#fit-to-pearson-type-ii-distribution"><i class="fa fa-check"></i><b>11.7</b> Fit to Pearson Type II distribution</a></li>
+<li class="chapter" data-level="11.8" data-path="lfas.html"><a href="lfas.html#distribution-free-method"><i class="fa fa-check"></i><b>11.8</b> Distribution-free method</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>12</b> DRAFT Flood Frequency Analysis</a>
 <ul>
@@ -345,7 +352,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4           dv   00095   00003 145685         NA           wat        &lt;NA&gt;
 ##    srs_id access_cd begin_date   end_date count_nu
 ## 2 1645597         0 2006-12-20 2009-03-18      704
-## 3 1645423         0 1907-10-01 2021-02-23    32653
+## 3 1645423         0 1907-10-01 2021-02-24    32654
 ## 4 1646694         0 2006-12-20 2008-09-29      534</code></pre>
 </div>
 <div id="joins" class="section level2" number="7.3">
@@ -414,7 +421,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3           dv   00095   00003 145685         NA           wat        &lt;NA&gt;
 ##    srs_id access_cd begin_date   end_date count_nu parameter_group_nm
 ## 1 1645597         0 2006-12-20 2009-03-18      704           Physical
-## 2 1645423         0 1907-10-01 2021-02-23    32653           Physical
+## 2 1645423         0 1907-10-01 2021-02-24    32654           Physical
 ## 3 1646694         0 2006-12-20 2008-09-29      534           Physical
 ##                                                                                 parameter_nm
 ## 1                                                        Temperature, water, degrees Celsius
@@ -440,7 +447,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3 03171000 NEW RIVER AT RADFORD, VA   00095     Specific conductance
 ##   parameter_units begin_date   end_date
 ## 1           deg C 2006-12-20 2009-03-18
-## 2           ft3/s 1907-10-01 2021-02-23
+## 2           ft3/s 1907-10-01 2021-02-24
 ## 3      uS/cm @25C 2006-12-20 2008-09-29</code></pre>
 </div>
 <div id="finding-ids-to-download-usgs-data" class="section level2" number="7.5">
@@ -480,27 +487,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 20      USGS 03170000                 LITTLE RIVER AT GRAYSONTOWN, VA
 ## 21      USGS 03169500             LITTLE RIVER NEAR COPPER VALLEY, VA
 ##    site_tp_cd dec_lat_va dec_long_va colocated           queryTime
-## 1          ST   36.88873   -81.34733     FALSE 2021-02-24 07:47:33
-## 2          ST   37.18428   -81.32982     FALSE 2021-02-24 07:47:33
-## 3          ST   37.27151   -81.30482     FALSE 2021-02-24 07:47:33
-## 4          ST   37.25595   -81.28177     FALSE 2021-02-24 07:47:33
-## 5          ST   36.85984   -80.98036     FALSE 2021-02-24 07:47:33
-## 6          ST   36.75985   -80.95619     FALSE 2021-02-24 07:47:33
-## 7          ST   36.83485   -80.95258     FALSE 2021-02-24 07:47:33
-## 8          SP   36.93429   -80.90313     FALSE 2021-02-24 07:47:33
-## 9          ST   36.93095   -80.90036     FALSE 2021-02-24 07:47:33
-## 10         SP   36.93068   -80.89619     FALSE 2021-02-24 07:47:33
-## 11         ST   36.93901   -80.88730     FALSE 2021-02-24 07:47:33
-## 12         ST   37.30568   -80.84980     FALSE 2021-02-24 07:47:33
-## 13         ST   37.04734   -80.77618     FALSE 2021-02-24 07:47:33
-## 14         ST   36.93762   -80.74563     FALSE 2021-02-24 07:47:33
-## 15         ST   36.88901   -80.72757     FALSE 2021-02-24 07:47:33
-## 16         ST   37.24179   -80.71090     FALSE 2021-02-24 07:47:33
-## 17         ST   37.26818   -80.70951     FALSE 2021-02-24 07:47:33
-## 18         ST   37.28957   -80.61673     FALSE 2021-02-24 07:47:33
-## 19         ST   37.14179   -80.56922     FALSE 2021-02-24 07:47:33
-## 20         ST   37.03763   -80.55672     FALSE 2021-02-24 07:47:33
-## 21         ST   36.99652   -80.52144     FALSE 2021-02-24 07:47:33</code></pre>
+## 1          ST   36.88873   -81.34733     FALSE 2021-02-25 13:40:42
+## 2          ST   37.18428   -81.32982     FALSE 2021-02-25 13:40:42
+## 3          ST   37.27151   -81.30482     FALSE 2021-02-25 13:40:42
+## 4          ST   37.25595   -81.28177     FALSE 2021-02-25 13:40:42
+## 5          ST   36.85984   -80.98036     FALSE 2021-02-25 13:40:42
+## 6          ST   36.75985   -80.95619     FALSE 2021-02-25 13:40:42
+## 7          ST   36.83485   -80.95258     FALSE 2021-02-25 13:40:42
+## 8          SP   36.93429   -80.90313     FALSE 2021-02-25 13:40:42
+## 9          ST   36.93095   -80.90036     FALSE 2021-02-25 13:40:42
+## 10         SP   36.93068   -80.89619     FALSE 2021-02-25 13:40:42
+## 11         ST   36.93901   -80.88730     FALSE 2021-02-25 13:40:42
+## 12         ST   37.30568   -80.84980     FALSE 2021-02-25 13:40:42
+## 13         ST   37.04734   -80.77618     FALSE 2021-02-25 13:40:42
+## 14         ST   36.93762   -80.74563     FALSE 2021-02-25 13:40:42
+## 15         ST   36.88901   -80.72757     FALSE 2021-02-25 13:40:42
+## 16         ST   37.24179   -80.71090     FALSE 2021-02-25 13:40:42
+## 17         ST   37.26818   -80.70951     FALSE 2021-02-25 13:40:42
+## 18         ST   37.28957   -80.61673     FALSE 2021-02-25 13:40:42
+## 19         ST   37.14179   -80.56922     FALSE 2021-02-25 13:40:42
+## 20         ST   37.03763   -80.55672     FALSE 2021-02-25 13:40:42
+## 21         ST   36.99652   -80.52144     FALSE 2021-02-25 13:40:42</code></pre>
 <div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="getdata.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co">#find sites with other criteria, VA, less than 20 sqmi, other criteria can be used..</span></span>
 <span id="cb128-2"><a href="getdata.html#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="co">#check out the CRAN documentation</span></span>
 <span id="cb128-3"><a href="getdata.html#cb128-3" aria-hidden="true" tabindex="-1"></a>smallVA <span class="ot">&lt;-</span> <span class="fu">readNWISdata</span>(<span class="at">service =</span> <span class="st">&quot;dv&quot;</span>,</span>
@@ -606,7 +613,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb135-13"><a href="getdata.html#cb135-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb135-14"><a href="getdata.html#cb135-14" aria-hidden="true" tabindex="-1"></a><span class="fu">comment</span>(wqdat)</span></code></pre></div>
 <pre><code>##   [1] &quot;#&quot;                                                                                                                                            
-##   [2] &quot;# File created on 2021-02-24 07:47:40 EST&quot;                                                                                                    
+##   [2] &quot;# File created on 2021-02-25 13:40:50 EST&quot;                                                                                                    
 ##   [3] &quot;#&quot;                                                                                                                                            
 ##   [4] &quot;# U.S. Geological Survey&quot;                                                                                                                     
 ##   [5] &quot;# &quot;                                                                                                                                           
