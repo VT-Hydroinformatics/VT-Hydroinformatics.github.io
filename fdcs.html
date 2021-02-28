@@ -24,7 +24,7 @@
 <meta name="author" content="JP Gannon" />
 
 
-<meta name="date" content="2021-02-26" />
+<meta name="date" content="2021-02-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -378,9 +378,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(P = 100 * [M / (n + 1)]\)</span></p>
 <p>M = Ranked position of the flow
 n = total number of observations in data record</p>
-<p>Here’s a description of what we will do:
-&gt; Pass our Qdat data to mutate and create a new column that is equal to the ranks of the discharge column.
-&gt; Then pass that result to mutate again and create another column equal exceedence probability (P) * 100, which will give us %.</p>
+<p>Here’s a description of what we will do:</p>
+<blockquote>
+<p>Pass our Qdat data to mutate and create a new column that is equal to the ranks of the discharge column.</p>
+</blockquote>
+<blockquote>
+<p>Then pass that result to mutate again and create another column equal exceedence probability (P) * 100, which will give us %.</p>
+</blockquote>
 <div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="fdcs.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Flow is negative in rank() to make </span></span>
 <span id="cb147-2"><a href="fdcs.html#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="co">#high flows ranked low (#1)</span></span>
 <span id="cb147-3"><a href="fdcs.html#cb147-3" aria-hidden="true" tabindex="-1"></a>Qdat <span class="ot">&lt;-</span> Qdat <span class="sc">%&gt;%</span></span>
@@ -391,12 +395,14 @@ n = total number of observations in data record</p>
 <h2><span class="header-section-number">10.5</span> Plot a Flow Duration Curve using the probabilities</h2>
 <p>Now construct the following plot: A line with P on the x axis and flow on the y axis. Name the x axis “% Time flow equaled or exceeded” and log the y axis.</p>
 <p>That’s a flow duration curve!</p>
-<p>Questions about the flow duration curve:
-* How often is a flow of 100 cfs exceeded at this gage?
-* Is flow more variable for flows exceeded 0-25% or of the time or 75-100% * of the time?
-* How can you tell?
-* These data are daily observations. Given that, what is a more accurate name for the x axis?
-* What would the X axis be called if we were using maximum yearly data?</p>
+<p>Questions about the flow duration curve:</p>
+<ul>
+<li>How often is a flow of 100 cfs exceeded at this gage?</li>
+<li>Is flow more variable for flows exceeded 0-25% or of the time or 75-100% * of the time?</li>
+<li>How can you tell?</li>
+<li>These data are daily observations. Given that, what is a more accurate name for the x axis?</li>
+<li>What would the X axis be called if we were using maximum yearly data?</li>
+</ul>
 <div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="fdcs.html#cb148-1" aria-hidden="true" tabindex="-1"></a>Qdat <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> P, <span class="at">y =</span> Flow))<span class="sc">+</span></span>
 <span id="cb148-2"><a href="fdcs.html#cb148-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
 <span id="cb148-3"><a href="fdcs.html#cb148-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()<span class="sc">+</span></span>
