@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 12 DRAFT Flood Frequency Analysis | Hydroinformatics at VT</title>
+  <title>Chapter 12 Flood Frequency Analysis and Creating Functions | Hydroinformatics at VT</title>
   <meta name="description" content="This bookdown contains notes and exercises for a course in hydroinformatics at Virginia Tech." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 12 DRAFT Flood Frequency Analysis | Hydroinformatics at VT" />
+  <meta property="og:title" content="Chapter 12 Flood Frequency Analysis and Creating Functions | Hydroinformatics at VT" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 12 DRAFT Flood Frequency Analysis | Hydroinformatics at VT" />
+  <meta name="twitter:title" content="Chapter 12 Flood Frequency Analysis and Creating Functions | Hydroinformatics at VT" />
   
   <meta name="twitter:description" content="This bookdown contains notes and exercises for a course in hydroinformatics at Virginia Tech." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="JP Gannon" />
 
 
-<meta name="date" content="2021-02-28" />
+<meta name="date" content="2021-03-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="lfas.html"/>
-
+<link rel="next" href="rgeospatial.html"/>
 <script src="libs/header-attrs-2.4.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -53,6 +53,16 @@
 
 <link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.3/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GBDXSZFFSR"></script>
 <script>
@@ -284,9 +294,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.7" data-path="lfas.html"><a href="lfas.html#fit-to-pearson-type-ii-distribution"><i class="fa fa-check"></i><b>11.7</b> Fit to Pearson Type II distribution</a></li>
 <li class="chapter" data-level="11.8" data-path="lfas.html"><a href="lfas.html#distribution-free-method"><i class="fa fa-check"></i><b>11.8</b> Distribution-free method</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>12</b> DRAFT Flood Frequency Analysis</a>
+<li class="chapter" data-level="12" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>12</b> Flood Frequency Analysis and Creating Functions</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="floods.html"><a href="floods.html#challenge-create-a-function"><i class="fa fa-check"></i><b>12.1</b> Challenge: Create a function</a></li>
+<li class="chapter" data-level="12.1" data-path="floods.html"><a href="floods.html#template-repository"><i class="fa fa-check"></i><b>12.1</b> Template Repository</a></li>
+<li class="chapter" data-level="12.2" data-path="floods.html"><a href="floods.html#introduction-2"><i class="fa fa-check"></i><b>12.2</b> Introduction</a></li>
+<li class="chapter" data-level="12.3" data-path="floods.html"><a href="floods.html#download-and-plot-peak-flow-data"><i class="fa fa-check"></i><b>12.3</b> Download and plot peak flow data</a></li>
+<li class="chapter" data-level="12.4" data-path="floods.html"><a href="floods.html#compute-ranks-for-peak-flows"><i class="fa fa-check"></i><b>12.4</b> Compute ranks for peak flows</a></li>
+<li class="chapter" data-level="12.5" data-path="floods.html"><a href="floods.html#calculate-exceedance-probability-and-return-period"><i class="fa fa-check"></i><b>12.5</b> Calculate exceedance probability and return period</a></li>
+<li class="chapter" data-level="12.6" data-path="floods.html"><a href="floods.html#calculate-gumbel-distribution-parameters"><i class="fa fa-check"></i><b>12.6</b> Calculate Gumbel distribution parameters</a></li>
+<li class="chapter" data-level="12.7" data-path="floods.html"><a href="floods.html#calculate-return-interval-for-peak-flows-according-to-gumbel-distribution"><i class="fa fa-check"></i><b>12.7</b> Calculate return interval for peak flows according to Gumbel distribution</a></li>
+<li class="chapter" data-level="12.8" data-path="floods.html"><a href="floods.html#plot-gumbel-distribution-fit-with-peak-flow-data"><i class="fa fa-check"></i><b>12.8</b> Plot Gumbel distribution fit with peak flow data</a></li>
+<li class="chapter" data-level="12.9" data-path="floods.html"><a href="floods.html#calculate-magnitude-of-1-in-100-chance-flood"><i class="fa fa-check"></i><b>12.9</b> Calculate magnitude of 1 in 100 chance flood</a></li>
+<li class="chapter" data-level="12.10" data-path="floods.html"><a href="floods.html#how-to-create-your-own-functions"><i class="fa fa-check"></i><b>12.10</b> How to create your own functions</a></li>
+<li class="chapter" data-level="12.11" data-path="floods.html"><a href="floods.html#create-a-return-period-function"><i class="fa fa-check"></i><b>12.11</b> Create a return period function</a></li>
+<li class="chapter" data-level="12.12" data-path="floods.html"><a href="floods.html#challenge-create-a-function-to-compute-the-1-in-100-chance-flood-for-any-usgs-gage"><i class="fa fa-check"></i><b>12.12</b> Challenge: Create a function to compute the 1 in 100 chance flood for any USGS gage</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="rgeospatial.html"><a href="rgeospatial.html"><i class="fa fa-check"></i><b>13</b> Geospatial data in R</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="rgeospatial.html"><a href="rgeospatial.html#goals"><i class="fa fa-check"></i><b>13.1</b> Goals</a></li>
+<li class="chapter" data-level="13.2" data-path="rgeospatial.html"><a href="rgeospatial.html#intro-to-tmap"><i class="fa fa-check"></i><b>13.2</b> Intro to tmap</a></li>
+<li class="chapter" data-level="13.3" data-path="rgeospatial.html"><a href="rgeospatial.html#data-wrangling-with-tidyverse-principles"><i class="fa fa-check"></i><b>13.3</b> Data wrangling with tidyverse principles</a></li>
+<li class="chapter" data-level="13.4" data-path="rgeospatial.html"><a href="rgeospatial.html#join-state-names"><i class="fa fa-check"></i><b>13.4</b> Join state names</a></li>
+<li class="chapter" data-level="13.5" data-path="rgeospatial.html"><a href="rgeospatial.html#we-can-show-maps-side-by-side-too"><i class="fa fa-check"></i><b>13.5</b> We can show maps side by side too</a></li>
+<li class="chapter" data-level="13.6" data-path="rgeospatial.html"><a href="rgeospatial.html#there-are-built-in-styles-just-like-themes-in-ggplot"><i class="fa fa-check"></i><b>13.6</b> There are built in styles, just like themes in ggplot</a></li>
+<li class="chapter" data-level="13.7" data-path="rgeospatial.html"><a href="rgeospatial.html#interactive-maps"><i class="fa fa-check"></i><b>13.7</b> Interactive Maps</a>
+<ul>
+<li class="chapter" data-level="13.7.1" data-path="rgeospatial.html"><a href="rgeospatial.html#tmap"><i class="fa fa-check"></i><b>13.7.1</b> tmap</a></li>
+</ul></li>
+<li class="chapter" data-level="13.8" data-path="rgeospatial.html"><a href="rgeospatial.html#leaflet"><i class="fa fa-check"></i><b>13.8</b> Leaflet</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -309,35 +344,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="floods" class="section level1" number="12">
-<h1><span class="header-section-number">Chapter 12</span> DRAFT Flood Frequency Analysis</h1>
-<p>Load packages</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="floods.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb169-2"><a href="floods.html#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dataRetrieval)</span></code></pre></div>
-<p>Get peak flow data and plot it</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="floods.html#cb170-1" aria-hidden="true" tabindex="-1"></a>radford <span class="ot">&lt;-</span> <span class="st">&quot;03171000&quot;</span></span>
-<span id="cb170-2"><a href="floods.html#cb170-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb170-3"><a href="floods.html#cb170-3" aria-hidden="true" tabindex="-1"></a>peakflows <span class="ot">&lt;-</span> <span class="fu">readNWISpeak</span>(radford, <span class="at">startDate =</span> <span class="st">&quot;1950-01-01&quot;</span>)</span>
-<span id="cb170-4"><a href="floods.html#cb170-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb170-5"><a href="floods.html#cb170-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(peakflows, <span class="fu">aes</span>(peak_dt, peak_va))<span class="sc">+</span></span>
-<span id="cb170-6"><a href="floods.html#cb170-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<h1><span class="header-section-number">Chapter 12</span> Flood Frequency Analysis and Creating Functions</h1>
+<div id="template-repository" class="section level2" number="12.1">
+<h2><span class="header-section-number">12.1</span> Template Repository</h2>
+<p>The following activity is available as a template github repository at the following link: <a href="https://github.com/VT-Hydroinformatics/11-Flood-Frequency-and-Functions" class="uri">https://github.com/VT-Hydroinformatics/11-Flood-Frequency-and-Functions</a></p>
+</div>
+<div id="introduction-2" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> Introduction</h2>
+<p>This methods for this chapter are adapted from the following activity:
+<a href="https://serc.carleton.edu/hydromodules/steps/166250.html" class="uri">https://serc.carleton.edu/hydromodules/steps/166250.html</a></p>
+<p>After working with Flow Duration Curves (FDCs) and performing a low flow analysis, we now understand all the concepts necessary to perform a flood frequency analysis. In this chapter we will perform a flood frequency analysis using a Gumbel extreme value distribution and then write our own function that will return the return interval of magnitude flow we want! At the end of the chapter you will be challenged to write a function that performs a flood frequency analysis for any USGS gage.</p>
+<p>First we will load the tidyverse and dataRetrieval packages and the set the theme for our plots.</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="floods.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb161-2"><a href="floods.html#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dataRetrieval)</span>
+<span id="cb161-3"><a href="floods.html#cb161-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-4"><a href="floods.html#cb161-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_classic</span>())</span></code></pre></div>
+</div>
+<div id="download-and-plot-peak-flow-data" class="section level2" number="12.3">
+<h2><span class="header-section-number">12.3</span> Download and plot peak flow data</h2>
+<p>Next, download the yearly peakflow data from USGS dataRetrieval using the readNWISpeak() function. We don’t have to create our own yearly values like we did in the low flow analysis. This function just returns the highest flow for each year.</p>
+<p>Download the data for the New River at Radford starting in 1945.</p>
+<p>Then make a plot of the peak flow for each year.</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="floods.html#cb162-1" aria-hidden="true" tabindex="-1"></a>radford <span class="ot">&lt;-</span> <span class="st">&quot;03171000&quot;</span></span>
+<span id="cb162-2"><a href="floods.html#cb162-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-3"><a href="floods.html#cb162-3" aria-hidden="true" tabindex="-1"></a>peakflows <span class="ot">&lt;-</span> <span class="fu">readNWISpeak</span>(radford, <span class="at">startDate =</span> <span class="st">&quot;1945-01-01&quot;</span>)</span>
+<span id="cb162-4"><a href="floods.html#cb162-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-5"><a href="floods.html#cb162-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(peakflows, <span class="fu">aes</span>(peak_dt, peak_va))<span class="sc">+</span></span>
+<span id="cb162-6"><a href="floods.html#cb162-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="floods.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create rank column (minus flips the ranking)</span></span>
-<span id="cb171-2"><a href="floods.html#cb171-2" aria-hidden="true" tabindex="-1"></a><span class="co">#then clean it up, pull out only peak value, date, rank</span></span>
-<span id="cb171-3"><a href="floods.html#cb171-3" aria-hidden="true" tabindex="-1"></a>peakflows <span class="ot">&lt;-</span> peakflows <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ranks =</span> <span class="fu">rank</span>(<span class="sc">-</span>peak_va)) <span class="sc">%&gt;%</span></span>
-<span id="cb171-4"><a href="floods.html#cb171-4" aria-hidden="true" tabindex="-1"></a>              <span class="fu">select</span>(peak_dt, peak_va, ranks)</span>
-<span id="cb171-5"><a href="floods.html#cb171-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb171-6"><a href="floods.html#cb171-6" aria-hidden="true" tabindex="-1"></a><span class="co">#look at it</span></span>
-<span id="cb171-7"><a href="floods.html#cb171-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(peakflows, <span class="fu">aes</span>(peak_dt, peak_va, <span class="at">color =</span> ranks))<span class="sc">+</span></span>
-<span id="cb171-8"><a href="floods.html#cb171-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+</div>
+<div id="compute-ranks-for-peak-flows" class="section level2" number="12.4">
+<h2><span class="header-section-number">12.4</span> Compute ranks for peak flows</h2>
+<p>As with the couple previous chapters, the next step is to create a column that contains the ranks of each flow in the record. Create a column that has the rank of each flow, with the highest flow ranked #1. Use select() to trim your dataset to just the peak data, peak values, and ranks columns.</p>
+<p>Make the plot from the last code chunk again but color the points by rank to check that this worked.
+Also, look at the data through the environment tab in rstudio or using head() to double check.</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="floods.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create rank column (minus flips the ranking)</span></span>
+<span id="cb163-2"><a href="floods.html#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="co">#then clean it up, pull out only peak value, date, rank</span></span>
+<span id="cb163-3"><a href="floods.html#cb163-3" aria-hidden="true" tabindex="-1"></a>peakflows <span class="ot">&lt;-</span> peakflows <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ranks =</span> <span class="fu">rank</span>(<span class="sc">-</span>peak_va)) <span class="sc">%&gt;%</span></span>
+<span id="cb163-4"><a href="floods.html#cb163-4" aria-hidden="true" tabindex="-1"></a>              <span class="fu">select</span>(peak_dt, peak_va, ranks)</span>
+<span id="cb163-5"><a href="floods.html#cb163-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-6"><a href="floods.html#cb163-6" aria-hidden="true" tabindex="-1"></a><span class="co">#look at it</span></span>
+<span id="cb163-7"><a href="floods.html#cb163-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(peakflows, <span class="fu">aes</span>(peak_dt, peak_va, <span class="at">color =</span> ranks))<span class="sc">+</span></span>
+<span id="cb163-8"><a href="floods.html#cb163-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="floods.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(peakflows)</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="floods.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(peakflows)</span></code></pre></div>
 <pre><code>##      peak_dt peak_va ranks
-## 1 1950-12-08   62200  14.0
-## 2 1952-03-11   28100  53.0
-## 3 1953-02-21   34900  43.5
-## 4 1954-03-01   48000  28.5
-## 5 1955-04-15   32100  49.0
-## 6 1956-04-16   33300  47.0</code></pre>
+## 1 1945-09-18   62700  14.0
+## 2 1946-01-08   44400  34.0
+## 3 1947-01-20   34500  48.5
+## 4 1948-02-14   34500  48.5
+## 5 1949-08-29   40800  38.0
+## 6 1949-11-02   15200  73.0</code></pre>
+</div>
+<div id="calculate-exceedance-probability-and-return-period" class="section level2" number="12.5">
+<h2><span class="header-section-number">12.5</span> Calculate exceedance probability and return period</h2>
+<p>Now we need to calculate the exceedance probability and return interval for each value in our data. For flood frequency analysis, it is common to use the Gringorten plotting position formula:</p>
 <div class="figure">
 <img src="images/plottingposition.png" title="Plotting Position Formula" alt="" />
 <p class="caption">Plotting Position Formula</p>
@@ -347,130 +408,140 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>i = Rank of specific observation, i = 1 is the largest, i = N is the smallest.</p>
 <p>a = constant for estimation = 0.44</p>
 <hr />
-<p>Non-exceedence probability = pi = 1 - qi</p>
+<p><span class="math inline">\(Non-exceedence probability = pi = 1 - qi\)</span></p>
 <hr />
 <p>Return period</p>
-<p>Tp = 1/(1-p)</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="floods.html#cb174-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">length</span>(peakflows<span class="sc">$</span>peak_dt)</span>
-<span id="cb174-2"><a href="floods.html#cb174-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fl">0.44</span></span>
-<span id="cb174-3"><a href="floods.html#cb174-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-4"><a href="floods.html#cb174-4" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate exceedence/non-exceedence with gringorten and return period</span></span>
-<span id="cb174-5"><a href="floods.html#cb174-5" aria-hidden="true" tabindex="-1"></a>peakflows <span class="ot">&lt;-</span> peakflows <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">qi =</span> (ranks <span class="sc">-</span> a) <span class="sc">/</span> (N <span class="sc">+</span> <span class="dv">1</span> <span class="sc">-</span> (<span class="dv">2</span><span class="sc">*</span>a))) <span class="sc">%&gt;%</span></span>
-<span id="cb174-6"><a href="floods.html#cb174-6" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">mutate</span>(<span class="at">pi =</span> <span class="dv">1</span> <span class="sc">-</span> qi) <span class="sc">%&gt;%</span></span>
-<span id="cb174-7"><a href="floods.html#cb174-7" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">mutate</span>(<span class="at">TpEst =</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>pi))</span>
-<span id="cb174-8"><a href="floods.html#cb174-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-9"><a href="floods.html#cb174-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Plot peak flows on y and est return period on the x</span></span>
-<span id="cb174-10"><a href="floods.html#cb174-10" aria-hidden="true" tabindex="-1"></a>peakflows <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> TpEst, <span class="at">y =</span> peak_va)) <span class="sc">+</span></span>
-<span id="cb174-11"><a href="floods.html#cb174-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><span class="math inline">\(Tp = 1/(1-p)\)</span></p>
+<p>In the chunk below, create a column in your dataset and calculate each: exceedance probability, non-exceedane probabily, and return period.</p>
+<p>Then make a plot with peak flow on the Y axis and Return Period on the X.</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="floods.html#cb166-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">length</span>(peakflows<span class="sc">$</span>peak_dt)</span>
+<span id="cb166-2"><a href="floods.html#cb166-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fl">0.44</span></span>
+<span id="cb166-3"><a href="floods.html#cb166-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb166-4"><a href="floods.html#cb166-4" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate exceedence/non-exceedence with gringorten and return period</span></span>
+<span id="cb166-5"><a href="floods.html#cb166-5" aria-hidden="true" tabindex="-1"></a>peakflows <span class="ot">&lt;-</span> peakflows <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">qi =</span> (ranks <span class="sc">-</span> a) <span class="sc">/</span> (N <span class="sc">+</span> <span class="dv">1</span> <span class="sc">-</span> (<span class="dv">2</span><span class="sc">*</span>a))) <span class="sc">%&gt;%</span></span>
+<span id="cb166-6"><a href="floods.html#cb166-6" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">mutate</span>(<span class="at">pi =</span> <span class="dv">1</span> <span class="sc">-</span> qi) <span class="sc">%&gt;%</span></span>
+<span id="cb166-7"><a href="floods.html#cb166-7" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">mutate</span>(<span class="at">TpEst =</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>pi))</span>
+<span id="cb166-8"><a href="floods.html#cb166-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb166-9"><a href="floods.html#cb166-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Plot peak flows on y and est return period on the x</span></span>
+<span id="cb166-10"><a href="floods.html#cb166-10" aria-hidden="true" tabindex="-1"></a>peakflows <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> TpEst, <span class="at">y =</span> peak_va)) <span class="sc">+</span></span>
+<span id="cb166-11"><a href="floods.html#cb166-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
-<p>Need to fit these data to a distribution in order to make a continuous relationship we can use to predict the discharge of specific return intervals.</p>
-<p>There are many distributions but a common one used is the Gumbel extreme value distribution.</p>
-<p><img src="images/gumbel.png" title="Gumbel Distribution" alt="Gumbel Distribution" />
-x is observed discharge data, u and x are parameters that shape the distribution.</p>
-<p>We can calculate u and x in order to create a distribution that best fits our data with the following equations. Notice x bar is mean and sx2 is variance. We will need to find sx, which is the square root of the variance, also known as the standard deviation.</p>
+</div>
+<div id="calculate-gumbel-distribution-parameters" class="section level2" number="12.6">
+<h2><span class="header-section-number">12.6</span> Calculate Gumbel distribution parameters</h2>
+<p>Now we need to fit these data to a distribution in order to make a relationship we can use to predict the discharge of specific return intervals.</p>
+<p>There are many distributions that can be used in this situation, but a common one for flood frequency analyses is the Gumbel extreme value distribution:</p>
+<div class="figure">
+<img src="images/gumbel.png" title="Gumbel Distribution" alt="" />
+<p class="caption">Gumbel Distribution</p>
+</div>
+<p>x is observed discharge data, u and alpha are parameters that shape the distribution.</p>
+<p>We can calculate u and alpha in order to create a distribution that best fits our data with the following equations. Notice <strong>x bar</strong> is mean and <strong>sx2</strong> is variance. We will need to find <strong>sx</strong>, which is the square root of the variance, also known as the standard deviation.</p>
 <div class="figure">
 <img src="images/gumbelparams.png" title="Gumbel parameters" width="248" alt="" />
 <p class="caption">Gumbel parameters</p>
 </div>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="floods.html#cb175-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(peakflows<span class="sc">$</span>peak_va)</span>
-<span id="cb175-2"><a href="floods.html#cb175-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb175-3"><a href="floods.html#cb175-3" aria-hidden="true" tabindex="-1"></a>sx <span class="ot">&lt;-</span> <span class="fu">sd</span>(peakflows<span class="sc">$</span>peak_va)</span>
-<span id="cb175-4"><a href="floods.html#cb175-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb175-5"><a href="floods.html#cb175-5" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> (<span class="fu">sqrt</span>(<span class="dv">6</span>)<span class="sc">*</span>sx) <span class="sc">/</span> pi</span>
-<span id="cb175-6"><a href="floods.html#cb175-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb175-7"><a href="floods.html#cb175-7" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> xbar <span class="sc">-</span> (<span class="fl">0.5772</span> <span class="sc">*</span> alpha)</span></code></pre></div>
+<p>In the chunk below, calculate u and alpha by first calculating xbar (mean) and sx (standard deviation) and then using them in the above equations for u and x.</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="floods.html#cb167-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(peakflows<span class="sc">$</span>peak_va)</span>
+<span id="cb167-2"><a href="floods.html#cb167-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb167-3"><a href="floods.html#cb167-3" aria-hidden="true" tabindex="-1"></a>sx <span class="ot">&lt;-</span> <span class="fu">sd</span>(peakflows<span class="sc">$</span>peak_va)</span>
+<span id="cb167-4"><a href="floods.html#cb167-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb167-5"><a href="floods.html#cb167-5" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> (<span class="fu">sqrt</span>(<span class="dv">6</span>)<span class="sc">*</span>sx) <span class="sc">/</span> pi</span>
+<span id="cb167-6"><a href="floods.html#cb167-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb167-7"><a href="floods.html#cb167-7" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> xbar <span class="sc">-</span> (<span class="fl">0.5772</span> <span class="sc">*</span> alpha)</span></code></pre></div>
+</div>
+<div id="calculate-return-interval-for-peak-flows-according-to-gumbel-distribution" class="section level2" number="12.7">
+<h2><span class="header-section-number">12.7</span> Calculate return interval for peak flows according to Gumbel distribution</h2>
 <p>Now that we have the parameters that best represent our data as a Gumbel Distribution, we can use the formula to create the theoretical values for the return interval according to that distribution.</p>
-<p><img src="images/gumbel.png" title="Gumbel Distribution" alt="Gumbel Distribution" /> First calculate p theoretical with the equation above.</p>
+<div class="figure">
+<img src="images/gumbel.png" title="Gumbel Distribution" alt="" />
+<p class="caption">Gumbel Distribution</p>
+</div>
+<p>In the chunk below:</p>
+<p>First calculate p theoretical with the equation above.</p>
 <p>Then calculate Tp theoretical (the return period) as T was calculated above Tp = 1 / (1-p)</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="floods.html#cb176-1" aria-hidden="true" tabindex="-1"></a>peakflows <span class="ot">&lt;-</span> peakflows <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">pTheoretical =</span> </span>
-<span id="cb176-2"><a href="floods.html#cb176-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="fu">exp</span>(<span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>((peak_va <span class="sc">-</span> u) <span class="sc">/</span> alpha)))) <span class="sc">%&gt;%</span></span>
-<span id="cb176-3"><a href="floods.html#cb176-3" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">mutate</span>(<span class="at">TpTheoretical =</span> (<span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>pTheoretical)))</span>
-<span id="cb176-4"><a href="floods.html#cb176-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb176-5"><a href="floods.html#cb176-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb176-6"><a href="floods.html#cb176-6" aria-hidden="true" tabindex="-1"></a>peakflows <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> TpEst, <span class="at">y =</span> peak_va, <span class="at">color =</span> <span class="st">&quot;Estimated&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb176-7"><a href="floods.html#cb176-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb176-8"><a href="floods.html#cb176-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> TpTheoretical, <span class="at">y =</span> peak_va, <span class="at">color =</span> <span class="st">&quot;Theoretical&quot;</span>))<span class="sc">+</span></span>
-<span id="cb176-9"><a href="floods.html#cb176-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Annual Peak Flows&quot;</span>)<span class="sc">+</span></span>
-<span id="cb176-10"><a href="floods.html#cb176-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Return Period&quot;</span>)<span class="sc">+</span></span>
-<span id="cb176-11"><a href="floods.html#cb176-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() </span></code></pre></div>
+<p>Finally create a plot of return period on the y axis and peak values on the x. Include return periods calculated from your data and those calculated from the Gumbel distribution on your plot as points of different colors.</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="floods.html#cb168-1" aria-hidden="true" tabindex="-1"></a>peakflows <span class="ot">&lt;-</span> peakflows <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">pTheoretical =</span> </span>
+<span id="cb168-2"><a href="floods.html#cb168-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="fu">exp</span>(<span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>((peak_va <span class="sc">-</span> u) <span class="sc">/</span> alpha)))) <span class="sc">%&gt;%</span></span>
+<span id="cb168-3"><a href="floods.html#cb168-3" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">mutate</span>(<span class="at">TpTheoretical =</span> (<span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>pTheoretical)))</span>
+<span id="cb168-4"><a href="floods.html#cb168-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-5"><a href="floods.html#cb168-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-6"><a href="floods.html#cb168-6" aria-hidden="true" tabindex="-1"></a>peakflows <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> TpEst, <span class="at">y =</span> peak_va, <span class="at">color =</span> <span class="st">&quot;Estimated&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb168-7"><a href="floods.html#cb168-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb168-8"><a href="floods.html#cb168-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> TpTheoretical, <span class="at">y =</span> peak_va, <span class="at">color =</span> <span class="st">&quot;Theoretical&quot;</span>))<span class="sc">+</span></span>
+<span id="cb168-9"><a href="floods.html#cb168-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Annual Peak Flows&quot;</span>)<span class="sc">+</span></span>
+<span id="cb168-10"><a href="floods.html#cb168-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Return Period&quot;</span>)<span class="sc">+</span></span>
+<span id="cb168-11"><a href="floods.html#cb168-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() </span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-114-1.png" width="672" /></p>
-<p>Make the same plot but show the theoretical values as a line and log the x axis with limits set to 1 - 100.</p>
+</div>
+<div id="plot-gumbel-distribution-fit-with-peak-flow-data" class="section level2" number="12.8">
+<h2><span class="header-section-number">12.8</span> Plot Gumbel distribution fit with peak flow data</h2>
+<p>Let’s look at these data a slightly different way to make it easier to see what is going on and how we can pull of flows for different return periods.</p>
+<p>Make the same plot as abote but show the theoretical values (from the distribution) as a line, with the estimated values as points, and log the x axis with limits set to 1 - 100.</p>
 <p>With this plot you could look up the return period for any flood or the discharge level for any return period.</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="floods.html#cb177-1" aria-hidden="true" tabindex="-1"></a>peakflows <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> TpEst, <span class="at">y =</span> peak_va, <span class="at">color =</span> <span class="st">&quot;Estimated&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb177-2"><a href="floods.html#cb177-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb177-3"><a href="floods.html#cb177-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">x =</span> TpTheoretical, <span class="at">y =</span> peak_va, <span class="at">color =</span> <span class="st">&quot;Theoretical&quot;</span>))<span class="sc">+</span></span>
-<span id="cb177-4"><a href="floods.html#cb177-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Annual Peak Flows&quot;</span>)<span class="sc">+</span></span>
-<span id="cb177-5"><a href="floods.html#cb177-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Return Period&quot;</span>)<span class="sc">+</span></span>
-<span id="cb177-6"><a href="floods.html#cb177-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">100</span>))<span class="sc">+</span></span>
-<span id="cb177-7"><a href="floods.html#cb177-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
-<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="floods.html#cb169-1" aria-hidden="true" tabindex="-1"></a>peakflows <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> TpEst, <span class="at">y =</span> peak_va, <span class="at">color =</span> <span class="st">&quot;Estimated&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb169-2"><a href="floods.html#cb169-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb169-3"><a href="floods.html#cb169-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> TpTheoretical, <span class="at">y =</span> peak_va, <span class="at">color =</span> <span class="st">&quot;Theoretical&quot;</span>))<span class="sc">+</span></span>
+<span id="cb169-4"><a href="floods.html#cb169-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Annual Peak Flows&quot;</span>)<span class="sc">+</span></span>
+<span id="cb169-5"><a href="floods.html#cb169-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Return Period&quot;</span>)<span class="sc">+</span></span>
+<span id="cb169-6"><a href="floods.html#cb169-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">100</span>))<span class="sc">+</span></span>
+<span id="cb169-7"><a href="floods.html#cb169-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
 <pre><code>## Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
-<p>We can create a function that returns the return period for a flood of any magnitude for the gage we are investigating. Creating functions is a great way to streamline your workflow. You can write a function that performs an operation you need to perform a bunch of times, then just use the function rather than re-writing the code.</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="floods.html#cb180-1" aria-hidden="true" tabindex="-1"></a>ReturnPeriod <span class="ot">&lt;-</span> <span class="cf">function</span>(flow, u, alpha){</span>
-<span id="cb180-2"><a href="floods.html#cb180-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb180-3"><a href="floods.html#cb180-3" aria-hidden="true" tabindex="-1"></a>  pTheoretical <span class="ot">=</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>((flow <span class="sc">-</span> u) <span class="sc">/</span> alpha)))</span>
-<span id="cb180-4"><a href="floods.html#cb180-4" aria-hidden="true" tabindex="-1"></a>  TpTheoretical <span class="ot">=</span> (<span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>pTheoretical))</span>
-<span id="cb180-5"><a href="floods.html#cb180-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb180-6"><a href="floods.html#cb180-6" aria-hidden="true" tabindex="-1"></a>  TpTheoretical</span>
-<span id="cb180-7"><a href="floods.html#cb180-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb180-8"><a href="floods.html#cb180-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb180-9"><a href="floods.html#cb180-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ReturnPeriod</span>(<span class="dv">120000</span>, u, alpha)</span></code></pre></div>
-<pre><code>## [1] 88.25008</code></pre>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="floods.html#cb182-1" aria-hidden="true" tabindex="-1"></a>Flows <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">25000</span>, <span class="dv">150000</span>, <span class="at">by =</span> <span class="dv">1000</span>)</span>
-<span id="cb182-2"><a href="floods.html#cb182-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb182-3"><a href="floods.html#cb182-3" aria-hidden="true" tabindex="-1"></a>RPFlows <span class="ot">&lt;-</span> <span class="fu">ReturnPeriod</span>(Flows, u, alpha)</span>
-<span id="cb182-4"><a href="floods.html#cb182-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb182-5"><a href="floods.html#cb182-5" aria-hidden="true" tabindex="-1"></a>newline <span class="ot">&lt;-</span> <span class="fu">tibble</span>(Flows, RPFlows)</span>
-<span id="cb182-6"><a href="floods.html#cb182-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb182-7"><a href="floods.html#cb182-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(newline, <span class="fu">aes</span>(<span class="at">x =</span> RPFlows, <span class="at">y =</span> Flows))<span class="sc">+</span></span>
-<span id="cb182-8"><a href="floods.html#cb182-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_smooth</span>()<span class="sc">+</span></span>
-<span id="cb182-9"><a href="floods.html#cb182-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ylab</span>(<span class="st">&quot;Annual Peak Flows&quot;</span>)<span class="sc">+</span></span>
-<span id="cb182-10"><a href="floods.html#cb182-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">xlab</span>(<span class="st">&quot;Return Period&quot;</span>)<span class="sc">+</span></span>
-<span id="cb182-11"><a href="floods.html#cb182-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_x_log10</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">100</span>))<span class="sc">+</span></span>
-<span id="cb182-12"><a href="floods.html#cb182-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_classic</span>()</span></code></pre></div>
-<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<pre><code>## Warning: Removed 28 rows containing non-finite values (stat_smooth).</code></pre>
-<p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
-<div id="challenge-create-a-function" class="section level2" number="12.1">
-<h2><span class="header-section-number">12.1</span> Challenge: Create a function</h2>
-<p>Create a function that returns the theoretical return period for a given flood magnitude when given the the flood magnitude you want to investigate, the gage id, startdate, and enddate for the records you want.</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="floods.html#cb185-1" aria-hidden="true" tabindex="-1"></a>RPusgs <span class="ot">&lt;-</span> <span class="cf">function</span>(magnitude, gageid, startDate, endDate){</span>
-<span id="cb185-2"><a href="floods.html#cb185-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb185-3"><a href="floods.html#cb185-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Read data from USGS</span></span>
-<span id="cb185-4"><a href="floods.html#cb185-4" aria-hidden="true" tabindex="-1"></a>  peakflows <span class="ot">&lt;-</span> <span class="fu">readNWISpeak</span>(gageid, <span class="at">startDate =</span> startDate, <span class="at">endDate =</span> endDate)</span>
-<span id="cb185-5"><a href="floods.html#cb185-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb185-6"><a href="floods.html#cb185-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Create rank column and clean up</span></span>
-<span id="cb185-7"><a href="floods.html#cb185-7" aria-hidden="true" tabindex="-1"></a>  peakflows <span class="ot">&lt;-</span> peakflows <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ranks =</span> <span class="fu">rank</span>(<span class="sc">-</span>peak_va)) <span class="sc">%&gt;%</span></span>
-<span id="cb185-8"><a href="floods.html#cb185-8" aria-hidden="true" tabindex="-1"></a>              <span class="fu">select</span>(peak_dt, peak_va, ranks)</span>
-<span id="cb185-9"><a href="floods.html#cb185-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb185-10"><a href="floods.html#cb185-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Set N and a constants</span></span>
-<span id="cb185-11"><a href="floods.html#cb185-11" aria-hidden="true" tabindex="-1"></a>  N <span class="ot">&lt;-</span> <span class="fu">length</span>(peakflows<span class="sc">$</span>peak_dt)</span>
-<span id="cb185-12"><a href="floods.html#cb185-12" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fl">0.44</span></span>
-<span id="cb185-13"><a href="floods.html#cb185-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb185-14"><a href="floods.html#cb185-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">#calculate exceedence/non-exceedence with gringorten and return period estimates</span></span>
-<span id="cb185-15"><a href="floods.html#cb185-15" aria-hidden="true" tabindex="-1"></a>  peakflows <span class="ot">&lt;-</span> peakflows <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">qi =</span> (ranks <span class="sc">-</span> a) <span class="sc">/</span> (N <span class="sc">+</span> <span class="dv">1</span> <span class="sc">-</span> (<span class="dv">2</span><span class="sc">*</span>a))) <span class="sc">%&gt;%</span></span>
-<span id="cb185-16"><a href="floods.html#cb185-16" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">mutate</span>(<span class="at">pi =</span> <span class="dv">1</span> <span class="sc">-</span> qi) <span class="sc">%&gt;%</span></span>
-<span id="cb185-17"><a href="floods.html#cb185-17" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">mutate</span>(<span class="at">TpEst =</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>pi))</span>
-<span id="cb185-18"><a href="floods.html#cb185-18" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb185-19"><a href="floods.html#cb185-19" aria-hidden="true" tabindex="-1"></a>  <span class="co">#calculate parameters for Gumbel distribution</span></span>
-<span id="cb185-20"><a href="floods.html#cb185-20" aria-hidden="true" tabindex="-1"></a>  xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(peakflows<span class="sc">$</span>peak_va)</span>
-<span id="cb185-21"><a href="floods.html#cb185-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb185-22"><a href="floods.html#cb185-22" aria-hidden="true" tabindex="-1"></a>  sx <span class="ot">&lt;-</span> <span class="fu">sd</span>(peakflows<span class="sc">$</span>peak_va)</span>
-<span id="cb185-23"><a href="floods.html#cb185-23" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb185-24"><a href="floods.html#cb185-24" aria-hidden="true" tabindex="-1"></a>  alpha <span class="ot">&lt;-</span> (<span class="fu">sqrt</span>(<span class="dv">6</span>)<span class="sc">*</span>sx) <span class="sc">/</span> pi</span>
-<span id="cb185-25"><a href="floods.html#cb185-25" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb185-26"><a href="floods.html#cb185-26" aria-hidden="true" tabindex="-1"></a>  u <span class="ot">&lt;-</span> xbar <span class="sc">-</span> (<span class="fl">0.5772</span> <span class="sc">*</span> alpha)</span>
-<span id="cb185-27"><a href="floods.html#cb185-27" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb185-28"><a href="floods.html#cb185-28" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Calculate p and Tp (return interval) with Gumbel distribution</span></span>
-<span id="cb185-29"><a href="floods.html#cb185-29" aria-hidden="true" tabindex="-1"></a>  pTheoretical <span class="ot">=</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>((magnitude <span class="sc">-</span> u) <span class="sc">/</span> alpha)))</span>
-<span id="cb185-30"><a href="floods.html#cb185-30" aria-hidden="true" tabindex="-1"></a>  TpTheoretical <span class="ot">=</span> (<span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>pTheoretical))</span>
-<span id="cb185-31"><a href="floods.html#cb185-31" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb185-32"><a href="floods.html#cb185-32" aria-hidden="true" tabindex="-1"></a>  TpTheoretical</span>
-<span id="cb185-33"><a href="floods.html#cb185-33" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb185-34"><a href="floods.html#cb185-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb185-35"><a href="floods.html#cb185-35" aria-hidden="true" tabindex="-1"></a><span class="fu">RPusgs</span>(<span class="dv">120000</span>, radford, <span class="st">&quot;1950-01-01&quot;</span>, <span class="st">&quot;2021-01-01&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] 88.25008</code></pre>
+</div>
+<div id="calculate-magnitude-of-1-in-100-chance-flood" class="section level2" number="12.9">
+<h2><span class="header-section-number">12.9</span> Calculate magnitude of 1 in 100 chance flood</h2>
+<p>This plot is showing a representation of the fitted distribution by calculating the return period for each point in our dataset. But we can also use it to calculated the specific flow that corresponds to any return period by using the established relationship.</p>
+<p>In the chunk below, calculate the magnitude of a 1 in 100 chance, or 100 year flood using the following two formulas where p = exceedance probability and Tp = return period. These are just the equations used to calculate return period rearranged to calculate peak flow.</p>
+<p><span class="math inline">\(p = Tp / (Tp - 1)\)</span></p>
+<p><span class="math inline">\(peakflow = u - (alpha - log(log(p)))\)</span></p>
+<p>According to this analysis, what is the 1 in 100 chance flood at this location? Do you see any issues with reporting this as the 1 in 100 chance flood? What are they?</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="floods.html#cb171-1" aria-hidden="true" tabindex="-1"></a>Tp <span class="ot">=</span> <span class="dv">100</span></span>
+<span id="cb171-2"><a href="floods.html#cb171-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb171-3"><a href="floods.html#cb171-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> Tp <span class="sc">/</span> (Tp <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb171-4"><a href="floods.html#cb171-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb171-5"><a href="floods.html#cb171-5" aria-hidden="true" tabindex="-1"></a>peak_va <span class="ot">=</span> u <span class="sc">-</span> (alpha <span class="sc">*</span> <span class="fu">log</span>(<span class="fu">log</span>(p)))</span></code></pre></div>
+</div>
+<div id="how-to-create-your-own-functions" class="section level2" number="12.10">
+<h2><span class="header-section-number">12.10</span> How to create your own functions</h2>
+<p>This is a good opportunity to illustrate the usefulness of writing your own functions. When you install packages in R, you get a bunch of functions you can use. But you can also create these on your own to simplify your analyses!</p>
+<p>You do this with the following syntax</p>
+<blockquote>
+<p>MyNewFunction &lt;- function(param1, param2){</p>
+</blockquote>
+<blockquote>
+<p>code</p>
+</blockquote>
+<blockquote>
+<p>}</p>
+</blockquote>
+<p>Whatever the last line of the “code” portion of the function spits out, gets returned from the function. So if you said X &lt;- mynewfunction(param1, parm2) X would now have in it whatever your function returned. See a simple example below: a function that adds 1 to any number we pass to it.</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="floods.html#cb172-1" aria-hidden="true" tabindex="-1"></a>add1 <span class="ot">&lt;-</span> <span class="cf">function</span>(number){</span>
+<span id="cb172-2"><a href="floods.html#cb172-2" aria-hidden="true" tabindex="-1"></a>          number <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb172-3"><a href="floods.html#cb172-3" aria-hidden="true" tabindex="-1"></a>          }</span>
+<span id="cb172-4"><a href="floods.html#cb172-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb172-5"><a href="floods.html#cb172-5" aria-hidden="true" tabindex="-1"></a><span class="fu">add1</span>(<span class="dv">4</span>)</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+</div>
+<div id="create-a-return-period-function" class="section level2" number="12.11">
+<h2><span class="header-section-number">12.11</span> Create a return period function</h2>
+<p>Let’s create a function that returns the return period for a flood of any magnitude for the gage we are investigating. Creating functions is a great way to streamline your workflow. You can write a function that performs an operation you need to perform a bunch of times, then just use the function rather than re-writing/copying the code.</p>
+<p>Our function will be called “ReturnPeriod” and we will pass it the flow we want the return period for, and the u and alpha of the distribution.</p>
+<p>We will test the function by having it calculate the return period for the 100 year flood we calculated earlier (120027). If it works, it should spit out 100.</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="floods.html#cb174-1" aria-hidden="true" tabindex="-1"></a>ReturnPeriod <span class="ot">&lt;-</span> <span class="cf">function</span>(flow, u, alpha){</span>
+<span id="cb174-2"><a href="floods.html#cb174-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb174-3"><a href="floods.html#cb174-3" aria-hidden="true" tabindex="-1"></a>  pTheoretical <span class="ot">=</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>((flow <span class="sc">-</span> u) <span class="sc">/</span> alpha)))</span>
+<span id="cb174-4"><a href="floods.html#cb174-4" aria-hidden="true" tabindex="-1"></a>  TpTheoretical <span class="ot">=</span> (<span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">-</span> pTheoretical))</span>
+<span id="cb174-5"><a href="floods.html#cb174-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb174-6"><a href="floods.html#cb174-6" aria-hidden="true" tabindex="-1"></a>  TpTheoretical</span>
+<span id="cb174-7"><a href="floods.html#cb174-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb174-8"><a href="floods.html#cb174-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb174-9"><a href="floods.html#cb174-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ReturnPeriod</span>(<span class="dv">120027</span>, u, alpha)</span></code></pre></div>
+<pre><code>## [1] 99.99898</code></pre>
+</div>
+<div id="challenge-create-a-function-to-compute-the-1-in-100-chance-flood-for-any-usgs-gage" class="section level2" number="12.12">
+<h2><span class="header-section-number">12.12</span> Challenge: Create a function to compute the 1 in 100 chance flood for any USGS gage</h2>
+<p>Create a function that returns the magnitude of the 100 year flood when given a USGS gage id, startdate, and enddate for the period you want to investigate.</p>
 
 </div>
 </div>
@@ -479,8 +550,8 @@ x is observed discharge data, u and x are parameters that shape the distribution
           </div>
         </div>
       </div>
-<a href="lfas.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="lfas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rgeospatial.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

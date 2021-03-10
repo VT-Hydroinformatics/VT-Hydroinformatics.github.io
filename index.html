@@ -24,7 +24,7 @@
 <meta name="author" content="JP Gannon" />
 
 
-<meta name="date" content="2021-02-28" />
+<meta name="date" content="2021-03-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,6 +53,16 @@
 
 <link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.3/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GBDXSZFFSR"></script>
 <script>
@@ -284,9 +294,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.7" data-path="lfas.html"><a href="lfas.html#fit-to-pearson-type-ii-distribution"><i class="fa fa-check"></i><b>11.7</b> Fit to Pearson Type II distribution</a></li>
 <li class="chapter" data-level="11.8" data-path="lfas.html"><a href="lfas.html#distribution-free-method"><i class="fa fa-check"></i><b>11.8</b> Distribution-free method</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>12</b> DRAFT Flood Frequency Analysis</a>
+<li class="chapter" data-level="12" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>12</b> Flood Frequency Analysis and Creating Functions</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="floods.html"><a href="floods.html#challenge-create-a-function"><i class="fa fa-check"></i><b>12.1</b> Challenge: Create a function</a></li>
+<li class="chapter" data-level="12.1" data-path="floods.html"><a href="floods.html#template-repository"><i class="fa fa-check"></i><b>12.1</b> Template Repository</a></li>
+<li class="chapter" data-level="12.2" data-path="floods.html"><a href="floods.html#introduction-2"><i class="fa fa-check"></i><b>12.2</b> Introduction</a></li>
+<li class="chapter" data-level="12.3" data-path="floods.html"><a href="floods.html#download-and-plot-peak-flow-data"><i class="fa fa-check"></i><b>12.3</b> Download and plot peak flow data</a></li>
+<li class="chapter" data-level="12.4" data-path="floods.html"><a href="floods.html#compute-ranks-for-peak-flows"><i class="fa fa-check"></i><b>12.4</b> Compute ranks for peak flows</a></li>
+<li class="chapter" data-level="12.5" data-path="floods.html"><a href="floods.html#calculate-exceedance-probability-and-return-period"><i class="fa fa-check"></i><b>12.5</b> Calculate exceedance probability and return period</a></li>
+<li class="chapter" data-level="12.6" data-path="floods.html"><a href="floods.html#calculate-gumbel-distribution-parameters"><i class="fa fa-check"></i><b>12.6</b> Calculate Gumbel distribution parameters</a></li>
+<li class="chapter" data-level="12.7" data-path="floods.html"><a href="floods.html#calculate-return-interval-for-peak-flows-according-to-gumbel-distribution"><i class="fa fa-check"></i><b>12.7</b> Calculate return interval for peak flows according to Gumbel distribution</a></li>
+<li class="chapter" data-level="12.8" data-path="floods.html"><a href="floods.html#plot-gumbel-distribution-fit-with-peak-flow-data"><i class="fa fa-check"></i><b>12.8</b> Plot Gumbel distribution fit with peak flow data</a></li>
+<li class="chapter" data-level="12.9" data-path="floods.html"><a href="floods.html#calculate-magnitude-of-1-in-100-chance-flood"><i class="fa fa-check"></i><b>12.9</b> Calculate magnitude of 1 in 100 chance flood</a></li>
+<li class="chapter" data-level="12.10" data-path="floods.html"><a href="floods.html#how-to-create-your-own-functions"><i class="fa fa-check"></i><b>12.10</b> How to create your own functions</a></li>
+<li class="chapter" data-level="12.11" data-path="floods.html"><a href="floods.html#create-a-return-period-function"><i class="fa fa-check"></i><b>12.11</b> Create a return period function</a></li>
+<li class="chapter" data-level="12.12" data-path="floods.html"><a href="floods.html#challenge-create-a-function-to-compute-the-1-in-100-chance-flood-for-any-usgs-gage"><i class="fa fa-check"></i><b>12.12</b> Challenge: Create a function to compute the 1 in 100 chance flood for any USGS gage</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="rgeospatial.html"><a href="rgeospatial.html"><i class="fa fa-check"></i><b>13</b> Geospatial data in R</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="rgeospatial.html"><a href="rgeospatial.html#goals"><i class="fa fa-check"></i><b>13.1</b> Goals</a></li>
+<li class="chapter" data-level="13.2" data-path="rgeospatial.html"><a href="rgeospatial.html#intro-to-tmap"><i class="fa fa-check"></i><b>13.2</b> Intro to tmap</a></li>
+<li class="chapter" data-level="13.3" data-path="rgeospatial.html"><a href="rgeospatial.html#data-wrangling-with-tidyverse-principles"><i class="fa fa-check"></i><b>13.3</b> Data wrangling with tidyverse principles</a></li>
+<li class="chapter" data-level="13.4" data-path="rgeospatial.html"><a href="rgeospatial.html#join-state-names"><i class="fa fa-check"></i><b>13.4</b> Join state names</a></li>
+<li class="chapter" data-level="13.5" data-path="rgeospatial.html"><a href="rgeospatial.html#we-can-show-maps-side-by-side-too"><i class="fa fa-check"></i><b>13.5</b> We can show maps side by side too</a></li>
+<li class="chapter" data-level="13.6" data-path="rgeospatial.html"><a href="rgeospatial.html#there-are-built-in-styles-just-like-themes-in-ggplot"><i class="fa fa-check"></i><b>13.6</b> There are built in styles, just like themes in ggplot</a></li>
+<li class="chapter" data-level="13.7" data-path="rgeospatial.html"><a href="rgeospatial.html#interactive-maps"><i class="fa fa-check"></i><b>13.7</b> Interactive Maps</a>
+<ul>
+<li class="chapter" data-level="13.7.1" data-path="rgeospatial.html"><a href="rgeospatial.html#tmap"><i class="fa fa-check"></i><b>13.7.1</b> tmap</a></li>
+</ul></li>
+<li class="chapter" data-level="13.8" data-path="rgeospatial.html"><a href="rgeospatial.html#leaflet"><i class="fa fa-check"></i><b>13.8</b> Leaflet</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -311,7 +346,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Hydroinformatics at VT</h1>
 <p class="author"><em>JP Gannon</em></p>
-<p class="date"><em>2021-02-28</em></p>
+<p class="date"><em>2021-03-10</em></p>
 </div>
 <div id="introduction" class="section level1" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
@@ -335,7 +370,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a href="Summative1.html#Summative1">9</a> <strong><a href="Summative1.html#Summative1">ACTIVITY Summative 1</a></strong>: <em>First summative assessment/practice.</em><br />
 <a href="fdcs.html#fdcs">10</a> <strong><a href="fdcs.html#fdcs">Flow Duration Curves</a></strong>: <em>Building and exploring flow duration curves.</em><br />
 <a href="lfas.html#lfas">11</a> <strong><a href="lfas.html#lfas">Low Flow Analysis</a></strong>: <em>How to calculate low-flow statistics (ex: 7Q10, 1Q10).</em><br />
-<a href="floods.html#floods">12</a> <strong>[Flood Frequency Analysis]</strong>: <em>Flood frequency analysis and making your own functions.</em></p>
+<a href="floods.html#floods">12</a> <strong><a href="floods.html#floods">Flood Frequency Analysis and Creating Functions</a></strong>: <em>Flood frequency analysis and making your own functions.</em></p>
 
 </div>
 </div>
