@@ -130,9 +130,9 @@ rgeospatial
 goals
 intro-to-tmap
 data-wrangling-with-tidyverse-principles
-join-state-names
-we-can-show-maps-side-by-side-too
-there-are-built-in-styles-just-like-themes-in-ggplot
+add-non-spatial-data-to-spatial-data-with-a-join
+plot-maps-side-by-side
+built-in-styles-like-themes-in-ggplot
 interactive-maps
 tmap
 leaflet

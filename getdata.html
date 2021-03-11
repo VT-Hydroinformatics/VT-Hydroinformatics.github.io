@@ -24,7 +24,7 @@
 <meta name="author" content="JP Gannon" />
 
 
-<meta name="date" content="2021-03-10" />
+<meta name="date" content="2021-03-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -309,19 +309,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.11" data-path="floods.html"><a href="floods.html#create-a-return-period-function"><i class="fa fa-check"></i><b>12.11</b> Create a return period function</a></li>
 <li class="chapter" data-level="12.12" data-path="floods.html"><a href="floods.html#challenge-create-a-function-to-compute-the-1-in-100-chance-flood-for-any-usgs-gage"><i class="fa fa-check"></i><b>12.12</b> Challenge: Create a function to compute the 1 in 100 chance flood for any USGS gage</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="rgeospatial.html"><a href="rgeospatial.html"><i class="fa fa-check"></i><b>13</b> Geospatial data in R</a>
+<li class="chapter" data-level="13" data-path="rgeospatial.html"><a href="rgeospatial.html"><i class="fa fa-check"></i><b>13</b> Geospatial data in R - Vector</a>
 <ul>
 <li class="chapter" data-level="13.1" data-path="rgeospatial.html"><a href="rgeospatial.html#goals"><i class="fa fa-check"></i><b>13.1</b> Goals</a></li>
 <li class="chapter" data-level="13.2" data-path="rgeospatial.html"><a href="rgeospatial.html#intro-to-tmap"><i class="fa fa-check"></i><b>13.2</b> Intro to tmap</a></li>
 <li class="chapter" data-level="13.3" data-path="rgeospatial.html"><a href="rgeospatial.html#data-wrangling-with-tidyverse-principles"><i class="fa fa-check"></i><b>13.3</b> Data wrangling with tidyverse principles</a></li>
-<li class="chapter" data-level="13.4" data-path="rgeospatial.html"><a href="rgeospatial.html#join-state-names"><i class="fa fa-check"></i><b>13.4</b> Join state names</a></li>
-<li class="chapter" data-level="13.5" data-path="rgeospatial.html"><a href="rgeospatial.html#we-can-show-maps-side-by-side-too"><i class="fa fa-check"></i><b>13.5</b> We can show maps side by side too</a></li>
-<li class="chapter" data-level="13.6" data-path="rgeospatial.html"><a href="rgeospatial.html#there-are-built-in-styles-just-like-themes-in-ggplot"><i class="fa fa-check"></i><b>13.6</b> There are built in styles, just like themes in ggplot</a></li>
+<li class="chapter" data-level="13.4" data-path="rgeospatial.html"><a href="rgeospatial.html#add-non-spatial-data-to-spatial-data-with-a-join"><i class="fa fa-check"></i><b>13.4</b> Add non-spatial data to spatial data with a join</a></li>
+<li class="chapter" data-level="13.5" data-path="rgeospatial.html"><a href="rgeospatial.html#plot-maps-side-by-side"><i class="fa fa-check"></i><b>13.5</b> Plot maps side by side</a></li>
+<li class="chapter" data-level="13.6" data-path="rgeospatial.html"><a href="rgeospatial.html#built-in-styles-like-themes-in-ggplot"><i class="fa fa-check"></i><b>13.6</b> Built in styles, like themes in ggplot</a></li>
 <li class="chapter" data-level="13.7" data-path="rgeospatial.html"><a href="rgeospatial.html#interactive-maps"><i class="fa fa-check"></i><b>13.7</b> Interactive Maps</a>
 <ul>
 <li class="chapter" data-level="13.7.1" data-path="rgeospatial.html"><a href="rgeospatial.html#tmap"><i class="fa fa-check"></i><b>13.7.1</b> tmap</a></li>
+<li class="chapter" data-level="13.7.2" data-path="rgeospatial.html"><a href="rgeospatial.html#leaflet"><i class="fa fa-check"></i><b>13.7.2</b> Leaflet</a></li>
 </ul></li>
-<li class="chapter" data-level="13.8" data-path="rgeospatial.html"><a href="rgeospatial.html#leaflet"><i class="fa fa-check"></i><b>13.8</b> Leaflet</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -396,7 +396,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4           dv   00095   00003 145685         NA           wat        &lt;NA&gt;
 ##    srs_id access_cd begin_date   end_date count_nu
 ## 2 1645597         0 2006-12-20 2009-03-18      704
-## 3 1645423         0 1907-10-01 2021-03-09    32667
+## 3 1645423         0 1907-10-01 2021-03-10    32668
 ## 4 1646694         0 2006-12-20 2008-09-29      534</code></pre>
 </div>
 <div id="joins" class="section level2" number="7.3">
@@ -465,7 +465,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3           dv   00095   00003 145685         NA           wat        &lt;NA&gt;
 ##    srs_id access_cd begin_date   end_date count_nu parameter_group_nm
 ## 1 1645597         0 2006-12-20 2009-03-18      704           Physical
-## 2 1645423         0 1907-10-01 2021-03-09    32667           Physical
+## 2 1645423         0 1907-10-01 2021-03-10    32668           Physical
 ## 3 1646694         0 2006-12-20 2008-09-29      534           Physical
 ##                                                                                 parameter_nm
 ## 1                                                        Temperature, water, degrees Celsius
@@ -491,7 +491,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3 03171000 NEW RIVER AT RADFORD, VA   00095     Specific conductance
 ##   parameter_units begin_date   end_date
 ## 1           deg C 2006-12-20 2009-03-18
-## 2           ft3/s 1907-10-01 2021-03-09
+## 2           ft3/s 1907-10-01 2021-03-10
 ## 3      uS/cm @25C 2006-12-20 2008-09-29</code></pre>
 </div>
 <div id="finding-ids-to-download-usgs-data" class="section level2" number="7.5">
@@ -531,27 +531,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 20      USGS 03170000                 LITTLE RIVER AT GRAYSONTOWN, VA
 ## 21      USGS 03169500             LITTLE RIVER NEAR COPPER VALLEY, VA
 ##    site_tp_cd dec_lat_va dec_long_va colocated           queryTime
-## 1          ST   36.88873   -81.34733     FALSE 2021-03-10 12:56:49
-## 2          ST   37.18428   -81.32982     FALSE 2021-03-10 12:56:49
-## 3          ST   37.27151   -81.30482     FALSE 2021-03-10 12:56:49
-## 4          ST   37.25595   -81.28177     FALSE 2021-03-10 12:56:49
-## 5          ST   36.85984   -80.98036     FALSE 2021-03-10 12:56:49
-## 6          ST   36.75985   -80.95619     FALSE 2021-03-10 12:56:49
-## 7          ST   36.83485   -80.95258     FALSE 2021-03-10 12:56:49
-## 8          SP   36.93429   -80.90313     FALSE 2021-03-10 12:56:49
-## 9          ST   36.93095   -80.90036     FALSE 2021-03-10 12:56:49
-## 10         SP   36.93068   -80.89619     FALSE 2021-03-10 12:56:49
-## 11         ST   36.93901   -80.88730     FALSE 2021-03-10 12:56:49
-## 12         ST   37.30568   -80.84980     FALSE 2021-03-10 12:56:49
-## 13         ST   37.04734   -80.77618     FALSE 2021-03-10 12:56:49
-## 14         ST   36.93762   -80.74563     FALSE 2021-03-10 12:56:49
-## 15         ST   36.88901   -80.72757     FALSE 2021-03-10 12:56:49
-## 16         ST   37.24179   -80.71090     FALSE 2021-03-10 12:56:49
-## 17         ST   37.26818   -80.70951     FALSE 2021-03-10 12:56:49
-## 18         ST   37.28957   -80.61673     FALSE 2021-03-10 12:56:49
-## 19         ST   37.14179   -80.56922     FALSE 2021-03-10 12:56:49
-## 20         ST   37.03763   -80.55672     FALSE 2021-03-10 12:56:49
-## 21         ST   36.99652   -80.52144     FALSE 2021-03-10 12:56:49</code></pre>
+## 1          ST   36.88873   -81.34733     FALSE 2021-03-11 12:36:16
+## 2          ST   37.18428   -81.32982     FALSE 2021-03-11 12:36:16
+## 3          ST   37.27151   -81.30482     FALSE 2021-03-11 12:36:16
+## 4          ST   37.25595   -81.28177     FALSE 2021-03-11 12:36:16
+## 5          ST   36.85984   -80.98036     FALSE 2021-03-11 12:36:16
+## 6          ST   36.75985   -80.95619     FALSE 2021-03-11 12:36:16
+## 7          ST   36.83485   -80.95258     FALSE 2021-03-11 12:36:16
+## 8          SP   36.93429   -80.90313     FALSE 2021-03-11 12:36:16
+## 9          ST   36.93095   -80.90036     FALSE 2021-03-11 12:36:16
+## 10         SP   36.93068   -80.89619     FALSE 2021-03-11 12:36:16
+## 11         ST   36.93901   -80.88730     FALSE 2021-03-11 12:36:16
+## 12         ST   37.30568   -80.84980     FALSE 2021-03-11 12:36:16
+## 13         ST   37.04734   -80.77618     FALSE 2021-03-11 12:36:16
+## 14         ST   36.93762   -80.74563     FALSE 2021-03-11 12:36:16
+## 15         ST   36.88901   -80.72757     FALSE 2021-03-11 12:36:16
+## 16         ST   37.24179   -80.71090     FALSE 2021-03-11 12:36:16
+## 17         ST   37.26818   -80.70951     FALSE 2021-03-11 12:36:16
+## 18         ST   37.28957   -80.61673     FALSE 2021-03-11 12:36:16
+## 19         ST   37.14179   -80.56922     FALSE 2021-03-11 12:36:16
+## 20         ST   37.03763   -80.55672     FALSE 2021-03-11 12:36:16
+## 21         ST   36.99652   -80.52144     FALSE 2021-03-11 12:36:16</code></pre>
 <div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="getdata.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co">#find sites with other criteria, VA, less than 20 sqmi, other criteria can be used..</span></span>
 <span id="cb121-2"><a href="getdata.html#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="co">#check out the CRAN documentation</span></span>
 <span id="cb121-3"><a href="getdata.html#cb121-3" aria-hidden="true" tabindex="-1"></a>smallVA <span class="ot">&lt;-</span> <span class="fu">readNWISdata</span>(<span class="at">service =</span> <span class="st">&quot;dv&quot;</span>,</span>
@@ -657,7 +657,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb128-13"><a href="getdata.html#cb128-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb128-14"><a href="getdata.html#cb128-14" aria-hidden="true" tabindex="-1"></a><span class="fu">comment</span>(wqdat)</span></code></pre></div>
 <pre><code>##   [1] &quot;#&quot;                                                                                                                                            
-##   [2] &quot;# File created on 2021-03-10 12:56:55 EST&quot;                                                                                                    
+##   [2] &quot;# File created on 2021-03-11 12:36:22 EST&quot;                                                                                                    
 ##   [3] &quot;#&quot;                                                                                                                                            
 ##   [4] &quot;# U.S. Geological Survey&quot;                                                                                                                     
 ##   [5] &quot;# &quot;                                                                                                                                           
