@@ -136,3 +136,5 @@ built-in-styles-like-themes-in-ggplot
 interactive-maps
 tmap
 leaflet
+rgeoraster
+introduction-3
