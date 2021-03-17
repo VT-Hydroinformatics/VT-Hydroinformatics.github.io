@@ -24,7 +24,7 @@
 <meta name="author" content="JP Gannon" />
 
 
-<meta name="date" content="2021-03-15" />
+<meta name="date" content="2021-03-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -323,9 +323,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.7.2" data-path="rgeospatial.html"><a href="rgeospatial.html#leaflet"><i class="fa fa-check"></i><b>13.7.2</b> Leaflet</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="rgeoraster.html"><a href="rgeoraster.html"><i class="fa fa-check"></i><b>14</b> Geospatial R - Raster Hydro Analyses</a>
+<li class="chapter" data-level="14" data-path="rgeoraster.html"><a href="rgeoraster.html"><i class="fa fa-check"></i><b>14</b> Geospatial R Raster - Hydro Analyses</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="rgeoraster.html"><a href="rgeoraster.html#introduction-3"><i class="fa fa-check"></i><b>14.1</b> Introduction</a></li>
+<li class="chapter" data-level="14.2" data-path="rgeoraster.html"><a href="rgeoraster.html#read-in-dem"><i class="fa fa-check"></i><b>14.2</b> Read in DEM</a></li>
+<li class="chapter" data-level="14.3" data-path="rgeoraster.html"><a href="rgeoraster.html#plot-dem"><i class="fa fa-check"></i><b>14.3</b> Plot DEM</a></li>
+<li class="chapter" data-level="14.4" data-path="rgeoraster.html"><a href="rgeoraster.html#generate-a-hillshade"><i class="fa fa-check"></i><b>14.4</b> Generate a hillshade</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="rgeoraster.html"><a href="rgeoraster.html#how-whitebox-tools-functions-work"><i class="fa fa-check"></i><b>14.4.1</b> How whitebox tools functions work</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="rgeoraster.html"><a href="rgeoraster.html#prepare-dem-for-hydrology-analyses"><i class="fa fa-check"></i><b>14.5</b> Prepare DEM for Hydrology Analyses</a></li>
+<li class="chapter" data-level="14.6" data-path="rgeoraster.html"><a href="rgeoraster.html#visualize-filled-sinks-and-breached-depressions"><i class="fa fa-check"></i><b>14.6</b> Visualize filled sinks and breached depressions</a></li>
+<li class="chapter" data-level="14.7" data-path="rgeoraster.html"><a href="rgeoraster.html#d8-flow-accumulation"><i class="fa fa-check"></i><b>14.7</b> D8 Flow Accumulation</a></li>
+<li class="chapter" data-level="14.8" data-path="rgeoraster.html"><a href="rgeoraster.html#d-infinity-flow-accumulation"><i class="fa fa-check"></i><b>14.8</b> D infinity flow accumulation</a></li>
+<li class="chapter" data-level="14.9" data-path="rgeoraster.html"><a href="rgeoraster.html#topographic-wetness-index"><i class="fa fa-check"></i><b>14.9</b> Topographic Wetness Index</a></li>
+<li class="chapter" data-level="14.10" data-path="rgeoraster.html"><a href="rgeoraster.html#downslope-twi"><i class="fa fa-check"></i><b>14.10</b> Downslope TWI</a></li>
+<li class="chapter" data-level="14.11" data-path="rgeoraster.html"><a href="rgeoraster.html#map-stream-network"><i class="fa fa-check"></i><b>14.11</b> Map Stream Network</a></li>
+<li class="chapter" data-level="14.12" data-path="rgeoraster.html"><a href="rgeoraster.html#extract-raster-values-to-point-locations"><i class="fa fa-check"></i><b>14.12</b> Extract raster values to point locations</a>
+<ul>
+<li class="chapter" data-level="14.12.1" data-path="rgeoraster.html"><a href="rgeoraster.html#import-and-plot-points"><i class="fa fa-check"></i><b>14.12.1</b> Import and plot points</a></li>
+<li class="chapter" data-level="14.12.2" data-path="rgeoraster.html"><a href="rgeoraster.html#extract-values-from-multiple-rasters-at-once"><i class="fa fa-check"></i><b>14.12.2</b> Extract values from multiple rasters at once</a></li>
+</ul></li>
+<li class="chapter" data-level="14.13" data-path="rgeoraster.html"><a href="rgeoraster.html#view-raster-data-as-a-pdf-or-histogram"><i class="fa fa-check"></i><b>14.13</b> View raster data as a PDF or histogram</a></li>
+<li class="chapter" data-level="14.14" data-path="rgeoraster.html"><a href="rgeoraster.html#subsetting-a-raster-for-visualization"><i class="fa fa-check"></i><b>14.14</b> Subsetting a raster for visualization</a></li>
+<li class="chapter" data-level="14.15" data-path="rgeoraster.html"><a href="rgeoraster.html#raster-math"><i class="fa fa-check"></i><b>14.15</b> Raster Math</a></li>
+<li class="chapter" data-level="14.16" data-path="rgeoraster.html"><a href="rgeoraster.html#extra-plot-topo-characteristics-against-one-another"><i class="fa fa-check"></i><b>14.16</b> Extra: plot topo characteristics against one another</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -400,7 +422,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4           dv   00095   00003 145685         NA           wat        &lt;NA&gt;
 ##    srs_id access_cd begin_date   end_date count_nu
 ## 2 1645597         0 2006-12-20 2009-03-18      704
-## 3 1645423         0 1907-10-01 2021-03-14    32672
+## 3 1645423         0 1907-10-01 2021-03-16    32674
 ## 4 1646694         0 2006-12-20 2008-09-29      534</code></pre>
 </div>
 <div id="joins" class="section level2" number="7.3">
@@ -469,7 +491,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3           dv   00095   00003 145685         NA           wat        &lt;NA&gt;
 ##    srs_id access_cd begin_date   end_date count_nu parameter_group_nm
 ## 1 1645597         0 2006-12-20 2009-03-18      704           Physical
-## 2 1645423         0 1907-10-01 2021-03-14    32672           Physical
+## 2 1645423         0 1907-10-01 2021-03-16    32674           Physical
 ## 3 1646694         0 2006-12-20 2008-09-29      534           Physical
 ##                                                                                 parameter_nm
 ## 1                                                        Temperature, water, degrees Celsius
@@ -495,7 +517,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3 03171000 NEW RIVER AT RADFORD, VA   00095     Specific conductance
 ##   parameter_units begin_date   end_date
 ## 1           deg C 2006-12-20 2009-03-18
-## 2           ft3/s 1907-10-01 2021-03-14
+## 2           ft3/s 1907-10-01 2021-03-16
 ## 3      uS/cm @25C 2006-12-20 2008-09-29</code></pre>
 </div>
 <div id="finding-ids-to-download-usgs-data" class="section level2" number="7.5">
@@ -535,27 +557,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 20      USGS 03170000                 LITTLE RIVER AT GRAYSONTOWN, VA
 ## 21      USGS 03169500             LITTLE RIVER NEAR COPPER VALLEY, VA
 ##    site_tp_cd dec_lat_va dec_long_va colocated           queryTime
-## 1          ST   36.88873   -81.34733     FALSE 2021-03-15 10:02:28
-## 2          ST   37.18428   -81.32982     FALSE 2021-03-15 10:02:28
-## 3          ST   37.27151   -81.30482     FALSE 2021-03-15 10:02:28
-## 4          ST   37.25595   -81.28177     FALSE 2021-03-15 10:02:28
-## 5          ST   36.85984   -80.98036     FALSE 2021-03-15 10:02:28
-## 6          ST   36.75985   -80.95619     FALSE 2021-03-15 10:02:28
-## 7          ST   36.83485   -80.95258     FALSE 2021-03-15 10:02:28
-## 8          SP   36.93429   -80.90313     FALSE 2021-03-15 10:02:28
-## 9          ST   36.93095   -80.90036     FALSE 2021-03-15 10:02:28
-## 10         SP   36.93068   -80.89619     FALSE 2021-03-15 10:02:28
-## 11         ST   36.93901   -80.88730     FALSE 2021-03-15 10:02:28
-## 12         ST   37.30568   -80.84980     FALSE 2021-03-15 10:02:28
-## 13         ST   37.04734   -80.77618     FALSE 2021-03-15 10:02:28
-## 14         ST   36.93762   -80.74563     FALSE 2021-03-15 10:02:28
-## 15         ST   36.88901   -80.72757     FALSE 2021-03-15 10:02:28
-## 16         ST   37.24179   -80.71090     FALSE 2021-03-15 10:02:28
-## 17         ST   37.26818   -80.70951     FALSE 2021-03-15 10:02:28
-## 18         ST   37.28957   -80.61673     FALSE 2021-03-15 10:02:28
-## 19         ST   37.14179   -80.56922     FALSE 2021-03-15 10:02:28
-## 20         ST   37.03763   -80.55672     FALSE 2021-03-15 10:02:28
-## 21         ST   36.99652   -80.52144     FALSE 2021-03-15 10:02:28</code></pre>
+## 1          ST   36.88873   -81.34733     FALSE 2021-03-17 12:39:52
+## 2          ST   37.18428   -81.32982     FALSE 2021-03-17 12:39:52
+## 3          ST   37.27151   -81.30482     FALSE 2021-03-17 12:39:52
+## 4          ST   37.25595   -81.28177     FALSE 2021-03-17 12:39:52
+## 5          ST   36.85984   -80.98036     FALSE 2021-03-17 12:39:52
+## 6          ST   36.75985   -80.95619     FALSE 2021-03-17 12:39:52
+## 7          ST   36.83485   -80.95258     FALSE 2021-03-17 12:39:52
+## 8          SP   36.93429   -80.90313     FALSE 2021-03-17 12:39:52
+## 9          ST   36.93095   -80.90036     FALSE 2021-03-17 12:39:52
+## 10         SP   36.93068   -80.89619     FALSE 2021-03-17 12:39:52
+## 11         ST   36.93901   -80.88730     FALSE 2021-03-17 12:39:52
+## 12         ST   37.30568   -80.84980     FALSE 2021-03-17 12:39:52
+## 13         ST   37.04734   -80.77618     FALSE 2021-03-17 12:39:52
+## 14         ST   36.93762   -80.74563     FALSE 2021-03-17 12:39:52
+## 15         ST   36.88901   -80.72757     FALSE 2021-03-17 12:39:52
+## 16         ST   37.24179   -80.71090     FALSE 2021-03-17 12:39:52
+## 17         ST   37.26818   -80.70951     FALSE 2021-03-17 12:39:52
+## 18         ST   37.28957   -80.61673     FALSE 2021-03-17 12:39:52
+## 19         ST   37.14179   -80.56922     FALSE 2021-03-17 12:39:52
+## 20         ST   37.03763   -80.55672     FALSE 2021-03-17 12:39:52
+## 21         ST   36.99652   -80.52144     FALSE 2021-03-17 12:39:52</code></pre>
 <div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="getdata.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co">#find sites with other criteria, VA, less than 20 sqmi, other criteria can be used..</span></span>
 <span id="cb121-2"><a href="getdata.html#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="co">#check out the CRAN documentation</span></span>
 <span id="cb121-3"><a href="getdata.html#cb121-3" aria-hidden="true" tabindex="-1"></a>smallVA <span class="ot">&lt;-</span> <span class="fu">readNWISdata</span>(<span class="at">service =</span> <span class="st">&quot;dv&quot;</span>,</span>
@@ -661,7 +683,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb128-13"><a href="getdata.html#cb128-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb128-14"><a href="getdata.html#cb128-14" aria-hidden="true" tabindex="-1"></a><span class="fu">comment</span>(wqdat)</span></code></pre></div>
 <pre><code>##   [1] &quot;#&quot;                                                                                                                                            
-##   [2] &quot;# File created on 2021-03-15 10:02:38 EDT&quot;                                                                                                    
+##   [2] &quot;# File created on 2021-03-17 12:39:58 EDT&quot;                                                                                                    
 ##   [3] &quot;#&quot;                                                                                                                                            
 ##   [4] &quot;# U.S. Geological Survey&quot;                                                                                                                     
 ##   [5] &quot;# &quot;                                                                                                                                           

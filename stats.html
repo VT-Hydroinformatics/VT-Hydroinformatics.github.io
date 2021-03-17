@@ -24,7 +24,7 @@
 <meta name="author" content="JP Gannon" />
 
 
-<meta name="date" content="2021-03-15" />
+<meta name="date" content="2021-03-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -323,9 +323,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.7.2" data-path="rgeospatial.html"><a href="rgeospatial.html#leaflet"><i class="fa fa-check"></i><b>13.7.2</b> Leaflet</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="rgeoraster.html"><a href="rgeoraster.html"><i class="fa fa-check"></i><b>14</b> Geospatial R - Raster Hydro Analyses</a>
+<li class="chapter" data-level="14" data-path="rgeoraster.html"><a href="rgeoraster.html"><i class="fa fa-check"></i><b>14</b> Geospatial R Raster - Hydro Analyses</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="rgeoraster.html"><a href="rgeoraster.html#introduction-3"><i class="fa fa-check"></i><b>14.1</b> Introduction</a></li>
+<li class="chapter" data-level="14.2" data-path="rgeoraster.html"><a href="rgeoraster.html#read-in-dem"><i class="fa fa-check"></i><b>14.2</b> Read in DEM</a></li>
+<li class="chapter" data-level="14.3" data-path="rgeoraster.html"><a href="rgeoraster.html#plot-dem"><i class="fa fa-check"></i><b>14.3</b> Plot DEM</a></li>
+<li class="chapter" data-level="14.4" data-path="rgeoraster.html"><a href="rgeoraster.html#generate-a-hillshade"><i class="fa fa-check"></i><b>14.4</b> Generate a hillshade</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="rgeoraster.html"><a href="rgeoraster.html#how-whitebox-tools-functions-work"><i class="fa fa-check"></i><b>14.4.1</b> How whitebox tools functions work</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="rgeoraster.html"><a href="rgeoraster.html#prepare-dem-for-hydrology-analyses"><i class="fa fa-check"></i><b>14.5</b> Prepare DEM for Hydrology Analyses</a></li>
+<li class="chapter" data-level="14.6" data-path="rgeoraster.html"><a href="rgeoraster.html#visualize-filled-sinks-and-breached-depressions"><i class="fa fa-check"></i><b>14.6</b> Visualize filled sinks and breached depressions</a></li>
+<li class="chapter" data-level="14.7" data-path="rgeoraster.html"><a href="rgeoraster.html#d8-flow-accumulation"><i class="fa fa-check"></i><b>14.7</b> D8 Flow Accumulation</a></li>
+<li class="chapter" data-level="14.8" data-path="rgeoraster.html"><a href="rgeoraster.html#d-infinity-flow-accumulation"><i class="fa fa-check"></i><b>14.8</b> D infinity flow accumulation</a></li>
+<li class="chapter" data-level="14.9" data-path="rgeoraster.html"><a href="rgeoraster.html#topographic-wetness-index"><i class="fa fa-check"></i><b>14.9</b> Topographic Wetness Index</a></li>
+<li class="chapter" data-level="14.10" data-path="rgeoraster.html"><a href="rgeoraster.html#downslope-twi"><i class="fa fa-check"></i><b>14.10</b> Downslope TWI</a></li>
+<li class="chapter" data-level="14.11" data-path="rgeoraster.html"><a href="rgeoraster.html#map-stream-network"><i class="fa fa-check"></i><b>14.11</b> Map Stream Network</a></li>
+<li class="chapter" data-level="14.12" data-path="rgeoraster.html"><a href="rgeoraster.html#extract-raster-values-to-point-locations"><i class="fa fa-check"></i><b>14.12</b> Extract raster values to point locations</a>
+<ul>
+<li class="chapter" data-level="14.12.1" data-path="rgeoraster.html"><a href="rgeoraster.html#import-and-plot-points"><i class="fa fa-check"></i><b>14.12.1</b> Import and plot points</a></li>
+<li class="chapter" data-level="14.12.2" data-path="rgeoraster.html"><a href="rgeoraster.html#extract-values-from-multiple-rasters-at-once"><i class="fa fa-check"></i><b>14.12.2</b> Extract values from multiple rasters at once</a></li>
+</ul></li>
+<li class="chapter" data-level="14.13" data-path="rgeoraster.html"><a href="rgeoraster.html#view-raster-data-as-a-pdf-or-histogram"><i class="fa fa-check"></i><b>14.13</b> View raster data as a PDF or histogram</a></li>
+<li class="chapter" data-level="14.14" data-path="rgeoraster.html"><a href="rgeoraster.html#subsetting-a-raster-for-visualization"><i class="fa fa-check"></i><b>14.14</b> Subsetting a raster for visualization</a></li>
+<li class="chapter" data-level="14.15" data-path="rgeoraster.html"><a href="rgeoraster.html#raster-math"><i class="fa fa-check"></i><b>14.15</b> Raster Math</a></li>
+<li class="chapter" data-level="14.16" data-path="rgeoraster.html"><a href="rgeoraster.html#extra-plot-topo-characteristics-against-one-another"><i class="fa fa-check"></i><b>14.16</b> Extra: plot topo characteristics against one another</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -562,7 +584,7 @@ What happens if you set the number of samples to the size of the population?</p>
 <span id="cb106-2"><a href="stats.html#cb106-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb106-3"><a href="stats.html#cb106-3" aria-hidden="true" tabindex="-1"></a>((quantsX[<span class="dv">3</span>]<span class="sc">-</span>quantsX[<span class="dv">2</span>]) <span class="sc">-</span> (quantsX[<span class="dv">2</span>] <span class="sc">-</span> quantsX[<span class="dv">1</span>])) <span class="sc">/</span> quantsX[<span class="dv">3</span>] <span class="sc">-</span> quantsX[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>##       50% 
-## -2.468469</code></pre>
+## -2.073304</code></pre>
 </div>
 </div>
 <div id="what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one" class="section level2" number="5.6">
