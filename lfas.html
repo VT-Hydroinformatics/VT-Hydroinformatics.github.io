@@ -33,7 +33,7 @@
   
 <link rel="prev" href="fdcs.html"/>
 <link rel="next" href="floods.html"/>
-<script src="libs/header-attrs-2.4.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,24 +51,20 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
 <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.0.3/leaflet.js"></script>
+<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
 <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
-<link href="libs/rglwidgetClass-2/rgl.css" rel="stylesheet" />
-<script src="libs/rglwidgetClass-2/rglClass.src.js"></script>
-<script src="libs/CanvasMatrix4-2016/CanvasMatrix.src.js"></script>
-<script src="libs/rglWebGL-binding-0.100.54/rglWebGL.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
+<script src="libs/rglWebGL-binding-0.105.22/rglWebGL.js"></script>
+<link href="libs/rglwidgetClass-0.105.22/rgl.css" rel="stylesheet" />
+<script src="libs/rglwidgetClass-0.105.22/rglClass.min.js"></script>
+<script src="libs/CanvasMatrix4-0.105.22/CanvasMatrix.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GBDXSZFFSR"></script>
 <script>
@@ -402,13 +398,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><a href="https://github.com/DEQdsobota/Oregon7Q10/blob/master/R/Oregon7Q10.R" class="uri">https://github.com/DEQdsobota/Oregon7Q10/blob/master/R/Oregon7Q10.R</a></p>
 <p><a href="https://nepis.epa.gov/Exe/ZyPDF.cgi?Dockey=P100BK6P.txt" class="uri">https://nepis.epa.gov/Exe/ZyPDF.cgi?Dockey=P100BK6P.txt</a></p>
 <p><em>Load packages for analysis. zoo will allow us to easily perform rolling means, and moments will allow easy calculation of skewness.</em></p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="lfas.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)</span>
-<span id="cb146-2"><a href="lfas.html#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb146-3"><a href="lfas.html#cb146-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dataRetrieval)</span>
-<span id="cb146-4"><a href="lfas.html#cb146-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb146-5"><a href="lfas.html#cb146-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
-<span id="cb146-6"><a href="lfas.html#cb146-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-7"><a href="lfas.html#cb146-7" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_classic</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="lfas.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)</span>
+<span id="cb149-2"><a href="lfas.html#cb149-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb149-3"><a href="lfas.html#cb149-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dataRetrieval)</span>
+<span id="cb149-4"><a href="lfas.html#cb149-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb149-5"><a href="lfas.html#cb149-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb149-6"><a href="lfas.html#cb149-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-7"><a href="lfas.html#cb149-7" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_classic</span>())</span></code></pre></div>
 <div id="what-are-low-flow-statistics" class="section level2" number="11.1">
 <h2><span class="header-section-number">11.1</span> What are low flow statistics?</h2>
 <p>Low flow design flows can be specified based on hydrological or biological data. Biological methods look more at water quality standards relevant to biota. The hydrologic method just looks at the statistical distribution of low flows over a period of time.</p>
@@ -429,13 +425,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="get-data-1" class="section level2" number="11.2">
 <h2><span class="header-section-number">11.2</span> Get data</h2>
 <p>Let’s get started on an example. We will calculate the 7Q10 low flow statistic for the Linville NC usgs gage (02138500) using daily discharge data from 1922-1984. (parameter = 00060)</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="lfas.html#cb147-1" aria-hidden="true" tabindex="-1"></a>siteno <span class="ot">&lt;-</span> <span class="st">&quot;02138500&quot;</span></span>
-<span id="cb147-2"><a href="lfas.html#cb147-2" aria-hidden="true" tabindex="-1"></a>startDate <span class="ot">&lt;-</span> <span class="st">&quot;1922-01-01&quot;</span></span>
-<span id="cb147-3"><a href="lfas.html#cb147-3" aria-hidden="true" tabindex="-1"></a>endDate <span class="ot">&lt;-</span> <span class="st">&quot;1984-01-01&quot;</span></span>
-<span id="cb147-4"><a href="lfas.html#cb147-4" aria-hidden="true" tabindex="-1"></a>parameter <span class="ot">&lt;-</span> <span class="st">&quot;00060&quot;</span></span>
-<span id="cb147-5"><a href="lfas.html#cb147-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb147-6"><a href="lfas.html#cb147-6" aria-hidden="true" tabindex="-1"></a>Qdat <span class="ot">&lt;-</span> <span class="fu">readNWISdv</span>(siteno, parameter, startDate, endDate) <span class="sc">%&gt;%</span> </span>
-<span id="cb147-7"><a href="lfas.html#cb147-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">renameNWISColumns</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="lfas.html#cb150-1" aria-hidden="true" tabindex="-1"></a>siteno <span class="ot">&lt;-</span> <span class="st">&quot;02138500&quot;</span></span>
+<span id="cb150-2"><a href="lfas.html#cb150-2" aria-hidden="true" tabindex="-1"></a>startDate <span class="ot">&lt;-</span> <span class="st">&quot;1922-01-01&quot;</span></span>
+<span id="cb150-3"><a href="lfas.html#cb150-3" aria-hidden="true" tabindex="-1"></a>endDate <span class="ot">&lt;-</span> <span class="st">&quot;1984-01-01&quot;</span></span>
+<span id="cb150-4"><a href="lfas.html#cb150-4" aria-hidden="true" tabindex="-1"></a>parameter <span class="ot">&lt;-</span> <span class="st">&quot;00060&quot;</span></span>
+<span id="cb150-5"><a href="lfas.html#cb150-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb150-6"><a href="lfas.html#cb150-6" aria-hidden="true" tabindex="-1"></a>Qdat <span class="ot">&lt;-</span> <span class="fu">readNWISdv</span>(siteno, parameter, startDate, endDate) <span class="sc">%&gt;%</span> </span>
+<span id="cb150-7"><a href="lfas.html#cb150-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">renameNWISColumns</span>()</span></code></pre></div>
 </div>
 <div id="create-the-x-days-average-flow-record" class="section level2" number="11.3">
 <h2><span class="header-section-number">11.3</span> Create the X days average flow record</h2>
@@ -460,40 +456,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </blockquote>
 <p>We could certainly set up some code to calculate this, but there is a nice and fast function in the zoo package for calculating rolling means.</p>
 <p>As we write the code to do this analysis, we are going to keep in mind that we may want to calculate a different type of low flow, like a 1Q10, so we are going to store the x and y of the xQy low flow statistic as objects rather than including them several places in the code. That way we can just change them in one place and run the analysis to compute a different statistic.</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="lfas.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="co">#set x and y for xQy design flow</span></span>
-<span id="cb148-2"><a href="lfas.html#cb148-2" aria-hidden="true" tabindex="-1"></a>Xday <span class="ot">&lt;-</span> <span class="dv">7</span></span>
-<span id="cb148-3"><a href="lfas.html#cb148-3" aria-hidden="true" tabindex="-1"></a>YrecInt <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb148-4"><a href="lfas.html#cb148-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb148-5"><a href="lfas.html#cb148-5" aria-hidden="true" tabindex="-1"></a><span class="co">#X day rolling mean, don&#39;t fill the ends of the timeseries,</span></span>
-<span id="cb148-6"><a href="lfas.html#cb148-6" aria-hidden="true" tabindex="-1"></a><span class="co">#don&#39;t ignore NAs, use a backward-looking window (right align)</span></span>
-<span id="cb148-7"><a href="lfas.html#cb148-7" aria-hidden="true" tabindex="-1"></a>Qdat <span class="ot">&lt;-</span> Qdat <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">xdaymean =</span> <span class="fu">rollmean</span>(Flow, </span>
-<span id="cb148-8"><a href="lfas.html#cb148-8" aria-hidden="true" tabindex="-1"></a>                                            Xday, </span>
-<span id="cb148-9"><a href="lfas.html#cb148-9" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">fill =</span> <span class="cn">NA</span>, </span>
-<span id="cb148-10"><a href="lfas.html#cb148-10" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">na.rm =</span> F, </span>
-<span id="cb148-11"><a href="lfas.html#cb148-11" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">align =</span> <span class="st">&quot;right&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="lfas.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="co">#set x and y for xQy design flow</span></span>
+<span id="cb151-2"><a href="lfas.html#cb151-2" aria-hidden="true" tabindex="-1"></a>Xday <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb151-3"><a href="lfas.html#cb151-3" aria-hidden="true" tabindex="-1"></a>YrecInt <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb151-4"><a href="lfas.html#cb151-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-5"><a href="lfas.html#cb151-5" aria-hidden="true" tabindex="-1"></a><span class="co">#X day rolling mean, don&#39;t fill the ends of the timeseries,</span></span>
+<span id="cb151-6"><a href="lfas.html#cb151-6" aria-hidden="true" tabindex="-1"></a><span class="co">#don&#39;t ignore NAs, use a backward-looking window (right align)</span></span>
+<span id="cb151-7"><a href="lfas.html#cb151-7" aria-hidden="true" tabindex="-1"></a>Qdat <span class="ot">&lt;-</span> Qdat <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">xdaymean =</span> <span class="fu">rollmean</span>(Flow, </span>
+<span id="cb151-8"><a href="lfas.html#cb151-8" aria-hidden="true" tabindex="-1"></a>                                            Xday, </span>
+<span id="cb151-9"><a href="lfas.html#cb151-9" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">fill =</span> <span class="cn">NA</span>, </span>
+<span id="cb151-10"><a href="lfas.html#cb151-10" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">na.rm =</span> F, </span>
+<span id="cb151-11"><a href="lfas.html#cb151-11" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">align =</span> <span class="st">&quot;right&quot;</span>))</span></code></pre></div>
 </div>
 <div id="look-at-what-a-rolling-mean-does." class="section level2" number="11.4">
 <h2><span class="header-section-number">11.4</span> Look at what a rolling mean does.</h2>
 <p>We just added a new column with the rolling mean, so let’s plot it and see what it did to the discharge record.</p>
 <p>Let’s look at June-August 1960. You can’t see too well what is going on in the full record.</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="lfas.html#cb149-1" aria-hidden="true" tabindex="-1"></a>Qdat <span class="sc">%&gt;%</span> </span>
-<span id="cb149-2"><a href="lfas.html#cb149-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Date <span class="sc">&gt;</span> <span class="fu">mdy</span>(<span class="st">&quot;06-01-1960&quot;</span>) <span class="sc">&amp;</span> Date <span class="sc">&lt;</span> <span class="fu">mdy</span>(<span class="st">&quot;08-01-1960&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb149-3"><a href="lfas.html#cb149-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Date, Flow, <span class="at">color =</span> <span class="st">&quot;daily&quot;</span>))<span class="sc">+</span></span>
-<span id="cb149-4"><a href="lfas.html#cb149-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb149-5"><a href="lfas.html#cb149-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> Date, <span class="at">y =</span> xdaymean, <span class="at">color =</span> <span class="st">&quot;rolling mean&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="lfas.html#cb152-1" aria-hidden="true" tabindex="-1"></a>Qdat <span class="sc">%&gt;%</span> </span>
+<span id="cb152-2"><a href="lfas.html#cb152-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Date <span class="sc">&gt;</span> <span class="fu">mdy</span>(<span class="st">&quot;06-01-1960&quot;</span>) <span class="sc">&amp;</span> Date <span class="sc">&lt;</span> <span class="fu">mdy</span>(<span class="st">&quot;08-01-1960&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb152-3"><a href="lfas.html#cb152-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Date, Flow, <span class="at">color =</span> <span class="st">&quot;daily&quot;</span>))<span class="sc">+</span></span>
+<span id="cb152-4"><a href="lfas.html#cb152-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb152-5"><a href="lfas.html#cb152-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> Date, <span class="at">y =</span> xdaymean, <span class="at">color =</span> <span class="st">&quot;rolling mean&quot;</span>))</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
 </div>
 <div id="calculate-yearly-minimums" class="section level2" number="11.5">
 <h2><span class="header-section-number">11.5</span> Calculate yearly minimums</h2>
 <p>Okay, we have our X-day rolling mean. Now we need to calculate the probability that a given magnitude flow or below will happen in a given year. Because we are concerned with <em>a given year</em> we need the lowest flow per year.</p>
 <p>We will calculate minimum flow per year by creating a <em>Year</em> column, grouping by that column, and using the summarize function to calculate the minimum flow per year. The code we are going to write will also drop any years that are missing too much data by dropping years missing 10% or more days.</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="lfas.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="co">#missing less than 10% of each year and 10% or fewer NAs</span></span>
-<span id="cb150-2"><a href="lfas.html#cb150-2" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="ot">&lt;-</span> Qdat <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">year</span>(Date)) <span class="sc">%&gt;%</span></span>
-<span id="cb150-3"><a href="lfas.html#cb150-3" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb150-4"><a href="lfas.html#cb150-4" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">summarize</span>(<span class="at">minQ =</span> <span class="fu">min</span>(xdaymean, <span class="at">na.rm =</span> T), </span>
-<span id="cb150-5"><a href="lfas.html#cb150-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">lenDat =</span> <span class="fu">length</span>(Flow),</span>
-<span id="cb150-6"><a href="lfas.html#cb150-6" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">lenNAs =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(xdaymean))) <span class="sc">%&gt;%</span></span>
-<span id="cb150-7"><a href="lfas.html#cb150-7" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">filter</span>(lenDat <span class="sc">&gt;</span> <span class="dv">328</span> <span class="sc">&amp;</span> lenNAs <span class="sc">/</span> lenDat <span class="sc">&lt;</span> <span class="fl">0.1</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="lfas.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="co">#missing less than 10% of each year and 10% or fewer NAs</span></span>
+<span id="cb153-2"><a href="lfas.html#cb153-2" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="ot">&lt;-</span> Qdat <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">year</span>(Date)) <span class="sc">%&gt;%</span></span>
+<span id="cb153-3"><a href="lfas.html#cb153-3" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb153-4"><a href="lfas.html#cb153-4" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">summarize</span>(<span class="at">minQ =</span> <span class="fu">min</span>(xdaymean, <span class="at">na.rm =</span> T), </span>
+<span id="cb153-5"><a href="lfas.html#cb153-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">lenDat =</span> <span class="fu">length</span>(Flow),</span>
+<span id="cb153-6"><a href="lfas.html#cb153-6" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">lenNAs =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(xdaymean))) <span class="sc">%&gt;%</span></span>
+<span id="cb153-7"><a href="lfas.html#cb153-7" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">filter</span>(lenDat <span class="sc">&gt;</span> <span class="dv">328</span> <span class="sc">&amp;</span> lenNAs <span class="sc">/</span> lenDat <span class="sc">&lt;</span> <span class="fl">0.1</span>) </span></code></pre></div>
 </div>
 <div id="calculate-return-interval" class="section level2" number="11.6">
 <h2><span class="header-section-number">11.6</span> Calculate return interval</h2>
@@ -503,18 +499,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We can then transform that to an exceedence probability as</p>
 <p><span class="math inline">\(Exceedence Probability = 1 / Return Interval\)</span></p>
 <p>Once we calculate the return interval and exceedence probability we will plot the return interval against the minimum discharge.</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="lfas.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add rank column and return interval column</span></span>
-<span id="cb151-2"><a href="lfas.html#cb151-2" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="ot">&lt;-</span> QyearlyMins <span class="sc">%&gt;%</span> </span>
-<span id="cb151-3"><a href="lfas.html#cb151-3" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">rank</span>(minQ, <span class="at">ties.method =</span> <span class="st">&quot;first&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb151-4"><a href="lfas.html#cb151-4" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="at">ReturnInterval =</span> (<span class="fu">length</span>(rank) <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>rank) <span class="sc">%&gt;%</span></span>
-<span id="cb151-5"><a href="lfas.html#cb151-5" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="at">ExceedProb =</span> <span class="dv">1</span> <span class="sc">/</span> ReturnInterval)</span>
-<span id="cb151-6"><a href="lfas.html#cb151-6" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb151-7"><a href="lfas.html#cb151-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(QyearlyMins, <span class="fu">aes</span>(<span class="at">x =</span> ReturnInterval, <span class="at">y =</span> minQ))<span class="sc">+</span></span>
-<span id="cb151-8"><a href="lfas.html#cb151-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="lfas.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add rank column and return interval column</span></span>
+<span id="cb154-2"><a href="lfas.html#cb154-2" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="ot">&lt;-</span> QyearlyMins <span class="sc">%&gt;%</span> </span>
+<span id="cb154-3"><a href="lfas.html#cb154-3" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">rank</span>(minQ, <span class="at">ties.method =</span> <span class="st">&quot;first&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb154-4"><a href="lfas.html#cb154-4" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="at">ReturnInterval =</span> (<span class="fu">length</span>(rank) <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>rank) <span class="sc">%&gt;%</span></span>
+<span id="cb154-5"><a href="lfas.html#cb154-5" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="at">ExceedProb =</span> <span class="dv">1</span> <span class="sc">/</span> ReturnInterval)</span>
+<span id="cb154-6"><a href="lfas.html#cb154-6" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb154-7"><a href="lfas.html#cb154-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(QyearlyMins, <span class="fu">aes</span>(<span class="at">x =</span> ReturnInterval, <span class="at">y =</span> minQ))<span class="sc">+</span></span>
+<span id="cb154-8"><a href="lfas.html#cb154-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
 <p><strong>Challenge question</strong> How is this similar to a flow duration curve? Could you make a “flow duration curve” from these data? What would it tell you?</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="lfas.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(QyearlyMins, <span class="fu">aes</span>(<span class="at">x =</span> ExceedProb, <span class="at">y =</span> minQ))<span class="sc">+</span></span>
-<span id="cb152-2"><a href="lfas.html#cb152-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="lfas.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(QyearlyMins, <span class="fu">aes</span>(<span class="at">x =</span> ExceedProb, <span class="at">y =</span> minQ))<span class="sc">+</span></span>
+<span id="cb155-2"><a href="lfas.html#cb155-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
 </div>
 <div id="fit-to-pearson-type-ii-distribution" class="section level2" number="11.7">
@@ -530,13 +526,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Now you could plot that fitted, synthetic distribution as an ECDF and read the plot to determine, say, 10% of students (0.1 probability) are at or above what height?</li>
 </ul>
 <p>Assume the average height from your data was 65 inches and the standard deviation was 6 inches (this is 100% made up), let’s look at it.</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="lfas.html#cb153-1" aria-hidden="true" tabindex="-1"></a>fitteddistribution <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">65</span>, <span class="at">sd =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb153-2"><a href="lfas.html#cb153-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
-<span id="cb153-3"><a href="lfas.html#cb153-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb153-4"><a href="lfas.html#cb153-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fitteddistribution, <span class="fu">aes</span>(<span class="at">x =</span> value))<span class="sc">+</span></span>
-<span id="cb153-5"><a href="lfas.html#cb153-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_ecdf</span>()<span class="sc">+</span></span>
-<span id="cb153-6"><a href="lfas.html#cb153-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;height (in)&quot;</span>)<span class="sc">+</span></span>
-<span id="cb153-7"><a href="lfas.html#cb153-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;probability&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="lfas.html#cb156-1" aria-hidden="true" tabindex="-1"></a>fitteddistribution <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">65</span>, <span class="at">sd =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb156-2"><a href="lfas.html#cb156-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
+<span id="cb156-3"><a href="lfas.html#cb156-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb156-4"><a href="lfas.html#cb156-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fitteddistribution, <span class="fu">aes</span>(<span class="at">x =</span> value))<span class="sc">+</span></span>
+<span id="cb156-5"><a href="lfas.html#cb156-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_ecdf</span>()<span class="sc">+</span></span>
+<span id="cb156-6"><a href="lfas.html#cb156-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;height (in)&quot;</span>)<span class="sc">+</span></span>
+<span id="cb156-7"><a href="lfas.html#cb156-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;probability&quot;</span>)</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
 <p>To get our 10 year return period (0.1 exceedence probability) we are going to do the same thing, except we know the distribution of the data isn’t normal, so we have to use a different distribution.</p>
 <p>There are a bunch of “extreme value” distributions used in these type of analyses. When we talk about floods we will use the Gumbel distribution, for example. For this type of analysis, it is common to use the Pearson Type III distribution.</p>
@@ -554,40 +550,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Standard normal variate</strong></p>
 <p><span class="math inline">\(z = 4.91 * ((1 / y) ^ {0.14} - (1 - (1 / y)) ^ {0.14})\)</span></p>
 <p>y = recurrence interval</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="lfas.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Measures of the distribution</span></span>
-<span id="cb154-2"><a href="lfas.html#cb154-2" aria-hidden="true" tabindex="-1"></a>Xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">log</span>(QyearlyMins<span class="sc">$</span>minQ))</span>
-<span id="cb154-3"><a href="lfas.html#cb154-3" aria-hidden="true" tabindex="-1"></a>S    <span class="ot">&lt;-</span> <span class="fu">sd</span>(<span class="fu">log</span>(QyearlyMins<span class="sc">$</span>minQ))</span>
-<span id="cb154-4"><a href="lfas.html#cb154-4" aria-hidden="true" tabindex="-1"></a>g    <span class="ot">&lt;-</span> <span class="fu">skewness</span>(<span class="fu">log</span>(QyearlyMins<span class="sc">$</span>minQ))</span>
-<span id="cb154-5"><a href="lfas.html#cb154-5" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb154-6"><a href="lfas.html#cb154-6" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate z, K, to plot the fitted Pearson Type III</span></span>
-<span id="cb154-7"><a href="lfas.html#cb154-7" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="ot">&lt;-</span> QyearlyMins <span class="sc">%&gt;%</span> </span>
-<span id="cb154-8"><a href="lfas.html#cb154-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">z =</span> <span class="fl">4.91</span> <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">/</span> ReturnInterval) <span class="sc">^</span> <span class="fl">0.14</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">1</span> <span class="sc">/</span> ReturnInterval) <span class="sc">^</span> <span class="fl">0.14</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb154-9"><a href="lfas.html#cb154-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">K =</span> (<span class="dv">2</span> <span class="sc">/</span> g) <span class="sc">*</span> (((<span class="dv">1</span> <span class="sc">+</span> (g <span class="sc">*</span> z) <span class="sc">/</span> <span class="dv">6</span> <span class="sc">-</span> (g <span class="sc">^</span> <span class="dv">2</span>) <span class="sc">/</span> <span class="dv">36</span>) <span class="sc">^</span> <span class="dv">3</span>) <span class="sc">-</span> <span class="dv">1</span>) ) <span class="sc">%&gt;%</span></span>
-<span id="cb154-10"><a href="lfas.html#cb154-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Qfit =</span> <span class="fu">exp</span>(Xbar <span class="sc">+</span> K <span class="sc">*</span> S))</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="lfas.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Measures of the distribution</span></span>
+<span id="cb157-2"><a href="lfas.html#cb157-2" aria-hidden="true" tabindex="-1"></a>Xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">log</span>(QyearlyMins<span class="sc">$</span>minQ))</span>
+<span id="cb157-3"><a href="lfas.html#cb157-3" aria-hidden="true" tabindex="-1"></a>S    <span class="ot">&lt;-</span> <span class="fu">sd</span>(<span class="fu">log</span>(QyearlyMins<span class="sc">$</span>minQ))</span>
+<span id="cb157-4"><a href="lfas.html#cb157-4" aria-hidden="true" tabindex="-1"></a>g    <span class="ot">&lt;-</span> <span class="fu">skewness</span>(<span class="fu">log</span>(QyearlyMins<span class="sc">$</span>minQ))</span>
+<span id="cb157-5"><a href="lfas.html#cb157-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb157-6"><a href="lfas.html#cb157-6" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate z, K, to plot the fitted Pearson Type III</span></span>
+<span id="cb157-7"><a href="lfas.html#cb157-7" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="ot">&lt;-</span> QyearlyMins <span class="sc">%&gt;%</span> </span>
+<span id="cb157-8"><a href="lfas.html#cb157-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">z =</span> <span class="fl">4.91</span> <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">/</span> ReturnInterval) <span class="sc">^</span> <span class="fl">0.14</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">1</span> <span class="sc">/</span> ReturnInterval) <span class="sc">^</span> <span class="fl">0.14</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb157-9"><a href="lfas.html#cb157-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">K =</span> (<span class="dv">2</span> <span class="sc">/</span> g) <span class="sc">*</span> (((<span class="dv">1</span> <span class="sc">+</span> (g <span class="sc">*</span> z) <span class="sc">/</span> <span class="dv">6</span> <span class="sc">-</span> (g <span class="sc">^</span> <span class="dv">2</span>) <span class="sc">/</span> <span class="dv">36</span>) <span class="sc">^</span> <span class="dv">3</span>) <span class="sc">-</span> <span class="dv">1</span>) ) <span class="sc">%&gt;%</span></span>
+<span id="cb157-10"><a href="lfas.html#cb157-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Qfit =</span> <span class="fu">exp</span>(Xbar <span class="sc">+</span> K <span class="sc">*</span> S))</span></code></pre></div>
 <p>Let’s look our results and see how they fit. Plot the return interval on the x axis and flow on the y. Plot minQ, the minimum Q data, and Qfit, the data from the the model fit.</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="lfas.html#cb155-1" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="sc">%&gt;%</span> </span>
-<span id="cb155-2"><a href="lfas.html#cb155-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ReturnInterval, <span class="at">y =</span> minQ, <span class="at">color =</span> <span class="st">&quot;Estimated&quot;</span>))<span class="sc">+</span></span>
-<span id="cb155-3"><a href="lfas.html#cb155-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb155-4"><a href="lfas.html#cb155-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> ReturnInterval, <span class="at">y =</span> Qfit, <span class="at">color =</span> <span class="st">&quot;Fitted&quot;</span>))<span class="sc">+</span></span>
-<span id="cb155-5"><a href="lfas.html#cb155-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
-<span id="cb155-6"><a href="lfas.html#cb155-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>()<span class="sc">+</span></span>
-<span id="cb155-7"><a href="lfas.html#cb155-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;X day yearly minimum&quot;</span>)<span class="sc">+</span></span>
-<span id="cb155-8"><a href="lfas.html#cb155-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Return Interval&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="lfas.html#cb158-1" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="sc">%&gt;%</span> </span>
+<span id="cb158-2"><a href="lfas.html#cb158-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ReturnInterval, <span class="at">y =</span> minQ, <span class="at">color =</span> <span class="st">&quot;Estimated&quot;</span>))<span class="sc">+</span></span>
+<span id="cb158-3"><a href="lfas.html#cb158-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb158-4"><a href="lfas.html#cb158-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> ReturnInterval, <span class="at">y =</span> Qfit, <span class="at">color =</span> <span class="st">&quot;Fitted&quot;</span>))<span class="sc">+</span></span>
+<span id="cb158-5"><a href="lfas.html#cb158-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb158-6"><a href="lfas.html#cb158-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>()<span class="sc">+</span></span>
+<span id="cb158-7"><a href="lfas.html#cb158-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;X day yearly minimum&quot;</span>)<span class="sc">+</span></span>
+<span id="cb158-8"><a href="lfas.html#cb158-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Return Interval&quot;</span>)</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
 <p>Above we calculated z, K and the flow for each return interval in our data record to see how the distribution fit our data. We can see it fits quite well.</p>
 <p>We can use the same calculations as we used on the entire record to calculate a specific return period of interest. In our case, the 10 year return period for the 7Q10.</p>
 <p>We will set y equal to YrecInt, which we set above. This way we can just change it at the top of the code to run whatever xQy metric we want.</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="lfas.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="co">#xQy ei: 7Q10</span></span>
-<span id="cb156-2"><a href="lfas.html#cb156-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> YrecInt</span>
-<span id="cb156-3"><a href="lfas.html#cb156-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb156-4"><a href="lfas.html#cb156-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Find these values based on established relationships</span></span>
-<span id="cb156-5"><a href="lfas.html#cb156-5" aria-hidden="true" tabindex="-1"></a>z    <span class="ot">&lt;-</span> <span class="fl">4.91</span> <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">/</span> y) <span class="sc">^</span> <span class="fl">0.14</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">1</span> <span class="sc">/</span> y) <span class="sc">^</span> <span class="fl">0.14</span>)</span>
-<span id="cb156-6"><a href="lfas.html#cb156-6" aria-hidden="true" tabindex="-1"></a>K    <span class="ot">&lt;-</span> (<span class="dv">2</span> <span class="sc">/</span> g) <span class="sc">*</span> (((<span class="dv">1</span> <span class="sc">+</span> (g <span class="sc">*</span> z) <span class="sc">/</span> <span class="dv">6</span> <span class="sc">-</span> (g <span class="sc">^</span> <span class="dv">2</span>) <span class="sc">/</span> <span class="dv">36</span>) <span class="sc">^</span> <span class="dv">3</span>) <span class="sc">-</span> <span class="dv">1</span>) </span>
-<span id="cb156-7"><a href="lfas.html#cb156-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb156-8"><a href="lfas.html#cb156-8" aria-hidden="true" tabindex="-1"></a>PearsonxQy <span class="ot">&lt;-</span> <span class="fu">exp</span>(Xbar <span class="sc">+</span> K <span class="sc">*</span> S)</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="lfas.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="co">#xQy ei: 7Q10</span></span>
+<span id="cb159-2"><a href="lfas.html#cb159-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> YrecInt</span>
+<span id="cb159-3"><a href="lfas.html#cb159-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb159-4"><a href="lfas.html#cb159-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Find these values based on established relationships</span></span>
+<span id="cb159-5"><a href="lfas.html#cb159-5" aria-hidden="true" tabindex="-1"></a>z    <span class="ot">&lt;-</span> <span class="fl">4.91</span> <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">/</span> y) <span class="sc">^</span> <span class="fl">0.14</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">1</span> <span class="sc">/</span> y) <span class="sc">^</span> <span class="fl">0.14</span>)</span>
+<span id="cb159-6"><a href="lfas.html#cb159-6" aria-hidden="true" tabindex="-1"></a>K    <span class="ot">&lt;-</span> (<span class="dv">2</span> <span class="sc">/</span> g) <span class="sc">*</span> (((<span class="dv">1</span> <span class="sc">+</span> (g <span class="sc">*</span> z) <span class="sc">/</span> <span class="dv">6</span> <span class="sc">-</span> (g <span class="sc">^</span> <span class="dv">2</span>) <span class="sc">/</span> <span class="dv">36</span>) <span class="sc">^</span> <span class="dv">3</span>) <span class="sc">-</span> <span class="dv">1</span>) </span>
+<span id="cb159-7"><a href="lfas.html#cb159-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb159-8"><a href="lfas.html#cb159-8" aria-hidden="true" tabindex="-1"></a>PearsonxQy <span class="ot">&lt;-</span> <span class="fu">exp</span>(Xbar <span class="sc">+</span> K <span class="sc">*</span> S)</span></code></pre></div>
 <p>So, our 7Q10 flow in cfs for this gage is….</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="lfas.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Low flow stat (7Q10 in exercise)</span></span>
-<span id="cb157-2"><a href="lfas.html#cb157-2" aria-hidden="true" tabindex="-1"></a>PearsonxQy</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="lfas.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Low flow stat (7Q10 in exercise)</span></span>
+<span id="cb160-2"><a href="lfas.html#cb160-2" aria-hidden="true" tabindex="-1"></a>PearsonxQy</span></code></pre></div>
 <pre><code>## [1] 16.70488</code></pre>
 </div>
 <div id="distribution-free-method" class="section level2" number="11.8">
@@ -603,21 +599,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\([z]\)</span> = the largest integer less than or equal to z</p>
 <p><span class="math inline">\(e = (n+l)/y - [(n+l)/y]\)</span></p>
 <p>This method is only appropriate when the desired return period is less than n/5 years</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="lfas.html#cb159-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> Xday</span>
-<span id="cb159-2"><a href="lfas.html#cb159-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> YrecInt</span>
-<span id="cb159-3"><a href="lfas.html#cb159-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(QyearlyMins<span class="sc">$</span>minQ)</span>
-<span id="cb159-4"><a href="lfas.html#cb159-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-5"><a href="lfas.html#cb159-5" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">trunc</span>((n <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>y)</span>
-<span id="cb159-6"><a href="lfas.html#cb159-6" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">trunc</span>(((n <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>y) <span class="sc">+</span> <span class="dv">1</span>)</span>
-<span id="cb159-7"><a href="lfas.html#cb159-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-8"><a href="lfas.html#cb159-8" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> ((n <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>y) <span class="sc">-</span> m1</span>
-<span id="cb159-9"><a href="lfas.html#cb159-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-10"><a href="lfas.html#cb159-10" aria-hidden="true" tabindex="-1"></a>Xm1 <span class="ot">&lt;-</span> QyearlyMins<span class="sc">$</span>minQ[QyearlyMins<span class="sc">$</span>rank <span class="sc">==</span> m1]</span>
-<span id="cb159-11"><a href="lfas.html#cb159-11" aria-hidden="true" tabindex="-1"></a>Xm2 <span class="ot">&lt;-</span> QyearlyMins<span class="sc">$</span>minQ[QyearlyMins<span class="sc">$</span>rank <span class="sc">==</span> m2]</span>
-<span id="cb159-12"><a href="lfas.html#cb159-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-13"><a href="lfas.html#cb159-13" aria-hidden="true" tabindex="-1"></a>DFxQy <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">-</span>e) <span class="sc">*</span> Xm1 <span class="sc">+</span> e <span class="sc">*</span> Xm2</span>
-<span id="cb159-14"><a href="lfas.html#cb159-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-15"><a href="lfas.html#cb159-15" aria-hidden="true" tabindex="-1"></a>DFxQy</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="lfas.html#cb162-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> Xday</span>
+<span id="cb162-2"><a href="lfas.html#cb162-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> YrecInt</span>
+<span id="cb162-3"><a href="lfas.html#cb162-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(QyearlyMins<span class="sc">$</span>minQ)</span>
+<span id="cb162-4"><a href="lfas.html#cb162-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-5"><a href="lfas.html#cb162-5" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">trunc</span>((n <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>y)</span>
+<span id="cb162-6"><a href="lfas.html#cb162-6" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">trunc</span>(((n <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>y) <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb162-7"><a href="lfas.html#cb162-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-8"><a href="lfas.html#cb162-8" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> ((n <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>y) <span class="sc">-</span> m1</span>
+<span id="cb162-9"><a href="lfas.html#cb162-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-10"><a href="lfas.html#cb162-10" aria-hidden="true" tabindex="-1"></a>Xm1 <span class="ot">&lt;-</span> QyearlyMins<span class="sc">$</span>minQ[QyearlyMins<span class="sc">$</span>rank <span class="sc">==</span> m1]</span>
+<span id="cb162-11"><a href="lfas.html#cb162-11" aria-hidden="true" tabindex="-1"></a>Xm2 <span class="ot">&lt;-</span> QyearlyMins<span class="sc">$</span>minQ[QyearlyMins<span class="sc">$</span>rank <span class="sc">==</span> m2]</span>
+<span id="cb162-12"><a href="lfas.html#cb162-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-13"><a href="lfas.html#cb162-13" aria-hidden="true" tabindex="-1"></a>DFxQy <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">-</span>e) <span class="sc">*</span> Xm1 <span class="sc">+</span> e <span class="sc">*</span> Xm2</span>
+<span id="cb162-14"><a href="lfas.html#cb162-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-15"><a href="lfas.html#cb162-15" aria-hidden="true" tabindex="-1"></a>DFxQy</span></code></pre></div>
 <pre><code>## [1] 15</code></pre>
 
 </div>

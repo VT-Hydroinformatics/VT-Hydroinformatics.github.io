@@ -33,7 +33,7 @@
   
 <link rel="prev" href="Plotting.html"/>
 <link rel="next" href="introactivity.html"/>
-<script src="libs/header-attrs-2.4.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,24 +51,20 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
 <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.0.3/leaflet.js"></script>
+<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
 <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
-<link href="libs/rglwidgetClass-2/rgl.css" rel="stylesheet" />
-<script src="libs/rglwidgetClass-2/rglClass.src.js"></script>
-<script src="libs/CanvasMatrix4-2016/CanvasMatrix.src.js"></script>
-<script src="libs/rglWebGL-binding-0.100.54/rglWebGL.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
+<script src="libs/rglWebGL-binding-0.105.22/rglWebGL.js"></script>
+<link href="libs/rglwidgetClass-0.105.22/rgl.css" rel="stylesheet" />
+<script src="libs/rglwidgetClass-0.105.22/rglClass.min.js"></script>
+<script src="libs/CanvasMatrix4-0.105.22/CanvasMatrix.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GBDXSZFFSR"></script>
 <script>
@@ -406,7 +402,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="you-can-use-r-as-a-calculator" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> You can use R as a calculator</h2>
 <p>If you just type numbers and operators in, R will spit out the results</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="Programming.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="Programming.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 </div>
 <div id="you-can-create-new-objects-using--" class="section level2" number="3.3">
@@ -419,52 +415,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>my_new_data &lt;- my_data</p>
 <p>You can then recall/print the values in an object by just typing the name by itself.</p>
 <p>In the code chunk below, assign a 3 to the object “y” and then print it out.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="Programming.html#cb28-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb28-2"><a href="Programming.html#cb28-2" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="Programming.html#cb29-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb29-2"><a href="Programming.html#cb29-2" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>If you want to assign multiple values, you have to put them in the function c() c means combine. R doesn’t know what to do if you just give it a bunch of values with space or commas, but if you put them as arguments in the combine function, it’ll make them into a vector.</p>
 <p>Any time you need to use several values, even passing as an argument to a function, you have to put them in c() or it won’t work.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="Programming.html#cb30-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
-<span id="cb30-2"><a href="Programming.html#cb30-2" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="Programming.html#cb31-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
+<span id="cb31-2"><a href="Programming.html#cb31-2" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
 <pre><code>## [1] 1 2 3 4</code></pre>
 <p>When you are creating objects, try to give them meaningful names so you can remember what they are. You can’t have spaces or operators that mean something else as part of a name. And remember, everything is case sensitive.</p>
 <p>Assign the value 5.4 to water_pH and then try to recall it by typing “water_ph”</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="Programming.html#cb32-1" aria-hidden="true" tabindex="-1"></a>water_pH <span class="ot">&lt;-</span> <span class="fl">5.4</span></span>
-<span id="cb32-2"><a href="Programming.html#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-3"><a href="Programming.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co">#water_ph</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="Programming.html#cb33-1" aria-hidden="true" tabindex="-1"></a>water_pH <span class="ot">&lt;-</span> <span class="fl">5.4</span></span>
+<span id="cb33-2"><a href="Programming.html#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="Programming.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co">#water_ph</span></span></code></pre></div>
 <p>You can also set objects equal to strings, or values that have letters in them. To do this you just have to put the value in quotes, otherwise R will think it is an object name and tell you it doesn’t exist.</p>
 <p>Try: name &lt;- “JP” and then name &lt;- JP</p>
 <p>What happens if you forget the ending parenthesis?</p>
 <p>Try: name &lt;- "JP</p>
 <p>R can be cryptic with it’s error messages or other responses, but once you get used to them, you know exactly what is wrong when they pop up.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="Programming.html#cb33-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="st">&quot;JP&quot;</span></span>
-<span id="cb33-2"><a href="Programming.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co">#name &lt;- JP</span></span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="Programming.html#cb34-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="st">&quot;JP&quot;</span></span>
+<span id="cb34-2"><a href="Programming.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co">#name &lt;- JP</span></span></code></pre></div>
 </div>
 <div id="using-functions" class="section level2" number="3.4">
 <h2><span class="header-section-number">3.4</span> Using functions</h2>
 <p><img src="images/function%20syntax.png" /></p>
 <p>As an example, let’s try the seq() function, which creates a sequence of numbers.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="Programming.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="Programming.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="Programming.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#or</span></span>
-<span id="cb36-2"><a href="Programming.html#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-3"><a href="Programming.html#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="Programming.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#or</span></span>
+<span id="cb37-2"><a href="Programming.html#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="Programming.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="Programming.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#or</span></span>
-<span id="cb38-2"><a href="Programming.html#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-3"><a href="Programming.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="Programming.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#or</span></span>
+<span id="cb39-2"><a href="Programming.html#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="Programming.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="Programming.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#what does this do</span></span>
-<span id="cb40-2"><a href="Programming.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">10</span>,<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="Programming.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">#what does this do</span></span>
+<span id="cb41-2"><a href="Programming.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">10</span>,<span class="dv">1</span>)</span></code></pre></div>
 <pre><code>##  [1] 10  9  8  7  6  5  4  3  2  1</code></pre>
 </div>
 <div id="read-in-some-data." class="section level2" number="3.5">
 <h2><span class="header-section-number">3.5</span> Read in some data.</h2>
 <p>For the following demonstration we will use the RBI data from a sample of USGS gages we used last class. First we will load the tidyverse library, everything we have done so far is in base R.</p>
 <p>Important: read_csv() is the tidyverse csv reading function, the base R function is read.csv(). read.csv() will not read your data in as a tibble, which is the format used by tidyverse functions.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="Programming.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb42-2"><a href="Programming.html#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-3"><a href="Programming.html#cb42-3" aria-hidden="true" tabindex="-1"></a>rbi <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Flashy_Dat_Subset.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="Programming.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb43-2"><a href="Programming.html#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="Programming.html#cb43-3" aria-hidden="true" tabindex="-1"></a>rbi <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Flashy_Dat_Subset.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## ── Column specification ────────────────────────────────────────────────────────
 ## cols(
@@ -479,7 +475,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="wait-hold-up.-what-is-a-tibble" class="section level2" number="3.6">
 <h2><span class="header-section-number">3.6</span> Wait, hold up. What is a tibble?</h2>
 <p>Good question. It’s a fancy way to store data that works well with tidyverse functions. Let’s look at the rbi tibble.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="Programming.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rbi)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="Programming.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rbi)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 26
 ##   site_no    RBI RBIrank STANAME  DRAIN_SQKM HUC02 LAT_GAGE LNG_GAGE STATE CLASS
 ##     &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
@@ -497,9 +493,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Now read in the same data with read.csv() which will NOT read the data as a tibble. How is it different? Output each one in the Console.</p>
 <p>Knowing the data type for each column is super helpful for a few reasons…. let’s talk about them.</p>
 <p>Types: int, dbl, fctr, char, logical</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="Programming.html#cb46-1" aria-hidden="true" tabindex="-1"></a>rbi_NT <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Flashy_Dat_Subset.csv&quot;</span>)</span>
-<span id="cb46-2"><a href="Programming.html#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-3"><a href="Programming.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rbi_NT)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="Programming.html#cb47-1" aria-hidden="true" tabindex="-1"></a>rbi_NT <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Flashy_Dat_Subset.csv&quot;</span>)</span>
+<span id="cb47-2"><a href="Programming.html#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="Programming.html#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rbi_NT)</span></code></pre></div>
 <pre><code>##   site_no        RBI RBIrank                                     STANAME
 ## 1 1013500 0.05837454      35            Fish River near Fort Kent, Maine
 ## 2 1021480 0.20797008     300               Old Stream near Wesley, Maine
@@ -561,7 +557,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 %in% included in a list of values<br />
 &amp; and<br />
 | or</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="Programming.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(rbi, STATE <span class="sc">==</span> <span class="st">&quot;ME&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="Programming.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(rbi, STATE <span class="sc">==</span> <span class="st">&quot;ME&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 13 x 26
 ##    site_no    RBI RBIrank STANAME DRAIN_SQKM HUC02 LAT_GAGE LNG_GAGE STATE CLASS
 ##      &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
@@ -586,7 +582,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="multiple-conditions" class="section level3" number="3.8.1">
 <h3><span class="header-section-number">3.8.1</span> Multiple conditions</h3>
 <p>How many gages are there in Maine with an rbi greater than 0.25</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="Programming.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(rbi, STATE <span class="sc">==</span> <span class="st">&quot;ME&quot;</span> <span class="sc">&amp;</span> RBI <span class="sc">&gt;</span> <span class="fl">0.25</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="Programming.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(rbi, STATE <span class="sc">==</span> <span class="st">&quot;ME&quot;</span> <span class="sc">&amp;</span> RBI <span class="sc">&gt;</span> <span class="fl">0.25</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 26
 ##   site_no   RBI RBIrank STANAME   DRAIN_SQKM HUC02 LAT_GAGE LNG_GAGE STATE CLASS
 ##     &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
@@ -608,7 +604,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.9</span> Arrange</h2>
 <p>Arrange sorts by a column in your dataset.</p>
 <p>Sort the rbi data by the RBI column in ascending and then descending order</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="Programming.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(rbi, RBI)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="Programming.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(rbi, RBI)</span></code></pre></div>
 <pre><code>## # A tibble: 49 x 26
 ##    site_no    RBI RBIrank STANAME DRAIN_SQKM HUC02 LAT_GAGE LNG_GAGE STATE CLASS
 ##      &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
@@ -628,7 +624,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## #   T_MIN_BASIN &lt;dbl&gt;, T_MINSTD_BASIN &lt;dbl&gt;, T_MIN_SITE &lt;dbl&gt;, PET &lt;dbl&gt;,
 ## #   SNOW_PCT_PRECIP &lt;dbl&gt;, PRECIP_SEAS_IND &lt;dbl&gt;, FLOWYRS_1990_2009 &lt;dbl&gt;,
 ## #   wy00_09 &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="Programming.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(rbi, <span class="fu">desc</span>(RBI))</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="Programming.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(rbi, <span class="fu">desc</span>(RBI))</span></code></pre></div>
 <pre><code>## # A tibble: 49 x 26
 ##    site_no   RBI RBIrank STANAME  DRAIN_SQKM HUC02 LAT_GAGE LNG_GAGE STATE CLASS
 ##      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
@@ -655,7 +651,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Select Site name, state, and RBI from the rbi data</p>
 <p>Note they come back in the order you put them in in the function, not the order they were in in the original data.</p>
 <p>You can do a lot more with select, especially when you need to select a bunch of columns but don’t want to type them all out. But we don’t need to cover all that today. For a taste though, if you want to select a group of columns you can specify the first and last with a colon in between (first:last) and it’ll return all of them. Select the rbi columns from site_no to DRAIN_SQKM.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="Programming.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(rbi, STANAME, STATE, RBI)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="Programming.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(rbi, STANAME, STATE, RBI)</span></code></pre></div>
 <pre><code>## # A tibble: 49 x 3
 ##    STANAME                                      STATE    RBI
 ##    &lt;chr&gt;                                        &lt;chr&gt;  &lt;dbl&gt;
@@ -670,7 +666,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9 Spencer Stream near Grand Falls, Maine       ME    0.242 
 ## 10 Carrabassett River near North Anson, Maine   ME    0.344 
 ## # … with 39 more rows</code></pre>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="Programming.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(rbi, site_no<span class="sc">:</span>DRAIN_SQKM)</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="Programming.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(rbi, site_no<span class="sc">:</span>DRAIN_SQKM)</span></code></pre></div>
 <pre><code>## # A tibble: 49 x 5
 ##    site_no    RBI RBIrank STANAME                                     DRAIN_SQKM
 ##      &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                                            &lt;dbl&gt;
@@ -690,7 +686,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.11</span> Mutate</h2>
 <p>Use mutate to add new columns based on additional ones. Common uses are to create a column of data in different units, or to calculate something based on two columns. You can also use it to just update a column, by naming the new column the same as the original one (but be careful because you’ll lose the original one!). I commonly use this when I am changing the datatype of a column, say from a character to a factor or a string to a date.</p>
 <p>Create a new column in rbi called T_RANGE by subtracting T_MIN_SITE from T_MAX_SITE</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="Programming.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(rbi, <span class="at">T_RANGE =</span> T_MAX_SITE <span class="sc">-</span> T_MIN_SITE)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="Programming.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(rbi, <span class="at">T_RANGE =</span> T_MAX_SITE <span class="sc">-</span> T_MIN_SITE)</span></code></pre></div>
 <pre><code>## # A tibble: 49 x 27
 ##    site_no    RBI RBIrank STANAME DRAIN_SQKM HUC02 LAT_GAGE LNG_GAGE STATE CLASS
 ##      &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
@@ -711,7 +707,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## #   SNOW_PCT_PRECIP &lt;dbl&gt;, PRECIP_SEAS_IND &lt;dbl&gt;, FLOWYRS_1990_2009 &lt;dbl&gt;,
 ## #   wy00_09 &lt;dbl&gt;, T_RANGE &lt;dbl&gt;</code></pre>
 <p>When downloading data from the USGS through R, you have to enter the gage ID as a character, even though they are all made up of numbers. So to practice doing this, update the site_no column to be a character datatype</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="Programming.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(rbi, <span class="at">site_no =</span> <span class="fu">as.character</span>(site_no))</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="Programming.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(rbi, <span class="at">site_no =</span> <span class="fu">as.character</span>(site_no))</span></code></pre></div>
 <pre><code>## # A tibble: 49 x 26
 ##    site_no    RBI RBIrank STANAME DRAIN_SQKM HUC02 LAT_GAGE LNG_GAGE STATE CLASS
 ##    &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
@@ -736,14 +732,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.12</span> Summarize</h2>
 <p>Summarize will perform an operation on all of your data, or groups if you assign groups.</p>
 <p>Use summarize to compute the mean, min, and max rbi</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="Programming.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(rbi, <span class="at">meanrbi =</span> <span class="fu">mean</span>(RBI), <span class="at">maxrbi =</span> <span class="fu">max</span>(RBI), <span class="at">minrbi =</span> <span class="fu">min</span>(RBI))</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="Programming.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(rbi, <span class="at">meanrbi =</span> <span class="fu">mean</span>(RBI), <span class="at">maxrbi =</span> <span class="fu">max</span>(RBI), <span class="at">minrbi =</span> <span class="fu">min</span>(RBI))</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 3
 ##   meanrbi maxrbi minrbi
 ##     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
 ## 1   0.316  0.856 0.0464</code></pre>
 <p>Now use the group function to group by state and then summarize in the same way as above</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="Programming.html#cb66-1" aria-hidden="true" tabindex="-1"></a>rbistate <span class="ot">&lt;-</span> <span class="fu">group_by</span>(rbi, STATE)</span>
-<span id="cb66-2"><a href="Programming.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(rbistate, <span class="at">meanrbi =</span> <span class="fu">mean</span>(RBI), <span class="at">maxrbi =</span> <span class="fu">max</span>(RBI), <span class="at">minrbi =</span> <span class="fu">min</span>(RBI))</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="Programming.html#cb67-1" aria-hidden="true" tabindex="-1"></a>rbistate <span class="ot">&lt;-</span> <span class="fu">group_by</span>(rbi, STATE)</span>
+<span id="cb67-2"><a href="Programming.html#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(rbistate, <span class="at">meanrbi =</span> <span class="fu">mean</span>(RBI), <span class="at">maxrbi =</span> <span class="fu">max</span>(RBI), <span class="at">minrbi =</span> <span class="fu">min</span>(RBI))</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 4
 ##   STATE meanrbi maxrbi minrbi
 ##   &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
@@ -791,9 +787,9 @@ joinslices()</p>
 <h3><span class="header-section-number">3.13.4</span> When you use the pipe, it basically takes whatever came out of the first function and puts it into the data argument for the next one</h3>
 <p><strong>so rbi %&gt;% group_by(STATE) is the same as group_by(rbi, STATE)</strong></p>
 <p>Take the groupby and summarize code from above and perform the operation using the pipe</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="Programming.html#cb68-1" aria-hidden="true" tabindex="-1"></a>rbi <span class="sc">%&gt;%</span></span>
-<span id="cb68-2"><a href="Programming.html#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(STATE) <span class="sc">%&gt;%</span></span>
-<span id="cb68-3"><a href="Programming.html#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">meanrbi =</span> <span class="fu">mean</span>(RBI), <span class="at">maxrbi =</span> <span class="fu">max</span>(RBI), <span class="at">minrbi =</span> <span class="fu">min</span>(RBI))</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="Programming.html#cb69-1" aria-hidden="true" tabindex="-1"></a>rbi <span class="sc">%&gt;%</span></span>
+<span id="cb69-2"><a href="Programming.html#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(STATE) <span class="sc">%&gt;%</span></span>
+<span id="cb69-3"><a href="Programming.html#cb69-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">meanrbi =</span> <span class="fu">mean</span>(RBI), <span class="at">maxrbi =</span> <span class="fu">max</span>(RBI), <span class="at">minrbi =</span> <span class="fu">min</span>(RBI))</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 4
 ##   STATE meanrbi maxrbi minrbi
 ##   &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
@@ -813,15 +809,15 @@ joinslices()</p>
 <p>x &lt;- 3 and 3 -&gt; x do the same thing (WHAT?!)</p>
 <p>So you can do the assignment at the beginning of the end of your dplyr workings, whatever you like best.</p>
 <p>Use the assignment operator to save the summary table you just made.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="Programming.html#cb70-1" aria-hidden="true" tabindex="-1"></a>stateRBIs <span class="ot">&lt;-</span> rbi <span class="sc">%&gt;%</span></span>
-<span id="cb70-2"><a href="Programming.html#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(STATE) <span class="sc">%&gt;%</span></span>
-<span id="cb70-3"><a href="Programming.html#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">meanrbi =</span> <span class="fu">mean</span>(RBI), <span class="at">maxrbi =</span> <span class="fu">max</span>(RBI), <span class="at">minrbi =</span> <span class="fu">min</span>(RBI))</span>
-<span id="cb70-4"><a href="Programming.html#cb70-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-5"><a href="Programming.html#cb70-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Notice when you do this it doesn&#39;t output the result... </span></span>
-<span id="cb70-6"><a href="Programming.html#cb70-6" aria-hidden="true" tabindex="-1"></a><span class="co"># You can see what you did by clickon in stateRBIs in your environment panel</span></span>
-<span id="cb70-7"><a href="Programming.html#cb70-7" aria-hidden="true" tabindex="-1"></a><span class="co"># or just type stateRBIs</span></span>
-<span id="cb70-8"><a href="Programming.html#cb70-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-9"><a href="Programming.html#cb70-9" aria-hidden="true" tabindex="-1"></a>stateRBIs</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="Programming.html#cb71-1" aria-hidden="true" tabindex="-1"></a>stateRBIs <span class="ot">&lt;-</span> rbi <span class="sc">%&gt;%</span></span>
+<span id="cb71-2"><a href="Programming.html#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(STATE) <span class="sc">%&gt;%</span></span>
+<span id="cb71-3"><a href="Programming.html#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">meanrbi =</span> <span class="fu">mean</span>(RBI), <span class="at">maxrbi =</span> <span class="fu">max</span>(RBI), <span class="at">minrbi =</span> <span class="fu">min</span>(RBI))</span>
+<span id="cb71-4"><a href="Programming.html#cb71-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-5"><a href="Programming.html#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Notice when you do this it doesn&#39;t output the result... </span></span>
+<span id="cb71-6"><a href="Programming.html#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="co"># You can see what you did by clickon in stateRBIs in your environment panel</span></span>
+<span id="cb71-7"><a href="Programming.html#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="co"># or just type stateRBIs</span></span>
+<span id="cb71-8"><a href="Programming.html#cb71-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-9"><a href="Programming.html#cb71-9" aria-hidden="true" tabindex="-1"></a>stateRBIs</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 4
 ##   STATE meanrbi maxrbi minrbi
 ##   &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
@@ -836,8 +832,8 @@ joinslices()</p>
 <div id="what-about-nas" class="section level2" number="3.15">
 <h2><span class="header-section-number">3.15</span> What about NAs?</h2>
 <p>We will talk more about this when we discuss stats, but some operations will fail if there are NA’s in the data. If appropriate, you can tell functions like mean() to ignore NAs. You can also use drop_na() if you’re working with a tibble. But be aware if you use that and save the result, drop_na() gets rid of the whole row, not just the NA. Because what would you replace it with…. an NA?</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="Programming.html#cb72-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="cn">NA</span>)</span>
-<span id="cb72-2"><a href="Programming.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="Programming.html#cb73-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="cn">NA</span>)</span>
+<span id="cb73-2"><a href="Programming.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 2.5</code></pre>
 </div>
 <div id="what-are-some-things-you-think-ill-ask-you-to-do-for-the-activity-next-class" class="section level2" number="3.16">

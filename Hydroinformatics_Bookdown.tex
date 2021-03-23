@@ -186,7 +186,7 @@ You only have to install the library once. You have to load it using the library
 ## v ggplot2 3.3.3     v purrr   0.3.4
 ## v tibble  3.1.0     v dplyr   1.0.5
 ## v tidyr   1.1.3     v stringr 1.4.0
-## v readr   1.4.0     v forcats 0.5.0
+## v readr   1.4.0     v forcats 0.5.1
 \end{verbatim}
 
 \begin{verbatim}
@@ -199,6 +199,10 @@ You only have to install the library once. You have to load it using the library
 
 \begin{verbatim}
 ## Warning: package 'purrr' was built under R version 3.6.2
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'forcats' was built under R version 3.6.2
 \end{verbatim}
 
 \begin{verbatim}
@@ -1654,7 +1658,7 @@ Which one is more skewed?
 
 \begin{verbatim}
 ##       50% 
-## -2.702879
+## -2.259972
 \end{verbatim}
 
 \hypertarget{what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one}{%
@@ -1771,6 +1775,15 @@ Install the dataRetrieval package. Load it and the tidyverse.
 \begin{Highlighting}[]
 \CommentTok{\#install.packages("dataRetrieval")}
 \FunctionTok{library}\NormalTok{(dataRetrieval)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'dataRetrieval' was built under R version 3.6.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \FunctionTok{library}\NormalTok{(lubridate)}
 \end{Highlighting}
@@ -2017,27 +2030,27 @@ Below we will look at two other ways to get sites: using a bounding box of a geo
 ## 20      USGS 03170000                 LITTLE RIVER AT GRAYSONTOWN, VA
 ## 21      USGS 03169500             LITTLE RIVER NEAR COPPER VALLEY, VA
 ##    site_tp_cd dec_lat_va dec_long_va colocated           queryTime
-## 1          ST   36.88873   -81.34733     FALSE 2021-03-23 15:08:11
-## 2          ST   37.18428   -81.32982     FALSE 2021-03-23 15:08:11
-## 3          ST   37.27151   -81.30482     FALSE 2021-03-23 15:08:11
-## 4          ST   37.25595   -81.28177     FALSE 2021-03-23 15:08:11
-## 5          ST   36.85984   -80.98036     FALSE 2021-03-23 15:08:11
-## 6          ST   36.75985   -80.95619     FALSE 2021-03-23 15:08:11
-## 7          ST   36.83485   -80.95258     FALSE 2021-03-23 15:08:11
-## 8          SP   36.93429   -80.90313     FALSE 2021-03-23 15:08:11
-## 9          ST   36.93095   -80.90036     FALSE 2021-03-23 15:08:11
-## 10         SP   36.93068   -80.89619     FALSE 2021-03-23 15:08:11
-## 11         ST   36.93901   -80.88730     FALSE 2021-03-23 15:08:11
-## 12         ST   37.30568   -80.84980     FALSE 2021-03-23 15:08:11
-## 13         ST   37.04734   -80.77618     FALSE 2021-03-23 15:08:11
-## 14         ST   36.93762   -80.74563     FALSE 2021-03-23 15:08:11
-## 15         ST   36.88901   -80.72757     FALSE 2021-03-23 15:08:11
-## 16         ST   37.24179   -80.71090     FALSE 2021-03-23 15:08:11
-## 17         ST   37.26818   -80.70951     FALSE 2021-03-23 15:08:11
-## 18         ST   37.28957   -80.61673     FALSE 2021-03-23 15:08:11
-## 19         ST   37.14179   -80.56922     FALSE 2021-03-23 15:08:11
-## 20         ST   37.03763   -80.55672     FALSE 2021-03-23 15:08:11
-## 21         ST   36.99652   -80.52144     FALSE 2021-03-23 15:08:11
+## 1          ST   36.88873   -81.34733     FALSE 2021-03-23 16:19:02
+## 2          ST   37.18428   -81.32982     FALSE 2021-03-23 16:19:02
+## 3          ST   37.27151   -81.30482     FALSE 2021-03-23 16:19:02
+## 4          ST   37.25595   -81.28177     FALSE 2021-03-23 16:19:02
+## 5          ST   36.85984   -80.98036     FALSE 2021-03-23 16:19:02
+## 6          ST   36.75985   -80.95619     FALSE 2021-03-23 16:19:02
+## 7          ST   36.83485   -80.95258     FALSE 2021-03-23 16:19:02
+## 8          SP   36.93429   -80.90313     FALSE 2021-03-23 16:19:02
+## 9          ST   36.93095   -80.90036     FALSE 2021-03-23 16:19:02
+## 10         SP   36.93068   -80.89619     FALSE 2021-03-23 16:19:02
+## 11         ST   36.93901   -80.88730     FALSE 2021-03-23 16:19:02
+## 12         ST   37.30568   -80.84980     FALSE 2021-03-23 16:19:02
+## 13         ST   37.04734   -80.77618     FALSE 2021-03-23 16:19:02
+## 14         ST   36.93762   -80.74563     FALSE 2021-03-23 16:19:02
+## 15         ST   36.88901   -80.72757     FALSE 2021-03-23 16:19:02
+## 16         ST   37.24179   -80.71090     FALSE 2021-03-23 16:19:02
+## 17         ST   37.26818   -80.70951     FALSE 2021-03-23 16:19:02
+## 18         ST   37.28957   -80.61673     FALSE 2021-03-23 16:19:02
+## 19         ST   37.14179   -80.56922     FALSE 2021-03-23 16:19:02
+## 20         ST   37.03763   -80.55672     FALSE 2021-03-23 16:19:02
+## 21         ST   36.99652   -80.52144     FALSE 2021-03-23 16:19:02
 \end{verbatim}
 
 \begin{Shaded}
@@ -2218,138 +2231,7 @@ In the chunk below we will look to see what sites have data for nitrate and chlo
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] "#"                                                                                                                                            
-##   [2] "# File created on 2021-03-23 15:08:16 EDT"                                                                                                    
-##   [3] "#"                                                                                                                                            
-##   [4] "# U.S. Geological Survey"                                                                                                                     
-##   [5] "# "                                                                                                                                           
-##   [6] "# This file contains selected water-quality data for stations in the National Water "                                                         
-##   [7] "# Information System water-quality database.  Explanation of codes found in this file are "                                                   
-##   [8] "# followed by the retrieved data. "                                                                                                           
-##   [9] "#"                                                                                                                                            
-##  [10] "# The data you have secured from the USGS NWISWeb database may include data that have "                                                       
-##  [11] "# not received Director's approval and as such are provisional and subject to revision. "                                                     
-##  [12] "# The data are released on the condition that neither the USGS nor the United States "                                                        
-##  [13] "# Government may be held liable for any damages resulting from its authorized or "                                                            
-##  [14] "# unauthorized use."                                                                                                                          
-##  [15] "#"                                                                                                                                            
-##  [16] "# To view additional data-quality attributes, output the results using these options:  "                                                      
-##  [17] "# one result per row, expanded attributes.  Additional precautions are at:"                                                                   
-##  [18] "# https://help.waterdata.usgs.gov/tutorials/water-quality-data/help-using-the-water-quality-data-retrieval-system#Data_retrievals_precautions"
-##  [19] "#"                                                                                                                                            
-##  [20] "#  agency_cd                  - Agency Code"                                                                                                  
-##  [21] "#  site_no                    - USGS site number"                                                                                             
-##  [22] "#  sample_dt                  - Begin date"                                                                                                   
-##  [23] "#  sample_tm                  - Begin time"                                                                                                   
-##  [24] "#  sample_end_dt              - End date"                                                                                                     
-##  [25] "#  sample_end_tm              - End time"                                                                                                     
-##  [26] "#  sample_start_time_datum_cd - Time datum"                                                                                                   
-##  [27] "#  tm_datum_rlbty_cd          - Time datum reliability code"                                                                                  
-##  [28] "#  coll_ent_cd                - Agency Collecting Sample Code"                                                                                
-##  [29] "#  medium_cd                  - Sample Medium Code"                                                                                           
-##  [30] "#  project_cd                 - Project code"                                                                                                 
-##  [31] "#  aqfr_cd                    - Geologic unit code"                                                                                           
-##  [32] "#  tu_id                      - Taxonomic unit code"                                                                                          
-##  [33] "#  body_part_id               - Body part code"                                                                                               
-##  [34] "#  hyd_cond_cd                - Hydrologic Cond Code"                                                                                         
-##  [35] "#  samp_type_cd               - Sample Type Code"                                                                                             
-##  [36] "#  hyd_event_cd               - Hydrologic Event Code"                                                                                        
-##  [37] "#  sample_lab_cm_tx           - Message from lab"                                                                                             
-##  [38] "#  parm_cd                    - Parameter code"                                                                                               
-##  [39] "#  remark_cd                  - Remark code"                                                                                                  
-##  [40] "#  result_va                  - Parameter value"                                                                                              
-##  [41] "#  val_qual_tx                - Result value qualifier code"                                                                                  
-##  [42] "#  meth_cd                    - Method code"                                                                                                  
-##  [43] "#  dqi_cd                     - Data-quality indicator code"                                                                                  
-##  [44] "#  rpt_lev_va                 - Reporting level"                                                                                              
-##  [45] "#  rpt_lev_cd                 - Reporting level type"                                                                                         
-##  [46] "#  lab_std_va                 - Lab standard deviation"                                                                                       
-##  [47] "#  prep_set_no                - Prep set number"                                                                                              
-##  [48] "#  prep_dt                    - Result prep date"                                                                                             
-##  [49] "#  anl_set_no                 - Analysis set number"                                                                                          
-##  [50] "#  anl_dt                     - Result analysis date"                                                                                         
-##  [51] "#  result_lab_cm_tx           - Lab result comment"                                                                                           
-##  [52] "#  anl_ent_cd                 - Analyzing entity code"                                                                                        
-##  [53] "#"                                                                                                                                            
-##  [54] "# The following parameters are included:"                                                                                                     
-##  [55] "#  00940  - Chloride, water, filtered, milligrams per liter"                                                                                  
-##  [56] "#  71851  - Nitrate, water, filtered, milligrams per liter as nitrate"                                                                        
-##  [57] "#"                                                                                                                                            
-##  [58] "# Description of sample_start_time_datum_cd:"                                                                                                 
-##  [59] "# EST  - Eastern Standard Time"                                                                                                               
-##  [60] "# EDT  - Eastern Daylight Time"                                                                                                               
-##  [61] "#"                                                                                                                                            
-##  [62] "# Description of tm_datum_rlbty_cd:"                                                                                                          
-##  [63] "# K  - Known"                                                                                                                                 
-##  [64] "# T  - Transferred"                                                                                                                           
-##  [65] "#"                                                                                                                                            
-##  [66] "# Description of coll_ent_cd and anl_ent_cd:"                                                                                                 
-##  [67] "# USGS-WRD  - U.S. Geological Survey-Water Resources Discipline"                                                                              
-##  [68] "# USGS-NYL  - USGS-NY WSC Low Ionic Strength Lab,Troy(formerly Albany)"                                                                       
-##  [69] "#"                                                                                                                                            
-##  [70] "# Description of medium_cd:"                                                                                                                  
-##  [71] "# WS  - Surface water"                                                                                                                        
-##  [72] "#"                                                                                                                                            
-##  [73] "# Description of aqfr_cd:"                                                                                                                    
-##  [74] "#"                                                                                                                                            
-##  [75] "# Description of tu_id:"                                                                                                                      
-##  [76] "# https://www.itis.gov/"                                                                                                                      
-##  [77] "#"                                                                                                                                            
-##  [78] "# Description of body_part_id:"                                                                                                               
-##  [79] "#"                                                                                                                                            
-##  [80] "# Description of hyd_cond_cd:"                                                                                                                
-##  [81] "# 4  - Stable, low stage"                                                                                                                     
-##  [82] "# 5  - Falling stage"                                                                                                                         
-##  [83] "# 6  - Stable, high stage"                                                                                                                    
-##  [84] "# 8  - Rising stage"                                                                                                                          
-##  [85] "# 9  - Stable, normal stage"                                                                                                                  
-##  [86] "# A  - Not determined"                                                                                                                        
-##  [87] "#"                                                                                                                                            
-##  [88] "# Description of samp_type_cd:"                                                                                                               
-##  [89] "# 7  - Replicate"                                                                                                                             
-##  [90] "# 9  - Regular"                                                                                                                               
-##  [91] "#"                                                                                                                                            
-##  [92] "# Description of hyd_event_cd:"                                                                                                               
-##  [93] "# 9  - Routine sample"                                                                                                                        
-##  [94] "#"                                                                                                                                            
-##  [95] "# Description of remark_cd:"                                                                                                                  
-##  [96] "#"                                                                                                                                            
-##  [97] "# Description of val_qual_tx:"                                                                                                                
-##  [98] "#"                                                                                                                                            
-##  [99] "# Description of meth_cd:"                                                                                                                    
-## [100] "# ALGOR  - Computation by NWIS algorithm"                                                                                                     
-## [101] "# CL031  - Chloride, wf, ASF thiocyanate"                                                                                                     
-## [102] "# IC022  - Anions, wf, IC"                                                                                                                    
-## [103] "# IC034  - Anions, wf, IC (USGS-NYL)"                                                                                                         
-## [104] "#"                                                                                                                                            
-## [105] "# Description of dqi_cd:"                                                                                                                     
-## [106] "# A  - Historical data"                                                                                                                       
-## [107] "# R  - Reviewed and approved"                                                                                                                 
-## [108] "#"                                                                                                                                            
-## [109] "# Description of rpt_lev_cd:"                                                                                                                 
-## [110] "# MRL  - Minimum reporting level"                                                                                                             
-## [111] "#"                                                                                                                                            
-## [112] "# Data for the following sites are included:"                                                                                                 
-## [113] "#  USGS 03165500 NEW RIVER AT IVANHOE, VA"                                                                                                    
-## [114] "#  USGS 03167000 REED CREEK AT GRAHAMS FORGE, VA"                                                                                             
-## [115] "#  USGS 03167500 BIG REED ISLAND CREEK NEAR ALLISONIA, VA"                                                                                    
-## [116] "#  USGS 03168000 NEW RIVER AT ALLISONIA, VA"                                                                                                  
-## [117] "#  USGS 03168500 PEAK CREEK AT PULASKI, VA"                                                                                                   
-## [118] "#  USGS 03170000 LITTLE RIVER AT GRAYSONTOWN, VA"                                                                                             
-## [119] "#  USGS 03171000 NEW RIVER AT RADFORD, VA"                                                                                                    
-## [120] "#  USGS 03171500 NEW RIVER AT EGGLESTON, VA"                                                                                                  
-## [121] "#  USGS 03172500 WALKER CREEK AT STAFFORDSVILLE, VA"                                                                                          
-## [122] "#  USGS 03173000 WALKER CREEK AT BANE, VA"                                                                                                    
-## [123] "#  USGS 03175500 WOLF CREEK NEAR NARROWS, VA"                                                                                                 
-## [124] "#  USGS 03473500 M F HOLSTON RIVER AT GROSECLOSE, VA"                                                                                         
-## [125] "#  USGS 371852081031201 006.0 EAST RIVER NEAR ENGLESIDE, W. VA."                                                                              
-## [126] "#  USGS 370853081003801 AT 23045 UNNAMED EPHEMERAL TRIB TO WALKER CREEK VA"                                                                   
-## [127] "#  USGS 370941081005201 AT 23045.5 UNNAMED INTERMIT TRIB TO KIMBERLING CR"                                                                    
-## [128] "#  USGS 370847081055101 AT 23046 KIMBERLING CREEK VA"                                                                                         
-## [129] "#  USGS 371250080511401 AT 22014 DISMAL CREEK VA"                                                                                             
-## [130] "#  USGS 370534081144701 AT 22013 HUNTING CAMP CREEK VA"                                                                                       
-## [131] "#  USGS 370603081120801 AT 22013.5 LAUREL CR AT MOUTH OF LITTLE WOLF CR VA"                                                                   
-## [132] "#"
+## NULL
 \end{verbatim}
 
 Now, let's clean things up a bit.
@@ -3665,10 +3547,10 @@ Then we will have a look at the us\_states data from the data package we loaded 
 
 \begin{verbatim}
 ## Simple feature collection with 6 features and 6 fields
-## geometry type:  MULTIPOLYGON
-## dimension:      XY
-## bbox:           xmin: -114.8136 ymin: 24.55868 xmax: -71.78699 ymax: 42.04964
-## CRS:            EPSG:4269
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -114.8136 ymin: 24.55868 xmax: -71.78699 ymax: 42.04964
+## CRS:           EPSG:4269
 ##   GEOID        NAME   REGION             AREA total_pop_10 total_pop_15
 ## 1    01     Alabama    South 133709.27 [km^2]      4712651      4830620
 ## 2    04     Arizona     West 295281.25 [km^2]      6246816      6641928
@@ -3817,10 +3699,10 @@ In addition to filtering, we can use the data in the geospatial table to calcula
 
 \begin{verbatim}
 ## Simple feature collection with 6 features and 8 fields
-## geometry type:  MULTIPOLYGON
-## dimension:      XY
-## bbox:           xmin: -114.8136 ymin: 24.55868 xmax: -71.78699 ymax: 42.04964
-## CRS:            EPSG:4269
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -114.8136 ymin: 24.55868 xmax: -71.78699 ymax: 42.04964
+## CRS:           EPSG:4269
 ##   GEOID        NAME   REGION             AREA total_pop_10 total_pop_15
 ## 1    01     Alabama    South 133709.27 [km^2]      4712651      4830620
 ## 2    04     Arizona     West 295281.25 [km^2]      6246816      6641928
@@ -3883,10 +3765,10 @@ To review joins, check out chapter \ref{getdata}
 
 \begin{verbatim}
 ## Simple feature collection with 6 features and 12 fields
-## geometry type:  MULTIPOLYGON
-## dimension:      XY
-## bbox:           xmin: -114.8136 ymin: 24.55868 xmax: -71.78699 ymax: 42.04964
-## CRS:            EPSG:4269
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -114.8136 ymin: 24.55868 xmax: -71.78699 ymax: 42.04964
+## CRS:           EPSG:4269
 ##   GEOID        NAME   REGION             AREA total_pop_10 total_pop_15  growth
 ## 1    01     Alabama    South 133709.27 [km^2]      4712651      4830620  117969
 ## 2    04     Arizona     West 295281.25 [km^2]      6246816      6641928  395112
@@ -4008,8 +3890,6 @@ Also in this chunk we see how to add a basemap to a tmap object.
 ## PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
 \end{verbatim}
 
-\hypertarget{htmlwidget-e626613ed4570a6f9cf8}{}
-
 \hypertarget{leaflet}{%
 \subsection{Leaflet}\label{leaflet}}
 
@@ -4030,8 +3910,6 @@ Leaflet is another way to make interactive maps. It's syntax is very different, 
 ## Need '+proj=longlat +datum=WGS84'
 \end{verbatim}
 
-\hypertarget{htmlwidget-df8fe0446c9f3cd3b516}{}
-
 \hypertarget{rgeoraster}{%
 \chapter{Geospatial R Raster - Hydro Analyses}\label{rgeoraster}}
 
@@ -4044,7 +3922,7 @@ For more: \url{https://geocompr.robinlovelace.net/spatial-class.html\#raster-dat
 
 To read in detail about any of the WhiteboxTools used in this activity, check out the user manual: \url{https://jblindsay.github.io/wbt_book/intro.html}
 
-In this activity we are going to explore how to work with raster data in R while computing several hydrologicall-relevant landscape metrics using the R package whitebox tools. Whitebox is very powerful and has an extensive set of tools, but it is not on CRAN. You must install it with the commented-out line at the top of the next code chunk.
+In this activity we are going to explore how to work with raster data in R while computing several hydrologically-relevant landscape metrics using the R package whitebox tools. Whitebox is very powerful and has an extensive set of tools, but it is not on CRAN. You must install it with the commented-out line at the top of the next code chunk.
 
 Install/Load necessary packages and data:
 
@@ -4091,7 +3969,9 @@ Next, an artifact of outputting the DEM for this analysis is that there are a bu
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{dem }\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"McDonaldHollowDEM/brushDEMsm\_5m.tif"}\NormalTok{, }\AttributeTok{crs =} \StringTok{\textquotesingle{}+init=EPSG:4326\textquotesingle{}}\NormalTok{)}
- 
+
+\FunctionTok{writeRaster}\NormalTok{(dem, }\StringTok{"McDonaldHollowDEM/brushDEMsm\_5m\_crs.tif"}\NormalTok{, }\AttributeTok{overwrite =} \ConstantTok{TRUE}\NormalTok{) }
+
 \NormalTok{dem[dem }\SpecialCharTok{\textless{}} \DecValTok{1500}\NormalTok{] }\OtherTok{\textless{}{-}} \ConstantTok{NA}
 \end{Highlighting}
 \end{Shaded}
@@ -4108,8 +3988,6 @@ Now let's plot the DEM. We will use the same syntax as we did in the previous le
   \FunctionTok{tm\_scale\_bar}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
-
-\hypertarget{htmlwidget-5a8d09f2650ce2f6615b}{}
 
 \hypertarget{generate-a-hillshade}{%
 \section{Generate a hillshade}\label{generate-a-hillshade}}
@@ -4138,27 +4016,25 @@ Notice how much more you can see in the landscape!
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{wbt\_hillshade}\NormalTok{(}\AttributeTok{dem =} \StringTok{"McDonaldHollowDEM/brushDEMsm\_5m.tif"}\NormalTok{,}
+\FunctionTok{wbt\_hillshade}\NormalTok{(}\AttributeTok{dem =} \StringTok{"McDonaldHollowDEM/brushDEMsm\_5m\_crs.tif"}\NormalTok{,}
               \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/brush\_hillshade.tif"}\NormalTok{,}
               \AttributeTok{azimuth =} \DecValTok{115}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "hillshade - Elapsed Time (excluding I/O): 0.9s"
+## [1] "hillshade - Elapsed Time (excluding I/O): 0.8s"
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{hillshade }\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"McDonaldHollowDEM/brush\_hillshade.tif"}\NormalTok{, }\AttributeTok{crs =} \StringTok{\textquotesingle{}+init=EPSG:4326\textquotesingle{}}\NormalTok{)}
+\NormalTok{hillshade }\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"McDonaldHollowDEM/brush\_hillshade.tif"}\NormalTok{)}
 
 \FunctionTok{tm\_shape}\NormalTok{(hillshade)}\SpecialCharTok{+}
-  \FunctionTok{tm\_raster}\NormalTok{(}\AttributeTok{style =} \StringTok{"cont"}\NormalTok{,}\AttributeTok{palette =} \StringTok{"{-}Greys"}\NormalTok{, }\AttributeTok{legend.show =} \ConstantTok{FALSE}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{tm\_raster}\NormalTok{(}\AttributeTok{style =} \StringTok{"cont"}\NormalTok{, }\AttributeTok{palette =} \StringTok{"{-}Greys"}\NormalTok{, }\AttributeTok{legend.show =} \ConstantTok{FALSE}\NormalTok{)}\SpecialCharTok{+}
   \FunctionTok{tm\_scale\_bar}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
-
-\hypertarget{htmlwidget-29e0b1f3cee6df7f9ab0}{}
 
 \hypertarget{prepare-dem-for-hydrology-analyses}{%
 \section{Prepare DEM for Hydrology Analyses}\label{prepare-dem-for-hydrology-analyses}}
@@ -4200,13 +4076,13 @@ Be careful to give the breach depressions function the result of the single cell
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{wbt\_fill\_single\_cell\_pits}\NormalTok{(}
-                    \AttributeTok{dem =} \StringTok{"McDonaldHollowDEM/brushDEMsm\_5m.tif"}\NormalTok{,}
+                    \AttributeTok{dem =} \StringTok{"McDonaldHollowDEM/brushDEMsm\_5m\_crs.tif"}\NormalTok{,}
                     \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/bmstationdem\_filled.tif"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "fill_single_cell_pits - Elapsed Time (excluding I/O): 0.4s"
+## [1] "fill_single_cell_pits - Elapsed Time (excluding I/O): 0.3s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4238,8 +4114,7 @@ What do you think these pit/depression features represent in real life?
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{filled\_breached }\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"McDonaldHollowDEM/bmstationdem\_filled\_breached.tif"}\NormalTok{,}
-                          \AttributeTok{crs =} \StringTok{\textquotesingle{}+init=EPSG:4326\textquotesingle{}}\NormalTok{)}
+\NormalTok{filled\_breached }\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"McDonaldHollowDEM/bmstationdem\_filled\_breached.tif"}\NormalTok{)}
 
 \DocumentationTok{\#\# What did this do?}
 \NormalTok{difference }\OtherTok{\textless{}{-}}\NormalTok{ dem }\SpecialCharTok{{-}}\NormalTok{ filled\_breached}
@@ -4258,8 +4133,6 @@ What do you think these pit/depression features represent in real life?
 \begin{verbatim}
 ## Variable(s) "NA" contains positive and negative values, so midpoint is set to 0. Set midpoint = NA to show the full spectrum of the color palette.
 \end{verbatim}
-
-\hypertarget{htmlwidget-4c46ee36df5593bc9c1c}{}
 
 \hypertarget{d8-flow-accumulation}{%
 \section{D8 Flow Accumulation}\label{d8-flow-accumulation}}
@@ -4291,12 +4164,12 @@ Where are the lowest values?
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "d8_flow_accumulation - Elapsed Time (excluding I/O): 0.26s"
+## [1] "d8_flow_accumulation - Elapsed Time (excluding I/O): 0.22s"
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{d8 }\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"McDonaldHollowDEM/D8FA.tif"}\NormalTok{, }\AttributeTok{crs =} \StringTok{\textquotesingle{}+init=EPSG:4326\textquotesingle{}}\NormalTok{)}
+\NormalTok{d8 }\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"McDonaldHollowDEM/D8FA.tif"}\NormalTok{)}
 
 \FunctionTok{tm\_shape}\NormalTok{(hillshade)}\SpecialCharTok{+}
   \FunctionTok{tm\_raster}\NormalTok{(}\AttributeTok{style =} \StringTok{"cont"}\NormalTok{,}\AttributeTok{palette =} \StringTok{"{-}Greys"}\NormalTok{, }\AttributeTok{legend.show =} \ConstantTok{FALSE}\NormalTok{)}\SpecialCharTok{+}
@@ -4305,8 +4178,6 @@ Where are the lowest values?
   \FunctionTok{tm\_scale\_bar}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
-
-\hypertarget{htmlwidget-f02e5e085363c3a95a49}{}
 
 \hypertarget{d-infinity-flow-accumulation}{%
 \section{D infinity flow accumulation}\label{d-infinity-flow-accumulation}}
@@ -4339,12 +4210,12 @@ Which do you think represents reality better? Why?
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "d_inf_flow_accumulation - Elapsed Time (excluding I/O): 0.39s"
+## [1] "d_inf_flow_accumulation - Elapsed Time (excluding I/O): 0.33s"
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{dinf }\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"McDonaldHollowDEM/DinfFA.tif"}\NormalTok{, }\AttributeTok{crs =} \StringTok{\textquotesingle{}+init=EPSG:4326\textquotesingle{}}\NormalTok{)}
+\NormalTok{dinf }\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"McDonaldHollowDEM/DinfFA.tif"}\NormalTok{)}
 
 \FunctionTok{tm\_shape}\NormalTok{(hillshade)}\SpecialCharTok{+}
   \FunctionTok{tm\_raster}\NormalTok{(}\AttributeTok{style =} \StringTok{"cont"}\NormalTok{,}\AttributeTok{palette =} \StringTok{"{-}Greys"}\NormalTok{, }\AttributeTok{legend.show =} \ConstantTok{FALSE}\NormalTok{)}\SpecialCharTok{+}
@@ -4357,8 +4228,6 @@ Which do you think represents reality better? Why?
 \begin{verbatim}
 ## Variable(s) "NA" contains positive and negative values, so midpoint is set to 0. Set midpoint = NA to show the full spectrum of the color palette.
 \end{verbatim}
-
-\hypertarget{htmlwidget-1a44aaca8e9511257027}{}
 
 \hypertarget{topographic-wetness-index}{%
 \section{Topographic Wetness Index}\label{topographic-wetness-index}}
@@ -4386,7 +4255,7 @@ We get some funkiness around the edges of the DEM, so we will also filter the tw
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "d_inf_flow_accumulation - Elapsed Time (excluding I/O): 0.35s"
+## [1] "d_inf_flow_accumulation - Elapsed Time (excluding I/O): 0.31s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4415,7 +4284,7 @@ We get some funkiness around the edges of the DEM, so we will also filter the tw
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{twi }\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"McDonaldHollowDEM/TWI.tif"}\NormalTok{, }\AttributeTok{crs =} \StringTok{\textquotesingle{}+init=EPSG:4326\textquotesingle{}}\NormalTok{)}
+\NormalTok{twi }\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"McDonaldHollowDEM/TWI.tif"}\NormalTok{)}
 
 \NormalTok{twi[twi }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{] }\OtherTok{\textless{}{-}} \ConstantTok{NA}
 
@@ -4426,8 +4295,6 @@ We get some funkiness around the edges of the DEM, so we will also filter the tw
   \FunctionTok{tm\_scale\_bar}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
-
-\hypertarget{htmlwidget-baf006d5b9ff6b31a889}{}
 
 \hypertarget{downslope-twi}{%
 \section{Downslope TWI}\label{downslope-twi}}
@@ -4444,12 +4311,12 @@ Similar to TWI we get some edge issues so we will filter the result to make the 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "downslope_index - Elapsed Time (excluding I/O): 0.9s"
+## [1] "downslope_index - Elapsed Time (excluding I/O): 0.10s"
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{twid }\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"McDonaldHollowDEM/TWId.tif"}\NormalTok{, }\AttributeTok{crs =} \StringTok{\textquotesingle{}+init=EPSG:4326\textquotesingle{}}\NormalTok{)}
+\NormalTok{twid }\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"McDonaldHollowDEM/TWId.tif"}\NormalTok{)}
 \NormalTok{twid[twid }\SpecialCharTok{\textgreater{}} \DecValTok{4000000} \SpecialCharTok{|}\NormalTok{ twid }\SpecialCharTok{\textless{}=} \DecValTok{0}\NormalTok{] }\OtherTok{\textless{}{-}} \ConstantTok{NA}
 
 \FunctionTok{tm\_shape}\NormalTok{(hillshade)}\SpecialCharTok{+}
@@ -4459,8 +4326,6 @@ Similar to TWI we get some edge issues so we will filter the result to make the 
   \FunctionTok{tm\_scale\_bar}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
-
-\hypertarget{htmlwidget-146adb7a91b76b0b0337}{}
 
 \hypertarget{map-stream-network}{%
 \section{Map Stream Network}\label{map-stream-network}}
@@ -4512,17 +4377,17 @@ Below we extrac the streams, generate a D8 pointer file, and then convert the ra
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{streams }\OtherTok{\textless{}{-}} \FunctionTok{st\_read}\NormalTok{(}\StringTok{"McDonaldHollowDEM/streams.shp"}\NormalTok{, }\AttributeTok{crs =} \StringTok{\textquotesingle{}+init=EPSG:4326\textquotesingle{}}\NormalTok{)}
+\NormalTok{streams }\OtherTok{\textless{}{-}} \FunctionTok{st\_read}\NormalTok{(}\StringTok{"McDonaldHollowDEM/streams.shp"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 ## Reading layer `streams' from data source `/Volumes/GoogleDrive/My Drive/CLASSES/Hydroinformatics/Hydroinformatics_Bookdown/McDonaldHollowDEM/streams.shp' using driver `ESRI Shapefile'
 ## Simple feature collection with 37 features and 2 fields
-## geometry type:  LINESTRING
-## dimension:      XY
-## bbox:           xmin: -80.49733 ymin: 37.23597 xmax: -80.46388 ymax: 37.25634
-## CRS:            +init=EPSG:4326
+## Geometry type: LINESTRING
+## Dimension:     XY
+## Bounding box:  xmin: -80.49733 ymin: 37.23597 xmax: -80.46388 ymax: 37.25634
+## CRS:           NA
 \end{verbatim}
 
 \begin{Shaded}
@@ -4535,7 +4400,10 @@ Below we extrac the streams, generate a D8 pointer file, and then convert the ra
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{htmlwidget-368d45f6d4af5c971d06}{}
+\begin{verbatim}
+## Warning: Currect projection of shape streams unknown. Long-lat (WGS84) is
+## assumed.
+\end{verbatim}
 
 \hypertarget{extract-raster-values-to-point-locations}{%
 \section{Extract raster values to point locations}\label{extract-raster-values-to-point-locations}}
@@ -4628,7 +4496,7 @@ We can then use cbind() to slap the extracted data onto our existing dataframe (
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{slope }\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"McDonaldHollowDEM/demslope.tif"}\NormalTok{, }\AttributeTok{crs =} \StringTok{\textquotesingle{}+init=EPSG:4326\textquotesingle{}}\NormalTok{)}
+\NormalTok{slope }\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"McDonaldHollowDEM/demslope.tif"}\NormalTok{)}
 
 \NormalTok{raster\_stack }\OtherTok{\textless{}{-}} \FunctionTok{stack}\NormalTok{(twi, twid, slope, dem)}
 
@@ -4783,6 +4651,8 @@ Install/Load necessary packages and data:
 
 \NormalTok{whitebox}\SpecialCharTok{::}\FunctionTok{wbt\_init}\NormalTok{()}
 
+\NormalTok{knitr}\SpecialCharTok{::}\NormalTok{knit\_hooks}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{webgl =}\NormalTok{ hook\_webgl)}
+
 \FunctionTok{theme\_set}\NormalTok{(}\FunctionTok{theme\_classic}\NormalTok{())}
 \end{Highlighting}
 \end{Shaded}
@@ -4839,7 +4709,7 @@ Next, we will generate a hillshade to aid in visualization and then plot it to b
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "hillshade - Elapsed Time (excluding I/O): 0.10s"
+## [1] "hillshade - Elapsed Time (excluding I/O): 0.8s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4888,7 +4758,7 @@ From now on in the analysis \emph{be careful} to use the filled\_breached DEM.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "breach_depressions_least_cost - Elapsed Time (excluding I/O): 0.56s"
+## [1] "breach_depressions_least_cost - Elapsed Time (excluding I/O): 0.46s"
 \end{verbatim}
 
 \hypertarget{create-flow-accumulation-grids}{%
@@ -4906,7 +4776,7 @@ Below, create these two rasters using the \emph{filled and breached} DEM.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "d8_flow_accumulation - Elapsed Time (excluding I/O): 0.22s"
+## [1] "d8_flow_accumulation - Elapsed Time (excluding I/O): 0.19s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -5010,8 +4880,6 @@ After you get the streams and snapped pour points, read them into your R environ
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{htmlwidget-6b1f7f58842aa469aa15}{}
-
 \hypertarget{delineate-watersheds}{%
 \section{Delineate watersheds}\label{delineate-watersheds}}
 
@@ -5030,7 +4898,7 @@ Read the results of this function back in and plot them over the hillshade with 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "watershed - Elapsed Time (excluding I/O): 0.15s"
+## [1] "watershed - Elapsed Time (excluding I/O): 0.13s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -5046,8 +4914,6 @@ Read the results of this function back in and plot them over the hillshade with 
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{htmlwidget-ec051a521c6f69a4ab90}{}
-
 \hypertarget{convert-watersheds-to-shapefiles}{%
 \section{Convert watersheds to shapefiles}\label{convert-watersheds-to-shapefiles}}
 
@@ -5059,7 +4925,7 @@ Now we can plot the vector versions of our watersheds, and also use filter() to 
 \begin{Highlighting}[]
 \NormalTok{wsshape }\OtherTok{\textless{}{-}} \FunctionTok{st\_as\_stars}\NormalTok{(ws) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{st\_as\_sf}\NormalTok{(}\AttributeTok{merge =}\NormalTok{ T)}
 
-\NormalTok{ws1shp }\OtherTok{\textless{}{-}}\NormalTok{ wsshape }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(brush\_watersheds.tif }\SpecialCharTok{==} \StringTok{"1"}\NormalTok{)}
+\NormalTok{ws1shp }\OtherTok{\textless{}{-}}\NormalTok{ wsshape }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(brush\_watersheds }\SpecialCharTok{==} \StringTok{"1"}\NormalTok{)}
 
 \FunctionTok{tm\_shape}\NormalTok{(hillshade)}\SpecialCharTok{+}
   \FunctionTok{tm\_raster}\NormalTok{(}\AttributeTok{style =} \StringTok{"cont"}\NormalTok{,}\AttributeTok{palette =} \StringTok{"{-}Greys"}\NormalTok{, }\AttributeTok{legend.show =} \ConstantTok{FALSE}\NormalTok{)}\SpecialCharTok{+}
@@ -5067,8 +4933,6 @@ Now we can plot the vector versions of our watersheds, and also use filter() to 
   \FunctionTok{tm\_borders}\NormalTok{(}\AttributeTok{col =} \StringTok{"red"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\hypertarget{htmlwidget-65a032004b25b4334251}{}
 
 \hypertarget{extract-data-based-on-watershed-outline}{%
 \section{Extract data based on watershed outline}\label{extract-data-based-on-watershed-outline}}
@@ -5110,7 +4974,7 @@ The following code is here just because it is cool. We clip the DEM to the water
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{ws1\_bound }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(wsshape, brush\_watersheds.tif }\SpecialCharTok{==} \StringTok{"1"}\NormalTok{)}
+\NormalTok{ws1\_bound }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(wsshape, brush\_watersheds }\SpecialCharTok{==} \StringTok{"1"}\NormalTok{)}
 
 \CommentTok{\#crop}
 \NormalTok{wsmask }\OtherTok{\textless{}{-}}\NormalTok{ dem }\SpecialCharTok{\%\textgreater{}\%}
@@ -5138,7 +5002,12 @@ The following code is here just because it is cool. We clip the DEM to the water
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{rgl76937}{}
+\begin{verbatim}
+## Warning in snapshot3d(scene = x, width = width, height = height): webshot = TRUE
+## requires the webshot2 package; using rgl.snapshot() instead
+\end{verbatim}
+
+\includegraphics[width=6.5in]{/var/folders/rl/dzfg1s7j2zv_5xqhl3ls1yl80000gn/T//RtmpqueCqA/file7bbe2a0078dd}
 
   \bibliography{book.bib,packages.bib}
 
