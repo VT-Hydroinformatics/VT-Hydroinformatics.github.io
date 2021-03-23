@@ -24,7 +24,7 @@
 <meta name="author" content="JP Gannon" />
 
 
-<meta name="date" content="2021-03-17" />
+<meta name="date" content="2021-03-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -63,6 +63,12 @@
 <script src="libs/leaflet-binding-2.0.3/leaflet.js"></script>
 <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
 <script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
+<link href="libs/rglwidgetClass-2/rgl.css" rel="stylesheet" />
+<script src="libs/rglwidgetClass-2/rglClass.src.js"></script>
+<script src="libs/CanvasMatrix4-2016/CanvasMatrix.src.js"></script>
+<script src="libs/rglWebGL-binding-0.100.54/rglWebGL.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GBDXSZFFSR"></script>
 <script>
@@ -349,6 +355,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.15" data-path="rgeoraster.html"><a href="rgeoraster.html#raster-math"><i class="fa fa-check"></i><b>14.15</b> Raster Math</a></li>
 <li class="chapter" data-level="14.16" data-path="rgeoraster.html"><a href="rgeoraster.html#extra-plot-topo-characteristics-against-one-another"><i class="fa fa-check"></i><b>14.16</b> Extra: plot topo characteristics against one another</a></li>
 </ul></li>
+<li class="chapter" data-level="15" data-path="summative2.html"><a href="summative2.html"><i class="fa fa-check"></i><b>15</b> Summative Assessment 2</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="summative2.html"><a href="summative2.html#info-for-assessment"><i class="fa fa-check"></i><b>15.1</b> Info for assessment</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html"><i class="fa fa-check"></i><b>16</b> Geospatial R Raster - Watershed Delineation</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#introduction-4"><i class="fa fa-check"></i><b>16.1</b> Introduction</a></li>
+<li class="chapter" data-level="16.2" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#the-watershed-delineation-toolprocess"><i class="fa fa-check"></i><b>16.2</b> The watershed delineation tool/process</a></li>
+<li class="chapter" data-level="16.3" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#read-in-dem-1"><i class="fa fa-check"></i><b>16.3</b> Read in DEM</a></li>
+<li class="chapter" data-level="16.4" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#generate-a-hillshade-1"><i class="fa fa-check"></i><b>16.4</b> Generate a hillshade</a></li>
+<li class="chapter" data-level="16.5" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#prepare-dem-for-hydrology-analyses-1"><i class="fa fa-check"></i><b>16.5</b> Prepare DEM for Hydrology Analyses</a></li>
+<li class="chapter" data-level="16.6" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#create-flow-accumulation-grids"><i class="fa fa-check"></i><b>16.6</b> Create flow accumulation grids</a></li>
+<li class="chapter" data-level="16.7" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#setting-pour-points"><i class="fa fa-check"></i><b>16.7</b> Setting pour points</a></li>
+<li class="chapter" data-level="16.8" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#delineate-watersheds"><i class="fa fa-check"></i><b>16.8</b> Delineate watersheds</a></li>
+<li class="chapter" data-level="16.9" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#convert-watersheds-to-shapefiles"><i class="fa fa-check"></i><b>16.9</b> Convert watersheds to shapefiles</a></li>
+<li class="chapter" data-level="16.10" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#extract-data-based-on-watershed-outline"><i class="fa fa-check"></i><b>16.10</b> Extract data based on watershed outline</a></li>
+<li class="chapter" data-level="16.11" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#bonus-make-a-3d-map-of-your-watershed-with-rayshader"><i class="fa fa-check"></i><b>16.11</b> BONUS: Make a 3d map of your watershed with rayshader</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -584,7 +608,7 @@ What happens if you set the number of samples to the size of the population?</p>
 <span id="cb106-2"><a href="stats.html#cb106-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb106-3"><a href="stats.html#cb106-3" aria-hidden="true" tabindex="-1"></a>((quantsX[<span class="dv">3</span>]<span class="sc">-</span>quantsX[<span class="dv">2</span>]) <span class="sc">-</span> (quantsX[<span class="dv">2</span>] <span class="sc">-</span> quantsX[<span class="dv">1</span>])) <span class="sc">/</span> quantsX[<span class="dv">3</span>] <span class="sc">-</span> quantsX[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>##       50% 
-## -2.073304</code></pre>
+## -2.160598</code></pre>
 </div>
 </div>
 <div id="what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one" class="section level2" number="5.6">

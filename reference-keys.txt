@@ -156,3 +156,17 @@ view-raster-data-as-a-pdf-or-histogram
 subsetting-a-raster-for-visualization
 raster-math
 extra-plot-topo-characteristics-against-one-another
+summative2
+info-for-assessment
+rgeowatersheds
+introduction-4
+the-watershed-delineation-toolprocess
+read-in-dem-1
+generate-a-hillshade-1
+prepare-dem-for-hydrology-analyses-1
+create-flow-accumulation-grids
+setting-pour-points
+delineate-watersheds
+convert-watersheds-to-shapefiles
+extract-data-based-on-watershed-outline
+bonus-make-a-3d-map-of-your-watershed-with-rayshader
