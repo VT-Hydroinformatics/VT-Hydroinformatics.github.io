@@ -24,7 +24,7 @@
 <meta name="author" content="JP Gannon" />
 
 
-<meta name="date" content="2021-03-24" />
+<meta name="date" content="2021-03-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -293,7 +293,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.4" data-path="lfas.html"><a href="lfas.html#look-at-what-a-rolling-mean-does."><i class="fa fa-check"></i><b>11.4</b> Look at what a rolling mean does.</a></li>
 <li class="chapter" data-level="11.5" data-path="lfas.html"><a href="lfas.html#calculate-yearly-minimums"><i class="fa fa-check"></i><b>11.5</b> Calculate yearly minimums</a></li>
 <li class="chapter" data-level="11.6" data-path="lfas.html"><a href="lfas.html#calculate-return-interval"><i class="fa fa-check"></i><b>11.6</b> Calculate return interval</a></li>
-<li class="chapter" data-level="11.7" data-path="lfas.html"><a href="lfas.html#fit-to-pearson-type-ii-distribution"><i class="fa fa-check"></i><b>11.7</b> Fit to Pearson Type II distribution</a></li>
+<li class="chapter" data-level="11.7" data-path="lfas.html"><a href="lfas.html#fit-to-pearson-type-iii-distribution"><i class="fa fa-check"></i><b>11.7</b> Fit to Pearson Type III distribution</a></li>
 <li class="chapter" data-level="11.8" data-path="lfas.html"><a href="lfas.html#distribution-free-method"><i class="fa fa-check"></i><b>11.8</b> Distribution-free method</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>12</b> Flood Frequency Analysis and Creating Functions</a>
@@ -513,8 +513,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb155-2"><a href="lfas.html#cb155-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
 </div>
-<div id="fit-to-pearson-type-ii-distribution" class="section level2" number="11.7">
-<h2><span class="header-section-number">11.7</span> Fit to Pearson Type II distribution</h2>
+<div id="fit-to-pearson-type-iii-distribution" class="section level2" number="11.7">
+<h2><span class="header-section-number">11.7</span> Fit to Pearson Type III distribution</h2>
 <p>Source for these calculations:
 <a href="https://water.usgs.gov/osw/bulletin17b/dl_flow.pdf" class="uri">https://water.usgs.gov/osw/bulletin17b/dl_flow.pdf</a></p>
 <p>We now have everything we need to calculate what the 10-year return interval flow is (the 0.1 probability flow). To do this, we have to fit a distribution to our data and then use that fitted distribution to predict the value of the 10-year return interval flow.</p>
@@ -536,9 +536,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
 <p>To get our 10 year return period (0.1 exceedence probability) we are going to do the same thing, except we know the distribution of the data isn’t normal, so we have to use a different distribution.</p>
 <p>There are a bunch of “extreme value” distributions used in these type of analyses. When we talk about floods we will use the Gumbel distribution, for example. For this type of analysis, it is common to use the Pearson Type III distribution.</p>
-<p>When we used the normal distribution example, we let R produce the distribution that fit our data. In this case we will use the equation that describes the Person Type III distribution. To predict flow at a given recurrence interval we will need the mean of the logged discharges (Xbar), the frequency factor (K), the standard deviation of the log discharges (S), skewness (g), and the standard normal variate (z). We will first compute this for all of the values in our dataset to see how the fitted values fit our calculated values.</p>
-<p><strong>Pearson Type III</strong></p>
-<p><span class="math inline">\(Flow = exp(Xbar + KS)\)</span></p>
+<p>When we used the normal distribution example, we let R produce the distribution that fit our data. In this case we will use an equation that describes the Person Type III distribution. To predict flow at a given recurrence interval we will need the mean of the logged discharges (Xbar), the frequency factor (K), the standard deviation of the log discharges (S), skewness (g), and the standard normal variate (z). We will first compute this for all of the values in our dataset to see how the fitted values fit our calculated values.</p>
+<p><strong>Pearson Type III: Frequency Factor method</strong></p>
+<p><span class="math inline">\(Flow = 10^(Xbar + KS)\)</span></p>
 <p>where:</p>
 <p>Xbar = mean of the log discharge you are investigating</p>
 <p>K = frequency factor</p>
@@ -551,15 +551,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(z = 4.91 * ((1 / y) ^ {0.14} - (1 - (1 / y)) ^ {0.14})\)</span></p>
 <p>y = recurrence interval</p>
 <div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="lfas.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Measures of the distribution</span></span>
-<span id="cb157-2"><a href="lfas.html#cb157-2" aria-hidden="true" tabindex="-1"></a>Xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">log</span>(QyearlyMins<span class="sc">$</span>minQ))</span>
-<span id="cb157-3"><a href="lfas.html#cb157-3" aria-hidden="true" tabindex="-1"></a>S    <span class="ot">&lt;-</span> <span class="fu">sd</span>(<span class="fu">log</span>(QyearlyMins<span class="sc">$</span>minQ))</span>
-<span id="cb157-4"><a href="lfas.html#cb157-4" aria-hidden="true" tabindex="-1"></a>g    <span class="ot">&lt;-</span> <span class="fu">skewness</span>(<span class="fu">log</span>(QyearlyMins<span class="sc">$</span>minQ))</span>
+<span id="cb157-2"><a href="lfas.html#cb157-2" aria-hidden="true" tabindex="-1"></a>Xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">log10</span>(QyearlyMins<span class="sc">$</span>minQ))</span>
+<span id="cb157-3"><a href="lfas.html#cb157-3" aria-hidden="true" tabindex="-1"></a>S    <span class="ot">&lt;-</span> <span class="fu">sd</span>(<span class="fu">log10</span>(QyearlyMins<span class="sc">$</span>minQ))</span>
+<span id="cb157-4"><a href="lfas.html#cb157-4" aria-hidden="true" tabindex="-1"></a>g    <span class="ot">&lt;-</span> <span class="fu">skewness</span>(<span class="fu">log10</span>(QyearlyMins<span class="sc">$</span>minQ))</span>
 <span id="cb157-5"><a href="lfas.html#cb157-5" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb157-6"><a href="lfas.html#cb157-6" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate z, K, to plot the fitted Pearson Type III</span></span>
 <span id="cb157-7"><a href="lfas.html#cb157-7" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="ot">&lt;-</span> QyearlyMins <span class="sc">%&gt;%</span> </span>
 <span id="cb157-8"><a href="lfas.html#cb157-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">z =</span> <span class="fl">4.91</span> <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">/</span> ReturnInterval) <span class="sc">^</span> <span class="fl">0.14</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">1</span> <span class="sc">/</span> ReturnInterval) <span class="sc">^</span> <span class="fl">0.14</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb157-9"><a href="lfas.html#cb157-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">K =</span> (<span class="dv">2</span> <span class="sc">/</span> g) <span class="sc">*</span> (((<span class="dv">1</span> <span class="sc">+</span> (g <span class="sc">*</span> z) <span class="sc">/</span> <span class="dv">6</span> <span class="sc">-</span> (g <span class="sc">^</span> <span class="dv">2</span>) <span class="sc">/</span> <span class="dv">36</span>) <span class="sc">^</span> <span class="dv">3</span>) <span class="sc">-</span> <span class="dv">1</span>) ) <span class="sc">%&gt;%</span></span>
-<span id="cb157-10"><a href="lfas.html#cb157-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Qfit =</span> <span class="fu">exp</span>(Xbar <span class="sc">+</span> K <span class="sc">*</span> S))</span></code></pre></div>
+<span id="cb157-10"><a href="lfas.html#cb157-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Qfit =</span> <span class="dv">10</span><span class="sc">^</span>(Xbar <span class="sc">+</span> (K <span class="sc">*</span> S)))</span></code></pre></div>
 <p>Let’s look our results and see how they fit. Plot the return interval on the x axis and flow on the y. Plot minQ, the minimum Q data, and Qfit, the data from the the model fit.</p>
 <div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="lfas.html#cb158-1" aria-hidden="true" tabindex="-1"></a>QyearlyMins <span class="sc">%&gt;%</span> </span>
 <span id="cb158-2"><a href="lfas.html#cb158-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ReturnInterval, <span class="at">y =</span> minQ, <span class="at">color =</span> <span class="st">&quot;Estimated&quot;</span>))<span class="sc">+</span></span>
@@ -580,7 +580,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb159-5"><a href="lfas.html#cb159-5" aria-hidden="true" tabindex="-1"></a>z    <span class="ot">&lt;-</span> <span class="fl">4.91</span> <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">/</span> y) <span class="sc">^</span> <span class="fl">0.14</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">1</span> <span class="sc">/</span> y) <span class="sc">^</span> <span class="fl">0.14</span>)</span>
 <span id="cb159-6"><a href="lfas.html#cb159-6" aria-hidden="true" tabindex="-1"></a>K    <span class="ot">&lt;-</span> (<span class="dv">2</span> <span class="sc">/</span> g) <span class="sc">*</span> (((<span class="dv">1</span> <span class="sc">+</span> (g <span class="sc">*</span> z) <span class="sc">/</span> <span class="dv">6</span> <span class="sc">-</span> (g <span class="sc">^</span> <span class="dv">2</span>) <span class="sc">/</span> <span class="dv">36</span>) <span class="sc">^</span> <span class="dv">3</span>) <span class="sc">-</span> <span class="dv">1</span>) </span>
 <span id="cb159-7"><a href="lfas.html#cb159-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-8"><a href="lfas.html#cb159-8" aria-hidden="true" tabindex="-1"></a>PearsonxQy <span class="ot">&lt;-</span> <span class="fu">exp</span>(Xbar <span class="sc">+</span> K <span class="sc">*</span> S)</span></code></pre></div>
+<span id="cb159-8"><a href="lfas.html#cb159-8" aria-hidden="true" tabindex="-1"></a>PearsonxQy <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">^</span>(Xbar <span class="sc">+</span> K <span class="sc">*</span> S)</span></code></pre></div>
 <p>So, our 7Q10 flow in cfs for this gage is….</p>
 <div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="lfas.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Low flow stat (7Q10 in exercise)</span></span>
 <span id="cb160-2"><a href="lfas.html#cb160-2" aria-hidden="true" tabindex="-1"></a>PearsonxQy</span></code></pre></div>

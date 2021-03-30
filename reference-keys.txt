@@ -111,7 +111,7 @@ create-the-x-days-average-flow-record
 look-at-what-a-rolling-mean-does.
 calculate-yearly-minimums
 calculate-return-interval
-fit-to-pearson-type-ii-distribution
+fit-to-pearson-type-iii-distribution
 distribution-free-method
 floods
 template-repository
