@@ -116,7 +116,7 @@
 
 \title{Hydroinformatics at VT}
 \author{JP Gannon}
-\date{2021-03-30}
+\date{2021-04-13}
 
 \begin{document}
 \maketitle
@@ -158,7 +158,9 @@ Chapters called ACTIVITY are either homework or class-period-long in-class activ
 \ref{rgeospatial} \textbf{\protect\hyperlink{rgeospatial}{Geospatial data in R - Vector}}: \emph{Intro to working with vector data in R}\\
 \ref{summative2} \textbf{\protect\hyperlink{summative2}{Summative Assessment 2}}: \emph{Summative Assessment \#2}\\
 \ref{rgeoraster} \textbf{\protect\hyperlink{rgeoraster}{Geospatial R Raster - Hydro Analyses}}: \emph{Intro to working with raster data in R, hydrological raster analyses}\\
-\ref{rgeowatersheds} \textbf{\protect\hyperlink{rgeowatersheds}{Geospatial R Raster - Watershed Delineation}}: \emph{Watershed delineation and extracting DEM values by watershed}
+\ref{rgeowatersheds} \textbf{\protect\hyperlink{rgeowatersheds}{Geospatial R Raster - Watershed Delineation}}: \emph{Watershed delineation and extracting DEM values by watershed}\\
+\ref{modelingintro} \textbf{\protect\hyperlink{modelingintro}{Intro to Modeling - Getting Started with HBV}}: \emph{Setting up a simple hydrologic model in R}\\
+\ref{modelingcalibration} \textbf{\protect\hyperlink{modelingcalibration}{Intro to Modeling - Calibrate HBV}}: \emph{Using the Monte Carlo method to calibrate the HBV model, discuss equifinality}
 
 \hypertarget{Plotting}{%
 \chapter{Intro to Plotting}\label{Plotting}}
@@ -1659,7 +1661,7 @@ Which one is more skewed?
 
 \begin{verbatim}
 ##       50% 
-## -2.106285
+## -2.246934
 \end{verbatim}
 
 \hypertarget{what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one}{%
@@ -1840,7 +1842,7 @@ Remember, all the parameter codes and site names get passed to dataRetrieval fun
 ## 4           dv   00095   00003 145685         NA           wat        <NA>
 ##    srs_id access_cd begin_date   end_date count_nu
 ## 2 1645597         0 2006-12-20 2009-03-18      704
-## 3 1645423         0 1907-10-01 2021-03-29    32687
+## 3 1645423         0 1907-10-01 2021-04-12    32701
 ## 4 1646694         0 2006-12-20 2008-09-29      534
 \end{verbatim}
 
@@ -1947,7 +1949,7 @@ So in the chunk below let's get add information about the parameters in dataAvai
 ## 3           dv   00095   00003 145685         NA           wat        <NA>
 ##    srs_id access_cd begin_date   end_date count_nu parameter_group_nm
 ## 1 1645597         0 2006-12-20 2009-03-18      704           Physical
-## 2 1645423         0 1907-10-01 2021-03-29    32687           Physical
+## 2 1645423         0 1907-10-01 2021-04-12    32701           Physical
 ## 3 1646694         0 2006-12-20 2008-09-29      534           Physical
 ##                                                                                 parameter_nm
 ## 1                                                        Temperature, water, degrees Celsius
@@ -1981,7 +1983,7 @@ So in the chunk below let's get add information about the parameters in dataAvai
 ## 3 03171000 NEW RIVER AT RADFORD, VA   00095     Specific conductance
 ##   parameter_units begin_date   end_date
 ## 1           deg C 2006-12-20 2009-03-18
-## 2           ft3/s 1907-10-01 2021-03-29
+## 2           ft3/s 1907-10-01 2021-04-12
 ## 3      uS/cm @25C 2006-12-20 2008-09-29
 \end{verbatim}
 
@@ -2031,27 +2033,27 @@ Below we will look at two other ways to get sites: using a bounding box of a geo
 ## 20      USGS 03170000                 LITTLE RIVER AT GRAYSONTOWN, VA
 ## 21      USGS 03169500             LITTLE RIVER NEAR COPPER VALLEY, VA
 ##    site_tp_cd dec_lat_va dec_long_va colocated           queryTime
-## 1          ST   36.88873   -81.34733     FALSE 2021-03-30 14:17:40
-## 2          ST   37.18428   -81.32982     FALSE 2021-03-30 14:17:40
-## 3          ST   37.27151   -81.30482     FALSE 2021-03-30 14:17:40
-## 4          ST   37.25595   -81.28177     FALSE 2021-03-30 14:17:40
-## 5          ST   36.85984   -80.98036     FALSE 2021-03-30 14:17:40
-## 6          ST   36.75985   -80.95619     FALSE 2021-03-30 14:17:40
-## 7          ST   36.83485   -80.95258     FALSE 2021-03-30 14:17:40
-## 8          SP   36.93429   -80.90313     FALSE 2021-03-30 14:17:40
-## 9          ST   36.93095   -80.90036     FALSE 2021-03-30 14:17:40
-## 10         SP   36.93068   -80.89619     FALSE 2021-03-30 14:17:40
-## 11         ST   36.93901   -80.88730     FALSE 2021-03-30 14:17:40
-## 12         ST   37.30568   -80.84980     FALSE 2021-03-30 14:17:40
-## 13         ST   37.04734   -80.77618     FALSE 2021-03-30 14:17:40
-## 14         ST   36.93762   -80.74563     FALSE 2021-03-30 14:17:40
-## 15         ST   36.88901   -80.72757     FALSE 2021-03-30 14:17:40
-## 16         ST   37.24179   -80.71090     FALSE 2021-03-30 14:17:40
-## 17         ST   37.26818   -80.70951     FALSE 2021-03-30 14:17:40
-## 18         ST   37.28957   -80.61673     FALSE 2021-03-30 14:17:40
-## 19         ST   37.14179   -80.56922     FALSE 2021-03-30 14:17:40
-## 20         ST   37.03763   -80.55672     FALSE 2021-03-30 14:17:40
-## 21         ST   36.99652   -80.52144     FALSE 2021-03-30 14:17:40
+## 1          ST   36.88873   -81.34733     FALSE 2021-04-13 07:41:46
+## 2          ST   37.18428   -81.32982     FALSE 2021-04-13 07:41:46
+## 3          ST   37.27151   -81.30482     FALSE 2021-04-13 07:41:46
+## 4          ST   37.25595   -81.28177     FALSE 2021-04-13 07:41:46
+## 5          ST   36.85984   -80.98036     FALSE 2021-04-13 07:41:46
+## 6          ST   36.75985   -80.95619     FALSE 2021-04-13 07:41:46
+## 7          ST   36.83485   -80.95258     FALSE 2021-04-13 07:41:46
+## 8          SP   36.93429   -80.90313     FALSE 2021-04-13 07:41:46
+## 9          ST   36.93095   -80.90036     FALSE 2021-04-13 07:41:46
+## 10         SP   36.93068   -80.89619     FALSE 2021-04-13 07:41:46
+## 11         ST   36.93901   -80.88730     FALSE 2021-04-13 07:41:46
+## 12         ST   37.30568   -80.84980     FALSE 2021-04-13 07:41:46
+## 13         ST   37.04734   -80.77618     FALSE 2021-04-13 07:41:46
+## 14         ST   36.93762   -80.74563     FALSE 2021-04-13 07:41:46
+## 15         ST   36.88901   -80.72757     FALSE 2021-04-13 07:41:46
+## 16         ST   37.24179   -80.71090     FALSE 2021-04-13 07:41:46
+## 17         ST   37.26818   -80.70951     FALSE 2021-04-13 07:41:46
+## 18         ST   37.28957   -80.61673     FALSE 2021-04-13 07:41:46
+## 19         ST   37.14179   -80.56922     FALSE 2021-04-13 07:41:46
+## 20         ST   37.03763   -80.55672     FALSE 2021-04-13 07:41:46
+## 21         ST   36.99652   -80.52144     FALSE 2021-04-13 07:41:46
 \end{verbatim}
 
 \begin{Shaded}
@@ -4093,7 +4095,7 @@ Be careful to give the breach depressions function the result of the single cell
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "fill_single_cell_pits - Elapsed Time (excluding I/O): 0.4s"
+## [1] "fill_single_cell_pits - Elapsed Time (excluding I/O): 0.3s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4107,7 +4109,7 @@ Be careful to give the breach depressions function the result of the single cell
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "breach_depressions_least_cost - Elapsed Time (excluding I/O): 0.64s"
+## [1] "breach_depressions_least_cost - Elapsed Time (excluding I/O): 0.53s"
 \end{verbatim}
 
 \hypertarget{visualize-filled-sinks-and-breached-depressions}{%
@@ -4175,7 +4177,7 @@ Where are the lowest values?
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "d8_flow_accumulation - Elapsed Time (excluding I/O): 0.21s"
+## [1] "d8_flow_accumulation - Elapsed Time (excluding I/O): 0.22s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4221,7 +4223,7 @@ Which do you think represents reality better? Why?
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "d_inf_flow_accumulation - Elapsed Time (excluding I/O): 0.31s"
+## [1] "d_inf_flow_accumulation - Elapsed Time (excluding I/O): 0.35s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4266,7 +4268,7 @@ We get some funkiness around the edges of the DEM, so we will also filter the tw
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "d_inf_flow_accumulation - Elapsed Time (excluding I/O): 0.37s"
+## [1] "d_inf_flow_accumulation - Elapsed Time (excluding I/O): 0.31s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4322,7 +4324,7 @@ Similar to TWI we get some edge issues so we will filter the result to make the 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "downslope_index - Elapsed Time (excluding I/O): 0.7s"
+## [1] "downslope_index - Elapsed Time (excluding I/O): 0.8s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4360,7 +4362,7 @@ Below we extrac the streams, generate a D8 pointer file, and then convert the ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "extract_streams - Elapsed Time (excluding I/O): 0.4s"
+## [1] "extract_streams - Elapsed Time (excluding I/O): 0.3s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4371,7 +4373,7 @@ Below we extrac the streams, generate a D8 pointer file, and then convert the ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "d8_pointer - Elapsed Time (excluding I/O): 0.4s"
+## [1] "d8_pointer - Elapsed Time (excluding I/O): 0.5s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4394,7 +4396,7 @@ Below we extrac the streams, generate a D8 pointer file, and then convert the ra
 
 \begin{verbatim}
 ## Reading layer `streams' from data source `/Volumes/GoogleDrive/My Drive/CLASSES/Hydroinformatics/Hydroinformatics_Bookdown/McDonaldHollowDEM/streams.shp' using driver `ESRI Shapefile'
-## Simple feature collection with 36 features and 2 fields
+## Simple feature collection with 37 features and 2 fields
 ## Geometry type: LINESTRING
 ## Dimension:     XY
 ## Bounding box:  xmin: -80.49733 ymin: 37.23597 xmax: -80.46388 ymax: 37.25634
@@ -4771,7 +4773,7 @@ From now on in the analysis \emph{be careful} to use the filled and breached DEM
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "fill_single_cell_pits - Elapsed Time (excluding I/O): 0.5s"
+## [1] "fill_single_cell_pits - Elapsed Time (excluding I/O): 0.3s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4785,7 +4787,7 @@ From now on in the analysis \emph{be careful} to use the filled and breached DEM
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "breach_depressions_least_cost - Elapsed Time (excluding I/O): 0.52s"
+## [1] "breach_depressions_least_cost - Elapsed Time (excluding I/O): 0.51s"
 \end{verbatim}
 
 \hypertarget{create-flow-accumulation-and-pointer-grids}{%
@@ -4803,7 +4805,7 @@ Below, create these two rasters using the \emph{filled and breached} DEM.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "d8_flow_accumulation - Elapsed Time (excluding I/O): 0.25s"
+## [1] "d8_flow_accumulation - Elapsed Time (excluding I/O): 0.20s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4814,7 +4816,7 @@ Below, create these two rasters using the \emph{filled and breached} DEM.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "d8_pointer - Elapsed Time (excluding I/O): 0.5s"
+## [1] "d8_pointer - Elapsed Time (excluding I/O): 0.3s"
 \end{verbatim}
 
 \hypertarget{setting-pour-points}{%
@@ -4869,7 +4871,7 @@ After you get the streams and snapped pour points, read them into your R environ
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "extract_streams - Elapsed Time (excluding I/O): 0.4s"
+## [1] "extract_streams - Elapsed Time (excluding I/O): 0.3s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4915,7 +4917,7 @@ Read the results of this function back in and plot them over the hillshade with 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "watershed - Elapsed Time (excluding I/O): 0.16s"
+## [1] "watershed - Elapsed Time (excluding I/O): 0.19s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -5024,7 +5026,1159 @@ The following code is here just because it is cool. We clip the DEM to the water
 ## requires the webshot2 package; using rgl.snapshot() instead
 \end{verbatim}
 
-\includegraphics[width=6.5in]{/var/folders/rl/dzfg1s7j2zv_5xqhl3ls1yl80000gn/T//RtmpwMOo5J/file8d073f2d82f5}
+\includegraphics[width=6.5in]{/var/folders/rl/dzfg1s7j2zv_5xqhl3ls1yl80000gn/T//RtmpUL4p5R/file1070897deb3}
+
+\hypertarget{modelingintro}{%
+\chapter{Intro to Modeling - Getting Started with HBV}\label{modelingintro}}
+
+\hypertarget{introduction-5}{%
+\section{Introduction}\label{introduction-5}}
+
+The following activity is available as a template github repository at the following link:
+
+\textbf{Before we start with the code below, we will briefly discuss modeling in general, using the following reading as a guide: \url{https://pubs.er.usgs.gov/publication/70046617}}
+
+\textbf{Please be prepared to discuss the reading at the start of class.}
+
+\emph{Goals for this activity:}
+
+\begin{itemize}
+\tightlist
+\item
+  Become familiar with the process of running a simple hydrologic model
+\item
+  Try parameterizing the model manually
+\item
+  Introduction to methods of assessing model success
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(lubridate)}
+\FunctionTok{library}\NormalTok{(patchwork)}
+\FunctionTok{library}\NormalTok{(plotly)}
+
+\FunctionTok{theme\_set}\NormalTok{(}\FunctionTok{theme\_classic}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{creating-the-hbv-model-function}{%
+\section{Creating the HBV model function}\label{creating-the-hbv-model-function}}
+
+The code for the HBV model is in the HBV folder, it is called \emph{HBV.R}. We will open that and look at the code a bit to discuss how HBV works.
+
+The code in HBV.R creates a function that runs the HBV model. We can run that code by using the source() function in. When we give the location of the HBV.R file to source(), it runs the code and creates the HBV function. Run the line of code below, then type HBV( and you'll see the input parameters pop up just like any other function.
+
+From this we see that HBV takes as input pars, P, Temp, PET, and routing.
+
+pars is a vector of all the parameters that HBV uses to run (discussed below)
+P is a vector of precipitation values
+Temp is a vector of temperature values
+PET is a vector of PET values
+And routing is a parameter that controls how water is routes through the channel of larger watersheds. We will not use this because we are running the model on a small watershed.
+
+HBV is a lumped conceptual model. We will use the diagram below and the HBV.R code to discuss how the model works and get an idea of what the parameters do.
+
+\includegraphics{images/HBV-schem-Shrestha-Solomantine-2008.png}
+This schematic was reproduced from: Durga Lal Shrestha \& Dimitri P. Solomatine (2008) Data‐driven approaches for estimating uncertainty in rainfall‐runoff modelling, International Journal of River Basin Management, 6:2, 109-122, DOI: 10.1080/15715124.2008.9635341
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{source}\NormalTok{(}\StringTok{\textquotesingle{}HBV/HBV.R\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{read-in-precip-and-temp}{%
+\section{Read in Precip and Temp}\label{read-in-precip-and-temp}}
+
+Our objective today is basically to get the model running with data from watershed 3 at the Hubbard Brook experimental forest in NH, USA.
+
+Watershed 3 is a hydrologic reference watershed at HBEF. This means it hasn't been experimentally manipulated, but discharge, temperature, and precipitation have been recorded there for a long time. This makes it a good candidate for some modeling! You can see more about watershed 3 here: \url{https://hubbardbrook.org/watersheds/watershed-3}
+
+As we saw in the chunk above, we need P, Temp, PET, and a set of parameters to run the model.
+
+We will talk parameters later, but for now we need the data that drives the model: P, Temp, and PET.
+
+We have P and Temp. The data is in Pwd2009-2012.csv and Tdm2009-2012.csv.
+
+So how do we get PET?
+
+We calculate it! But before we do that let's bring in the precip and temp data and format them how the model wants them.
+
+Our model function just wants a vector of values. No dates attached. So we must be careful that each set of input data is for the same amount of time with the same number of values. To help with that, we will start below by defining and start and end date for the model run.
+
+Finally, we will read in the data, select the gage or station we want to represent the watershed, change the format of the date column, and then filter to our start and end date.
+
+Then we will pull out just the data, so it can be passed to the model.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{start }\OtherTok{\textless{}{-}} \FunctionTok{mdy}\NormalTok{(}\StringTok{"01{-}01{-}2009"}\NormalTok{)}
+\NormalTok{end }\OtherTok{\textless{}{-}} \FunctionTok{mdy}\NormalTok{(}\StringTok{"12{-}31{-}2012"}\NormalTok{)}
+
+\CommentTok{\#Precip}
+\NormalTok{P1 }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"HBV/Pwd2009{-}2012.csv"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+         \FunctionTok{select}\NormalTok{(DATE, WS\_3) }\SpecialCharTok{\%\textgreater{}\%}
+         \FunctionTok{mutate}\NormalTok{(}\AttributeTok{DATE =} \FunctionTok{ymd}\NormalTok{(DATE)) }\SpecialCharTok{\%\textgreater{}\%}
+         \FunctionTok{filter}\NormalTok{(DATE }\SpecialCharTok{\textgreater{}=}\NormalTok{ start }\SpecialCharTok{\&}\NormalTok{ DATE }\SpecialCharTok{\textless{}=}\NormalTok{ end)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   DATE = col_character(),
+##   WS_1 = col_double(),
+##   WS_2 = col_double(),
+##   WS_3 = col_double(),
+##   WS_4 = col_double(),
+##   WS_5 = col_double(),
+##   WS_6 = col_double(),
+##   WS_7 = col_double(),
+##   WS_8 = col_double(),
+##   WS_9 = col_double()
+## )
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{P }\OtherTok{\textless{}{-}}\NormalTok{ P1}\SpecialCharTok{$}\NormalTok{WS\_3}
+
+\CommentTok{\#Temp in deg C}
+\NormalTok{Temp1 }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"HBV/Tdm2009{-}2012.csv"}\NormalTok{)}\SpecialCharTok{\%\textgreater{}\%}
+         \FunctionTok{select}\NormalTok{(DATE, STA\_1) }\SpecialCharTok{\%\textgreater{}\%}
+         \FunctionTok{mutate}\NormalTok{(}\AttributeTok{DATE =} \FunctionTok{ymd}\NormalTok{(DATE)) }\SpecialCharTok{\%\textgreater{}\%}
+         \FunctionTok{filter}\NormalTok{(DATE }\SpecialCharTok{\textgreater{}=}\NormalTok{ start }\SpecialCharTok{\&}\NormalTok{ DATE }\SpecialCharTok{\textless{}=}\NormalTok{ end)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   DATE = col_character(),
+##   STA_1 = col_double(),
+##   STA_6 = col_double(),
+##   STA_14 = col_double(),
+##   STA_INT = col_double(),
+##   STA_HQ = col_double(),
+##   STA_23 = col_double(),
+##   STA_17 = col_double(),
+##   STA_24 = col_double()
+## )
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Temp }\OtherTok{\textless{}{-}}\NormalTok{ Temp1}\SpecialCharTok{$}\NormalTok{STA\_1}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{calculate-pet}{%
+\section{Calculate PET}\label{calculate-pet}}
+
+Next, we need to calculate PET for the same time reange as our temperature and precipitation record.
+
+We will use the Hamon method to calculate PET for each day of the record.
+
+To do that we will take the latitude of the site in radians\ldots{}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lat }\OtherTok{\textless{}{-}} \DecValTok{43} \SpecialCharTok{+} \DecValTok{57}\SpecialCharTok{/}\DecValTok{60} \CommentTok{\#43 degrees and 57 minutes}
+\NormalTok{latrad }\OtherTok{\textless{}{-}}\NormalTok{ (lat}\SpecialCharTok{/}\DecValTok{360}\NormalTok{) }\SpecialCharTok{*} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ pi }\CommentTok{\#convert to radians}
+
+\NormalTok{PET1 }\OtherTok{\textless{}{-}} \FunctionTok{select}\NormalTok{(Temp1, DATE) }\SpecialCharTok{\%\textgreater{}\%}
+         \FunctionTok{mutate}\NormalTok{(}\AttributeTok{DOY =} \FunctionTok{yday}\NormalTok{(DATE)) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\#DOY for dates}
+         \FunctionTok{mutate}\NormalTok{(}\AttributeTok{tempvar =}\NormalTok{ (}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ pi }\SpecialCharTok{/} \DecValTok{365}\NormalTok{) }\SpecialCharTok{*}\NormalTok{ DOY) }\SpecialCharTok{\%\textgreater{}\%}
+         \CommentTok{\#declination of the sun above the celestial equator in }
+         \CommentTok{\#radians on day JulDay of the year}
+         \FunctionTok{mutate}\NormalTok{(}\AttributeTok{delta\_h =} \FloatTok{0.4093} \SpecialCharTok{*} \FunctionTok{sin}\NormalTok{(tempvar }\SpecialCharTok{{-}} \FloatTok{1.405}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+         \CommentTok{\#day length in h}
+         \FunctionTok{mutate}\NormalTok{(}\AttributeTok{daylen =}\NormalTok{ (}\DecValTok{2} \SpecialCharTok{*} \FunctionTok{acos}\NormalTok{(}\SpecialCharTok{{-}}\FunctionTok{tan}\NormalTok{(delta\_h) }\SpecialCharTok{*} \FunctionTok{tan}\NormalTok{(latrad)) }\SpecialCharTok{/} \FloatTok{0.2618}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+         \FunctionTok{mutate}\NormalTok{(}
+           \AttributeTok{PET =} \FloatTok{29.8} \SpecialCharTok{*}\NormalTok{ daylen }\SpecialCharTok{*} \FloatTok{0.611} \SpecialCharTok{*} \FunctionTok{exp}\NormalTok{(}\FloatTok{17.3} \SpecialCharTok{*}\NormalTok{ Temp }\SpecialCharTok{/} 
+\NormalTok{                  (Temp }\SpecialCharTok{+} \FloatTok{237.3}\NormalTok{)) }\SpecialCharTok{/}\NormalTok{ (Temp }\SpecialCharTok{+} \FloatTok{273.2}\NormalTok{))  }\CommentTok{\#PET Hamon method}
+
+\NormalTok{PET }\OtherTok{\textless{}{-}}\NormalTok{ PET1}\SpecialCharTok{$}\NormalTok{PET}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{hbv-parameters}{%
+\section{HBV Parameters}\label{hbv-parameters}}
+
+Okay, so now we have our data set up. Next we need to talk parameters.
+
+The table below shows the parameters of the HBV model, the minimum and maximum for those values, and a description of their function in the model.
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+\begin{minipage}[b]{0.29\columnwidth}\raggedright
+Object Name\strut
+\end{minipage} & \begin{minipage}[b]{0.16\columnwidth}\raggedright
+Min\strut
+\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\raggedright
+Max\strut
+\end{minipage} & \begin{minipage}[b]{0.31\columnwidth}\raggedright
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+FC\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+40\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+400\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Max soil moisture storage, field capacity\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+beta\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+6\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Shape coefficient governing fate of water input to soil moisture storage\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+LP\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+.3\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Threshold for reduction of evaporation\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+SFCF\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+0.4\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+1.2\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Snowfall correction factor\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+TT\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+-1.5\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+1.2\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Threshold temperature\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+CFMAX\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+8\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Degree-day factor\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+k0\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+0.05\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+0.5\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Recession constant (upper storage, near surface)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+k1\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+0.01\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+0.3\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Recession constant (upper storage)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+k2\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+0.001\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+0.15\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Recession constant (lower storage)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+UZL\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+70\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Threshold for shallow storage\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+PERC\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Percolation, max flow from upper to lower storage\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+MAXBAS\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+3\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+base of the triangular routing function, days"\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+To pass a set of parameters to the model, we just put them into a single vector in the order they are in the table above. In the chunk below, I've structured this to make it easy to see a description of each parameter, but you could also just do it in one line without all the comments. Just be sure to get the order right!
+
+The code below sets the routing to 0, which is what we want for a small catchment.
+
+Then I just set each parameter to it's minimum value. We will use this parameter set to run the model and see what happens!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#when this term = 1, then triangular routing is invoked, or for no routing, routing = 0}
+\CommentTok{\#if routing = 0 then MAXBAS doesn\textquotesingle{}t do anything}
+\NormalTok{routing }\OtherTok{\textless{}{-}} \DecValTok{0}      
+
+\CommentTok{\#hard code parameters }
+\NormalTok{params }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{40}\NormalTok{,    }\CommentTok{\#FCM ax soil moisture storage, field capacity}
+            \DecValTok{1}\NormalTok{,     }\CommentTok{\#beta Shape coefficient governing fate of water input to soil moisture storage}
+            \FloatTok{0.3}\NormalTok{,   }\CommentTok{\#LP Threshold for reduction of evap}
+            \FloatTok{0.4}\NormalTok{,   }\CommentTok{\#SFCF Snowfall correction factor}
+            \SpecialCharTok{{-}}\FloatTok{1.5}\NormalTok{,  }\CommentTok{\#TT Threshold temperature}
+            \DecValTok{1}\NormalTok{,     }\CommentTok{\#CFMAX Degree{-}day factor}
+            \FloatTok{0.05}\NormalTok{,  }\CommentTok{\#k0 Recession constant (upper storage, near surface)}
+            \FloatTok{0.01}\NormalTok{,  }\CommentTok{\#k1 Recession constant (upper storage)}
+            \FloatTok{0.001}\NormalTok{, }\CommentTok{\#k2 Recession constant (lower storage)}
+            \DecValTok{0}\NormalTok{,     }\CommentTok{\#UZLThreshold for shallow storage}
+            \DecValTok{0}\NormalTok{,     }\CommentTok{\#PERC Percolation, max flow from upper to lower storage}
+            \DecValTok{1}      \CommentTok{\#MAXBAS base of the triangular routing function, days}
+\NormalTok{            )}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{first-model-run}{%
+\section{First model run}\label{first-model-run}}
+
+Let's run the model! Remember the function is HBV(parameters, Precip, Temp, PET, routing)
+
+We will set the output of the model equal to ModelOutput and then have a look at what it outputs.
+
+How can we tell how this did at modeling flow in watershed 3?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ModelOutput }\OtherTok{\textless{}{-}} \FunctionTok{HBV}\NormalTok{(params, P, Temp, PET, routing)}
+
+\FunctionTok{head}\NormalTok{(ModelOutput)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 12
+##       q    qs    qi    qb Storage   SWE   AET    SF    S1    S2  soil     w
+##   <dbl> <dbl> <dbl> <dbl>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+## 1     0     0     0     0       0    0      0  0        0     0     0     0
+## 2     0     0     0     0      40  152.     0  0        0     0    40     0
+## 3     0     0     0     0      40  152.     0  0        0     0    40     0
+## 4     0     0     0     0      40  152.     0  0        0     0    40     0
+## 5     0     0     0     0      40  154.     0  1.16     0     0    40     0
+## 6     0     0     0     0      40  154.     0  0        0     0    40     0
+\end{verbatim}
+
+\hypertarget{import-observed-streamflow-data}{%
+\section{Import observed streamflow data}\label{import-observed-streamflow-data}}
+
+q in the model output is discharge, and we also have a record of measured discharge from watershed 3 in the file called SWD2009-2012.csv
+
+In order to compare the modeled discharge to the measured discharge, we will read in the data and process it the same way we did with the model inputs. Then we can attach it to the model output so we can compare the two.
+
+NOTE: These data are all nicely processed. They have the same temporal resolution (daily), there are no NAs, and they are in the same units. These are all things to check if you are preparing data from another site.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Streamflow mm/d}
+\NormalTok{Qobs1 }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"HBV/SWD2009{-}2012.csv"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+         \FunctionTok{select}\NormalTok{(DATE, WS\_3) }\SpecialCharTok{\%\textgreater{}\%}
+         \FunctionTok{mutate}\NormalTok{(}\AttributeTok{DATE =} \FunctionTok{ymd}\NormalTok{(DATE)) }\SpecialCharTok{\%\textgreater{}\%}
+         \FunctionTok{filter}\NormalTok{(DATE }\SpecialCharTok{\textgreater{}=}\NormalTok{ start }\SpecialCharTok{\&}\NormalTok{ DATE }\SpecialCharTok{\textless{}=}\NormalTok{ end)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   DATE = col_character(),
+##   WS_1 = col_double(),
+##   WS_2 = col_double(),
+##   WS_3 = col_double(),
+##   WS_4 = col_double(),
+##   WS_5 = col_double(),
+##   WS_6 = col_double(),
+##   WS_7 = col_double(),
+##   WS_8 = col_double(),
+##   WS_9 = col_double()
+## )
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Qobs }\OtherTok{\textless{}{-}}\NormalTok{ Qobs1}\SpecialCharTok{$}\NormalTok{WS\_3}
+
+\NormalTok{ModelOutput }\OtherTok{\textless{}{-}} \FunctionTok{bind\_cols}\NormalTok{(ModelOutput, Qobs1)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{compare-observed-and-modeled-discharge-graphically}{%
+\section{Compare observed and modeled discharge graphically}\label{compare-observed-and-modeled-discharge-graphically}}
+
+Now that we have the observed values glued on to our model output, we can plot the two and see how they compare. Below we will plot the modelled and observed discharge as two lines on a ggplot.
+
+Because the model starts out with its storages at zero, it takes some time for it to actually approximate real conditions. For this reason, you will typically set aside part of the modelled period as a ``warm up'' period. The duration of this period depends on the system, but for our purposes, we are doing to drop the first half of the model run and only look at the second half: 2011 - 2013. So we will filter the data to just look at that time.
+
+How'd we do? Did the model do a good job of capturing runoff dynamics in watershed 3?
+
+Describe what it looks like the model did well and what it did poorly?
+
+When you are looking at results like this, it is often helpful to look at the full timeframe but to also zoom in and look at specific event dynamics to see what hydrologic processes the model is or is not capturing well. One helpful tool at doing that is plotly. Plotly allows you to create interactive plots. The code chunk after the ggplot creates a plotly graph. From here on out we will use plotly to look at our modeling results so we can investigate them more thoroughly.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{OutputTrim }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(ModelOutput, DATE }\SpecialCharTok{\textgreater{}=} \FunctionTok{mdy}\NormalTok{(}\StringTok{"01{-}01{-}2011"}\NormalTok{))}
+
+\FunctionTok{ggplot}\NormalTok{(OutputTrim, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ DATE, }\AttributeTok{y =}\NormalTok{ WS\_3, }\AttributeTok{color =} \StringTok{"Measured"}\NormalTok{))}\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{()}\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ q, }\AttributeTok{color =} \StringTok{"Modelled"}\NormalTok{))}\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Discharge (mm/d)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-173-1.pdf}
+
+\hypertarget{compare-observed-and-modelled-discharge-with-interactive-graph}{%
+\section{Compare observed and modelled discharge with interactive graph}\label{compare-observed-and-modelled-discharge-with-interactive-graph}}
+
+The code below creates a plot analogous to the ggplot above. Note the differences in syntax. All the same information is there, it is just a different recipe, and you use pipes instead of +.
+
+You can click and drag a box over any time you want to look at to zoom, and if you hover over one of the lines, it will show you the values in a dialogue box. There is a lot of other functionality as well, which you can explore in the menu in the upper right.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{OutputTrim }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{plot\_ly}\NormalTok{(}\AttributeTok{x =} \SpecialCharTok{\textasciitilde{}}\NormalTok{DATE) }\SpecialCharTok{\%\textgreater{}\%} 
+        \FunctionTok{add\_trace}\NormalTok{(}\AttributeTok{y =} \SpecialCharTok{\textasciitilde{}}\NormalTok{q, }\AttributeTok{name =} \StringTok{\textquotesingle{}Modeled\textquotesingle{}}\NormalTok{,  }\AttributeTok{type =} \StringTok{\textquotesingle{}scatter\textquotesingle{}}\NormalTok{, }\AttributeTok{mode =} \StringTok{\textquotesingle{}lines\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+        \FunctionTok{add\_trace}\NormalTok{(}\AttributeTok{y =} \SpecialCharTok{\textasciitilde{}}\NormalTok{WS\_3, }\AttributeTok{name =} \StringTok{\textquotesingle{}Measured\textquotesingle{}}\NormalTok{,  }\AttributeTok{type =} \StringTok{\textquotesingle{}scatter\textquotesingle{}}\NormalTok{, }\AttributeTok{mode =} \StringTok{\textquotesingle{}lines\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{measure-how-well-the-model-fits-with-nse}{%
+\section{Measure how well the model fits with NSE}\label{measure-how-well-the-model-fits-with-nse}}
+
+Before we can start trying to tune our model to look more like the observed discharge record, it would be helpful to have some sort of quantified metric for how well our modeled data fits the measured data.
+
+There are many different ways to do this, but discussion of the pros and cons of those approaches is beyond this quick introduction to modeling. So we are just going to look at one method, the Nash-Sutcliffe Efficiency (NSE).
+
+Basically, the NSE looks at how much better your model run did that if you had just used the mean discharge for the data record as your ``modelled results''. It does this by comparing how far off the observed values where from the mean discharge to how far off the modeled values were from the observed discharge.
+
+Mathematically NSE the sum of the squared differences between the modeled and observed discharge divided by the sum of the squared differences between the observed and mean discharge, subtracted by 1.
+
+\[
+NSE = 1 - \frac{\sum_{t = 1}^{T}{(Q_m^t - Q_o^t)^2}}{\sum_{t = 1}^{T}{(Q_o^t - \bar{Q_o})^2}}
+\]
+Where \(Q_m^t\) is modeled discharge at time t, \(Q_o^t\) is observed discharge at time t, and \(\bar{Q_o}^2\) is mean observed discharge.
+
+Below, we calculate NSE for the model run above. We will continue to exclude the warm up period.
+
+An NSE over 0 means the model did better than the mean discharge at predicting discharge. An NSE of 1 would be a perfect model fit. How'd we do? Does this make sense with the timeseries we looked at above?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Calculate NSE}
+\NormalTok{NSE }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ ((}\FunctionTok{sum}\NormalTok{((OutputTrim}\SpecialCharTok{$}\NormalTok{q }\SpecialCharTok{{-}}\NormalTok{ OutputTrim}\SpecialCharTok{$}\NormalTok{WS\_3) }\SpecialCharTok{\^{}} \DecValTok{2}\NormalTok{)) }\SpecialCharTok{/} 
+                 \FunctionTok{sum}\NormalTok{((OutputTrim}\SpecialCharTok{$}\NormalTok{WS\_3 }\SpecialCharTok{{-}} \FunctionTok{mean}\NormalTok{(OutputTrim}\SpecialCharTok{$}\NormalTok{WS\_3)) }\SpecialCharTok{\^{}} \DecValTok{2}\NormalTok{))}
+
+\NormalTok{NSE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.2135378
+\end{verbatim}
+
+\hypertarget{assess-model-fit-with-a-different-measure-snow}{%
+\section{Assess model fit with a different measure: Snow}\label{assess-model-fit-with-a-different-measure-snow}}
+
+Before we jump into trying to parameterize this thing, I wanted to note that there are other things you can calibrate your model to other than discharge. In the case of watershed 3, for example, we also have a snow record. Snowmelt is a very important input driving our model so we might want to make sure that the model is doing a good job of capturing that as well!
+
+Let's pull in snow, calculate NSE between the modeled and measure snow, and look at a plot of the data.
+
+Snow is not measured daily, so we will plot the measured values as points. Likewise, we will have filter our data to only times when we have a modeled snow amount AND a recorded snow amount when we calculate NSE.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Read and prep snow data}
+\NormalTok{snow }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"HBV/sno2009{-}2012.csv"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+         \FunctionTok{select}\NormalTok{(DATE, STA2) }\SpecialCharTok{\%\textgreater{}\%}
+         \FunctionTok{mutate}\NormalTok{(}\AttributeTok{DATE =} \FunctionTok{ymd}\NormalTok{(DATE)) }\SpecialCharTok{\%\textgreater{}\%}
+         \FunctionTok{filter}\NormalTok{(DATE }\SpecialCharTok{\textgreater{}=}\NormalTok{ start }\SpecialCharTok{\&}\NormalTok{ DATE }\SpecialCharTok{\textless{}=}\NormalTok{ end)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   .default = col_double(),
+##   DATE = col_character()
+## )
+## i Use `spec()` for the full column specifications.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: 76 parsing failures.
+## row col   expected     actual                   file
+##   1  -- 22 columns 25 columns 'HBV/sno2009-2012.csv'
+##   2  -- 22 columns 25 columns 'HBV/sno2009-2012.csv'
+##   3  -- 22 columns 25 columns 'HBV/sno2009-2012.csv'
+##   4  -- 22 columns 25 columns 'HBV/sno2009-2012.csv'
+##   5  -- 22 columns 25 columns 'HBV/sno2009-2012.csv'
+## ... ... .......... .......... ......................
+## See problems(...) for more details.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: 8 failed to parse.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Join measured snow to model output}
+\NormalTok{OutputTrimSno }\OtherTok{\textless{}{-}} \FunctionTok{left\_join}\NormalTok{(OutputTrim, snow, }\AttributeTok{by =} \StringTok{"DATE"}\NormalTok{)}
+
+\CommentTok{\#Plot modeled and measured snow}
+\NormalTok{OutputTrimSno }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{plot\_ly}\NormalTok{(}\AttributeTok{x =} \SpecialCharTok{\textasciitilde{}}\NormalTok{DATE) }\SpecialCharTok{\%\textgreater{}\%} 
+        \FunctionTok{add\_trace}\NormalTok{(}\AttributeTok{y =} \SpecialCharTok{\textasciitilde{}}\NormalTok{SWE, }\AttributeTok{name =} \StringTok{\textquotesingle{}Modeled\textquotesingle{}}\NormalTok{, }\AttributeTok{type =} \StringTok{\textquotesingle{}scatter\textquotesingle{}}\NormalTok{, }\AttributeTok{mode =} \StringTok{\textquotesingle{}lines\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+        \FunctionTok{add\_trace}\NormalTok{(}\AttributeTok{y =} \SpecialCharTok{\textasciitilde{}}\NormalTok{STA2, }\AttributeTok{name =} \StringTok{\textquotesingle{}Measured\textquotesingle{}}\NormalTok{, }\AttributeTok{type =} \StringTok{\textquotesingle{}scatter\textquotesingle{}}\NormalTok{, }\AttributeTok{mode =} \StringTok{\textquotesingle{}markers\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Ignoring 698 observations
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Drop rows where there isn\textquotesingle{}t a measured snow amount}
+\NormalTok{CompareSnow }\OtherTok{\textless{}{-}} \FunctionTok{drop\_na}\NormalTok{(OutputTrimSno, STA2)}
+
+\CommentTok{\#Calculate NSE for snow, SWE is modeled, STA2 is measured}
+\NormalTok{NSEsno }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ ((}\FunctionTok{sum}\NormalTok{((CompareSnow}\SpecialCharTok{$}\NormalTok{SWE }\SpecialCharTok{{-}}\NormalTok{ CompareSnow}\SpecialCharTok{$}\NormalTok{STA2) }\SpecialCharTok{\^{}} \DecValTok{2}\NormalTok{)) }\SpecialCharTok{/} 
+                 \FunctionTok{sum}\NormalTok{((CompareSnow}\SpecialCharTok{$}\NormalTok{STA2 }\SpecialCharTok{{-}} \FunctionTok{mean}\NormalTok{(CompareSnow}\SpecialCharTok{$}\NormalTok{STA2)) }\SpecialCharTok{\^{}} \DecValTok{2}\NormalTok{))}
+
+\NormalTok{NSEsno}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1339054
+\end{verbatim}
+
+\hypertarget{calibrate-hbv-manually}{%
+\section{Calibrate HBV manually}\label{calibrate-hbv-manually}}
+
+Woohoo! We can now run our model and assess how well it is working!
+
+Now, let's see how well we can get it to work. The code below runs the model, produces a plot, and calculates the NSE based on discharge.
+
+By changing the parameters, see how well you can get the model to fit. Take note of how the discharge changes when you change certain parameters. Let's see who can get the highest NSE!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#when this term = 1, then triangular routing is invoked, or for no routing, routing = 0}
+\CommentTok{\#if routing = 0 then MAXBAS doesn\textquotesingle{}t do anything}
+\NormalTok{routing }\OtherTok{\textless{}{-}} \DecValTok{0}      
+
+\CommentTok{\#hard code parameters }
+\NormalTok{params }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{40}\NormalTok{,     }\CommentTok{\#FCM ax soil moisture storage, field capacity}
+            \DecValTok{1}\NormalTok{,      }\CommentTok{\#beta Shape coefficient governing fate of water input to soil moisture storage}
+            \FloatTok{0.3}\NormalTok{,    }\CommentTok{\#LP Threshold for reduction of evap}
+            \FloatTok{0.4}\NormalTok{,    }\CommentTok{\#SFCF Snowfall correction factor}
+            \SpecialCharTok{{-}}\FloatTok{1.5}\NormalTok{,   }\CommentTok{\#TT Threshold temperature}
+            \DecValTok{1}\NormalTok{,      }\CommentTok{\#CFMAX Degree{-}day factor}
+            \FloatTok{0.05}\NormalTok{,   }\CommentTok{\#k0 Recession constant (upper storage, near surface)}
+            \FloatTok{0.01}\NormalTok{,   }\CommentTok{\#k1 Recession constant (upper storage)}
+            \FloatTok{0.001}\NormalTok{,  }\CommentTok{\#k2 Recession constant (lower storage)}
+            \DecValTok{0}\NormalTok{,      }\CommentTok{\#UZL Threshold for shallow storage}
+            \DecValTok{0}\NormalTok{,      }\CommentTok{\#PERC Percolation, max flow from upper to lower storage}
+            \DecValTok{1}       \CommentTok{\#MAXBAS base of the triangular routing function, days}
+\NormalTok{            )}
+
+\CommentTok{\#Run the model}
+\NormalTok{Out }\OtherTok{\textless{}{-}} \FunctionTok{HBV}\NormalTok{(params, P, Temp, PET, routing)}
+
+\CommentTok{\#Add observed output}
+\NormalTok{Out }\OtherTok{\textless{}{-}} \FunctionTok{bind\_cols}\NormalTok{(Out, Qobs1)}
+
+\CommentTok{\#Trim out the warm up period}
+\NormalTok{OutTrim }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(Out, DATE }\SpecialCharTok{\textgreater{}=} \FunctionTok{mdy}\NormalTok{(}\StringTok{"01{-}01{-}2011"}\NormalTok{))}
+
+\CommentTok{\#Calculate NSE}
+\NormalTok{NSE }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ ((}\FunctionTok{sum}\NormalTok{((OutTrim}\SpecialCharTok{$}\NormalTok{q }\SpecialCharTok{{-}}\NormalTok{ OutTrim}\SpecialCharTok{$}\NormalTok{WS\_3) }\SpecialCharTok{\^{}} \DecValTok{2}\NormalTok{)) }\SpecialCharTok{/} 
+                 \FunctionTok{sum}\NormalTok{((OutTrim}\SpecialCharTok{$}\NormalTok{WS\_3 }\SpecialCharTok{{-}} \FunctionTok{mean}\NormalTok{(OutTrim}\SpecialCharTok{$}\NormalTok{WS\_3)) }\SpecialCharTok{\^{}} \DecValTok{2}\NormalTok{))}
+
+\CommentTok{\#Create plot with NSE in title}
+\NormalTok{OutTrim }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{plot\_ly}\NormalTok{(}\AttributeTok{x =} \SpecialCharTok{\textasciitilde{}}\NormalTok{DATE) }\SpecialCharTok{\%\textgreater{}\%} 
+        \FunctionTok{add\_trace}\NormalTok{(}\AttributeTok{y =} \SpecialCharTok{\textasciitilde{}}\NormalTok{q, }\AttributeTok{name =} \StringTok{\textquotesingle{}Modeled\textquotesingle{}}\NormalTok{,  }\AttributeTok{type =} \StringTok{\textquotesingle{}scatter\textquotesingle{}}\NormalTok{, }\AttributeTok{mode =} \StringTok{\textquotesingle{}lines\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+        \FunctionTok{add\_trace}\NormalTok{(}\AttributeTok{y =} \SpecialCharTok{\textasciitilde{}}\NormalTok{WS\_3, }\AttributeTok{name =} \StringTok{\textquotesingle{}Measured\textquotesingle{}}\NormalTok{, }\AttributeTok{type =} \StringTok{\textquotesingle{}scatter\textquotesingle{}}\NormalTok{, }\AttributeTok{mode =} \StringTok{\textquotesingle{}lines\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+        \FunctionTok{layout}\NormalTok{(}\AttributeTok{title=}\FunctionTok{paste}\NormalTok{(}\StringTok{"NSE: "}\NormalTok{, }\FunctionTok{round}\NormalTok{(NSE,}\DecValTok{2}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{modelingcalibration}{%
+\chapter{Intro to Modeling - Calibrate HBV}\label{modelingcalibration}}
+
+\hypertarget{introduction-6}{%
+\section{Introduction}\label{introduction-6}}
+
+The following activity is available as a template github repository at the following link:
+
+\emph{Goals for this activity:}
+
+\begin{itemize}
+\tightlist
+\item
+  Learn how for loops work
+\item
+  Use for loops to run calibrate the HBV model using the Monte Carlo technique
+\item
+  Assess the results of the calibration, discuss equifinality
+\end{itemize}
+
+We saw in the last activity that coming up with the parameters that create a model that fits our watershed discharge best is hard. For this reason, there are several ways people have devised for automating this process. We are going to explore one: a Monte Carlo calibration.
+
+To use this approach, we will create a ton of random parameter sets, run the model for each, and then see which one fits best. The idea is that by creating a bunch of random sets of parameters, we will end up with at least one that works well. As you might guess, this can take a while. We will just do this for 100 or 1000 runs here in this activity, but we will also explore some output from a 100,000 run Monte Carlo that I ran and saved.
+
+There is one new package this time, just for creating a parallel coordinate plot to look at the results of the 100k run Monte Carlo at the end.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(lubridate)}
+\FunctionTok{library}\NormalTok{(patchwork)}
+\FunctionTok{library}\NormalTok{(plotly)}
+\FunctionTok{library}\NormalTok{(GGally) }\CommentTok{\#for making parallel coordinate plot}
+
+\FunctionTok{theme\_set}\NormalTok{(}\FunctionTok{theme\_classic}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+In order to do what we are going to do, we need for loops
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{val }\OtherTok{\textless{}{-}} \DecValTok{0}
+
+\ControlFlowTok{for}\NormalTok{(x }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)\{}
+\NormalTok{  val[x] }\OtherTok{\textless{}{-}}\NormalTok{ x}
+\NormalTok{\}}
+
+\NormalTok{val}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  1  2  3  4  5  6  7  8  9 10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{days }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"mon"}\NormalTok{,}\StringTok{"tues"}\NormalTok{,}\StringTok{"wednes"}\NormalTok{)}
+
+\ControlFlowTok{for}\NormalTok{(x }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(days))\{}
+\NormalTok{  days[x] }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(days[x], }\StringTok{"day"}\NormalTok{)}
+\NormalTok{\}}
+
+\NormalTok{days}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "monday"    "tuesday"   "wednesday"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gages }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"123"}\NormalTok{,}\StringTok{"ABC"}\NormalTok{,}\StringTok{"001"}\NormalTok{)}
+
+\ControlFlowTok{for}\NormalTok{(g }\ControlFlowTok{in}\NormalTok{ gages)\{}
+  \FunctionTok{print}\NormalTok{(g)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "123"
+## [1] "ABC"
+## [1] "001"
+\end{verbatim}
+
+\hypertarget{prep-data}{%
+\section{Prep data}\label{prep-data}}
+
+Import data
+Make P, Qobs, Temp as vectors
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Precip}
+\NormalTok{P1 }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"HBV/Pwd2009{-}2012.csv"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+         \FunctionTok{select}\NormalTok{(DATE, WS\_3) }\SpecialCharTok{\%\textgreater{}\%}
+         \FunctionTok{mutate}\NormalTok{(}\AttributeTok{DATE =} \FunctionTok{ymd}\NormalTok{(DATE)) }\SpecialCharTok{\%\textgreater{}\%}
+         \FunctionTok{filter}\NormalTok{(DATE }\SpecialCharTok{\textgreater{}=}\NormalTok{ start }\SpecialCharTok{\&}\NormalTok{ DATE }\SpecialCharTok{\textless{}=}\NormalTok{ end)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   DATE = col_character(),
+##   WS_1 = col_double(),
+##   WS_2 = col_double(),
+##   WS_3 = col_double(),
+##   WS_4 = col_double(),
+##   WS_5 = col_double(),
+##   WS_6 = col_double(),
+##   WS_7 = col_double(),
+##   WS_8 = col_double(),
+##   WS_9 = col_double()
+## )
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{P }\OtherTok{\textless{}{-}}\NormalTok{ P1}\SpecialCharTok{$}\NormalTok{WS\_3}
+
+\CommentTok{\#Streamflow mm/d}
+\NormalTok{Qobs1 }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"HBV/SWD2009{-}2012.csv"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+         \FunctionTok{select}\NormalTok{(DATE, WS\_3) }\SpecialCharTok{\%\textgreater{}\%}
+         \FunctionTok{mutate}\NormalTok{(}\AttributeTok{DATE =} \FunctionTok{ymd}\NormalTok{(DATE)) }\SpecialCharTok{\%\textgreater{}\%}
+         \FunctionTok{filter}\NormalTok{(DATE }\SpecialCharTok{\textgreater{}=}\NormalTok{ start }\SpecialCharTok{\&}\NormalTok{ DATE }\SpecialCharTok{\textless{}=}\NormalTok{ end)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   DATE = col_character(),
+##   WS_1 = col_double(),
+##   WS_2 = col_double(),
+##   WS_3 = col_double(),
+##   WS_4 = col_double(),
+##   WS_5 = col_double(),
+##   WS_6 = col_double(),
+##   WS_7 = col_double(),
+##   WS_8 = col_double(),
+##   WS_9 = col_double()
+## )
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Qobs }\OtherTok{\textless{}{-}}\NormalTok{ Qobs1}\SpecialCharTok{$}\NormalTok{WS\_3}
+
+\CommentTok{\#Temp in deg C}
+\NormalTok{Temp1 }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"HBV/Tdm2009{-}2012.csv"}\NormalTok{)}\SpecialCharTok{\%\textgreater{}\%}
+         \FunctionTok{select}\NormalTok{(DATE, STA\_1) }\SpecialCharTok{\%\textgreater{}\%}
+         \FunctionTok{mutate}\NormalTok{(}\AttributeTok{DATE =} \FunctionTok{ymd}\NormalTok{(DATE)) }\SpecialCharTok{\%\textgreater{}\%}
+         \FunctionTok{filter}\NormalTok{(DATE }\SpecialCharTok{\textgreater{}=}\NormalTok{ start }\SpecialCharTok{\&}\NormalTok{ DATE }\SpecialCharTok{\textless{}=}\NormalTok{ end)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   DATE = col_character(),
+##   STA_1 = col_double(),
+##   STA_6 = col_double(),
+##   STA_14 = col_double(),
+##   STA_INT = col_double(),
+##   STA_HQ = col_double(),
+##   STA_23 = col_double(),
+##   STA_17 = col_double(),
+##   STA_24 = col_double()
+## )
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Temp }\OtherTok{\textless{}{-}}\NormalTok{ Temp1}\SpecialCharTok{$}\NormalTok{STA\_1}
+
+\CommentTok{\#Snow in SWE, mm}
+\NormalTok{snow }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"HBV/sno2009{-}2012.csv"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+         \FunctionTok{select}\NormalTok{(DATE, STA2) }\SpecialCharTok{\%\textgreater{}\%}
+         \FunctionTok{mutate}\NormalTok{(}\AttributeTok{DATE =} \FunctionTok{ymd}\NormalTok{(DATE)) }\SpecialCharTok{\%\textgreater{}\%}
+         \FunctionTok{filter}\NormalTok{(DATE }\SpecialCharTok{\textgreater{}=}\NormalTok{ start }\SpecialCharTok{\&}\NormalTok{ DATE }\SpecialCharTok{\textless{}=}\NormalTok{ end)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   .default = col_double(),
+##   DATE = col_character()
+## )
+## i Use `spec()` for the full column specifications.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: 76 parsing failures.
+## row col   expected     actual                   file
+##   1  -- 22 columns 25 columns 'HBV/sno2009-2012.csv'
+##   2  -- 22 columns 25 columns 'HBV/sno2009-2012.csv'
+##   3  -- 22 columns 25 columns 'HBV/sno2009-2012.csv'
+##   4  -- 22 columns 25 columns 'HBV/sno2009-2012.csv'
+##   5  -- 22 columns 25 columns 'HBV/sno2009-2012.csv'
+## ... ... .......... .......... ......................
+## See problems(...) for more details.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: 8 failed to parse.
+\end{verbatim}
+
+\hypertarget{calculate-pet-1}{%
+\section{Calculate PET}\label{calculate-pet-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lat }\OtherTok{\textless{}{-}} \DecValTok{43} \SpecialCharTok{+} \DecValTok{57}\SpecialCharTok{/}\DecValTok{60} \CommentTok{\#43 degrees and 57 minutes}
+\NormalTok{latrad }\OtherTok{\textless{}{-}}\NormalTok{ (lat}\SpecialCharTok{/}\DecValTok{360}\NormalTok{) }\SpecialCharTok{*} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ pi }\CommentTok{\#convert to radians}
+
+\NormalTok{PET1 }\OtherTok{\textless{}{-}} \FunctionTok{select}\NormalTok{(Temp1, DATE) }\SpecialCharTok{\%\textgreater{}\%}
+         \FunctionTok{mutate}\NormalTok{(}\AttributeTok{DOY =} \FunctionTok{yday}\NormalTok{(DATE)) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\#DOY for dates}
+         \FunctionTok{mutate}\NormalTok{(}\AttributeTok{tempvar =}\NormalTok{ (}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ pi }\SpecialCharTok{/} \DecValTok{365}\NormalTok{) }\SpecialCharTok{*}\NormalTok{ DOY) }\SpecialCharTok{\%\textgreater{}\%}
+         \CommentTok{\#declination of the sun above the celestial equator in }
+         \CommentTok{\#radians on day JulDay of the year}
+         \FunctionTok{mutate}\NormalTok{(}\AttributeTok{delta\_h =} \FloatTok{0.4093} \SpecialCharTok{*} \FunctionTok{sin}\NormalTok{(tempvar }\SpecialCharTok{{-}} \FloatTok{1.405}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+         \CommentTok{\#day length in h}
+         \FunctionTok{mutate}\NormalTok{(}\AttributeTok{daylen =}\NormalTok{ (}\DecValTok{2} \SpecialCharTok{*} \FunctionTok{acos}\NormalTok{(}\SpecialCharTok{{-}}\FunctionTok{tan}\NormalTok{(delta\_h) }\SpecialCharTok{*} \FunctionTok{tan}\NormalTok{(latrad)) }\SpecialCharTok{/} \FloatTok{0.2618}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+         \FunctionTok{mutate}\NormalTok{(}
+           \AttributeTok{PET =} \FloatTok{29.8} \SpecialCharTok{*}\NormalTok{ daylen }\SpecialCharTok{*} \FloatTok{0.611} \SpecialCharTok{*} \FunctionTok{exp}\NormalTok{(}\FloatTok{17.3} \SpecialCharTok{*}\NormalTok{ Temp }\SpecialCharTok{/} 
+\NormalTok{                  (Temp }\SpecialCharTok{+} \FloatTok{237.3}\NormalTok{)) }\SpecialCharTok{/}\NormalTok{ (Temp }\SpecialCharTok{+} \FloatTok{273.2}\NormalTok{))  }\CommentTok{\#PET Hamon method}
+
+\NormalTok{PET }\OtherTok{\textless{}{-}}\NormalTok{ PET1}\SpecialCharTok{$}\NormalTok{PET}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{hbv-parameters-1}{%
+\section{HBV Parameters}\label{hbv-parameters-1}}
+
+The table below shows the parameters of the HBV model, the minimum and maximum for those values, and a description of their function in the model.
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+\begin{minipage}[b]{0.29\columnwidth}\raggedright
+Object Name\strut
+\end{minipage} & \begin{minipage}[b]{0.16\columnwidth}\raggedright
+Min\strut
+\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\raggedright
+Max\strut
+\end{minipage} & \begin{minipage}[b]{0.31\columnwidth}\raggedright
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+FC\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+40\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+400\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Max soil moisture storage, field capacity\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+beta\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+6\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Shape coefficient governing fate of water input to soil moisture storage\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+LP\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+.3\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Threshold for reduction of evaporation\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+SFCF\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+0.4\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+1.2\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Snowfall correction factor\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+TT\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+-1.5\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+1.2\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Threshold temperature\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+CFMAX\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+8\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Degree-day factor\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+k0\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+0.05\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+0.5\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Recession constant (upper storage, near surface)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+k1\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+0.01\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+0.3\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Recession constant (upper storage)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+k2\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+0.001\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+0.15\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Recession constant (lower storage)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+UZL\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+70\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Threshold for shallow storage\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+PERC\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Percolation, max flow from upper to lower storage\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+MAXBAS\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+3\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+base of the triangular routing function, days"\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+To pass a set of parameters to the model, we just put them into a single vector in the order they are in the table above. In the chunk below, I've structured this to make it easy to see a description of each parameter, but you could also just do it in one line without all the comments. Just be sure to get the order right!
+
+The code below sets the routing to 0, which is what we want for a small catchment.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#number of runs}
+\NormalTok{N }\OtherTok{\textless{}{-}} \DecValTok{100}
+
+\CommentTok{\# PARAMETERS RANGE and generate set}
+\NormalTok{FC    }\OtherTok{\textless{}{-}} \FunctionTok{runif}\NormalTok{(N, }\AttributeTok{min =} \DecValTok{40}\NormalTok{   , }\AttributeTok{max =} \DecValTok{400}\NormalTok{)  }\CommentTok{\#Max soil moisture storage, field capacity}
+\NormalTok{beta  }\OtherTok{\textless{}{-}} \FunctionTok{runif}\NormalTok{(N, }\AttributeTok{min =} \DecValTok{1}\NormalTok{    , }\AttributeTok{max =} \DecValTok{6}\NormalTok{)    }\CommentTok{\#Shape coefficient governing fate of water input to soil moisture storage}
+\NormalTok{LP    }\OtherTok{\textless{}{-}} \FunctionTok{runif}\NormalTok{(N, }\AttributeTok{min =} \FloatTok{0.3}\NormalTok{   , }\AttributeTok{max =} \DecValTok{1}\NormalTok{)    }\CommentTok{\#Threshold for reduction of evap}
+\NormalTok{SFCF  }\OtherTok{\textless{}{-}} \FunctionTok{runif}\NormalTok{(N, }\AttributeTok{min =} \FloatTok{0.4}\NormalTok{  , }\AttributeTok{max =} \FloatTok{1.2}\NormalTok{)  }\CommentTok{\#Snowfall correction factor}
+\NormalTok{TT    }\OtherTok{\textless{}{-}} \FunctionTok{runif}\NormalTok{(N, }\AttributeTok{min =} \SpecialCharTok{{-}}\FloatTok{1.5}\NormalTok{ , }\AttributeTok{max =} \FloatTok{1.2}\NormalTok{)  }\CommentTok{\#Threshold temperature}
+\NormalTok{CFMAX }\OtherTok{\textless{}{-}} \FunctionTok{runif}\NormalTok{(N, }\AttributeTok{min =} \DecValTok{1}\NormalTok{    , }\AttributeTok{max =} \DecValTok{8}\NormalTok{)    }\CommentTok{\#Degree{-}day factor}
+\NormalTok{k0    }\OtherTok{\textless{}{-}} \FunctionTok{runif}\NormalTok{(N, }\AttributeTok{min =} \FloatTok{0.05}\NormalTok{ , }\AttributeTok{max =} \FloatTok{0.5}\NormalTok{)  }\CommentTok{\#Recession constant (upper storage, near surface)}
+\NormalTok{k1    }\OtherTok{\textless{}{-}} \FunctionTok{runif}\NormalTok{(N, }\AttributeTok{min =} \FloatTok{0.01}\NormalTok{ , }\AttributeTok{max =} \FloatTok{0.3}\NormalTok{)  }\CommentTok{\#Recession constant (upper storage)}
+\NormalTok{k2    }\OtherTok{\textless{}{-}} \FunctionTok{runif}\NormalTok{(N, }\AttributeTok{min =} \FloatTok{0.001}\NormalTok{, }\AttributeTok{max =} \FloatTok{0.15}\NormalTok{) }\CommentTok{\#Recession constant (lower storage)}
+\NormalTok{UZL   }\OtherTok{\textless{}{-}} \FunctionTok{runif}\NormalTok{(N, }\AttributeTok{min =} \DecValTok{0}\NormalTok{    , }\AttributeTok{max =} \DecValTok{70}\NormalTok{)   }\CommentTok{\#Threshold for shallow storage}
+\NormalTok{PERC  }\OtherTok{\textless{}{-}} \FunctionTok{runif}\NormalTok{(N, }\AttributeTok{min =} \DecValTok{0}\NormalTok{    , }\AttributeTok{max =} \DecValTok{4}\NormalTok{)    }\CommentTok{\#Percolation, max flow from upper to lower storage}
+\NormalTok{MAXBAS}\OtherTok{\textless{}{-}} \FunctionTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{, N)   }\CommentTok{\#base of the triangular routing function, days}
+
+\NormalTok{NSE }\OtherTok{\textless{}{-}} \FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, N) }\CommentTok{\#create NSE column, to be filled in for loop}
+
+\NormalTok{pars }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(FC, beta, LP, SFCF, }
+\NormalTok{               TT, CFMAX, k0, k1, }
+\NormalTok{               k2, UZL, PERC, MAXBAS, NSE) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#trim the first 40\% (warm up) of Qobs off for NSE calculation }
+\NormalTok{EvalStart }\OtherTok{\textless{}{-}} \FunctionTok{floor}\NormalTok{(}\FunctionTok{length}\NormalTok{(Qobs)}\SpecialCharTok{*}\FloatTok{0.4}\NormalTok{)}
+\NormalTok{EvalEnd }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(Qobs)}
+
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{N)\{}
+   
+   \CommentTok{\#call model with i parameter set generated above}
+\NormalTok{   results }\OtherTok{\textless{}{-}} \FunctionTok{HBV}\NormalTok{(pars[i,}\DecValTok{1}\SpecialCharTok{:}\DecValTok{12}\NormalTok{], P, Temp, PET, routing)}
+   
+   \CommentTok{\#add the Qobs to results}
+\NormalTok{   results }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(results, Qobs)}
+   
+   \CommentTok{\#trim the first 40\% of the record so it isn\textquotesingle{}t included in the NSE calculation}
+\NormalTok{   results }\OtherTok{\textless{}{-}}\NormalTok{ results[EvalStart}\SpecialCharTok{:}\NormalTok{EvalEnd,]}
+    
+   \CommentTok{\#Calculate NSE and add to parameter set}
+\NormalTok{   pars[i,}\DecValTok{13}\NormalTok{]  }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ ((}\FunctionTok{sum}\NormalTok{((results}\SpecialCharTok{$}\NormalTok{Qobs }\SpecialCharTok{{-}}\NormalTok{ results}\SpecialCharTok{$}\NormalTok{q) }\SpecialCharTok{\^{}} \DecValTok{2}\NormalTok{)) }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{((results}\SpecialCharTok{$}\NormalTok{Qobs }\SpecialCharTok{{-}} \FunctionTok{mean}\NormalTok{(results}\SpecialCharTok{$}\NormalTok{Qobs)) }\SpecialCharTok{\^{}} \DecValTok{2}\NormalTok{))}
+   
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#find best parameters}
+\NormalTok{pars }\OtherTok{\textless{}{-}} \FunctionTok{as\_tibble}\NormalTok{(pars)}
+
+\NormalTok{bestparams }\OtherTok{\textless{}{-}}\NormalTok{ pars }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(NSE }\SpecialCharTok{==} \FunctionTok{max}\NormalTok{(NSE)) }\SpecialCharTok{\%\textgreater{}\%}
+                        \FunctionTok{slice}\NormalTok{(}\DecValTok{1}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+                        \FunctionTok{as.numeric}\NormalTok{()}
+
+\CommentTok{\#run with best parameters}
+\NormalTok{modeloutput }\OtherTok{\textless{}{-}}  \FunctionTok{HBV}\NormalTok{(bestparams, P, Temp, PET, routing)}
+
+\CommentTok{\#add observations for plotting}
+\NormalTok{modeloutput }\OtherTok{\textless{}{-}} \FunctionTok{bind\_cols}\NormalTok{(modeloutput, Qobs1)}
+
+\CommentTok{\#trim out warm up period for plotting}
+\NormalTok{OutputTrim }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(modeloutput, DATE }\SpecialCharTok{\textgreater{}=} \FunctionTok{mdy}\NormalTok{(}\StringTok{"08{-}07{-}2010"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Calculate NSE}
+\NormalTok{NSE }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ ((}\FunctionTok{sum}\NormalTok{((OutputTrim}\SpecialCharTok{$}\NormalTok{q }\SpecialCharTok{{-}}\NormalTok{ OutputTrim}\SpecialCharTok{$}\NormalTok{WS\_3) }\SpecialCharTok{\^{}} \DecValTok{2}\NormalTok{)) }\SpecialCharTok{/} 
+                 \FunctionTok{sum}\NormalTok{((OutputTrim}\SpecialCharTok{$}\NormalTok{WS\_3 }\SpecialCharTok{{-}} \FunctionTok{mean}\NormalTok{(OutputTrim}\SpecialCharTok{$}\NormalTok{WS\_3)) }\SpecialCharTok{\^{}} \DecValTok{2}\NormalTok{))}
+
+\CommentTok{\#Create plot with NSE in title}
+\NormalTok{OutputTrim }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{plot\_ly}\NormalTok{(}\AttributeTok{x =} \SpecialCharTok{\textasciitilde{}}\NormalTok{DATE) }\SpecialCharTok{\%\textgreater{}\%} 
+        \FunctionTok{add\_trace}\NormalTok{(}\AttributeTok{y =} \SpecialCharTok{\textasciitilde{}}\NormalTok{q, }\AttributeTok{name =} \StringTok{\textquotesingle{}Modeled\textquotesingle{}}\NormalTok{,  }\AttributeTok{type =} \StringTok{\textquotesingle{}scatter\textquotesingle{}}\NormalTok{, }\AttributeTok{mode =} \StringTok{\textquotesingle{}lines\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+        \FunctionTok{add\_trace}\NormalTok{(}\AttributeTok{y =} \SpecialCharTok{\textasciitilde{}}\NormalTok{WS\_3, }\AttributeTok{name =} \StringTok{\textquotesingle{}Measured\textquotesingle{}}\NormalTok{, }\AttributeTok{type =} \StringTok{\textquotesingle{}scatter\textquotesingle{}}\NormalTok{, }\AttributeTok{mode =} \StringTok{\textquotesingle{}lines\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+        \FunctionTok{layout}\NormalTok{(}\AttributeTok{title=}\FunctionTok{paste}\NormalTok{(}\StringTok{"NSE: "}\NormalTok{, }\FunctionTok{round}\NormalTok{(NSE,}\DecValTok{2}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+NSE in the top 100 runs from a 100,000 run monte carlo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#the [,{-}1] drops the first column, which is just row numbers}
+\NormalTok{pars100 }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"HBV/parsFrom100kRun.csv"}\NormalTok{)[,}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Missing column names filled in: 'X1' [1]
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   X1 = col_double(),
+##   FC = col_double(),
+##   beta = col_double(),
+##   LP = col_double(),
+##   SFCF = col_double(),
+##   TT = col_double(),
+##   CFMAX = col_double(),
+##   k0 = col_double(),
+##   k1 = col_double(),
+##   k2 = col_double(),
+##   UZL = col_double(),
+##   PERC = col_double(),
+##   MAXBAS = col_double(),
+##   NSE = col_double(),
+##   ranks = col_double()
+## )
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(pars100, }\FunctionTok{aes}\NormalTok{(NSE))}\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+\end{verbatim}
+
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-186-1.pdf}
+
+Show the top 10 parameter sets
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rankedpars }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(pars100, ranks }\SpecialCharTok{\textless{}=} \DecValTok{10}\NormalTok{)}
+
+\NormalTok{mins }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{40}\NormalTok{, }\DecValTok{1}\NormalTok{, }\FloatTok{0.3}\NormalTok{ , }\FloatTok{0.4}\NormalTok{, }\SpecialCharTok{{-}}\FloatTok{1.5}\NormalTok{, }\DecValTok{1}\NormalTok{, }\FloatTok{0.05}\NormalTok{, }\FloatTok{0.01}\NormalTok{, }\FloatTok{0.001}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+\NormalTok{maxs }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{400}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{1}\NormalTok{, }\FloatTok{1.2}\NormalTok{, }\FloatTok{1.2}\NormalTok{, }\DecValTok{8}\NormalTok{, }\FloatTok{0.5}\NormalTok{, }\FloatTok{0.3}\NormalTok{, }\FloatTok{0.15}\NormalTok{, }\DecValTok{70}\NormalTok{ , }\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+
+\NormalTok{rankedpars }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(rankedpars, mins, maxs)}
+
+\NormalTok{rankedpars }\OtherTok{\textless{}{-}}\NormalTok{ rankedpars }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{NSE =} \FunctionTok{as.character}\NormalTok{(}\FunctionTok{round}\NormalTok{(NSE, }\DecValTok{2}\NormalTok{)))}
+
+\NormalTok{rankedpars}\SpecialCharTok{$}\NormalTok{NSE[rankedpars}\SpecialCharTok{$}\NormalTok{NSE }\SpecialCharTok{==} \StringTok{"0"}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"Min/Max"}
+
+\NormalTok{rankedpars }\OtherTok{\textless{}{-}}\NormalTok{ rankedpars }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{ranks =} \FunctionTok{factor}\NormalTok{(ranks))}
+
+\NormalTok{rankedpars }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggparcoord}\NormalTok{(}\AttributeTok{columns =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{11}\NormalTok{, }
+              \AttributeTok{groupColumn =} \DecValTok{13}\NormalTok{,}
+              \AttributeTok{showPoints =} \ConstantTok{TRUE}\NormalTok{,}
+              \AttributeTok{scale =} \StringTok{"uniminmax"}\NormalTok{) }\SpecialCharTok{+}
+              \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+              \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Top 10 parameter sets from 100,000 run Monte Carlo"}\NormalTok{)}\SpecialCharTok{+}
+              \FunctionTok{ylab}\NormalTok{(}\StringTok{"normalized parameter values"}\NormalTok{)}\SpecialCharTok{+}
+              \FunctionTok{xlab}\NormalTok{(}\StringTok{"parameters"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-187-1.pdf}
 
   \bibliography{book.bib,packages.bib}
 

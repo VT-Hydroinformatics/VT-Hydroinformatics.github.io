@@ -24,7 +24,7 @@
 <meta name="author" content="JP Gannon" />
 
 
-<meta name="date" content="2021-03-30" />
+<meta name="date" content="2021-04-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -34,7 +34,7 @@
 
 <link rel="next" href="Plotting.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -65,6 +65,12 @@
 <link href="libs/rglwidgetClass-0.105.22/rgl.css" rel="stylesheet" />
 <script src="libs/rglwidgetClass-0.105.22/rglClass.min.js"></script>
 <script src="libs/CanvasMatrix4-0.105.22/CanvasMatrix.min.js"></script>
+<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GBDXSZFFSR"></script>
 <script>
@@ -369,6 +375,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.10" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#extract-data-based-on-watershed-outline"><i class="fa fa-check"></i><b>16.10</b> Extract data based on watershed outline</a></li>
 <li class="chapter" data-level="16.11" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#bonus-make-a-3d-map-of-your-watershed-with-rayshader"><i class="fa fa-check"></i><b>16.11</b> BONUS: Make a 3d map of your watershed with rayshader</a></li>
 </ul></li>
+<li class="chapter" data-level="17" data-path="modelingintro.html"><a href="modelingintro.html"><i class="fa fa-check"></i><b>17</b> Intro to Modeling - Getting Started with HBV</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="modelingintro.html"><a href="modelingintro.html#introduction-5"><i class="fa fa-check"></i><b>17.1</b> Introduction</a></li>
+<li class="chapter" data-level="17.2" data-path="modelingintro.html"><a href="modelingintro.html#creating-the-hbv-model-function"><i class="fa fa-check"></i><b>17.2</b> Creating the HBV model function</a></li>
+<li class="chapter" data-level="17.3" data-path="modelingintro.html"><a href="modelingintro.html#read-in-precip-and-temp"><i class="fa fa-check"></i><b>17.3</b> Read in Precip and Temp</a></li>
+<li class="chapter" data-level="17.4" data-path="modelingintro.html"><a href="modelingintro.html#calculate-pet"><i class="fa fa-check"></i><b>17.4</b> Calculate PET</a></li>
+<li class="chapter" data-level="17.5" data-path="modelingintro.html"><a href="modelingintro.html#hbv-parameters"><i class="fa fa-check"></i><b>17.5</b> HBV Parameters</a></li>
+<li class="chapter" data-level="17.6" data-path="modelingintro.html"><a href="modelingintro.html#first-model-run"><i class="fa fa-check"></i><b>17.6</b> First model run</a></li>
+<li class="chapter" data-level="17.7" data-path="modelingintro.html"><a href="modelingintro.html#import-observed-streamflow-data"><i class="fa fa-check"></i><b>17.7</b> Import observed streamflow data</a></li>
+<li class="chapter" data-level="17.8" data-path="modelingintro.html"><a href="modelingintro.html#compare-observed-and-modeled-discharge-graphically"><i class="fa fa-check"></i><b>17.8</b> Compare observed and modeled discharge graphically</a></li>
+<li class="chapter" data-level="17.9" data-path="modelingintro.html"><a href="modelingintro.html#compare-observed-and-modelled-discharge-with-interactive-graph"><i class="fa fa-check"></i><b>17.9</b> Compare observed and modelled discharge with interactive graph</a></li>
+<li class="chapter" data-level="17.10" data-path="modelingintro.html"><a href="modelingintro.html#measure-how-well-the-model-fits-with-nse"><i class="fa fa-check"></i><b>17.10</b> Measure how well the model fits with NSE</a></li>
+<li class="chapter" data-level="17.11" data-path="modelingintro.html"><a href="modelingintro.html#assess-model-fit-with-a-different-measure-snow"><i class="fa fa-check"></i><b>17.11</b> Assess model fit with a different measure: Snow</a></li>
+<li class="chapter" data-level="17.12" data-path="modelingintro.html"><a href="modelingintro.html#calibrate-hbv-manually"><i class="fa fa-check"></i><b>17.12</b> Calibrate HBV manually</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="modelingcalibration.html"><a href="modelingcalibration.html"><i class="fa fa-check"></i><b>18</b> Intro to Modeling - Calibrate HBV</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="modelingcalibration.html"><a href="modelingcalibration.html#introduction-6"><i class="fa fa-check"></i><b>18.1</b> Introduction</a></li>
+<li class="chapter" data-level="18.2" data-path="modelingcalibration.html"><a href="modelingcalibration.html#prep-data"><i class="fa fa-check"></i><b>18.2</b> Prep data</a></li>
+<li class="chapter" data-level="18.3" data-path="modelingcalibration.html"><a href="modelingcalibration.html#calculate-pet-1"><i class="fa fa-check"></i><b>18.3</b> Calculate PET</a></li>
+<li class="chapter" data-level="18.4" data-path="modelingcalibration.html"><a href="modelingcalibration.html#hbv-parameters-1"><i class="fa fa-check"></i><b>18.4</b> HBV Parameters</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -392,7 +420,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Hydroinformatics at VT</h1>
 <p class="author"><em>JP Gannon</em></p>
-<p class="date"><em>2021-03-30</em></p>
+<p class="date"><em>2021-04-13</em></p>
 </div>
 <div id="introduction" class="section level1" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
@@ -420,7 +448,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a href="rgeospatial.html#rgeospatial">13</a> <strong><a href="rgeospatial.html#rgeospatial">Geospatial data in R - Vector</a></strong>: <em>Intro to working with vector data in R</em><br />
 <a href="summative2.html#summative2">14</a> <strong><a href="summative2.html#summative2">Summative Assessment 2</a></strong>: <em>Summative Assessment #2</em><br />
 <a href="rgeoraster.html#rgeoraster">15</a> <strong><a href="rgeoraster.html#rgeoraster">Geospatial R Raster - Hydro Analyses</a></strong>: <em>Intro to working with raster data in R, hydrological raster analyses</em><br />
-<a href="rgeowatersheds.html#rgeowatersheds">16</a> <strong><a href="rgeowatersheds.html#rgeowatersheds">Geospatial R Raster - Watershed Delineation</a></strong>: <em>Watershed delineation and extracting DEM values by watershed</em></p>
+<a href="rgeowatersheds.html#rgeowatersheds">16</a> <strong><a href="rgeowatersheds.html#rgeowatersheds">Geospatial R Raster - Watershed Delineation</a></strong>: <em>Watershed delineation and extracting DEM values by watershed</em><br />
+<a href="modelingintro.html#modelingintro">17</a> <strong><a href="modelingintro.html#modelingintro">Intro to Modeling - Getting Started with HBV</a></strong>: <em>Setting up a simple hydrologic model in R</em><br />
+<a href="modelingcalibration.html#modelingcalibration">18</a> <strong><a href="modelingcalibration.html#modelingcalibration">Intro to Modeling - Calibrate HBV</a></strong>: <em>Using the Monte Carlo method to calibrate the HBV model, discuss equifinality</em></p>
 
 </div>
 </div>
