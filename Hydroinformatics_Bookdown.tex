@@ -116,7 +116,7 @@
 
 \title{Hydroinformatics at VT}
 \author{JP Gannon}
-\date{2021-04-15}
+\date{2021-04-29}
 
 \begin{document}
 \maketitle
@@ -1661,7 +1661,7 @@ Which one is more skewed?
 
 \begin{verbatim}
 ##       50% 
-## -2.158901
+## -2.041004
 \end{verbatim}
 
 \hypertarget{what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one}{%
@@ -1842,7 +1842,7 @@ Remember, all the parameter codes and site names get passed to dataRetrieval fun
 ## 4           dv   00095   00003 145685         NA           wat        <NA>
 ##    srs_id access_cd begin_date   end_date count_nu
 ## 2 1645597         0 2006-12-20 2009-03-18      704
-## 3 1645423         0 1907-10-01 2021-04-14    32703
+## 3 1645423         0 1907-10-01 2021-04-28    32717
 ## 4 1646694         0 2006-12-20 2008-09-29      534
 \end{verbatim}
 
@@ -1949,7 +1949,7 @@ So in the chunk below let's get add information about the parameters in dataAvai
 ## 3           dv   00095   00003 145685         NA           wat        <NA>
 ##    srs_id access_cd begin_date   end_date count_nu parameter_group_nm
 ## 1 1645597         0 2006-12-20 2009-03-18      704           Physical
-## 2 1645423         0 1907-10-01 2021-04-14    32703           Physical
+## 2 1645423         0 1907-10-01 2021-04-28    32717           Physical
 ## 3 1646694         0 2006-12-20 2008-09-29      534           Physical
 ##                                                                                 parameter_nm
 ## 1                                                        Temperature, water, degrees Celsius
@@ -1983,7 +1983,7 @@ So in the chunk below let's get add information about the parameters in dataAvai
 ## 3 03171000 NEW RIVER AT RADFORD, VA   00095     Specific conductance
 ##   parameter_units begin_date   end_date
 ## 1           deg C 2006-12-20 2009-03-18
-## 2           ft3/s 1907-10-01 2021-04-14
+## 2           ft3/s 1907-10-01 2021-04-28
 ## 3      uS/cm @25C 2006-12-20 2008-09-29
 \end{verbatim}
 
@@ -2033,27 +2033,27 @@ Below we will look at two other ways to get sites: using a bounding box of a geo
 ## 20      USGS 03170000                 LITTLE RIVER AT GRAYSONTOWN, VA
 ## 21      USGS 03169500             LITTLE RIVER NEAR COPPER VALLEY, VA
 ##    site_tp_cd dec_lat_va dec_long_va colocated           queryTime
-## 1          ST   36.88873   -81.34733     FALSE 2021-04-15 09:23:06
-## 2          ST   37.18428   -81.32982     FALSE 2021-04-15 09:23:06
-## 3          ST   37.27151   -81.30482     FALSE 2021-04-15 09:23:06
-## 4          ST   37.25595   -81.28177     FALSE 2021-04-15 09:23:06
-## 5          ST   36.85984   -80.98036     FALSE 2021-04-15 09:23:06
-## 6          ST   36.75985   -80.95619     FALSE 2021-04-15 09:23:06
-## 7          ST   36.83485   -80.95258     FALSE 2021-04-15 09:23:06
-## 8          SP   36.93429   -80.90313     FALSE 2021-04-15 09:23:06
-## 9          ST   36.93095   -80.90036     FALSE 2021-04-15 09:23:06
-## 10         SP   36.93068   -80.89619     FALSE 2021-04-15 09:23:06
-## 11         ST   36.93901   -80.88730     FALSE 2021-04-15 09:23:06
-## 12         ST   37.30568   -80.84980     FALSE 2021-04-15 09:23:06
-## 13         ST   37.04734   -80.77618     FALSE 2021-04-15 09:23:06
-## 14         ST   36.93762   -80.74563     FALSE 2021-04-15 09:23:06
-## 15         ST   36.88901   -80.72757     FALSE 2021-04-15 09:23:06
-## 16         ST   37.24179   -80.71090     FALSE 2021-04-15 09:23:06
-## 17         ST   37.26818   -80.70951     FALSE 2021-04-15 09:23:06
-## 18         ST   37.28957   -80.61673     FALSE 2021-04-15 09:23:06
-## 19         ST   37.14179   -80.56922     FALSE 2021-04-15 09:23:06
-## 20         ST   37.03763   -80.55672     FALSE 2021-04-15 09:23:06
-## 21         ST   36.99652   -80.52144     FALSE 2021-04-15 09:23:06
+## 1          ST   36.88873   -81.34733     FALSE 2021-04-29 11:21:50
+## 2          ST   37.18428   -81.32982     FALSE 2021-04-29 11:21:50
+## 3          ST   37.27151   -81.30482     FALSE 2021-04-29 11:21:50
+## 4          ST   37.25595   -81.28177     FALSE 2021-04-29 11:21:50
+## 5          ST   36.85984   -80.98036     FALSE 2021-04-29 11:21:50
+## 6          ST   36.75985   -80.95619     FALSE 2021-04-29 11:21:50
+## 7          ST   36.83485   -80.95258     FALSE 2021-04-29 11:21:50
+## 8          SP   36.93429   -80.90313     FALSE 2021-04-29 11:21:50
+## 9          ST   36.93095   -80.90036     FALSE 2021-04-29 11:21:50
+## 10         SP   36.93068   -80.89619     FALSE 2021-04-29 11:21:50
+## 11         ST   36.93901   -80.88730     FALSE 2021-04-29 11:21:50
+## 12         ST   37.30568   -80.84980     FALSE 2021-04-29 11:21:50
+## 13         ST   37.04734   -80.77618     FALSE 2021-04-29 11:21:50
+## 14         ST   36.93762   -80.74563     FALSE 2021-04-29 11:21:50
+## 15         ST   36.88901   -80.72757     FALSE 2021-04-29 11:21:50
+## 16         ST   37.24179   -80.71090     FALSE 2021-04-29 11:21:50
+## 17         ST   37.26818   -80.70951     FALSE 2021-04-29 11:21:50
+## 18         ST   37.28957   -80.61673     FALSE 2021-04-29 11:21:50
+## 19         ST   37.14179   -80.56922     FALSE 2021-04-29 11:21:50
+## 20         ST   37.03763   -80.55672     FALSE 2021-04-29 11:21:50
+## 21         ST   36.99652   -80.52144     FALSE 2021-04-29 11:21:50
 \end{verbatim}
 
 \begin{Shaded}
@@ -4036,7 +4036,7 @@ Notice how much more you can see in the landscape!
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "hillshade - Elapsed Time (excluding I/O): 0.9s"
+## [1] "hillshade - Elapsed Time (excluding I/O): 0.11s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4095,7 +4095,7 @@ Be careful to give the breach depressions function the result of the single cell
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "fill_single_cell_pits - Elapsed Time (excluding I/O): 0.4s"
+## [1] "fill_single_cell_pits - Elapsed Time (excluding I/O): 0.3s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4109,7 +4109,7 @@ Be careful to give the breach depressions function the result of the single cell
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "breach_depressions_least_cost - Elapsed Time (excluding I/O): 0.54s"
+## [1] "breach_depressions_least_cost - Elapsed Time (excluding I/O): 0.52s"
 \end{verbatim}
 
 \hypertarget{visualize-filled-sinks-and-breached-depressions}{%
@@ -4223,7 +4223,7 @@ Which do you think represents reality better? Why?
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "d_inf_flow_accumulation - Elapsed Time (excluding I/O): 0.37s"
+## [1] "d_inf_flow_accumulation - Elapsed Time (excluding I/O): 0.31s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4268,7 +4268,7 @@ We get some funkiness around the edges of the DEM, so we will also filter the tw
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "d_inf_flow_accumulation - Elapsed Time (excluding I/O): 0.34s"
+## [1] "d_inf_flow_accumulation - Elapsed Time (excluding I/O): 0.35s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4280,7 +4280,7 @@ We get some funkiness around the edges of the DEM, so we will also filter the tw
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "slope - Elapsed Time (excluding I/O): 0.5s"
+## [1] "slope - Elapsed Time (excluding I/O): 0.6s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4292,7 +4292,7 @@ We get some funkiness around the edges of the DEM, so we will also filter the tw
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "wetness_index - Elapsed Time (excluding I/O): 0.3s"
+## [1] "wetness_index - Elapsed Time (excluding I/O): 0.4s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4324,7 +4324,7 @@ Similar to TWI we get some edge issues so we will filter the result to make the 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "downslope_index - Elapsed Time (excluding I/O): 0.8s"
+## [1] "downslope_index - Elapsed Time (excluding I/O): 0.6s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4362,7 +4362,7 @@ Below we extrac the streams, generate a D8 pointer file, and then convert the ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "extract_streams - Elapsed Time (excluding I/O): 0.3s"
+## [1] "extract_streams - Elapsed Time (excluding I/O): 0.4s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4373,7 +4373,7 @@ Below we extrac the streams, generate a D8 pointer file, and then convert the ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "d8_pointer - Elapsed Time (excluding I/O): 0.4s"
+## [1] "d8_pointer - Elapsed Time (excluding I/O): 0.5s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4396,7 +4396,7 @@ Below we extrac the streams, generate a D8 pointer file, and then convert the ra
 
 \begin{verbatim}
 ## Reading layer `streams' from data source `/Volumes/GoogleDrive/My Drive/CLASSES/Hydroinformatics/Hydroinformatics_Bookdown/McDonaldHollowDEM/streams.shp' using driver `ESRI Shapefile'
-## Simple feature collection with 37 features and 2 fields
+## Simple feature collection with 38 features and 2 fields
 ## Geometry type: LINESTRING
 ## Dimension:     XY
 ## Bounding box:  xmin: -80.49733 ymin: 37.23597 xmax: -80.46388 ymax: 37.25634
@@ -4740,7 +4740,7 @@ Next, we will generate a hillshade to aid in visualization and then plot it to b
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "hillshade - Elapsed Time (excluding I/O): 0.8s"
+## [1] "hillshade - Elapsed Time (excluding I/O): 0.9s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4773,7 +4773,7 @@ From now on in the analysis \emph{be careful} to use the filled and breached DEM
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "fill_single_cell_pits - Elapsed Time (excluding I/O): 0.4s"
+## [1] "fill_single_cell_pits - Elapsed Time (excluding I/O): 0.3s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4787,7 +4787,7 @@ From now on in the analysis \emph{be careful} to use the filled and breached DEM
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "breach_depressions_least_cost - Elapsed Time (excluding I/O): 0.52s"
+## [1] "breach_depressions_least_cost - Elapsed Time (excluding I/O): 0.49s"
 \end{verbatim}
 
 \hypertarget{create-flow-accumulation-and-pointer-grids}{%
@@ -4805,7 +4805,7 @@ Below, create these two rasters using the \emph{filled and breached} DEM.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "d8_flow_accumulation - Elapsed Time (excluding I/O): 0.20s"
+## [1] "d8_flow_accumulation - Elapsed Time (excluding I/O): 0.21s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4917,7 +4917,7 @@ Read the results of this function back in and plot them over the hillshade with 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "watershed - Elapsed Time (excluding I/O): 0.775s"
+## [1] "watershed - Elapsed Time (excluding I/O): 0.14s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -5026,7 +5026,7 @@ The following code is here just because it is cool. We clip the DEM to the water
 ## requires the webshot2 package; using rgl.snapshot() instead
 \end{verbatim}
 
-\includegraphics[width=6.5in]{/var/folders/rl/dzfg1s7j2zv_5xqhl3ls1yl80000gn/T//RtmpgQWiQD/file176ce453e0a1a}
+\includegraphics[width=6.5in]{/var/folders/rl/dzfg1s7j2zv_5xqhl3ls1yl80000gn/T//RtmpbaHcLb/filea8582984d968}
 
 \hypertarget{modelingintro}{%
 \chapter{Intro to Modeling - Getting Started with HBV}\label{modelingintro}}
@@ -5034,7 +5034,7 @@ The following code is here just because it is cool. We clip the DEM to the water
 \hypertarget{introduction-5}{%
 \section{Introduction}\label{introduction-5}}
 
-The following activity is available as a template github repository at the following link:
+The following activity is available as a template github repository at the following link: \url{https://github.com/VT-Hydroinformatics/16-Intro-Modeling-HBV}
 
 \textbf{Before we start with the code below, we will briefly discuss modeling in general, using the following reading as a guide: \url{https://cfpub.epa.gov/si/si_public_record_report.cfm?dirEntryId=339328\&Lab=NERL}}
 
@@ -5649,7 +5649,7 @@ By changing the parameters, see how well you can get the model to fit. Take note
 \hypertarget{introduction-6}{%
 \section{Introduction}\label{introduction-6}}
 
-The following activity is available as a template github repository at the following link:
+The following activity is available as a template github repository at the following link: \url{https://github.com/VT-Hydroinformatics/17-calibrate-model-for-loops}
 
 \emph{Goals for this activity:}
 
@@ -5658,22 +5658,21 @@ The following activity is available as a template github repository at the follo
 \item
   Learn how for loops work
 \item
-  Use for loops to run calibrate the HBV model using the Monte Carlo technique
+  Use for loops to calibrate the HBV model using the Monte Carlo technique
 \item
   Assess the results of the calibration, discuss equifinality
 \end{itemize}
 
-We saw in the last activity that coming up with the parameters that create a model that fits our watershed discharge best is hard. For this reason, there are several ways people have devised for automating this process. We are going to explore one: a Monte Carlo calibration.
+We saw in the last activity that coming up with the parameters that create a model that fits our watershed discharge best is hard. For this reason, there are several ways people have devised for automating the process. We are going to explore one: a Monte Carlo calibration.
 
 To use this approach, we will create a ton of random parameter sets, run the model for each, and then see which one fits best. The idea is that by creating a bunch of random sets of parameters, we will end up with at least one that works well. As you might guess, this can take a while. We will just do this for 100 or 1000 runs here in this activity, but we will also explore some output from a 100,000 run Monte Carlo that I ran and saved.
 
-There is one new package this time, just for creating a parallel coordinate plot to look at the results of the 100k run Monte Carlo at the end.
+There is one new package this time, GGally, just for creating a parallel coordinate plot to look at the results of the 100k run Monte Carlo at the end.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \FunctionTok{library}\NormalTok{(lubridate)}
-\FunctionTok{library}\NormalTok{(patchwork)}
 \FunctionTok{library}\NormalTok{(plotly)}
 \FunctionTok{library}\NormalTok{(GGally) }\CommentTok{\#for making parallel coordinate plot}
 
@@ -5681,7 +5680,26 @@ There is one new package this time, just for creating a parallel coordinate plot
 \end{Highlighting}
 \end{Shaded}
 
-In order to do what we are going to do, we need for loops
+In order to do what we are going to do, we need ``for'' loops.
+
+A for loop is a way to run a chunk of code several times while changing a value in that chunk of code each time.
+
+So using an example from class: you could run some code that downloads data from a USGS gage, and each time through the loop it changes which gage you download.
+
+In R, the syntax for this is
+
+\begin{quote}
+for(x in sequence)\{\\
+x\\
+\}\\
+\end{quote}
+
+Where x will change every time you go through the loop. The values x will have each time through the loop are those that are in ``sequence'' above. If you changed this to x in 1:3, x would have values of 1, 2, and 3 each time through. If you made it x in c(2,3,5) x would change to 2, then 3, and then 5 each time through the loop. You can make the sequence anything and x can have any name so ``letter in c(a, b, c)'' would have \emph{letter} change to a, then b, then c each time through the loop.
+
+The image below shows a short example of how a for loop works.
+
+\includegraphics{images/for loop.png}
+Let's try some examples
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5731,14 +5749,29 @@ In order to do what we are going to do, we need for loops
 ## [1] "001"
 \end{verbatim}
 
-\hypertarget{prep-data}{%
-\section{Prep data}\label{prep-data}}
+\hypertarget{challenge-write-a-for-loop}{%
+\section{Challenge: Write a for loop}\label{challenge-write-a-for-loop}}
 
-Import data
-Make P, Qobs, Temp as vectors
+Define a vector with values 5, 6, 7, 8, 9
+
+Create a for loop that steps through this vector and adds 1 to each value.
+
+Yes, you can do this by just typing the name of the vector + 1, but that's not the point!
+
+\hypertarget{prep-data-for-hbv}{%
+\section{Prep data for HBV}\label{prep-data-for-hbv}}
+
+Since we did this in the last chapter, we are just going to quickly run the code the preps our data to go into the model. Below we load the HBV movdel and make vectors of P, Qobs, and Temp.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\#Create the HBV function with the HBV R file}
+\FunctionTok{source}\NormalTok{(}\StringTok{\textquotesingle{}HBV/HBV.R\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\#set start and end dates for model to filter data}
+\NormalTok{start }\OtherTok{\textless{}{-}} \FunctionTok{mdy}\NormalTok{(}\StringTok{"01{-}01{-}2009"}\NormalTok{)}
+\NormalTok{end }\OtherTok{\textless{}{-}} \FunctionTok{mdy}\NormalTok{(}\StringTok{"12{-}31{-}2012"}\NormalTok{)}
+
 \CommentTok{\#Precip}
 \NormalTok{P1 }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"HBV/Pwd2009{-}2012.csv"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
          \FunctionTok{select}\NormalTok{(DATE, WS\_3) }\SpecialCharTok{\%\textgreater{}\%}
@@ -5862,6 +5895,8 @@ Make P, Qobs, Temp as vectors
 \hypertarget{calculate-pet-1}{%
 \section{Calculate PET}\label{calculate-pet-1}}
 
+Again, because we did this last time, we will just re-run this code to create our PET values.
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{lat }\OtherTok{\textless{}{-}} \DecValTok{43} \SpecialCharTok{+} \DecValTok{57}\SpecialCharTok{/}\DecValTok{60} \CommentTok{\#43 degrees and 57 minutes}
@@ -5883,10 +5918,12 @@ Make P, Qobs, Temp as vectors
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{hbv-parameters-1}{%
-\section{HBV Parameters}\label{hbv-parameters-1}}
+\hypertarget{monte-carlo-step-1-generate-random-parameter-sets}{%
+\section{Monte Carlo step 1: generate random parameter sets}\label{monte-carlo-step-1-generate-random-parameter-sets}}
 
-The table below shows the parameters of the HBV model, the minimum and maximum for those values, and a description of their function in the model.
+Below is a table of the parameters for the HBV model and their suggested min and max values for our application. What we basically want to do is mimic you sitting down at the computer and randomly changing all the parameters, running the model, and checking to see how well it did. Over, and over, and over.
+
+You can do this by generating the set of parameters each time you run the model, but we are going to do it separately so we can see the Nashe-Sutcliff efficiency (NSE) for each set of parameters.
 
 \begin{longtable}[]{@{}llll@{}}
 \toprule
@@ -6012,9 +6049,13 @@ base of the triangular routing function, days"\strut
 \bottomrule
 \end{longtable}
 
-To pass a set of parameters to the model, we just put them into a single vector in the order they are in the table above. In the chunk below, I've structured this to make it easy to see a description of each parameter, but you could also just do it in one line without all the comments. Just be sure to get the order right!
+To make our parameter sets, we first have to decide how many model runs we want to try. Let's try 100 so we don't burn down anyone's computer.
 
-The code below sets the routing to 0, which is what we want for a small catchment.
+Then we will use the runif() function to generate the same number of random values as the number of model runs we want to perform for each parameter, within the bounds of the min and max values above.
+
+Remember, runif() creates a set of random numbers in a uniform distribution with a specified length with a specified minimum and maximum value. A uniform distribution is one where each number has the same probability of occurrence as the next, so it's basically a set of random numbers between your min and max values.
+
+We will also create a blank vector of the same length which we will populate with the NSE values for each model run, and then slap them all together with cbind() (column bind).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6034,8 +6075,11 @@ The code below sets the routing to 0, which is what we want for a small catchmen
 \NormalTok{UZL   }\OtherTok{\textless{}{-}} \FunctionTok{runif}\NormalTok{(N, }\AttributeTok{min =} \DecValTok{0}\NormalTok{    , }\AttributeTok{max =} \DecValTok{70}\NormalTok{)   }\CommentTok{\#Threshold for shallow storage}
 \NormalTok{PERC  }\OtherTok{\textless{}{-}} \FunctionTok{runif}\NormalTok{(N, }\AttributeTok{min =} \DecValTok{0}\NormalTok{    , }\AttributeTok{max =} \DecValTok{4}\NormalTok{)    }\CommentTok{\#Percolation, max flow from upper to lower storage}
 \NormalTok{MAXBAS}\OtherTok{\textless{}{-}} \FunctionTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{, N)   }\CommentTok{\#base of the triangular routing function, days}
+\CommentTok{\#MAXBAS is just 1\textquotesingle{}s because routing will be set to zero, so the parameter isn\textquotesingle{}t used}
 
 \NormalTok{NSE }\OtherTok{\textless{}{-}} \FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, N) }\CommentTok{\#create NSE column, to be filled in for loop}
+
+\NormalTok{routing }\OtherTok{\textless{}{-}} \DecValTok{0}
 
 \NormalTok{pars }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(FC, beta, LP, SFCF, }
 \NormalTok{               TT, CFMAX, k0, k1, }
@@ -6043,10 +6087,38 @@ The code below sets the routing to 0, which is what we want for a small catchmen
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{run-the-model-for-each-parameter-set}{%
+\section{Run the model for each parameter set}\label{run-the-model-for-each-parameter-set}}
+
+Alright, let's get at this. We now have our random sets of parameters. So we will run the model for each and see how it does.
+
+Here's how we will do that:
+
+First: Define the period for which we want to calculate NSE. Remember we are going to drop the first 40\% of the model run to let the model ``warm up''. Since we are starting with nothing in the storages we need to let the boxes
+``fill up'' and settle in.
+
+Then we run a FOR LOOP!
+
+Our for loop will step through a sequence of numbers from 1 to the total number of parameter sets we have. So in this case: 100. We will use i as our variable. So i will be 1, 2, 3\ldots. all the way to 100.
+
+In the code portion of the loop, it will grab the parameters from row i of the parameter set we created. And pass that to the HBV function with the Precip, Temp, and PET data. Remember routing is just set to zero.
+
+After we run the model (still in the for loop) we will stick our observed values onto the results and then trip them to the period we want to evaluate. (drop the first 40\%)
+
+Finally, we calculate NSE for that individual model run, and then add it into the NSE column we made before. So each run will just tack on an NSE value to the end of the paramter set. We don't need to save the model results, because we can just rerun the model with the same parameters and it'll give us the same output.
+
+The figure below illustrates how the for loop will work:
+
+\begin{figure}
+\centering
+\includegraphics{images/monte carlo for loop.png}
+\caption{monte carlo for loop}
+\end{figure}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#trim the first 40\% (warm up) of Qobs off for NSE calculation }
-\NormalTok{EvalStart }\OtherTok{\textless{}{-}} \FunctionTok{floor}\NormalTok{(}\FunctionTok{length}\NormalTok{(Qobs)}\SpecialCharTok{*}\FloatTok{0.4}\NormalTok{)}
+\NormalTok{EvalStart }\OtherTok{\textless{}{-}} \FunctionTok{floor}\NormalTok{(}\FunctionTok{length}\NormalTok{(Qobs) }\SpecialCharTok{*} \FloatTok{0.4}\NormalTok{)}
 \NormalTok{EvalEnd }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(Qobs)}
 
 
@@ -6068,6 +6140,17 @@ The code below sets the routing to 0, which is what we want for a small catchmen
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{find-the-best-parameter-set}{%
+\section{Find the best parameter set}\label{find-the-best-parameter-set}}
+
+Alright, now we have a NSE value that tells us how well each parameter set did at estimating runoff. So we need to find the best one!
+
+To do this, we will convert the parameter sets to a tibble, use filter to grab the row with the maximum NSE, then use slice to pull just that row out of the tibble. Finally, we will run as.numeric on the data to be sure everything is numbers.
+
+Now we have our best parameter set, let's see how it did!
+
+We will do what we did in the previous lesson: run the model with the parameter set, slap on the observed data, and filter it to the time period we want to look at. (after 08-07-2010 in this case, that's the 40\% cutoff in this case)
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#find best parameters}
@@ -6088,6 +6171,10 @@ The code below sets the routing to 0, which is what we want for a small catchmen
 \end{Highlighting}
 \end{Shaded}
 
+Below we will look at the model run using plotly. First, we calculate the NSE again, just to be sure, and then plot the same way we did in the last lesson.
+
+How did the model do? Did the 100 run Monte Carlo do better or worse than your manual attempts from last lesson?
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#Calculate NSE}
@@ -6102,7 +6189,14 @@ The code below sets the routing to 0, which is what we want for a small catchmen
 \end{Highlighting}
 \end{Shaded}
 
-NSE in the top 100 runs from a 100,000 run monte carlo
+\hypertarget{investigating-a-much-bigger-monte-carlo}{%
+\section{Investigating a much bigger Monte Carlo}\label{investigating-a-much-bigger-monte-carlo}}
+
+The next couple of code chunks make plots from a Monte Carlo I ran with 100,000 parameter sets.
+
+We will look at the two plots and discuss.
+
+How much difference was there in NSE in the top 100 runs of the 100,000 run set? How much would you expect the parameters to vary between these runs? What do you think it means if they did or did not vary much?
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6148,25 +6242,40 @@ NSE in the top 100 runs from a 100,000 run monte carlo
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 \end{verbatim}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-186-1.pdf}
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-187-1.pdf}
 
-Show the top 10 parameter sets
+The chunk below creates a parallel coordinate plot. Each parameter is shown, but normalized, where 1 is it's maximum value from our random sets, and 0 is the minimum value.
+
+Each connected line is a set of parameters. The green line is the set that had the highest NSE.
+
+Look at this plot for a bit and discuss.
+
+Are there any parameters that were always in the same range for these runs? What does that tell you about them?
+Are there any parameters that look like they spanned almost the whole range for these runs? What doe sthat tell you about them?
+What does this plot tell you about the model's representation of the real world?
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\#filter the 100,000 run to the top ten}
 \NormalTok{rankedpars }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(pars100, ranks }\SpecialCharTok{\textless{}=} \DecValTok{10}\NormalTok{)}
 
+\CommentTok{\#set the min and max values for each parameter for the plot}
 \NormalTok{mins }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{40}\NormalTok{, }\DecValTok{1}\NormalTok{, }\FloatTok{0.3}\NormalTok{ , }\FloatTok{0.4}\NormalTok{, }\SpecialCharTok{{-}}\FloatTok{1.5}\NormalTok{, }\DecValTok{1}\NormalTok{, }\FloatTok{0.05}\NormalTok{, }\FloatTok{0.01}\NormalTok{, }\FloatTok{0.001}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{)}
 \NormalTok{maxs }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{400}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{1}\NormalTok{, }\FloatTok{1.2}\NormalTok{, }\FloatTok{1.2}\NormalTok{, }\DecValTok{8}\NormalTok{, }\FloatTok{0.5}\NormalTok{, }\FloatTok{0.3}\NormalTok{, }\FloatTok{0.15}\NormalTok{, }\DecValTok{70}\NormalTok{ , }\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{)}
 
+\CommentTok{\#add maxes and mins to the parameter sets}
 \NormalTok{rankedpars }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(rankedpars, mins, maxs)}
 
+\CommentTok{\#Make NSE a character so the legend will work properly}
 \NormalTok{rankedpars }\OtherTok{\textless{}{-}}\NormalTok{ rankedpars }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{NSE =} \FunctionTok{as.character}\NormalTok{(}\FunctionTok{round}\NormalTok{(NSE, }\DecValTok{2}\NormalTok{)))}
 
+\CommentTok{\#Make the NSE equal "Min/Max" for appropriate legend labels}
 \NormalTok{rankedpars}\SpecialCharTok{$}\NormalTok{NSE[rankedpars}\SpecialCharTok{$}\NormalTok{NSE }\SpecialCharTok{==} \StringTok{"0"}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"Min/Max"}
 
+\CommentTok{\#Make the ranks a factor datatype}
 \NormalTok{rankedpars }\OtherTok{\textless{}{-}}\NormalTok{ rankedpars }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{ranks =} \FunctionTok{factor}\NormalTok{(ranks))}
 
+\CommentTok{\#Create parallel coordinate plot}
 \NormalTok{rankedpars }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggparcoord}\NormalTok{(}\AttributeTok{columns =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{11}\NormalTok{, }
               \AttributeTok{groupColumn =} \DecValTok{13}\NormalTok{,}
               \AttributeTok{showPoints =} \ConstantTok{TRUE}\NormalTok{,}
@@ -6178,7 +6287,7 @@ Show the top 10 parameter sets
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-187-1.pdf}
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-188-1.pdf}
 
   \bibliography{book.bib,packages.bib}
 
