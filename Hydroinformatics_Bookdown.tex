@@ -116,7 +116,7 @@
 
 \title{Hydroinformatics at VT}
 \author{JP Gannon}
-\date{2021-04-29}
+\date{2021-05-06}
 
 \begin{document}
 \maketitle
@@ -128,9 +128,17 @@
 \hypertarget{introduction}{%
 \chapter{Introduction}\label{introduction}}
 
-There will be information here about prerequisite resources and suggested readings.
+This bookdown contains the notes and most exercises for a course on data analysis techniques in hydrology using the programming language R. The material will be updated each time the course is taught. If new topics are added, the topics they replace will be left, in case they are useful to others.
 
-For questions, suggestions, activity answer keys, etc.: jpgannon at vt.edu
+I hope these materials can be a resource to those teaching themselves R for hydrologic analysis and/or for instructors who may want to use a lesson or two or the entire course. Each chapter in this bookdown is linked to a github repository where the code can be downloaded or copied to another github account.
+
+If you have questions, suggestions, or would like activity answer keys, etc. please email me at jpgannon at vt.edu
+
+The following resources, among others, were very helpful when compiling the chapters of this book. They are also linked in specific chapters, along with other resources. These are great resources if you want to dig deeper into topics covered in this bookdown.
+
+R for Data Science: \url{https://r4ds.had.co.nz/}\\
+Statistical Methods in Water Resources: \url{https://pubs.er.usgs.gov/publication/tm4A3}\\
+Geocomputation with R: \url{https://geocompr.robinlovelace.net/}
 
 \hypertarget{how-to-use-these-materials}{%
 \section{How to use these materials}\label{how-to-use-these-materials}}
@@ -1661,7 +1669,7 @@ Which one is more skewed?
 
 \begin{verbatim}
 ##       50% 
-## -2.041004
+## -2.204958
 \end{verbatim}
 
 \hypertarget{what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one}{%
@@ -1842,7 +1850,7 @@ Remember, all the parameter codes and site names get passed to dataRetrieval fun
 ## 4           dv   00095   00003 145685         NA           wat        <NA>
 ##    srs_id access_cd begin_date   end_date count_nu
 ## 2 1645597         0 2006-12-20 2009-03-18      704
-## 3 1645423         0 1907-10-01 2021-04-28    32717
+## 3 1645423         0 1907-10-01 2021-05-05    32724
 ## 4 1646694         0 2006-12-20 2008-09-29      534
 \end{verbatim}
 
@@ -1949,7 +1957,7 @@ So in the chunk below let's get add information about the parameters in dataAvai
 ## 3           dv   00095   00003 145685         NA           wat        <NA>
 ##    srs_id access_cd begin_date   end_date count_nu parameter_group_nm
 ## 1 1645597         0 2006-12-20 2009-03-18      704           Physical
-## 2 1645423         0 1907-10-01 2021-04-28    32717           Physical
+## 2 1645423         0 1907-10-01 2021-05-05    32724           Physical
 ## 3 1646694         0 2006-12-20 2008-09-29      534           Physical
 ##                                                                                 parameter_nm
 ## 1                                                        Temperature, water, degrees Celsius
@@ -1983,7 +1991,7 @@ So in the chunk below let's get add information about the parameters in dataAvai
 ## 3 03171000 NEW RIVER AT RADFORD, VA   00095     Specific conductance
 ##   parameter_units begin_date   end_date
 ## 1           deg C 2006-12-20 2009-03-18
-## 2           ft3/s 1907-10-01 2021-04-28
+## 2           ft3/s 1907-10-01 2021-05-05
 ## 3      uS/cm @25C 2006-12-20 2008-09-29
 \end{verbatim}
 
@@ -2033,27 +2041,27 @@ Below we will look at two other ways to get sites: using a bounding box of a geo
 ## 20      USGS 03170000                 LITTLE RIVER AT GRAYSONTOWN, VA
 ## 21      USGS 03169500             LITTLE RIVER NEAR COPPER VALLEY, VA
 ##    site_tp_cd dec_lat_va dec_long_va colocated           queryTime
-## 1          ST   36.88873   -81.34733     FALSE 2021-04-29 11:21:50
-## 2          ST   37.18428   -81.32982     FALSE 2021-04-29 11:21:50
-## 3          ST   37.27151   -81.30482     FALSE 2021-04-29 11:21:50
-## 4          ST   37.25595   -81.28177     FALSE 2021-04-29 11:21:50
-## 5          ST   36.85984   -80.98036     FALSE 2021-04-29 11:21:50
-## 6          ST   36.75985   -80.95619     FALSE 2021-04-29 11:21:50
-## 7          ST   36.83485   -80.95258     FALSE 2021-04-29 11:21:50
-## 8          SP   36.93429   -80.90313     FALSE 2021-04-29 11:21:50
-## 9          ST   36.93095   -80.90036     FALSE 2021-04-29 11:21:50
-## 10         SP   36.93068   -80.89619     FALSE 2021-04-29 11:21:50
-## 11         ST   36.93901   -80.88730     FALSE 2021-04-29 11:21:50
-## 12         ST   37.30568   -80.84980     FALSE 2021-04-29 11:21:50
-## 13         ST   37.04734   -80.77618     FALSE 2021-04-29 11:21:50
-## 14         ST   36.93762   -80.74563     FALSE 2021-04-29 11:21:50
-## 15         ST   36.88901   -80.72757     FALSE 2021-04-29 11:21:50
-## 16         ST   37.24179   -80.71090     FALSE 2021-04-29 11:21:50
-## 17         ST   37.26818   -80.70951     FALSE 2021-04-29 11:21:50
-## 18         ST   37.28957   -80.61673     FALSE 2021-04-29 11:21:50
-## 19         ST   37.14179   -80.56922     FALSE 2021-04-29 11:21:50
-## 20         ST   37.03763   -80.55672     FALSE 2021-04-29 11:21:50
-## 21         ST   36.99652   -80.52144     FALSE 2021-04-29 11:21:50
+## 1          ST   36.88873   -81.34733     FALSE 2021-05-06 11:31:25
+## 2          ST   37.18428   -81.32982     FALSE 2021-05-06 11:31:25
+## 3          ST   37.27151   -81.30482     FALSE 2021-05-06 11:31:25
+## 4          ST   37.25595   -81.28177     FALSE 2021-05-06 11:31:25
+## 5          ST   36.85984   -80.98036     FALSE 2021-05-06 11:31:25
+## 6          ST   36.75985   -80.95619     FALSE 2021-05-06 11:31:25
+## 7          ST   36.83485   -80.95258     FALSE 2021-05-06 11:31:25
+## 8          SP   36.93429   -80.90313     FALSE 2021-05-06 11:31:25
+## 9          ST   36.93095   -80.90036     FALSE 2021-05-06 11:31:25
+## 10         SP   36.93068   -80.89619     FALSE 2021-05-06 11:31:25
+## 11         ST   36.93901   -80.88730     FALSE 2021-05-06 11:31:25
+## 12         ST   37.30568   -80.84980     FALSE 2021-05-06 11:31:25
+## 13         ST   37.04734   -80.77618     FALSE 2021-05-06 11:31:25
+## 14         ST   36.93762   -80.74563     FALSE 2021-05-06 11:31:25
+## 15         ST   36.88901   -80.72757     FALSE 2021-05-06 11:31:25
+## 16         ST   37.24179   -80.71090     FALSE 2021-05-06 11:31:25
+## 17         ST   37.26818   -80.70951     FALSE 2021-05-06 11:31:25
+## 18         ST   37.28957   -80.61673     FALSE 2021-05-06 11:31:25
+## 19         ST   37.14179   -80.56922     FALSE 2021-05-06 11:31:25
+## 20         ST   37.03763   -80.55672     FALSE 2021-05-06 11:31:25
+## 21         ST   36.99652   -80.52144     FALSE 2021-05-06 11:31:25
 \end{verbatim}
 
 \begin{Shaded}
@@ -4036,7 +4044,7 @@ Notice how much more you can see in the landscape!
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "hillshade - Elapsed Time (excluding I/O): 0.11s"
+## [1] "hillshade - Elapsed Time (excluding I/O): 0.9s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4109,7 +4117,7 @@ Be careful to give the breach depressions function the result of the single cell
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "breach_depressions_least_cost - Elapsed Time (excluding I/O): 0.52s"
+## [1] "breach_depressions_least_cost - Elapsed Time (excluding I/O): 0.49s"
 \end{verbatim}
 
 \hypertarget{visualize-filled-sinks-and-breached-depressions}{%
@@ -4268,7 +4276,7 @@ We get some funkiness around the edges of the DEM, so we will also filter the tw
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "d_inf_flow_accumulation - Elapsed Time (excluding I/O): 0.35s"
+## [1] "d_inf_flow_accumulation - Elapsed Time (excluding I/O): 0.33s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4280,7 +4288,7 @@ We get some funkiness around the edges of the DEM, so we will also filter the tw
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "slope - Elapsed Time (excluding I/O): 0.6s"
+## [1] "slope - Elapsed Time (excluding I/O): 0.5s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4362,7 +4370,7 @@ Below we extrac the streams, generate a D8 pointer file, and then convert the ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "extract_streams - Elapsed Time (excluding I/O): 0.4s"
+## [1] "extract_streams - Elapsed Time (excluding I/O): 0.3s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4373,7 +4381,7 @@ Below we extrac the streams, generate a D8 pointer file, and then convert the ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "d8_pointer - Elapsed Time (excluding I/O): 0.5s"
+## [1] "d8_pointer - Elapsed Time (excluding I/O): 0.4s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4773,7 +4781,7 @@ From now on in the analysis \emph{be careful} to use the filled and breached DEM
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "fill_single_cell_pits - Elapsed Time (excluding I/O): 0.3s"
+## [1] "fill_single_cell_pits - Elapsed Time (excluding I/O): 0.5s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4787,7 +4795,7 @@ From now on in the analysis \emph{be careful} to use the filled and breached DEM
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "breach_depressions_least_cost - Elapsed Time (excluding I/O): 0.49s"
+## [1] "breach_depressions_least_cost - Elapsed Time (excluding I/O): 0.52s"
 \end{verbatim}
 
 \hypertarget{create-flow-accumulation-and-pointer-grids}{%
@@ -4805,7 +4813,7 @@ Below, create these two rasters using the \emph{filled and breached} DEM.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "d8_flow_accumulation - Elapsed Time (excluding I/O): 0.21s"
+## [1] "d8_flow_accumulation - Elapsed Time (excluding I/O): 0.22s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4917,7 +4925,7 @@ Read the results of this function back in and plot them over the hillshade with 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "watershed - Elapsed Time (excluding I/O): 0.14s"
+## [1] "watershed - Elapsed Time (excluding I/O): 0.15s"
 \end{verbatim}
 
 \begin{Shaded}
@@ -5026,7 +5034,7 @@ The following code is here just because it is cool. We clip the DEM to the water
 ## requires the webshot2 package; using rgl.snapshot() instead
 \end{verbatim}
 
-\includegraphics[width=6.5in]{/var/folders/rl/dzfg1s7j2zv_5xqhl3ls1yl80000gn/T//RtmpbaHcLb/filea8582984d968}
+\includegraphics[width=6.5in]{/var/folders/rl/dzfg1s7j2zv_5xqhl3ls1yl80000gn/T//RtmpRnJgrU/file3ee562ee0dc7}
 
 \hypertarget{modelingintro}{%
 \chapter{Intro to Modeling - Getting Started with HBV}\label{modelingintro}}
