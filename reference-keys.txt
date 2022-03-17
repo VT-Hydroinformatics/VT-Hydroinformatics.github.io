@@ -116,17 +116,8 @@ fit-to-pearson-type-iii-distribution
 distribution-free-method
 floods
 template-repository
-introduction-2
-download-and-plot-peak-flow-data
-compute-ranks-for-peak-flows
-calculate-exceedance-probability-and-return-period
-calculate-gumbel-distribution-parameters
-calculate-return-interval-for-peak-flows-according-to-gumbel-distribution
-plot-gumbel-distribution-fit-with-peak-flow-data
-calculate-magnitude-of-1-in-100-chance-flood
-how-to-create-your-own-functions
-create-a-return-period-function
-challenge-create-a-function-to-compute-the-1-in-100-chance-flood-for-any-usgs-gage
+intro
+challenge-create-a-function
 rgeospatial
 goals
 intro-to-tmap
@@ -140,7 +131,7 @@ leaflet
 summative2
 info-for-assessment
 rgeoraster
-introduction-3
+introduction-2
 read-in-dem
 plot-dem
 generate-a-hillshade
@@ -160,7 +151,7 @@ subsetting-a-raster-for-visualization
 raster-math
 extra-plot-topo-characteristics-against-one-another
 rgeowatersheds
-introduction-4
+introduction-3
 the-watershed-delineation-toolprocess
 read-in-dem-1
 generate-a-hillshade-1
@@ -172,7 +163,7 @@ convert-watersheds-to-shapefiles
 extract-data-based-on-watershed-outline
 bonus-make-a-3d-map-of-your-watershed-with-rayshader
 modelingintro
-introduction-5
+introduction-4
 creating-the-hbv-model-function
 read-in-precip-and-temp
 calculate-pet
@@ -185,7 +176,7 @@ measure-how-well-the-model-fits-with-nse
 assess-model-fit-with-a-different-measure-snow
 calibrate-hbv-manually
 modelingcalibration
-introduction-6
+introduction-5
 challenge-write-a-for-loop
 prep-data-for-hbv
 calculate-pet-1

@@ -4,8 +4,8 @@
 %
 \documentclass[
 ]{book}
+\usepackage{amsmath,amssymb}
 \usepackage{lmodern}
-\usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
@@ -81,7 +81,8 @@
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\usepackage{longtable,booktabs}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
 \makeatletter
@@ -116,7 +117,7 @@
 
 \title{Hydroinformatics at VT}
 \author{JP Gannon}
-\date{2021-06-01}
+\date{2022-03-17}
 
 \begin{document}
 \maketitle
@@ -193,30 +194,14 @@ You only have to install the library once. You have to load it using the library
 \end{Shaded}
 
 \begin{verbatim}
-## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
 \end{verbatim}
 
 \begin{verbatim}
-## v ggplot2 3.3.3     v purrr   0.3.4
-## v tibble  3.1.0     v dplyr   1.0.5
+## v ggplot2 3.3.5     v purrr   0.3.4
+## v tibble  3.1.3     v dplyr   1.0.7
 ## v tidyr   1.1.3     v stringr 1.4.0
-## v readr   1.4.0     v forcats 0.5.1
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: package 'ggplot2' was built under R version 3.6.2
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: package 'readr' was built under R version 3.6.2
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: package 'purrr' was built under R version 3.6.2
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: package 'forcats' was built under R version 3.6.2
+## v readr   2.0.0     v forcats 0.5.1
 \end{verbatim}
 
 \begin{verbatim}
@@ -237,18 +222,13 @@ The following lines will read in the data we will use for this exercise. Don't w
 \end{Shaded}
 
 \begin{verbatim}
-## 
-## -- Column specification --------------------------------------------------------
-## cols(
-##   StationID = col_character(),
-##   cfs = col_double(),
-##   surrogate = col_character(),
-##   datetime = col_datetime(format = ""),
-##   year = col_double(),
-##   quarter = col_double(),
-##   month = col_double(),
-##   day = col_double()
-## )
+## Rows: 2160 Columns: 8-- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr  (2): StationID, surrogate
+## dbl  (5): cfs, year, quarter, month, day
+## dttm (1): datetime
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
 
 \begin{Shaded}
@@ -258,18 +238,13 @@ The following lines will read in the data we will use for this exercise. Don't w
 \end{Shaded}
 
 \begin{verbatim}
-## 
-## -- Column specification --------------------------------------------------------
-## cols(
-##   StationID = col_character(),
-##   cfs = col_double(),
-##   surrogate = col_character(),
-##   datetime = col_datetime(format = ""),
-##   year = col_double(),
-##   quarter = col_double(),
-##   month = col_double(),
-##   day = col_double()
-## )
+## Rows: 4320 Columns: 8-- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr  (2): StationID, surrogate
+## dbl  (5): cfs, year, quarter, month, day
+## dttm (1): datetime
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
 
 \begin{Shaded}
@@ -279,16 +254,12 @@ The following lines will read in the data we will use for this exercise. Don't w
 \end{Shaded}
 
 \begin{verbatim}
-## 
-## -- Column specification --------------------------------------------------------
-## cols(
-##   .default = col_double(),
-##   STANAME = col_character(),
-##   STATE = col_character(),
-##   CLASS = col_character(),
-##   AGGECOREGION = col_character()
-## )
-## i Use `spec()` for the full column specifications.
+## Rows: 49 Columns: 26-- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr  (4): STANAME, STATE, CLASS, AGGECOREGION
+## dbl (22): site_no, RBI, RBIrank, DRAIN_SQKM, HUC02, LAT_GAGE, LNG_GAGE, PPTA...
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
 
 \begin{figure}
@@ -662,16 +633,12 @@ Important: read\_csv() is the tidyverse csv reading function, the base R functio
 \end{Shaded}
 
 \begin{verbatim}
-## 
-## -- Column specification --------------------------------------------------------
-## cols(
-##   .default = col_double(),
-##   STANAME = col_character(),
-##   STATE = col_character(),
-##   CLASS = col_character(),
-##   AGGECOREGION = col_character()
-## )
-## i Use `spec()` for the full column specifications.
+## Rows: 49 Columns: 26-- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr  (4): STANAME, STATE, CLASS, AGGECOREGION
+## dbl (22): site_no, RBI, RBIrank, DRAIN_SQKM, HUC02, LAT_GAGE, LNG_GAGE, PPTA...
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
 
 \hypertarget{wait-hold-up.-what-is-a-tibble}{%
@@ -1271,15 +1238,7 @@ Get this document and a version with empty code chunks at the template repositor
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \FunctionTok{library}\NormalTok{(patchwork)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-## Warning: package 'patchwork' was built under R version 3.6.2
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{theme\_set}\NormalTok{(}\FunctionTok{theme\_classic}\NormalTok{())}
 \end{Highlighting}
 \end{Shaded}
@@ -1433,18 +1392,13 @@ To explain the importance of choosing between the mean and median, we will first
 \end{Shaded}
 
 \begin{verbatim}
-## 
-## -- Column specification --------------------------------------------------------
-## cols(
-##   StationID = col_character(),
-##   cfs = col_double(),
-##   surrogate = col_character(),
-##   datetime = col_datetime(format = ""),
-##   year = col_double(),
-##   quarter = col_double(),
-##   month = col_double(),
-##   day = col_double()
-## )
+## Rows: 2160 Columns: 8-- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr  (2): StationID, surrogate
+## dbl  (5): cfs, year, quarter, month, day
+## dttm (1): datetime
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
 
 To find the mean (average), you just sum up all the values in your sample and divide by the number of values.
@@ -1672,7 +1626,7 @@ Which one is more skewed?
 
 \begin{verbatim}
 ##       50% 
-## -2.227639
+## -1.925267
 \end{verbatim}
 
 \hypertarget{what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one}{%
@@ -1789,23 +1743,10 @@ Install the dataRetrieval package. Load it and the tidyverse.
 \begin{Highlighting}[]
 \CommentTok{\#install.packages("dataRetrieval")}
 \FunctionTok{library}\NormalTok{(dataRetrieval)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: package 'dataRetrieval' was built under R version 3.6.2
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \FunctionTok{library}\NormalTok{(lubridate)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## Warning: package 'lubridate' was built under R version 3.6.2
-\end{verbatim}
 
 \hypertarget{exploring-what-dataretrieval-can-do.}{%
 \section{Exploring what dataRetrieval can do.}\label{exploring-what-dataretrieval-can-do.}}
@@ -1843,17 +1784,17 @@ Remember, all the parameter codes and site names get passed to dataRetrieval fun
 ## 2      USGS 03171000 NEW RIVER AT RADFORD, VA         ST   37.14179   -80.56922
 ## 3      USGS 03171000 NEW RIVER AT RADFORD, VA         ST   37.14179   -80.56922
 ## 4      USGS 03171000 NEW RIVER AT RADFORD, VA         ST   37.14179   -80.56922
-##   coord_acy_cd dec_coord_datum_cd   alt_va alt_acy_va alt_datum_cd   huc_cd
-## 2            U              NAD83  1711.99       0.13       NAVD88 05050001
-## 3            U              NAD83  1711.99       0.13       NAVD88 05050001
-## 4            U              NAD83  1711.99       0.13       NAVD88 05050001
+##   coord_acy_cd dec_coord_datum_cd  alt_va alt_acy_va alt_datum_cd   huc_cd
+## 2            U              NAD83 1711.99       0.13       NAVD88 05050001
+## 3            U              NAD83 1711.99       0.13       NAVD88 05050001
+## 4            U              NAD83 1711.99       0.13       NAVD88 05050001
 ##   data_type_cd parm_cd stat_cd  ts_id loc_web_ds medium_grp_cd parm_grp_cd
 ## 2           dv   00010   00003 241564         NA           wat        <NA>
 ## 3           dv   00060   00003 145684         NA           wat        <NA>
 ## 4           dv   00095   00003 145685         NA           wat        <NA>
 ##    srs_id access_cd begin_date   end_date count_nu
 ## 2 1645597         0 2006-12-20 2009-03-18      704
-## 3 1645423         0 1907-10-01 2021-05-31    32750
+## 3 1645423         0 1907-10-01 2022-03-16    33039
 ## 4 1646694         0 2006-12-20 2008-09-29      534
 \end{verbatim}
 
@@ -1950,17 +1891,17 @@ So in the chunk below let's get add information about the parameters in dataAvai
 ## 1      USGS 03171000 NEW RIVER AT RADFORD, VA         ST   37.14179   -80.56922
 ## 2      USGS 03171000 NEW RIVER AT RADFORD, VA         ST   37.14179   -80.56922
 ## 3      USGS 03171000 NEW RIVER AT RADFORD, VA         ST   37.14179   -80.56922
-##   coord_acy_cd dec_coord_datum_cd   alt_va alt_acy_va alt_datum_cd   huc_cd
-## 1            U              NAD83  1711.99       0.13       NAVD88 05050001
-## 2            U              NAD83  1711.99       0.13       NAVD88 05050001
-## 3            U              NAD83  1711.99       0.13       NAVD88 05050001
+##   coord_acy_cd dec_coord_datum_cd  alt_va alt_acy_va alt_datum_cd   huc_cd
+## 1            U              NAD83 1711.99       0.13       NAVD88 05050001
+## 2            U              NAD83 1711.99       0.13       NAVD88 05050001
+## 3            U              NAD83 1711.99       0.13       NAVD88 05050001
 ##   data_type_cd parm_cd stat_cd  ts_id loc_web_ds medium_grp_cd parm_grp_cd
 ## 1           dv   00010   00003 241564         NA           wat        <NA>
 ## 2           dv   00060   00003 145684         NA           wat        <NA>
 ## 3           dv   00095   00003 145685         NA           wat        <NA>
 ##    srs_id access_cd begin_date   end_date count_nu parameter_group_nm
 ## 1 1645597         0 2006-12-20 2009-03-18      704           Physical
-## 2 1645423         0 1907-10-01 2021-05-31    32750           Physical
+## 2 1645423         0 1907-10-01 2022-03-16    33039           Physical
 ## 3 1646694         0 2006-12-20 2008-09-29      534           Physical
 ##                                                                                 parameter_nm
 ## 1                                                        Temperature, water, degrees Celsius
@@ -1994,7 +1935,7 @@ So in the chunk below let's get add information about the parameters in dataAvai
 ## 3 03171000 NEW RIVER AT RADFORD, VA   00095     Specific conductance
 ##   parameter_units begin_date   end_date
 ## 1           deg C 2006-12-20 2009-03-18
-## 2           ft3/s 1907-10-01 2021-05-31
+## 2           ft3/s 1907-10-01 2022-03-16
 ## 3      uS/cm @25C 2006-12-20 2008-09-29
 \end{verbatim}
 
@@ -2044,27 +1985,27 @@ Below we will look at two other ways to get sites: using a bounding box of a geo
 ## 20      USGS 03170000                 LITTLE RIVER AT GRAYSONTOWN, VA
 ## 21      USGS 03169500             LITTLE RIVER NEAR COPPER VALLEY, VA
 ##    site_tp_cd dec_lat_va dec_long_va colocated           queryTime
-## 1          ST   36.88873   -81.34733     FALSE 2021-06-01 09:41:03
-## 2          ST   37.18428   -81.32982     FALSE 2021-06-01 09:41:03
-## 3          ST   37.27151   -81.30482     FALSE 2021-06-01 09:41:03
-## 4          ST   37.25595   -81.28177     FALSE 2021-06-01 09:41:03
-## 5          ST   36.85984   -80.98036     FALSE 2021-06-01 09:41:03
-## 6          ST   36.75985   -80.95619     FALSE 2021-06-01 09:41:03
-## 7          ST   36.83485   -80.95258     FALSE 2021-06-01 09:41:03
-## 8          SP   36.93429   -80.90313     FALSE 2021-06-01 09:41:03
-## 9          ST   36.93095   -80.90036     FALSE 2021-06-01 09:41:03
-## 10         SP   36.93068   -80.89619     FALSE 2021-06-01 09:41:03
-## 11         ST   36.93901   -80.88730     FALSE 2021-06-01 09:41:03
-## 12         ST   37.30568   -80.84980     FALSE 2021-06-01 09:41:03
-## 13         ST   37.04734   -80.77618     FALSE 2021-06-01 09:41:03
-## 14         ST   36.93762   -80.74563     FALSE 2021-06-01 09:41:03
-## 15         ST   36.88901   -80.72757     FALSE 2021-06-01 09:41:03
-## 16         ST   37.24179   -80.71090     FALSE 2021-06-01 09:41:03
-## 17         ST   37.26818   -80.70951     FALSE 2021-06-01 09:41:03
-## 18         ST   37.28957   -80.61673     FALSE 2021-06-01 09:41:03
-## 19         ST   37.14179   -80.56922     FALSE 2021-06-01 09:41:03
-## 20         ST   37.03763   -80.55672     FALSE 2021-06-01 09:41:03
-## 21         ST   36.99652   -80.52144     FALSE 2021-06-01 09:41:03
+## 1          ST   36.88873   -81.34733     FALSE 2022-03-17 13:06:50
+## 2          ST   37.18428   -81.32982     FALSE 2022-03-17 13:06:50
+## 3          ST   37.27151   -81.30482     FALSE 2022-03-17 13:06:50
+## 4          ST   37.25595   -81.28177     FALSE 2022-03-17 13:06:50
+## 5          ST   36.85984   -80.98036     FALSE 2022-03-17 13:06:50
+## 6          ST   36.75985   -80.95619     FALSE 2022-03-17 13:06:50
+## 7          ST   36.83485   -80.95258     FALSE 2022-03-17 13:06:50
+## 8          SP   36.93429   -80.90313     FALSE 2022-03-17 13:06:50
+## 9          ST   36.93095   -80.90036     FALSE 2022-03-17 13:06:50
+## 10         SP   36.93068   -80.89619     FALSE 2022-03-17 13:06:50
+## 11         ST   36.93901   -80.88730     FALSE 2022-03-17 13:06:50
+## 12         ST   37.30568   -80.84980     FALSE 2022-03-17 13:06:50
+## 13         ST   37.04734   -80.77618     FALSE 2022-03-17 13:06:50
+## 14         ST   36.93762   -80.74563     FALSE 2022-03-17 13:06:50
+## 15         ST   36.88901   -80.72757     FALSE 2022-03-17 13:06:50
+## 16         ST   37.24179   -80.71090     FALSE 2022-03-17 13:06:50
+## 17         ST   37.26818   -80.70951     FALSE 2022-03-17 13:06:50
+## 18         ST   37.28957   -80.61673     FALSE 2022-03-17 13:06:50
+## 19         ST   37.14179   -80.56922     FALSE 2022-03-17 13:06:50
+## 20         ST   37.03763   -80.55672     FALSE 2022-03-17 13:06:50
+## 21         ST   36.99652   -80.52144     FALSE 2022-03-17 13:06:50
 \end{verbatim}
 
 \begin{Shaded}
@@ -2239,13 +2180,153 @@ In the chunk below we will look to see what sites have data for nitrate and chlo
 
 \NormalTok{wqdat }\OtherTok{\textless{}{-}} \FunctionTok{readNWISqw}\NormalTok{(}\AttributeTok{siteNumber =}\NormalTok{ swva\_chem\_sites}\SpecialCharTok{$}\NormalTok{site\_no, }
                     \AttributeTok{parameterCd =}\NormalTok{ params)}
+\end{Highlighting}
+\end{Shaded}
 
+\begin{verbatim}
+## Warning: NWIS qw web services are being retired. Please see the vignette 
+## 'Changes to NWIS QW services' for more information.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \FunctionTok{comment}\NormalTok{(wqdat)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## NULL
+##   [1] "#"                                                                                                                                            
+##   [2] "# File created on 2022-03-17 13:06:55 EDT"                                                                                                    
+##   [3] "#"                                                                                                                                            
+##   [4] "# U.S. Geological Survey"                                                                                                                     
+##   [5] "# "                                                                                                                                           
+##   [6] "# This file contains selected water-quality data for stations in the National Water "                                                         
+##   [7] "# Information System water-quality database.  Explanation of codes found in this file are "                                                   
+##   [8] "# followed by the retrieved data. "                                                                                                           
+##   [9] "#"                                                                                                                                            
+##  [10] "# The data you have secured from the USGS NWISWeb database may include data that have "                                                       
+##  [11] "# not received Director's approval and as such are provisional and subject to revision. "                                                     
+##  [12] "# The data are released on the condition that neither the USGS nor the United States "                                                        
+##  [13] "# Government may be held liable for any damages resulting from its authorized or "                                                            
+##  [14] "# unauthorized use."                                                                                                                          
+##  [15] "#"                                                                                                                                            
+##  [16] "# To view additional data-quality attributes, output the results using these options:  "                                                      
+##  [17] "# one result per row, expanded attributes.  Additional precautions are at:"                                                                   
+##  [18] "# https://help.waterdata.usgs.gov/tutorials/water-quality-data/help-using-the-water-quality-data-retrieval-system#Data_retrievals_precautions"
+##  [19] "#"                                                                                                                                            
+##  [20] "#  agency_cd                  - Agency Code"                                                                                                  
+##  [21] "#  site_no                    - USGS site number"                                                                                             
+##  [22] "#  sample_dt                  - Begin date"                                                                                                   
+##  [23] "#  sample_tm                  - Begin time"                                                                                                   
+##  [24] "#  sample_end_dt              - End date"                                                                                                     
+##  [25] "#  sample_end_tm              - End time"                                                                                                     
+##  [26] "#  sample_start_time_datum_cd - Time datum"                                                                                                   
+##  [27] "#  tm_datum_rlbty_cd          - Time datum reliability code"                                                                                  
+##  [28] "#  coll_ent_cd                - Agency Collecting Sample Code"                                                                                
+##  [29] "#  medium_cd                  - Sample Medium Code"                                                                                           
+##  [30] "#  project_cd                 - Project code"                                                                                                 
+##  [31] "#  aqfr_cd                    - Geologic unit code"                                                                                           
+##  [32] "#  tu_id                      - Taxonomic unit code"                                                                                          
+##  [33] "#  body_part_id               - Body part code"                                                                                               
+##  [34] "#  hyd_cond_cd                - Hydrologic Cond Code"                                                                                         
+##  [35] "#  samp_type_cd               - Sample Type Code"                                                                                             
+##  [36] "#  hyd_event_cd               - Hydrologic Event Code"                                                                                        
+##  [37] "#  sample_lab_cm_tx           - Message from lab"                                                                                             
+##  [38] "#  parm_cd                    - Parameter code"                                                                                               
+##  [39] "#  remark_cd                  - Remark code"                                                                                                  
+##  [40] "#  result_va                  - Parameter value"                                                                                              
+##  [41] "#  val_qual_tx                - Result value qualifier code"                                                                                  
+##  [42] "#  meth_cd                    - Method code"                                                                                                  
+##  [43] "#  dqi_cd                     - Data-quality indicator code"                                                                                  
+##  [44] "#  rpt_lev_va                 - Reporting level"                                                                                              
+##  [45] "#  rpt_lev_cd                 - Reporting level type"                                                                                         
+##  [46] "#  lab_std_va                 - Lab standard deviation"                                                                                       
+##  [47] "#  prep_set_no                - Prep set number"                                                                                              
+##  [48] "#  prep_dt                    - Result prep date"                                                                                             
+##  [49] "#  anl_set_no                 - Analysis set number"                                                                                          
+##  [50] "#  anl_dt                     - Result analysis date"                                                                                         
+##  [51] "#  result_lab_cm_tx           - Lab result comment"                                                                                           
+##  [52] "#  anl_ent_cd                 - Analyzing entity code"                                                                                        
+##  [53] "#"                                                                                                                                            
+##  [54] "# The following parameters are included:"                                                                                                     
+##  [55] "#  00940  - Chloride, water, filtered, milligrams per liter"                                                                                  
+##  [56] "#  71851  - Nitrate, water, filtered, milligrams per liter as nitrate"                                                                        
+##  [57] "#"                                                                                                                                            
+##  [58] "# Description of sample_start_time_datum_cd:"                                                                                                 
+##  [59] "# EST  - Eastern Standard Time"                                                                                                               
+##  [60] "# EDT  - Eastern Daylight Time"                                                                                                               
+##  [61] "#"                                                                                                                                            
+##  [62] "# Description of tm_datum_rlbty_cd:"                                                                                                          
+##  [63] "# K  - Known"                                                                                                                                 
+##  [64] "# T  - Transferred"                                                                                                                           
+##  [65] "#"                                                                                                                                            
+##  [66] "# Description of coll_ent_cd and anl_ent_cd:"                                                                                                 
+##  [67] "# USGS-WRD  - U.S. Geological Survey-Water Resources Discipline"                                                                              
+##  [68] "# USGS-NYL  - USGS-NY WSC Low Ionic Strength Lab,Troy(formerly Albany)"                                                                       
+##  [69] "#"                                                                                                                                            
+##  [70] "# Description of medium_cd:"                                                                                                                  
+##  [71] "# WS  - Surface water"                                                                                                                        
+##  [72] "#"                                                                                                                                            
+##  [73] "# Description of aqfr_cd:"                                                                                                                    
+##  [74] "#"                                                                                                                                            
+##  [75] "# Description of tu_id:"                                                                                                                      
+##  [76] "# https://www.itis.gov/"                                                                                                                      
+##  [77] "#"                                                                                                                                            
+##  [78] "# Description of body_part_id:"                                                                                                               
+##  [79] "#"                                                                                                                                            
+##  [80] "# Description of hyd_cond_cd:"                                                                                                                
+##  [81] "# 4  - Stable, low stage"                                                                                                                     
+##  [82] "# 5  - Falling stage"                                                                                                                         
+##  [83] "# 6  - Stable, high stage"                                                                                                                    
+##  [84] "# 8  - Rising stage"                                                                                                                          
+##  [85] "# 9  - Stable, normal stage"                                                                                                                  
+##  [86] "# A  - Not determined"                                                                                                                        
+##  [87] "#"                                                                                                                                            
+##  [88] "# Description of samp_type_cd:"                                                                                                               
+##  [89] "# 7  - Replicate"                                                                                                                             
+##  [90] "# 9  - Regular"                                                                                                                               
+##  [91] "#"                                                                                                                                            
+##  [92] "# Description of hyd_event_cd:"                                                                                                               
+##  [93] "# 9  - Routine sample"                                                                                                                        
+##  [94] "#"                                                                                                                                            
+##  [95] "# Description of remark_cd:"                                                                                                                  
+##  [96] "#"                                                                                                                                            
+##  [97] "# Description of val_qual_tx:"                                                                                                                
+##  [98] "#"                                                                                                                                            
+##  [99] "# Description of meth_cd:"                                                                                                                    
+## [100] "# ALGOR  - Computation by NWIS algorithm"                                                                                                     
+## [101] "# CL031  - Chloride, wf, ASF thiocyanate"                                                                                                     
+## [102] "# IC022  - Anions, wf, IC"                                                                                                                    
+## [103] "# IC034  - Anions, wf, IC (USGS-NYL)"                                                                                                         
+## [104] "#"                                                                                                                                            
+## [105] "# Description of dqi_cd:"                                                                                                                     
+## [106] "# A  - Historical data"                                                                                                                       
+## [107] "# R  - Reviewed and approved"                                                                                                                 
+## [108] "#"                                                                                                                                            
+## [109] "# Description of rpt_lev_cd:"                                                                                                                 
+## [110] "# MRL  - Minimum reporting level"                                                                                                             
+## [111] "#"                                                                                                                                            
+## [112] "# Data for the following sites are included:"                                                                                                 
+## [113] "#  USGS 03165500 NEW RIVER AT IVANHOE, VA"                                                                                                    
+## [114] "#  USGS 03167000 REED CREEK AT GRAHAMS FORGE, VA"                                                                                             
+## [115] "#  USGS 03167500 BIG REED ISLAND CREEK NEAR ALLISONIA, VA"                                                                                    
+## [116] "#  USGS 03168000 NEW RIVER AT ALLISONIA, VA"                                                                                                  
+## [117] "#  USGS 03168500 PEAK CREEK AT PULASKI, VA"                                                                                                   
+## [118] "#  USGS 03170000 LITTLE RIVER AT GRAYSONTOWN, VA"                                                                                             
+## [119] "#  USGS 03171000 NEW RIVER AT RADFORD, VA"                                                                                                    
+## [120] "#  USGS 03171500 NEW RIVER AT EGGLESTON, VA"                                                                                                  
+## [121] "#  USGS 03172500 WALKER CREEK AT STAFFORDSVILLE, VA"                                                                                          
+## [122] "#  USGS 03173000 WALKER CREEK AT BANE, VA"                                                                                                    
+## [123] "#  USGS 03175500 WOLF CREEK NEAR NARROWS, VA"                                                                                                 
+## [124] "#  USGS 03473500 M F HOLSTON RIVER AT GROSECLOSE, VA"                                                                                         
+## [125] "#  USGS 371852081031201 006.0 EAST RIVER NEAR ENGLESIDE, W. VA."                                                                              
+## [126] "#  USGS 370853081003801 AT 23045 UNNAMED EPHEMERAL TRIB TO WALKER CREEK VA"                                                                   
+## [127] "#  USGS 370941081005201 AT 23045.5 UNNAMED INTERMIT TRIB TO KIMBERLING CR"                                                                    
+## [128] "#  USGS 370847081055101 AT 23046 KIMBERLING CREEK VA"                                                                                         
+## [129] "#  USGS 371250080511401 AT 22014 DISMAL CREEK VA"                                                                                             
+## [130] "#  USGS 370534081144701 AT 22013 HUNTING CAMP CREEK VA"                                                                                       
+## [131] "#  USGS 370603081120801 AT 22013.5 LAUREL CR AT MOUTH OF LITTLE WOLF CR VA"                                                                   
+## [132] "#"
 \end{verbatim}
 
 Now, let's clean things up a bit.
@@ -3146,15 +3227,15 @@ This method is only appropriate when the desired return period is less than n/5 
 \hypertarget{template-repository}{%
 \section{Template Repository}\label{template-repository}}
 
-The following activity is available as a template github repository at the following link: \url{https://github.com/VT-Hydroinformatics/11-Flood-Frequency-and-Functions}
+The following activity is available as a template github repository at the following link:
 
-\hypertarget{introduction-2}{%
-\section{Introduction}\label{introduction-2}}
+\hypertarget{intro}{%
+\section{Intro}\label{intro}}
 
 This methods for this chapter are adapted from the following activity:
 \url{https://serc.carleton.edu/hydromodules/steps/166250.html}
 
-After working with Flow Duration Curves (FDCs) and performing a low flow analysis, we now understand all the concepts necessary to perform a flood frequency analysis. In this chapter we will perform a flood frequency analysis using a Gumbel extreme value distribution and then write our own function that will return the return interval of magnitude flow we want! At the end of the chapter you will be challenged to write a function that performs a flood frequency analysis for any USGS gage.
+After working with Flow Duration Curves (FDCs) and performing a low flow analysis, we now understand all the concepts necessary to perform a floow frequency analysis. In this chapter we will perform a flood frequency analysis using a Gumbel extreme value distribution and then write our own function that will return the magnitude of whatever probability flood we want!
 
 First we will load the tidyverse and dataRetrieval packages and the set the theme for our plots.
 
@@ -3166,9 +3247,6 @@ First we will load the tidyverse and dataRetrieval packages and the set the them
 \FunctionTok{theme\_set}\NormalTok{(}\FunctionTok{theme\_classic}\NormalTok{())}
 \end{Highlighting}
 \end{Shaded}
-
-\hypertarget{download-and-plot-peak-flow-data}{%
-\section{Download and plot peak flow data}\label{download-and-plot-peak-flow-data}}
 
 Next, download the yearly peakflow data from USGS dataRetrieval using the readNWISpeak() function. We don't have to create our own yearly values like we did in the low flow analysis. This function just returns the highest flow for each year.
 
@@ -3189,9 +3267,6 @@ Then make a plot of the peak flow for each year.
 
 \includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-110-1.pdf}
 
-\hypertarget{compute-ranks-for-peak-flows}{%
-\section{Compute ranks for peak flows}\label{compute-ranks-for-peak-flows}}
-
 As with the couple previous chapters, the next step is to create a column that contains the ranks of each flow in the record. Create a column that has the rank of each flow, with the highest flow ranked \#1. Use select() to trim your dataset to just the peak data, peak values, and ranks columns.
 
 Make the plot from the last code chunk again but color the points by rank to check that this worked.
@@ -3201,11 +3276,13 @@ Also, look at the data through the environment tab in rstudio or using head() to
 \begin{Highlighting}[]
 \CommentTok{\#create rank column (minus flips the ranking)}
 \CommentTok{\#then clean it up, pull out only peak value, date, rank}
-\NormalTok{peakflows }\OtherTok{\textless{}{-}}\NormalTok{ peakflows }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{ranks =} \FunctionTok{rank}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{peak\_va)) }\SpecialCharTok{\%\textgreater{}\%}
-              \FunctionTok{select}\NormalTok{(peak\_dt, peak\_va, ranks)}
+\NormalTok{peakflows }\OtherTok{\textless{}{-}}\NormalTok{ peakflows }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{ranks =} \FunctionTok{rank}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{peak\_va)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(peak\_dt, peak\_va, ranks)}
 
 \CommentTok{\#look at it}
-\FunctionTok{ggplot}\NormalTok{(peakflows, }\FunctionTok{aes}\NormalTok{(peak\_dt, peak\_va, }\AttributeTok{color =}\NormalTok{ ranks))}\SpecialCharTok{+}
+\FunctionTok{ggplot}\NormalTok{(peakflows, }
+       \FunctionTok{aes}\NormalTok{(peak\_dt, peak\_va, }\AttributeTok{color =}\NormalTok{ ranks))}\SpecialCharTok{+}
   \FunctionTok{geom\_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -3220,16 +3297,13 @@ Also, look at the data through the environment tab in rstudio or using head() to
 
 \begin{verbatim}
 ##      peak_dt peak_va ranks
-## 1 1945-09-18   62700  14.0
-## 2 1946-01-08   44400  34.0
-## 3 1947-01-20   34500  48.5
-## 4 1948-02-14   34500  48.5
-## 5 1949-08-29   40800  38.0
-## 6 1949-11-02   15200  73.0
+## 1 1945-09-18   62700  15.0
+## 2 1946-01-08   44400  35.0
+## 3 1947-01-20   34500  49.5
+## 4 1948-02-14   34500  49.5
+## 5 1949-08-29   40800  39.0
+## 6 1949-11-02   15200  74.0
 \end{verbatim}
-
-\hypertarget{calculate-exceedance-probability-and-return-period}{%
-\section{Calculate exceedance probability and return period}\label{calculate-exceedance-probability-and-return-period}}
 
 Now we need to calculate the exceedance probability and return interval for each value in our data. For flood frequency analysis, it is common to use the Gringorten plotting position formula:
 
@@ -3267,20 +3341,19 @@ Then make a plot with peak flow on the Y axis and Return Period on the X.
 \NormalTok{a }\OtherTok{\textless{}{-}} \FloatTok{0.44}
 
 \CommentTok{\#calculate exceedence/non{-}exceedence with gringorten and return period}
-\NormalTok{peakflows }\OtherTok{\textless{}{-}}\NormalTok{ peakflows }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{qi =}\NormalTok{ (ranks }\SpecialCharTok{{-}}\NormalTok{ a) }\SpecialCharTok{/}\NormalTok{ (N }\SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ (}\DecValTok{2}\SpecialCharTok{*}\NormalTok{a))) }\SpecialCharTok{\%\textgreater{}\%}
-                           \FunctionTok{mutate}\NormalTok{(}\AttributeTok{pi =} \DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ qi) }\SpecialCharTok{\%\textgreater{}\%}
-                           \FunctionTok{mutate}\NormalTok{(}\AttributeTok{TpEst =} \DecValTok{1} \SpecialCharTok{/}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{pi))}
+\NormalTok{peakflows }\OtherTok{\textless{}{-}}\NormalTok{ peakflows }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{qi =}\NormalTok{ (ranks }\SpecialCharTok{{-}}\NormalTok{ a) }\SpecialCharTok{/}\NormalTok{ (N }\SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ (}\DecValTok{2}\SpecialCharTok{*}\NormalTok{a))) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{pi =} \DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ qi) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{TpEst =} \DecValTok{1} \SpecialCharTok{/}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{pi))}
 
 \CommentTok{\#Plot peak flows on y and est return period on the x}
-\NormalTok{peakflows }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ TpEst, }\AttributeTok{y =}\NormalTok{ peak\_va)) }\SpecialCharTok{+}
+\NormalTok{peakflows }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ TpEst, }\AttributeTok{y =}\NormalTok{ peak\_va)) }\SpecialCharTok{+}
   \FunctionTok{geom\_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-112-1.pdf}
-
-\hypertarget{calculate-gumbel-distribution-parameters}{%
-\section{Calculate Gumbel distribution parameters}\label{calculate-gumbel-distribution-parameters}}
 
 Now we need to fit these data to a distribution in order to make a relationship we can use to predict the discharge of specific return intervals.
 
@@ -3292,9 +3365,9 @@ There are many distributions that can be used in this situation, but a common on
 \caption{Gumbel Distribution}
 \end{figure}
 
-x is observed discharge data, u and alpha are parameters that shape the distribution.
+x is observed discharge data, u and x are parameters that shape the distribution.
 
-We can calculate u and alpha in order to create a distribution that best fits our data with the following equations. Notice \textbf{x bar} is mean and \textbf{sx2} is variance. We will need to find \textbf{sx}, which is the square root of the variance, also known as the standard deviation.
+We can calculate u and x in order to create a distribution that best fits our data with the following equations. Notice \textbf{x bar} is mean and \textbf{sx2} is variance. We will need to find \textbf{sx}, which is the square root of the variance, also known as the standard deviation.
 
 \begin{figure}
 \centering
@@ -3316,9 +3389,6 @@ In the chunk below, calculate u and alpha by first calculating xbar (mean) and s
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{calculate-return-interval-for-peak-flows-according-to-gumbel-distribution}{%
-\section{Calculate return interval for peak flows according to Gumbel distribution}\label{calculate-return-interval-for-peak-flows-according-to-gumbel-distribution}}
-
 Now that we have the parameters that best represent our data as a Gumbel Distribution, we can use the formula to create the theoretical values for the return interval according to that distribution.
 
 \begin{figure}
@@ -3337,9 +3407,10 @@ Finally create a plot of return period on the x axis and peak values on the y. I
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{peakflows }\OtherTok{\textless{}{-}}\NormalTok{ peakflows }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{pTheoretical =} 
-                                    \FunctionTok{exp}\NormalTok{(}\SpecialCharTok{{-}}\FunctionTok{exp}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{((peak\_va }\SpecialCharTok{{-}}\NormalTok{ u) }\SpecialCharTok{/}\NormalTok{ alpha)))) }\SpecialCharTok{\%\textgreater{}\%}
-                           \FunctionTok{mutate}\NormalTok{(}\AttributeTok{TpTheoretical =}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{/}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{pTheoretical)))}
+\NormalTok{peakflows }\OtherTok{\textless{}{-}}\NormalTok{ peakflows }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{pTheoretical =} 
+    \FunctionTok{exp}\NormalTok{(}\SpecialCharTok{{-}}\FunctionTok{exp}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{((peak\_va }\SpecialCharTok{{-}}\NormalTok{ u) }\SpecialCharTok{/}\NormalTok{ alpha)))) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(}\AttributeTok{TpTheoretical =}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{/}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{pTheoretical)))}
 
 
 \NormalTok{peakflows }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ TpEst, }\AttributeTok{y =}\NormalTok{ peak\_va, }\AttributeTok{color =} \StringTok{"Estimated"}\NormalTok{)) }\SpecialCharTok{+}
@@ -3352,9 +3423,6 @@ Finally create a plot of return period on the x axis and peak values on the y. I
 \end{Shaded}
 
 \includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-114-1.pdf}
-
-\hypertarget{plot-gumbel-distribution-fit-with-peak-flow-data}{%
-\section{Plot Gumbel distribution fit with peak flow data}\label{plot-gumbel-distribution-fit-with-peak-flow-data}}
 
 Let's look at these data a slightly different way to make it easier to see what is going on and how we can pull of flows for different return periods.
 
@@ -3380,49 +3448,42 @@ With this plot you could look up the return period for any flood or the discharg
 
 \includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-115-1.pdf}
 
-\hypertarget{calculate-magnitude-of-1-in-100-chance-flood}{%
-\section{Calculate magnitude of 1 in 100 chance flood}\label{calculate-magnitude-of-1-in-100-chance-flood}}
-
 This plot is showing a representation of the fitted distribution by calculating the return period for each point in our dataset. But we can also use it to calculated the specific flow that corresponds to any return period by using the established relationship.
 
-In the chunk below, calculate the magnitude of a 1 in 100 chance, or 100 year flood using the following two formulas where p = exceedance probability and Tp = return period. These are just the equations used to calculate return period rearranged to calculate peak flow.
+In the chunk below, calculate the magnitude of a 1 in 100 chance, or 100 year flood using the following two formulas where p = non-exceedance probability and Tp = return period. These are just the equations used to calculate return period rearranged to calculate peak flow.
 
-\(p = Tp / (Tp - 1)\)
+p = 1 - (1 / Tp)
 
-\(peakflow = u - (alpha * log(log(p)))\)
+peakflow = u - (alpha * ln(-ln(p)))
 
-According to this analysis, what is the 1 in 100 chance flood at this location? Do you see any issues with reporting this as the 1 in 100 chance flood? What are they?
+(log() in r is the natural log, log10() is base 10 log)
+
+According to this flow, what is the 1 in 100 chance flood at this location? Do you see any issues with reporting this as the 1 in 100 chance flood? What are they?
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{Tp }\OtherTok{=} \DecValTok{100}
 
-\NormalTok{p }\OtherTok{=}\NormalTok{ Tp }\SpecialCharTok{/}\NormalTok{ (Tp }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{)}
+\NormalTok{p }\OtherTok{=} \DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{/}\NormalTok{Tp)}
 
-\NormalTok{peak\_va }\OtherTok{=}\NormalTok{ u }\SpecialCharTok{{-}}\NormalTok{ (alpha }\SpecialCharTok{*} \FunctionTok{log}\NormalTok{(}\FunctionTok{log}\NormalTok{(p)))}
+\NormalTok{peak\_va }\OtherTok{=}\NormalTok{ u }\SpecialCharTok{{-}}\NormalTok{ (alpha }\SpecialCharTok{*} \FunctionTok{log}\NormalTok{(}\SpecialCharTok{{-}}\FunctionTok{log}\NormalTok{(p)))}
+
+\NormalTok{peak\_va}
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{how-to-create-your-own-functions}{%
-\section{How to create your own functions}\label{how-to-create-your-own-functions}}
+\begin{verbatim}
+## [1] 120275.3
+\end{verbatim}
 
 This is a good opportunity to illustrate the usefulness of writing your own functions. When you install packages in R, you get a bunch of functions you can use. But you can also create these on your own to simplify your analyses!
 
 You do this with the following syntax
+\textgreater MyNewFunction \textless- function(param1, param2)\{
+\textgreater code
+\textgreater\}
 
-\begin{quote}
-MyNewFunction \textless- function(param1, param2)\{
-\end{quote}
-
-\begin{quote}
-code
-\end{quote}
-
-\begin{quote}
-\}
-\end{quote}
-
-Whatever the last line of the ``code'' portion of the function spits out, gets returned from the function. So if you said X \textless- mynewfunction(param1, parm2) X would now have in it whatever your function returned. See a simple example below: a function that adds 1 to any number we pass to it.
+Whatever the last line of the ``code'' portion of the function spits out, get's returned from the function. So if you said X \textless- mynewfunction(param1, parm2) X would now have it in whatever your function returned. See a simple example below: a function that adds 1 to any number we pass to it.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3437,9 +3498,6 @@ Whatever the last line of the ``code'' portion of the function spits out, gets r
 \begin{verbatim}
 ## [1] 5
 \end{verbatim}
-
-\hypertarget{create-a-return-period-function}{%
-\section{Create a return period function}\label{create-a-return-period-function}}
 
 Let's create a function that returns the return period for a flood of any magnitude for the gage we are investigating. Creating functions is a great way to streamline your workflow. You can write a function that performs an operation you need to perform a bunch of times, then just use the function rather than re-writing/copying the code.
 
@@ -3462,13 +3520,13 @@ We will test the function by having it calculate the return period for the 100 y
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 99.99898
+## [1] 98.66813
 \end{verbatim}
 
-\hypertarget{challenge-create-a-function-to-compute-the-1-in-100-chance-flood-for-any-usgs-gage}{%
-\section{Challenge: Create a function to compute the 1 in 100 chance flood for any USGS gage}\label{challenge-create-a-function-to-compute-the-1-in-100-chance-flood-for-any-usgs-gage}}
+\hypertarget{challenge-create-a-function}{%
+\section{Challenge: Create a function}\label{challenge-create-a-function}}
 
-Create a function that returns the magnitude of the 100 year flood when given a USGS gage id, startdate, and enddate for the period you want to investigate.
+Create a function that returns the 100 year flood when given a USGS gage id, startdate, and enddate for the period you want to investigate.
 
 \hypertarget{rgeospatial}{%
 \chapter{Geospatial data in R - Vector}\label{rgeospatial}}
@@ -3564,7 +3622,7 @@ Then we will have a look at the us\_states data from the data package we loaded 
 ## Geometry type: MULTIPOLYGON
 ## Dimension:     XY
 ## Bounding box:  xmin: -114.8136 ymin: 24.55868 xmax: -71.78699 ymax: 42.04964
-## CRS:           EPSG:4269
+## Geodetic CRS:  NAD83
 ##   GEOID        NAME   REGION             AREA total_pop_10 total_pop_15
 ## 1    01     Alabama    South 133709.27 [km^2]      4712651      4830620
 ## 2    04     Arizona     West 295281.25 [km^2]      6246816      6641928
@@ -3716,7 +3774,7 @@ In addition to filtering, we can use the data in the geospatial table to calcula
 ## Geometry type: MULTIPOLYGON
 ## Dimension:     XY
 ## Bounding box:  xmin: -114.8136 ymin: 24.55868 xmax: -71.78699 ymax: 42.04964
-## CRS:           EPSG:4269
+## Geodetic CRS:  NAD83
 ##   GEOID        NAME   REGION             AREA total_pop_10 total_pop_15
 ## 1    01     Alabama    South 133709.27 [km^2]      4712651      4830620
 ## 2    04     Arizona     West 295281.25 [km^2]      6246816      6641928
@@ -3782,7 +3840,7 @@ To review joins, check out chapter \ref{getdata}
 ## Geometry type: MULTIPOLYGON
 ## Dimension:     XY
 ## Bounding box:  xmin: -114.8136 ymin: 24.55868 xmax: -71.78699 ymax: 42.04964
-## CRS:           EPSG:4269
+## Geodetic CRS:  NAD83
 ##   GEOID        NAME   REGION             AREA total_pop_10 total_pop_15  growth
 ## 1    01     Alabama    South 133709.27 [km^2]      4712651      4830620  117969
 ## 2    04     Arizona     West 295281.25 [km^2]      6246816      6641928  395112
@@ -3900,10 +3958,6 @@ Also in this chunk we see how to add a basemap to a tmap object.
 ## legend.postion is used for plot mode. Use view.legend.position in tm_view to set the legend position in view mode.
 \end{verbatim}
 
-\begin{verbatim}
-## PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
-\end{verbatim}
-
 \hypertarget{leaflet}{%
 \subsection{Leaflet}\label{leaflet}}
 
@@ -3920,7 +3974,7 @@ Leaflet is another way to make interactive maps. It's syntax is very different, 
 \end{Shaded}
 
 \begin{verbatim}
-## Warning: sf layer has inconsistent datum (+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs ).
+## Warning: sf layer has inconsistent datum (+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs).
 ## Need '+proj=longlat +datum=WGS84'
 \end{verbatim}
 
@@ -3937,8 +3991,8 @@ Github repo: \url{https://github.com/VT-Hydroinformatics/14-Summative2}
 \hypertarget{rgeoraster}{%
 \chapter{Geospatial R Raster - Hydro Analyses}\label{rgeoraster}}
 
-\hypertarget{introduction-3}{%
-\section{Introduction}\label{introduction-3}}
+\hypertarget{introduction-2}{%
+\section{Introduction}\label{introduction-2}}
 
 The following activity is available as a template github repository at the following link: \url{https://github.com/VT-Hydroinformatics/13-Geospatial-Raster-Hydro.git}
 
@@ -4043,15 +4097,7 @@ Notice how much more you can see in the landscape!
 \FunctionTok{wbt\_hillshade}\NormalTok{(}\AttributeTok{dem =} \StringTok{"McDonaldHollowDEM/brushDEMsm\_5m\_crs.tif"}\NormalTok{,}
               \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/brush\_hillshade.tif"}\NormalTok{,}
               \AttributeTok{azimuth =} \DecValTok{115}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-## [1] "hillshade - Elapsed Time (excluding I/O): 0.11s"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{hillshade }\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"McDonaldHollowDEM/brush\_hillshade.tif"}\NormalTok{)}
 
 \FunctionTok{tm\_shape}\NormalTok{(hillshade)}\SpecialCharTok{+}
@@ -4102,15 +4148,7 @@ Be careful to give the breach depressions function the result of the single cell
 \FunctionTok{wbt\_fill\_single\_cell\_pits}\NormalTok{(}
                     \AttributeTok{dem =} \StringTok{"McDonaldHollowDEM/brushDEMsm\_5m\_crs.tif"}\NormalTok{,}
                     \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/bmstationdem\_filled.tif"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-## [1] "fill_single_cell_pits - Elapsed Time (excluding I/O): 0.5s"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{wbt\_breach\_depressions\_least\_cost}\NormalTok{(}
                      \AttributeTok{dem =} \StringTok{"McDonaldHollowDEM/bmstationdem\_filled.tif"}\NormalTok{,}
                      \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/bmstationdem\_filled\_breached.tif"}\NormalTok{,}
@@ -4118,10 +4156,6 @@ Be careful to give the breach depressions function the result of the single cell
                      \AttributeTok{fill =} \ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## [1] "breach_depressions_least_cost - Elapsed Time (excluding I/O): 0.57s"
-\end{verbatim}
 
 \hypertarget{visualize-filled-sinks-and-breached-depressions}{%
 \section{Visualize filled sinks and breached depressions}\label{visualize-filled-sinks-and-breached-depressions}}
@@ -4184,15 +4218,7 @@ Where are the lowest values?
 \begin{Highlighting}[]
 \FunctionTok{wbt\_d8\_flow\_accumulation}\NormalTok{(}\AttributeTok{input =} \StringTok{"McDonaldHollowDEM/bmstationdem\_filled\_breached.tif"}\NormalTok{,}
                          \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/D8FA.tif"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-## [1] "d8_flow_accumulation - Elapsed Time (excluding I/O): 0.25s"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{d8 }\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"McDonaldHollowDEM/D8FA.tif"}\NormalTok{)}
 
 \FunctionTok{tm\_shape}\NormalTok{(hillshade)}\SpecialCharTok{+}
@@ -4230,15 +4256,7 @@ Which do you think represents reality better? Why?
 \begin{Highlighting}[]
 \FunctionTok{wbt\_d\_inf\_flow\_accumulation}\NormalTok{(}\StringTok{"McDonaldHollowDEM/bmstationdem\_filled\_breached.tif"}\NormalTok{,}
                          \StringTok{"McDonaldHollowDEM/DinfFA.tif"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-## [1] "d_inf_flow_accumulation - Elapsed Time (excluding I/O): 0.44s"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{dinf }\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"McDonaldHollowDEM/DinfFA.tif"}\NormalTok{)}
 
 \FunctionTok{tm\_shape}\NormalTok{(hillshade)}\SpecialCharTok{+}
@@ -4275,39 +4293,15 @@ We get some funkiness around the edges of the DEM, so we will also filter the tw
 \FunctionTok{wbt\_d\_inf\_flow\_accumulation}\NormalTok{(}\AttributeTok{input =} \StringTok{"McDonaldHollowDEM/bmstationdem\_filled\_breached.tif"}\NormalTok{,}
                             \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/DinfFAsca.tif"}\NormalTok{,}
                             \AttributeTok{out\_type =} \StringTok{"Specific Contributing Area"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-## [1] "d_inf_flow_accumulation - Elapsed Time (excluding I/O): 0.39s"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{wbt\_slope}\NormalTok{(}\AttributeTok{dem =} \StringTok{"McDonaldHollowDEM/bmstationdem\_filled\_breached.tif"}\NormalTok{,}
           \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/demslope.tif"}\NormalTok{,}
           \AttributeTok{units =} \StringTok{"degrees"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-## [1] "slope - Elapsed Time (excluding I/O): 0.6s"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{wbt\_wetness\_index}\NormalTok{(}\AttributeTok{sca =} \StringTok{"McDonaldHollowDEM/DinfFAsca.tif"}\NormalTok{,}
                   \AttributeTok{slope =} \StringTok{"McDonaldHollowDEM/demslope.tif"}\NormalTok{,}
                   \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/TWI.tif"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-## [1] "wetness_index - Elapsed Time (excluding I/O): 0.4s"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{twi }\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"McDonaldHollowDEM/TWI.tif"}\NormalTok{)}
 
 \NormalTok{twi[twi }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{] }\OtherTok{\textless{}{-}} \ConstantTok{NA}
@@ -4331,15 +4325,7 @@ Similar to TWI we get some edge issues so we will filter the result to make the 
 \begin{Highlighting}[]
 \FunctionTok{wbt\_downslope\_index}\NormalTok{(}\AttributeTok{dem =} \StringTok{"McDonaldHollowDEM/bmstationdem\_filled\_breached.tif"}\NormalTok{,}
                     \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/TWId.tif"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-## [1] "downslope_index - Elapsed Time (excluding I/O): 0.8s"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{twid }\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"McDonaldHollowDEM/TWId.tif"}\NormalTok{)}
 \NormalTok{twid[twid }\SpecialCharTok{\textgreater{}} \DecValTok{4000000} \SpecialCharTok{|}\NormalTok{ twid }\SpecialCharTok{\textless{}=} \DecValTok{0}\NormalTok{] }\OtherTok{\textless{}{-}} \ConstantTok{NA}
 
@@ -4369,48 +4355,26 @@ Below we extrac the streams, generate a D8 pointer file, and then convert the ra
 \FunctionTok{wbt\_extract\_streams}\NormalTok{(}\AttributeTok{flow\_accum =} \StringTok{"McDonaldHollowDEM/D8FA.tif"}\NormalTok{,}
                     \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/raster\_streams.tif"}\NormalTok{,}
                     \AttributeTok{threshold =} \DecValTok{6000}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-## [1] "extract_streams - Elapsed Time (excluding I/O): 0.4s"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{wbt\_d8\_pointer}\NormalTok{(}\AttributeTok{dem =} \StringTok{"McDonaldHollowDEM/bmstationdem\_filled\_breached.tif"}\NormalTok{,}
                \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/D8pointer.tif"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-## [1] "d8_pointer - Elapsed Time (excluding I/O): 0.7s"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{wbt\_raster\_streams\_to\_vector}\NormalTok{(}\AttributeTok{streams =} \StringTok{"McDonaldHollowDEM/raster\_streams.tif"}\NormalTok{,}
                              \AttributeTok{d8\_pntr =} \StringTok{"McDonaldHollowDEM/D8pointer.tif"}\NormalTok{,}
                              \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/streams.shp"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-## [1] "raster_streams_to_vector - Elapsed Time (excluding I/O): 0.3s"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{streams }\OtherTok{\textless{}{-}} \FunctionTok{st\_read}\NormalTok{(}\StringTok{"McDonaldHollowDEM/streams.shp"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## Reading layer `streams' from data source `/Volumes/GoogleDrive/My Drive/CLASSES/Hydroinformatics/Hydroinformatics_Bookdown/McDonaldHollowDEM/streams.shp' using driver `ESRI Shapefile'
-## Simple feature collection with 37 features and 2 fields
+## Reading layer `streams' from data source 
+##   `/Users/jpgannon/My Drive (jpgannon@vt.edu)/CLASSES/SPRING Hydroinformatics/Hydroinformatics_Bookdown/McDonaldHollowDEM/streams.shp' 
+##   using driver `ESRI Shapefile'
+## Simple feature collection with 26 features and 2 fields
 ## Geometry type: LINESTRING
 ## Dimension:     XY
-## Bounding box:  xmin: -80.49733 ymin: 37.23597 xmax: -80.46388 ymax: 37.25634
+## Bounding box:  xmin: -80.49517 ymin: 37.23597 xmax: -80.46388 ymax: 37.25634
 ## CRS:           NA
 \end{verbatim}
 
@@ -4450,12 +4414,11 @@ Then we will plot the points just to make sure they show up where we expect.
 \end{Shaded}
 
 \begin{verbatim}
-## 
-## -- Column specification --------------------------------------------------------
-## cols(
-##   lon = col_double(),
-##   lat = col_double()
-## )
+## Rows: 3 Columns: 2-- Column specification --------------------------------------------------------
+## Delimiter: ","
+## dbl (2): lon, lat
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
 
 \begin{Shaded}
@@ -4536,9 +4499,9 @@ We can then use cbind() to slap the extracted data onto our existing dataframe (
 
 \begin{verbatim}
 ##         lon      lat      twid       TWI      TWId demslope brushDEMsm_5m
-## 1 -80.48355 37.24087  89693.31 -8.238137  89693.31 37.42480      2130.564
-## 2 -80.48705 37.24570 152567.28 -8.058237 152567.28 54.68245      2301.624
-## 3 -80.48477 37.24697  54293.62 -6.847938  54293.62 30.11527      2430.992
+## 1 -80.48355 37.24087  89693.31 -8.347021  89693.31 40.47319      2130.564
+## 2 -80.48705 37.24570 152567.28 -8.164754 152567.28 57.50642      2301.624
+## 3 -80.48477 37.24697  54293.62 -6.953844  54293.62 32.81537      2430.992
 \end{verbatim}
 
 \hypertarget{view-raster-data-as-a-pdf-or-histogram}{%
@@ -4635,8 +4598,8 @@ Here we convert slope and elevation each to a dataframe, join them, and them plo
 \hypertarget{rgeowatersheds}{%
 \chapter{Geospatial R Raster - Watershed Delineation}\label{rgeowatersheds}}
 
-\hypertarget{introduction-4}{%
-\section{Introduction}\label{introduction-4}}
+\hypertarget{introduction-3}{%
+\section{Introduction}\label{introduction-3}}
 
 The following activity is available as a template github repository at the following link: \url{https://github.com/VT-Hydroinformatics/15-Watershed-Delineation.git}
 
@@ -4747,15 +4710,7 @@ Next, we will generate a hillshade to aid in visualization and then plot it to b
 \FunctionTok{wbt\_hillshade}\NormalTok{(}\AttributeTok{dem =} \StringTok{"McDonaldHollowDEM/brushDEMsm\_5m\_crs.tif"}\NormalTok{,}
               \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/brush\_hillshade.tif"}\NormalTok{,}
               \AttributeTok{azimuth =} \DecValTok{115}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-## [1] "hillshade - Elapsed Time (excluding I/O): 0.8s"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{hillshade }\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"McDonaldHollowDEM/brush\_hillshade.tif"}\NormalTok{)}
 
 \FunctionTok{tm\_shape}\NormalTok{(hillshade)}\SpecialCharTok{+}
@@ -4777,29 +4732,22 @@ From now on in the analysis \emph{be careful} to use the filled and breached DEM
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{wbt\_fill\_single\_cell\_pits}\NormalTok{(}
-                    \AttributeTok{dem =} \StringTok{"McDonaldHollowDEM/brushDEMsm\_5m\_crs.tif"}\NormalTok{,}
-                    \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/bmstationdem\_filled.tif"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+\CommentTok{\#wbt\_fill\_single\_cell\_pits(}
+\CommentTok{\#                    dem = "McDonaldHollowDEM/brushDEMsm\_5m\_crs.tif",}
+ \CommentTok{\#                   output = "McDonaldHollowDEM/bmstationdem\_filled.tif")}
 
-\begin{verbatim}
-## [1] "fill_single_cell_pits - Elapsed Time (excluding I/O): 0.3s"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{wbt\_breach\_depressions\_least\_cost}\NormalTok{(}
-                     \AttributeTok{dem =} \StringTok{"McDonaldHollowDEM/bmstationdem\_filled.tif"}\NormalTok{,}
-                     \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/bmstationdem\_filled\_breached.tif"}\NormalTok{,}
-                     \AttributeTok{dist =} \DecValTok{5}\NormalTok{,}
-                     \AttributeTok{fill =} \ConstantTok{TRUE}\NormalTok{)}
+  \AttributeTok{dem =} \StringTok{"McDonaldHollowDEM/brushDEMsm\_5m\_crs.tif"}\NormalTok{,}
+  \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/bmstationdem\_breached.tif"}\NormalTok{,}
+  \AttributeTok{dist =} \DecValTok{5}\NormalTok{,}
+  \AttributeTok{fill =} \ConstantTok{TRUE}\NormalTok{)}
+
+\FunctionTok{wbt\_fill\_depressions\_wang\_and\_liu}\NormalTok{(}
+  \AttributeTok{dem =} \StringTok{"McDonaldHollowDEM/bmstationdem\_breached.tif"}\NormalTok{,}
+  \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/bmstationdem\_filled\_breached.tif"}
+\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## [1] "breach_depressions_least_cost - Elapsed Time (excluding I/O): 0.44s"
-\end{verbatim}
 
 \hypertarget{create-flow-accumulation-and-pointer-grids}{%
 \section{Create flow accumulation and pointer grids}\label{create-flow-accumulation-and-pointer-grids}}
@@ -4812,23 +4760,11 @@ Below, create these two rasters using the \emph{filled and breached} DEM.
 \begin{Highlighting}[]
 \FunctionTok{wbt\_d8\_flow\_accumulation}\NormalTok{(}\AttributeTok{input =} \StringTok{"McDonaldHollowDEM/bmstationdem\_filled\_breached.tif"}\NormalTok{,}
                          \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/D8FA.tif"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-## [1] "d8_flow_accumulation - Elapsed Time (excluding I/O): 0.21s"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{wbt\_d8\_pointer}\NormalTok{(}\AttributeTok{dem =} \StringTok{"McDonaldHollowDEM/bmstationdem\_filled\_breached.tif"}\NormalTok{,}
                \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/D8pointer.tif"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## [1] "d8_pointer - Elapsed Time (excluding I/O): 0.4s"
-\end{verbatim}
 
 \hypertarget{setting-pour-points}{%
 \section{Setting pour points}\label{setting-pour-points}}
@@ -4878,28 +4814,12 @@ After you get the streams and snapped pour points, read them into your R environ
 \FunctionTok{wbt\_extract\_streams}\NormalTok{(}\AttributeTok{flow\_accum =} \StringTok{"McDonaldHollowDEM/D8FA.tif"}\NormalTok{,}
                     \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/raster\_streams.tif"}\NormalTok{,}
                     \AttributeTok{threshold =} \DecValTok{6000}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-## [1] "extract_streams - Elapsed Time (excluding I/O): 0.3s"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{wbt\_jenson\_snap\_pour\_points}\NormalTok{(}\AttributeTok{pour\_pts =} \StringTok{"McDonaldHollowDEM/pourpoints.shp"}\NormalTok{,}
                             \AttributeTok{streams =} \StringTok{"McDonaldHollowDEM/raster\_streams.tif"}\NormalTok{,}
                             \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/snappedpp.shp"}\NormalTok{,}
                             \AttributeTok{snap\_dist =} \FloatTok{0.0005}\NormalTok{) }\CommentTok{\#careful with this! Know the units of your data}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-## [1] "jenson_snap_pour_points - Elapsed Time (excluding I/O): 0.0s"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{pp }\OtherTok{\textless{}{-}} \FunctionTok{shapefile}\NormalTok{(}\StringTok{"McDonaldHollowDEM/snappedpp.shp"}\NormalTok{)}
 \NormalTok{streams }\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"McDonaldHollowDEM/raster\_streams.tif"}\NormalTok{)}
 
@@ -4924,15 +4844,7 @@ Read the results of this function back in and plot them over the hillshade with 
 \FunctionTok{wbt\_watershed}\NormalTok{(}\AttributeTok{d8\_pntr =} \StringTok{"McDonaldHollowDEM/D8pointer.tif"}\NormalTok{,}
               \AttributeTok{pour\_pts =} \StringTok{"McDonaldHollowDEM/snappedpp.shp"}\NormalTok{,}
               \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/brush\_watersheds.tif"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-## [1] "watershed - Elapsed Time (excluding I/O): 0.15s"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{ws }\OtherTok{\textless{}{-}} \FunctionTok{raster}\NormalTok{(}\StringTok{"McDonaldHollowDEM/brush\_watersheds.tif"}\NormalTok{)}
 
 \FunctionTok{tm\_shape}\NormalTok{(hillshade)}\SpecialCharTok{+}
@@ -5018,15 +4930,24 @@ The following code is here just because it is cool. We clip the DEM to the water
   \AttributeTok{ncol =} \FunctionTok{nrow}\NormalTok{(wsmask))}
 
 \CommentTok{\#create hillshade}
-\NormalTok{raymat }\OtherTok{\textless{}{-}} \FunctionTok{ray\_shade}\NormalTok{(wsmat, }\AttributeTok{sunable =} \DecValTok{115}\NormalTok{)}
+\NormalTok{raymat }\OtherTok{\textless{}{-}} \FunctionTok{ray\_shade}\NormalTok{(wsmat, }\AttributeTok{sunangle =} \DecValTok{115}\NormalTok{)}
 
 \CommentTok{\#render}
 \NormalTok{wsmat }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{sphere\_shade}\NormalTok{(}\AttributeTok{texture =} \StringTok{"desert"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{add\_shadow}\NormalTok{(raymat) }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\#add\_shadow(raymat) \%\textgreater{}\%}
   \FunctionTok{plot\_3d}\NormalTok{(wsmat, }\AttributeTok{zscale =} \DecValTok{10}\NormalTok{, }\AttributeTok{fov =} \DecValTok{0}\NormalTok{, }\AttributeTok{theta =} \DecValTok{135}\NormalTok{, }\AttributeTok{zoom =} \FloatTok{0.75}\NormalTok{, }\AttributeTok{phi =} \DecValTok{45}\NormalTok{,}
           \AttributeTok{windowsize =} \FunctionTok{c}\NormalTok{(}\DecValTok{750}\NormalTok{,}\DecValTok{750}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
 
+\begin{verbatim}
+## Warning in make_shadow(heightmap, shadowdepth, shadowwidth, background, :
+## `magick` package required for smooth shadow--using basic shadow instead.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \CommentTok{\#render as html}
 \FunctionTok{rglwidget}\NormalTok{()}
 \end{Highlighting}
@@ -5037,13 +4958,13 @@ The following code is here just because it is cool. We clip the DEM to the water
 ## requires the webshot2 package; using rgl.snapshot() instead
 \end{verbatim}
 
-\includegraphics[width=6.5in]{/var/folders/rl/dzfg1s7j2zv_5xqhl3ls1yl80000gn/T//RtmpUPg2rx/filee33556b1a24}
+\includegraphics[width=6.5in]{/var/folders/rl/dzfg1s7j2zv_5xqhl3ls1yl80000gn/T//Rtmpb5GgMD/file867715520d71}
 
 \hypertarget{modelingintro}{%
 \chapter{Intro to Modeling - Getting Started with HBV}\label{modelingintro}}
 
-\hypertarget{introduction-5}{%
-\section{Introduction}\label{introduction-5}}
+\hypertarget{introduction-4}{%
+\section{Introduction}\label{introduction-4}}
 
 The following activity is available as a template github repository at the following link: \url{https://github.com/VT-Hydroinformatics/16-Intro-Modeling-HBV}
 
@@ -5137,20 +5058,11 @@ Then we will pull out just the data, so it can be passed to the model.
 \end{Shaded}
 
 \begin{verbatim}
-## 
-## -- Column specification --------------------------------------------------------
-## cols(
-##   DATE = col_character(),
-##   WS_1 = col_double(),
-##   WS_2 = col_double(),
-##   WS_3 = col_double(),
-##   WS_4 = col_double(),
-##   WS_5 = col_double(),
-##   WS_6 = col_double(),
-##   WS_7 = col_double(),
-##   WS_8 = col_double(),
-##   WS_9 = col_double()
-## )
+## Rows: 1461 Columns: 10-- Column specification --------------------------------------------------------
+## Delimiter: ","
+## dbl (10): DATE, WS_1, WS_2, WS_3, WS_4, WS_5, WS_6, WS_7, WS_8, WS_9
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
 
 \begin{Shaded}
@@ -5166,19 +5078,11 @@ Then we will pull out just the data, so it can be passed to the model.
 \end{Shaded}
 
 \begin{verbatim}
-## 
-## -- Column specification --------------------------------------------------------
-## cols(
-##   DATE = col_character(),
-##   STA_1 = col_double(),
-##   STA_6 = col_double(),
-##   STA_14 = col_double(),
-##   STA_INT = col_double(),
-##   STA_HQ = col_double(),
-##   STA_23 = col_double(),
-##   STA_17 = col_double(),
-##   STA_24 = col_double()
-## )
+## Rows: 1461 Columns: 9-- Column specification --------------------------------------------------------
+## Delimiter: ","
+## dbl (9): DATE, STA_1, STA_6, STA_14, STA_INT, STA_HQ, STA_23, STA_17, STA_24
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
 
 \begin{Shaded}
@@ -5224,127 +5128,27 @@ Okay, so now we have our data set up. Next we need to talk parameters.
 
 The table below shows the parameters of the HBV model, the minimum and maximum for those values, and a description of their function in the model.
 
-\begin{longtable}[]{@{}llll@{}}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.32}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.18}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.15}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.35}}@{}}
 \toprule
-\begin{minipage}[b]{0.29\columnwidth}\raggedright
-Object Name\strut
-\end{minipage} & \begin{minipage}[b]{0.16\columnwidth}\raggedright
-Min\strut
-\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\raggedright
-Max\strut
-\end{minipage} & \begin{minipage}[b]{0.31\columnwidth}\raggedright
-Description\strut
-\end{minipage}\tabularnewline
+Object Name & Min & Max & Description \\
 \midrule
 \endhead
-\begin{minipage}[t]{0.29\columnwidth}\raggedright
-FC\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
-40\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
-400\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
-Max soil moisture storage, field capacity\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.29\columnwidth}\raggedright
-beta\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
-Shape coefficient governing fate of water input to soil moisture storage\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.29\columnwidth}\raggedright
-LP\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
-.3\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
-Threshold for reduction of evaporation\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.29\columnwidth}\raggedright
-SFCF\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
-0.4\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
-1.2\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
-Snowfall correction factor\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.29\columnwidth}\raggedright
-TT\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
--1.5\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
-1.2\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
-Threshold temperature\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.29\columnwidth}\raggedright
-CFMAX\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
-8\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
-Degree-day factor\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.29\columnwidth}\raggedright
-k0\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
-0.05\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
-0.5\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
-Recession constant (upper storage, near surface)\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.29\columnwidth}\raggedright
-k1\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
-0.01\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
-0.3\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
-Recession constant (upper storage)\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.29\columnwidth}\raggedright
-k2\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
-0.001\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
-0.15\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
-Recession constant (lower storage)\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.29\columnwidth}\raggedright
-UZL\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
-0\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
-70\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
-Threshold for shallow storage\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.29\columnwidth}\raggedright
-PERC\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
-0\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
-Percolation, max flow from upper to lower storage\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.29\columnwidth}\raggedright
-MAXBAS\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
-base of the triangular routing function, days"\strut
-\end{minipage}\tabularnewline
+FC & 40 & 400 & Max soil moisture storage, field capacity \\
+beta & 1 & 6 & Shape coefficient governing fate of water input to soil moisture storage \\
+LP & .3 & 1 & Threshold for reduction of evaporation \\
+SFCF & 0.4 & 1.2 & Snowfall correction factor \\
+TT & -1.5 & 1.2 & Threshold temperature \\
+CFMAX & 1 & 8 & Degree-day factor \\
+k0 & 0.05 & 0.5 & Recession constant (upper storage, near surface) \\
+k1 & 0.01 & 0.3 & Recession constant (upper storage) \\
+k2 & 0.001 & 0.15 & Recession constant (lower storage) \\
+UZL & 0 & 70 & Threshold for shallow storage \\
+PERC & 0 & 4 & Percolation, max flow from upper to lower storage \\
+MAXBAS & 1 & 3 & base of the triangular routing function, days" \\
 \bottomrule
 \end{longtable}
 
@@ -5426,20 +5230,11 @@ NOTE: These data are all nicely processed. They have the same temporal resolutio
 \end{Shaded}
 
 \begin{verbatim}
-## 
-## -- Column specification --------------------------------------------------------
-## cols(
-##   DATE = col_character(),
-##   WS_1 = col_double(),
-##   WS_2 = col_double(),
-##   WS_3 = col_double(),
-##   WS_4 = col_double(),
-##   WS_5 = col_double(),
-##   WS_6 = col_double(),
-##   WS_7 = col_double(),
-##   WS_8 = col_double(),
-##   WS_9 = col_double()
-## )
+## Rows: 1461 Columns: 10-- Column specification --------------------------------------------------------
+## Delimiter: ","
+## dbl (10): DATE, WS_1, WS_2, WS_3, WS_4, WS_5, WS_6, WS_7, WS_8, WS_9
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
 
 \begin{Shaded}
@@ -5545,25 +5340,20 @@ Snow is not measured daily, so we will plot the measured values as points. Likew
 \end{Shaded}
 
 \begin{verbatim}
-## 
-## -- Column specification --------------------------------------------------------
-## cols(
-##   .default = col_double(),
-##   DATE = col_character()
-## )
-## i Use `spec()` for the full column specifications.
+## New names:
+## * `` -> ...23
+## * `` -> ...24
+## * `` -> ...25
 \end{verbatim}
 
 \begin{verbatim}
-## Warning: 76 parsing failures.
-## row col   expected     actual                   file
-##   1  -- 22 columns 25 columns 'HBV/sno2009-2012.csv'
-##   2  -- 22 columns 25 columns 'HBV/sno2009-2012.csv'
-##   3  -- 22 columns 25 columns 'HBV/sno2009-2012.csv'
-##   4  -- 22 columns 25 columns 'HBV/sno2009-2012.csv'
-##   5  -- 22 columns 25 columns 'HBV/sno2009-2012.csv'
-## ... ... .......... .......... ......................
-## See problems(...) for more details.
+## Rows: 76 Columns: 25-- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr  (1): DATE
+## dbl (21): STA1, STA2, STA3, STA4, STA5, STA6, STA7, STA8, STA9, STA10, STA11...
+## lgl  (3): ...23, ...24, ...25
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
 
 \begin{verbatim}
@@ -5657,8 +5447,8 @@ By changing the parameters, see how well you can get the model to fit. Take note
 \hypertarget{modelingcalibration}{%
 \chapter{Intro to Modeling - Calibrate HBV}\label{modelingcalibration}}
 
-\hypertarget{introduction-6}{%
-\section{Introduction}\label{introduction-6}}
+\hypertarget{introduction-5}{%
+\section{Introduction}\label{introduction-5}}
 
 The following activity is available as a template github repository at the following link: \url{https://github.com/VT-Hydroinformatics/17-calibrate-model-for-loops}
 
@@ -5792,20 +5582,11 @@ Since we did this in the last chapter, we are just going to quickly run the code
 \end{Shaded}
 
 \begin{verbatim}
-## 
-## -- Column specification --------------------------------------------------------
-## cols(
-##   DATE = col_character(),
-##   WS_1 = col_double(),
-##   WS_2 = col_double(),
-##   WS_3 = col_double(),
-##   WS_4 = col_double(),
-##   WS_5 = col_double(),
-##   WS_6 = col_double(),
-##   WS_7 = col_double(),
-##   WS_8 = col_double(),
-##   WS_9 = col_double()
-## )
+## Rows: 1461 Columns: 10-- Column specification --------------------------------------------------------
+## Delimiter: ","
+## dbl (10): DATE, WS_1, WS_2, WS_3, WS_4, WS_5, WS_6, WS_7, WS_8, WS_9
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
 
 \begin{Shaded}
@@ -5821,20 +5602,11 @@ Since we did this in the last chapter, we are just going to quickly run the code
 \end{Shaded}
 
 \begin{verbatim}
-## 
-## -- Column specification --------------------------------------------------------
-## cols(
-##   DATE = col_character(),
-##   WS_1 = col_double(),
-##   WS_2 = col_double(),
-##   WS_3 = col_double(),
-##   WS_4 = col_double(),
-##   WS_5 = col_double(),
-##   WS_6 = col_double(),
-##   WS_7 = col_double(),
-##   WS_8 = col_double(),
-##   WS_9 = col_double()
-## )
+## Rows: 1461 Columns: 10-- Column specification --------------------------------------------------------
+## Delimiter: ","
+## dbl (10): DATE, WS_1, WS_2, WS_3, WS_4, WS_5, WS_6, WS_7, WS_8, WS_9
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
 
 \begin{Shaded}
@@ -5850,19 +5622,11 @@ Since we did this in the last chapter, we are just going to quickly run the code
 \end{Shaded}
 
 \begin{verbatim}
-## 
-## -- Column specification --------------------------------------------------------
-## cols(
-##   DATE = col_character(),
-##   STA_1 = col_double(),
-##   STA_6 = col_double(),
-##   STA_14 = col_double(),
-##   STA_INT = col_double(),
-##   STA_HQ = col_double(),
-##   STA_23 = col_double(),
-##   STA_17 = col_double(),
-##   STA_24 = col_double()
-## )
+## Rows: 1461 Columns: 9-- Column specification --------------------------------------------------------
+## Delimiter: ","
+## dbl (9): DATE, STA_1, STA_6, STA_14, STA_INT, STA_HQ, STA_23, STA_17, STA_24
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
 
 \begin{Shaded}
@@ -5878,25 +5642,17 @@ Since we did this in the last chapter, we are just going to quickly run the code
 \end{Shaded}
 
 \begin{verbatim}
-## 
-## -- Column specification --------------------------------------------------------
-## cols(
-##   .default = col_double(),
-##   DATE = col_character()
-## )
-## i Use `spec()` for the full column specifications.
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: 76 parsing failures.
-## row col   expected     actual                   file
-##   1  -- 22 columns 25 columns 'HBV/sno2009-2012.csv'
-##   2  -- 22 columns 25 columns 'HBV/sno2009-2012.csv'
-##   3  -- 22 columns 25 columns 'HBV/sno2009-2012.csv'
-##   4  -- 22 columns 25 columns 'HBV/sno2009-2012.csv'
-##   5  -- 22 columns 25 columns 'HBV/sno2009-2012.csv'
-## ... ... .......... .......... ......................
-## See problems(...) for more details.
+## New names:
+## * `` -> ...23
+## * `` -> ...24
+## * `` -> ...25
+## Rows: 76 Columns: 25-- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr  (1): DATE
+## dbl (21): STA1, STA2, STA3, STA4, STA5, STA6, STA7, STA8, STA9, STA10, STA11...
+## lgl  (3): ...23, ...24, ...25
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
 
 \begin{verbatim}
@@ -5936,127 +5692,27 @@ Below is a table of the parameters for the HBV model and their suggested min and
 
 You can do this by generating the set of parameters each time you run the model, but we are going to do it separately so we can see the Nashe-Sutcliff efficiency (NSE) for each set of parameters.
 
-\begin{longtable}[]{@{}llll@{}}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.32}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.18}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.15}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.35}}@{}}
 \toprule
-\begin{minipage}[b]{0.29\columnwidth}\raggedright
-Object Name\strut
-\end{minipage} & \begin{minipage}[b]{0.16\columnwidth}\raggedright
-Min\strut
-\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\raggedright
-Max\strut
-\end{minipage} & \begin{minipage}[b]{0.31\columnwidth}\raggedright
-Description\strut
-\end{minipage}\tabularnewline
+Object Name & Min & Max & Description \\
 \midrule
 \endhead
-\begin{minipage}[t]{0.29\columnwidth}\raggedright
-FC\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
-40\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
-400\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
-Max soil moisture storage, field capacity\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.29\columnwidth}\raggedright
-beta\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
-Shape coefficient governing fate of water input to soil moisture storage\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.29\columnwidth}\raggedright
-LP\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
-.3\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
-Threshold for reduction of evaporation\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.29\columnwidth}\raggedright
-SFCF\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
-0.4\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
-1.2\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
-Snowfall correction factor\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.29\columnwidth}\raggedright
-TT\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
--1.5\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
-1.2\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
-Threshold temperature\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.29\columnwidth}\raggedright
-CFMAX\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
-8\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
-Degree-day factor\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.29\columnwidth}\raggedright
-k0\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
-0.05\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
-0.5\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
-Recession constant (upper storage, near surface)\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.29\columnwidth}\raggedright
-k1\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
-0.01\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
-0.3\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
-Recession constant (upper storage)\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.29\columnwidth}\raggedright
-k2\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
-0.001\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
-0.15\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
-Recession constant (lower storage)\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.29\columnwidth}\raggedright
-UZL\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
-0\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
-70\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
-Threshold for shallow storage\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.29\columnwidth}\raggedright
-PERC\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
-0\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
-Percolation, max flow from upper to lower storage\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.29\columnwidth}\raggedright
-MAXBAS\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
-base of the triangular routing function, days"\strut
-\end{minipage}\tabularnewline
+FC & 40 & 400 & Max soil moisture storage, field capacity \\
+beta & 1 & 6 & Shape coefficient governing fate of water input to soil moisture storage \\
+LP & .3 & 1 & Threshold for reduction of evaporation \\
+SFCF & 0.4 & 1.2 & Snowfall correction factor \\
+TT & -1.5 & 1.2 & Threshold temperature \\
+CFMAX & 1 & 8 & Degree-day factor \\
+k0 & 0.05 & 0.5 & Recession constant (upper storage, near surface) \\
+k1 & 0.01 & 0.3 & Recession constant (upper storage) \\
+k2 & 0.001 & 0.15 & Recession constant (lower storage) \\
+UZL & 0 & 70 & Threshold for shallow storage \\
+PERC & 0 & 4 & Percolation, max flow from upper to lower storage \\
+MAXBAS & 1 & 3 & base of the triangular routing function, days" \\
 \bottomrule
 \end{longtable}
 
@@ -6217,29 +5873,16 @@ How much difference was there in NSE in the top 100 runs of the 100,000 run set?
 \end{Shaded}
 
 \begin{verbatim}
-## Warning: Missing column names filled in: 'X1' [1]
+## New names:
+## * `` -> ...1
 \end{verbatim}
 
 \begin{verbatim}
-## 
-## -- Column specification --------------------------------------------------------
-## cols(
-##   X1 = col_double(),
-##   FC = col_double(),
-##   beta = col_double(),
-##   LP = col_double(),
-##   SFCF = col_double(),
-##   TT = col_double(),
-##   CFMAX = col_double(),
-##   k0 = col_double(),
-##   k1 = col_double(),
-##   k2 = col_double(),
-##   UZL = col_double(),
-##   PERC = col_double(),
-##   MAXBAS = col_double(),
-##   NSE = col_double(),
-##   ranks = col_double()
-## )
+## Rows: 100 Columns: 15-- Column specification --------------------------------------------------------
+## Delimiter: ","
+## dbl (15): ...1, FC, beta, LP, SFCF, TT, CFMAX, k0, k1, k2, UZL, PERC, MAXBAS...
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
 
 \begin{Shaded}

@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Introduction to Basic Statistics | Hydroinformatics at VT</title>
   <meta name="description" content="This bookdown contains notes and exercises for a course in hydroinformatics at Virginia Tech." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Introduction to Basic Statistics | Hydroinformatics at VT" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This bookdown contains notes and exercises for a course in hydroinformatics at Virginia Tech." />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="JP Gannon" />
 
 
-<meta name="date" content="2021-06-01" />
+<meta name="date" content="2022-03-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="introactivity.html"/>
 <link rel="next" href="statsactivity.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,8 +49,10 @@
 
 
 
-
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
@@ -61,11 +62,11 @@
 <script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
 <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
 <script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
-<script src="libs/rglWebGL-binding-0.105.22/rglWebGL.js"></script>
-<link href="libs/rglwidgetClass-0.105.22/rgl.css" rel="stylesheet" />
-<script src="libs/rglwidgetClass-0.105.22/rglClass.min.js"></script>
-<script src="libs/CanvasMatrix4-0.105.22/CanvasMatrix.min.js"></script>
-<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="libs/rglWebGL-binding-0.108.3/rglWebGL.js"></script>
+<link href="libs/rglwidgetClass-0.108.3/rgl.css" rel="stylesheet" />
+<script src="libs/rglwidgetClass-0.108.3/rglClass.min.js"></script>
+<script src="libs/CanvasMatrix4-0.108.3/CanvasMatrix.min.js"></script>
+<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
@@ -86,6 +87,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -146,6 +148,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -162,245 +165,236 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Hydroinformatics</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction<span></span></a>
 <ul>
-<li class="chapter" data-level="1.0.1" data-path="index.html"><a href="index.html#to-help-me-keep-get-an-idea-of-who-is-using-this-resource-so-i-can-improve-it-in-the-future-please-consider-filling-out-any-or-all-of-this-survey-httpsforms.gle6zcntzvr1wzzuh6s7-thanks"><i class="fa fa-check"></i><b>1.0.1</b> To help me keep get an idea of who is using this resource so I can improve it in the future, please consider filling out any or all of this survey: <span>https://forms.gle/6Zcntzvr1wZZUh6S7</span> Thanks!</a></li>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#how-to-use-these-materials"><i class="fa fa-check"></i><b>1.1</b> How to use these materials</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#table-of-contents"><i class="fa fa-check"></i><b>1.2</b> Table of contents:</a></li>
+<li class="chapter" data-level="1.0.1" data-path="index.html"><a href="index.html#to-help-me-keep-get-an-idea-of-who-is-using-this-resource-so-i-can-improve-it-in-the-future-please-consider-filling-out-any-or-all-of-this-survey-httpsforms.gle6zcntzvr1wzzuh6s7-thanks"><i class="fa fa-check"></i><b>1.0.1</b> To help me keep get an idea of who is using this resource so I can improve it in the future, please consider filling out any or all of this survey: <span>https://forms.gle/6Zcntzvr1wZZUh6S7</span> Thanks!<span></span></a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#how-to-use-these-materials"><i class="fa fa-check"></i><b>1.1</b> How to use these materials<span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#table-of-contents"><i class="fa fa-check"></i><b>1.2</b> Table of contents:<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="Plotting.html"><a href="Plotting.html"><i class="fa fa-check"></i><b>2</b> Intro to Plotting</a>
+<li class="chapter" data-level="2" data-path="Plotting.html"><a href="Plotting.html"><i class="fa fa-check"></i><b>2</b> Intro to Plotting<span></span></a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="Plotting.html"><a href="Plotting.html#download-and-install-tidyverse-library"><i class="fa fa-check"></i><b>2.1</b> Download and install tidyverse library</a></li>
-<li class="chapter" data-level="2.2" data-path="Plotting.html"><a href="Plotting.html#reading-data"><i class="fa fa-check"></i><b>2.2</b> Reading data</a></li>
-<li class="chapter" data-level="2.3" data-path="Plotting.html"><a href="Plotting.html#our-first-ggplot"><i class="fa fa-check"></i><b>2.3</b> Our first ggplot</a></li>
-<li class="chapter" data-level="2.4" data-path="Plotting.html"><a href="Plotting.html#change-point-type"><i class="fa fa-check"></i><b>2.4</b> Change point type</a></li>
-<li class="chapter" data-level="2.5" data-path="Plotting.html"><a href="Plotting.html#set-colors"><i class="fa fa-check"></i><b>2.5</b> Set colors</a></li>
-<li class="chapter" data-level="2.6" data-path="Plotting.html"><a href="Plotting.html#controlling-color-with-a-third-variable-and-other-functions"><i class="fa fa-check"></i><b>2.6</b> Controlling color with a third variable and other functions</a></li>
-<li class="chapter" data-level="2.7" data-path="Plotting.html"><a href="Plotting.html#plotting-multiple-groups"><i class="fa fa-check"></i><b>2.7</b> Plotting multiple groups</a></li>
-<li class="chapter" data-level="2.8" data-path="Plotting.html"><a href="Plotting.html#facets"><i class="fa fa-check"></i><b>2.8</b> Facets</a></li>
-<li class="chapter" data-level="2.9" data-path="Plotting.html"><a href="Plotting.html#two-variable-faceting"><i class="fa fa-check"></i><b>2.9</b> Two variable faceting</a></li>
-<li class="chapter" data-level="2.10" data-path="Plotting.html"><a href="Plotting.html#boxplots"><i class="fa fa-check"></i><b>2.10</b> Boxplots</a></li>
-<li class="chapter" data-level="2.11" data-path="Plotting.html"><a href="Plotting.html#more-about-color-size-etc"><i class="fa fa-check"></i><b>2.11</b> More about color, size, etc</a></li>
-<li class="chapter" data-level="2.12" data-path="Plotting.html"><a href="Plotting.html#multiple-geoms"><i class="fa fa-check"></i><b>2.12</b> Multiple geoms</a></li>
+<li class="chapter" data-level="2.1" data-path="Plotting.html"><a href="Plotting.html#download-and-install-tidyverse-library"><i class="fa fa-check"></i><b>2.1</b> Download and install tidyverse library<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="Plotting.html"><a href="Plotting.html#reading-data"><i class="fa fa-check"></i><b>2.2</b> Reading data<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="Plotting.html"><a href="Plotting.html#our-first-ggplot"><i class="fa fa-check"></i><b>2.3</b> Our first ggplot<span></span></a></li>
+<li class="chapter" data-level="2.4" data-path="Plotting.html"><a href="Plotting.html#change-point-type"><i class="fa fa-check"></i><b>2.4</b> Change point type<span></span></a></li>
+<li class="chapter" data-level="2.5" data-path="Plotting.html"><a href="Plotting.html#set-colors"><i class="fa fa-check"></i><b>2.5</b> Set colors<span></span></a></li>
+<li class="chapter" data-level="2.6" data-path="Plotting.html"><a href="Plotting.html#controlling-color-with-a-third-variable-and-other-functions"><i class="fa fa-check"></i><b>2.6</b> Controlling color with a third variable and other functions<span></span></a></li>
+<li class="chapter" data-level="2.7" data-path="Plotting.html"><a href="Plotting.html#plotting-multiple-groups"><i class="fa fa-check"></i><b>2.7</b> Plotting multiple groups<span></span></a></li>
+<li class="chapter" data-level="2.8" data-path="Plotting.html"><a href="Plotting.html#facets"><i class="fa fa-check"></i><b>2.8</b> Facets<span></span></a></li>
+<li class="chapter" data-level="2.9" data-path="Plotting.html"><a href="Plotting.html#two-variable-faceting"><i class="fa fa-check"></i><b>2.9</b> Two variable faceting<span></span></a></li>
+<li class="chapter" data-level="2.10" data-path="Plotting.html"><a href="Plotting.html#boxplots"><i class="fa fa-check"></i><b>2.10</b> Boxplots<span></span></a></li>
+<li class="chapter" data-level="2.11" data-path="Plotting.html"><a href="Plotting.html#more-about-color-size-etc"><i class="fa fa-check"></i><b>2.11</b> More about color, size, etc<span></span></a></li>
+<li class="chapter" data-level="2.12" data-path="Plotting.html"><a href="Plotting.html#multiple-geoms"><i class="fa fa-check"></i><b>2.12</b> Multiple geoms<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Programming.html"><a href="Programming.html"><i class="fa fa-check"></i><b>3</b> R Tidyverse Programming Basics</a>
+<li class="chapter" data-level="3" data-path="Programming.html"><a href="Programming.html"><i class="fa fa-check"></i><b>3</b> R Tidyverse Programming Basics<span></span></a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="Programming.html"><a href="Programming.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
-<li class="chapter" data-level="3.2" data-path="Programming.html"><a href="Programming.html#you-can-use-r-as-a-calculator"><i class="fa fa-check"></i><b>3.2</b> You can use R as a calculator</a></li>
-<li class="chapter" data-level="3.3" data-path="Programming.html"><a href="Programming.html#you-can-create-new-objects-using--"><i class="fa fa-check"></i><b>3.3</b> You can create new objects using &lt;-</a></li>
-<li class="chapter" data-level="3.4" data-path="Programming.html"><a href="Programming.html#using-functions"><i class="fa fa-check"></i><b>3.4</b> Using functions</a></li>
-<li class="chapter" data-level="3.5" data-path="Programming.html"><a href="Programming.html#read-in-some-data."><i class="fa fa-check"></i><b>3.5</b> Read in some data.</a></li>
-<li class="chapter" data-level="3.6" data-path="Programming.html"><a href="Programming.html#wait-hold-up.-what-is-a-tibble"><i class="fa fa-check"></i><b>3.6</b> Wait, hold up. What is a tibble?</a></li>
-<li class="chapter" data-level="3.7" data-path="Programming.html"><a href="Programming.html#data-wrangling-in-dplyr"><i class="fa fa-check"></i><b>3.7</b> Data wrangling in dplyr</a></li>
-<li class="chapter" data-level="3.8" data-path="Programming.html"><a href="Programming.html#filter"><i class="fa fa-check"></i><b>3.8</b> Filter</a>
+<li class="chapter" data-level="3.1" data-path="Programming.html"><a href="Programming.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="Programming.html"><a href="Programming.html#you-can-use-r-as-a-calculator"><i class="fa fa-check"></i><b>3.2</b> You can use R as a calculator<span></span></a></li>
+<li class="chapter" data-level="3.3" data-path="Programming.html"><a href="Programming.html#you-can-create-new-objects-using--"><i class="fa fa-check"></i><b>3.3</b> You can create new objects using &lt;-<span></span></a></li>
+<li class="chapter" data-level="3.4" data-path="Programming.html"><a href="Programming.html#using-functions"><i class="fa fa-check"></i><b>3.4</b> Using functions<span></span></a></li>
+<li class="chapter" data-level="3.5" data-path="Programming.html"><a href="Programming.html#read-in-some-data."><i class="fa fa-check"></i><b>3.5</b> Read in some data.<span></span></a></li>
+<li class="chapter" data-level="3.6" data-path="Programming.html"><a href="Programming.html#wait-hold-up.-what-is-a-tibble"><i class="fa fa-check"></i><b>3.6</b> Wait, hold up. What is a tibble?<span></span></a></li>
+<li class="chapter" data-level="3.7" data-path="Programming.html"><a href="Programming.html#data-wrangling-in-dplyr"><i class="fa fa-check"></i><b>3.7</b> Data wrangling in dplyr<span></span></a></li>
+<li class="chapter" data-level="3.8" data-path="Programming.html"><a href="Programming.html#filter"><i class="fa fa-check"></i><b>3.8</b> Filter<span></span></a>
 <ul>
-<li class="chapter" data-level="3.8.1" data-path="Programming.html"><a href="Programming.html#multiple-conditions"><i class="fa fa-check"></i><b>3.8.1</b> Multiple conditions</a></li>
+<li class="chapter" data-level="3.8.1" data-path="Programming.html"><a href="Programming.html#multiple-conditions"><i class="fa fa-check"></i><b>3.8.1</b> Multiple conditions<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="3.9" data-path="Programming.html"><a href="Programming.html#arrange"><i class="fa fa-check"></i><b>3.9</b> Arrange</a></li>
-<li class="chapter" data-level="3.10" data-path="Programming.html"><a href="Programming.html#select"><i class="fa fa-check"></i><b>3.10</b> Select</a></li>
-<li class="chapter" data-level="3.11" data-path="Programming.html"><a href="Programming.html#mutate"><i class="fa fa-check"></i><b>3.11</b> Mutate</a></li>
-<li class="chapter" data-level="3.12" data-path="Programming.html"><a href="Programming.html#summarize"><i class="fa fa-check"></i><b>3.12</b> Summarize</a></li>
-<li class="chapter" data-level="3.13" data-path="Programming.html"><a href="Programming.html#multiple-operations-with-pipes"><i class="fa fa-check"></i><b>3.13</b> Multiple operations with pipes</a>
+<li class="chapter" data-level="3.9" data-path="Programming.html"><a href="Programming.html#arrange"><i class="fa fa-check"></i><b>3.9</b> Arrange<span></span></a></li>
+<li class="chapter" data-level="3.10" data-path="Programming.html"><a href="Programming.html#select"><i class="fa fa-check"></i><b>3.10</b> Select<span></span></a></li>
+<li class="chapter" data-level="3.11" data-path="Programming.html"><a href="Programming.html#mutate"><i class="fa fa-check"></i><b>3.11</b> Mutate<span></span></a></li>
+<li class="chapter" data-level="3.12" data-path="Programming.html"><a href="Programming.html#summarize"><i class="fa fa-check"></i><b>3.12</b> Summarize<span></span></a></li>
+<li class="chapter" data-level="3.13" data-path="Programming.html"><a href="Programming.html#multiple-operations-with-pipes"><i class="fa fa-check"></i><b>3.13</b> Multiple operations with pipes<span></span></a>
 <ul>
-<li class="chapter" data-level="3.13.1" data-path="Programming.html"><a href="Programming.html#lets-say-we-want-to-tell-r-to-make-a-pbj-sandwich-by-using-the-pbbread-jbread-and-joinslices-functions-and-the-data-ingredients.-if-we-do-this-saving-each-step-if-would-look-like-this"><i class="fa fa-check"></i><b>3.13.1</b> Let’s say we want to tell R to make a PB&amp;J sandwich by using the pbbread(), jbread(), and joinslices() functions and the data “ingredients.” If we do this saving each step if would look like this:</a></li>
-<li class="chapter" data-level="3.13.2" data-path="Programming.html"><a href="Programming.html#if-we-nest-the-functions-together-we-get-this"><i class="fa fa-check"></i><b>3.13.2</b> If we nest the functions together we get this</a></li>
-<li class="chapter" data-level="3.13.3" data-path="Programming.html"><a href="Programming.html#using-the-pipe-it-would-look-like-this"><i class="fa fa-check"></i><b>3.13.3</b> Using the pipe it would look like this</a></li>
-<li class="chapter" data-level="3.13.4" data-path="Programming.html"><a href="Programming.html#when-you-use-the-pipe-it-basically-takes-whatever-came-out-of-the-first-function-and-puts-it-into-the-data-argument-for-the-next-one"><i class="fa fa-check"></i><b>3.13.4</b> When you use the pipe, it basically takes whatever came out of the first function and puts it into the data argument for the next one</a></li>
+<li class="chapter" data-level="3.13.1" data-path="Programming.html"><a href="Programming.html#lets-say-we-want-to-tell-r-to-make-a-pbj-sandwich-by-using-the-pbbread-jbread-and-joinslices-functions-and-the-data-ingredients.-if-we-do-this-saving-each-step-if-would-look-like-this"><i class="fa fa-check"></i><b>3.13.1</b> Let’s say we want to tell R to make a PB&amp;J sandwich by using the pbbread(), jbread(), and joinslices() functions and the data “ingredients.” If we do this saving each step if would look like this:<span></span></a></li>
+<li class="chapter" data-level="3.13.2" data-path="Programming.html"><a href="Programming.html#if-we-nest-the-functions-together-we-get-this"><i class="fa fa-check"></i><b>3.13.2</b> If we nest the functions together we get this<span></span></a></li>
+<li class="chapter" data-level="3.13.3" data-path="Programming.html"><a href="Programming.html#using-the-pipe-it-would-look-like-this"><i class="fa fa-check"></i><b>3.13.3</b> Using the pipe it would look like this<span></span></a></li>
+<li class="chapter" data-level="3.13.4" data-path="Programming.html"><a href="Programming.html#when-you-use-the-pipe-it-basically-takes-whatever-came-out-of-the-first-function-and-puts-it-into-the-data-argument-for-the-next-one"><i class="fa fa-check"></i><b>3.13.4</b> When you use the pipe, it basically takes whatever came out of the first function and puts it into the data argument for the next one<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="3.14" data-path="Programming.html"><a href="Programming.html#save-your-results-to-a-new-tibble"><i class="fa fa-check"></i><b>3.14</b> Save your results to a new tibble</a></li>
-<li class="chapter" data-level="3.15" data-path="Programming.html"><a href="Programming.html#what-about-nas"><i class="fa fa-check"></i><b>3.15</b> What about NAs?</a></li>
-<li class="chapter" data-level="3.16" data-path="Programming.html"><a href="Programming.html#what-are-some-things-you-think-ill-ask-you-to-do-for-the-activity-next-class"><i class="fa fa-check"></i><b>3.16</b> What are some things you think I’ll ask you to do for the activity next class?</a></li>
+<li class="chapter" data-level="3.14" data-path="Programming.html"><a href="Programming.html#save-your-results-to-a-new-tibble"><i class="fa fa-check"></i><b>3.14</b> Save your results to a new tibble<span></span></a></li>
+<li class="chapter" data-level="3.15" data-path="Programming.html"><a href="Programming.html#what-about-nas"><i class="fa fa-check"></i><b>3.15</b> What about NAs?<span></span></a></li>
+<li class="chapter" data-level="3.16" data-path="Programming.html"><a href="Programming.html#what-are-some-things-you-think-ill-ask-you-to-do-for-the-activity-next-class"><i class="fa fa-check"></i><b>3.16</b> What are some things you think I’ll ask you to do for the activity next class?<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="introactivity.html"><a href="introactivity.html"><i class="fa fa-check"></i><b>4</b> ACTIVITY Intro Skills</a>
+<li class="chapter" data-level="4" data-path="introactivity.html"><a href="introactivity.html"><i class="fa fa-check"></i><b>4</b> ACTIVITY Intro Skills<span></span></a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="introactivity.html"><a href="introactivity.html#problem-1"><i class="fa fa-check"></i><b>4.1</b> Problem 1</a></li>
-<li class="chapter" data-level="4.2" data-path="introactivity.html"><a href="introactivity.html#problem-2"><i class="fa fa-check"></i><b>4.2</b> Problem 2</a></li>
-<li class="chapter" data-level="4.3" data-path="introactivity.html"><a href="introactivity.html#problem-3"><i class="fa fa-check"></i><b>4.3</b> Problem 3</a></li>
-<li class="chapter" data-level="4.4" data-path="introactivity.html"><a href="introactivity.html#problem-4"><i class="fa fa-check"></i><b>4.4</b> Problem 4</a></li>
-<li class="chapter" data-level="4.5" data-path="introactivity.html"><a href="introactivity.html#problem-5"><i class="fa fa-check"></i><b>4.5</b> Problem 5</a></li>
-<li class="chapter" data-level="4.6" data-path="introactivity.html"><a href="introactivity.html#problem-6"><i class="fa fa-check"></i><b>4.6</b> Problem 6</a></li>
+<li class="chapter" data-level="4.1" data-path="introactivity.html"><a href="introactivity.html#problem-1"><i class="fa fa-check"></i><b>4.1</b> Problem 1<span></span></a></li>
+<li class="chapter" data-level="4.2" data-path="introactivity.html"><a href="introactivity.html#problem-2"><i class="fa fa-check"></i><b>4.2</b> Problem 2<span></span></a></li>
+<li class="chapter" data-level="4.3" data-path="introactivity.html"><a href="introactivity.html#problem-3"><i class="fa fa-check"></i><b>4.3</b> Problem 3<span></span></a></li>
+<li class="chapter" data-level="4.4" data-path="introactivity.html"><a href="introactivity.html#problem-4"><i class="fa fa-check"></i><b>4.4</b> Problem 4<span></span></a></li>
+<li class="chapter" data-level="4.5" data-path="introactivity.html"><a href="introactivity.html#problem-5"><i class="fa fa-check"></i><b>4.5</b> Problem 5<span></span></a></li>
+<li class="chapter" data-level="4.6" data-path="introactivity.html"><a href="introactivity.html#problem-6"><i class="fa fa-check"></i><b>4.6</b> Problem 6<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="stats.html"><a href="stats.html"><i class="fa fa-check"></i><b>5</b> Introduction to Basic Statistics</a>
+<li class="chapter" data-level="5" data-path="stats.html"><a href="stats.html"><i class="fa fa-check"></i><b>5</b> Introduction to Basic Statistics<span></span></a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="stats.html"><a href="stats.html#reading-for-this-section-statistical-methods-in-water-resources-chapter-1"><i class="fa fa-check"></i><b>5.1</b> Reading for this section: Statistical Methods in Water Resources: Chapter 1</a></li>
-<li class="chapter" data-level="5.2" data-path="stats.html"><a href="stats.html#questions-for-today"><i class="fa fa-check"></i><b>5.2</b> Questions for today:</a>
+<li class="chapter" data-level="5.1" data-path="stats.html"><a href="stats.html#reading-for-this-section-statistical-methods-in-water-resources-chapter-1"><i class="fa fa-check"></i><b>5.1</b> Reading for this section: Statistical Methods in Water Resources: Chapter 1<span></span></a></li>
+<li class="chapter" data-level="5.2" data-path="stats.html"><a href="stats.html#questions-for-today"><i class="fa fa-check"></i><b>5.2</b> Questions for today:<span></span></a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="stats.html"><a href="stats.html#stack-plots-to-compare-histogram-and-pdf"><i class="fa fa-check"></i><b>5.2.1</b> Stack plots to compare histogram and pdf</a></li>
+<li class="chapter" data-level="5.2.1" data-path="stats.html"><a href="stats.html#stack-plots-to-compare-histogram-and-pdf"><i class="fa fa-check"></i><b>5.2.1</b> Stack plots to compare histogram and pdf<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="stats.html"><a href="stats.html#what-is-the-difference-between-a-sample-and-a-population."><i class="fa fa-check"></i><b>5.3</b> What is the difference between a sample and a population.</a></li>
-<li class="chapter" data-level="5.4" data-path="stats.html"><a href="stats.html#measuring-our-sample-distribution-central-tendency."><i class="fa fa-check"></i><b>5.4</b> Measuring our sample distribution: central tendency.</a>
+<li class="chapter" data-level="5.3" data-path="stats.html"><a href="stats.html#what-is-the-difference-between-a-sample-and-a-population."><i class="fa fa-check"></i><b>5.3</b> What is the difference between a sample and a population.<span></span></a></li>
+<li class="chapter" data-level="5.4" data-path="stats.html"><a href="stats.html#measuring-our-sample-distribution-central-tendency."><i class="fa fa-check"></i><b>5.4</b> Measuring our sample distribution: central tendency.<span></span></a>
 <ul>
-<li class="chapter" data-level="5.4.1" data-path="stats.html"><a href="stats.html#so-whats-a-weighted-average"><i class="fa fa-check"></i><b>5.4.1</b> So what’s a weighted average?</a></li>
+<li class="chapter" data-level="5.4.1" data-path="stats.html"><a href="stats.html#so-whats-a-weighted-average"><i class="fa fa-check"></i><b>5.4.1</b> So what’s a weighted average?<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="stats.html"><a href="stats.html#measures-of-variability"><i class="fa fa-check"></i><b>5.5</b> Measures of variability</a></li>
-<li class="chapter" data-level="5.6" data-path="stats.html"><a href="stats.html#what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one"><i class="fa fa-check"></i><b>5.6</b> What is a normal distribution and how can we determine if we have one?</a></li>
+<li class="chapter" data-level="5.5" data-path="stats.html"><a href="stats.html#measures-of-variability"><i class="fa fa-check"></i><b>5.5</b> Measures of variability<span></span></a></li>
+<li class="chapter" data-level="5.6" data-path="stats.html"><a href="stats.html#what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one"><i class="fa fa-check"></i><b>5.6</b> What is a normal distribution and how can we determine if we have one?<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="statsactivity.html"><a href="statsactivity.html"><i class="fa fa-check"></i><b>6</b> ACTIVITY Intro Stats</a>
+<li class="chapter" data-level="6" data-path="statsactivity.html"><a href="statsactivity.html"><i class="fa fa-check"></i><b>6</b> ACTIVITY Intro Stats<span></span></a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="statsactivity.html"><a href="statsactivity.html#problem-1-1"><i class="fa fa-check"></i><b>6.1</b> Problem 1</a></li>
-<li class="chapter" data-level="6.2" data-path="statsactivity.html"><a href="statsactivity.html#problem-2-1"><i class="fa fa-check"></i><b>6.2</b> Problem 2</a></li>
-<li class="chapter" data-level="6.3" data-path="statsactivity.html"><a href="statsactivity.html#problem-3-1"><i class="fa fa-check"></i><b>6.3</b> Problem 3</a></li>
-<li class="chapter" data-level="6.4" data-path="statsactivity.html"><a href="statsactivity.html#problem-4-1"><i class="fa fa-check"></i><b>6.4</b> Problem 4</a></li>
-<li class="chapter" data-level="6.5" data-path="statsactivity.html"><a href="statsactivity.html#problem-5-1"><i class="fa fa-check"></i><b>6.5</b> Problem 5</a></li>
-<li class="chapter" data-level="6.6" data-path="statsactivity.html"><a href="statsactivity.html#problem-6-1"><i class="fa fa-check"></i><b>6.6</b> Problem 6</a></li>
+<li class="chapter" data-level="6.1" data-path="statsactivity.html"><a href="statsactivity.html#problem-1-1"><i class="fa fa-check"></i><b>6.1</b> Problem 1<span></span></a></li>
+<li class="chapter" data-level="6.2" data-path="statsactivity.html"><a href="statsactivity.html#problem-2-1"><i class="fa fa-check"></i><b>6.2</b> Problem 2<span></span></a></li>
+<li class="chapter" data-level="6.3" data-path="statsactivity.html"><a href="statsactivity.html#problem-3-1"><i class="fa fa-check"></i><b>6.3</b> Problem 3<span></span></a></li>
+<li class="chapter" data-level="6.4" data-path="statsactivity.html"><a href="statsactivity.html#problem-4-1"><i class="fa fa-check"></i><b>6.4</b> Problem 4<span></span></a></li>
+<li class="chapter" data-level="6.5" data-path="statsactivity.html"><a href="statsactivity.html#problem-5-1"><i class="fa fa-check"></i><b>6.5</b> Problem 5<span></span></a></li>
+<li class="chapter" data-level="6.6" data-path="statsactivity.html"><a href="statsactivity.html#problem-6-1"><i class="fa fa-check"></i><b>6.6</b> Problem 6<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="getdata.html"><a href="getdata.html"><i class="fa fa-check"></i><b>7</b> Joins, Pivots, and USGS dataRetrieval</a>
+<li class="chapter" data-level="7" data-path="getdata.html"><a href="getdata.html"><i class="fa fa-check"></i><b>7</b> Joins, Pivots, and USGS dataRetrieval<span></span></a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="getdata.html"><a href="getdata.html#goals-for-today"><i class="fa fa-check"></i><b>7.1</b> Goals for today</a></li>
-<li class="chapter" data-level="7.2" data-path="getdata.html"><a href="getdata.html#exploring-what-dataretrieval-can-do."><i class="fa fa-check"></i><b>7.2</b> Exploring what dataRetrieval can do.</a></li>
-<li class="chapter" data-level="7.3" data-path="getdata.html"><a href="getdata.html#joins"><i class="fa fa-check"></i><b>7.3</b> Joins</a></li>
-<li class="chapter" data-level="7.4" data-path="getdata.html"><a href="getdata.html#join-example"><i class="fa fa-check"></i><b>7.4</b> Join example</a></li>
-<li class="chapter" data-level="7.5" data-path="getdata.html"><a href="getdata.html#finding-ids-to-download-usgs-data"><i class="fa fa-check"></i><b>7.5</b> Finding IDs to download USGS data</a></li>
-<li class="chapter" data-level="7.6" data-path="getdata.html"><a href="getdata.html#ok-lets-download-some-data"><i class="fa fa-check"></i><b>7.6</b> OK let’s download some data!</a></li>
-<li class="chapter" data-level="7.7" data-path="getdata.html"><a href="getdata.html#pivoting-wide-and-long-data"><i class="fa fa-check"></i><b>7.7</b> Pivoting: wide and long data</a></li>
-<li class="chapter" data-level="7.8" data-path="getdata.html"><a href="getdata.html#pivot-examples"><i class="fa fa-check"></i><b>7.8</b> Pivot Examples</a></li>
+<li class="chapter" data-level="7.1" data-path="getdata.html"><a href="getdata.html#goals-for-today"><i class="fa fa-check"></i><b>7.1</b> Goals for today<span></span></a></li>
+<li class="chapter" data-level="7.2" data-path="getdata.html"><a href="getdata.html#exploring-what-dataretrieval-can-do."><i class="fa fa-check"></i><b>7.2</b> Exploring what dataRetrieval can do.<span></span></a></li>
+<li class="chapter" data-level="7.3" data-path="getdata.html"><a href="getdata.html#joins"><i class="fa fa-check"></i><b>7.3</b> Joins<span></span></a></li>
+<li class="chapter" data-level="7.4" data-path="getdata.html"><a href="getdata.html#join-example"><i class="fa fa-check"></i><b>7.4</b> Join example<span></span></a></li>
+<li class="chapter" data-level="7.5" data-path="getdata.html"><a href="getdata.html#finding-ids-to-download-usgs-data"><i class="fa fa-check"></i><b>7.5</b> Finding IDs to download USGS data<span></span></a></li>
+<li class="chapter" data-level="7.6" data-path="getdata.html"><a href="getdata.html#ok-lets-download-some-data"><i class="fa fa-check"></i><b>7.6</b> OK let’s download some data!<span></span></a></li>
+<li class="chapter" data-level="7.7" data-path="getdata.html"><a href="getdata.html#pivoting-wide-and-long-data"><i class="fa fa-check"></i><b>7.7</b> Pivoting: wide and long data<span></span></a></li>
+<li class="chapter" data-level="7.8" data-path="getdata.html"><a href="getdata.html#pivot-examples"><i class="fa fa-check"></i><b>7.8</b> Pivot Examples<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="joinpivotDR.html"><a href="joinpivotDR.html"><i class="fa fa-check"></i><b>8</b> ACTIVITY Joins Pivots dataRetrieval</a>
+<li class="chapter" data-level="8" data-path="joinpivotDR.html"><a href="joinpivotDR.html"><i class="fa fa-check"></i><b>8</b> ACTIVITY Joins Pivots dataRetrieval<span></span></a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="joinpivotDR.html"><a href="joinpivotDR.html#load-the-tidyverse-dataretrieval-and-patchwork-packages."><i class="fa fa-check"></i><b>8.1</b> Load the tidyverse, dataRetrieval, and patchwork packages.</a></li>
-<li class="chapter" data-level="8.2" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-1-2"><i class="fa fa-check"></i><b>8.2</b> Problem 1</a></li>
-<li class="chapter" data-level="8.3" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-2-2"><i class="fa fa-check"></i><b>8.3</b> Problem 2</a></li>
-<li class="chapter" data-level="8.4" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-3-2"><i class="fa fa-check"></i><b>8.4</b> Problem 3</a></li>
-<li class="chapter" data-level="8.5" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-4-2"><i class="fa fa-check"></i><b>8.5</b> Problem 4</a></li>
-<li class="chapter" data-level="8.6" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-5-2"><i class="fa fa-check"></i><b>8.6</b> Problem 5</a></li>
-<li class="chapter" data-level="8.7" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-6-2"><i class="fa fa-check"></i><b>8.7</b> Problem 6</a></li>
-<li class="chapter" data-level="8.8" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-7"><i class="fa fa-check"></i><b>8.8</b> Problem 7</a></li>
+<li class="chapter" data-level="8.1" data-path="joinpivotDR.html"><a href="joinpivotDR.html#load-the-tidyverse-dataretrieval-and-patchwork-packages."><i class="fa fa-check"></i><b>8.1</b> Load the tidyverse, dataRetrieval, and patchwork packages.<span></span></a></li>
+<li class="chapter" data-level="8.2" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-1-2"><i class="fa fa-check"></i><b>8.2</b> Problem 1<span></span></a></li>
+<li class="chapter" data-level="8.3" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-2-2"><i class="fa fa-check"></i><b>8.3</b> Problem 2<span></span></a></li>
+<li class="chapter" data-level="8.4" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-3-2"><i class="fa fa-check"></i><b>8.4</b> Problem 3<span></span></a></li>
+<li class="chapter" data-level="8.5" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-4-2"><i class="fa fa-check"></i><b>8.5</b> Problem 4<span></span></a></li>
+<li class="chapter" data-level="8.6" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-5-2"><i class="fa fa-check"></i><b>8.6</b> Problem 5<span></span></a></li>
+<li class="chapter" data-level="8.7" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-6-2"><i class="fa fa-check"></i><b>8.7</b> Problem 6<span></span></a></li>
+<li class="chapter" data-level="8.8" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-7"><i class="fa fa-check"></i><b>8.8</b> Problem 7<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="Summative1.html"><a href="Summative1.html"><i class="fa fa-check"></i><b>9</b> ACTIVITY Summative 1</a>
+<li class="chapter" data-level="9" data-path="Summative1.html"><a href="Summative1.html"><i class="fa fa-check"></i><b>9</b> ACTIVITY Summative 1<span></span></a>
 <ul>
-<li class="chapter" data-level="9.0.1" data-path="Summative1.html"><a href="Summative1.html#instructions"><i class="fa fa-check"></i><b>9.0.1</b> Instructions</a></li>
-<li class="chapter" data-level="9.1" data-path="Summative1.html"><a href="Summative1.html#problem-1-3"><i class="fa fa-check"></i><b>9.1</b> Problem 1</a></li>
-<li class="chapter" data-level="9.2" data-path="Summative1.html"><a href="Summative1.html#problem-2-3"><i class="fa fa-check"></i><b>9.2</b> Problem 2</a></li>
-<li class="chapter" data-level="9.3" data-path="Summative1.html"><a href="Summative1.html#problem-3-3"><i class="fa fa-check"></i><b>9.3</b> Problem 3</a></li>
-<li class="chapter" data-level="9.4" data-path="Summative1.html"><a href="Summative1.html#problem-4-3"><i class="fa fa-check"></i><b>9.4</b> Problem 4</a></li>
-<li class="chapter" data-level="9.5" data-path="Summative1.html"><a href="Summative1.html#problem-5-3"><i class="fa fa-check"></i><b>9.5</b> Problem 5</a></li>
-<li class="chapter" data-level="9.6" data-path="Summative1.html"><a href="Summative1.html#problem-6-3"><i class="fa fa-check"></i><b>9.6</b> Problem 6</a></li>
-<li class="chapter" data-level="9.7" data-path="Summative1.html"><a href="Summative1.html#problem-7-1"><i class="fa fa-check"></i><b>9.7</b> Problem 7</a></li>
-<li class="chapter" data-level="9.8" data-path="Summative1.html"><a href="Summative1.html#problem-8"><i class="fa fa-check"></i><b>9.8</b> Problem 8</a></li>
-<li class="chapter" data-level="9.9" data-path="Summative1.html"><a href="Summative1.html#problem-9"><i class="fa fa-check"></i><b>9.9</b> Problem 9</a></li>
-<li class="chapter" data-level="9.10" data-path="Summative1.html"><a href="Summative1.html#problem-10"><i class="fa fa-check"></i><b>9.10</b> Problem 10</a></li>
+<li class="chapter" data-level="9.0.1" data-path="Summative1.html"><a href="Summative1.html#instructions"><i class="fa fa-check"></i><b>9.0.1</b> Instructions<span></span></a></li>
+<li class="chapter" data-level="9.1" data-path="Summative1.html"><a href="Summative1.html#problem-1-3"><i class="fa fa-check"></i><b>9.1</b> Problem 1<span></span></a></li>
+<li class="chapter" data-level="9.2" data-path="Summative1.html"><a href="Summative1.html#problem-2-3"><i class="fa fa-check"></i><b>9.2</b> Problem 2<span></span></a></li>
+<li class="chapter" data-level="9.3" data-path="Summative1.html"><a href="Summative1.html#problem-3-3"><i class="fa fa-check"></i><b>9.3</b> Problem 3<span></span></a></li>
+<li class="chapter" data-level="9.4" data-path="Summative1.html"><a href="Summative1.html#problem-4-3"><i class="fa fa-check"></i><b>9.4</b> Problem 4<span></span></a></li>
+<li class="chapter" data-level="9.5" data-path="Summative1.html"><a href="Summative1.html#problem-5-3"><i class="fa fa-check"></i><b>9.5</b> Problem 5<span></span></a></li>
+<li class="chapter" data-level="9.6" data-path="Summative1.html"><a href="Summative1.html#problem-6-3"><i class="fa fa-check"></i><b>9.6</b> Problem 6<span></span></a></li>
+<li class="chapter" data-level="9.7" data-path="Summative1.html"><a href="Summative1.html#problem-7-1"><i class="fa fa-check"></i><b>9.7</b> Problem 7<span></span></a></li>
+<li class="chapter" data-level="9.8" data-path="Summative1.html"><a href="Summative1.html#problem-8"><i class="fa fa-check"></i><b>9.8</b> Problem 8<span></span></a></li>
+<li class="chapter" data-level="9.9" data-path="Summative1.html"><a href="Summative1.html#problem-9"><i class="fa fa-check"></i><b>9.9</b> Problem 9<span></span></a></li>
+<li class="chapter" data-level="9.10" data-path="Summative1.html"><a href="Summative1.html#problem-10"><i class="fa fa-check"></i><b>9.10</b> Problem 10<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="fdcs.html"><a href="fdcs.html"><i class="fa fa-check"></i><b>10</b> Flow Duration Curves</a>
+<li class="chapter" data-level="10" data-path="fdcs.html"><a href="fdcs.html"><i class="fa fa-check"></i><b>10</b> Flow Duration Curves<span></span></a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="fdcs.html"><a href="fdcs.html#get-data"><i class="fa fa-check"></i><b>10.1</b> Get data</a></li>
-<li class="chapter" data-level="10.2" data-path="fdcs.html"><a href="fdcs.html#review-describe-the-distribution"><i class="fa fa-check"></i><b>10.2</b> Review: describe the distribution</a></li>
-<li class="chapter" data-level="10.3" data-path="fdcs.html"><a href="fdcs.html#ecdfs"><i class="fa fa-check"></i><b>10.3</b> ECDFs</a></li>
-<li class="chapter" data-level="10.4" data-path="fdcs.html"><a href="fdcs.html#calculate-flow-exceedence-probabilities"><i class="fa fa-check"></i><b>10.4</b> Calculate flow exceedence probabilities</a></li>
-<li class="chapter" data-level="10.5" data-path="fdcs.html"><a href="fdcs.html#plot-a-flow-duration-curve-using-the-probabilities"><i class="fa fa-check"></i><b>10.5</b> Plot a Flow Duration Curve using the probabilities</a></li>
-<li class="chapter" data-level="10.6" data-path="fdcs.html"><a href="fdcs.html#make-an-almost-fdc-with-stat_ecdf"><i class="fa fa-check"></i><b>10.6</b> Make an almost FDC with stat_ecdf</a></li>
-<li class="chapter" data-level="10.7" data-path="fdcs.html"><a href="fdcs.html#example-use-of-an-fdc"><i class="fa fa-check"></i><b>10.7</b> Example use of an FDC</a></li>
-<li class="chapter" data-level="10.8" data-path="fdcs.html"><a href="fdcs.html#compare-to-a-boxplot-of-the-same-data"><i class="fa fa-check"></i><b>10.8</b> Compare to a boxplot of the same data</a></li>
-<li class="chapter" data-level="10.9" data-path="fdcs.html"><a href="fdcs.html#challenge-examining-flow-regime-change-at-the-grand-canyon"><i class="fa fa-check"></i><b>10.9</b> Challenge: Examining flow regime change at the Grand Canyon</a></li>
+<li class="chapter" data-level="10.1" data-path="fdcs.html"><a href="fdcs.html#get-data"><i class="fa fa-check"></i><b>10.1</b> Get data<span></span></a></li>
+<li class="chapter" data-level="10.2" data-path="fdcs.html"><a href="fdcs.html#review-describe-the-distribution"><i class="fa fa-check"></i><b>10.2</b> Review: describe the distribution<span></span></a></li>
+<li class="chapter" data-level="10.3" data-path="fdcs.html"><a href="fdcs.html#ecdfs"><i class="fa fa-check"></i><b>10.3</b> ECDFs<span></span></a></li>
+<li class="chapter" data-level="10.4" data-path="fdcs.html"><a href="fdcs.html#calculate-flow-exceedence-probabilities"><i class="fa fa-check"></i><b>10.4</b> Calculate flow exceedence probabilities<span></span></a></li>
+<li class="chapter" data-level="10.5" data-path="fdcs.html"><a href="fdcs.html#plot-a-flow-duration-curve-using-the-probabilities"><i class="fa fa-check"></i><b>10.5</b> Plot a Flow Duration Curve using the probabilities<span></span></a></li>
+<li class="chapter" data-level="10.6" data-path="fdcs.html"><a href="fdcs.html#make-an-almost-fdc-with-stat_ecdf"><i class="fa fa-check"></i><b>10.6</b> Make an almost FDC with stat_ecdf<span></span></a></li>
+<li class="chapter" data-level="10.7" data-path="fdcs.html"><a href="fdcs.html#example-use-of-an-fdc"><i class="fa fa-check"></i><b>10.7</b> Example use of an FDC<span></span></a></li>
+<li class="chapter" data-level="10.8" data-path="fdcs.html"><a href="fdcs.html#compare-to-a-boxplot-of-the-same-data"><i class="fa fa-check"></i><b>10.8</b> Compare to a boxplot of the same data<span></span></a></li>
+<li class="chapter" data-level="10.9" data-path="fdcs.html"><a href="fdcs.html#challenge-examining-flow-regime-change-at-the-grand-canyon"><i class="fa fa-check"></i><b>10.9</b> Challenge: Examining flow regime change at the Grand Canyon<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="lfas.html"><a href="lfas.html"><i class="fa fa-check"></i><b>11</b> Low Flow Analysis</a>
+<li class="chapter" data-level="11" data-path="lfas.html"><a href="lfas.html"><i class="fa fa-check"></i><b>11</b> Low Flow Analysis<span></span></a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="lfas.html"><a href="lfas.html#what-are-low-flow-statistics"><i class="fa fa-check"></i><b>11.1</b> What are low flow statistics?</a></li>
-<li class="chapter" data-level="11.2" data-path="lfas.html"><a href="lfas.html#get-data-1"><i class="fa fa-check"></i><b>11.2</b> Get data</a></li>
-<li class="chapter" data-level="11.3" data-path="lfas.html"><a href="lfas.html#create-the-x-days-average-flow-record"><i class="fa fa-check"></i><b>11.3</b> Create the X days average flow record</a></li>
-<li class="chapter" data-level="11.4" data-path="lfas.html"><a href="lfas.html#look-at-what-a-rolling-mean-does."><i class="fa fa-check"></i><b>11.4</b> Look at what a rolling mean does.</a></li>
-<li class="chapter" data-level="11.5" data-path="lfas.html"><a href="lfas.html#calculate-yearly-minimums"><i class="fa fa-check"></i><b>11.5</b> Calculate yearly minimums</a></li>
-<li class="chapter" data-level="11.6" data-path="lfas.html"><a href="lfas.html#calculate-return-interval"><i class="fa fa-check"></i><b>11.6</b> Calculate return interval</a></li>
-<li class="chapter" data-level="11.7" data-path="lfas.html"><a href="lfas.html#fit-to-pearson-type-iii-distribution"><i class="fa fa-check"></i><b>11.7</b> Fit to Pearson Type III distribution</a></li>
-<li class="chapter" data-level="11.8" data-path="lfas.html"><a href="lfas.html#distribution-free-method"><i class="fa fa-check"></i><b>11.8</b> Distribution-free method</a></li>
+<li class="chapter" data-level="11.1" data-path="lfas.html"><a href="lfas.html#what-are-low-flow-statistics"><i class="fa fa-check"></i><b>11.1</b> What are low flow statistics?<span></span></a></li>
+<li class="chapter" data-level="11.2" data-path="lfas.html"><a href="lfas.html#get-data-1"><i class="fa fa-check"></i><b>11.2</b> Get data<span></span></a></li>
+<li class="chapter" data-level="11.3" data-path="lfas.html"><a href="lfas.html#create-the-x-days-average-flow-record"><i class="fa fa-check"></i><b>11.3</b> Create the X days average flow record<span></span></a></li>
+<li class="chapter" data-level="11.4" data-path="lfas.html"><a href="lfas.html#look-at-what-a-rolling-mean-does."><i class="fa fa-check"></i><b>11.4</b> Look at what a rolling mean does.<span></span></a></li>
+<li class="chapter" data-level="11.5" data-path="lfas.html"><a href="lfas.html#calculate-yearly-minimums"><i class="fa fa-check"></i><b>11.5</b> Calculate yearly minimums<span></span></a></li>
+<li class="chapter" data-level="11.6" data-path="lfas.html"><a href="lfas.html#calculate-return-interval"><i class="fa fa-check"></i><b>11.6</b> Calculate return interval<span></span></a></li>
+<li class="chapter" data-level="11.7" data-path="lfas.html"><a href="lfas.html#fit-to-pearson-type-iii-distribution"><i class="fa fa-check"></i><b>11.7</b> Fit to Pearson Type III distribution<span></span></a></li>
+<li class="chapter" data-level="11.8" data-path="lfas.html"><a href="lfas.html#distribution-free-method"><i class="fa fa-check"></i><b>11.8</b> Distribution-free method<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>12</b> Flood Frequency Analysis and Creating Functions</a>
+<li class="chapter" data-level="12" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>12</b> Flood Frequency Analysis and Creating Functions<span></span></a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="floods.html"><a href="floods.html#template-repository"><i class="fa fa-check"></i><b>12.1</b> Template Repository</a></li>
-<li class="chapter" data-level="12.2" data-path="floods.html"><a href="floods.html#introduction-2"><i class="fa fa-check"></i><b>12.2</b> Introduction</a></li>
-<li class="chapter" data-level="12.3" data-path="floods.html"><a href="floods.html#download-and-plot-peak-flow-data"><i class="fa fa-check"></i><b>12.3</b> Download and plot peak flow data</a></li>
-<li class="chapter" data-level="12.4" data-path="floods.html"><a href="floods.html#compute-ranks-for-peak-flows"><i class="fa fa-check"></i><b>12.4</b> Compute ranks for peak flows</a></li>
-<li class="chapter" data-level="12.5" data-path="floods.html"><a href="floods.html#calculate-exceedance-probability-and-return-period"><i class="fa fa-check"></i><b>12.5</b> Calculate exceedance probability and return period</a></li>
-<li class="chapter" data-level="12.6" data-path="floods.html"><a href="floods.html#calculate-gumbel-distribution-parameters"><i class="fa fa-check"></i><b>12.6</b> Calculate Gumbel distribution parameters</a></li>
-<li class="chapter" data-level="12.7" data-path="floods.html"><a href="floods.html#calculate-return-interval-for-peak-flows-according-to-gumbel-distribution"><i class="fa fa-check"></i><b>12.7</b> Calculate return interval for peak flows according to Gumbel distribution</a></li>
-<li class="chapter" data-level="12.8" data-path="floods.html"><a href="floods.html#plot-gumbel-distribution-fit-with-peak-flow-data"><i class="fa fa-check"></i><b>12.8</b> Plot Gumbel distribution fit with peak flow data</a></li>
-<li class="chapter" data-level="12.9" data-path="floods.html"><a href="floods.html#calculate-magnitude-of-1-in-100-chance-flood"><i class="fa fa-check"></i><b>12.9</b> Calculate magnitude of 1 in 100 chance flood</a></li>
-<li class="chapter" data-level="12.10" data-path="floods.html"><a href="floods.html#how-to-create-your-own-functions"><i class="fa fa-check"></i><b>12.10</b> How to create your own functions</a></li>
-<li class="chapter" data-level="12.11" data-path="floods.html"><a href="floods.html#create-a-return-period-function"><i class="fa fa-check"></i><b>12.11</b> Create a return period function</a></li>
-<li class="chapter" data-level="12.12" data-path="floods.html"><a href="floods.html#challenge-create-a-function-to-compute-the-1-in-100-chance-flood-for-any-usgs-gage"><i class="fa fa-check"></i><b>12.12</b> Challenge: Create a function to compute the 1 in 100 chance flood for any USGS gage</a></li>
+<li class="chapter" data-level="12.1" data-path="floods.html"><a href="floods.html#template-repository"><i class="fa fa-check"></i><b>12.1</b> Template Repository<span></span></a></li>
+<li class="chapter" data-level="12.2" data-path="floods.html"><a href="floods.html#intro"><i class="fa fa-check"></i><b>12.2</b> Intro<span></span></a></li>
+<li class="chapter" data-level="12.3" data-path="floods.html"><a href="floods.html#challenge-create-a-function"><i class="fa fa-check"></i><b>12.3</b> Challenge: Create a function<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="rgeospatial.html"><a href="rgeospatial.html"><i class="fa fa-check"></i><b>13</b> Geospatial data in R - Vector</a>
+<li class="chapter" data-level="13" data-path="rgeospatial.html"><a href="rgeospatial.html"><i class="fa fa-check"></i><b>13</b> Geospatial data in R - Vector<span></span></a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="rgeospatial.html"><a href="rgeospatial.html#goals"><i class="fa fa-check"></i><b>13.1</b> Goals</a></li>
-<li class="chapter" data-level="13.2" data-path="rgeospatial.html"><a href="rgeospatial.html#intro-to-tmap"><i class="fa fa-check"></i><b>13.2</b> Intro to tmap</a></li>
-<li class="chapter" data-level="13.3" data-path="rgeospatial.html"><a href="rgeospatial.html#data-wrangling-with-tidyverse-principles"><i class="fa fa-check"></i><b>13.3</b> Data wrangling with tidyverse principles</a></li>
-<li class="chapter" data-level="13.4" data-path="rgeospatial.html"><a href="rgeospatial.html#add-non-spatial-data-to-spatial-data-with-a-join"><i class="fa fa-check"></i><b>13.4</b> Add non-spatial data to spatial data with a join</a></li>
-<li class="chapter" data-level="13.5" data-path="rgeospatial.html"><a href="rgeospatial.html#plot-maps-side-by-side"><i class="fa fa-check"></i><b>13.5</b> Plot maps side by side</a></li>
-<li class="chapter" data-level="13.6" data-path="rgeospatial.html"><a href="rgeospatial.html#built-in-styles-like-themes-in-ggplot"><i class="fa fa-check"></i><b>13.6</b> Built in styles, like themes in ggplot</a></li>
-<li class="chapter" data-level="13.7" data-path="rgeospatial.html"><a href="rgeospatial.html#interactive-maps"><i class="fa fa-check"></i><b>13.7</b> Interactive Maps</a>
+<li class="chapter" data-level="13.1" data-path="rgeospatial.html"><a href="rgeospatial.html#goals"><i class="fa fa-check"></i><b>13.1</b> Goals<span></span></a></li>
+<li class="chapter" data-level="13.2" data-path="rgeospatial.html"><a href="rgeospatial.html#intro-to-tmap"><i class="fa fa-check"></i><b>13.2</b> Intro to tmap<span></span></a></li>
+<li class="chapter" data-level="13.3" data-path="rgeospatial.html"><a href="rgeospatial.html#data-wrangling-with-tidyverse-principles"><i class="fa fa-check"></i><b>13.3</b> Data wrangling with tidyverse principles<span></span></a></li>
+<li class="chapter" data-level="13.4" data-path="rgeospatial.html"><a href="rgeospatial.html#add-non-spatial-data-to-spatial-data-with-a-join"><i class="fa fa-check"></i><b>13.4</b> Add non-spatial data to spatial data with a join<span></span></a></li>
+<li class="chapter" data-level="13.5" data-path="rgeospatial.html"><a href="rgeospatial.html#plot-maps-side-by-side"><i class="fa fa-check"></i><b>13.5</b> Plot maps side by side<span></span></a></li>
+<li class="chapter" data-level="13.6" data-path="rgeospatial.html"><a href="rgeospatial.html#built-in-styles-like-themes-in-ggplot"><i class="fa fa-check"></i><b>13.6</b> Built in styles, like themes in ggplot<span></span></a></li>
+<li class="chapter" data-level="13.7" data-path="rgeospatial.html"><a href="rgeospatial.html#interactive-maps"><i class="fa fa-check"></i><b>13.7</b> Interactive Maps<span></span></a>
 <ul>
-<li class="chapter" data-level="13.7.1" data-path="rgeospatial.html"><a href="rgeospatial.html#tmap"><i class="fa fa-check"></i><b>13.7.1</b> tmap</a></li>
-<li class="chapter" data-level="13.7.2" data-path="rgeospatial.html"><a href="rgeospatial.html#leaflet"><i class="fa fa-check"></i><b>13.7.2</b> Leaflet</a></li>
+<li class="chapter" data-level="13.7.1" data-path="rgeospatial.html"><a href="rgeospatial.html#tmap"><i class="fa fa-check"></i><b>13.7.1</b> tmap<span></span></a></li>
+<li class="chapter" data-level="13.7.2" data-path="rgeospatial.html"><a href="rgeospatial.html#leaflet"><i class="fa fa-check"></i><b>13.7.2</b> Leaflet<span></span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="summative2.html"><a href="summative2.html"><i class="fa fa-check"></i><b>14</b> Summative Assessment 2</a>
+<li class="chapter" data-level="14" data-path="summative2.html"><a href="summative2.html"><i class="fa fa-check"></i><b>14</b> Summative Assessment 2<span></span></a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="summative2.html"><a href="summative2.html#info-for-assessment"><i class="fa fa-check"></i><b>14.1</b> Info for assessment</a></li>
+<li class="chapter" data-level="14.1" data-path="summative2.html"><a href="summative2.html#info-for-assessment"><i class="fa fa-check"></i><b>14.1</b> Info for assessment<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="rgeoraster.html"><a href="rgeoraster.html"><i class="fa fa-check"></i><b>15</b> Geospatial R Raster - Hydro Analyses</a>
+<li class="chapter" data-level="15" data-path="rgeoraster.html"><a href="rgeoraster.html"><i class="fa fa-check"></i><b>15</b> Geospatial R Raster - Hydro Analyses<span></span></a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="rgeoraster.html"><a href="rgeoraster.html#introduction-3"><i class="fa fa-check"></i><b>15.1</b> Introduction</a></li>
-<li class="chapter" data-level="15.2" data-path="rgeoraster.html"><a href="rgeoraster.html#read-in-dem"><i class="fa fa-check"></i><b>15.2</b> Read in DEM</a></li>
-<li class="chapter" data-level="15.3" data-path="rgeoraster.html"><a href="rgeoraster.html#plot-dem"><i class="fa fa-check"></i><b>15.3</b> Plot DEM</a></li>
-<li class="chapter" data-level="15.4" data-path="rgeoraster.html"><a href="rgeoraster.html#generate-a-hillshade"><i class="fa fa-check"></i><b>15.4</b> Generate a hillshade</a>
+<li class="chapter" data-level="15.1" data-path="rgeoraster.html"><a href="rgeoraster.html#introduction-2"><i class="fa fa-check"></i><b>15.1</b> Introduction<span></span></a></li>
+<li class="chapter" data-level="15.2" data-path="rgeoraster.html"><a href="rgeoraster.html#read-in-dem"><i class="fa fa-check"></i><b>15.2</b> Read in DEM<span></span></a></li>
+<li class="chapter" data-level="15.3" data-path="rgeoraster.html"><a href="rgeoraster.html#plot-dem"><i class="fa fa-check"></i><b>15.3</b> Plot DEM<span></span></a></li>
+<li class="chapter" data-level="15.4" data-path="rgeoraster.html"><a href="rgeoraster.html#generate-a-hillshade"><i class="fa fa-check"></i><b>15.4</b> Generate a hillshade<span></span></a>
 <ul>
-<li class="chapter" data-level="15.4.1" data-path="rgeoraster.html"><a href="rgeoraster.html#how-whitebox-tools-functions-work"><i class="fa fa-check"></i><b>15.4.1</b> How whitebox tools functions work</a></li>
+<li class="chapter" data-level="15.4.1" data-path="rgeoraster.html"><a href="rgeoraster.html#how-whitebox-tools-functions-work"><i class="fa fa-check"></i><b>15.4.1</b> How whitebox tools functions work<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="15.5" data-path="rgeoraster.html"><a href="rgeoraster.html#prepare-dem-for-hydrology-analyses"><i class="fa fa-check"></i><b>15.5</b> Prepare DEM for Hydrology Analyses</a></li>
-<li class="chapter" data-level="15.6" data-path="rgeoraster.html"><a href="rgeoraster.html#visualize-filled-sinks-and-breached-depressions"><i class="fa fa-check"></i><b>15.6</b> Visualize filled sinks and breached depressions</a></li>
-<li class="chapter" data-level="15.7" data-path="rgeoraster.html"><a href="rgeoraster.html#d8-flow-accumulation"><i class="fa fa-check"></i><b>15.7</b> D8 Flow Accumulation</a></li>
-<li class="chapter" data-level="15.8" data-path="rgeoraster.html"><a href="rgeoraster.html#d-infinity-flow-accumulation"><i class="fa fa-check"></i><b>15.8</b> D infinity flow accumulation</a></li>
-<li class="chapter" data-level="15.9" data-path="rgeoraster.html"><a href="rgeoraster.html#topographic-wetness-index"><i class="fa fa-check"></i><b>15.9</b> Topographic Wetness Index</a></li>
-<li class="chapter" data-level="15.10" data-path="rgeoraster.html"><a href="rgeoraster.html#downslope-twi"><i class="fa fa-check"></i><b>15.10</b> Downslope TWI</a></li>
-<li class="chapter" data-level="15.11" data-path="rgeoraster.html"><a href="rgeoraster.html#map-stream-network"><i class="fa fa-check"></i><b>15.11</b> Map Stream Network</a></li>
-<li class="chapter" data-level="15.12" data-path="rgeoraster.html"><a href="rgeoraster.html#extract-raster-values-to-point-locations"><i class="fa fa-check"></i><b>15.12</b> Extract raster values to point locations</a>
+<li class="chapter" data-level="15.5" data-path="rgeoraster.html"><a href="rgeoraster.html#prepare-dem-for-hydrology-analyses"><i class="fa fa-check"></i><b>15.5</b> Prepare DEM for Hydrology Analyses<span></span></a></li>
+<li class="chapter" data-level="15.6" data-path="rgeoraster.html"><a href="rgeoraster.html#visualize-filled-sinks-and-breached-depressions"><i class="fa fa-check"></i><b>15.6</b> Visualize filled sinks and breached depressions<span></span></a></li>
+<li class="chapter" data-level="15.7" data-path="rgeoraster.html"><a href="rgeoraster.html#d8-flow-accumulation"><i class="fa fa-check"></i><b>15.7</b> D8 Flow Accumulation<span></span></a></li>
+<li class="chapter" data-level="15.8" data-path="rgeoraster.html"><a href="rgeoraster.html#d-infinity-flow-accumulation"><i class="fa fa-check"></i><b>15.8</b> D infinity flow accumulation<span></span></a></li>
+<li class="chapter" data-level="15.9" data-path="rgeoraster.html"><a href="rgeoraster.html#topographic-wetness-index"><i class="fa fa-check"></i><b>15.9</b> Topographic Wetness Index<span></span></a></li>
+<li class="chapter" data-level="15.10" data-path="rgeoraster.html"><a href="rgeoraster.html#downslope-twi"><i class="fa fa-check"></i><b>15.10</b> Downslope TWI<span></span></a></li>
+<li class="chapter" data-level="15.11" data-path="rgeoraster.html"><a href="rgeoraster.html#map-stream-network"><i class="fa fa-check"></i><b>15.11</b> Map Stream Network<span></span></a></li>
+<li class="chapter" data-level="15.12" data-path="rgeoraster.html"><a href="rgeoraster.html#extract-raster-values-to-point-locations"><i class="fa fa-check"></i><b>15.12</b> Extract raster values to point locations<span></span></a>
 <ul>
-<li class="chapter" data-level="15.12.1" data-path="rgeoraster.html"><a href="rgeoraster.html#import-and-plot-points"><i class="fa fa-check"></i><b>15.12.1</b> Import and plot points</a></li>
-<li class="chapter" data-level="15.12.2" data-path="rgeoraster.html"><a href="rgeoraster.html#extract-values-from-multiple-rasters-at-once"><i class="fa fa-check"></i><b>15.12.2</b> Extract values from multiple rasters at once</a></li>
+<li class="chapter" data-level="15.12.1" data-path="rgeoraster.html"><a href="rgeoraster.html#import-and-plot-points"><i class="fa fa-check"></i><b>15.12.1</b> Import and plot points<span></span></a></li>
+<li class="chapter" data-level="15.12.2" data-path="rgeoraster.html"><a href="rgeoraster.html#extract-values-from-multiple-rasters-at-once"><i class="fa fa-check"></i><b>15.12.2</b> Extract values from multiple rasters at once<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="15.13" data-path="rgeoraster.html"><a href="rgeoraster.html#view-raster-data-as-a-pdf-or-histogram"><i class="fa fa-check"></i><b>15.13</b> View raster data as a PDF or histogram</a></li>
-<li class="chapter" data-level="15.14" data-path="rgeoraster.html"><a href="rgeoraster.html#subsetting-a-raster-for-visualization"><i class="fa fa-check"></i><b>15.14</b> Subsetting a raster for visualization</a></li>
-<li class="chapter" data-level="15.15" data-path="rgeoraster.html"><a href="rgeoraster.html#raster-math"><i class="fa fa-check"></i><b>15.15</b> Raster Math</a></li>
-<li class="chapter" data-level="15.16" data-path="rgeoraster.html"><a href="rgeoraster.html#extra-plot-topo-characteristics-against-one-another"><i class="fa fa-check"></i><b>15.16</b> Extra: plot topo characteristics against one another</a></li>
+<li class="chapter" data-level="15.13" data-path="rgeoraster.html"><a href="rgeoraster.html#view-raster-data-as-a-pdf-or-histogram"><i class="fa fa-check"></i><b>15.13</b> View raster data as a PDF or histogram<span></span></a></li>
+<li class="chapter" data-level="15.14" data-path="rgeoraster.html"><a href="rgeoraster.html#subsetting-a-raster-for-visualization"><i class="fa fa-check"></i><b>15.14</b> Subsetting a raster for visualization<span></span></a></li>
+<li class="chapter" data-level="15.15" data-path="rgeoraster.html"><a href="rgeoraster.html#raster-math"><i class="fa fa-check"></i><b>15.15</b> Raster Math<span></span></a></li>
+<li class="chapter" data-level="15.16" data-path="rgeoraster.html"><a href="rgeoraster.html#extra-plot-topo-characteristics-against-one-another"><i class="fa fa-check"></i><b>15.16</b> Extra: plot topo characteristics against one another<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html"><i class="fa fa-check"></i><b>16</b> Geospatial R Raster - Watershed Delineation</a>
+<li class="chapter" data-level="16" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html"><i class="fa fa-check"></i><b>16</b> Geospatial R Raster - Watershed Delineation<span></span></a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#introduction-4"><i class="fa fa-check"></i><b>16.1</b> Introduction</a></li>
-<li class="chapter" data-level="16.2" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#the-watershed-delineation-toolprocess"><i class="fa fa-check"></i><b>16.2</b> The watershed delineation tool/process</a></li>
-<li class="chapter" data-level="16.3" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#read-in-dem-1"><i class="fa fa-check"></i><b>16.3</b> Read in DEM</a></li>
-<li class="chapter" data-level="16.4" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#generate-a-hillshade-1"><i class="fa fa-check"></i><b>16.4</b> Generate a hillshade</a></li>
-<li class="chapter" data-level="16.5" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#prepare-dem-for-hydrology-analyses-1"><i class="fa fa-check"></i><b>16.5</b> Prepare DEM for Hydrology Analyses</a></li>
-<li class="chapter" data-level="16.6" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#create-flow-accumulation-and-pointer-grids"><i class="fa fa-check"></i><b>16.6</b> Create flow accumulation and pointer grids</a></li>
-<li class="chapter" data-level="16.7" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#setting-pour-points"><i class="fa fa-check"></i><b>16.7</b> Setting pour points</a></li>
-<li class="chapter" data-level="16.8" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#delineate-watersheds"><i class="fa fa-check"></i><b>16.8</b> Delineate watersheds</a></li>
-<li class="chapter" data-level="16.9" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#convert-watersheds-to-shapefiles"><i class="fa fa-check"></i><b>16.9</b> Convert watersheds to shapefiles</a></li>
-<li class="chapter" data-level="16.10" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#extract-data-based-on-watershed-outline"><i class="fa fa-check"></i><b>16.10</b> Extract data based on watershed outline</a></li>
-<li class="chapter" data-level="16.11" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#bonus-make-a-3d-map-of-your-watershed-with-rayshader"><i class="fa fa-check"></i><b>16.11</b> BONUS: Make a 3d map of your watershed with rayshader</a></li>
+<li class="chapter" data-level="16.1" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#introduction-3"><i class="fa fa-check"></i><b>16.1</b> Introduction<span></span></a></li>
+<li class="chapter" data-level="16.2" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#the-watershed-delineation-toolprocess"><i class="fa fa-check"></i><b>16.2</b> The watershed delineation tool/process<span></span></a></li>
+<li class="chapter" data-level="16.3" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#read-in-dem-1"><i class="fa fa-check"></i><b>16.3</b> Read in DEM<span></span></a></li>
+<li class="chapter" data-level="16.4" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#generate-a-hillshade-1"><i class="fa fa-check"></i><b>16.4</b> Generate a hillshade<span></span></a></li>
+<li class="chapter" data-level="16.5" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#prepare-dem-for-hydrology-analyses-1"><i class="fa fa-check"></i><b>16.5</b> Prepare DEM for Hydrology Analyses<span></span></a></li>
+<li class="chapter" data-level="16.6" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#create-flow-accumulation-and-pointer-grids"><i class="fa fa-check"></i><b>16.6</b> Create flow accumulation and pointer grids<span></span></a></li>
+<li class="chapter" data-level="16.7" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#setting-pour-points"><i class="fa fa-check"></i><b>16.7</b> Setting pour points<span></span></a></li>
+<li class="chapter" data-level="16.8" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#delineate-watersheds"><i class="fa fa-check"></i><b>16.8</b> Delineate watersheds<span></span></a></li>
+<li class="chapter" data-level="16.9" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#convert-watersheds-to-shapefiles"><i class="fa fa-check"></i><b>16.9</b> Convert watersheds to shapefiles<span></span></a></li>
+<li class="chapter" data-level="16.10" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#extract-data-based-on-watershed-outline"><i class="fa fa-check"></i><b>16.10</b> Extract data based on watershed outline<span></span></a></li>
+<li class="chapter" data-level="16.11" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#bonus-make-a-3d-map-of-your-watershed-with-rayshader"><i class="fa fa-check"></i><b>16.11</b> BONUS: Make a 3d map of your watershed with rayshader<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="modelingintro.html"><a href="modelingintro.html"><i class="fa fa-check"></i><b>17</b> Intro to Modeling - Getting Started with HBV</a>
+<li class="chapter" data-level="17" data-path="modelingintro.html"><a href="modelingintro.html"><i class="fa fa-check"></i><b>17</b> Intro to Modeling - Getting Started with HBV<span></span></a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="modelingintro.html"><a href="modelingintro.html#introduction-5"><i class="fa fa-check"></i><b>17.1</b> Introduction</a></li>
-<li class="chapter" data-level="17.2" data-path="modelingintro.html"><a href="modelingintro.html#creating-the-hbv-model-function"><i class="fa fa-check"></i><b>17.2</b> Creating the HBV model function</a></li>
-<li class="chapter" data-level="17.3" data-path="modelingintro.html"><a href="modelingintro.html#read-in-precip-and-temp"><i class="fa fa-check"></i><b>17.3</b> Read in Precip and Temp</a></li>
-<li class="chapter" data-level="17.4" data-path="modelingintro.html"><a href="modelingintro.html#calculate-pet"><i class="fa fa-check"></i><b>17.4</b> Calculate PET</a></li>
-<li class="chapter" data-level="17.5" data-path="modelingintro.html"><a href="modelingintro.html#hbv-parameters"><i class="fa fa-check"></i><b>17.5</b> HBV Parameters</a></li>
-<li class="chapter" data-level="17.6" data-path="modelingintro.html"><a href="modelingintro.html#first-model-run"><i class="fa fa-check"></i><b>17.6</b> First model run</a></li>
-<li class="chapter" data-level="17.7" data-path="modelingintro.html"><a href="modelingintro.html#import-observed-streamflow-data"><i class="fa fa-check"></i><b>17.7</b> Import observed streamflow data</a></li>
-<li class="chapter" data-level="17.8" data-path="modelingintro.html"><a href="modelingintro.html#compare-observed-and-modeled-discharge-graphically"><i class="fa fa-check"></i><b>17.8</b> Compare observed and modeled discharge graphically</a></li>
-<li class="chapter" data-level="17.9" data-path="modelingintro.html"><a href="modelingintro.html#compare-observed-and-modelled-discharge-with-interactive-graph"><i class="fa fa-check"></i><b>17.9</b> Compare observed and modelled discharge with interactive graph</a></li>
-<li class="chapter" data-level="17.10" data-path="modelingintro.html"><a href="modelingintro.html#measure-how-well-the-model-fits-with-nse"><i class="fa fa-check"></i><b>17.10</b> Measure how well the model fits with NSE</a></li>
-<li class="chapter" data-level="17.11" data-path="modelingintro.html"><a href="modelingintro.html#assess-model-fit-with-a-different-measure-snow"><i class="fa fa-check"></i><b>17.11</b> Assess model fit with a different measure: Snow</a></li>
-<li class="chapter" data-level="17.12" data-path="modelingintro.html"><a href="modelingintro.html#calibrate-hbv-manually"><i class="fa fa-check"></i><b>17.12</b> Calibrate HBV manually</a></li>
+<li class="chapter" data-level="17.1" data-path="modelingintro.html"><a href="modelingintro.html#introduction-4"><i class="fa fa-check"></i><b>17.1</b> Introduction<span></span></a></li>
+<li class="chapter" data-level="17.2" data-path="modelingintro.html"><a href="modelingintro.html#creating-the-hbv-model-function"><i class="fa fa-check"></i><b>17.2</b> Creating the HBV model function<span></span></a></li>
+<li class="chapter" data-level="17.3" data-path="modelingintro.html"><a href="modelingintro.html#read-in-precip-and-temp"><i class="fa fa-check"></i><b>17.3</b> Read in Precip and Temp<span></span></a></li>
+<li class="chapter" data-level="17.4" data-path="modelingintro.html"><a href="modelingintro.html#calculate-pet"><i class="fa fa-check"></i><b>17.4</b> Calculate PET<span></span></a></li>
+<li class="chapter" data-level="17.5" data-path="modelingintro.html"><a href="modelingintro.html#hbv-parameters"><i class="fa fa-check"></i><b>17.5</b> HBV Parameters<span></span></a></li>
+<li class="chapter" data-level="17.6" data-path="modelingintro.html"><a href="modelingintro.html#first-model-run"><i class="fa fa-check"></i><b>17.6</b> First model run<span></span></a></li>
+<li class="chapter" data-level="17.7" data-path="modelingintro.html"><a href="modelingintro.html#import-observed-streamflow-data"><i class="fa fa-check"></i><b>17.7</b> Import observed streamflow data<span></span></a></li>
+<li class="chapter" data-level="17.8" data-path="modelingintro.html"><a href="modelingintro.html#compare-observed-and-modeled-discharge-graphically"><i class="fa fa-check"></i><b>17.8</b> Compare observed and modeled discharge graphically<span></span></a></li>
+<li class="chapter" data-level="17.9" data-path="modelingintro.html"><a href="modelingintro.html#compare-observed-and-modelled-discharge-with-interactive-graph"><i class="fa fa-check"></i><b>17.9</b> Compare observed and modelled discharge with interactive graph<span></span></a></li>
+<li class="chapter" data-level="17.10" data-path="modelingintro.html"><a href="modelingintro.html#measure-how-well-the-model-fits-with-nse"><i class="fa fa-check"></i><b>17.10</b> Measure how well the model fits with NSE<span></span></a></li>
+<li class="chapter" data-level="17.11" data-path="modelingintro.html"><a href="modelingintro.html#assess-model-fit-with-a-different-measure-snow"><i class="fa fa-check"></i><b>17.11</b> Assess model fit with a different measure: Snow<span></span></a></li>
+<li class="chapter" data-level="17.12" data-path="modelingintro.html"><a href="modelingintro.html#calibrate-hbv-manually"><i class="fa fa-check"></i><b>17.12</b> Calibrate HBV manually<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="modelingcalibration.html"><a href="modelingcalibration.html"><i class="fa fa-check"></i><b>18</b> Intro to Modeling - Calibrate HBV</a>
+<li class="chapter" data-level="18" data-path="modelingcalibration.html"><a href="modelingcalibration.html"><i class="fa fa-check"></i><b>18</b> Intro to Modeling - Calibrate HBV<span></span></a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="modelingcalibration.html"><a href="modelingcalibration.html#introduction-6"><i class="fa fa-check"></i><b>18.1</b> Introduction</a></li>
-<li class="chapter" data-level="18.2" data-path="modelingcalibration.html"><a href="modelingcalibration.html#challenge-write-a-for-loop"><i class="fa fa-check"></i><b>18.2</b> Challenge: Write a for loop</a></li>
-<li class="chapter" data-level="18.3" data-path="modelingcalibration.html"><a href="modelingcalibration.html#prep-data-for-hbv"><i class="fa fa-check"></i><b>18.3</b> Prep data for HBV</a></li>
-<li class="chapter" data-level="18.4" data-path="modelingcalibration.html"><a href="modelingcalibration.html#calculate-pet-1"><i class="fa fa-check"></i><b>18.4</b> Calculate PET</a></li>
-<li class="chapter" data-level="18.5" data-path="modelingcalibration.html"><a href="modelingcalibration.html#monte-carlo-step-1-generate-random-parameter-sets"><i class="fa fa-check"></i><b>18.5</b> Monte Carlo step 1: generate random parameter sets</a></li>
-<li class="chapter" data-level="18.6" data-path="modelingcalibration.html"><a href="modelingcalibration.html#run-the-model-for-each-parameter-set"><i class="fa fa-check"></i><b>18.6</b> Run the model for each parameter set</a></li>
-<li class="chapter" data-level="18.7" data-path="modelingcalibration.html"><a href="modelingcalibration.html#find-the-best-parameter-set"><i class="fa fa-check"></i><b>18.7</b> Find the best parameter set</a></li>
-<li class="chapter" data-level="18.8" data-path="modelingcalibration.html"><a href="modelingcalibration.html#investigating-a-much-bigger-monte-carlo"><i class="fa fa-check"></i><b>18.8</b> Investigating a much bigger Monte Carlo</a></li>
+<li class="chapter" data-level="18.1" data-path="modelingcalibration.html"><a href="modelingcalibration.html#introduction-5"><i class="fa fa-check"></i><b>18.1</b> Introduction<span></span></a></li>
+<li class="chapter" data-level="18.2" data-path="modelingcalibration.html"><a href="modelingcalibration.html#challenge-write-a-for-loop"><i class="fa fa-check"></i><b>18.2</b> Challenge: Write a for loop<span></span></a></li>
+<li class="chapter" data-level="18.3" data-path="modelingcalibration.html"><a href="modelingcalibration.html#prep-data-for-hbv"><i class="fa fa-check"></i><b>18.3</b> Prep data for HBV<span></span></a></li>
+<li class="chapter" data-level="18.4" data-path="modelingcalibration.html"><a href="modelingcalibration.html#calculate-pet-1"><i class="fa fa-check"></i><b>18.4</b> Calculate PET<span></span></a></li>
+<li class="chapter" data-level="18.5" data-path="modelingcalibration.html"><a href="modelingcalibration.html#monte-carlo-step-1-generate-random-parameter-sets"><i class="fa fa-check"></i><b>18.5</b> Monte Carlo step 1: generate random parameter sets<span></span></a></li>
+<li class="chapter" data-level="18.6" data-path="modelingcalibration.html"><a href="modelingcalibration.html#run-the-model-for-each-parameter-set"><i class="fa fa-check"></i><b>18.6</b> Run the model for each parameter set<span></span></a></li>
+<li class="chapter" data-level="18.7" data-path="modelingcalibration.html"><a href="modelingcalibration.html#find-the-best-parameter-set"><i class="fa fa-check"></i><b>18.7</b> Find the best parameter set<span></span></a></li>
+<li class="chapter" data-level="18.8" data-path="modelingcalibration.html"><a href="modelingcalibration.html#investigating-a-much-bigger-monte-carlo"><i class="fa fa-check"></i><b>18.8</b> Investigating a much bigger Monte Carlo<span></span></a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -422,19 +416,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="stats" class="section level1" number="5">
-<h1><span class="header-section-number">Chapter 5</span> Introduction to Basic Statistics</h1>
+<div id="stats" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Introduction to Basic Statistics<a href="stats.html#stats" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Get this document and a version with empty code chunks at the template repository on github: <a href="https://github.com/VT-Hydroinformatics/4-Intro-Stats" class="uri">https://github.com/VT-Hydroinformatics/4-Intro-Stats</a></p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="stats.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb75-2"><a href="stats.html#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span></code></pre></div>
-<pre><code>## Warning: package &#39;patchwork&#39; was built under R version 3.6.2</code></pre>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="stats.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_classic</span>())</span></code></pre></div>
-<div id="reading-for-this-section-statistical-methods-in-water-resources-chapter-1" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Reading for this section: Statistical Methods in Water Resources: Chapter 1</h2>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="stats.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb71-2"><a href="stats.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb71-3"><a href="stats.html#cb71-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-4"><a href="stats.html#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_classic</span>())</span></code></pre></div>
+<div id="reading-for-this-section-statistical-methods-in-water-resources-chapter-1" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Reading for this section: Statistical Methods in Water Resources: Chapter 1<a href="stats.html#reading-for-this-section-statistical-methods-in-water-resources-chapter-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><a href="https://pubs.usgs.gov/tm/04/a03/tm4a3.pdf" class="uri">https://pubs.usgs.gov/tm/04/a03/tm4a3.pdf</a></p>
 </div>
-<div id="questions-for-today" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Questions for today:</h2>
+<div id="questions-for-today" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Questions for today:<a href="stats.html#questions-for-today" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><em>What is the difference between a sample and a population?</em></li>
 <li><em>How do we look at the distribution of data in a sample</em></li>
@@ -442,46 +436,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><em>What is a normal distribution?</em></li>
 </ul>
 <p>First let’s generate some synthetic data and talk about how to visualize it.</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="stats.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co">#generate a normal distribution</span></span>
-<span id="cb78-2"><a href="stats.html#cb78-2" aria-hidden="true" tabindex="-1"></a>ExNorm <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb78-3"><a href="stats.html#cb78-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
-<span id="cb78-4"><a href="stats.html#cb78-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-5"><a href="stats.html#cb78-5" aria-hidden="true" tabindex="-1"></a><span class="co">#look at distributions</span></span>
-<span id="cb78-6"><a href="stats.html#cb78-6" aria-hidden="true" tabindex="-1"></a><span class="co">#histogram</span></span>
-<span id="cb78-7"><a href="stats.html#cb78-7" aria-hidden="true" tabindex="-1"></a>ExNorm <span class="sc">%&gt;%</span></span>
-<span id="cb78-8"><a href="stats.html#cb78-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
-<span id="cb78-9"><a href="stats.html#cb78-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="stats.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co">#generate a normal distribution</span></span>
+<span id="cb72-2"><a href="stats.html#cb72-2" aria-hidden="true" tabindex="-1"></a>ExNorm <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb72-3"><a href="stats.html#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
+<span id="cb72-4"><a href="stats.html#cb72-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-5"><a href="stats.html#cb72-5" aria-hidden="true" tabindex="-1"></a><span class="co">#look at distributions</span></span>
+<span id="cb72-6"><a href="stats.html#cb72-6" aria-hidden="true" tabindex="-1"></a><span class="co">#histogram</span></span>
+<span id="cb72-7"><a href="stats.html#cb72-7" aria-hidden="true" tabindex="-1"></a>ExNorm <span class="sc">%&gt;%</span></span>
+<span id="cb72-8"><a href="stats.html#cb72-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
+<span id="cb72-9"><a href="stats.html#cb72-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="stats.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pdf</span></span>
-<span id="cb80-2"><a href="stats.html#cb80-2" aria-hidden="true" tabindex="-1"></a>ExNorm <span class="sc">%&gt;%</span></span>
-<span id="cb80-3"><a href="stats.html#cb80-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
-<span id="cb80-4"><a href="stats.html#cb80-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="stats.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pdf</span></span>
+<span id="cb74-2"><a href="stats.html#cb74-2" aria-hidden="true" tabindex="-1"></a>ExNorm <span class="sc">%&gt;%</span></span>
+<span id="cb74-3"><a href="stats.html#cb74-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
+<span id="cb74-4"><a href="stats.html#cb74-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density</span>()</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-42-2.png" width="672" /></p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="stats.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Let&#39;s generate a plot that makes comparing these two easier</span></span></code></pre></div>
-<div id="stack-plots-to-compare-histogram-and-pdf" class="section level3" number="5.2.1">
-<h3><span class="header-section-number">5.2.1</span> Stack plots to compare histogram and pdf</h3>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="stats.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Let&#39;s generate a plot that makes comparing these two easier</span></span></code></pre></div>
+<div id="stack-plots-to-compare-histogram-and-pdf" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Stack plots to compare histogram and pdf<a href="stats.html#stack-plots-to-compare-histogram-and-pdf" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We will save each plot as ggplot object and then output them using the patchwork package (loaded in the setup chunk).</p>
 <p>What is the difference between a histogram and a pdf?<br />
 What features of the histogram are preserved? Which are lost?</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="stats.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co">#histogram</span></span>
-<span id="cb82-2"><a href="stats.html#cb82-2" aria-hidden="true" tabindex="-1"></a>exhist <span class="ot">&lt;-</span> ExNorm <span class="sc">%&gt;%</span></span>
-<span id="cb82-3"><a href="stats.html#cb82-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
-<span id="cb82-4"><a href="stats.html#cb82-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
-<span id="cb82-5"><a href="stats.html#cb82-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-6"><a href="stats.html#cb82-6" aria-hidden="true" tabindex="-1"></a><span class="co">#pdf</span></span>
-<span id="cb82-7"><a href="stats.html#cb82-7" aria-hidden="true" tabindex="-1"></a>expdf <span class="ot">&lt;-</span> ExNorm <span class="sc">%&gt;%</span></span>
-<span id="cb82-8"><a href="stats.html#cb82-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
-<span id="cb82-9"><a href="stats.html#cb82-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density</span>()</span>
-<span id="cb82-10"><a href="stats.html#cb82-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-11"><a href="stats.html#cb82-11" aria-hidden="true" tabindex="-1"></a><span class="co">#put the plots side by side with + or on top of each other with /</span></span>
-<span id="cb82-12"><a href="stats.html#cb82-12" aria-hidden="true" tabindex="-1"></a>exhist<span class="sc">/</span>expdf</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="stats.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co">#histogram</span></span>
+<span id="cb76-2"><a href="stats.html#cb76-2" aria-hidden="true" tabindex="-1"></a>exhist <span class="ot">&lt;-</span> ExNorm <span class="sc">%&gt;%</span></span>
+<span id="cb76-3"><a href="stats.html#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
+<span id="cb76-4"><a href="stats.html#cb76-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
+<span id="cb76-5"><a href="stats.html#cb76-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-6"><a href="stats.html#cb76-6" aria-hidden="true" tabindex="-1"></a><span class="co">#pdf</span></span>
+<span id="cb76-7"><a href="stats.html#cb76-7" aria-hidden="true" tabindex="-1"></a>expdf <span class="ot">&lt;-</span> ExNorm <span class="sc">%&gt;%</span></span>
+<span id="cb76-8"><a href="stats.html#cb76-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
+<span id="cb76-9"><a href="stats.html#cb76-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density</span>()</span>
+<span id="cb76-10"><a href="stats.html#cb76-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-11"><a href="stats.html#cb76-11" aria-hidden="true" tabindex="-1"></a><span class="co">#put the plots side by side with + or on top of each other with /</span></span>
+<span id="cb76-12"><a href="stats.html#cb76-12" aria-hidden="true" tabindex="-1"></a>exhist<span class="sc">/</span>expdf</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
 </div>
 </div>
-<div id="what-is-the-difference-between-a-sample-and-a-population." class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> What is the difference between a sample and a population.</h2>
+<div id="what-is-the-difference-between-a-sample-and-a-population." class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> What is the difference between a sample and a population.<a href="stats.html#what-is-the-difference-between-a-sample-and-a-population." class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Simply put: a population is the thing you are trying to measure. A sample is the data you measure in an effort to measure the population. A sample is a subset of a population.</p>
 <p>Let’s write some code for an example:</p>
 <p>We will create a POPULATION that is a large set of numbers. Think of this is as the concentration of Calcium in every bit of water in a lake. Then we will create a SAMPLE by randomly grabbing values from the POPULATION. This simulates us going around in a boat and taking grab samples in an effort to figure out the concentration of calcium in the lake.</p>
@@ -490,73 +484,68 @@ What features of the histogram are preserved? Which are lost?</p>
 Why does the sample change every time you run it?<br />
 What happens as you increase or decrease the number of samples?<br />
 What happens if you set the number of samples to the size of the population?</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="stats.html#cb84-1" aria-hidden="true" tabindex="-1"></a>all_the_water <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span>
-<span id="cb84-2"><a href="stats.html#cb84-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb84-3"><a href="stats.html#cb84-3" aria-hidden="true" tabindex="-1"></a>sample_of_water <span class="ot">&lt;-</span> <span class="fu">sample</span>(all_the_water<span class="sc">$</span>value, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span>
-<span id="cb84-4"><a href="stats.html#cb84-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb84-5"><a href="stats.html#cb84-5" aria-hidden="true" tabindex="-1"></a>population_hist <span class="ot">&lt;-</span> all_the_water <span class="sc">%&gt;%</span></span>
-<span id="cb84-6"><a href="stats.html#cb84-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value))<span class="sc">+</span></span>
-<span id="cb84-7"><a href="stats.html#cb84-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
-<span id="cb84-8"><a href="stats.html#cb84-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Population: All the water in the lake&quot;</span>)</span>
-<span id="cb84-9"><a href="stats.html#cb84-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb84-10"><a href="stats.html#cb84-10" aria-hidden="true" tabindex="-1"></a>sample_hist <span class="ot">&lt;-</span> sample_of_water <span class="sc">%&gt;%</span></span>
-<span id="cb84-11"><a href="stats.html#cb84-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value))<span class="sc">+</span></span>
-<span id="cb84-12"><a href="stats.html#cb84-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
-<span id="cb84-13"><a href="stats.html#cb84-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Your sample of the lake&quot;</span>)</span>
-<span id="cb84-14"><a href="stats.html#cb84-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb84-15"><a href="stats.html#cb84-15" aria-hidden="true" tabindex="-1"></a>population_hist <span class="sc">+</span> sample_hist</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="stats.html#cb78-1" aria-hidden="true" tabindex="-1"></a>all_the_water <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span>
+<span id="cb78-2"><a href="stats.html#cb78-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-3"><a href="stats.html#cb78-3" aria-hidden="true" tabindex="-1"></a>sample_of_water <span class="ot">&lt;-</span> <span class="fu">sample</span>(all_the_water<span class="sc">$</span>value, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span>
+<span id="cb78-4"><a href="stats.html#cb78-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-5"><a href="stats.html#cb78-5" aria-hidden="true" tabindex="-1"></a>population_hist <span class="ot">&lt;-</span> all_the_water <span class="sc">%&gt;%</span></span>
+<span id="cb78-6"><a href="stats.html#cb78-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value))<span class="sc">+</span></span>
+<span id="cb78-7"><a href="stats.html#cb78-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
+<span id="cb78-8"><a href="stats.html#cb78-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Population: All the water in the lake&quot;</span>)</span>
+<span id="cb78-9"><a href="stats.html#cb78-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-10"><a href="stats.html#cb78-10" aria-hidden="true" tabindex="-1"></a>sample_hist <span class="ot">&lt;-</span> sample_of_water <span class="sc">%&gt;%</span></span>
+<span id="cb78-11"><a href="stats.html#cb78-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value))<span class="sc">+</span></span>
+<span id="cb78-12"><a href="stats.html#cb78-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
+<span id="cb78-13"><a href="stats.html#cb78-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Your sample of the lake&quot;</span>)</span>
+<span id="cb78-14"><a href="stats.html#cb78-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-15"><a href="stats.html#cb78-15" aria-hidden="true" tabindex="-1"></a>population_hist <span class="sc">+</span> sample_hist</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
 </div>
-<div id="measuring-our-sample-distribution-central-tendency." class="section level2" number="5.4">
-<h2><span class="header-section-number">5.4</span> Measuring our sample distribution: central tendency.</h2>
+<div id="measuring-our-sample-distribution-central-tendency." class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Measuring our sample distribution: central tendency.<a href="stats.html#measuring-our-sample-distribution-central-tendency." class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When we take a sample of a population, there are a few things we will want to measure about the distribution of values: where is the middle, how variable is it, and is it skewed to one side or another?</p>
 <p>The first of these, “where is the middle?” is addressed with measures of central tendency. We will discuss three possible ways to measure this. The mean, median, and weighted mean.</p>
 <p>To explain the importance of choosing between the mean and median, we will first import some discharge data. Read in the PINE discharge data.</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="stats.html#cb86-1" aria-hidden="true" tabindex="-1"></a>pineQ <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PINE_Jan-Mar_2010.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## 
-## ── Column specification ────────────────────────────────────────────────────────
-## cols(
-##   StationID = col_character(),
-##   cfs = col_double(),
-##   surrogate = col_character(),
-##   datetime = col_datetime(format = &quot;&quot;),
-##   year = col_double(),
-##   quarter = col_double(),
-##   month = col_double(),
-##   day = col_double()
-## )</code></pre>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="stats.html#cb80-1" aria-hidden="true" tabindex="-1"></a>pineQ <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PINE_Jan-Mar_2010.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 2160 Columns: 8── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr  (2): StationID, surrogate
+## dbl  (5): cfs, year, quarter, month, day
+## dttm (1): datetime
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <p>To find the mean (average), you just sum up all the values in your sample and divide by the number of values.</p>
 <p>To find the median, you put the values IN ORDER, and choose the middle value. The middle value is the one where there are the same number of values higher than that value as there are values lower than it.</p>
 <p>Because it uses the order of the values rather than just the values themselves, the median is resistant to skewed distributions. This means it is less effected by very large or very small values compared to most values in the sample data.</p>
 <p>Let’s look at our normal distribution from earlier (ExNorm) compared to the Pine watershed discharge (pineQ)</p>
 <p>Note that distributions like pineQ, that are positively skewed, are very common in environmental data.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="stats.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate mean and median for cfs in pineQ and values in ExNorm</span></span>
-<span id="cb88-2"><a href="stats.html#cb88-2" aria-hidden="true" tabindex="-1"></a>pineMean <span class="ot">&lt;-</span> <span class="fu">mean</span>(pineQ<span class="sc">$</span>cfs)</span>
-<span id="cb88-3"><a href="stats.html#cb88-3" aria-hidden="true" tabindex="-1"></a>pineMedian <span class="ot">&lt;-</span> <span class="fu">median</span>(pineQ<span class="sc">$</span>cfs)</span>
-<span id="cb88-4"><a href="stats.html#cb88-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb88-5"><a href="stats.html#cb88-5" aria-hidden="true" tabindex="-1"></a>xmean <span class="ot">&lt;-</span> <span class="fu">mean</span>(ExNorm<span class="sc">$</span>value)</span>
-<span id="cb88-6"><a href="stats.html#cb88-6" aria-hidden="true" tabindex="-1"></a>xmedian <span class="ot">&lt;-</span> <span class="fu">median</span>(ExNorm<span class="sc">$</span>value)</span>
-<span id="cb88-7"><a href="stats.html#cb88-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb88-8"><a href="stats.html#cb88-8" aria-hidden="true" tabindex="-1"></a><span class="co">#plot mean and median on the ExNorm distribution</span></span>
-<span id="cb88-9"><a href="stats.html#cb88-9" aria-hidden="true" tabindex="-1"></a>Ex <span class="ot">&lt;-</span> ExNorm <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
-<span id="cb88-10"><a href="stats.html#cb88-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
-<span id="cb88-11"><a href="stats.html#cb88-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> xmean, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)<span class="sc">+</span></span>
-<span id="cb88-12"><a href="stats.html#cb88-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> xmedian, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb88-13"><a href="stats.html#cb88-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb88-14"><a href="stats.html#cb88-14" aria-hidden="true" tabindex="-1"></a><span class="co">#plot mean and median on the pineQ discharge histogram</span></span>
-<span id="cb88-15"><a href="stats.html#cb88-15" aria-hidden="true" tabindex="-1"></a>PineP <span class="ot">&lt;-</span> pineQ <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(cfs)) <span class="sc">+</span></span>
-<span id="cb88-16"><a href="stats.html#cb88-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
-<span id="cb88-17"><a href="stats.html#cb88-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> pineMean, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)<span class="sc">+</span></span>
-<span id="cb88-18"><a href="stats.html#cb88-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> pineMedian, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb88-19"><a href="stats.html#cb88-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb88-20"><a href="stats.html#cb88-20" aria-hidden="true" tabindex="-1"></a>Ex <span class="sc">/</span> PineP  </span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="stats.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate mean and median for cfs in pineQ and values in ExNorm</span></span>
+<span id="cb82-2"><a href="stats.html#cb82-2" aria-hidden="true" tabindex="-1"></a>pineMean <span class="ot">&lt;-</span> <span class="fu">mean</span>(pineQ<span class="sc">$</span>cfs)</span>
+<span id="cb82-3"><a href="stats.html#cb82-3" aria-hidden="true" tabindex="-1"></a>pineMedian <span class="ot">&lt;-</span> <span class="fu">median</span>(pineQ<span class="sc">$</span>cfs)</span>
+<span id="cb82-4"><a href="stats.html#cb82-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-5"><a href="stats.html#cb82-5" aria-hidden="true" tabindex="-1"></a>xmean <span class="ot">&lt;-</span> <span class="fu">mean</span>(ExNorm<span class="sc">$</span>value)</span>
+<span id="cb82-6"><a href="stats.html#cb82-6" aria-hidden="true" tabindex="-1"></a>xmedian <span class="ot">&lt;-</span> <span class="fu">median</span>(ExNorm<span class="sc">$</span>value)</span>
+<span id="cb82-7"><a href="stats.html#cb82-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-8"><a href="stats.html#cb82-8" aria-hidden="true" tabindex="-1"></a><span class="co">#plot mean and median on the ExNorm distribution</span></span>
+<span id="cb82-9"><a href="stats.html#cb82-9" aria-hidden="true" tabindex="-1"></a>Ex <span class="ot">&lt;-</span> ExNorm <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(value)) <span class="sc">+</span></span>
+<span id="cb82-10"><a href="stats.html#cb82-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
+<span id="cb82-11"><a href="stats.html#cb82-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> xmean, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)<span class="sc">+</span></span>
+<span id="cb82-12"><a href="stats.html#cb82-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> xmedian, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb82-13"><a href="stats.html#cb82-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-14"><a href="stats.html#cb82-14" aria-hidden="true" tabindex="-1"></a><span class="co">#plot mean and median on the pineQ discharge histogram</span></span>
+<span id="cb82-15"><a href="stats.html#cb82-15" aria-hidden="true" tabindex="-1"></a>PineP <span class="ot">&lt;-</span> pineQ <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(cfs)) <span class="sc">+</span></span>
+<span id="cb82-16"><a href="stats.html#cb82-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
+<span id="cb82-17"><a href="stats.html#cb82-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> pineMean, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)<span class="sc">+</span></span>
+<span id="cb82-18"><a href="stats.html#cb82-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> pineMedian, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb82-19"><a href="stats.html#cb82-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-20"><a href="stats.html#cb82-20" aria-hidden="true" tabindex="-1"></a>Ex <span class="sc">/</span> PineP  </span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
-<div id="so-whats-a-weighted-average" class="section level3" number="5.4.1">
-<h3><span class="header-section-number">5.4.1</span> So what’s a weighted average?</h3>
+<div id="so-whats-a-weighted-average" class="section level3 hasAnchor" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> So what’s a weighted average?<a href="stats.html#so-whats-a-weighted-average" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>When you compute a standard mean or median, you are giving equal weight to each measurement. Adding up all the values in a sample and dividing by the number of samples is the same as multiplying each value by 1/# of samples. For instance if you had ten samples, to calculate the mean you would add them up and divide by 10. This is the same as multiplying each value by 1/10 and then adding them up. Each value is equally weighted at 1/10.</p>
 <p>There are certain situations in which this is not the ideal way to calculate an average. A common one in hydrology is that you have samples that are supposed to represent different portions of an area. One sample may be taken to measure a forest type that takes up 100 ha of a watershed while another sample represents a forest type that only takes up 4 ha. You may not want to simply average those values!</p>
 <p>Another example is precipitation gages. In the image below, you see there are 5 rain gages. To get a precipitation number for the watershed, we could just average them, or we could assume they represent an area of the watershed and then weight their values by the area they represent. One method of designating the areas is by using Theissen polygons (the middle watershed). Another method of weighting is isohyetal contours, but we won’t worry about that for now!</p>
@@ -565,83 +554,83 @@ What happens if you set the number of samples to the size of the population?</p>
 <p>The precip values for the watershed above are 4.5, 5.5, 5.8, 4.7, and 3.0</p>
 <p>We will assume the proportions of the watershed that each gauge represents are 0.20, 0.15, 0.40, 0.15, 0.10, respectively (or 20%, 15%, 40%, 15%, 10%)</p>
 <p>Write some code to compute the regular mean precip from the values, and then the weighted mean.</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="stats.html#cb90-1" aria-hidden="true" tabindex="-1"></a>precip <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">4.5</span>, <span class="fl">5.5</span>, <span class="fl">5.8</span>, <span class="fl">4.7</span>, <span class="fl">3.0</span>)</span>
-<span id="cb90-2"><a href="stats.html#cb90-2" aria-hidden="true" tabindex="-1"></a>weights <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.15</span>, <span class="fl">0.4</span>, <span class="fl">0.15</span>, <span class="fl">0.1</span>)</span>
-<span id="cb90-3"><a href="stats.html#cb90-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-4"><a href="stats.html#cb90-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(precip)</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="stats.html#cb84-1" aria-hidden="true" tabindex="-1"></a>precip <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">4.5</span>, <span class="fl">5.5</span>, <span class="fl">5.8</span>, <span class="fl">4.7</span>, <span class="fl">3.0</span>)</span>
+<span id="cb84-2"><a href="stats.html#cb84-2" aria-hidden="true" tabindex="-1"></a>weights <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.15</span>, <span class="fl">0.4</span>, <span class="fl">0.15</span>, <span class="fl">0.1</span>)</span>
+<span id="cb84-3"><a href="stats.html#cb84-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-4"><a href="stats.html#cb84-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(precip)</span></code></pre></div>
 <pre><code>## [1] 4.7</code></pre>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="stats.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(precip <span class="sc">*</span> weights)</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="stats.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(precip <span class="sc">*</span> weights)</span></code></pre></div>
 <pre><code>## [1] 5.05</code></pre>
 </div>
 </div>
-<div id="measures-of-variability" class="section level2" number="5.5">
-<h2><span class="header-section-number">5.5</span> Measures of variability</h2>
+<div id="measures-of-variability" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Measures of variability<a href="stats.html#measures-of-variability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Measures of variability allow us to measure the width of our sample data histogram or pdf. If all the values in our sample are close together, we would have small measures of variability, and a pointy pdf/histogram. If they vary more, we would have larger measures of variability and a broad pdf/histogram.</p>
 <p>We will explore four measures of variability:</p>
-<div id="variance" class="section level4" number="5.5.0.1">
-<h4><span class="header-section-number">5.5.0.1</span> Variance:</h4>
+<div id="variance" class="section level4 hasAnchor" number="5.5.0.1">
+<h4><span class="header-section-number">5.5.0.1</span> Variance:<a href="stats.html#variance" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Sum of the squared difference of each value from the mean divided by the number of samples minus 1. var()</p>
 <p><img src="images/Screen%20Shot%202021-01-25%20at%2010.29.45%20AM.png" alt="Formula for variance (from USGS statistics book linked)" />(<a href="https://pubs.usgs.gov/tm/04/a03/tm4a3.pdf" class="uri">https://pubs.usgs.gov/tm/04/a03/tm4a3.pdf</a>) source: <a href="https://pubs.usgs.gov/tm/04/a03/tm4a3.pdf" class="uri">https://pubs.usgs.gov/tm/04/a03/tm4a3.pdf</a></p>
 </div>
-<div id="standard-deviation" class="section level4" number="5.5.0.2">
-<h4><span class="header-section-number">5.5.0.2</span> Standard deviation:</h4>
+<div id="standard-deviation" class="section level4 hasAnchor" number="5.5.0.2">
+<h4><span class="header-section-number">5.5.0.2</span> Standard deviation:<a href="stats.html#standard-deviation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The square root of the variance sd()</p>
 <p>**Both variance and standard deviation are sensitive to outliers.</p>
 </div>
-<div id="cv-coefficient-of-variation" class="section level4" number="5.5.0.3">
-<h4><span class="header-section-number">5.5.0.3</span> CV: Coefficient of Variation</h4>
+<div id="cv-coefficient-of-variation" class="section level4 hasAnchor" number="5.5.0.3">
+<h4><span class="header-section-number">5.5.0.3</span> CV: Coefficient of Variation<a href="stats.html#cv-coefficient-of-variation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>CV is simply the standard deviation divided by the mean of the data. Because you divide by the mean, CV is dimensionless. This allows you to use it to compare the variation in samples with very different magnitudes.</p>
 </div>
-<div id="iqr-interquartile-range" class="section level4" number="5.5.0.4">
-<h4><span class="header-section-number">5.5.0.4</span> IQR: Interquartile Range</h4>
+<div id="iqr-interquartile-range" class="section level4 hasAnchor" number="5.5.0.4">
+<h4><span class="header-section-number">5.5.0.4</span> IQR: Interquartile Range<a href="stats.html#iqr-interquartile-range" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>IQR is resistant to outliers because it works like a median. It measures the range of the middle 50% of the data in your distribution. So the IQR is the difference between the value between the 75th and 25th percentiles of your data, where the 75th percentile means 75% of the data is BELOW that value and the 25th percentile means 25% is below that value. Using the same vocabulary, the median is the same as the 50th percentile of the data.</p>
 <p>If you ask R for the QUANTILES of your sample data, it will give you the values at which 0%, 25%, 50%, 75%, and 100% of the data are below. These are the 1,2,3,4, and 5th quantiles. Therefore, the IQR is the difference between the 4th and 2nd quantile.</p>
 <p>Okay, code time.</p>
 <p>First, let’s explore how changing the variability of a distribution changes the shape of it’s distribution. Create a plot a random normal distribution using rnorm() and set sd to different numbers. Make the mean of the distribution 0, the sample size 300, and the standard deviation 1 to start. Then increase the standard deviation incrementally to 10 and see what happens. Make the limits of the x axis on the plot -30 to 30.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="stats.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">300</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> as_tibble <span class="sc">%&gt;%</span></span>
-<span id="cb94-2"><a href="stats.html#cb94-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value))<span class="sc">+</span></span>
-<span id="cb94-3"><a href="stats.html#cb94-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density</span>()<span class="sc">+</span></span>
-<span id="cb94-4"><a href="stats.html#cb94-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">30</span>,<span class="dv">30</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="stats.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">300</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> as_tibble <span class="sc">%&gt;%</span></span>
+<span id="cb88-2"><a href="stats.html#cb88-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value))<span class="sc">+</span></span>
+<span id="cb88-3"><a href="stats.html#cb88-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density</span>()<span class="sc">+</span></span>
+<span id="cb88-4"><a href="stats.html#cb88-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">30</span>,<span class="dv">30</span>))</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
 <p>Now let’s calculate the standard deviation, variance, coefficient of variation, and IQR of the Pine discharge data.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="stats.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co">#standard deviation</span></span>
-<span id="cb95-2"><a href="stats.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="stats.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co">#standard deviation</span></span>
+<span id="cb89-2"><a href="stats.html#cb89-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
 <pre><code>## [1] 84.47625</code></pre>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="stats.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co">#variance</span></span>
-<span id="cb97-2"><a href="stats.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="stats.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co">#variance</span></span>
+<span id="cb91-2"><a href="stats.html#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
 <pre><code>## [1] 7136.237</code></pre>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="stats.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co">#coefficient of variation</span></span>
-<span id="cb99-2"><a href="stats.html#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(pineQ<span class="sc">$</span>cfs)<span class="sc">/</span><span class="fu">mean</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="stats.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co">#coefficient of variation</span></span>
+<span id="cb93-2"><a href="stats.html#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(pineQ<span class="sc">$</span>cfs)<span class="sc">/</span><span class="fu">mean</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
 <pre><code>## [1] 2.800221</code></pre>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="stats.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co">#IQR using the IQR funciton</span></span>
-<span id="cb101-2"><a href="stats.html#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="stats.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co">#IQR using the IQR funciton</span></span>
+<span id="cb95-2"><a href="stats.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
 <pre><code>## [1] 8.1325</code></pre>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="stats.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co">#IQR using the quantile function</span></span>
-<span id="cb103-2"><a href="stats.html#cb103-2" aria-hidden="true" tabindex="-1"></a>quants <span class="ot">&lt;-</span> <span class="fu">quantile</span>(pineQ<span class="sc">$</span>cfs)</span>
-<span id="cb103-3"><a href="stats.html#cb103-3" aria-hidden="true" tabindex="-1"></a>quants[<span class="dv">4</span>] <span class="sc">-</span> quants[<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="stats.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co">#IQR using the quantile function</span></span>
+<span id="cb97-2"><a href="stats.html#cb97-2" aria-hidden="true" tabindex="-1"></a>quants <span class="ot">&lt;-</span> <span class="fu">quantile</span>(pineQ<span class="sc">$</span>cfs)</span>
+<span id="cb97-3"><a href="stats.html#cb97-3" aria-hidden="true" tabindex="-1"></a>quants[<span class="dv">4</span>] <span class="sc">-</span> quants[<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>##    75% 
 ## 8.1325</code></pre>
 </div>
-<div id="what-about-how-lopsided-the-distribution-is" class="section level4" number="5.5.0.5">
-<h4><span class="header-section-number">5.5.0.5</span> What about how lopsided the distribution is?</h4>
+<div id="what-about-how-lopsided-the-distribution-is" class="section level4 hasAnchor" number="5.5.0.5">
+<h4><span class="header-section-number">5.5.0.5</span> What about how lopsided the distribution is?<a href="stats.html#what-about-how-lopsided-the-distribution-is" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>There are several ways to measure this as well, but we are just going to look at one: The Quartile skew. The quartile skew is the difference between the upper quartiles (50th-75th) and the lower quartiles (25th-50th) divided by the IQR (75th-25th).</p>
 <p><img src="images/Screen%20Shot%202021-01-25%20at%2011.27.14%20AM.png" alt="Quartile skew from USGS Stats Book linked above" /> source: <a href="https://pubs.usgs.gov/tm/04/a03/tm4a3.pdf" class="uri">https://pubs.usgs.gov/tm/04/a03/tm4a3.pdf</a></p>
 <p>Let’s look at the quartile skew of the two distributions we’ve been measuring. Calculate it for the pineQ discharge data and the random normal distribution we generated.</p>
 <p>Which one is more skewed?</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="stats.html#cb105-1" aria-hidden="true" tabindex="-1"></a>quantsP <span class="ot">&lt;-</span> <span class="fu">quantile</span>(pineQ<span class="sc">$</span>cfs)</span>
-<span id="cb105-2"><a href="stats.html#cb105-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb105-3"><a href="stats.html#cb105-3" aria-hidden="true" tabindex="-1"></a>((quantsP[<span class="dv">3</span>]<span class="sc">-</span>quantsP[<span class="dv">2</span>]) <span class="sc">-</span> (quantsP[<span class="dv">2</span>] <span class="sc">-</span> quantsP[<span class="dv">1</span>])) <span class="sc">/</span> quantsP[<span class="dv">3</span>] <span class="sc">-</span> quantsP[<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="stats.html#cb99-1" aria-hidden="true" tabindex="-1"></a>quantsP <span class="ot">&lt;-</span> <span class="fu">quantile</span>(pineQ<span class="sc">$</span>cfs)</span>
+<span id="cb99-2"><a href="stats.html#cb99-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-3"><a href="stats.html#cb99-3" aria-hidden="true" tabindex="-1"></a>((quantsP[<span class="dv">3</span>]<span class="sc">-</span>quantsP[<span class="dv">2</span>]) <span class="sc">-</span> (quantsP[<span class="dv">2</span>] <span class="sc">-</span> quantsP[<span class="dv">1</span>])) <span class="sc">/</span> quantsP[<span class="dv">3</span>] <span class="sc">-</span> quantsP[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>##       50% 
 ## -4.837233</code></pre>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="stats.html#cb107-1" aria-hidden="true" tabindex="-1"></a>quantsX <span class="ot">&lt;-</span> <span class="fu">quantile</span>(ExNorm<span class="sc">$</span>value)</span>
-<span id="cb107-2"><a href="stats.html#cb107-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-3"><a href="stats.html#cb107-3" aria-hidden="true" tabindex="-1"></a>((quantsX[<span class="dv">3</span>]<span class="sc">-</span>quantsX[<span class="dv">2</span>]) <span class="sc">-</span> (quantsX[<span class="dv">2</span>] <span class="sc">-</span> quantsX[<span class="dv">1</span>])) <span class="sc">/</span> quantsX[<span class="dv">3</span>] <span class="sc">-</span> quantsX[<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="stats.html#cb101-1" aria-hidden="true" tabindex="-1"></a>quantsX <span class="ot">&lt;-</span> <span class="fu">quantile</span>(ExNorm<span class="sc">$</span>value)</span>
+<span id="cb101-2"><a href="stats.html#cb101-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-3"><a href="stats.html#cb101-3" aria-hidden="true" tabindex="-1"></a>((quantsX[<span class="dv">3</span>]<span class="sc">-</span>quantsX[<span class="dv">2</span>]) <span class="sc">-</span> (quantsX[<span class="dv">2</span>] <span class="sc">-</span> quantsX[<span class="dv">1</span>])) <span class="sc">/</span> quantsX[<span class="dv">3</span>] <span class="sc">-</span> quantsX[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>##       50% 
-## -1.404778</code></pre>
+## -2.152592</code></pre>
 </div>
 </div>
-<div id="what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one" class="section level2" number="5.6">
-<h2><span class="header-section-number">5.6</span> What is a normal distribution and how can we determine if we have one?</h2>
+<div id="what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> What is a normal distribution and how can we determine if we have one?<a href="stats.html#what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The distribution we generated with rnorm() is a normal distribution. The distribution of pineQ discharge is not normal. Now that we’ve looked at different ways to characterize distributions, we have the vocabulary to describe why.</p>
 <p><strong>Normal distributions:</strong></p>
 <ul>
@@ -653,13 +642,13 @@ What happens if you set the number of samples to the size of the population?</p>
 <p>But how far off can you be before you don’t consider a distribution normal? Seems like a judgement call!</p>
 <p>R to the rescue! There is a built in test for normality called shapiro.test(), which performs the Shapiro-Wilk test of normality. The hypothesis this test tests is “The distribution is normal.” So if this function returns a p-value less than 0.05, you reject that hypothesis and your function is NOT normal.</p>
 <p>You can also make a quantile-quantile plot. A straight line on this plot indicates a normal distribution, a non-straight line indicates it is not normal.</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="stats.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="stats.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  pineQ$cfs
 ## W = 0.27155, p-value &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="stats.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="stats.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(pineQ<span class="sc">$</span>cfs)</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
 
 </div>
@@ -674,7 +663,6 @@ What happens if you set the number of samples to the size of the population?</p>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -693,6 +681,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -713,6 +702,10 @@ gitbook.start({
 "text": null
 },
 "download": ["Hydroinformatics_Bookdown.pdf", "Hydroinformatics_Bookdown.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
