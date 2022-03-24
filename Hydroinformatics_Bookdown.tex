@@ -1625,8 +1625,8 @@ Which one is more skewed?
 \end{Shaded}
 
 \begin{verbatim}
-##      50% 
-## -1.75465
+##       50% 
+## -1.927597
 \end{verbatim}
 
 \hypertarget{what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one}{%
@@ -1985,27 +1985,27 @@ Below we will look at two other ways to get sites: using a bounding box of a geo
 ## 20      USGS 03170000                 LITTLE RIVER AT GRAYSONTOWN, VA
 ## 21      USGS 03169500             LITTLE RIVER NEAR COPPER VALLEY, VA
 ##    site_tp_cd dec_lat_va dec_long_va colocated           queryTime
-## 1          ST   36.88873   -81.34733     FALSE 2022-03-24 12:53:42
-## 2          ST   37.18428   -81.32982     FALSE 2022-03-24 12:53:42
-## 3          ST   37.27151   -81.30482     FALSE 2022-03-24 12:53:42
-## 4          ST   37.25595   -81.28177     FALSE 2022-03-24 12:53:42
-## 5          ST   36.85984   -80.98036     FALSE 2022-03-24 12:53:42
-## 6          ST   36.75985   -80.95619     FALSE 2022-03-24 12:53:42
-## 7          ST   36.83485   -80.95258     FALSE 2022-03-24 12:53:42
-## 8          SP   36.93429   -80.90313     FALSE 2022-03-24 12:53:42
-## 9          ST   36.93095   -80.90036     FALSE 2022-03-24 12:53:42
-## 10         SP   36.93068   -80.89619     FALSE 2022-03-24 12:53:42
-## 11         ST   36.93901   -80.88730     FALSE 2022-03-24 12:53:42
-## 12         ST   37.30568   -80.84980     FALSE 2022-03-24 12:53:42
-## 13         ST   37.04734   -80.77618     FALSE 2022-03-24 12:53:42
-## 14         ST   36.93762   -80.74563     FALSE 2022-03-24 12:53:42
-## 15         ST   36.88901   -80.72757     FALSE 2022-03-24 12:53:42
-## 16         ST   37.24179   -80.71090     FALSE 2022-03-24 12:53:42
-## 17         ST   37.26818   -80.70951     FALSE 2022-03-24 12:53:42
-## 18         ST   37.28957   -80.61673     FALSE 2022-03-24 12:53:42
-## 19         ST   37.14179   -80.56922     FALSE 2022-03-24 12:53:42
-## 20         ST   37.03763   -80.55672     FALSE 2022-03-24 12:53:42
-## 21         ST   36.99652   -80.52144     FALSE 2022-03-24 12:53:42
+## 1          ST   36.88873   -81.34733     FALSE 2022-03-24 13:20:21
+## 2          ST   37.18428   -81.32982     FALSE 2022-03-24 13:20:21
+## 3          ST   37.27151   -81.30482     FALSE 2022-03-24 13:20:21
+## 4          ST   37.25595   -81.28177     FALSE 2022-03-24 13:20:21
+## 5          ST   36.85984   -80.98036     FALSE 2022-03-24 13:20:21
+## 6          ST   36.75985   -80.95619     FALSE 2022-03-24 13:20:21
+## 7          ST   36.83485   -80.95258     FALSE 2022-03-24 13:20:21
+## 8          SP   36.93429   -80.90313     FALSE 2022-03-24 13:20:21
+## 9          ST   36.93095   -80.90036     FALSE 2022-03-24 13:20:21
+## 10         SP   36.93068   -80.89619     FALSE 2022-03-24 13:20:21
+## 11         ST   36.93901   -80.88730     FALSE 2022-03-24 13:20:21
+## 12         ST   37.30568   -80.84980     FALSE 2022-03-24 13:20:21
+## 13         ST   37.04734   -80.77618     FALSE 2022-03-24 13:20:21
+## 14         ST   36.93762   -80.74563     FALSE 2022-03-24 13:20:21
+## 15         ST   36.88901   -80.72757     FALSE 2022-03-24 13:20:21
+## 16         ST   37.24179   -80.71090     FALSE 2022-03-24 13:20:21
+## 17         ST   37.26818   -80.70951     FALSE 2022-03-24 13:20:21
+## 18         ST   37.28957   -80.61673     FALSE 2022-03-24 13:20:21
+## 19         ST   37.14179   -80.56922     FALSE 2022-03-24 13:20:21
+## 20         ST   37.03763   -80.55672     FALSE 2022-03-24 13:20:21
+## 21         ST   36.99652   -80.52144     FALSE 2022-03-24 13:20:21
 \end{verbatim}
 
 \begin{Shaded}
@@ -2196,7 +2196,7 @@ In the chunk below we will look to see what sites have data for nitrate and chlo
 
 \begin{verbatim}
 ##   [1] "#"                                                                                                                                            
-##   [2] "# File created on 2022-03-24 12:53:47 EDT"                                                                                                    
+##   [2] "# File created on 2022-03-24 13:20:26 EDT"                                                                                                    
 ##   [3] "#"                                                                                                                                            
 ##   [4] "# U.S. Geological Survey"                                                                                                                     
 ##   [5] "# "                                                                                                                                           
@@ -4137,23 +4137,26 @@ The second way we can deal with these features is to ``breach'' them. This means
 \caption{Breached}
 \end{figure}
 
-We are going to do both to prep our DEM. We will first fill pits that are only one DEM cell large using the wbt\_fill\_single\_cell\_pits() function. Then, for larger pits/depressions we will use wbt\_breach\_depressions\_least\_cost(), which will lower the elevation of the cells damming the depressions.
+We are going to do both to prep our DEM. We will first breach depressions using wbt\_breach\_depressions\_least\_cost(), which will lower the elevation of the cells damming depressions.
 
 To use this function we will also give it a maximum distance to search for a place to breach the depression (dist) and tell with whether to fill any depressions leftover after it does its thing (fill).
 
-Be careful to give the breach depressions function the result of the single cell fill function, not the original DEM!
+Then, because this algorithm can leave some remaining depressions, we wil use wbt\_fill\_depressions\_wang\_and\_liu() to clean up any remaining issues.
+
+Be careful to give wbt\_fill\_depressions\_wang\_and\_liu() the result of the breach depressions function, not the original DEM!
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{wbt\_fill\_single\_cell\_pits}\NormalTok{(}
-                    \AttributeTok{dem =} \StringTok{"McDonaldHollowDEM/brushDEMsm\_5m\_crs.tif"}\NormalTok{,}
-                    \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/bmstationdem\_filled.tif"}\NormalTok{)}
-
 \FunctionTok{wbt\_breach\_depressions\_least\_cost}\NormalTok{(}
-                     \AttributeTok{dem =} \StringTok{"McDonaldHollowDEM/bmstationdem\_filled.tif"}\NormalTok{,}
-                     \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/bmstationdem\_filled\_breached.tif"}\NormalTok{,}
-                     \AttributeTok{dist =} \DecValTok{5}\NormalTok{,}
-                     \AttributeTok{fill =} \ConstantTok{TRUE}\NormalTok{)}
+  \AttributeTok{dem =} \StringTok{"McDonaldHollowDEM/brushDEMsm\_5m\_crs.tif"}\NormalTok{,}
+  \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/bmstationdem\_breached.tif"}\NormalTok{,}
+  \AttributeTok{dist =} \DecValTok{5}\NormalTok{,}
+  \AttributeTok{fill =} \ConstantTok{TRUE}\NormalTok{)}
+
+\FunctionTok{wbt\_fill\_depressions\_wang\_and\_liu}\NormalTok{(}
+  \AttributeTok{dem =} \StringTok{"McDonaldHollowDEM/bmstationdem\_breached.tif"}\NormalTok{,}
+  \AttributeTok{output =} \StringTok{"McDonaldHollowDEM/bmstationdem\_filled\_breached.tif"}
+\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4267,6 +4270,10 @@ Which do you think represents reality better? Why?
 \end{Highlighting}
 \end{Shaded}
 
+\begin{verbatim}
+## Variable(s) "NA" contains positive and negative values, so midpoint is set to 0. Set midpoint = NA to show the full spectrum of the color palette.
+\end{verbatim}
+
 \hypertarget{topographic-wetness-index}{%
 \section{Topographic Wetness Index}\label{topographic-wetness-index}}
 
@@ -4379,10 +4386,10 @@ Below we extrac the streams, generate a D8 pointer file, and then convert the ra
 ## Reading layer `streams' from data source 
 ##   `/Users/jpgannon/My Drive (jpgannon@vt.edu)/CLASSES/SPRING Hydroinformatics/Hydroinformatics_Bookdown/McDonaldHollowDEM/streams.shp' 
 ##   using driver `ESRI Shapefile'
-## Simple feature collection with 25 features and 2 fields
+## Simple feature collection with 43 features and 2 fields
 ## Geometry type: LINESTRING
 ## Dimension:     XY
-## Bounding box:  xmin: -80.49517 ymin: 37.23597 xmax: -80.46388 ymax: 37.25634
+## Bounding box:  xmin: -80.49736 ymin: 37.23593 xmax: -80.46384 ymax: 37.25638
 ## CRS:           NA
 \end{verbatim}
 
@@ -4534,10 +4541,6 @@ It would be very difficult to accurately describe the differences in slope betwe
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## Warning: Removed 2629 rows containing non-finite values (stat_density).
-\end{verbatim}
-
 \includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-151-1.pdf}
 
 \hypertarget{subsetting-a-raster-for-visualization}{%
@@ -4601,7 +4604,7 @@ Here we convert slope and elevation each to a dataframe, join them, and them plo
 \end{Shaded}
 
 \begin{verbatim}
-## Warning: Removed 19214 rows containing non-finite values
+## Warning: Removed 19206 rows containing non-finite values
 ## (stat_density2d_filled).
 \end{verbatim}
 
@@ -4970,7 +4973,7 @@ The following code is here just because it is cool. We clip the DEM to the water
 ## requires the webshot2 package; using rgl.snapshot() instead
 \end{verbatim}
 
-\includegraphics[width=6.5in]{/var/folders/rl/dzfg1s7j2zv_5xqhl3ls1yl80000gn/T//RtmpMjV1aM/filed67d5d7f2e96}
+\includegraphics[width=6.5in]{/var/folders/rl/dzfg1s7j2zv_5xqhl3ls1yl80000gn/T//Rtmpz5SOLo/filee7ee206317f8}
 
 \hypertarget{modelingintro}{%
 \chapter{Intro to Modeling - Getting Started with HBV}\label{modelingintro}}
