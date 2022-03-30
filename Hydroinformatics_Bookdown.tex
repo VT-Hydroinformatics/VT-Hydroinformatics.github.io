@@ -117,7 +117,7 @@
 
 \title{Hydroinformatics at VT}
 \author{JP Gannon}
-\date{2022-03-24}
+\date{2022-03-30}
 
 \begin{document}
 \maketitle
@@ -1626,7 +1626,7 @@ Which one is more skewed?
 
 \begin{verbatim}
 ##       50% 
-## -1.927597
+## -1.860998
 \end{verbatim}
 
 \hypertarget{what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one}{%
@@ -1794,7 +1794,7 @@ Remember, all the parameter codes and site names get passed to dataRetrieval fun
 ## 4           dv   00095   00003 145685         NA           wat        <NA>
 ##    srs_id access_cd begin_date   end_date count_nu
 ## 2 1645597         0 2006-12-20 2009-03-18      704
-## 3 1645423         0 1907-10-01 2022-03-23    33046
+## 3 1645423         0 1907-10-01 2022-03-29    33052
 ## 4 1646694         0 2006-12-20 2008-09-29      534
 \end{verbatim}
 
@@ -1901,7 +1901,7 @@ So in the chunk below let's get add information about the parameters in dataAvai
 ## 3           dv   00095   00003 145685         NA           wat        <NA>
 ##    srs_id access_cd begin_date   end_date count_nu parameter_group_nm
 ## 1 1645597         0 2006-12-20 2009-03-18      704           Physical
-## 2 1645423         0 1907-10-01 2022-03-23    33046           Physical
+## 2 1645423         0 1907-10-01 2022-03-29    33052           Physical
 ## 3 1646694         0 2006-12-20 2008-09-29      534           Physical
 ##                                                                                 parameter_nm
 ## 1                                                        Temperature, water, degrees Celsius
@@ -1935,7 +1935,7 @@ So in the chunk below let's get add information about the parameters in dataAvai
 ## 3 03171000 NEW RIVER AT RADFORD, VA   00095     Specific conductance
 ##   parameter_units begin_date   end_date
 ## 1           deg C 2006-12-20 2009-03-18
-## 2           ft3/s 1907-10-01 2022-03-23
+## 2           ft3/s 1907-10-01 2022-03-29
 ## 3      uS/cm @25C 2006-12-20 2008-09-29
 \end{verbatim}
 
@@ -1985,27 +1985,27 @@ Below we will look at two other ways to get sites: using a bounding box of a geo
 ## 20      USGS 03170000                 LITTLE RIVER AT GRAYSONTOWN, VA
 ## 21      USGS 03169500             LITTLE RIVER NEAR COPPER VALLEY, VA
 ##    site_tp_cd dec_lat_va dec_long_va colocated           queryTime
-## 1          ST   36.88873   -81.34733     FALSE 2022-03-24 13:20:21
-## 2          ST   37.18428   -81.32982     FALSE 2022-03-24 13:20:21
-## 3          ST   37.27151   -81.30482     FALSE 2022-03-24 13:20:21
-## 4          ST   37.25595   -81.28177     FALSE 2022-03-24 13:20:21
-## 5          ST   36.85984   -80.98036     FALSE 2022-03-24 13:20:21
-## 6          ST   36.75985   -80.95619     FALSE 2022-03-24 13:20:21
-## 7          ST   36.83485   -80.95258     FALSE 2022-03-24 13:20:21
-## 8          SP   36.93429   -80.90313     FALSE 2022-03-24 13:20:21
-## 9          ST   36.93095   -80.90036     FALSE 2022-03-24 13:20:21
-## 10         SP   36.93068   -80.89619     FALSE 2022-03-24 13:20:21
-## 11         ST   36.93901   -80.88730     FALSE 2022-03-24 13:20:21
-## 12         ST   37.30568   -80.84980     FALSE 2022-03-24 13:20:21
-## 13         ST   37.04734   -80.77618     FALSE 2022-03-24 13:20:21
-## 14         ST   36.93762   -80.74563     FALSE 2022-03-24 13:20:21
-## 15         ST   36.88901   -80.72757     FALSE 2022-03-24 13:20:21
-## 16         ST   37.24179   -80.71090     FALSE 2022-03-24 13:20:21
-## 17         ST   37.26818   -80.70951     FALSE 2022-03-24 13:20:21
-## 18         ST   37.28957   -80.61673     FALSE 2022-03-24 13:20:21
-## 19         ST   37.14179   -80.56922     FALSE 2022-03-24 13:20:21
-## 20         ST   37.03763   -80.55672     FALSE 2022-03-24 13:20:21
-## 21         ST   36.99652   -80.52144     FALSE 2022-03-24 13:20:21
+## 1          ST   36.88873   -81.34733     FALSE 2022-03-30 09:12:50
+## 2          ST   37.18428   -81.32982     FALSE 2022-03-30 09:12:50
+## 3          ST   37.27151   -81.30482     FALSE 2022-03-30 09:12:50
+## 4          ST   37.25595   -81.28177     FALSE 2022-03-30 09:12:50
+## 5          ST   36.85984   -80.98036     FALSE 2022-03-30 09:12:50
+## 6          ST   36.75985   -80.95619     FALSE 2022-03-30 09:12:50
+## 7          ST   36.83485   -80.95258     FALSE 2022-03-30 09:12:50
+## 8          SP   36.93429   -80.90313     FALSE 2022-03-30 09:12:50
+## 9          ST   36.93095   -80.90036     FALSE 2022-03-30 09:12:50
+## 10         SP   36.93068   -80.89619     FALSE 2022-03-30 09:12:50
+## 11         ST   36.93901   -80.88730     FALSE 2022-03-30 09:12:50
+## 12         ST   37.30568   -80.84980     FALSE 2022-03-30 09:12:50
+## 13         ST   37.04734   -80.77618     FALSE 2022-03-30 09:12:50
+## 14         ST   36.93762   -80.74563     FALSE 2022-03-30 09:12:50
+## 15         ST   36.88901   -80.72757     FALSE 2022-03-30 09:12:50
+## 16         ST   37.24179   -80.71090     FALSE 2022-03-30 09:12:50
+## 17         ST   37.26818   -80.70951     FALSE 2022-03-30 09:12:50
+## 18         ST   37.28957   -80.61673     FALSE 2022-03-30 09:12:50
+## 19         ST   37.14179   -80.56922     FALSE 2022-03-30 09:12:50
+## 20         ST   37.03763   -80.55672     FALSE 2022-03-30 09:12:50
+## 21         ST   36.99652   -80.52144     FALSE 2022-03-30 09:12:50
 \end{verbatim}
 
 \begin{Shaded}
@@ -2196,7 +2196,7 @@ In the chunk below we will look to see what sites have data for nitrate and chlo
 
 \begin{verbatim}
 ##   [1] "#"                                                                                                                                            
-##   [2] "# File created on 2022-03-24 13:20:26 EDT"                                                                                                    
+##   [2] "# File created on 2022-03-30 09:13:00 EDT"                                                                                                    
 ##   [3] "#"                                                                                                                                            
 ##   [4] "# U.S. Geological Survey"                                                                                                                     
 ##   [5] "# "                                                                                                                                           
@@ -4450,17 +4450,13 @@ Then we will plot the points just to make sure they show up where we expect.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{tm\_shape}\NormalTok{(}\FunctionTok{log}\NormalTok{(twid))}\SpecialCharTok{+}
+\FunctionTok{tm\_shape}\NormalTok{(twid)}\SpecialCharTok{+}
   \FunctionTok{tm\_raster}\NormalTok{(}\AttributeTok{style =} \StringTok{"cont"}\NormalTok{, }\AttributeTok{palette =} \StringTok{"PuOr"}\NormalTok{, }\AttributeTok{legend.show =} \ConstantTok{TRUE}\NormalTok{)}\SpecialCharTok{+}
   \FunctionTok{tm\_scale\_bar}\NormalTok{()}\SpecialCharTok{+}
 \FunctionTok{tm\_shape}\NormalTok{(pointsSP)}\SpecialCharTok{+}
   \FunctionTok{tm\_dots}\NormalTok{(}\AttributeTok{col =} \StringTok{"red"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## Warning in is.factor(values): NaNs produced
-\end{verbatim}
 
 \includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-148-1.pdf}
 \#\#\# Extract values from a single raster
@@ -4973,7 +4969,7 @@ The following code is here just because it is cool. We clip the DEM to the water
 ## requires the webshot2 package; using rgl.snapshot() instead
 \end{verbatim}
 
-\includegraphics[width=6.5in]{/var/folders/rl/dzfg1s7j2zv_5xqhl3ls1yl80000gn/T//Rtmpz5SOLo/filee7ee206317f8}
+\includegraphics[width=6.5in]{/var/folders/rl/dzfg1s7j2zv_5xqhl3ls1yl80000gn/T//RtmptUgOqh/filed4524e35a1aa}
 
 \hypertarget{modelingintro}{%
 \chapter{Intro to Modeling - Getting Started with HBV}\label{modelingintro}}
