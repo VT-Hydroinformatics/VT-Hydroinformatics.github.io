@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Intro to Plotting | Hydroinformatics at VT</title>
   <meta name="description" content="This bookdown contains notes and exercises for a course in hydroinformatics at Virginia Tech." />
-  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Intro to Plotting | Hydroinformatics at VT" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="JP Gannon" />
 
 
-<meta name="date" content="2022-03-31" />
+<meta name="date" content="2023-02-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -59,19 +59,357 @@
 <script src="libs/proj4-2.6.2/proj4.min.js"></script>
 <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
+<script src="libs/leaflet-binding-2.1.1/leaflet.js"></script>
 <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
-<script src="libs/rglWebGL-binding-0.108.3/rglWebGL.js"></script>
-<link href="libs/rglwidgetClass-0.108.3/rgl.css" rel="stylesheet" />
-<script src="libs/rglwidgetClass-0.108.3/rglClass.min.js"></script>
-<script src="libs/CanvasMatrix4-0.108.3/CanvasMatrix.min.js"></script>
-<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
+<script src="libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
+<script src="libs/rglWebGL-binding-0.109.6/rglWebGL.js"></script>
+<link href="libs/rglwidgetClass-0.109.6/rgl.css" rel="stylesheet" />
+<script src="libs/rglwidgetClass-0.109.6/rglClass.min.js"></script>
+<script type = "text/plain" id = "rgl-vertex-shader">
+#line 2 1
+// File 1 is the vertex shader
+#ifdef GL_ES
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+#endif
+
+attribute vec3 aPos;
+attribute vec4 aCol;
+uniform mat4 mvMatrix;
+uniform mat4 prMatrix;
+varying vec4 vCol;
+varying vec4 vPosition;
+
+#ifdef NEEDS_VNORMAL
+attribute vec3 aNorm;
+uniform mat4 normMatrix;
+varying vec4 vNormal;
+#endif
+
+#if defined(HAS_TEXTURE) || defined (IS_TEXT)
+attribute vec2 aTexcoord;
+varying vec2 vTexcoord;
+#endif
+
+#ifdef FIXED_SIZE
+uniform vec3 textScale;
+#endif
+
+#ifdef FIXED_QUADS
+attribute vec3 aOfs;
+#endif
+
+#ifdef IS_TWOSIDED
+#ifdef HAS_NORMALS
+varying float normz;
+uniform mat4 invPrMatrix;
+#else
+attribute vec3 aPos1;
+attribute vec3 aPos2;
+varying float normz;
+#endif
+#endif // IS_TWOSIDED
+
+#ifdef FAT_LINES
+attribute vec3 aNext;
+attribute vec2 aPoint;
+varying vec2 vPoint;
+varying float vLength;
+uniform float uAspect;
+uniform float uLwd;
+#endif
+
+
+void main(void) {
+  
+#ifndef IS_BRUSH
+#if defined(NCLIPPLANES) || !defined(FIXED_QUADS) || defined(HAS_FOG)
+  vPosition = mvMatrix * vec4(aPos, 1.);
+#endif
+  
+#ifndef FIXED_QUADS
+  gl_Position = prMatrix * vPosition;
+#endif
+#endif // !IS_BRUSH
+  
+#ifdef IS_POINTS
+  gl_PointSize = POINTSIZE;
+#endif
+  
+  vCol = aCol;
+  
+#ifdef NEEDS_VNORMAL
+  vNormal = normMatrix * vec4(-aNorm, dot(aNorm, aPos));
+#endif
+  
+#ifdef IS_TWOSIDED
+#ifdef HAS_NORMALS
+  /* normz should be calculated *after* projection */
+  normz = (invPrMatrix*vNormal).z;
+#else
+  vec4 pos1 = prMatrix*(mvMatrix*vec4(aPos1, 1.));
+  pos1 = pos1/pos1.w - gl_Position/gl_Position.w;
+  vec4 pos2 = prMatrix*(mvMatrix*vec4(aPos2, 1.));
+  pos2 = pos2/pos2.w - gl_Position/gl_Position.w;
+  normz = pos1.x*pos2.y - pos1.y*pos2.x;
+#endif
+#endif // IS_TWOSIDED
+  
+#ifdef NEEDS_VNORMAL
+  vNormal = vec4(normalize(vNormal.xyz/vNormal.w), 1);
+#endif
+  
+#if defined(HAS_TEXTURE) || defined(IS_TEXT)
+  vTexcoord = aTexcoord;
+#endif
+  
+#if defined(FIXED_SIZE) && !defined(ROTATING)
+  vec4 pos = prMatrix * mvMatrix * vec4(aPos, 1.);
+  pos = pos/pos.w;
+  gl_Position = pos + vec4(aOfs*textScale, 0.);
+#endif
+  
+#if defined(IS_SPRITES) && !defined(FIXED_SIZE)
+  vec4 pos = mvMatrix * vec4(aPos, 1.);
+  pos = pos/pos.w + vec4(aOfs,  0.);
+  gl_Position = prMatrix*pos;
+#endif
+  
+#ifdef FAT_LINES
+  /* This code was inspired by Matt Deslauriers' code in 
+   https://mattdesl.svbtle.com/drawing-lines-is-hard */
+  vec2 aspectVec = vec2(uAspect, 1.0);
+  mat4 projViewModel = prMatrix * mvMatrix;
+  vec4 currentProjected = projViewModel * vec4(aPos, 1.0);
+  currentProjected = currentProjected/currentProjected.w;
+  vec4 nextProjected = projViewModel * vec4(aNext, 1.0);
+  vec2 currentScreen = currentProjected.xy * aspectVec;
+  vec2 nextScreen = (nextProjected.xy / nextProjected.w) * aspectVec;
+  float len = uLwd;
+  vec2 dir = vec2(1.0, 0.0);
+  vPoint = aPoint;
+  vLength = length(nextScreen - currentScreen)/2.0;
+  vLength = vLength/(vLength + len);
+  if (vLength > 0.0) {
+    dir = normalize(nextScreen - currentScreen);
+  }
+  vec2 normal = vec2(-dir.y, dir.x);
+  dir.x /= uAspect;
+  normal.x /= uAspect;
+  vec4 offset = vec4(len*(normal*aPoint.x*aPoint.y - dir), 0.0, 0.0);
+  gl_Position = currentProjected + offset;
+#endif
+  
+#ifdef IS_BRUSH
+  gl_Position = vec4(aPos, 1.);
+#endif
+}
+</script>
+<script type = "text/plain" id = "rgl-fragment-shader">
+#line 2 2
+// File 2 is the fragment shader
+#ifdef GL_ES
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+#endif
+varying vec4 vCol; // carries alpha
+varying vec4 vPosition;
+#if defined(HAS_TEXTURE) || defined (IS_TEXT)
+varying vec2 vTexcoord;
+uniform sampler2D uSampler;
+#endif
+
+#ifdef HAS_FOG
+uniform int uFogMode;
+uniform vec3 uFogColor;
+uniform vec4 uFogParms;
+#endif
+
+#if defined(IS_LIT) && !defined(FIXED_QUADS)
+varying vec4 vNormal;
+#endif
+
+#if NCLIPPLANES > 0
+uniform vec4 vClipplane[NCLIPPLANES];
+#endif
+
+#if NLIGHTS > 0
+uniform mat4 mvMatrix;
+#endif
+
+#ifdef IS_LIT
+uniform vec3 emission;
+uniform float shininess;
+#if NLIGHTS > 0
+uniform vec3 ambient[NLIGHTS];
+uniform vec3 specular[NLIGHTS]; // light*material
+uniform vec3 diffuse[NLIGHTS];
+uniform vec3 lightDir[NLIGHTS];
+uniform bool viewpoint[NLIGHTS];
+uniform bool finite[NLIGHTS];
+#endif
+#endif // IS_LIT
+
+#ifdef IS_TWOSIDED
+uniform bool front;
+varying float normz;
+#endif
+
+#ifdef FAT_LINES
+varying vec2 vPoint;
+varying float vLength;
+#endif
+
+void main(void) {
+  vec4 fragColor;
+#ifdef FAT_LINES
+  vec2 point = vPoint;
+  bool neg = point.y < 0.0;
+  point.y = neg ? (point.y + vLength)/(1.0 - vLength) :
+                 -(point.y - vLength)/(1.0 - vLength);
+#if defined(IS_TRANSPARENT) && defined(IS_LINESTRIP)
+  if (neg && length(point) <= 1.0) discard;
+#endif
+  point.y = min(point.y, 0.0);
+  if (length(point) > 1.0) discard;
+#endif // FAT_LINES
+  
+#ifdef ROUND_POINTS
+  vec2 coord = gl_PointCoord - vec2(0.5);
+  if (length(coord) > 0.5) discard;
+#endif
+  
+#if NCLIPPLANES > 0
+  for (int i = 0; i < NCLIPPLANES; i++)
+    if (dot(vPosition, vClipplane[i]) < 0.0) discard;
+#endif
+    
+#ifdef FIXED_QUADS
+    vec3 n = vec3(0., 0., 1.);
+#elif defined(IS_LIT)
+    vec3 n = normalize(vNormal.xyz);
+#endif
+    
+#ifdef IS_TWOSIDED
+    if ((normz <= 0.) != front) discard;
+#endif
+    
+#ifdef IS_LIT
+    vec3 eye = normalize(-vPosition.xyz/vPosition.w);
+    vec3 lightdir;
+    vec4 colDiff;
+    vec3 halfVec;
+    vec4 lighteffect = vec4(emission, 0.);
+    vec3 col;
+    float nDotL;
+#ifdef FIXED_QUADS
+    n = -faceforward(n, n, eye);
+#endif
+    
+#if NLIGHTS > 0
+    for (int i=0;i<NLIGHTS;i++) {
+      colDiff = vec4(vCol.rgb * diffuse[i], vCol.a);
+      lightdir = lightDir[i];
+      if (!viewpoint[i])
+        lightdir = (mvMatrix * vec4(lightdir, 1.)).xyz;
+      if (!finite[i]) {
+        halfVec = normalize(lightdir + eye);
+      } else {
+        lightdir = normalize(lightdir - vPosition.xyz/vPosition.w);
+        halfVec = normalize(lightdir + eye);
+      }
+      col = ambient[i];
+      nDotL = dot(n, lightdir);
+      col = col + max(nDotL, 0.) * colDiff.rgb;
+      col = col + pow(max(dot(halfVec, n), 0.), shininess) * specular[i];
+      lighteffect = lighteffect + vec4(col, colDiff.a);
+    }
+#endif
+    
+#else // not IS_LIT
+    vec4 colDiff = vCol;
+    vec4 lighteffect = colDiff;
+#endif
+    
+#ifdef IS_TEXT
+    vec4 textureColor = lighteffect*texture2D(uSampler, vTexcoord);
+#endif
+    
+#ifdef HAS_TEXTURE
+#ifdef TEXTURE_rgb
+    vec4 textureColor = lighteffect*vec4(texture2D(uSampler, vTexcoord).rgb, 1.);
+#endif
+    
+#ifdef TEXTURE_rgba
+    vec4 textureColor = lighteffect*texture2D(uSampler, vTexcoord);
+#endif
+    
+#ifdef TEXTURE_alpha
+    vec4 textureColor = texture2D(uSampler, vTexcoord);
+    float luminance = dot(vec3(1.,1.,1.), textureColor.rgb)/3.;
+    textureColor =  vec4(lighteffect.rgb, lighteffect.a*luminance);
+#endif
+    
+#ifdef TEXTURE_luminance
+    vec4 textureColor = vec4(lighteffect.rgb*dot(texture2D(uSampler, vTexcoord).rgb, vec3(1.,1.,1.))/3., lighteffect.a);
+#endif
+    
+#ifdef TEXTURE_luminance_alpha
+    vec4 textureColor = texture2D(uSampler, vTexcoord);
+    float luminance = dot(vec3(1.,1.,1.),textureColor.rgb)/3.;
+    textureColor = vec4(lighteffect.rgb*luminance, lighteffect.a*textureColor.a);
+#endif
+    
+    fragColor = textureColor;
+
+#elif defined(IS_TEXT)
+    if (textureColor.a < 0.1)
+      discard;
+    else
+      fragColor = textureColor;
+#else
+    fragColor = lighteffect;
+#endif // HAS_TEXTURE
+    
+#ifdef HAS_FOG
+    // uFogParms elements: x = near, y = far, z = fogscale, w = (1-sin(FOV/2))/(1+sin(FOV/2))
+    // In Exp and Exp2: use density = density/far
+    // fogF will be the proportion of fog
+    // Initialize it to the linear value
+    float fogF;
+    if (uFogMode > 0) {
+      fogF = (uFogParms.y - vPosition.z/vPosition.w)/(uFogParms.y - uFogParms.x);
+      if (uFogMode > 1)
+        fogF = mix(uFogParms.w, 1.0, fogF);
+      fogF = fogF*uFogParms.z;
+      if (uFogMode == 2)
+        fogF = 1.0 - exp(-fogF);
+      // Docs are wrong: use (density*c)^2, not density*c^2
+      // https://gitlab.freedesktop.org/mesa/mesa/-/blob/master/src/mesa/swrast/s_fog.c#L58
+      else if (uFogMode == 3)
+        fogF = 1.0 - exp(-fogF*fogF);
+      fogF = clamp(fogF, 0.0, 1.0);
+      gl_FragColor = vec4(mix(fragColor.rgb, uFogColor, fogF), fragColor.a);
+    } else gl_FragColor = fragColor;
+#else
+    gl_FragColor = fragColor;
+#endif // HAS_FOG
+    
+}
+</script>
+<script src="libs/CanvasMatrix4-0.109.6/CanvasMatrix.min.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GBDXSZFFSR"></script>
 <script>
@@ -121,7 +459,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -134,7 +472,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -165,236 +503,236 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Hydroinformatics</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction<span></span></a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="1.0.1" data-path="index.html"><a href="index.html#to-help-me-keep-get-an-idea-of-who-is-using-this-resource-so-i-can-improve-it-in-the-future-please-consider-filling-out-any-or-all-of-this-survey-httpsforms.gle6zcntzvr1wzzuh6s7-thanks"><i class="fa fa-check"></i><b>1.0.1</b> To help me keep get an idea of who is using this resource so I can improve it in the future, please consider filling out any or all of this survey: <span>https://forms.gle/6Zcntzvr1wZZUh6S7</span> Thanks!<span></span></a></li>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#how-to-use-these-materials"><i class="fa fa-check"></i><b>1.1</b> How to use these materials<span></span></a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#table-of-contents"><i class="fa fa-check"></i><b>1.2</b> Table of contents:<span></span></a></li>
+<li class="chapter" data-level="1.0.1" data-path="index.html"><a href="index.html#to-help-me-keep-get-an-idea-of-who-is-using-this-resource-so-i-can-improve-it-in-the-future-please-consider-filling-out-any-or-all-of-this-survey-httpsforms.gle6zcntzvr1wzzuh6s7-thanks"><i class="fa fa-check"></i><b>1.0.1</b> To help me keep get an idea of who is using this resource so I can improve it in the future, please consider filling out any or all of this survey: https://forms.gle/6Zcntzvr1wZZUh6S7 Thanks!</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#how-to-use-these-materials"><i class="fa fa-check"></i><b>1.1</b> How to use these materials</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#table-of-contents"><i class="fa fa-check"></i><b>1.2</b> Table of contents:</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="Plotting.html"><a href="Plotting.html"><i class="fa fa-check"></i><b>2</b> Intro to Plotting<span></span></a>
+<li class="chapter" data-level="2" data-path="Plotting.html"><a href="Plotting.html"><i class="fa fa-check"></i><b>2</b> Intro to Plotting</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="Plotting.html"><a href="Plotting.html#download-and-install-tidyverse-library"><i class="fa fa-check"></i><b>2.1</b> Download and install tidyverse library<span></span></a></li>
-<li class="chapter" data-level="2.2" data-path="Plotting.html"><a href="Plotting.html#reading-data"><i class="fa fa-check"></i><b>2.2</b> Reading data<span></span></a></li>
-<li class="chapter" data-level="2.3" data-path="Plotting.html"><a href="Plotting.html#our-first-ggplot"><i class="fa fa-check"></i><b>2.3</b> Our first ggplot<span></span></a></li>
-<li class="chapter" data-level="2.4" data-path="Plotting.html"><a href="Plotting.html#change-point-type"><i class="fa fa-check"></i><b>2.4</b> Change point type<span></span></a></li>
-<li class="chapter" data-level="2.5" data-path="Plotting.html"><a href="Plotting.html#set-colors"><i class="fa fa-check"></i><b>2.5</b> Set colors<span></span></a></li>
-<li class="chapter" data-level="2.6" data-path="Plotting.html"><a href="Plotting.html#controlling-color-with-a-third-variable-and-other-functions"><i class="fa fa-check"></i><b>2.6</b> Controlling color with a third variable and other functions<span></span></a></li>
-<li class="chapter" data-level="2.7" data-path="Plotting.html"><a href="Plotting.html#plotting-multiple-groups"><i class="fa fa-check"></i><b>2.7</b> Plotting multiple groups<span></span></a></li>
-<li class="chapter" data-level="2.8" data-path="Plotting.html"><a href="Plotting.html#facets"><i class="fa fa-check"></i><b>2.8</b> Facets<span></span></a></li>
-<li class="chapter" data-level="2.9" data-path="Plotting.html"><a href="Plotting.html#two-variable-faceting"><i class="fa fa-check"></i><b>2.9</b> Two variable faceting<span></span></a></li>
-<li class="chapter" data-level="2.10" data-path="Plotting.html"><a href="Plotting.html#boxplots"><i class="fa fa-check"></i><b>2.10</b> Boxplots<span></span></a></li>
-<li class="chapter" data-level="2.11" data-path="Plotting.html"><a href="Plotting.html#more-about-color-size-etc"><i class="fa fa-check"></i><b>2.11</b> More about color, size, etc<span></span></a></li>
-<li class="chapter" data-level="2.12" data-path="Plotting.html"><a href="Plotting.html#multiple-geoms"><i class="fa fa-check"></i><b>2.12</b> Multiple geoms<span></span></a></li>
+<li class="chapter" data-level="2.1" data-path="Plotting.html"><a href="Plotting.html#download-and-install-tidyverse-library"><i class="fa fa-check"></i><b>2.1</b> Download and install tidyverse library</a></li>
+<li class="chapter" data-level="2.2" data-path="Plotting.html"><a href="Plotting.html#reading-data"><i class="fa fa-check"></i><b>2.2</b> Reading data</a></li>
+<li class="chapter" data-level="2.3" data-path="Plotting.html"><a href="Plotting.html#our-first-ggplot"><i class="fa fa-check"></i><b>2.3</b> Our first ggplot</a></li>
+<li class="chapter" data-level="2.4" data-path="Plotting.html"><a href="Plotting.html#change-point-type"><i class="fa fa-check"></i><b>2.4</b> Change point type</a></li>
+<li class="chapter" data-level="2.5" data-path="Plotting.html"><a href="Plotting.html#set-colors"><i class="fa fa-check"></i><b>2.5</b> Set colors</a></li>
+<li class="chapter" data-level="2.6" data-path="Plotting.html"><a href="Plotting.html#controlling-color-with-a-third-variable-and-other-functions"><i class="fa fa-check"></i><b>2.6</b> Controlling color with a third variable and other functions</a></li>
+<li class="chapter" data-level="2.7" data-path="Plotting.html"><a href="Plotting.html#plotting-multiple-groups"><i class="fa fa-check"></i><b>2.7</b> Plotting multiple groups</a></li>
+<li class="chapter" data-level="2.8" data-path="Plotting.html"><a href="Plotting.html#facets"><i class="fa fa-check"></i><b>2.8</b> Facets</a></li>
+<li class="chapter" data-level="2.9" data-path="Plotting.html"><a href="Plotting.html#two-variable-faceting"><i class="fa fa-check"></i><b>2.9</b> Two variable faceting</a></li>
+<li class="chapter" data-level="2.10" data-path="Plotting.html"><a href="Plotting.html#boxplots"><i class="fa fa-check"></i><b>2.10</b> Boxplots</a></li>
+<li class="chapter" data-level="2.11" data-path="Plotting.html"><a href="Plotting.html#more-about-color-size-etc"><i class="fa fa-check"></i><b>2.11</b> More about color, size, etc</a></li>
+<li class="chapter" data-level="2.12" data-path="Plotting.html"><a href="Plotting.html#multiple-geoms"><i class="fa fa-check"></i><b>2.12</b> Multiple geoms</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Programming.html"><a href="Programming.html"><i class="fa fa-check"></i><b>3</b> R Tidyverse Programming Basics<span></span></a>
+<li class="chapter" data-level="3" data-path="Programming.html"><a href="Programming.html"><i class="fa fa-check"></i><b>3</b> R Tidyverse Programming Basics</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="Programming.html"><a href="Programming.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction<span></span></a></li>
-<li class="chapter" data-level="3.2" data-path="Programming.html"><a href="Programming.html#you-can-use-r-as-a-calculator"><i class="fa fa-check"></i><b>3.2</b> You can use R as a calculator<span></span></a></li>
-<li class="chapter" data-level="3.3" data-path="Programming.html"><a href="Programming.html#you-can-create-new-objects-using--"><i class="fa fa-check"></i><b>3.3</b> You can create new objects using &lt;-<span></span></a></li>
-<li class="chapter" data-level="3.4" data-path="Programming.html"><a href="Programming.html#using-functions"><i class="fa fa-check"></i><b>3.4</b> Using functions<span></span></a></li>
-<li class="chapter" data-level="3.5" data-path="Programming.html"><a href="Programming.html#read-in-some-data."><i class="fa fa-check"></i><b>3.5</b> Read in some data.<span></span></a></li>
-<li class="chapter" data-level="3.6" data-path="Programming.html"><a href="Programming.html#wait-hold-up.-what-is-a-tibble"><i class="fa fa-check"></i><b>3.6</b> Wait, hold up. What is a tibble?<span></span></a></li>
-<li class="chapter" data-level="3.7" data-path="Programming.html"><a href="Programming.html#data-wrangling-in-dplyr"><i class="fa fa-check"></i><b>3.7</b> Data wrangling in dplyr<span></span></a></li>
-<li class="chapter" data-level="3.8" data-path="Programming.html"><a href="Programming.html#filter"><i class="fa fa-check"></i><b>3.8</b> Filter<span></span></a>
+<li class="chapter" data-level="3.1" data-path="Programming.html"><a href="Programming.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="Programming.html"><a href="Programming.html#you-can-use-r-as-a-calculator"><i class="fa fa-check"></i><b>3.2</b> You can use R as a calculator</a></li>
+<li class="chapter" data-level="3.3" data-path="Programming.html"><a href="Programming.html#you-can-create-new-objects-using--"><i class="fa fa-check"></i><b>3.3</b> You can create new objects using &lt;-</a></li>
+<li class="chapter" data-level="3.4" data-path="Programming.html"><a href="Programming.html#using-functions"><i class="fa fa-check"></i><b>3.4</b> Using functions</a></li>
+<li class="chapter" data-level="3.5" data-path="Programming.html"><a href="Programming.html#read-in-some-data."><i class="fa fa-check"></i><b>3.5</b> Read in some data.</a></li>
+<li class="chapter" data-level="3.6" data-path="Programming.html"><a href="Programming.html#wait-hold-up.-what-is-a-tibble"><i class="fa fa-check"></i><b>3.6</b> Wait, hold up. What is a tibble?</a></li>
+<li class="chapter" data-level="3.7" data-path="Programming.html"><a href="Programming.html#data-wrangling-in-dplyr"><i class="fa fa-check"></i><b>3.7</b> Data wrangling in dplyr</a></li>
+<li class="chapter" data-level="3.8" data-path="Programming.html"><a href="Programming.html#filter"><i class="fa fa-check"></i><b>3.8</b> Filter</a>
 <ul>
-<li class="chapter" data-level="3.8.1" data-path="Programming.html"><a href="Programming.html#multiple-conditions"><i class="fa fa-check"></i><b>3.8.1</b> Multiple conditions<span></span></a></li>
+<li class="chapter" data-level="3.8.1" data-path="Programming.html"><a href="Programming.html#multiple-conditions"><i class="fa fa-check"></i><b>3.8.1</b> Multiple conditions</a></li>
 </ul></li>
-<li class="chapter" data-level="3.9" data-path="Programming.html"><a href="Programming.html#arrange"><i class="fa fa-check"></i><b>3.9</b> Arrange<span></span></a></li>
-<li class="chapter" data-level="3.10" data-path="Programming.html"><a href="Programming.html#select"><i class="fa fa-check"></i><b>3.10</b> Select<span></span></a></li>
-<li class="chapter" data-level="3.11" data-path="Programming.html"><a href="Programming.html#mutate"><i class="fa fa-check"></i><b>3.11</b> Mutate<span></span></a></li>
-<li class="chapter" data-level="3.12" data-path="Programming.html"><a href="Programming.html#summarize"><i class="fa fa-check"></i><b>3.12</b> Summarize<span></span></a></li>
-<li class="chapter" data-level="3.13" data-path="Programming.html"><a href="Programming.html#multiple-operations-with-pipes"><i class="fa fa-check"></i><b>3.13</b> Multiple operations with pipes<span></span></a>
+<li class="chapter" data-level="3.9" data-path="Programming.html"><a href="Programming.html#arrange"><i class="fa fa-check"></i><b>3.9</b> Arrange</a></li>
+<li class="chapter" data-level="3.10" data-path="Programming.html"><a href="Programming.html#select"><i class="fa fa-check"></i><b>3.10</b> Select</a></li>
+<li class="chapter" data-level="3.11" data-path="Programming.html"><a href="Programming.html#mutate"><i class="fa fa-check"></i><b>3.11</b> Mutate</a></li>
+<li class="chapter" data-level="3.12" data-path="Programming.html"><a href="Programming.html#summarize"><i class="fa fa-check"></i><b>3.12</b> Summarize</a></li>
+<li class="chapter" data-level="3.13" data-path="Programming.html"><a href="Programming.html#multiple-operations-with-pipes"><i class="fa fa-check"></i><b>3.13</b> Multiple operations with pipes</a>
 <ul>
-<li class="chapter" data-level="3.13.1" data-path="Programming.html"><a href="Programming.html#lets-say-we-want-to-tell-r-to-make-a-pbj-sandwich-by-using-the-pbbread-jbread-and-joinslices-functions-and-the-data-ingredients.-if-we-do-this-saving-each-step-if-would-look-like-this"><i class="fa fa-check"></i><b>3.13.1</b> Let’s say we want to tell R to make a PB&amp;J sandwich by using the pbbread(), jbread(), and joinslices() functions and the data “ingredients.” If we do this saving each step if would look like this:<span></span></a></li>
-<li class="chapter" data-level="3.13.2" data-path="Programming.html"><a href="Programming.html#if-we-nest-the-functions-together-we-get-this"><i class="fa fa-check"></i><b>3.13.2</b> If we nest the functions together we get this<span></span></a></li>
-<li class="chapter" data-level="3.13.3" data-path="Programming.html"><a href="Programming.html#using-the-pipe-it-would-look-like-this"><i class="fa fa-check"></i><b>3.13.3</b> Using the pipe it would look like this<span></span></a></li>
-<li class="chapter" data-level="3.13.4" data-path="Programming.html"><a href="Programming.html#when-you-use-the-pipe-it-basically-takes-whatever-came-out-of-the-first-function-and-puts-it-into-the-data-argument-for-the-next-one"><i class="fa fa-check"></i><b>3.13.4</b> When you use the pipe, it basically takes whatever came out of the first function and puts it into the data argument for the next one<span></span></a></li>
+<li class="chapter" data-level="3.13.1" data-path="Programming.html"><a href="Programming.html#lets-say-we-want-to-tell-r-to-make-a-pbj-sandwich-by-using-the-pbbread-jbread-and-joinslices-functions-and-the-data-ingredients.-if-we-do-this-saving-each-step-if-would-look-like-this"><i class="fa fa-check"></i><b>3.13.1</b> Let’s say we want to tell R to make a PB&amp;J sandwich by using the pbbread(), jbread(), and joinslices() functions and the data “ingredients”. If we do this saving each step if would look like this:</a></li>
+<li class="chapter" data-level="3.13.2" data-path="Programming.html"><a href="Programming.html#if-we-nest-the-functions-together-we-get-this"><i class="fa fa-check"></i><b>3.13.2</b> If we nest the functions together we get this</a></li>
+<li class="chapter" data-level="3.13.3" data-path="Programming.html"><a href="Programming.html#using-the-pipe-it-would-look-like-this"><i class="fa fa-check"></i><b>3.13.3</b> Using the pipe it would look like this</a></li>
+<li class="chapter" data-level="3.13.4" data-path="Programming.html"><a href="Programming.html#when-you-use-the-pipe-it-basically-takes-whatever-came-out-of-the-first-function-and-puts-it-into-the-data-argument-for-the-next-one"><i class="fa fa-check"></i><b>3.13.4</b> When you use the pipe, it basically takes whatever came out of the first function and puts it into the data argument for the next one</a></li>
 </ul></li>
-<li class="chapter" data-level="3.14" data-path="Programming.html"><a href="Programming.html#save-your-results-to-a-new-tibble"><i class="fa fa-check"></i><b>3.14</b> Save your results to a new tibble<span></span></a></li>
-<li class="chapter" data-level="3.15" data-path="Programming.html"><a href="Programming.html#what-about-nas"><i class="fa fa-check"></i><b>3.15</b> What about NAs?<span></span></a></li>
-<li class="chapter" data-level="3.16" data-path="Programming.html"><a href="Programming.html#what-are-some-things-you-think-ill-ask-you-to-do-for-the-activity-next-class"><i class="fa fa-check"></i><b>3.16</b> What are some things you think I’ll ask you to do for the activity next class?<span></span></a></li>
+<li class="chapter" data-level="3.14" data-path="Programming.html"><a href="Programming.html#save-your-results-to-a-new-tibble"><i class="fa fa-check"></i><b>3.14</b> Save your results to a new tibble</a></li>
+<li class="chapter" data-level="3.15" data-path="Programming.html"><a href="Programming.html#what-about-nas"><i class="fa fa-check"></i><b>3.15</b> What about NAs?</a></li>
+<li class="chapter" data-level="3.16" data-path="Programming.html"><a href="Programming.html#what-are-some-things-you-think-ill-ask-you-to-do-for-the-activity-next-class"><i class="fa fa-check"></i><b>3.16</b> What are some things you think I’ll ask you to do for the activity next class?</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="introactivity.html"><a href="introactivity.html"><i class="fa fa-check"></i><b>4</b> ACTIVITY Intro Skills<span></span></a>
+<li class="chapter" data-level="4" data-path="introactivity.html"><a href="introactivity.html"><i class="fa fa-check"></i><b>4</b> ACTIVITY Intro Skills</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="introactivity.html"><a href="introactivity.html#problem-1"><i class="fa fa-check"></i><b>4.1</b> Problem 1<span></span></a></li>
-<li class="chapter" data-level="4.2" data-path="introactivity.html"><a href="introactivity.html#problem-2"><i class="fa fa-check"></i><b>4.2</b> Problem 2<span></span></a></li>
-<li class="chapter" data-level="4.3" data-path="introactivity.html"><a href="introactivity.html#problem-3"><i class="fa fa-check"></i><b>4.3</b> Problem 3<span></span></a></li>
-<li class="chapter" data-level="4.4" data-path="introactivity.html"><a href="introactivity.html#problem-4"><i class="fa fa-check"></i><b>4.4</b> Problem 4<span></span></a></li>
-<li class="chapter" data-level="4.5" data-path="introactivity.html"><a href="introactivity.html#problem-5"><i class="fa fa-check"></i><b>4.5</b> Problem 5<span></span></a></li>
-<li class="chapter" data-level="4.6" data-path="introactivity.html"><a href="introactivity.html#problem-6"><i class="fa fa-check"></i><b>4.6</b> Problem 6<span></span></a></li>
+<li class="chapter" data-level="4.1" data-path="introactivity.html"><a href="introactivity.html#problem-1"><i class="fa fa-check"></i><b>4.1</b> Problem 1</a></li>
+<li class="chapter" data-level="4.2" data-path="introactivity.html"><a href="introactivity.html#problem-2"><i class="fa fa-check"></i><b>4.2</b> Problem 2</a></li>
+<li class="chapter" data-level="4.3" data-path="introactivity.html"><a href="introactivity.html#problem-3"><i class="fa fa-check"></i><b>4.3</b> Problem 3</a></li>
+<li class="chapter" data-level="4.4" data-path="introactivity.html"><a href="introactivity.html#problem-4"><i class="fa fa-check"></i><b>4.4</b> Problem 4</a></li>
+<li class="chapter" data-level="4.5" data-path="introactivity.html"><a href="introactivity.html#problem-5"><i class="fa fa-check"></i><b>4.5</b> Problem 5</a></li>
+<li class="chapter" data-level="4.6" data-path="introactivity.html"><a href="introactivity.html#problem-6"><i class="fa fa-check"></i><b>4.6</b> Problem 6</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="stats.html"><a href="stats.html"><i class="fa fa-check"></i><b>5</b> Introduction to Basic Statistics<span></span></a>
+<li class="chapter" data-level="5" data-path="stats.html"><a href="stats.html"><i class="fa fa-check"></i><b>5</b> Introduction to Basic Statistics</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="stats.html"><a href="stats.html#reading-for-this-section-statistical-methods-in-water-resources-chapter-1"><i class="fa fa-check"></i><b>5.1</b> Reading for this section: Statistical Methods in Water Resources: Chapter 1<span></span></a></li>
-<li class="chapter" data-level="5.2" data-path="stats.html"><a href="stats.html#questions-for-today"><i class="fa fa-check"></i><b>5.2</b> Questions for today:<span></span></a>
+<li class="chapter" data-level="5.1" data-path="stats.html"><a href="stats.html#reading-for-this-section-statistical-methods-in-water-resources-chapter-1"><i class="fa fa-check"></i><b>5.1</b> Reading for this section: Statistical Methods in Water Resources: Chapter 1</a></li>
+<li class="chapter" data-level="5.2" data-path="stats.html"><a href="stats.html#questions-for-today"><i class="fa fa-check"></i><b>5.2</b> Questions for today:</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="stats.html"><a href="stats.html#stack-plots-to-compare-histogram-and-pdf"><i class="fa fa-check"></i><b>5.2.1</b> Stack plots to compare histogram and pdf<span></span></a></li>
+<li class="chapter" data-level="5.2.1" data-path="stats.html"><a href="stats.html#stack-plots-to-compare-histogram-and-pdf"><i class="fa fa-check"></i><b>5.2.1</b> Stack plots to compare histogram and pdf</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="stats.html"><a href="stats.html#what-is-the-difference-between-a-sample-and-a-population."><i class="fa fa-check"></i><b>5.3</b> What is the difference between a sample and a population.<span></span></a></li>
-<li class="chapter" data-level="5.4" data-path="stats.html"><a href="stats.html#measuring-our-sample-distribution-central-tendency."><i class="fa fa-check"></i><b>5.4</b> Measuring our sample distribution: central tendency.<span></span></a>
+<li class="chapter" data-level="5.3" data-path="stats.html"><a href="stats.html#what-is-the-difference-between-a-sample-and-a-population."><i class="fa fa-check"></i><b>5.3</b> What is the difference between a sample and a population.</a></li>
+<li class="chapter" data-level="5.4" data-path="stats.html"><a href="stats.html#measuring-our-sample-distribution-central-tendency."><i class="fa fa-check"></i><b>5.4</b> Measuring our sample distribution: central tendency.</a>
 <ul>
-<li class="chapter" data-level="5.4.1" data-path="stats.html"><a href="stats.html#so-whats-a-weighted-average"><i class="fa fa-check"></i><b>5.4.1</b> So what’s a weighted average?<span></span></a></li>
+<li class="chapter" data-level="5.4.1" data-path="stats.html"><a href="stats.html#so-whats-a-weighted-average"><i class="fa fa-check"></i><b>5.4.1</b> So what’s a weighted average?</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="stats.html"><a href="stats.html#measures-of-variability"><i class="fa fa-check"></i><b>5.5</b> Measures of variability<span></span></a></li>
-<li class="chapter" data-level="5.6" data-path="stats.html"><a href="stats.html#what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one"><i class="fa fa-check"></i><b>5.6</b> What is a normal distribution and how can we determine if we have one?<span></span></a></li>
+<li class="chapter" data-level="5.5" data-path="stats.html"><a href="stats.html#measures-of-variability"><i class="fa fa-check"></i><b>5.5</b> Measures of variability</a></li>
+<li class="chapter" data-level="5.6" data-path="stats.html"><a href="stats.html#what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one"><i class="fa fa-check"></i><b>5.6</b> What is a normal distribution and how can we determine if we have one?</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="statsactivity.html"><a href="statsactivity.html"><i class="fa fa-check"></i><b>6</b> ACTIVITY Intro Stats<span></span></a>
+<li class="chapter" data-level="6" data-path="statsactivity.html"><a href="statsactivity.html"><i class="fa fa-check"></i><b>6</b> ACTIVITY Intro Stats</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="statsactivity.html"><a href="statsactivity.html#problem-1-1"><i class="fa fa-check"></i><b>6.1</b> Problem 1<span></span></a></li>
-<li class="chapter" data-level="6.2" data-path="statsactivity.html"><a href="statsactivity.html#problem-2-1"><i class="fa fa-check"></i><b>6.2</b> Problem 2<span></span></a></li>
-<li class="chapter" data-level="6.3" data-path="statsactivity.html"><a href="statsactivity.html#problem-3-1"><i class="fa fa-check"></i><b>6.3</b> Problem 3<span></span></a></li>
-<li class="chapter" data-level="6.4" data-path="statsactivity.html"><a href="statsactivity.html#problem-4-1"><i class="fa fa-check"></i><b>6.4</b> Problem 4<span></span></a></li>
-<li class="chapter" data-level="6.5" data-path="statsactivity.html"><a href="statsactivity.html#problem-5-1"><i class="fa fa-check"></i><b>6.5</b> Problem 5<span></span></a></li>
-<li class="chapter" data-level="6.6" data-path="statsactivity.html"><a href="statsactivity.html#problem-6-1"><i class="fa fa-check"></i><b>6.6</b> Problem 6<span></span></a></li>
+<li class="chapter" data-level="6.1" data-path="statsactivity.html"><a href="statsactivity.html#problem-1-1"><i class="fa fa-check"></i><b>6.1</b> Problem 1</a></li>
+<li class="chapter" data-level="6.2" data-path="statsactivity.html"><a href="statsactivity.html#problem-2-1"><i class="fa fa-check"></i><b>6.2</b> Problem 2</a></li>
+<li class="chapter" data-level="6.3" data-path="statsactivity.html"><a href="statsactivity.html#problem-3-1"><i class="fa fa-check"></i><b>6.3</b> Problem 3</a></li>
+<li class="chapter" data-level="6.4" data-path="statsactivity.html"><a href="statsactivity.html#problem-4-1"><i class="fa fa-check"></i><b>6.4</b> Problem 4</a></li>
+<li class="chapter" data-level="6.5" data-path="statsactivity.html"><a href="statsactivity.html#problem-5-1"><i class="fa fa-check"></i><b>6.5</b> Problem 5</a></li>
+<li class="chapter" data-level="6.6" data-path="statsactivity.html"><a href="statsactivity.html#problem-6-1"><i class="fa fa-check"></i><b>6.6</b> Problem 6</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="getdata.html"><a href="getdata.html"><i class="fa fa-check"></i><b>7</b> Joins, Pivots, and USGS dataRetrieval<span></span></a>
+<li class="chapter" data-level="7" data-path="getdata.html"><a href="getdata.html"><i class="fa fa-check"></i><b>7</b> Joins, Pivots, and USGS dataRetrieval</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="getdata.html"><a href="getdata.html#goals-for-today"><i class="fa fa-check"></i><b>7.1</b> Goals for today<span></span></a></li>
-<li class="chapter" data-level="7.2" data-path="getdata.html"><a href="getdata.html#exploring-what-dataretrieval-can-do."><i class="fa fa-check"></i><b>7.2</b> Exploring what dataRetrieval can do.<span></span></a></li>
-<li class="chapter" data-level="7.3" data-path="getdata.html"><a href="getdata.html#joins"><i class="fa fa-check"></i><b>7.3</b> Joins<span></span></a></li>
-<li class="chapter" data-level="7.4" data-path="getdata.html"><a href="getdata.html#join-example"><i class="fa fa-check"></i><b>7.4</b> Join example<span></span></a></li>
-<li class="chapter" data-level="7.5" data-path="getdata.html"><a href="getdata.html#finding-ids-to-download-usgs-data"><i class="fa fa-check"></i><b>7.5</b> Finding IDs to download USGS data<span></span></a></li>
-<li class="chapter" data-level="7.6" data-path="getdata.html"><a href="getdata.html#ok-lets-download-some-data"><i class="fa fa-check"></i><b>7.6</b> OK let’s download some data!<span></span></a></li>
-<li class="chapter" data-level="7.7" data-path="getdata.html"><a href="getdata.html#pivoting-wide-and-long-data"><i class="fa fa-check"></i><b>7.7</b> Pivoting: wide and long data<span></span></a></li>
-<li class="chapter" data-level="7.8" data-path="getdata.html"><a href="getdata.html#pivot-examples"><i class="fa fa-check"></i><b>7.8</b> Pivot Examples<span></span></a></li>
+<li class="chapter" data-level="7.1" data-path="getdata.html"><a href="getdata.html#goals-for-today"><i class="fa fa-check"></i><b>7.1</b> Goals for today</a></li>
+<li class="chapter" data-level="7.2" data-path="getdata.html"><a href="getdata.html#exploring-what-dataretrieval-can-do."><i class="fa fa-check"></i><b>7.2</b> Exploring what dataRetrieval can do.</a></li>
+<li class="chapter" data-level="7.3" data-path="getdata.html"><a href="getdata.html#joins"><i class="fa fa-check"></i><b>7.3</b> Joins</a></li>
+<li class="chapter" data-level="7.4" data-path="getdata.html"><a href="getdata.html#join-example"><i class="fa fa-check"></i><b>7.4</b> Join example</a></li>
+<li class="chapter" data-level="7.5" data-path="getdata.html"><a href="getdata.html#finding-ids-to-download-usgs-data"><i class="fa fa-check"></i><b>7.5</b> Finding IDs to download USGS data</a></li>
+<li class="chapter" data-level="7.6" data-path="getdata.html"><a href="getdata.html#ok-lets-download-some-data"><i class="fa fa-check"></i><b>7.6</b> OK let’s download some data!</a></li>
+<li class="chapter" data-level="7.7" data-path="getdata.html"><a href="getdata.html#pivoting-wide-and-long-data"><i class="fa fa-check"></i><b>7.7</b> Pivoting: wide and long data</a></li>
+<li class="chapter" data-level="7.8" data-path="getdata.html"><a href="getdata.html#pivot-examples"><i class="fa fa-check"></i><b>7.8</b> Pivot Examples</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="joinpivotDR.html"><a href="joinpivotDR.html"><i class="fa fa-check"></i><b>8</b> ACTIVITY Joins Pivots dataRetrieval<span></span></a>
+<li class="chapter" data-level="8" data-path="joinpivotDR.html"><a href="joinpivotDR.html"><i class="fa fa-check"></i><b>8</b> ACTIVITY Joins Pivots dataRetrieval</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="joinpivotDR.html"><a href="joinpivotDR.html#load-the-tidyverse-dataretrieval-and-patchwork-packages."><i class="fa fa-check"></i><b>8.1</b> Load the tidyverse, dataRetrieval, and patchwork packages.<span></span></a></li>
-<li class="chapter" data-level="8.2" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-1-2"><i class="fa fa-check"></i><b>8.2</b> Problem 1<span></span></a></li>
-<li class="chapter" data-level="8.3" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-2-2"><i class="fa fa-check"></i><b>8.3</b> Problem 2<span></span></a></li>
-<li class="chapter" data-level="8.4" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-3-2"><i class="fa fa-check"></i><b>8.4</b> Problem 3<span></span></a></li>
-<li class="chapter" data-level="8.5" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-4-2"><i class="fa fa-check"></i><b>8.5</b> Problem 4<span></span></a></li>
-<li class="chapter" data-level="8.6" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-5-2"><i class="fa fa-check"></i><b>8.6</b> Problem 5<span></span></a></li>
-<li class="chapter" data-level="8.7" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-6-2"><i class="fa fa-check"></i><b>8.7</b> Problem 6<span></span></a></li>
-<li class="chapter" data-level="8.8" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-7"><i class="fa fa-check"></i><b>8.8</b> Problem 7<span></span></a></li>
+<li class="chapter" data-level="8.1" data-path="joinpivotDR.html"><a href="joinpivotDR.html#load-the-tidyverse-dataretrieval-and-patchwork-packages."><i class="fa fa-check"></i><b>8.1</b> Load the tidyverse, dataRetrieval, and patchwork packages.</a></li>
+<li class="chapter" data-level="8.2" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-1-2"><i class="fa fa-check"></i><b>8.2</b> Problem 1</a></li>
+<li class="chapter" data-level="8.3" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-2-2"><i class="fa fa-check"></i><b>8.3</b> Problem 2</a></li>
+<li class="chapter" data-level="8.4" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-3-2"><i class="fa fa-check"></i><b>8.4</b> Problem 3</a></li>
+<li class="chapter" data-level="8.5" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-4-2"><i class="fa fa-check"></i><b>8.5</b> Problem 4</a></li>
+<li class="chapter" data-level="8.6" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-5-2"><i class="fa fa-check"></i><b>8.6</b> Problem 5</a></li>
+<li class="chapter" data-level="8.7" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-6-2"><i class="fa fa-check"></i><b>8.7</b> Problem 6</a></li>
+<li class="chapter" data-level="8.8" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-7"><i class="fa fa-check"></i><b>8.8</b> Problem 7</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="Summative1.html"><a href="Summative1.html"><i class="fa fa-check"></i><b>9</b> ACTIVITY Summative 1<span></span></a>
+<li class="chapter" data-level="9" data-path="Summative1.html"><a href="Summative1.html"><i class="fa fa-check"></i><b>9</b> ACTIVITY Summative 1</a>
 <ul>
-<li class="chapter" data-level="9.0.1" data-path="Summative1.html"><a href="Summative1.html#instructions"><i class="fa fa-check"></i><b>9.0.1</b> Instructions<span></span></a></li>
-<li class="chapter" data-level="9.1" data-path="Summative1.html"><a href="Summative1.html#problem-1-3"><i class="fa fa-check"></i><b>9.1</b> Problem 1<span></span></a></li>
-<li class="chapter" data-level="9.2" data-path="Summative1.html"><a href="Summative1.html#problem-2-3"><i class="fa fa-check"></i><b>9.2</b> Problem 2<span></span></a></li>
-<li class="chapter" data-level="9.3" data-path="Summative1.html"><a href="Summative1.html#problem-3-3"><i class="fa fa-check"></i><b>9.3</b> Problem 3<span></span></a></li>
-<li class="chapter" data-level="9.4" data-path="Summative1.html"><a href="Summative1.html#problem-4-3"><i class="fa fa-check"></i><b>9.4</b> Problem 4<span></span></a></li>
-<li class="chapter" data-level="9.5" data-path="Summative1.html"><a href="Summative1.html#problem-5-3"><i class="fa fa-check"></i><b>9.5</b> Problem 5<span></span></a></li>
-<li class="chapter" data-level="9.6" data-path="Summative1.html"><a href="Summative1.html#problem-6-3"><i class="fa fa-check"></i><b>9.6</b> Problem 6<span></span></a></li>
-<li class="chapter" data-level="9.7" data-path="Summative1.html"><a href="Summative1.html#problem-7-1"><i class="fa fa-check"></i><b>9.7</b> Problem 7<span></span></a></li>
-<li class="chapter" data-level="9.8" data-path="Summative1.html"><a href="Summative1.html#problem-8"><i class="fa fa-check"></i><b>9.8</b> Problem 8<span></span></a></li>
-<li class="chapter" data-level="9.9" data-path="Summative1.html"><a href="Summative1.html#problem-9"><i class="fa fa-check"></i><b>9.9</b> Problem 9<span></span></a></li>
-<li class="chapter" data-level="9.10" data-path="Summative1.html"><a href="Summative1.html#problem-10"><i class="fa fa-check"></i><b>9.10</b> Problem 10<span></span></a></li>
+<li class="chapter" data-level="9.0.1" data-path="Summative1.html"><a href="Summative1.html#instructions"><i class="fa fa-check"></i><b>9.0.1</b> Instructions</a></li>
+<li class="chapter" data-level="9.1" data-path="Summative1.html"><a href="Summative1.html#problem-1-3"><i class="fa fa-check"></i><b>9.1</b> Problem 1</a></li>
+<li class="chapter" data-level="9.2" data-path="Summative1.html"><a href="Summative1.html#problem-2-3"><i class="fa fa-check"></i><b>9.2</b> Problem 2</a></li>
+<li class="chapter" data-level="9.3" data-path="Summative1.html"><a href="Summative1.html#problem-3-3"><i class="fa fa-check"></i><b>9.3</b> Problem 3</a></li>
+<li class="chapter" data-level="9.4" data-path="Summative1.html"><a href="Summative1.html#problem-4-3"><i class="fa fa-check"></i><b>9.4</b> Problem 4</a></li>
+<li class="chapter" data-level="9.5" data-path="Summative1.html"><a href="Summative1.html#problem-5-3"><i class="fa fa-check"></i><b>9.5</b> Problem 5</a></li>
+<li class="chapter" data-level="9.6" data-path="Summative1.html"><a href="Summative1.html#problem-6-3"><i class="fa fa-check"></i><b>9.6</b> Problem 6</a></li>
+<li class="chapter" data-level="9.7" data-path="Summative1.html"><a href="Summative1.html#problem-7-1"><i class="fa fa-check"></i><b>9.7</b> Problem 7</a></li>
+<li class="chapter" data-level="9.8" data-path="Summative1.html"><a href="Summative1.html#problem-8"><i class="fa fa-check"></i><b>9.8</b> Problem 8</a></li>
+<li class="chapter" data-level="9.9" data-path="Summative1.html"><a href="Summative1.html#problem-9"><i class="fa fa-check"></i><b>9.9</b> Problem 9</a></li>
+<li class="chapter" data-level="9.10" data-path="Summative1.html"><a href="Summative1.html#problem-10"><i class="fa fa-check"></i><b>9.10</b> Problem 10</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="fdcs.html"><a href="fdcs.html"><i class="fa fa-check"></i><b>10</b> Flow Duration Curves<span></span></a>
+<li class="chapter" data-level="10" data-path="fdcs.html"><a href="fdcs.html"><i class="fa fa-check"></i><b>10</b> Flow Duration Curves</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="fdcs.html"><a href="fdcs.html#get-data"><i class="fa fa-check"></i><b>10.1</b> Get data<span></span></a></li>
-<li class="chapter" data-level="10.2" data-path="fdcs.html"><a href="fdcs.html#review-describe-the-distribution"><i class="fa fa-check"></i><b>10.2</b> Review: describe the distribution<span></span></a></li>
-<li class="chapter" data-level="10.3" data-path="fdcs.html"><a href="fdcs.html#ecdfs"><i class="fa fa-check"></i><b>10.3</b> ECDFs<span></span></a></li>
-<li class="chapter" data-level="10.4" data-path="fdcs.html"><a href="fdcs.html#calculate-flow-exceedence-probabilities"><i class="fa fa-check"></i><b>10.4</b> Calculate flow exceedence probabilities<span></span></a></li>
-<li class="chapter" data-level="10.5" data-path="fdcs.html"><a href="fdcs.html#plot-a-flow-duration-curve-using-the-probabilities"><i class="fa fa-check"></i><b>10.5</b> Plot a Flow Duration Curve using the probabilities<span></span></a></li>
-<li class="chapter" data-level="10.6" data-path="fdcs.html"><a href="fdcs.html#make-an-almost-fdc-with-stat_ecdf"><i class="fa fa-check"></i><b>10.6</b> Make an almost FDC with stat_ecdf<span></span></a></li>
-<li class="chapter" data-level="10.7" data-path="fdcs.html"><a href="fdcs.html#example-use-of-an-fdc"><i class="fa fa-check"></i><b>10.7</b> Example use of an FDC<span></span></a></li>
-<li class="chapter" data-level="10.8" data-path="fdcs.html"><a href="fdcs.html#compare-to-a-boxplot-of-the-same-data"><i class="fa fa-check"></i><b>10.8</b> Compare to a boxplot of the same data<span></span></a></li>
-<li class="chapter" data-level="10.9" data-path="fdcs.html"><a href="fdcs.html#challenge-examining-flow-regime-change-at-the-grand-canyon"><i class="fa fa-check"></i><b>10.9</b> Challenge: Examining flow regime change at the Grand Canyon<span></span></a></li>
+<li class="chapter" data-level="10.1" data-path="fdcs.html"><a href="fdcs.html#get-data"><i class="fa fa-check"></i><b>10.1</b> Get data</a></li>
+<li class="chapter" data-level="10.2" data-path="fdcs.html"><a href="fdcs.html#review-describe-the-distribution"><i class="fa fa-check"></i><b>10.2</b> Review: describe the distribution</a></li>
+<li class="chapter" data-level="10.3" data-path="fdcs.html"><a href="fdcs.html#ecdfs"><i class="fa fa-check"></i><b>10.3</b> ECDFs</a></li>
+<li class="chapter" data-level="10.4" data-path="fdcs.html"><a href="fdcs.html#calculate-flow-exceedence-probabilities"><i class="fa fa-check"></i><b>10.4</b> Calculate flow exceedence probabilities</a></li>
+<li class="chapter" data-level="10.5" data-path="fdcs.html"><a href="fdcs.html#plot-a-flow-duration-curve-using-the-probabilities"><i class="fa fa-check"></i><b>10.5</b> Plot a Flow Duration Curve using the probabilities</a></li>
+<li class="chapter" data-level="10.6" data-path="fdcs.html"><a href="fdcs.html#make-an-almost-fdc-with-stat_ecdf"><i class="fa fa-check"></i><b>10.6</b> Make an almost FDC with stat_ecdf</a></li>
+<li class="chapter" data-level="10.7" data-path="fdcs.html"><a href="fdcs.html#example-use-of-an-fdc"><i class="fa fa-check"></i><b>10.7</b> Example use of an FDC</a></li>
+<li class="chapter" data-level="10.8" data-path="fdcs.html"><a href="fdcs.html#compare-to-a-boxplot-of-the-same-data"><i class="fa fa-check"></i><b>10.8</b> Compare to a boxplot of the same data</a></li>
+<li class="chapter" data-level="10.9" data-path="fdcs.html"><a href="fdcs.html#challenge-examining-flow-regime-change-at-the-grand-canyon"><i class="fa fa-check"></i><b>10.9</b> Challenge: Examining flow regime change at the Grand Canyon</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="lfas.html"><a href="lfas.html"><i class="fa fa-check"></i><b>11</b> Low Flow Analysis<span></span></a>
+<li class="chapter" data-level="11" data-path="lfas.html"><a href="lfas.html"><i class="fa fa-check"></i><b>11</b> Low Flow Analysis</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="lfas.html"><a href="lfas.html#what-are-low-flow-statistics"><i class="fa fa-check"></i><b>11.1</b> What are low flow statistics?<span></span></a></li>
-<li class="chapter" data-level="11.2" data-path="lfas.html"><a href="lfas.html#get-data-1"><i class="fa fa-check"></i><b>11.2</b> Get data<span></span></a></li>
-<li class="chapter" data-level="11.3" data-path="lfas.html"><a href="lfas.html#create-the-x-days-average-flow-record"><i class="fa fa-check"></i><b>11.3</b> Create the X days average flow record<span></span></a></li>
-<li class="chapter" data-level="11.4" data-path="lfas.html"><a href="lfas.html#look-at-what-a-rolling-mean-does."><i class="fa fa-check"></i><b>11.4</b> Look at what a rolling mean does.<span></span></a></li>
-<li class="chapter" data-level="11.5" data-path="lfas.html"><a href="lfas.html#calculate-yearly-minimums"><i class="fa fa-check"></i><b>11.5</b> Calculate yearly minimums<span></span></a></li>
-<li class="chapter" data-level="11.6" data-path="lfas.html"><a href="lfas.html#calculate-return-interval"><i class="fa fa-check"></i><b>11.6</b> Calculate return interval<span></span></a></li>
-<li class="chapter" data-level="11.7" data-path="lfas.html"><a href="lfas.html#fit-to-pearson-type-iii-distribution"><i class="fa fa-check"></i><b>11.7</b> Fit to Pearson Type III distribution<span></span></a></li>
-<li class="chapter" data-level="11.8" data-path="lfas.html"><a href="lfas.html#distribution-free-method"><i class="fa fa-check"></i><b>11.8</b> Distribution-free method<span></span></a></li>
+<li class="chapter" data-level="11.1" data-path="lfas.html"><a href="lfas.html#what-are-low-flow-statistics"><i class="fa fa-check"></i><b>11.1</b> What are low flow statistics?</a></li>
+<li class="chapter" data-level="11.2" data-path="lfas.html"><a href="lfas.html#get-data-1"><i class="fa fa-check"></i><b>11.2</b> Get data</a></li>
+<li class="chapter" data-level="11.3" data-path="lfas.html"><a href="lfas.html#create-the-x-days-average-flow-record"><i class="fa fa-check"></i><b>11.3</b> Create the X days average flow record</a></li>
+<li class="chapter" data-level="11.4" data-path="lfas.html"><a href="lfas.html#look-at-what-a-rolling-mean-does."><i class="fa fa-check"></i><b>11.4</b> Look at what a rolling mean does.</a></li>
+<li class="chapter" data-level="11.5" data-path="lfas.html"><a href="lfas.html#calculate-yearly-minimums"><i class="fa fa-check"></i><b>11.5</b> Calculate yearly minimums</a></li>
+<li class="chapter" data-level="11.6" data-path="lfas.html"><a href="lfas.html#calculate-return-interval"><i class="fa fa-check"></i><b>11.6</b> Calculate return interval</a></li>
+<li class="chapter" data-level="11.7" data-path="lfas.html"><a href="lfas.html#fit-to-pearson-type-iii-distribution"><i class="fa fa-check"></i><b>11.7</b> Fit to Pearson Type III distribution</a></li>
+<li class="chapter" data-level="11.8" data-path="lfas.html"><a href="lfas.html#distribution-free-method"><i class="fa fa-check"></i><b>11.8</b> Distribution-free method</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>12</b> Flood Frequency Analysis and Creating Functions<span></span></a>
+<li class="chapter" data-level="12" data-path="floods.html"><a href="floods.html"><i class="fa fa-check"></i><b>12</b> Flood Frequency Analysis and Creating Functions</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="floods.html"><a href="floods.html#template-repository"><i class="fa fa-check"></i><b>12.1</b> Template Repository<span></span></a></li>
-<li class="chapter" data-level="12.2" data-path="floods.html"><a href="floods.html#intro"><i class="fa fa-check"></i><b>12.2</b> Intro<span></span></a></li>
-<li class="chapter" data-level="12.3" data-path="floods.html"><a href="floods.html#challenge-create-a-function"><i class="fa fa-check"></i><b>12.3</b> Challenge: Create a function<span></span></a></li>
+<li class="chapter" data-level="12.1" data-path="floods.html"><a href="floods.html#template-repository"><i class="fa fa-check"></i><b>12.1</b> Template Repository</a></li>
+<li class="chapter" data-level="12.2" data-path="floods.html"><a href="floods.html#intro"><i class="fa fa-check"></i><b>12.2</b> Intro</a></li>
+<li class="chapter" data-level="12.3" data-path="floods.html"><a href="floods.html#challenge-create-a-function"><i class="fa fa-check"></i><b>12.3</b> Challenge: Create a function</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="rgeospatial.html"><a href="rgeospatial.html"><i class="fa fa-check"></i><b>13</b> Geospatial data in R - Vector<span></span></a>
+<li class="chapter" data-level="13" data-path="rgeospatial.html"><a href="rgeospatial.html"><i class="fa fa-check"></i><b>13</b> Geospatial data in R - Vector</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="rgeospatial.html"><a href="rgeospatial.html#goals"><i class="fa fa-check"></i><b>13.1</b> Goals<span></span></a></li>
-<li class="chapter" data-level="13.2" data-path="rgeospatial.html"><a href="rgeospatial.html#intro-to-tmap"><i class="fa fa-check"></i><b>13.2</b> Intro to tmap<span></span></a></li>
-<li class="chapter" data-level="13.3" data-path="rgeospatial.html"><a href="rgeospatial.html#data-wrangling-with-tidyverse-principles"><i class="fa fa-check"></i><b>13.3</b> Data wrangling with tidyverse principles<span></span></a></li>
-<li class="chapter" data-level="13.4" data-path="rgeospatial.html"><a href="rgeospatial.html#add-non-spatial-data-to-spatial-data-with-a-join"><i class="fa fa-check"></i><b>13.4</b> Add non-spatial data to spatial data with a join<span></span></a></li>
-<li class="chapter" data-level="13.5" data-path="rgeospatial.html"><a href="rgeospatial.html#plot-maps-side-by-side"><i class="fa fa-check"></i><b>13.5</b> Plot maps side by side<span></span></a></li>
-<li class="chapter" data-level="13.6" data-path="rgeospatial.html"><a href="rgeospatial.html#built-in-styles-like-themes-in-ggplot"><i class="fa fa-check"></i><b>13.6</b> Built in styles, like themes in ggplot<span></span></a></li>
-<li class="chapter" data-level="13.7" data-path="rgeospatial.html"><a href="rgeospatial.html#interactive-maps"><i class="fa fa-check"></i><b>13.7</b> Interactive Maps<span></span></a>
+<li class="chapter" data-level="13.1" data-path="rgeospatial.html"><a href="rgeospatial.html#goals"><i class="fa fa-check"></i><b>13.1</b> Goals</a></li>
+<li class="chapter" data-level="13.2" data-path="rgeospatial.html"><a href="rgeospatial.html#intro-to-tmap"><i class="fa fa-check"></i><b>13.2</b> Intro to tmap</a></li>
+<li class="chapter" data-level="13.3" data-path="rgeospatial.html"><a href="rgeospatial.html#data-wrangling-with-tidyverse-principles"><i class="fa fa-check"></i><b>13.3</b> Data wrangling with tidyverse principles</a></li>
+<li class="chapter" data-level="13.4" data-path="rgeospatial.html"><a href="rgeospatial.html#add-non-spatial-data-to-spatial-data-with-a-join"><i class="fa fa-check"></i><b>13.4</b> Add non-spatial data to spatial data with a join</a></li>
+<li class="chapter" data-level="13.5" data-path="rgeospatial.html"><a href="rgeospatial.html#plot-maps-side-by-side"><i class="fa fa-check"></i><b>13.5</b> Plot maps side by side</a></li>
+<li class="chapter" data-level="13.6" data-path="rgeospatial.html"><a href="rgeospatial.html#built-in-styles-like-themes-in-ggplot"><i class="fa fa-check"></i><b>13.6</b> Built in styles, like themes in ggplot</a></li>
+<li class="chapter" data-level="13.7" data-path="rgeospatial.html"><a href="rgeospatial.html#interactive-maps"><i class="fa fa-check"></i><b>13.7</b> Interactive Maps</a>
 <ul>
-<li class="chapter" data-level="13.7.1" data-path="rgeospatial.html"><a href="rgeospatial.html#tmap"><i class="fa fa-check"></i><b>13.7.1</b> tmap<span></span></a></li>
-<li class="chapter" data-level="13.7.2" data-path="rgeospatial.html"><a href="rgeospatial.html#leaflet"><i class="fa fa-check"></i><b>13.7.2</b> Leaflet<span></span></a></li>
+<li class="chapter" data-level="13.7.1" data-path="rgeospatial.html"><a href="rgeospatial.html#tmap"><i class="fa fa-check"></i><b>13.7.1</b> tmap</a></li>
+<li class="chapter" data-level="13.7.2" data-path="rgeospatial.html"><a href="rgeospatial.html#leaflet"><i class="fa fa-check"></i><b>13.7.2</b> Leaflet</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="summative2.html"><a href="summative2.html"><i class="fa fa-check"></i><b>14</b> Summative Assessment 2<span></span></a>
+<li class="chapter" data-level="14" data-path="summative2.html"><a href="summative2.html"><i class="fa fa-check"></i><b>14</b> Summative Assessment 2</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="summative2.html"><a href="summative2.html#info-for-assessment"><i class="fa fa-check"></i><b>14.1</b> Info for assessment<span></span></a></li>
+<li class="chapter" data-level="14.1" data-path="summative2.html"><a href="summative2.html#info-for-assessment"><i class="fa fa-check"></i><b>14.1</b> Info for assessment</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="rgeoraster.html"><a href="rgeoraster.html"><i class="fa fa-check"></i><b>15</b> Geospatial R Raster - Hydro Analyses<span></span></a>
+<li class="chapter" data-level="15" data-path="rgeoraster.html"><a href="rgeoraster.html"><i class="fa fa-check"></i><b>15</b> Geospatial R Raster - Hydro Analyses</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="rgeoraster.html"><a href="rgeoraster.html#introduction-2"><i class="fa fa-check"></i><b>15.1</b> Introduction<span></span></a></li>
-<li class="chapter" data-level="15.2" data-path="rgeoraster.html"><a href="rgeoraster.html#read-in-dem"><i class="fa fa-check"></i><b>15.2</b> Read in DEM<span></span></a></li>
-<li class="chapter" data-level="15.3" data-path="rgeoraster.html"><a href="rgeoraster.html#plot-dem"><i class="fa fa-check"></i><b>15.3</b> Plot DEM<span></span></a></li>
-<li class="chapter" data-level="15.4" data-path="rgeoraster.html"><a href="rgeoraster.html#generate-a-hillshade"><i class="fa fa-check"></i><b>15.4</b> Generate a hillshade<span></span></a>
+<li class="chapter" data-level="15.1" data-path="rgeoraster.html"><a href="rgeoraster.html#introduction-2"><i class="fa fa-check"></i><b>15.1</b> Introduction</a></li>
+<li class="chapter" data-level="15.2" data-path="rgeoraster.html"><a href="rgeoraster.html#read-in-dem"><i class="fa fa-check"></i><b>15.2</b> Read in DEM</a></li>
+<li class="chapter" data-level="15.3" data-path="rgeoraster.html"><a href="rgeoraster.html#plot-dem"><i class="fa fa-check"></i><b>15.3</b> Plot DEM</a></li>
+<li class="chapter" data-level="15.4" data-path="rgeoraster.html"><a href="rgeoraster.html#generate-a-hillshade"><i class="fa fa-check"></i><b>15.4</b> Generate a hillshade</a>
 <ul>
-<li class="chapter" data-level="15.4.1" data-path="rgeoraster.html"><a href="rgeoraster.html#how-whitebox-tools-functions-work"><i class="fa fa-check"></i><b>15.4.1</b> How whitebox tools functions work<span></span></a></li>
+<li class="chapter" data-level="15.4.1" data-path="rgeoraster.html"><a href="rgeoraster.html#how-whitebox-tools-functions-work"><i class="fa fa-check"></i><b>15.4.1</b> How whitebox tools functions work</a></li>
 </ul></li>
-<li class="chapter" data-level="15.5" data-path="rgeoraster.html"><a href="rgeoraster.html#prepare-dem-for-hydrology-analyses"><i class="fa fa-check"></i><b>15.5</b> Prepare DEM for Hydrology Analyses<span></span></a></li>
-<li class="chapter" data-level="15.6" data-path="rgeoraster.html"><a href="rgeoraster.html#visualize-filled-sinks-and-breached-depressions"><i class="fa fa-check"></i><b>15.6</b> Visualize filled sinks and breached depressions<span></span></a></li>
-<li class="chapter" data-level="15.7" data-path="rgeoraster.html"><a href="rgeoraster.html#d8-flow-accumulation"><i class="fa fa-check"></i><b>15.7</b> D8 Flow Accumulation<span></span></a></li>
-<li class="chapter" data-level="15.8" data-path="rgeoraster.html"><a href="rgeoraster.html#d-infinity-flow-accumulation"><i class="fa fa-check"></i><b>15.8</b> D infinity flow accumulation<span></span></a></li>
-<li class="chapter" data-level="15.9" data-path="rgeoraster.html"><a href="rgeoraster.html#topographic-wetness-index"><i class="fa fa-check"></i><b>15.9</b> Topographic Wetness Index<span></span></a></li>
-<li class="chapter" data-level="15.10" data-path="rgeoraster.html"><a href="rgeoraster.html#downslope-twi"><i class="fa fa-check"></i><b>15.10</b> Downslope TWI<span></span></a></li>
-<li class="chapter" data-level="15.11" data-path="rgeoraster.html"><a href="rgeoraster.html#map-stream-network"><i class="fa fa-check"></i><b>15.11</b> Map Stream Network<span></span></a></li>
-<li class="chapter" data-level="15.12" data-path="rgeoraster.html"><a href="rgeoraster.html#extract-raster-values-to-point-locations"><i class="fa fa-check"></i><b>15.12</b> Extract raster values to point locations<span></span></a>
+<li class="chapter" data-level="15.5" data-path="rgeoraster.html"><a href="rgeoraster.html#prepare-dem-for-hydrology-analyses"><i class="fa fa-check"></i><b>15.5</b> Prepare DEM for Hydrology Analyses</a></li>
+<li class="chapter" data-level="15.6" data-path="rgeoraster.html"><a href="rgeoraster.html#visualize-filled-sinks-and-breached-depressions"><i class="fa fa-check"></i><b>15.6</b> Visualize filled sinks and breached depressions</a></li>
+<li class="chapter" data-level="15.7" data-path="rgeoraster.html"><a href="rgeoraster.html#d8-flow-accumulation"><i class="fa fa-check"></i><b>15.7</b> D8 Flow Accumulation</a></li>
+<li class="chapter" data-level="15.8" data-path="rgeoraster.html"><a href="rgeoraster.html#d-infinity-flow-accumulation"><i class="fa fa-check"></i><b>15.8</b> D infinity flow accumulation</a></li>
+<li class="chapter" data-level="15.9" data-path="rgeoraster.html"><a href="rgeoraster.html#topographic-wetness-index"><i class="fa fa-check"></i><b>15.9</b> Topographic Wetness Index</a></li>
+<li class="chapter" data-level="15.10" data-path="rgeoraster.html"><a href="rgeoraster.html#downslope-twi"><i class="fa fa-check"></i><b>15.10</b> Downslope TWI</a></li>
+<li class="chapter" data-level="15.11" data-path="rgeoraster.html"><a href="rgeoraster.html#map-stream-network"><i class="fa fa-check"></i><b>15.11</b> Map Stream Network</a></li>
+<li class="chapter" data-level="15.12" data-path="rgeoraster.html"><a href="rgeoraster.html#extract-raster-values-to-point-locations"><i class="fa fa-check"></i><b>15.12</b> Extract raster values to point locations</a>
 <ul>
-<li class="chapter" data-level="15.12.1" data-path="rgeoraster.html"><a href="rgeoraster.html#import-and-plot-points"><i class="fa fa-check"></i><b>15.12.1</b> Import and plot points<span></span></a></li>
-<li class="chapter" data-level="15.12.2" data-path="rgeoraster.html"><a href="rgeoraster.html#extract-values-from-multiple-rasters-at-once"><i class="fa fa-check"></i><b>15.12.2</b> Extract values from multiple rasters at once<span></span></a></li>
+<li class="chapter" data-level="15.12.1" data-path="rgeoraster.html"><a href="rgeoraster.html#import-and-plot-points"><i class="fa fa-check"></i><b>15.12.1</b> Import and plot points</a></li>
+<li class="chapter" data-level="15.12.2" data-path="rgeoraster.html"><a href="rgeoraster.html#extract-values-from-multiple-rasters-at-once"><i class="fa fa-check"></i><b>15.12.2</b> Extract values from multiple rasters at once</a></li>
 </ul></li>
-<li class="chapter" data-level="15.13" data-path="rgeoraster.html"><a href="rgeoraster.html#view-raster-data-as-a-pdf-or-histogram"><i class="fa fa-check"></i><b>15.13</b> View raster data as a PDF or histogram<span></span></a></li>
-<li class="chapter" data-level="15.14" data-path="rgeoraster.html"><a href="rgeoraster.html#subsetting-a-raster-for-visualization"><i class="fa fa-check"></i><b>15.14</b> Subsetting a raster for visualization<span></span></a></li>
-<li class="chapter" data-level="15.15" data-path="rgeoraster.html"><a href="rgeoraster.html#raster-math"><i class="fa fa-check"></i><b>15.15</b> Raster Math<span></span></a></li>
-<li class="chapter" data-level="15.16" data-path="rgeoraster.html"><a href="rgeoraster.html#extra-plot-topo-characteristics-against-one-another"><i class="fa fa-check"></i><b>15.16</b> Extra: plot topo characteristics against one another<span></span></a></li>
+<li class="chapter" data-level="15.13" data-path="rgeoraster.html"><a href="rgeoraster.html#view-raster-data-as-a-pdf-or-histogram"><i class="fa fa-check"></i><b>15.13</b> View raster data as a PDF or histogram</a></li>
+<li class="chapter" data-level="15.14" data-path="rgeoraster.html"><a href="rgeoraster.html#subsetting-a-raster-for-visualization"><i class="fa fa-check"></i><b>15.14</b> Subsetting a raster for visualization</a></li>
+<li class="chapter" data-level="15.15" data-path="rgeoraster.html"><a href="rgeoraster.html#raster-math"><i class="fa fa-check"></i><b>15.15</b> Raster Math</a></li>
+<li class="chapter" data-level="15.16" data-path="rgeoraster.html"><a href="rgeoraster.html#extra-plot-topo-characteristics-against-one-another"><i class="fa fa-check"></i><b>15.16</b> Extra: plot topo characteristics against one another</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html"><i class="fa fa-check"></i><b>16</b> Geospatial R Raster - Watershed Delineation<span></span></a>
+<li class="chapter" data-level="16" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html"><i class="fa fa-check"></i><b>16</b> Geospatial R Raster - Watershed Delineation</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#introduction-3"><i class="fa fa-check"></i><b>16.1</b> Introduction<span></span></a></li>
-<li class="chapter" data-level="16.2" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#the-watershed-delineation-toolprocess"><i class="fa fa-check"></i><b>16.2</b> The watershed delineation tool/process<span></span></a></li>
-<li class="chapter" data-level="16.3" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#read-in-dem-1"><i class="fa fa-check"></i><b>16.3</b> Read in DEM<span></span></a></li>
-<li class="chapter" data-level="16.4" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#generate-a-hillshade-1"><i class="fa fa-check"></i><b>16.4</b> Generate a hillshade<span></span></a></li>
-<li class="chapter" data-level="16.5" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#prepare-dem-for-hydrology-analyses-1"><i class="fa fa-check"></i><b>16.5</b> Prepare DEM for Hydrology Analyses<span></span></a></li>
-<li class="chapter" data-level="16.6" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#create-flow-accumulation-and-pointer-grids"><i class="fa fa-check"></i><b>16.6</b> Create flow accumulation and pointer grids<span></span></a></li>
-<li class="chapter" data-level="16.7" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#setting-pour-points"><i class="fa fa-check"></i><b>16.7</b> Setting pour points<span></span></a></li>
-<li class="chapter" data-level="16.8" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#delineate-watersheds"><i class="fa fa-check"></i><b>16.8</b> Delineate watersheds<span></span></a></li>
-<li class="chapter" data-level="16.9" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#convert-watersheds-to-shapefiles"><i class="fa fa-check"></i><b>16.9</b> Convert watersheds to shapefiles<span></span></a></li>
-<li class="chapter" data-level="16.10" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#extract-data-based-on-watershed-outline"><i class="fa fa-check"></i><b>16.10</b> Extract data based on watershed outline<span></span></a></li>
-<li class="chapter" data-level="16.11" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#bonus-make-a-3d-map-of-your-watershed-with-rayshader"><i class="fa fa-check"></i><b>16.11</b> BONUS: Make a 3d map of your watershed with rayshader<span></span></a></li>
+<li class="chapter" data-level="16.1" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#introduction-3"><i class="fa fa-check"></i><b>16.1</b> Introduction</a></li>
+<li class="chapter" data-level="16.2" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#the-watershed-delineation-toolprocess"><i class="fa fa-check"></i><b>16.2</b> The watershed delineation tool/process</a></li>
+<li class="chapter" data-level="16.3" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#read-in-dem-1"><i class="fa fa-check"></i><b>16.3</b> Read in DEM</a></li>
+<li class="chapter" data-level="16.4" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#generate-a-hillshade-1"><i class="fa fa-check"></i><b>16.4</b> Generate a hillshade</a></li>
+<li class="chapter" data-level="16.5" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#prepare-dem-for-hydrology-analyses-1"><i class="fa fa-check"></i><b>16.5</b> Prepare DEM for Hydrology Analyses</a></li>
+<li class="chapter" data-level="16.6" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#create-flow-accumulation-and-pointer-grids"><i class="fa fa-check"></i><b>16.6</b> Create flow accumulation and pointer grids</a></li>
+<li class="chapter" data-level="16.7" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#setting-pour-points"><i class="fa fa-check"></i><b>16.7</b> Setting pour points</a></li>
+<li class="chapter" data-level="16.8" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#delineate-watersheds"><i class="fa fa-check"></i><b>16.8</b> Delineate watersheds</a></li>
+<li class="chapter" data-level="16.9" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#convert-watersheds-to-shapefiles"><i class="fa fa-check"></i><b>16.9</b> Convert watersheds to shapefiles</a></li>
+<li class="chapter" data-level="16.10" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#extract-data-based-on-watershed-outline"><i class="fa fa-check"></i><b>16.10</b> Extract data based on watershed outline</a></li>
+<li class="chapter" data-level="16.11" data-path="rgeowatersheds.html"><a href="rgeowatersheds.html#bonus-make-a-3d-map-of-your-watershed-with-rayshader"><i class="fa fa-check"></i><b>16.11</b> BONUS: Make a 3d map of your watershed with rayshader</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="modelingintro.html"><a href="modelingintro.html"><i class="fa fa-check"></i><b>17</b> Intro to Modeling - Getting Started with HBV<span></span></a>
+<li class="chapter" data-level="17" data-path="modelingintro.html"><a href="modelingintro.html"><i class="fa fa-check"></i><b>17</b> Intro to Modeling - Getting Started with HBV</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="modelingintro.html"><a href="modelingintro.html#introduction-4"><i class="fa fa-check"></i><b>17.1</b> Introduction<span></span></a></li>
-<li class="chapter" data-level="17.2" data-path="modelingintro.html"><a href="modelingintro.html#creating-the-hbv-model-function"><i class="fa fa-check"></i><b>17.2</b> Creating the HBV model function<span></span></a></li>
-<li class="chapter" data-level="17.3" data-path="modelingintro.html"><a href="modelingintro.html#read-in-precip-and-temp"><i class="fa fa-check"></i><b>17.3</b> Read in Precip and Temp<span></span></a></li>
-<li class="chapter" data-level="17.4" data-path="modelingintro.html"><a href="modelingintro.html#calculate-pet"><i class="fa fa-check"></i><b>17.4</b> Calculate PET<span></span></a></li>
-<li class="chapter" data-level="17.5" data-path="modelingintro.html"><a href="modelingintro.html#hbv-parameters"><i class="fa fa-check"></i><b>17.5</b> HBV Parameters<span></span></a></li>
-<li class="chapter" data-level="17.6" data-path="modelingintro.html"><a href="modelingintro.html#first-model-run"><i class="fa fa-check"></i><b>17.6</b> First model run<span></span></a></li>
-<li class="chapter" data-level="17.7" data-path="modelingintro.html"><a href="modelingintro.html#import-observed-streamflow-data"><i class="fa fa-check"></i><b>17.7</b> Import observed streamflow data<span></span></a></li>
-<li class="chapter" data-level="17.8" data-path="modelingintro.html"><a href="modelingintro.html#compare-observed-and-modeled-discharge-graphically"><i class="fa fa-check"></i><b>17.8</b> Compare observed and modeled discharge graphically<span></span></a></li>
-<li class="chapter" data-level="17.9" data-path="modelingintro.html"><a href="modelingintro.html#compare-observed-and-modelled-discharge-with-interactive-graph"><i class="fa fa-check"></i><b>17.9</b> Compare observed and modelled discharge with interactive graph<span></span></a></li>
-<li class="chapter" data-level="17.10" data-path="modelingintro.html"><a href="modelingintro.html#measure-how-well-the-model-fits-with-nse"><i class="fa fa-check"></i><b>17.10</b> Measure how well the model fits with NSE<span></span></a></li>
-<li class="chapter" data-level="17.11" data-path="modelingintro.html"><a href="modelingintro.html#assess-model-fit-with-a-different-measure-snow"><i class="fa fa-check"></i><b>17.11</b> Assess model fit with a different measure: Snow<span></span></a></li>
-<li class="chapter" data-level="17.12" data-path="modelingintro.html"><a href="modelingintro.html#calibrate-hbv-manually"><i class="fa fa-check"></i><b>17.12</b> Calibrate HBV manually<span></span></a></li>
+<li class="chapter" data-level="17.1" data-path="modelingintro.html"><a href="modelingintro.html#introduction-4"><i class="fa fa-check"></i><b>17.1</b> Introduction</a></li>
+<li class="chapter" data-level="17.2" data-path="modelingintro.html"><a href="modelingintro.html#creating-the-hbv-model-function"><i class="fa fa-check"></i><b>17.2</b> Creating the HBV model function</a></li>
+<li class="chapter" data-level="17.3" data-path="modelingintro.html"><a href="modelingintro.html#read-in-precip-and-temp"><i class="fa fa-check"></i><b>17.3</b> Read in Precip and Temp</a></li>
+<li class="chapter" data-level="17.4" data-path="modelingintro.html"><a href="modelingintro.html#calculate-pet"><i class="fa fa-check"></i><b>17.4</b> Calculate PET</a></li>
+<li class="chapter" data-level="17.5" data-path="modelingintro.html"><a href="modelingintro.html#hbv-parameters"><i class="fa fa-check"></i><b>17.5</b> HBV Parameters</a></li>
+<li class="chapter" data-level="17.6" data-path="modelingintro.html"><a href="modelingintro.html#first-model-run"><i class="fa fa-check"></i><b>17.6</b> First model run</a></li>
+<li class="chapter" data-level="17.7" data-path="modelingintro.html"><a href="modelingintro.html#import-observed-streamflow-data"><i class="fa fa-check"></i><b>17.7</b> Import observed streamflow data</a></li>
+<li class="chapter" data-level="17.8" data-path="modelingintro.html"><a href="modelingintro.html#compare-observed-and-modeled-discharge-graphically"><i class="fa fa-check"></i><b>17.8</b> Compare observed and modeled discharge graphically</a></li>
+<li class="chapter" data-level="17.9" data-path="modelingintro.html"><a href="modelingintro.html#compare-observed-and-modelled-discharge-with-interactive-graph"><i class="fa fa-check"></i><b>17.9</b> Compare observed and modelled discharge with interactive graph</a></li>
+<li class="chapter" data-level="17.10" data-path="modelingintro.html"><a href="modelingintro.html#measure-how-well-the-model-fits-with-nse"><i class="fa fa-check"></i><b>17.10</b> Measure how well the model fits with NSE</a></li>
+<li class="chapter" data-level="17.11" data-path="modelingintro.html"><a href="modelingintro.html#assess-model-fit-with-a-different-measure-snow"><i class="fa fa-check"></i><b>17.11</b> Assess model fit with a different measure: Snow</a></li>
+<li class="chapter" data-level="17.12" data-path="modelingintro.html"><a href="modelingintro.html#calibrate-hbv-manually"><i class="fa fa-check"></i><b>17.12</b> Calibrate HBV manually</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="modelingcalibration.html"><a href="modelingcalibration.html"><i class="fa fa-check"></i><b>18</b> Intro to Modeling - Calibrate HBV<span></span></a>
+<li class="chapter" data-level="18" data-path="modelingcalibration.html"><a href="modelingcalibration.html"><i class="fa fa-check"></i><b>18</b> Intro to Modeling - Calibrate HBV</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="modelingcalibration.html"><a href="modelingcalibration.html#introduction-5"><i class="fa fa-check"></i><b>18.1</b> Introduction<span></span></a></li>
-<li class="chapter" data-level="18.2" data-path="modelingcalibration.html"><a href="modelingcalibration.html#challenge-write-a-for-loop"><i class="fa fa-check"></i><b>18.2</b> Challenge: Write a for loop<span></span></a></li>
-<li class="chapter" data-level="18.3" data-path="modelingcalibration.html"><a href="modelingcalibration.html#prep-data-for-hbv"><i class="fa fa-check"></i><b>18.3</b> Prep data for HBV<span></span></a></li>
-<li class="chapter" data-level="18.4" data-path="modelingcalibration.html"><a href="modelingcalibration.html#calculate-pet-1"><i class="fa fa-check"></i><b>18.4</b> Calculate PET<span></span></a></li>
-<li class="chapter" data-level="18.5" data-path="modelingcalibration.html"><a href="modelingcalibration.html#monte-carlo-step-1-generate-random-parameter-sets"><i class="fa fa-check"></i><b>18.5</b> Monte Carlo step 1: generate random parameter sets<span></span></a></li>
-<li class="chapter" data-level="18.6" data-path="modelingcalibration.html"><a href="modelingcalibration.html#run-the-model-for-each-parameter-set"><i class="fa fa-check"></i><b>18.6</b> Run the model for each parameter set<span></span></a></li>
-<li class="chapter" data-level="18.7" data-path="modelingcalibration.html"><a href="modelingcalibration.html#find-the-best-parameter-set"><i class="fa fa-check"></i><b>18.7</b> Find the best parameter set<span></span></a></li>
-<li class="chapter" data-level="18.8" data-path="modelingcalibration.html"><a href="modelingcalibration.html#investigating-a-much-bigger-monte-carlo"><i class="fa fa-check"></i><b>18.8</b> Investigating a much bigger Monte Carlo<span></span></a></li>
+<li class="chapter" data-level="18.1" data-path="modelingcalibration.html"><a href="modelingcalibration.html#introduction-5"><i class="fa fa-check"></i><b>18.1</b> Introduction</a></li>
+<li class="chapter" data-level="18.2" data-path="modelingcalibration.html"><a href="modelingcalibration.html#challenge-write-a-for-loop"><i class="fa fa-check"></i><b>18.2</b> Challenge: Write a for loop</a></li>
+<li class="chapter" data-level="18.3" data-path="modelingcalibration.html"><a href="modelingcalibration.html#prep-data-for-hbv"><i class="fa fa-check"></i><b>18.3</b> Prep data for HBV</a></li>
+<li class="chapter" data-level="18.4" data-path="modelingcalibration.html"><a href="modelingcalibration.html#calculate-pet-1"><i class="fa fa-check"></i><b>18.4</b> Calculate PET</a></li>
+<li class="chapter" data-level="18.5" data-path="modelingcalibration.html"><a href="modelingcalibration.html#monte-carlo-step-1-generate-random-parameter-sets"><i class="fa fa-check"></i><b>18.5</b> Monte Carlo step 1: generate random parameter sets</a></li>
+<li class="chapter" data-level="18.6" data-path="modelingcalibration.html"><a href="modelingcalibration.html#run-the-model-for-each-parameter-set"><i class="fa fa-check"></i><b>18.6</b> Run the model for each parameter set</a></li>
+<li class="chapter" data-level="18.7" data-path="modelingcalibration.html"><a href="modelingcalibration.html#find-the-best-parameter-set"><i class="fa fa-check"></i><b>18.7</b> Find the best parameter set</a></li>
+<li class="chapter" data-level="18.8" data-path="modelingcalibration.html"><a href="modelingcalibration.html#investigating-a-much-bigger-monte-carlo"><i class="fa fa-check"></i><b>18.8</b> Investigating a much bigger Monte Carlo</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -425,39 +763,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>You only have to install the library once. You have to load it using the library() function each time you start an R session.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="Plotting.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;tidyverse&quot;)</span></span>
 <span id="cb1-2"><a href="Plotting.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
-<pre><code>## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
-## ✓ tibble  3.1.3     ✓ dplyr   1.0.7
-## ✓ tidyr   1.1.3     ✓ stringr 1.4.0
-## ✓ readr   2.0.0     ✓ forcats 0.5.1</code></pre>
+<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+## ✔ ggplot2 3.3.6     ✔ purrr   0.3.4
+## ✔ tibble  3.1.8     ✔ dplyr   1.0.9
+## ✔ tidyr   1.2.0     ✔ stringr 1.4.0
+## ✔ readr   2.1.2     ✔ forcats 0.5.1</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## Warning: package &#39;tibble&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## Warning: package &#39;readr&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 4.1.2</code></pre>
 <pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
 </div>
 <div id="reading-data" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Reading data<a href="Plotting.html#reading-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The following lines will read in the data we will use for this exercise. Don’t worry about this right now beyond running it, we will talk more about it later.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="Plotting.html#cb5-1" aria-hidden="true" tabindex="-1"></a>Pine <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PINE_Jan-Mar_2010.csv&quot;</span>) </span></code></pre></div>
-<pre><code>## Rows: 2160 Columns: 8── Column specification ────────────────────────────────────────────────────────
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="Plotting.html#cb10-1" aria-hidden="true" tabindex="-1"></a>Pine <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PINE_Jan-Mar_2010.csv&quot;</span>) </span></code></pre></div>
+<pre><code>## Rows: 2160 Columns: 8
+## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr  (2): StationID, surrogate
 ## dbl  (5): cfs, year, quarter, month, day
 ## dttm (1): datetime
+## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="Plotting.html#cb7-1" aria-hidden="true" tabindex="-1"></a>SNP <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PINE_NFDR_Jan-Mar_2010.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## Rows: 4320 Columns: 8── Column specification ────────────────────────────────────────────────────────
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="Plotting.html#cb12-1" aria-hidden="true" tabindex="-1"></a>SNP <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PINE_NFDR_Jan-Mar_2010.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 4320 Columns: 8
+## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr  (2): StationID, surrogate
 ## dbl  (5): cfs, year, quarter, month, day
 ## dttm (1): datetime
+## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="Plotting.html#cb9-1" aria-hidden="true" tabindex="-1"></a>RBI <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Flashy_Dat_Subset.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## Rows: 49 Columns: 26── Column specification ────────────────────────────────────────────────────────
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="Plotting.html#cb14-1" aria-hidden="true" tabindex="-1"></a>RBI <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Flashy_Dat_Subset.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 49 Columns: 26
+## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr  (4): STANAME, STATE, CLASS, AGGECOREGION
 ## dbl (22): site_no, RBI, RBIrank, DRAIN_SQKM, HUC02, LAT_GAGE, LNG_GAGE, PPTA...
+## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <div class="figure">
@@ -468,8 +818,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="our-first-ggplot" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Our first ggplot<a href="Plotting.html#our-first-ggplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s look at the Pine data, plotting streamflow (the cfs column) by the date (datetime column). We will show the time series as a line.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="Plotting.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Pine, <span class="fu">aes</span>(<span class="at">x =</span> datetime, <span class="at">y =</span> cfs))<span class="sc">+</span></span>
-<span id="cb11-2"><a href="Plotting.html#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="Plotting.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Pine, <span class="fu">aes</span>(<span class="at">x =</span> datetime, <span class="at">y =</span> cfs))<span class="sc">+</span></span>
+<span id="cb16-2"><a href="Plotting.html#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 <div id="change-point-type" class="section level2 hasAnchor" number="2.4">
@@ -479,20 +829,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <img src="images/pch.png" title="pch values and points from R help file" alt="" />
 <p class="caption">pch options from R help file</p>
 </div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="Plotting.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Pine, <span class="fu">aes</span>(<span class="at">x =</span> datetime, <span class="at">y =</span> cfs))<span class="sc">+</span></span>
-<span id="cb12-2"><a href="Plotting.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">pch =</span> <span class="dv">8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="Plotting.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Pine, <span class="fu">aes</span>(<span class="at">x =</span> datetime, <span class="at">y =</span> cfs))<span class="sc">+</span></span>
+<span id="cb17-2"><a href="Plotting.html#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">pch =</span> <span class="dv">8</span>)</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
 <div id="set-colors" class="section level2 hasAnchor" number="2.5">
 <h2><span class="header-section-number">2.5</span> Set colors<a href="Plotting.html#set-colors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We can also “easily” change the color. Easily is in quotes because this often trips people up. If you put color = “blue” in the aesthetic function, think about what that is telling ggplot. It says “control the color using”blue"". That doesn’t make a whole lot of sense, so neither does the output… Try it.</p>
-<p>What happens is that if color = “blue” is in the aesthetic, you are telling R that the color used in the geom represents “blue.” This is very useful if you have multiple geoms in your plot, are coloring them differently, and are building a legend. But if you are just trying to color the points, it kind of feels like R is trolling you… doesn’t it?</p>
+<p>We can also “easily” change the color. Easily is in quotes because this often trips people up. If you put color = “blue” in the aesthetic function, think about what that is telling ggplot. It says “control the color using”blue”“. That doesn’t make a whole lot of sense, so neither does the output… Try it.</p>
+<p>What happens is that if color = “blue” is in the aesthetic, you are telling R that the color used in the geom represents “blue”. This is very useful if you have multiple geoms in your plot, are coloring them differently, and are building a legend. But if you are just trying to color the points, it kind of feels like R is trolling you… doesn’t it?</p>
 <p>Take the color = “blue” out of the aesthetic and you’re golden.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="Plotting.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Pine, <span class="fu">aes</span>(datetime, <span class="at">y =</span> cfs, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>))<span class="sc">+</span></span>
-<span id="cb13-2"><a href="Plotting.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="Plotting.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Pine, <span class="fu">aes</span>(datetime, <span class="at">y =</span> cfs, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>))<span class="sc">+</span></span>
+<span id="cb18-2"><a href="Plotting.html#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="Plotting.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Pine, <span class="fu">aes</span>(<span class="at">x =</span> datetime, <span class="at">y =</span> cfs))<span class="sc">+</span></span>
-<span id="cb14-2"><a href="Plotting.html#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="Plotting.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Pine, <span class="fu">aes</span>(<span class="at">x =</span> datetime, <span class="at">y =</span> cfs))<span class="sc">+</span></span>
+<span id="cb19-2"><a href="Plotting.html#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-7-2.png" width="672" /></p>
 </div>
 <div id="controlling-color-with-a-third-variable-and-other-functions" class="section level2 hasAnchor" number="2.6">
@@ -502,11 +852,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Second: change the theme</p>
 <p>Third: change the axis labels</p>
 <p>Fourth: color by discharge</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="Plotting.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Pine, <span class="fu">aes</span>(<span class="at">x =</span> datetime, <span class="at">y =</span> cfs, <span class="at">color =</span> cfs))<span class="sc">+</span></span>
-<span id="cb15-2"><a href="Plotting.html#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb15-3"><a href="Plotting.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Discharge (cfs)&quot;</span>)<span class="sc">+</span></span>
-<span id="cb15-4"><a href="Plotting.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="fu">element_blank</span>())<span class="sc">+</span></span>
-<span id="cb15-5"><a href="Plotting.html#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="Plotting.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Pine, <span class="fu">aes</span>(<span class="at">x =</span> datetime, <span class="at">y =</span> cfs, <span class="at">color =</span> cfs))<span class="sc">+</span></span>
+<span id="cb20-2"><a href="Plotting.html#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb20-3"><a href="Plotting.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Discharge (cfs)&quot;</span>)<span class="sc">+</span></span>
+<span id="cb20-4"><a href="Plotting.html#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="fu">element_blank</span>())<span class="sc">+</span></span>
+<span id="cb20-5"><a href="Plotting.html#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 </div>
 <div id="plotting-multiple-groups" class="section level2 hasAnchor" number="2.7">
@@ -514,34 +864,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The SNP dataset has two different streams: Pine and NFDR</p>
 <p>We can look at the two of those a couple of different ways</p>
 <p>First, make two lines, colored by the stream by adding color = to your aesthetic.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="Plotting.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> SNP, <span class="fu">aes</span>(<span class="at">x =</span> datetime,<span class="at">y =</span> cfs, <span class="at">color =</span> StationID)) <span class="sc">+</span></span>
-<span id="cb16-2"><a href="Plotting.html#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="Plotting.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> SNP, <span class="fu">aes</span>(<span class="at">x =</span> datetime,<span class="at">y =</span> cfs, <span class="at">color =</span> StationID)) <span class="sc">+</span></span>
+<span id="cb21-2"><a href="Plotting.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
 <div id="facets" class="section level2 hasAnchor" number="2.8">
 <h2><span class="header-section-number">2.8</span> Facets<a href="Plotting.html#facets" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can also use facets.</p>
 <p>You must tell the facet_wrap what variable to use to make the separate panels (facet =). It’ll decide how to orient them or you can tell it how. We want them to be on top of each other so we are going to tell it we want 2 rows by setting nrow = 2. Note that we have to put the column used to make the facets in quotes after facets =</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="Plotting.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> SNP, <span class="fu">aes</span>(<span class="at">x =</span> datetime,<span class="at">y =</span> cfs)) <span class="sc">+</span></span>
-<span id="cb17-2"><a href="Plotting.html#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb17-3"><a href="Plotting.html#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="at">facets =</span> <span class="st">&quot;StationID&quot;</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="Plotting.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> SNP, <span class="fu">aes</span>(<span class="at">x =</span> datetime,<span class="at">y =</span> cfs)) <span class="sc">+</span></span>
+<span id="cb22-2"><a href="Plotting.html#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb22-3"><a href="Plotting.html#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="at">facets =</span> <span class="st">&quot;StationID&quot;</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
 <div id="two-variable-faceting" class="section level2 hasAnchor" number="2.9">
 <h2><span class="header-section-number">2.9</span> Two variable faceting<a href="Plotting.html#two-variable-faceting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You can also use facet_grid() to break your plots up into panels based on two variables. Below we will create a panel for each month in each watershed. Adding scales = “free” allows facet_grid to change the axes. By default, all axes will be the same. This is often what we want, so we can more easily compare magnitudes, but sometimes we are looking for patterns more, so we may want to let the axes have whatever range works for the individual plots.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="Plotting.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> SNP, <span class="fu">aes</span>(<span class="at">x =</span> datetime,<span class="at">y =</span> cfs)) <span class="sc">+</span></span>
-<span id="cb18-2"><a href="Plotting.html#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb18-3"><a href="Plotting.html#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(StationID <span class="sc">~</span> month, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="Plotting.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> SNP, <span class="fu">aes</span>(<span class="at">x =</span> datetime,<span class="at">y =</span> cfs)) <span class="sc">+</span></span>
+<span id="cb23-2"><a href="Plotting.html#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb23-3"><a href="Plotting.html#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(StationID <span class="sc">~</span> month, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>)</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
 <div id="boxplots" class="section level2 hasAnchor" number="2.10">
 <h2><span class="header-section-number">2.10</span> Boxplots<a href="Plotting.html#boxplots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can look at these data in other ways as well. A very useful way to look at the variation of two groups is to use a boxplot.</p>
 <p>Because the data span several orders of magnitude, we will have to log the y axis to see the differences between the two streams. We do that by adding scale_y_log10()</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="Plotting.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> SNP, <span class="fu">aes</span>(<span class="at">x =</span> StationID, <span class="at">y =</span> cfs)) <span class="sc">+</span> </span>
-<span id="cb19-2"><a href="Plotting.html#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_boxplot</span>()<span class="sc">+</span></span>
-<span id="cb19-3"><a href="Plotting.html#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="Plotting.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> SNP, <span class="fu">aes</span>(<span class="at">x =</span> StationID, <span class="at">y =</span> cfs)) <span class="sc">+</span> </span>
+<span id="cb24-2"><a href="Plotting.html#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_boxplot</span>()<span class="sc">+</span></span>
+<span id="cb24-3"><a href="Plotting.html#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 </div>
 <div id="more-about-color-size-etc" class="section level2 hasAnchor" number="2.11">
@@ -550,16 +900,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We can control the size of points by putting size = in the aes() and color by putting color =</p>
 <p>If you use a point type that has a background, like #21, you can also set the background color using bg =</p>
 <p>If points are too close together to see them all you can use a hollow point type or set the alpha lower so the points are transparent (alpha = )</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="Plotting.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(RBI, <span class="fu">aes</span>(RBI, DRAIN_SQKM, <span class="at">size =</span> T_AVG_SITE, <span class="at">bg =</span> STATE))<span class="sc">+</span></span>
-<span id="cb20-2"><a href="Plotting.html#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">pch =</span> <span class="dv">21</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="Plotting.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(RBI, <span class="fu">aes</span>(RBI, DRAIN_SQKM, <span class="at">size =</span> T_AVG_SITE, <span class="at">bg =</span> STATE))<span class="sc">+</span></span>
+<span id="cb25-2"><a href="Plotting.html#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">pch =</span> <span class="dv">21</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>)</span></code></pre></div>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
 <div id="multiple-geoms" class="section level2 hasAnchor" number="2.12">
 <h2><span class="header-section-number">2.12</span> Multiple geoms<a href="Plotting.html#multiple-geoms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Finally: You can add multiple geoms to the same plot. Examples of when you might want to do this are when you are showing a line fit and want to show the points as well, or maybe showing a boxplot and want to show the data behind it. You simply add additional geom_… lines to add additional geoms.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="Plotting.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(RBI, <span class="fu">aes</span>(RBI, DRAIN_SQKM, <span class="at">color =</span> AGGECOREGION))<span class="sc">+</span></span>
-<span id="cb21-2"><a href="Plotting.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">linetype =</span> <span class="dv">2</span>)<span class="sc">+</span></span>
-<span id="cb21-3"><a href="Plotting.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="Plotting.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(RBI, <span class="fu">aes</span>(RBI, DRAIN_SQKM, <span class="at">color =</span> AGGECOREGION))<span class="sc">+</span></span>
+<span id="cb26-2"><a href="Plotting.html#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">linetype =</span> <span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb26-3"><a href="Plotting.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="Hydroinformatics_Bookdown_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 

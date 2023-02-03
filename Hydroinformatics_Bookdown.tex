@@ -6,8 +6,8 @@
 ]{book}
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
-\usepackage{ifxetex,ifluatex}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
@@ -33,14 +33,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={Hydroinformatics at VT},
-  pdfauthor={JP Gannon},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -109,15 +101,23 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
 \usepackage{booktabs}
-\ifluatex
+\ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Hydroinformatics at VT},
+  pdfauthor={JP Gannon},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
 \title{Hydroinformatics at VT}
 \author{JP Gannon}
-\date{2022-03-31}
+\date{2023-02-03}
 
 \begin{document}
 \maketitle
@@ -194,14 +194,35 @@ You only have to install the library once. You have to load it using the library
 \end{Shaded}
 
 \begin{verbatim}
-## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
+## Warning: package 'tidyverse' was built under R version 4.1.2
 \end{verbatim}
 
 \begin{verbatim}
-## v ggplot2 3.3.5     v purrr   0.3.4
-## v tibble  3.1.3     v dplyr   1.0.7
-## v tidyr   1.1.3     v stringr 1.4.0
-## v readr   2.0.0     v forcats 0.5.1
+## -- Attaching packages --------------------------------------- tidyverse 1.3.2 --
+## v ggplot2 3.3.6     v purrr   0.3.4
+## v tibble  3.1.8     v dplyr   1.0.9
+## v tidyr   1.2.0     v stringr 1.4.0
+## v readr   2.1.2     v forcats 0.5.1
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'ggplot2' was built under R version 4.1.2
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'tibble' was built under R version 4.1.2
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'tidyr' was built under R version 4.1.2
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'readr' was built under R version 4.1.2
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'dplyr' was built under R version 4.1.2
 \end{verbatim}
 
 \begin{verbatim}
@@ -222,11 +243,13 @@ The following lines will read in the data we will use for this exercise. Don't w
 \end{Shaded}
 
 \begin{verbatim}
-## Rows: 2160 Columns: 8-- Column specification --------------------------------------------------------
+## Rows: 2160 Columns: 8
+## -- Column specification --------------------------------------------------------
 ## Delimiter: ","
 ## chr  (2): StationID, surrogate
 ## dbl  (5): cfs, year, quarter, month, day
 ## dttm (1): datetime
+## 
 ## i Use `spec()` to retrieve the full column specification for this data.
 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
@@ -238,11 +261,13 @@ The following lines will read in the data we will use for this exercise. Don't w
 \end{Shaded}
 
 \begin{verbatim}
-## Rows: 4320 Columns: 8-- Column specification --------------------------------------------------------
+## Rows: 4320 Columns: 8
+## -- Column specification --------------------------------------------------------
 ## Delimiter: ","
 ## chr  (2): StationID, surrogate
 ## dbl  (5): cfs, year, quarter, month, day
 ## dttm (1): datetime
+## 
 ## i Use `spec()` to retrieve the full column specification for this data.
 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
@@ -254,10 +279,12 @@ The following lines will read in the data we will use for this exercise. Don't w
 \end{Shaded}
 
 \begin{verbatim}
-## Rows: 49 Columns: 26-- Column specification --------------------------------------------------------
+## Rows: 49 Columns: 26
+## -- Column specification --------------------------------------------------------
 ## Delimiter: ","
 ## chr  (4): STANAME, STATE, CLASS, AGGECOREGION
 ## dbl (22): site_no, RBI, RBIrank, DRAIN_SQKM, HUC02, LAT_GAGE, LNG_GAGE, PPTA...
+## 
 ## i Use `spec()` to retrieve the full column specification for this data.
 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
@@ -305,7 +332,7 @@ Now let's make the same plot but show the data as points, using the pch paramete
 \hypertarget{set-colors}{%
 \section{Set colors}\label{set-colors}}
 
-We can also ``easily'' change the color. Easily is in quotes because this often trips people up. If you put color = ``blue'' in the aesthetic function, think about what that is telling ggplot. It says ``control the color using''blue"". That doesn't make a whole lot of sense, so neither does the output\ldots{} Try it.
+We can also ``easily'' change the color. Easily is in quotes because this often trips people up. If you put color = ``blue'' in the aesthetic function, think about what that is telling ggplot. It says ``control the color using''blue''\,``. That doesn't make a whole lot of sense, so neither does the output\ldots{} Try it.
 
 What happens is that if color = ``blue'' is in the aesthetic, you are telling R that the color used in the geom represents ``blue''. This is very useful if you have multiple geoms in your plot, are coloring them differently, and are building a legend. But if you are just trying to color the points, it kind of feels like R is trolling you\ldots{} doesn't it?
 
@@ -554,7 +581,7 @@ Try: name \textless- ``JP'' and then name \textless- JP
 
 What happens if you forget the ending parenthesis?
 
-Try: name \textless- "JP
+Try: name \textless- ``JP
 
 R can be cryptic with it's error messages or other responses, but once you get used to them, you know exactly what is wrong when they pop up.
 
@@ -633,10 +660,12 @@ Important: read\_csv() is the tidyverse csv reading function, the base R functio
 \end{Shaded}
 
 \begin{verbatim}
-## Rows: 49 Columns: 26-- Column specification --------------------------------------------------------
+## Rows: 49 Columns: 26
+## -- Column specification --------------------------------------------------------
 ## Delimiter: ","
 ## chr  (4): STANAME, STATE, CLASS, AGGECOREGION
 ## dbl (22): site_no, RBI, RBIrank, DRAIN_SQKM, HUC02, LAT_GAGE, LNG_GAGE, PPTA...
+## 
 ## i Use `spec()` to retrieve the full column specification for this data.
 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
@@ -654,19 +683,21 @@ Good question. It's a fancy way to store data that works well with tidyverse fun
 
 \begin{verbatim}
 ## # A tibble: 6 x 26
-##   site_no    RBI RBIrank STANAME  DRAIN_SQKM HUC02 LAT_GAGE LNG_GAGE STATE CLASS
-##     <dbl>  <dbl>   <dbl> <chr>         <dbl> <dbl>    <dbl>    <dbl> <chr> <chr>
-## 1 1013500 0.0584      35 Fish Ri~     2253.      1     47.2    -68.6 ME    Ref  
-## 2 1021480 0.208      300 Old Str~       76.7     1     44.9    -67.7 ME    Ref  
-## 3 1022500 0.198      286 Narragu~      574.      1     44.6    -67.9 ME    Ref  
-## 4 1029200 0.132      183 Seboeis~      445.      1     46.1    -68.6 ME    Ref  
-## 5 1030500 0.114      147 Mattawa~     3676.      1     45.5    -68.3 ME    Ref  
-## 6 1031300 0.297      489 Piscata~      304.      1     45.3    -69.6 ME    Ref  
+##   site_no    RBI RBIrank STANAME       DRAIN~1 HUC02 LAT_G~2 LNG_G~3 STATE CLASS
+##     <dbl>  <dbl>   <dbl> <chr>           <dbl> <dbl>   <dbl>   <dbl> <chr> <chr>
+## 1 1013500 0.0584      35 Fish River n~  2253.      1    47.2   -68.6 ME    Ref  
+## 2 1021480 0.208      300 Old Stream n~    76.7     1    44.9   -67.7 ME    Ref  
+## 3 1022500 0.198      286 Narraguagus ~   574.      1    44.6   -67.9 ME    Ref  
+## 4 1029200 0.132      183 Seboeis Rive~   445.      1    46.1   -68.6 ME    Ref  
+## 5 1030500 0.114      147 Mattawamkeag~  3676.      1    45.5   -68.3 ME    Ref  
+## 6 1031300 0.297      489 Piscataquis ~   304.      1    45.3   -69.6 ME    Ref  
 ## # ... with 16 more variables: AGGECOREGION <chr>, PPTAVG_BASIN <dbl>,
 ## #   PPTAVG_SITE <dbl>, T_AVG_BASIN <dbl>, T_AVG_SITE <dbl>, T_MAX_BASIN <dbl>,
 ## #   T_MAXSTD_BASIN <dbl>, T_MAX_SITE <dbl>, T_MIN_BASIN <dbl>,
 ## #   T_MINSTD_BASIN <dbl>, T_MIN_SITE <dbl>, PET <dbl>, SNOW_PCT_PRECIP <dbl>,
-## #   PRECIP_SEAS_IND <dbl>, FLOWYRS_1990_2009 <dbl>, wy00_09 <dbl>
+## #   PRECIP_SEAS_IND <dbl>, FLOWYRS_1990_2009 <dbl>, wy00_09 <dbl>, and
+## #   abbreviated variable names 1: DRAIN_SQKM, 2: LAT_GAGE, 3: LNG_GAGE
+## # i Use `colnames()` to see all variable names
 \end{verbatim}
 
 Now read in the same data with read.csv() which will NOT read the data as a tibble. How is it different? Output each one in the Console.
@@ -768,26 +799,28 @@ Operators:\\
 
 \begin{verbatim}
 ## # A tibble: 13 x 26
-##    site_no    RBI RBIrank STANAME DRAIN_SQKM HUC02 LAT_GAGE LNG_GAGE STATE CLASS
-##      <dbl>  <dbl>   <dbl> <chr>        <dbl> <dbl>    <dbl>    <dbl> <chr> <chr>
-##  1 1013500 0.0584      35 Fish R~     2253.      1     47.2    -68.6 ME    Ref  
-##  2 1021480 0.208      300 Old St~       76.7     1     44.9    -67.7 ME    Ref  
-##  3 1022500 0.198      286 Narrag~      574.      1     44.6    -67.9 ME    Ref  
-##  4 1029200 0.132      183 Seboei~      445.      1     46.1    -68.6 ME    Ref  
-##  5 1030500 0.114      147 Mattaw~     3676.      1     45.5    -68.3 ME    Ref  
-##  6 1031300 0.297      489 Piscat~      304.      1     45.3    -69.6 ME    Ref  
-##  7 1031500 0.320      545 Piscat~      769       1     45.2    -69.3 ME    Ref  
-##  8 1037380 0.318      537 Ducktr~       39       1     44.3    -69.1 ME    Ref  
-##  9 1044550 0.242      360 Spence~      500.      1     45.3    -70.2 ME    Ref  
-## 10 1047000 0.344      608 Carrab~      909.      1     44.9    -70.0 ME    Ref  
-## 11 1054200 0.492      805 Wild R~      181       1     44.4    -71.0 ME    Ref  
-## 12 1055000 0.450      762 Swift ~      251.      1     44.6    -70.6 ME    Ref  
-## 13 1057000 0.326      561 Little~      191.      1     44.3    -70.5 ME    Ref  
+##    site_no    RBI RBIrank STANAME      DRAIN~1 HUC02 LAT_G~2 LNG_G~3 STATE CLASS
+##      <dbl>  <dbl>   <dbl> <chr>          <dbl> <dbl>   <dbl>   <dbl> <chr> <chr>
+##  1 1013500 0.0584      35 Fish River ~  2253.      1    47.2   -68.6 ME    Ref  
+##  2 1021480 0.208      300 Old Stream ~    76.7     1    44.9   -67.7 ME    Ref  
+##  3 1022500 0.198      286 Narraguagus~   574.      1    44.6   -67.9 ME    Ref  
+##  4 1029200 0.132      183 Seboeis Riv~   445.      1    46.1   -68.6 ME    Ref  
+##  5 1030500 0.114      147 Mattawamkea~  3676.      1    45.5   -68.3 ME    Ref  
+##  6 1031300 0.297      489 Piscataquis~   304.      1    45.3   -69.6 ME    Ref  
+##  7 1031500 0.320      545 Piscataquis~   769       1    45.2   -69.3 ME    Ref  
+##  8 1037380 0.318      537 Ducktrap Ri~    39       1    44.3   -69.1 ME    Ref  
+##  9 1044550 0.242      360 Spencer Str~   500.      1    45.3   -70.2 ME    Ref  
+## 10 1047000 0.344      608 Carrabasset~   909.      1    44.9   -70.0 ME    Ref  
+## 11 1054200 0.492      805 Wild River ~   181       1    44.4   -71.0 ME    Ref  
+## 12 1055000 0.450      762 Swift River~   251.      1    44.6   -70.6 ME    Ref  
+## 13 1057000 0.326      561 Little Andr~   191.      1    44.3   -70.5 ME    Ref  
 ## # ... with 16 more variables: AGGECOREGION <chr>, PPTAVG_BASIN <dbl>,
 ## #   PPTAVG_SITE <dbl>, T_AVG_BASIN <dbl>, T_AVG_SITE <dbl>, T_MAX_BASIN <dbl>,
 ## #   T_MAXSTD_BASIN <dbl>, T_MAX_SITE <dbl>, T_MIN_BASIN <dbl>,
 ## #   T_MINSTD_BASIN <dbl>, T_MIN_SITE <dbl>, PET <dbl>, SNOW_PCT_PRECIP <dbl>,
-## #   PRECIP_SEAS_IND <dbl>, FLOWYRS_1990_2009 <dbl>, wy00_09 <dbl>
+## #   PRECIP_SEAS_IND <dbl>, FLOWYRS_1990_2009 <dbl>, wy00_09 <dbl>, and
+## #   abbreviated variable names 1: DRAIN_SQKM, 2: LAT_GAGE, 3: LNG_GAGE
+## # i Use `colnames()` to see all variable names
 \end{verbatim}
 
 \hypertarget{multiple-conditions}{%
@@ -803,20 +836,22 @@ How many gages are there in Maine with an rbi greater than 0.25
 
 \begin{verbatim}
 ## # A tibble: 7 x 26
-##   site_no   RBI RBIrank STANAME   DRAIN_SQKM HUC02 LAT_GAGE LNG_GAGE STATE CLASS
-##     <dbl> <dbl>   <dbl> <chr>          <dbl> <dbl>    <dbl>    <dbl> <chr> <chr>
-## 1 1031300 0.297     489 Piscataq~       304.     1     45.3    -69.6 ME    Ref  
-## 2 1031500 0.320     545 Piscataq~       769      1     45.2    -69.3 ME    Ref  
-## 3 1037380 0.318     537 Ducktrap~        39      1     44.3    -69.1 ME    Ref  
-## 4 1047000 0.344     608 Carrabas~       909.     1     44.9    -70.0 ME    Ref  
-## 5 1054200 0.492     805 Wild Riv~       181      1     44.4    -71.0 ME    Ref  
-## 6 1055000 0.450     762 Swift Ri~       251.     1     44.6    -70.6 ME    Ref  
-## 7 1057000 0.326     561 Little A~       191.     1     44.3    -70.5 ME    Ref  
+##   site_no   RBI RBIrank STANAME        DRAIN~1 HUC02 LAT_G~2 LNG_G~3 STATE CLASS
+##     <dbl> <dbl>   <dbl> <chr>            <dbl> <dbl>   <dbl>   <dbl> <chr> <chr>
+## 1 1031300 0.297     489 Piscataquis R~    304.     1    45.3   -69.6 ME    Ref  
+## 2 1031500 0.320     545 Piscataquis R~    769      1    45.2   -69.3 ME    Ref  
+## 3 1037380 0.318     537 Ducktrap Rive~     39      1    44.3   -69.1 ME    Ref  
+## 4 1047000 0.344     608 Carrabassett ~    909.     1    44.9   -70.0 ME    Ref  
+## 5 1054200 0.492     805 Wild River at~    181      1    44.4   -71.0 ME    Ref  
+## 6 1055000 0.450     762 Swift River n~    251.     1    44.6   -70.6 ME    Ref  
+## 7 1057000 0.326     561 Little Andros~    191.     1    44.3   -70.5 ME    Ref  
 ## # ... with 16 more variables: AGGECOREGION <chr>, PPTAVG_BASIN <dbl>,
 ## #   PPTAVG_SITE <dbl>, T_AVG_BASIN <dbl>, T_AVG_SITE <dbl>, T_MAX_BASIN <dbl>,
 ## #   T_MAXSTD_BASIN <dbl>, T_MAX_SITE <dbl>, T_MIN_BASIN <dbl>,
 ## #   T_MINSTD_BASIN <dbl>, T_MIN_SITE <dbl>, PET <dbl>, SNOW_PCT_PRECIP <dbl>,
-## #   PRECIP_SEAS_IND <dbl>, FLOWYRS_1990_2009 <dbl>, wy00_09 <dbl>
+## #   PRECIP_SEAS_IND <dbl>, FLOWYRS_1990_2009 <dbl>, wy00_09 <dbl>, and
+## #   abbreviated variable names 1: DRAIN_SQKM, 2: LAT_GAGE, 3: LNG_GAGE
+## # i Use `colnames()` to see all variable names
 \end{verbatim}
 
 \hypertarget{arrange}{%
@@ -834,24 +869,26 @@ Sort the rbi data by the RBI column in ascending and then descending order
 
 \begin{verbatim}
 ## # A tibble: 49 x 26
-##    site_no    RBI RBIrank STANAME DRAIN_SQKM HUC02 LAT_GAGE LNG_GAGE STATE CLASS
-##      <dbl>  <dbl>   <dbl> <chr>        <dbl> <dbl>    <dbl>    <dbl> <chr> <chr>
-##  1 1305500 0.0464      18 SWAN R~       21.3     2     40.8    -73.0 NY    Non-~
-##  2 1013500 0.0584      35 Fish R~     2253.      1     47.2    -68.6 ME    Ref  
-##  3 1306460 0.0587      37 CONNET~       55.7     2     40.8    -73.2 NY    Non-~
-##  4 1030500 0.114      147 Mattaw~     3676.      1     45.5    -68.3 ME    Ref  
-##  5 1029200 0.132      183 Seboei~      445.      1     46.1    -68.6 ME    Ref  
-##  6 1117468 0.172      244 BEAVER~       25.3     1     41.5    -71.6 RI    Ref  
-##  7 1022500 0.198      286 Narrag~      574.      1     44.6    -67.9 ME    Ref  
-##  8 1021480 0.208      300 Old St~       76.7     1     44.9    -67.7 ME    Ref  
-##  9 1162500 0.213      311 PRIEST~       49.7     1     42.7    -72.1 MA    Ref  
-## 10 1117370 0.230      338 QUEEN ~       50.5     1     41.5    -71.6 RI    Ref  
-## # ... with 39 more rows, and 16 more variables: AGGECOREGION <chr>,
+##    site_no    RBI RBIrank STANAME      DRAIN~1 HUC02 LAT_G~2 LNG_G~3 STATE CLASS
+##      <dbl>  <dbl>   <dbl> <chr>          <dbl> <dbl>   <dbl>   <dbl> <chr> <chr>
+##  1 1305500 0.0464      18 SWAN RIVER ~    21.3     2    40.8   -73.0 NY    Non-~
+##  2 1013500 0.0584      35 Fish River ~  2253.      1    47.2   -68.6 ME    Ref  
+##  3 1306460 0.0587      37 CONNETQUOT ~    55.7     2    40.8   -73.2 NY    Non-~
+##  4 1030500 0.114      147 Mattawamkea~  3676.      1    45.5   -68.3 ME    Ref  
+##  5 1029200 0.132      183 Seboeis Riv~   445.      1    46.1   -68.6 ME    Ref  
+##  6 1117468 0.172      244 BEAVER RIVE~    25.3     1    41.5   -71.6 RI    Ref  
+##  7 1022500 0.198      286 Narraguagus~   574.      1    44.6   -67.9 ME    Ref  
+##  8 1021480 0.208      300 Old Stream ~    76.7     1    44.9   -67.7 ME    Ref  
+##  9 1162500 0.213      311 PRIEST BROO~    49.7     1    42.7   -72.1 MA    Ref  
+## 10 1117370 0.230      338 QUEEN R AT ~    50.5     1    41.5   -71.6 RI    Ref  
+## # ... with 39 more rows, 16 more variables: AGGECOREGION <chr>,
 ## #   PPTAVG_BASIN <dbl>, PPTAVG_SITE <dbl>, T_AVG_BASIN <dbl>, T_AVG_SITE <dbl>,
 ## #   T_MAX_BASIN <dbl>, T_MAXSTD_BASIN <dbl>, T_MAX_SITE <dbl>,
 ## #   T_MIN_BASIN <dbl>, T_MINSTD_BASIN <dbl>, T_MIN_SITE <dbl>, PET <dbl>,
 ## #   SNOW_PCT_PRECIP <dbl>, PRECIP_SEAS_IND <dbl>, FLOWYRS_1990_2009 <dbl>,
-## #   wy00_09 <dbl>
+## #   wy00_09 <dbl>, and abbreviated variable names 1: DRAIN_SQKM, 2: LAT_GAGE,
+## #   3: LNG_GAGE
+## # i Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 \end{verbatim}
 
 \begin{Shaded}
@@ -862,24 +899,26 @@ Sort the rbi data by the RBI column in ascending and then descending order
 
 \begin{verbatim}
 ## # A tibble: 49 x 26
-##    site_no   RBI RBIrank STANAME  DRAIN_SQKM HUC02 LAT_GAGE LNG_GAGE STATE CLASS
-##      <dbl> <dbl>   <dbl> <chr>         <dbl> <dbl>    <dbl>    <dbl> <chr> <chr>
-##  1 1311500 0.856    1017 VALLEY ~       18.1     2     40.7    -73.7 NY    Non-~
-##  2 1054200 0.492     805 Wild Ri~      181       1     44.4    -71.0 ME    Ref  
-##  3 1187300 0.487     800 HUBBARD~       53.9     1     42.0    -72.9 MA    Ref  
-##  4 1105600 0.484     797 OLD SWA~       12.7     1     42.2    -70.9 MA    Non-~
-##  5 1055000 0.450     762 Swift R~      251.      1     44.6    -70.6 ME    Ref  
-##  6 1195100 0.430     744 INDIAN ~       14.8     1     41.3    -72.5 CT    Ref  
-##  7 1181000 0.420     732 WEST BR~      244.      1     42.2    -72.9 MA    Ref  
-##  8 1350000 0.414     721 SCHOHAR~      612.      2     42.3    -74.4 NY    Ref  
-##  9 1121000 0.404     710 MOUNT H~       70.3     1     41.8    -72.2 CT    Ref  
-## 10 1169000 0.395     688 NORTH R~      231.      1     42.6    -72.7 MA    Ref  
-## # ... with 39 more rows, and 16 more variables: AGGECOREGION <chr>,
+##    site_no   RBI RBIrank STANAME       DRAIN~1 HUC02 LAT_G~2 LNG_G~3 STATE CLASS
+##      <dbl> <dbl>   <dbl> <chr>           <dbl> <dbl>   <dbl>   <dbl> <chr> <chr>
+##  1 1311500 0.856    1017 VALLEY STREA~    18.1     2    40.7   -73.7 NY    Non-~
+##  2 1054200 0.492     805 Wild River a~   181       1    44.4   -71.0 ME    Ref  
+##  3 1187300 0.487     800 HUBBARD RIVE~    53.9     1    42.0   -72.9 MA    Ref  
+##  4 1105600 0.484     797 OLD SWAMP RI~    12.7     1    42.2   -70.9 MA    Non-~
+##  5 1055000 0.450     762 Swift River ~   251.      1    44.6   -70.6 ME    Ref  
+##  6 1195100 0.430     744 INDIAN RIVER~    14.8     1    41.3   -72.5 CT    Ref  
+##  7 1181000 0.420     732 WEST BRANCH ~   244.      1    42.2   -72.9 MA    Ref  
+##  8 1350000 0.414     721 SCHOHARIE CR~   612.      2    42.3   -74.4 NY    Ref  
+##  9 1121000 0.404     710 MOUNT HOPE R~    70.3     1    41.8   -72.2 CT    Ref  
+## 10 1169000 0.395     688 NORTH RIVER ~   231.      1    42.6   -72.7 MA    Ref  
+## # ... with 39 more rows, 16 more variables: AGGECOREGION <chr>,
 ## #   PPTAVG_BASIN <dbl>, PPTAVG_SITE <dbl>, T_AVG_BASIN <dbl>, T_AVG_SITE <dbl>,
 ## #   T_MAX_BASIN <dbl>, T_MAXSTD_BASIN <dbl>, T_MAX_SITE <dbl>,
 ## #   T_MIN_BASIN <dbl>, T_MINSTD_BASIN <dbl>, T_MIN_SITE <dbl>, PET <dbl>,
 ## #   SNOW_PCT_PRECIP <dbl>, PRECIP_SEAS_IND <dbl>, FLOWYRS_1990_2009 <dbl>,
-## #   wy00_09 <dbl>
+## #   wy00_09 <dbl>, and abbreviated variable names 1: DRAIN_SQKM, 2: LAT_GAGE,
+## #   3: LNG_GAGE
+## # i Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 \end{verbatim}
 
 \hypertarget{select}{%
@@ -914,6 +953,7 @@ You can do a lot more with select, especially when you need to select a bunch of
 ##  9 Spencer Stream near Grand Falls, Maine       ME    0.242 
 ## 10 Carrabassett River near North Anson, Maine   ME    0.344 
 ## # ... with 39 more rows
+## # i Use `print(n = ...)` to see more rows
 \end{verbatim}
 
 \begin{Shaded}
@@ -924,7 +964,7 @@ You can do a lot more with select, especially when you need to select a bunch of
 
 \begin{verbatim}
 ## # A tibble: 49 x 5
-##    site_no    RBI RBIrank STANAME                                     DRAIN_SQKM
+##    site_no    RBI RBIrank STANAME                                      DRAIN_S~1
 ##      <dbl>  <dbl>   <dbl> <chr>                                            <dbl>
 ##  1 1013500 0.0584      35 Fish River near Fort Kent, Maine                2253. 
 ##  2 1021480 0.208      300 Old Stream near Wesley, Maine                     76.7
@@ -932,11 +972,12 @@ You can do a lot more with select, especially when you need to select a bunch of
 ##  4 1029200 0.132      183 Seboeis River near Shin Pond, Maine              445. 
 ##  5 1030500 0.114      147 Mattawamkeag River near Mattawamkeag, Maine     3676. 
 ##  6 1031300 0.297      489 Piscataquis River at Blanchard, Maine            304. 
-##  7 1031500 0.320      545 Piscataquis River near Dover-Foxcroft, Mai~      769  
+##  7 1031500 0.320      545 Piscataquis River near Dover-Foxcroft, Maine     769  
 ##  8 1037380 0.318      537 Ducktrap River near Lincolnville, Maine           39  
 ##  9 1044550 0.242      360 Spencer Stream near Grand Falls, Maine           500. 
 ## 10 1047000 0.344      608 Carrabassett River near North Anson, Maine       909. 
-## # ... with 39 more rows
+## # ... with 39 more rows, and abbreviated variable name 1: DRAIN_SQKM
+## # i Use `print(n = ...)` to see more rows
 \end{verbatim}
 
 \hypertarget{mutate}{%
@@ -954,24 +995,26 @@ Create a new column in rbi called T\_RANGE by subtracting T\_MIN\_SITE from T\_M
 
 \begin{verbatim}
 ## # A tibble: 49 x 27
-##    site_no    RBI RBIrank STANAME DRAIN_SQKM HUC02 LAT_GAGE LNG_GAGE STATE CLASS
-##      <dbl>  <dbl>   <dbl> <chr>        <dbl> <dbl>    <dbl>    <dbl> <chr> <chr>
-##  1 1013500 0.0584      35 Fish R~     2253.      1     47.2    -68.6 ME    Ref  
-##  2 1021480 0.208      300 Old St~       76.7     1     44.9    -67.7 ME    Ref  
-##  3 1022500 0.198      286 Narrag~      574.      1     44.6    -67.9 ME    Ref  
-##  4 1029200 0.132      183 Seboei~      445.      1     46.1    -68.6 ME    Ref  
-##  5 1030500 0.114      147 Mattaw~     3676.      1     45.5    -68.3 ME    Ref  
-##  6 1031300 0.297      489 Piscat~      304.      1     45.3    -69.6 ME    Ref  
-##  7 1031500 0.320      545 Piscat~      769       1     45.2    -69.3 ME    Ref  
-##  8 1037380 0.318      537 Ducktr~       39       1     44.3    -69.1 ME    Ref  
-##  9 1044550 0.242      360 Spence~      500.      1     45.3    -70.2 ME    Ref  
-## 10 1047000 0.344      608 Carrab~      909.      1     44.9    -70.0 ME    Ref  
-## # ... with 39 more rows, and 17 more variables: AGGECOREGION <chr>,
+##    site_no    RBI RBIrank STANAME      DRAIN~1 HUC02 LAT_G~2 LNG_G~3 STATE CLASS
+##      <dbl>  <dbl>   <dbl> <chr>          <dbl> <dbl>   <dbl>   <dbl> <chr> <chr>
+##  1 1013500 0.0584      35 Fish River ~  2253.      1    47.2   -68.6 ME    Ref  
+##  2 1021480 0.208      300 Old Stream ~    76.7     1    44.9   -67.7 ME    Ref  
+##  3 1022500 0.198      286 Narraguagus~   574.      1    44.6   -67.9 ME    Ref  
+##  4 1029200 0.132      183 Seboeis Riv~   445.      1    46.1   -68.6 ME    Ref  
+##  5 1030500 0.114      147 Mattawamkea~  3676.      1    45.5   -68.3 ME    Ref  
+##  6 1031300 0.297      489 Piscataquis~   304.      1    45.3   -69.6 ME    Ref  
+##  7 1031500 0.320      545 Piscataquis~   769       1    45.2   -69.3 ME    Ref  
+##  8 1037380 0.318      537 Ducktrap Ri~    39       1    44.3   -69.1 ME    Ref  
+##  9 1044550 0.242      360 Spencer Str~   500.      1    45.3   -70.2 ME    Ref  
+## 10 1047000 0.344      608 Carrabasset~   909.      1    44.9   -70.0 ME    Ref  
+## # ... with 39 more rows, 17 more variables: AGGECOREGION <chr>,
 ## #   PPTAVG_BASIN <dbl>, PPTAVG_SITE <dbl>, T_AVG_BASIN <dbl>, T_AVG_SITE <dbl>,
 ## #   T_MAX_BASIN <dbl>, T_MAXSTD_BASIN <dbl>, T_MAX_SITE <dbl>,
 ## #   T_MIN_BASIN <dbl>, T_MINSTD_BASIN <dbl>, T_MIN_SITE <dbl>, PET <dbl>,
 ## #   SNOW_PCT_PRECIP <dbl>, PRECIP_SEAS_IND <dbl>, FLOWYRS_1990_2009 <dbl>,
-## #   wy00_09 <dbl>, T_RANGE <dbl>
+## #   wy00_09 <dbl>, T_RANGE <dbl>, and abbreviated variable names 1: DRAIN_SQKM,
+## #   2: LAT_GAGE, 3: LNG_GAGE
+## # i Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 \end{verbatim}
 
 When downloading data from the USGS through R, you have to enter the gage ID as a character, even though they are all made up of numbers. So to practice doing this, update the site\_no column to be a character datatype
@@ -984,24 +1027,26 @@ When downloading data from the USGS through R, you have to enter the gage ID as 
 
 \begin{verbatim}
 ## # A tibble: 49 x 26
-##    site_no    RBI RBIrank STANAME DRAIN_SQKM HUC02 LAT_GAGE LNG_GAGE STATE CLASS
-##    <chr>    <dbl>   <dbl> <chr>        <dbl> <dbl>    <dbl>    <dbl> <chr> <chr>
-##  1 1013500 0.0584      35 Fish R~     2253.      1     47.2    -68.6 ME    Ref  
-##  2 1021480 0.208      300 Old St~       76.7     1     44.9    -67.7 ME    Ref  
-##  3 1022500 0.198      286 Narrag~      574.      1     44.6    -67.9 ME    Ref  
-##  4 1029200 0.132      183 Seboei~      445.      1     46.1    -68.6 ME    Ref  
-##  5 1030500 0.114      147 Mattaw~     3676.      1     45.5    -68.3 ME    Ref  
-##  6 1031300 0.297      489 Piscat~      304.      1     45.3    -69.6 ME    Ref  
-##  7 1031500 0.320      545 Piscat~      769       1     45.2    -69.3 ME    Ref  
-##  8 1037380 0.318      537 Ducktr~       39       1     44.3    -69.1 ME    Ref  
-##  9 1044550 0.242      360 Spence~      500.      1     45.3    -70.2 ME    Ref  
-## 10 1047000 0.344      608 Carrab~      909.      1     44.9    -70.0 ME    Ref  
-## # ... with 39 more rows, and 16 more variables: AGGECOREGION <chr>,
+##    site_no    RBI RBIrank STANAME      DRAIN~1 HUC02 LAT_G~2 LNG_G~3 STATE CLASS
+##    <chr>    <dbl>   <dbl> <chr>          <dbl> <dbl>   <dbl>   <dbl> <chr> <chr>
+##  1 1013500 0.0584      35 Fish River ~  2253.      1    47.2   -68.6 ME    Ref  
+##  2 1021480 0.208      300 Old Stream ~    76.7     1    44.9   -67.7 ME    Ref  
+##  3 1022500 0.198      286 Narraguagus~   574.      1    44.6   -67.9 ME    Ref  
+##  4 1029200 0.132      183 Seboeis Riv~   445.      1    46.1   -68.6 ME    Ref  
+##  5 1030500 0.114      147 Mattawamkea~  3676.      1    45.5   -68.3 ME    Ref  
+##  6 1031300 0.297      489 Piscataquis~   304.      1    45.3   -69.6 ME    Ref  
+##  7 1031500 0.320      545 Piscataquis~   769       1    45.2   -69.3 ME    Ref  
+##  8 1037380 0.318      537 Ducktrap Ri~    39       1    44.3   -69.1 ME    Ref  
+##  9 1044550 0.242      360 Spencer Str~   500.      1    45.3   -70.2 ME    Ref  
+## 10 1047000 0.344      608 Carrabasset~   909.      1    44.9   -70.0 ME    Ref  
+## # ... with 39 more rows, 16 more variables: AGGECOREGION <chr>,
 ## #   PPTAVG_BASIN <dbl>, PPTAVG_SITE <dbl>, T_AVG_BASIN <dbl>, T_AVG_SITE <dbl>,
 ## #   T_MAX_BASIN <dbl>, T_MAXSTD_BASIN <dbl>, T_MAX_SITE <dbl>,
 ## #   T_MIN_BASIN <dbl>, T_MINSTD_BASIN <dbl>, T_MIN_SITE <dbl>, PET <dbl>,
 ## #   SNOW_PCT_PRECIP <dbl>, PRECIP_SEAS_IND <dbl>, FLOWYRS_1990_2009 <dbl>,
-## #   wy00_09 <dbl>
+## #   wy00_09 <dbl>, and abbreviated variable names 1: DRAIN_SQKM, 2: LAT_GAGE,
+## #   3: LNG_GAGE
+## # i Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 \end{verbatim}
 
 \hypertarget{summarize}{%
@@ -1392,11 +1437,13 @@ To explain the importance of choosing between the mean and median, we will first
 \end{Shaded}
 
 \begin{verbatim}
-## Rows: 2160 Columns: 8-- Column specification --------------------------------------------------------
+## Rows: 2160 Columns: 8
+## -- Column specification --------------------------------------------------------
 ## Delimiter: ","
 ## chr  (2): StationID, surrogate
 ## dbl  (5): cfs, year, quarter, month, day
 ## dttm (1): datetime
+## 
 ## i Use `spec()` to retrieve the full column specification for this data.
 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
@@ -1625,8 +1672,8 @@ Which one is more skewed?
 \end{Shaded}
 
 \begin{verbatim}
-##       50% 
-## -2.242543
+##      50% 
+## -2.20295
 \end{verbatim}
 
 \hypertarget{what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one}{%
@@ -1716,7 +1763,7 @@ Compute 3 measures of spread and 2 measures of central tendency for the PINE and
 \hypertarget{getdata}{%
 \chapter{Joins, Pivots, and USGS dataRetrieval}\label{getdata}}
 
-Get this document and a version with empty code chunks at the template repository on github: \url{https://github.com/VT-Hydroinformatics/6-Get-Format-Plot-HydroData}
+Use Template Repository from github:
 
 Readings: Introduction to the dataRetrieval package \url{https://cran.r-project.org/web/packages/dataRetrieval/vignettes/dataRetrieval.html}
 
@@ -1735,7 +1782,7 @@ Chapter 12 \& 13 of R for Data Science \url{https://r4ds.had.co.nz/tidy-data.htm
   Learn about long vs.~wide data and how to change between them
 \end{itemize}
 
-Prep question: How would you get data from the USGS (non-R)?
+Prep question: How would you get data from the USGS NWIS (non-R)?
 
 Install the dataRetrieval package. Load it and the tidyverse.
 
@@ -1743,6 +1790,15 @@ Install the dataRetrieval package. Load it and the tidyverse.
 \begin{Highlighting}[]
 \CommentTok{\#install.packages("dataRetrieval")}
 \FunctionTok{library}\NormalTok{(dataRetrieval)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'dataRetrieval' was built under R version 4.1.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \FunctionTok{library}\NormalTok{(lubridate)}
 \end{Highlighting}
@@ -1761,7 +1817,7 @@ I always have to look up how to do things because the package is very specialize
 
 First, let's get information about the site using the readNWISsite() and whatNWISdata() functions. Try each out and see what they tell you.
 
-Remember, all the parameter codes and site names get passed to dataRetrieval functions as characters, ao they must be in quotes.
+Remember, all the parameter codes and site names get passed to dataRetrieval functions as characters, so they must be in quotes.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1794,7 +1850,7 @@ Remember, all the parameter codes and site names get passed to dataRetrieval fun
 ## 4           dv   00095   00003 145685         NA           wat        <NA>
 ##    srs_id access_cd begin_date   end_date count_nu
 ## 2 1645597         0 2006-12-20 2009-03-18      704
-## 3 1645423         0 1907-10-01 2022-03-30    33053
+## 3 1645423         0 1907-10-01 2023-02-02    33362
 ## 4 1646694         0 2006-12-20 2008-09-29      534
 \end{verbatim}
 
@@ -1880,7 +1936,8 @@ So in the chunk below let's get add information about the parameters in dataAvai
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{dataAvailable }\OtherTok{\textless{}{-}} \FunctionTok{left\_join}\NormalTok{(dataAvailable, parameterCdFile, }\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"parm\_cd"} \OtherTok{=} \StringTok{"parameter\_cd"}\NormalTok{))}
+\NormalTok{dataAvailable }\OtherTok{\textless{}{-}} \FunctionTok{left\_join}\NormalTok{(dataAvailable, parameterCdFile, }
+                           \AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"parm\_cd"} \OtherTok{=} \StringTok{"parameter\_cd"}\NormalTok{))}
 
 \NormalTok{dataAvailable}
 \end{Highlighting}
@@ -1901,16 +1958,16 @@ So in the chunk below let's get add information about the parameters in dataAvai
 ## 3           dv   00095   00003 145685         NA           wat        <NA>
 ##    srs_id access_cd begin_date   end_date count_nu parameter_group_nm
 ## 1 1645597         0 2006-12-20 2009-03-18      704           Physical
-## 2 1645423         0 1907-10-01 2022-03-30    33053           Physical
+## 2 1645423         0 1907-10-01 2023-02-02    33362           Physical
 ## 3 1646694         0 2006-12-20 2008-09-29      534           Physical
 ##                                                                                 parameter_nm
 ## 1                                                        Temperature, water, degrees Celsius
 ## 2                                                           Discharge, cubic feet per second
 ## 3 Specific conductance, water, unfiltered, microsiemens per centimeter at 25 degrees Celsius
 ##   casrn                  srsname parameter_units
-## 1  <NA>       Temperature, water           deg C
-## 2  <NA> Stream flow, mean. daily           ft3/s
-## 3  <NA>     Specific conductance      uS/cm @25C
+## 1             Temperature, water           deg C
+## 2       Stream flow, mean. daily           ft3/s
+## 3           Specific conductance      uS/cm @25C
 \end{verbatim}
 
 \begin{Shaded}
@@ -1935,7 +1992,7 @@ So in the chunk below let's get add information about the parameters in dataAvai
 ## 3 03171000 NEW RIVER AT RADFORD, VA   00095     Specific conductance
 ##   parameter_units begin_date   end_date
 ## 1           deg C 2006-12-20 2009-03-18
-## 2           ft3/s 1907-10-01 2022-03-30
+## 2           ft3/s 1907-10-01 2023-02-02
 ## 3      uS/cm @25C 2006-12-20 2008-09-29
 \end{verbatim}
 
@@ -1985,27 +2042,27 @@ Below we will look at two other ways to get sites: using a bounding box of a geo
 ## 20      USGS 03170000                 LITTLE RIVER AT GRAYSONTOWN, VA
 ## 21      USGS 03169500             LITTLE RIVER NEAR COPPER VALLEY, VA
 ##    site_tp_cd dec_lat_va dec_long_va colocated           queryTime
-## 1          ST   36.88873   -81.34733     FALSE 2022-03-31 11:09:19
-## 2          ST   37.18428   -81.32982     FALSE 2022-03-31 11:09:19
-## 3          ST   37.27151   -81.30482     FALSE 2022-03-31 11:09:19
-## 4          ST   37.25595   -81.28177     FALSE 2022-03-31 11:09:19
-## 5          ST   36.85984   -80.98036     FALSE 2022-03-31 11:09:19
-## 6          ST   36.75985   -80.95619     FALSE 2022-03-31 11:09:19
-## 7          ST   36.83485   -80.95258     FALSE 2022-03-31 11:09:19
-## 8          SP   36.93429   -80.90313     FALSE 2022-03-31 11:09:19
-## 9          ST   36.93095   -80.90036     FALSE 2022-03-31 11:09:19
-## 10         SP   36.93068   -80.89619     FALSE 2022-03-31 11:09:19
-## 11         ST   36.93901   -80.88730     FALSE 2022-03-31 11:09:19
-## 12         ST   37.30568   -80.84980     FALSE 2022-03-31 11:09:19
-## 13         ST   37.04734   -80.77618     FALSE 2022-03-31 11:09:19
-## 14         ST   36.93762   -80.74563     FALSE 2022-03-31 11:09:19
-## 15         ST   36.88901   -80.72757     FALSE 2022-03-31 11:09:19
-## 16         ST   37.24179   -80.71090     FALSE 2022-03-31 11:09:19
-## 17         ST   37.26818   -80.70951     FALSE 2022-03-31 11:09:19
-## 18         ST   37.28957   -80.61673     FALSE 2022-03-31 11:09:19
-## 19         ST   37.14179   -80.56922     FALSE 2022-03-31 11:09:19
-## 20         ST   37.03763   -80.55672     FALSE 2022-03-31 11:09:19
-## 21         ST   36.99652   -80.52144     FALSE 2022-03-31 11:09:19
+## 1          ST   36.88873   -81.34733     FALSE 2023-02-03 10:30:53
+## 2          ST   37.18428   -81.32982     FALSE 2023-02-03 10:30:53
+## 3          ST   37.27151   -81.30482     FALSE 2023-02-03 10:30:53
+## 4          ST   37.25595   -81.28177     FALSE 2023-02-03 10:30:53
+## 5          ST   36.85984   -80.98036     FALSE 2023-02-03 10:30:53
+## 6          ST   36.75985   -80.95619     FALSE 2023-02-03 10:30:53
+## 7          ST   36.83485   -80.95258     FALSE 2023-02-03 10:30:53
+## 8          SP   36.93429   -80.90313     FALSE 2023-02-03 10:30:53
+## 9          ST   36.93095   -80.90036     FALSE 2023-02-03 10:30:53
+## 10         SP   36.93068   -80.89619     FALSE 2023-02-03 10:30:53
+## 11         ST   36.93901   -80.88730     FALSE 2023-02-03 10:30:53
+## 12         ST   37.30568   -80.84980     FALSE 2023-02-03 10:30:53
+## 13         ST   37.04721   -80.78472     FALSE 2023-02-03 10:30:53
+## 14         ST   36.93762   -80.74563     FALSE 2023-02-03 10:30:53
+## 15         ST   36.88901   -80.72757     FALSE 2023-02-03 10:30:53
+## 16         ST   37.24179   -80.71090     FALSE 2023-02-03 10:30:53
+## 17         ST   37.26818   -80.70951     FALSE 2023-02-03 10:30:53
+## 18         ST   37.28957   -80.61673     FALSE 2023-02-03 10:30:53
+## 19         ST   37.14179   -80.56922     FALSE 2023-02-03 10:30:53
+## 20         ST   37.03763   -80.55672     FALSE 2023-02-03 10:30:53
+## 21         ST   36.99652   -80.52144     FALSE 2023-02-03 10:30:53
 \end{verbatim}
 
 \begin{Shaded}
@@ -2031,7 +2088,7 @@ siteNumber gets the sites we want to download, USGS site numbers, as a character
 
 startDate and endDate get the\ldots. start and end dates. IMPORTANT: These must be in YYY-MM-DD format, but you don't have to tell R they are dates before you give them to the function, it'll do that for you.
 
-parameterCd get the parameters you want to download. We want water temperature and discharge, which are ``00060'' and ``00010'', respectively.
+parameterCd is the parameters you want to download. We want water temperature and discharge, which are ``00060'' and ``00010'', respectively.
 
 Once we have the data, the column names correspond to the keys that identify them, for example, discharge will be 00060 something something. Fortunately the dataRetrieval package also provides ``renameNWISColumns()'' which translates these into words, making them more easily understood by humans. We can pipe the results of our download to that function after we get the data to make the column names easier to understand.
 
@@ -2105,17 +2162,17 @@ A two-dimensional object can be either long or wide. Each has it's advantages.
 
 \textbf{LONG}
 
-Each observation has it's own row. In the first image below, the table on the left is long because each measure of ``cases'' has it's own row. It's year and country are identified by a second column, and the values in that column repeat a lot. (Look at country and year in the table on the left)
+Each observation has it's own row. In the first image below, the table on the right is long because each measurement has it's own row. It's value and name are identified by a other columns, and the values in that column repeat a lot.
 
 \textbf{WIDE}
 
-Observations of different things have their own columns. In the second image below, notice in the right hand table there is a ``cases'' and ``population'' column rather than an identifier in a separate column like in the table on the left.
+Observations of different things have their own columns. In the first image below, notice in the left hand table there are ``Flow'', ``Temp'', and ``NO3'' columns rather than an identifier in a separate column like in the table on the right.
 
 \textbf{Why?}
 
 Long and wide data are more efficient for different things. Think about plotting a data set with 10 stream gages. If they are in a long format, you can just add color = Gage to your ggplot aes(). If they are in a wide format, meaning each gage has it's own column, you'd have to write a new geom for EACH gage, because they're all in separate columns.
 
-Now imagine you want to do some math to create new data: let's say cases divided by population in the second image below\ldots. How would you even do that using the data on the left? With the wide data on the right it is simply mutate(casesPERpop = cases / population).
+Now imagine you want to do some math to create new data: let's say cases NO3 multiplied by Flow\ldots. How would you even do that using the data on the right? With the wide data on the left it is simply mutate(NO3 * Flow).
 
 Finally, which table is easier to read in TABLE format (not a plot) in each of the two images below? Wide data is much more fitting for tables.
 
@@ -2151,7 +2208,9 @@ Then, subtract the two and make a plot!
 \NormalTok{swva\_wide }\OtherTok{\textless{}{-}}\NormalTok{ swva\_dat\_clean }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(station\_nm, Flow, Date) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ station\_nm, }\AttributeTok{values\_from =}\NormalTok{ Flow)}
 
-\NormalTok{swva\_wide }\OtherTok{\textless{}{-}}\NormalTok{ swva\_wide }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Radford\_Ivanhoe =} \StringTok{\textasciigrave{}}\AttributeTok{NEW RIVER AT RADFORD, VA}\StringTok{\textasciigrave{}} \SpecialCharTok{{-}} \StringTok{\textasciigrave{}}\AttributeTok{NEW RIVER AT IVANHOE, VA}\StringTok{\textasciigrave{}}\NormalTok{)}
+\NormalTok{swva\_wide }\OtherTok{\textless{}{-}}\NormalTok{ swva\_wide }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Radford\_Ivanhoe =} 
+           \StringTok{\textasciigrave{}}\AttributeTok{NEW RIVER AT RADFORD, VA}\StringTok{\textasciigrave{}} \SpecialCharTok{{-}} \StringTok{\textasciigrave{}}\AttributeTok{NEW RIVER AT IVANHOE, VA}\StringTok{\textasciigrave{}}\NormalTok{)}
 
 \FunctionTok{ggplot}\NormalTok{(swva\_wide, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Date, }\AttributeTok{y =}\NormalTok{ Radford\_Ivanhoe))}\SpecialCharTok{+}
   \FunctionTok{geom\_line}\NormalTok{()}\SpecialCharTok{+}
@@ -2164,7 +2223,9 @@ Then, subtract the two and make a plot!
 
 To further illustrate how to move between long and wide data and when to use them, let's grab some water quality data. This process will also review some of the other concepts from this topic.
 
-In the chunk below we will look to see what sites have data for nitrate and chloride in our swva bounding box from above. We will them filter them to just stream sites (leave out groundwater and springs). And finally we will download the nitrate and chloride data for those sites.
+In the chunk below we will look to see what sites have data for nitrate and chloride in our swva bounding box from above. We will then filter them to just stream sites (leave out groundwater and springs). And finally we will download the nitrate and chloride data for those sites.
+
+Note that the readWQPqw() function requires the site number to have a leading ``USGS-'' so we will add that using the paste0() function in a new column using a mutate. You could also use paste() with sep = '\,'. We will also use the resulting column when we join site information with the downloaded data in the next step.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2175,159 +2236,15 @@ In the chunk below we will look to see what sites have data for nitrate and chlo
 \NormalTok{swva\_chem\_sites }\OtherTok{\textless{}{-}} \FunctionTok{whatNWISsites}\NormalTok{(}\AttributeTok{bBox =}\NormalTok{ swva, }
                             \AttributeTok{parameterCd =}\NormalTok{ params)}
 
-\CommentTok{\#filte to just stream water}
-\NormalTok{swva\_chem\_sites }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(swva\_chem\_sites, site\_tp\_cd }\SpecialCharTok{==} \StringTok{"ST"}\NormalTok{)}
+\CommentTok{\#filter to just stream water and}
+\CommentTok{\#prep to send to readWQPqw by adding USGS{-} to site\_no}
+\NormalTok{swva\_chem\_sites }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(swva\_chem\_sites, site\_tp\_cd }\SpecialCharTok{==} \StringTok{"ST"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+                   \FunctionTok{mutate}\NormalTok{(}\AttributeTok{site\_no\_USGS =} \FunctionTok{paste0}\NormalTok{(}\StringTok{"USGS{-}"}\NormalTok{, site\_no))}
 
-\NormalTok{wqdat }\OtherTok{\textless{}{-}} \FunctionTok{readNWISqw}\NormalTok{(}\AttributeTok{siteNumber =}\NormalTok{ swva\_chem\_sites}\SpecialCharTok{$}\NormalTok{site\_no, }
+\NormalTok{wqdat }\OtherTok{\textless{}{-}} \FunctionTok{readWQPqw}\NormalTok{(}\AttributeTok{siteNumber =}\NormalTok{ swva\_chem\_sites}\SpecialCharTok{$}\NormalTok{site\_no\_USGS, }
                     \AttributeTok{parameterCd =}\NormalTok{ params)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## Warning: NWIS qw web services are being retired. Please see the vignette 
-## 'Changes to NWIS QW services' for more information.
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{comment}\NormalTok{(wqdat)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##   [1] "#"                                                                                                                                            
-##   [2] "# File created on 2022-03-31 11:09:24 EDT"                                                                                                    
-##   [3] "#"                                                                                                                                            
-##   [4] "# U.S. Geological Survey"                                                                                                                     
-##   [5] "# "                                                                                                                                           
-##   [6] "# This file contains selected water-quality data for stations in the National Water "                                                         
-##   [7] "# Information System water-quality database.  Explanation of codes found in this file are "                                                   
-##   [8] "# followed by the retrieved data. "                                                                                                           
-##   [9] "#"                                                                                                                                            
-##  [10] "# The data you have secured from the USGS NWISWeb database may include data that have "                                                       
-##  [11] "# not received Director's approval and as such are provisional and subject to revision. "                                                     
-##  [12] "# The data are released on the condition that neither the USGS nor the United States "                                                        
-##  [13] "# Government may be held liable for any damages resulting from its authorized or "                                                            
-##  [14] "# unauthorized use."                                                                                                                          
-##  [15] "#"                                                                                                                                            
-##  [16] "# To view additional data-quality attributes, output the results using these options:  "                                                      
-##  [17] "# one result per row, expanded attributes.  Additional precautions are at:"                                                                   
-##  [18] "# https://help.waterdata.usgs.gov/tutorials/water-quality-data/help-using-the-water-quality-data-retrieval-system#Data_retrievals_precautions"
-##  [19] "#"                                                                                                                                            
-##  [20] "#  agency_cd                  - Agency Code"                                                                                                  
-##  [21] "#  site_no                    - USGS site number"                                                                                             
-##  [22] "#  sample_dt                  - Begin date"                                                                                                   
-##  [23] "#  sample_tm                  - Begin time"                                                                                                   
-##  [24] "#  sample_end_dt              - End date"                                                                                                     
-##  [25] "#  sample_end_tm              - End time"                                                                                                     
-##  [26] "#  sample_start_time_datum_cd - Time datum"                                                                                                   
-##  [27] "#  tm_datum_rlbty_cd          - Time datum reliability code"                                                                                  
-##  [28] "#  coll_ent_cd                - Agency Collecting Sample Code"                                                                                
-##  [29] "#  medium_cd                  - Sample Medium Code"                                                                                           
-##  [30] "#  project_cd                 - Project code"                                                                                                 
-##  [31] "#  aqfr_cd                    - Geologic unit code"                                                                                           
-##  [32] "#  tu_id                      - Taxonomic unit code"                                                                                          
-##  [33] "#  body_part_id               - Body part code"                                                                                               
-##  [34] "#  hyd_cond_cd                - Hydrologic Cond Code"                                                                                         
-##  [35] "#  samp_type_cd               - Sample Type Code"                                                                                             
-##  [36] "#  hyd_event_cd               - Hydrologic Event Code"                                                                                        
-##  [37] "#  sample_lab_cm_tx           - Message from lab"                                                                                             
-##  [38] "#  parm_cd                    - Parameter code"                                                                                               
-##  [39] "#  remark_cd                  - Remark code"                                                                                                  
-##  [40] "#  result_va                  - Parameter value"                                                                                              
-##  [41] "#  val_qual_tx                - Result value qualifier code"                                                                                  
-##  [42] "#  meth_cd                    - Method code"                                                                                                  
-##  [43] "#  dqi_cd                     - Data-quality indicator code"                                                                                  
-##  [44] "#  rpt_lev_va                 - Reporting level"                                                                                              
-##  [45] "#  rpt_lev_cd                 - Reporting level type"                                                                                         
-##  [46] "#  lab_std_va                 - Lab standard deviation"                                                                                       
-##  [47] "#  prep_set_no                - Prep set number"                                                                                              
-##  [48] "#  prep_dt                    - Result prep date"                                                                                             
-##  [49] "#  anl_set_no                 - Analysis set number"                                                                                          
-##  [50] "#  anl_dt                     - Result analysis date"                                                                                         
-##  [51] "#  result_lab_cm_tx           - Lab result comment"                                                                                           
-##  [52] "#  anl_ent_cd                 - Analyzing entity code"                                                                                        
-##  [53] "#"                                                                                                                                            
-##  [54] "# The following parameters are included:"                                                                                                     
-##  [55] "#  00940  - Chloride, water, filtered, milligrams per liter"                                                                                  
-##  [56] "#  71851  - Nitrate, water, filtered, milligrams per liter as nitrate"                                                                        
-##  [57] "#"                                                                                                                                            
-##  [58] "# Description of sample_start_time_datum_cd:"                                                                                                 
-##  [59] "# EST  - Eastern Standard Time"                                                                                                               
-##  [60] "# EDT  - Eastern Daylight Time"                                                                                                               
-##  [61] "#"                                                                                                                                            
-##  [62] "# Description of tm_datum_rlbty_cd:"                                                                                                          
-##  [63] "# K  - Known"                                                                                                                                 
-##  [64] "# T  - Transferred"                                                                                                                           
-##  [65] "#"                                                                                                                                            
-##  [66] "# Description of coll_ent_cd and anl_ent_cd:"                                                                                                 
-##  [67] "# USGS-WRD  - U.S. Geological Survey-Water Resources Discipline"                                                                              
-##  [68] "# USGS-NYL  - USGS-NY WSC Low Ionic Strength Lab,Troy(formerly Albany)"                                                                       
-##  [69] "#"                                                                                                                                            
-##  [70] "# Description of medium_cd:"                                                                                                                  
-##  [71] "# WS  - Surface water"                                                                                                                        
-##  [72] "#"                                                                                                                                            
-##  [73] "# Description of aqfr_cd:"                                                                                                                    
-##  [74] "#"                                                                                                                                            
-##  [75] "# Description of tu_id:"                                                                                                                      
-##  [76] "# https://www.itis.gov/"                                                                                                                      
-##  [77] "#"                                                                                                                                            
-##  [78] "# Description of body_part_id:"                                                                                                               
-##  [79] "#"                                                                                                                                            
-##  [80] "# Description of hyd_cond_cd:"                                                                                                                
-##  [81] "# 4  - Stable, low stage"                                                                                                                     
-##  [82] "# 5  - Falling stage"                                                                                                                         
-##  [83] "# 6  - Stable, high stage"                                                                                                                    
-##  [84] "# 8  - Rising stage"                                                                                                                          
-##  [85] "# 9  - Stable, normal stage"                                                                                                                  
-##  [86] "# A  - Not determined"                                                                                                                        
-##  [87] "#"                                                                                                                                            
-##  [88] "# Description of samp_type_cd:"                                                                                                               
-##  [89] "# 7  - Replicate"                                                                                                                             
-##  [90] "# 9  - Regular"                                                                                                                               
-##  [91] "#"                                                                                                                                            
-##  [92] "# Description of hyd_event_cd:"                                                                                                               
-##  [93] "# 9  - Routine sample"                                                                                                                        
-##  [94] "#"                                                                                                                                            
-##  [95] "# Description of remark_cd:"                                                                                                                  
-##  [96] "#"                                                                                                                                            
-##  [97] "# Description of val_qual_tx:"                                                                                                                
-##  [98] "#"                                                                                                                                            
-##  [99] "# Description of meth_cd:"                                                                                                                    
-## [100] "# ALGOR  - Computation by NWIS algorithm"                                                                                                     
-## [101] "# CL031  - Chloride, wf, ASF thiocyanate"                                                                                                     
-## [102] "# IC022  - Anions, wf, IC"                                                                                                                    
-## [103] "# IC034  - Anions, wf, IC (USGS-NYL)"                                                                                                         
-## [104] "#"                                                                                                                                            
-## [105] "# Description of dqi_cd:"                                                                                                                     
-## [106] "# A  - Historical data"                                                                                                                       
-## [107] "# R  - Reviewed and approved"                                                                                                                 
-## [108] "#"                                                                                                                                            
-## [109] "# Description of rpt_lev_cd:"                                                                                                                 
-## [110] "# MRL  - Minimum reporting level"                                                                                                             
-## [111] "#"                                                                                                                                            
-## [112] "# Data for the following sites are included:"                                                                                                 
-## [113] "#  USGS 03165500 NEW RIVER AT IVANHOE, VA"                                                                                                    
-## [114] "#  USGS 03167000 REED CREEK AT GRAHAMS FORGE, VA"                                                                                             
-## [115] "#  USGS 03167500 BIG REED ISLAND CREEK NEAR ALLISONIA, VA"                                                                                    
-## [116] "#  USGS 03168000 NEW RIVER AT ALLISONIA, VA"                                                                                                  
-## [117] "#  USGS 03168500 PEAK CREEK AT PULASKI, VA"                                                                                                   
-## [118] "#  USGS 03170000 LITTLE RIVER AT GRAYSONTOWN, VA"                                                                                             
-## [119] "#  USGS 03171000 NEW RIVER AT RADFORD, VA"                                                                                                    
-## [120] "#  USGS 03171500 NEW RIVER AT EGGLESTON, VA"                                                                                                  
-## [121] "#  USGS 03172500 WALKER CREEK AT STAFFORDSVILLE, VA"                                                                                          
-## [122] "#  USGS 03173000 WALKER CREEK AT BANE, VA"                                                                                                    
-## [123] "#  USGS 03175500 WOLF CREEK NEAR NARROWS, VA"                                                                                                 
-## [124] "#  USGS 03473500 M F HOLSTON RIVER AT GROSECLOSE, VA"                                                                                         
-## [125] "#  USGS 371852081031201 006.0 EAST RIVER NEAR ENGLESIDE, W. VA."                                                                              
-## [126] "#  USGS 370853081003801 AT 23045 UNNAMED EPHEMERAL TRIB TO WALKER CREEK VA"                                                                   
-## [127] "#  USGS 370941081005201 AT 23045.5 UNNAMED INTERMIT TRIB TO KIMBERLING CR"                                                                    
-## [128] "#  USGS 370847081055101 AT 23046 KIMBERLING CREEK VA"                                                                                         
-## [129] "#  USGS 371250080511401 AT 22014 DISMAL CREEK VA"                                                                                             
-## [130] "#  USGS 370534081144701 AT 22013 HUNTING CAMP CREEK VA"                                                                                       
-## [131] "#  USGS 370603081120801 AT 22013.5 LAUREL CR AT MOUTH OF LITTLE WOLF CR VA"                                                                   
-## [132] "#"
-\end{verbatim}
 
 Now, let's clean things up a bit.
 
@@ -2338,13 +2255,15 @@ To illustrate the functionality of the data in this format, plot Chloride for ea
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{wqdat\_clean }\OtherTok{\textless{}{-}}\NormalTok{ wqdat }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{left\_join}\NormalTok{(parameterCdFile, }\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"parm\_cd"} \OtherTok{=} \StringTok{"parameter\_cd"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{left\_join}\NormalTok{(swva\_chem\_sites, }\AttributeTok{by =} \StringTok{"site\_no"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{select}\NormalTok{(station\_nm, sample\_dt, sample\_tm, result\_va, srsname, parameter\_units) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{left\_join}\NormalTok{(swva\_chem\_sites, }
+            \AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"MonitoringLocationIdentifier"} \OtherTok{=} \StringTok{"site\_no\_USGS"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(MonitoringLocationIdentifier, ActivityStartDate,}
+\NormalTok{         CharacteristicName, ResultMeasure.MeasureUnitCode, }
+\NormalTok{         station\_nm, ResultMeasureValue) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{filter}\NormalTok{(}\FunctionTok{str\_detect}\NormalTok{(station\_nm, }\StringTok{"NEW RIVER"}\NormalTok{))}
   
-\NormalTok{wqdat\_clean }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(srsname }\SpecialCharTok{==} \StringTok{"Chloride"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ sample\_dt, }\AttributeTok{y =}\NormalTok{ result\_va, }\AttributeTok{color =}\NormalTok{ station\_nm)) }\SpecialCharTok{+}
+\NormalTok{wqdat\_clean }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(CharacteristicName }\SpecialCharTok{==} \StringTok{"Chloride"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ ActivityStartDate, }\AttributeTok{y =}\NormalTok{ ResultMeasureValue, }\AttributeTok{color =}\NormalTok{ station\_nm)) }\SpecialCharTok{+}
   \FunctionTok{geom\_point}\NormalTok{()}\SpecialCharTok{+}
   \FunctionTok{ylab}\NormalTok{(}\StringTok{"Chloride (mg/L)"}\NormalTok{)}\SpecialCharTok{+}
   \FunctionTok{xlab}\NormalTok{(}\FunctionTok{element\_blank}\NormalTok{())}\SpecialCharTok{+}
@@ -2358,9 +2277,9 @@ To illustrate the functionality of the data in this format, plot Chloride for ea
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{wqdat\_clean }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ sample\_dt, }\AttributeTok{y =}\NormalTok{ result\_va, }\AttributeTok{color =}\NormalTok{ station\_nm)) }\SpecialCharTok{+}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ ActivityStartDate, }\AttributeTok{y =}\NormalTok{ ResultMeasureValue, }\AttributeTok{color =}\NormalTok{ station\_nm)) }\SpecialCharTok{+}
   \FunctionTok{geom\_point}\NormalTok{()}\SpecialCharTok{+}
-  \FunctionTok{facet\_wrap}\NormalTok{(}\AttributeTok{facets =} \StringTok{"srsname"}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\AttributeTok{facets =} \StringTok{"CharacteristicName"}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{)}\SpecialCharTok{+}
   \FunctionTok{ylab}\NormalTok{(}\StringTok{"Concentration (mg/L)"}\NormalTok{)}\SpecialCharTok{+}
   \FunctionTok{xlab}\NormalTok{(}\FunctionTok{element\_blank}\NormalTok{())}\SpecialCharTok{+}
   \FunctionTok{labs}\NormalTok{(}\AttributeTok{color =} \StringTok{"Site"}\NormalTok{)}\SpecialCharTok{+}
@@ -2372,7 +2291,7 @@ To illustrate the functionality of the data in this format, plot Chloride for ea
 
 Now let's say we want to calculate something with chloride and nitrate. We need to make the data wide so we have a nitrate column and a chloride column. Do that below. What goes into values\_from? what goes into names\_from?
 
-Next, plot Chloride + Nitrate. Could you do this with the data in the previous format?
+Next, plot Chloride and Nitrate added together (Chloride + Nitrate). Could you do this with the data in the previous format?
 
 Finally, use pivot\_longer to transform the data back into a long format. Often you'll get data in a wide format and need to convert it to long, and we haven't tried that yet. The only argument you'll need to pass to pivot\_longer() in this case is to tell it what columns to turn into the new DATA column (using the cols = ) parameter.
 
@@ -2380,16 +2299,17 @@ Finally, use pivot\_longer to transform the data back into a long format. Often 
 \begin{Highlighting}[]
 \CommentTok{\#make wqdat\_clean wide}
 
-\NormalTok{wqdat\_wide }\OtherTok{\textless{}{-}}\NormalTok{ wqdat\_clean }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{parameter\_units) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{values\_from =}\NormalTok{ result\_va, }\AttributeTok{names\_from =}\NormalTok{ srsname)}
+\NormalTok{wqdat\_wide }\OtherTok{\textless{}{-}}\NormalTok{ wqdat\_clean }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{ResultMeasure.MeasureUnitCode) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{values\_from =}\NormalTok{ ResultMeasureValue, }\AttributeTok{names\_from =}\NormalTok{ CharacteristicName)}
 
-\FunctionTok{ggplot}\NormalTok{(wqdat\_wide, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ sample\_dt, }\AttributeTok{y =}\NormalTok{ Chloride }\SpecialCharTok{+}\NormalTok{ Nitrate)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{()}
+\FunctionTok{ggplot}\NormalTok{(wqdat\_wide, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ ActivityStartDate, }\AttributeTok{y =}\NormalTok{ Chloride }\SpecialCharTok{+}\NormalTok{ Nitrate)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}\SpecialCharTok{+}
+  \FunctionTok{theme\_classic}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## Warning: Removed 106 rows containing missing values (geom_point).
+## Warning: Removed 104 rows containing missing values (geom_point).
 \end{verbatim}
 
 \includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-67-1.pdf}
@@ -4430,9 +4350,11 @@ Then we will plot the points just to make sure they show up where we expect.
 \end{Shaded}
 
 \begin{verbatim}
-## Rows: 3 Columns: 2-- Column specification --------------------------------------------------------
+## Rows: 3 Columns: 2
+## -- Column specification --------------------------------------------------------
 ## Delimiter: ","
 ## dbl (2): lon, lat
+## 
 ## i Use `spec()` to retrieve the full column specification for this data.
 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
@@ -4967,10 +4889,10 @@ The following code is here just because it is cool. We clip the DEM to the water
 
 \begin{verbatim}
 ## Warning in snapshot3d(scene = x, width = width, height = height): webshot = TRUE
-## requires the webshot2 package; using rgl.snapshot() instead
+## requires the webshot2 package and Chrome browser; using rgl.snapshot() instead
 \end{verbatim}
 
-\includegraphics[width=6.5in]{/var/folders/rl/dzfg1s7j2zv_5xqhl3ls1yl80000gn/T//RtmpmWE7VL/file158d66687080f}
+\includegraphics[width=6.5in]{../../../../../../private/var/folders/rl/dzfg1s7j2zv_5xqhl3ls1yl80000gn/T/RtmpTyW6M5/file432c1cb01fc3}
 
 \hypertarget{modelingintro}{%
 \chapter{Intro to Modeling - Getting Started with HBV}\label{modelingintro}}
@@ -5070,9 +4992,11 @@ Then we will pull out just the data, so it can be passed to the model.
 \end{Shaded}
 
 \begin{verbatim}
-## Rows: 1461 Columns: 10-- Column specification --------------------------------------------------------
+## Rows: 1461 Columns: 10
+## -- Column specification --------------------------------------------------------
 ## Delimiter: ","
 ## dbl (10): DATE, WS_1, WS_2, WS_3, WS_4, WS_5, WS_6, WS_7, WS_8, WS_9
+## 
 ## i Use `spec()` to retrieve the full column specification for this data.
 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
@@ -5090,9 +5014,11 @@ Then we will pull out just the data, so it can be passed to the model.
 \end{Shaded}
 
 \begin{verbatim}
-## Rows: 1461 Columns: 9-- Column specification --------------------------------------------------------
+## Rows: 1461 Columns: 9
+## -- Column specification --------------------------------------------------------
 ## Delimiter: ","
 ## dbl (9): DATE, STA_1, STA_6, STA_14, STA_INT, STA_HQ, STA_23, STA_17, STA_24
+## 
 ## i Use `spec()` to retrieve the full column specification for this data.
 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
@@ -5141,13 +5067,21 @@ Okay, so now we have our data set up. Next we need to talk parameters.
 The table below shows the parameters of the HBV model, the minimum and maximum for those values, and a description of their function in the model.
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.32}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.18}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.15}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.35}}@{}}
-\toprule
-Object Name & Min & Max & Description \\
-\midrule
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3235}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1765}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1471}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3529}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Object Name
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Min
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Max
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} \\
+\midrule()
 \endhead
 FC & 40 & 400 & Max soil moisture storage, field capacity \\
 beta & 1 & 6 & Shape coefficient governing fate of water input to soil moisture storage \\
@@ -5160,8 +5094,8 @@ k1 & 0.01 & 0.3 & Recession constant (upper storage) \\
 k2 & 0.001 & 0.15 & Recession constant (lower storage) \\
 UZL & 0 & 70 & Threshold for shallow storage \\
 PERC & 0 & 4 & Percolation, max flow from upper to lower storage \\
-MAXBAS & 1 & 3 & base of the triangular routing function, days" \\
-\bottomrule
+MAXBAS & 1 & 3 & base of the triangular routing function, days'' \\
+\bottomrule()
 \end{longtable}
 
 To pass a set of parameters to the model, we just put them into a single vector in the order they are in the table above. In the chunk below, I've structured this to make it easy to see a description of each parameter, but you could also just do it in one line without all the comments. Just be sure to get the order right!
@@ -5242,9 +5176,11 @@ NOTE: These data are all nicely processed. They have the same temporal resolutio
 \end{Shaded}
 
 \begin{verbatim}
-## Rows: 1461 Columns: 10-- Column specification --------------------------------------------------------
+## Rows: 1461 Columns: 10
+## -- Column specification --------------------------------------------------------
 ## Delimiter: ","
 ## dbl (10): DATE, WS_1, WS_2, WS_3, WS_4, WS_5, WS_6, WS_7, WS_8, WS_9
+## 
 ## i Use `spec()` to retrieve the full column specification for this data.
 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
@@ -5353,19 +5289,16 @@ Snow is not measured daily, so we will plot the measured values as points. Likew
 
 \begin{verbatim}
 ## New names:
-## * `` -> ...23
-## * `` -> ...24
-## * `` -> ...25
-\end{verbatim}
-
-\begin{verbatim}
-## Rows: 76 Columns: 25-- Column specification --------------------------------------------------------
-## Delimiter: ","
-## chr  (1): DATE
-## dbl (21): STA1, STA2, STA3, STA4, STA5, STA6, STA7, STA8, STA9, STA10, STA11...
-## lgl  (3): ...23, ...24, ...25
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+## Rows: 76 Columns: 25
+## -- Column specification
+## -------------------------------------------------------- Delimiter: "," chr
+## (1): DATE dbl (21): STA1, STA2, STA3, STA4, STA5, STA6, STA7, STA8, STA9,
+## STA10, STA11... lgl (3): ...23, ...24, ...25
+## i Use `spec()` to retrieve the full column specification for this data. i
+## Specify the column types or set `show_col_types = FALSE` to quiet this message.
+## * `` -> `...23`
+## * `` -> `...24`
+## * `` -> `...25`
 \end{verbatim}
 
 \begin{verbatim}
@@ -5594,9 +5527,11 @@ Since we did this in the last chapter, we are just going to quickly run the code
 \end{Shaded}
 
 \begin{verbatim}
-## Rows: 1461 Columns: 10-- Column specification --------------------------------------------------------
+## Rows: 1461 Columns: 10
+## -- Column specification --------------------------------------------------------
 ## Delimiter: ","
 ## dbl (10): DATE, WS_1, WS_2, WS_3, WS_4, WS_5, WS_6, WS_7, WS_8, WS_9
+## 
 ## i Use `spec()` to retrieve the full column specification for this data.
 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
@@ -5614,9 +5549,11 @@ Since we did this in the last chapter, we are just going to quickly run the code
 \end{Shaded}
 
 \begin{verbatim}
-## Rows: 1461 Columns: 10-- Column specification --------------------------------------------------------
+## Rows: 1461 Columns: 10
+## -- Column specification --------------------------------------------------------
 ## Delimiter: ","
 ## dbl (10): DATE, WS_1, WS_2, WS_3, WS_4, WS_5, WS_6, WS_7, WS_8, WS_9
+## 
 ## i Use `spec()` to retrieve the full column specification for this data.
 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
@@ -5634,9 +5571,11 @@ Since we did this in the last chapter, we are just going to quickly run the code
 \end{Shaded}
 
 \begin{verbatim}
-## Rows: 1461 Columns: 9-- Column specification --------------------------------------------------------
+## Rows: 1461 Columns: 9
+## -- Column specification --------------------------------------------------------
 ## Delimiter: ","
 ## dbl (9): DATE, STA_1, STA_6, STA_14, STA_INT, STA_HQ, STA_23, STA_17, STA_24
+## 
 ## i Use `spec()` to retrieve the full column specification for this data.
 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
@@ -5655,16 +5594,16 @@ Since we did this in the last chapter, we are just going to quickly run the code
 
 \begin{verbatim}
 ## New names:
-## * `` -> ...23
-## * `` -> ...24
-## * `` -> ...25
-## Rows: 76 Columns: 25-- Column specification --------------------------------------------------------
-## Delimiter: ","
-## chr  (1): DATE
-## dbl (21): STA1, STA2, STA3, STA4, STA5, STA6, STA7, STA8, STA9, STA10, STA11...
-## lgl  (3): ...23, ...24, ...25
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+## Rows: 76 Columns: 25
+## -- Column specification
+## -------------------------------------------------------- Delimiter: "," chr
+## (1): DATE dbl (21): STA1, STA2, STA3, STA4, STA5, STA6, STA7, STA8, STA9,
+## STA10, STA11... lgl (3): ...23, ...24, ...25
+## i Use `spec()` to retrieve the full column specification for this data. i
+## Specify the column types or set `show_col_types = FALSE` to quiet this message.
+## * `` -> `...23`
+## * `` -> `...24`
+## * `` -> `...25`
 \end{verbatim}
 
 \begin{verbatim}
@@ -5705,13 +5644,21 @@ Below is a table of the parameters for the HBV model and their suggested min and
 You can do this by generating the set of parameters each time you run the model, but we are going to do it separately so we can see the Nashe-Sutcliff efficiency (NSE) for each set of parameters.
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.32}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.18}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.15}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.35}}@{}}
-\toprule
-Object Name & Min & Max & Description \\
-\midrule
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3235}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1765}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1471}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3529}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Object Name
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Min
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Max
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} \\
+\midrule()
 \endhead
 FC & 40 & 400 & Max soil moisture storage, field capacity \\
 beta & 1 & 6 & Shape coefficient governing fate of water input to soil moisture storage \\
@@ -5724,8 +5671,8 @@ k1 & 0.01 & 0.3 & Recession constant (upper storage) \\
 k2 & 0.001 & 0.15 & Recession constant (lower storage) \\
 UZL & 0 & 70 & Threshold for shallow storage \\
 PERC & 0 & 4 & Percolation, max flow from upper to lower storage \\
-MAXBAS & 1 & 3 & base of the triangular routing function, days" \\
-\bottomrule
+MAXBAS & 1 & 3 & base of the triangular routing function, days'' \\
+\bottomrule()
 \end{longtable}
 
 To make our parameter sets, we first have to decide how many model runs we want to try. Let's try 100 so we don't burn down anyone's computer.
@@ -5886,15 +5833,13 @@ How much difference was there in NSE in the top 100 runs of the 100,000 run set?
 
 \begin{verbatim}
 ## New names:
-## * `` -> ...1
-\end{verbatim}
-
-\begin{verbatim}
-## Rows: 100 Columns: 15-- Column specification --------------------------------------------------------
-## Delimiter: ","
-## dbl (15): ...1, FC, beta, LP, SFCF, TT, CFMAX, k0, k1, k2, UZL, PERC, MAXBAS...
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+## Rows: 100 Columns: 15
+## -- Column specification
+## -------------------------------------------------------- Delimiter: "," dbl
+## (15): ...1, FC, beta, LP, SFCF, TT, CFMAX, k0, k1, k2, UZL, PERC, MAXBAS...
+## i Use `spec()` to retrieve the full column specification for this data. i
+## Specify the column types or set `show_col_types = FALSE` to quiet this message.
+## * `` -> `...1`
 \end{verbatim}
 
 \begin{Shaded}
