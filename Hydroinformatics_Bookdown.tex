@@ -117,7 +117,7 @@
 
 \title{Hydroinformatics at VT}
 \author{JP Gannon}
-\date{2023-02-03}
+\date{2023-02-06}
 
 \begin{document}
 \maketitle
@@ -1672,8 +1672,8 @@ Which one is more skewed?
 \end{Shaded}
 
 \begin{verbatim}
-##      50% 
-## -2.20295
+##       50% 
+## -1.933978
 \end{verbatim}
 
 \hypertarget{what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one}{%
@@ -1850,7 +1850,7 @@ Remember, all the parameter codes and site names get passed to dataRetrieval fun
 ## 4           dv   00095   00003 145685         NA           wat        <NA>
 ##    srs_id access_cd begin_date   end_date count_nu
 ## 2 1645597         0 2006-12-20 2009-03-18      704
-## 3 1645423         0 1907-10-01 2023-02-02    33362
+## 3 1645423         0 1907-10-01 2023-02-05    33365
 ## 4 1646694         0 2006-12-20 2008-09-29      534
 \end{verbatim}
 
@@ -1958,7 +1958,7 @@ So in the chunk below let's get add information about the parameters in dataAvai
 ## 3           dv   00095   00003 145685         NA           wat        <NA>
 ##    srs_id access_cd begin_date   end_date count_nu parameter_group_nm
 ## 1 1645597         0 2006-12-20 2009-03-18      704           Physical
-## 2 1645423         0 1907-10-01 2023-02-02    33362           Physical
+## 2 1645423         0 1907-10-01 2023-02-05    33365           Physical
 ## 3 1646694         0 2006-12-20 2008-09-29      534           Physical
 ##                                                                                 parameter_nm
 ## 1                                                        Temperature, water, degrees Celsius
@@ -1992,7 +1992,7 @@ So in the chunk below let's get add information about the parameters in dataAvai
 ## 3 03171000 NEW RIVER AT RADFORD, VA   00095     Specific conductance
 ##   parameter_units begin_date   end_date
 ## 1           deg C 2006-12-20 2009-03-18
-## 2           ft3/s 1907-10-01 2023-02-02
+## 2           ft3/s 1907-10-01 2023-02-05
 ## 3      uS/cm @25C 2006-12-20 2008-09-29
 \end{verbatim}
 
@@ -2042,27 +2042,27 @@ Below we will look at two other ways to get sites: using a bounding box of a geo
 ## 20      USGS 03170000                 LITTLE RIVER AT GRAYSONTOWN, VA
 ## 21      USGS 03169500             LITTLE RIVER NEAR COPPER VALLEY, VA
 ##    site_tp_cd dec_lat_va dec_long_va colocated           queryTime
-## 1          ST   36.88873   -81.34733     FALSE 2023-02-03 10:30:53
-## 2          ST   37.18428   -81.32982     FALSE 2023-02-03 10:30:53
-## 3          ST   37.27151   -81.30482     FALSE 2023-02-03 10:30:53
-## 4          ST   37.25595   -81.28177     FALSE 2023-02-03 10:30:53
-## 5          ST   36.85984   -80.98036     FALSE 2023-02-03 10:30:53
-## 6          ST   36.75985   -80.95619     FALSE 2023-02-03 10:30:53
-## 7          ST   36.83485   -80.95258     FALSE 2023-02-03 10:30:53
-## 8          SP   36.93429   -80.90313     FALSE 2023-02-03 10:30:53
-## 9          ST   36.93095   -80.90036     FALSE 2023-02-03 10:30:53
-## 10         SP   36.93068   -80.89619     FALSE 2023-02-03 10:30:53
-## 11         ST   36.93901   -80.88730     FALSE 2023-02-03 10:30:53
-## 12         ST   37.30568   -80.84980     FALSE 2023-02-03 10:30:53
-## 13         ST   37.04721   -80.78472     FALSE 2023-02-03 10:30:53
-## 14         ST   36.93762   -80.74563     FALSE 2023-02-03 10:30:53
-## 15         ST   36.88901   -80.72757     FALSE 2023-02-03 10:30:53
-## 16         ST   37.24179   -80.71090     FALSE 2023-02-03 10:30:53
-## 17         ST   37.26818   -80.70951     FALSE 2023-02-03 10:30:53
-## 18         ST   37.28957   -80.61673     FALSE 2023-02-03 10:30:53
-## 19         ST   37.14179   -80.56922     FALSE 2023-02-03 10:30:53
-## 20         ST   37.03763   -80.55672     FALSE 2023-02-03 10:30:53
-## 21         ST   36.99652   -80.52144     FALSE 2023-02-03 10:30:53
+## 1          ST   36.88873   -81.34733     FALSE 2023-02-06 14:55:03
+## 2          ST   37.18428   -81.32982     FALSE 2023-02-06 14:55:03
+## 3          ST   37.27151   -81.30482     FALSE 2023-02-06 14:55:03
+## 4          ST   37.25595   -81.28177     FALSE 2023-02-06 14:55:03
+## 5          ST   36.85984   -80.98036     FALSE 2023-02-06 14:55:03
+## 6          ST   36.75985   -80.95619     FALSE 2023-02-06 14:55:03
+## 7          ST   36.83485   -80.95258     FALSE 2023-02-06 14:55:03
+## 8          SP   36.93429   -80.90313     FALSE 2023-02-06 14:55:03
+## 9          ST   36.93095   -80.90036     FALSE 2023-02-06 14:55:03
+## 10         SP   36.93068   -80.89619     FALSE 2023-02-06 14:55:03
+## 11         ST   36.93901   -80.88730     FALSE 2023-02-06 14:55:03
+## 12         ST   37.30568   -80.84980     FALSE 2023-02-06 14:55:03
+## 13         ST   37.04721   -80.78472     FALSE 2023-02-06 14:55:03
+## 14         ST   36.93762   -80.74563     FALSE 2023-02-06 14:55:03
+## 15         ST   36.88901   -80.72757     FALSE 2023-02-06 14:55:03
+## 16         ST   37.24179   -80.71090     FALSE 2023-02-06 14:55:03
+## 17         ST   37.26818   -80.70951     FALSE 2023-02-06 14:55:03
+## 18         ST   37.28957   -80.61673     FALSE 2023-02-06 14:55:03
+## 19         ST   37.14179   -80.56922     FALSE 2023-02-06 14:55:03
+## 20         ST   37.03763   -80.55672     FALSE 2023-02-06 14:55:03
+## 21         ST   36.99652   -80.52144     FALSE 2023-02-06 14:55:03
 \end{verbatim}
 
 \begin{Shaded}
@@ -3457,19 +3457,14 @@ For more: \url{https://datacarpentry.org/r-raster-vector-geospatial/}
 
 Much of this is adapted from: \url{https://geocompr.robinlovelace.net/index.html} Chapter 8
 
-Load necessary packages and data (spData and spDataLarge are data packages)
+This demo uses data from the CAMELS dataset (full ref below) \url{https://ral.ucar.edu/solutions/products/camels}
+
+A. Newman; K. Sampson; M. P. Clark; A. Bock; R. J. Viger; D. Blodgett, 2014. A large-sample watershed-scale hydrometeorological dataset for the contiguous USA. Boulder, CO: UCAR/NCAR. \url{https://dx.doi.org/10.5065/D6MW2F4D}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#install.packages(\textquotesingle{}spDataLarge\textquotesingle{}, repos=\textquotesingle{}https://nowosad.github.io/drat/\textquotesingle{},}
-\CommentTok{\#type=\textquotesingle{}source\textquotesingle{})}
-
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \FunctionTok{library}\NormalTok{(sf)}
-\FunctionTok{library}\NormalTok{(raster)}
-\FunctionTok{library}\NormalTok{(dplyr)}
-\FunctionTok{library}\NormalTok{(spData)}
-\FunctionTok{library}\NormalTok{(spDataLarge)}
 \FunctionTok{library}\NormalTok{(tmap)    }\CommentTok{\# for static and interactive maps}
 \FunctionTok{library}\NormalTok{(leaflet) }\CommentTok{\# for interactive maps}
 
@@ -3509,19 +3504,25 @@ So, today we are sticking to vector data, but then we will be deal primarily wit
 \hypertarget{intro-to-tmap}{%
 \section{Intro to tmap}\label{intro-to-tmap}}
 
-We are going to mape maps mostly with tmap. But there are several other options.
+We are going to make maps mostly with tmap. But there are several other options (ggplot, leaflet, etc).
 
 Let's look at how tmap works. It uses the same syntax as ggplot: the grammar of graphics.
 
-First we want to set tmap to static map mode. This is what we would want if we were making maps for a manuscript or a paper. You can also make interactive maps with tmap, which we will show later.
+First we want to set tmap to static map mode. This is what we would want if we were making maps for a manuscript or slides. You can also make interactive maps with tmap, which we will show later. We will also set the check.and.fix option in tmap\_options to TRUE, we need to do this for the data we are using, but it isn't always necessary.
 
-Then we will have a look at the us\_states data from the data package we loaded above.
+Second, we will read in our data. We'll read in the ``smallerws'' shapefile from the CAMELS dataset and another shapefile of the outline of US states. To read in the shapefiles we will use st\_read() from the sf package.
+
+Note that each of these shapefiles is in a separate folder and contains several files. You must have all of those files for the shapefile to work. *yes: ``A shapefile'' is actually several files. Silly? Maybe. The cause of much confusion when emailing someone ``a shapefile''? Definitely.
+
+Finally we will read in a csv called gauge information that has some extra info we will join to the watershed shapefile later.
+
+Once that is all done, we will look at the watershed data to see what is available in the shapefile attribute table.
 
 \emph{What extra information does the data have beyond a regular R object?} Play around with it, can you reference columns in the table the same way you would with a regular object?
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#mape sure tmap is in static map mode}
+\CommentTok{\#make sure tmap is in static map mode}
 \FunctionTok{tmap\_mode}\NormalTok{(}\StringTok{"plot"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -3532,97 +3533,196 @@ Then we will have a look at the us\_states data from the data package we loaded 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#look at the us\_states shapefile data}
-\FunctionTok{head}\NormalTok{(us\_states)}
+\CommentTok{\#the CAMELS shapefile throws an error about having }
+\CommentTok{\#invalid polygons, this line allows it to plot}
+\FunctionTok{tmap\_options}\NormalTok{(}\AttributeTok{check.and.fix =} \ConstantTok{TRUE}\NormalTok{)}
+
+\CommentTok{\#Read shapefiles}
+\NormalTok{watersheds }\OtherTok{\textless{}{-}} \FunctionTok{st\_read}\NormalTok{(}\StringTok{"small\_ws/smallerws.shp"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## Simple feature collection with 6 features and 6 fields
+## Reading layer `smallerws' from data source 
+##   `/Users/jpgannon/My Drive (jpgannon@vt.edu)/CLASSES/SPRING Hydroinformatics/Hydroinformatics_Bookdown/small_ws/smallerws.shp' 
+##   using driver `ESRI Shapefile'
+## Simple feature collection with 671 features and 9 fields
 ## Geometry type: MULTIPOLYGON
 ## Dimension:     XY
-## Bounding box:  xmin: -114.8136 ymin: 24.55868 xmax: -71.78699 ymax: 42.04964
-## Geodetic CRS:  NAD83
-##   GEOID        NAME   REGION             AREA total_pop_10 total_pop_15
-## 1    01     Alabama    South 133709.27 [km^2]      4712651      4830620
-## 2    04     Arizona     West 295281.25 [km^2]      6246816      6641928
-## 3    08    Colorado     West 269573.06 [km^2]      4887061      5278906
-## 4    09 Connecticut Norteast  12976.59 [km^2]      3545837      3593222
-## 5    12     Florida    South 151052.01 [km^2]     18511620     19645772
-## 6    13     Georgia    South 152725.21 [km^2]      9468815     10006693
-##                         geometry
-## 1 MULTIPOLYGON (((-88.20006 3...
-## 2 MULTIPOLYGON (((-114.7196 3...
-## 3 MULTIPOLYGON (((-109.0501 4...
-## 4 MULTIPOLYGON (((-73.48731 4...
-## 5 MULTIPOLYGON (((-81.81169 2...
-## 6 MULTIPOLYGON (((-85.60516 3...
+## Bounding box:  xmin: -124.4377 ymin: 26.96621 xmax: -67.69059 ymax: 48.99931
+## Geodetic CRS:  GCS_unknown
 \end{verbatim}
-
-Let's make a map showing the us\_states data. Each state has coordinates to draw it in the dataset, and tmap knows how to deal with that. It uses the same format as ggplot, but instead of ggplot() you will use tm\_shape(). Then the geoms are prefixed tm\_, so we will use tm\_fill to show a map of the US with states filled in with a color.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Pass the us\_states data to tmap and fill the polygons (states)}
-\FunctionTok{tm\_shape}\NormalTok{(us\_states) }\SpecialCharTok{+}
-  \FunctionTok{tm\_fill}\NormalTok{() }
+\NormalTok{states }\OtherTok{\textless{}{-}} \FunctionTok{st\_read}\NormalTok{(}\StringTok{"cb\_2018\_us\_state\_20m/cb\_2018\_us\_state\_20m.shp"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
+\begin{verbatim}
+## Reading layer `cb_2018_us_state_20m' from data source 
+##   `/Users/jpgannon/My Drive (jpgannon@vt.edu)/CLASSES/SPRING Hydroinformatics/Hydroinformatics_Bookdown/cb_2018_us_state_20m/cb_2018_us_state_20m.shp' 
+##   using driver `ESRI Shapefile'
+## Simple feature collection with 52 features and 9 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -179.1743 ymin: 17.91377 xmax: 179.7739 ymax: 71.35256
+## Geodetic CRS:  NAD83
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gageinfo }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"gauge information.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 672 Columns: 7
+\end{verbatim}
+
+\begin{verbatim}
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr (3): HUC_02, GAGE_ID, GAGE_NAME
+## dbl (4): LAT, LONG, DRAINAGE_AREA_KM2, Elevation_m
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#look at the watersheds shapefile data}
+\FunctionTok{head}\NormalTok{(watersheds)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Simple feature collection with 6 features and 9 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -71.34071 ymin: 44.59213 xmax: -67.69059 ymax: 47.31557
+## Geodetic CRS:  GCS_unknown
+##    hru_id ann_P   lon_cen  lat_cen       AREA elev_mean ave_T july_T Perimeter
+## 1 1013500     0 -68.56551 47.01169 2303988087  277.4935    NA     NA    647993
+## 2 1022500     0 -68.07313 44.79691  620387273  103.6042    NA     NA    312624
+## 3 1030500     0 -68.14985 45.80527 3676154745  174.4339    NA     NA    662248
+## 4 1031500     0 -69.58119 45.23568  766544703  304.7435    NA     NA    309614
+## 5 1047000     0 -70.16213 44.98744  904956194  379.7800    NA     NA    310157
+## 6 1052500     0 -71.17197 44.96168  396110305  646.0736    NA     NA    172588
+##                         geometry
+## 1 MULTIPOLYGON (((-68.06259 4...
+## 2 MULTIPOLYGON (((-67.97836 4...
+## 3 MULTIPOLYGON (((-68.09162 4...
+## 4 MULTIPOLYGON (((-69.31629 4...
+## 5 MULTIPOLYGON (((-70.10847 4...
+## 6 MULTIPOLYGON (((-71.10862 4...
+\end{verbatim}
+
+Let's make a map showing the watersheds data. Each watershed has coordinates to draw it in the dataset, and tmap knows how to deal with that. It uses the same format as ggplot, but instead of ggplot() you will use tm\_shape(). Then the geoms are prefixed tm\_, so we will use tm\_fill to show a map of the watersheds filled in with a color.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Pass the watershed data to tmap and fill the polygons }
+\FunctionTok{tm\_shape}\NormalTok{(watersheds) }\SpecialCharTok{+}
+  \FunctionTok{tm\_fill}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: The shape watersheds is invalid. See sf::st_is_valid
+\end{verbatim}
+
 \includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-122-1.pdf}
 
-If we use tm\_borders instead, it will just outline the states.
+If we use tm\_borders instead, it will just outline the watersheds.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Add border layer to shape}
-\FunctionTok{tm\_shape}\NormalTok{(us\_states) }\SpecialCharTok{+}
-  \FunctionTok{tm\_borders}\NormalTok{() }
+\FunctionTok{tm\_shape}\NormalTok{(watersheds) }\SpecialCharTok{+}
+  \FunctionTok{tm\_borders}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-123-1.pdf}
+\begin{verbatim}
+## Warning: The shape watersheds is invalid. See sf::st_is_valid
+\end{verbatim}
 
-Or, like with ggplot, we can add multiple geoms. Let's do fill AND outline.
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-123-1.pdf}
+That's fun, and maybe you can guess what country we are in based on the distribution of watersheds, but it would be better to show some geopolitical boundaries to get a sense of where we are.
+
+To do this, we will use a second tm\_shape and show the states data we read in on the plot as well. Just like in ggplot, you can use multiple tm\_ functions to show multiple datsets on the same map.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Add border layer to shape}
+\FunctionTok{tm\_shape}\NormalTok{(watersheds) }\SpecialCharTok{+}
+  \FunctionTok{tm\_fill}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{tm\_shape}\NormalTok{(states)}\SpecialCharTok{+}
+  \FunctionTok{tm\_borders}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: The shape watersheds is invalid. See sf::st_is_valid
+\end{verbatim}
+
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-124-1.pdf}
+
+You can also show the SAME data with multiple geoms. Let's add tm\_borders under the watershed portion of the map and before the states portion so we get fill and borders on out watersheds.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Add fill and border layers to shape}
-\FunctionTok{tm\_shape}\NormalTok{(us\_states) }\SpecialCharTok{+}
+\FunctionTok{tm\_shape}\NormalTok{(watersheds) }\SpecialCharTok{+}
   \FunctionTok{tm\_fill}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{tm\_borders}\NormalTok{()}\SpecialCharTok{+}
+  \FunctionTok{tm\_shape}\NormalTok{(states)}\SpecialCharTok{+}
   \FunctionTok{tm\_borders}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-124-1.pdf}
+\begin{verbatim}
+## Warning: The shape watersheds is invalid. See sf::st_is_valid
+\end{verbatim}
 
-We can save these objects to view or edit later just like a ggplot object. We will save the above map as \emph{usa}.
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-125-1.pdf}
 
-Then we can use several built in geometries in tmap to add a compass, scale, and title. Note the syntax for specifying the position of the objects. You could do this all in one statement too if you wanted.
+Okay, this is starting to look like a map! But we need to add elements to make it better.
+
+We coudl do this all in one statement, but you can also save your existing map as a kind of ``basemap'' and then add to it later, just like with a ggplot object. We will save the above map as \emph{usa}.
+
+Then we can use several built in geometries in tmap to add a compass, scale, and title. Note the syntax for specifying the position of the objects. Again, you could do this all in one statement too if you wanted.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#Save basic map object as "usa"}
-\NormalTok{usa }\OtherTok{\textless{}{-}} \FunctionTok{tm\_shape}\NormalTok{(us\_states) }\SpecialCharTok{+}
-  \FunctionTok{tm\_fill}\NormalTok{() }\SpecialCharTok{+}
+\NormalTok{usa }\OtherTok{\textless{}{-}} \FunctionTok{tm\_shape}\NormalTok{(watersheds) }\SpecialCharTok{+}
+  \FunctionTok{tm\_fill}\NormalTok{(}\AttributeTok{col =} \StringTok{"lightblue"}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{tm\_shape}\NormalTok{(states)}\SpecialCharTok{+}
   \FunctionTok{tm\_borders}\NormalTok{()}
-
+   
 \NormalTok{usa }\SpecialCharTok{+} 
   \FunctionTok{tm\_compass}\NormalTok{(}\AttributeTok{type =} \StringTok{"8star"}\NormalTok{, }\AttributeTok{position =} \FunctionTok{c}\NormalTok{(}\StringTok{"right"}\NormalTok{, }\StringTok{"bottom"}\NormalTok{)) }\SpecialCharTok{+}
   \FunctionTok{tm\_scale\_bar}\NormalTok{(}\AttributeTok{position =} \FunctionTok{c}\NormalTok{(}\StringTok{"left"}\NormalTok{, }\StringTok{"bottom"}\NormalTok{))}\SpecialCharTok{+}
-  \FunctionTok{tm\_layout}\NormalTok{(}\AttributeTok{title =} \StringTok{"United States"}\NormalTok{, }\AttributeTok{title.position =} \FunctionTok{c}\NormalTok{(}\StringTok{"right"}\NormalTok{, }\StringTok{"TOP"}\NormalTok{))}
+  \FunctionTok{tm\_layout}\NormalTok{(}\AttributeTok{title =} \StringTok{"CAMELS Watersheds"}\NormalTok{, }\AttributeTok{title.position =} \FunctionTok{c}\NormalTok{(}\StringTok{"right"}\NormalTok{, }\StringTok{"TOP"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-125-1.pdf}
+\begin{verbatim}
+## Warning: The shape watersheds is invalid. See sf::st_is_valid
+\end{verbatim}
 
-Below is an example of how to edit the ``symbology'' of the map. In other words, we want to color each of the polygons depending on a variable. Here we make the states more blue if they have a higher population.
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-126-1.pdf}
+
+Below is an example of how to edit the ``symbology'' of the map. In other words, we want to color each of the polygons depending on a variable. Here we make the watersheds darker blue if they have a higher elevation.
 
 The syntax below is basically (pseudo code):
 
 \begin{quote}
-Represent us\_states as shapes +\\
-color the shapes based on total\_pop\_10, use 10 colors, use the Blues palette\\
+Represent watersheds as shapes +\\
+color the shapes based on elev\_mean, use 10 colors, use the Blues palette\\
 add a legend in the bottom right, add some space for the title, define the title, position the title\\
 add a compass at the bottom left\\
 add a scale bar at the bottom left\\
@@ -3630,11 +3730,14 @@ add a scale bar at the bottom left\\
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{tm\_shape}\NormalTok{(us\_states) }\SpecialCharTok{+} 
-  \FunctionTok{tm\_polygons}\NormalTok{(}\AttributeTok{col =} \StringTok{"total\_pop\_10"}\NormalTok{, }\AttributeTok{n =} \DecValTok{10}\NormalTok{, }\AttributeTok{palette =} \StringTok{"Blues"}\NormalTok{)}\SpecialCharTok{+}
+\FunctionTok{tm\_shape}\NormalTok{(watersheds) }\SpecialCharTok{+} 
+  \FunctionTok{tm\_fill}\NormalTok{(}\AttributeTok{col =} \StringTok{"elev\_mean"}\NormalTok{, }\AttributeTok{n =} \DecValTok{10}\NormalTok{, }\AttributeTok{palette =} \StringTok{"Blues"}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{tm\_borders}\NormalTok{(}\AttributeTok{lwd =} \FloatTok{0.2}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{tm\_shape}\NormalTok{(states)}\SpecialCharTok{+}
+  \FunctionTok{tm\_borders}\NormalTok{()}\SpecialCharTok{+}
   \FunctionTok{tm\_layout}\NormalTok{(}\AttributeTok{legend.position =} \FunctionTok{c}\NormalTok{(}\StringTok{"right"}\NormalTok{, }\StringTok{"bottom"}\NormalTok{), }
             \AttributeTok{inner.margins =} \FloatTok{0.1}\NormalTok{,}
-            \AttributeTok{title =} \StringTok{"United States Population in 2010"}\NormalTok{, }
+            \AttributeTok{title =} \StringTok{"Mean Elevation"}\NormalTok{, }
             \AttributeTok{title.position =} \FunctionTok{c}\NormalTok{(}\StringTok{"center"}\NormalTok{, }\StringTok{"TOP"}\NormalTok{))}\SpecialCharTok{+}
   \FunctionTok{tm\_compass}\NormalTok{(}\AttributeTok{type =} \StringTok{"8star"}\NormalTok{, }\AttributeTok{position =} \FunctionTok{c}\NormalTok{(}\StringTok{"left"}\NormalTok{, }\StringTok{"bottom"}\NormalTok{)) }\SpecialCharTok{+}
   \FunctionTok{tm\_scale\_bar}\NormalTok{(}\AttributeTok{position =} \FunctionTok{c}\NormalTok{(}\StringTok{"left"}\NormalTok{, }\StringTok{"bottom"}\NormalTok{))}
@@ -3642,194 +3745,249 @@ add a scale bar at the bottom left\\
 \end{Shaded}
 
 \begin{verbatim}
-## Scale bar set for latitude km and will be different at the top and bottom of the map.
+## Warning: The shape watersheds is invalid. See sf::st_is_valid
 \end{verbatim}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-126-1.pdf}
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-127-1.pdf}
 
 \hypertarget{data-wrangling-with-tidyverse-principles}{%
 \section{Data wrangling with tidyverse principles}\label{data-wrangling-with-tidyverse-principles}}
 
-You can use the same techniques as with other data to change or filter the spatial data. Below we filter to show just Virginia and then just to show the southern region. Note when we looked at us\_states above there is a column called NAME for the state names and REGION for the region name.
+You can use the same techniques as with other data to change or filter the spatial data. Below we filter to show just watershed number 3164000, which will be in quotes because the column is a character datatype. Note when we looked at the watersheds object above there is a column called hru\_id for the watershed ids.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{us\_states }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(NAME }\SpecialCharTok{==} \StringTok{"Virginia"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{watersheds }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(hru\_id }\SpecialCharTok{==} \StringTok{"3164000"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{tm\_shape}\NormalTok{() }\SpecialCharTok{+}
   \FunctionTok{tm\_fill}\NormalTok{() }\SpecialCharTok{+}
   \FunctionTok{tm\_borders}\NormalTok{() }
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-127-1.pdf}
-
-Here we filter to the southern region and also add text labels with tm\_text.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{us\_states }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(REGION }\SpecialCharTok{==} \StringTok{"South"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{tm\_shape}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{tm\_fill}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{tm\_borders}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{tm\_text}\NormalTok{(}\StringTok{"NAME"}\NormalTok{, }\AttributeTok{size =} \FloatTok{0.7}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 \includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-128-1.pdf}
+\#\# Add non-spatial data to spatial data with a join
 
-In addition to filtering, we can use the data in the geospatial table to calculate additional parameters, just like with a normal object. Below we calculate growth by subtracting the 2010 population from the 2015 population, and percent growth but dividing 2015-2010 by population in 2010 and multiplying by 100.
+We have been using thew watersheds shapefile. The other dataset we read in ``gageinfo'' has more data, but it is just a regular tibble, not a geospatial file.
+
+We need to attach data from gageinfo object to the watersheds geospatial object based on watershed ID. How in the world will we do that?
+
+A JOIN!!
+
+In watersheds shapefile the watershed ids are in a column called \emph{hru\_id} and in gageinfo tibble they are in a column called \emph{GAGE\_ID}. So when we do the join, we need to tell R that these columns are the same and we want to use them to match the values. We will do a left join to accomplish this.
+
+BUT. TWIST!
+
+Let's look at the first value in hru\_id in watersheds: ``1013500''
+Now the same one in GAGE\_ID in gageinfo: ``01013500''
+
+They're both the same IDs, but one has a leading zero. And because they are character format, ``1013500'' does not equal ``01013500''. We can address this a couple of ways, but the best is probably to keep them as characters, but add a leading 0 to the hru\_id column.
+
+We will do this by creating a new column with a mutate and using the paste0() function to add a leading 0. To make the join easier, we will also give this new column the same name as in the gageinfo tibble: ``GAGE\_ID''.
+
+To review joins, check out chapter \ref{getdata}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{us\_states }\OtherTok{\textless{}{-}}\NormalTok{ us\_states }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{growth =}\NormalTok{ total\_pop\_15 }\SpecialCharTok{{-}}\NormalTok{ total\_pop\_10) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{growthPer =}\NormalTok{ ((total\_pop\_15}\SpecialCharTok{{-}}\NormalTok{total\_pop\_10)}\SpecialCharTok{/}\NormalTok{total\_pop\_10) }\SpecialCharTok{*} \DecValTok{100}\NormalTok{)}
+\CommentTok{\#add leading 0 to hru\_id column and save it as GAGE\_ID}
+\NormalTok{watersheds }\OtherTok{\textless{}{-}}\NormalTok{ watersheds }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{GAGE\_ID =} \FunctionTok{paste0}\NormalTok{(}\StringTok{"0"}\NormalTok{, hru\_id))}
 
-\FunctionTok{head}\NormalTok{(us\_states)}
+\CommentTok{\#join watersheds and gageinfo using the GAGE\_ID column as the key}
+\NormalTok{watersheds\_info }\OtherTok{\textless{}{-}}\NormalTok{ watersheds }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{left\_join}\NormalTok{(gageinfo, }\AttributeTok{by =} \StringTok{"GAGE\_ID"}\NormalTok{)}
+
+\FunctionTok{head}\NormalTok{(watersheds\_info)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## Simple feature collection with 6 features and 8 fields
+## Simple feature collection with 6 features and 16 fields
 ## Geometry type: MULTIPOLYGON
 ## Dimension:     XY
-## Bounding box:  xmin: -114.8136 ymin: 24.55868 xmax: -71.78699 ymax: 42.04964
-## Geodetic CRS:  NAD83
-##   GEOID        NAME   REGION             AREA total_pop_10 total_pop_15
-## 1    01     Alabama    South 133709.27 [km^2]      4712651      4830620
-## 2    04     Arizona     West 295281.25 [km^2]      6246816      6641928
-## 3    08    Colorado     West 269573.06 [km^2]      4887061      5278906
-## 4    09 Connecticut Norteast  12976.59 [km^2]      3545837      3593222
-## 5    12     Florida    South 151052.01 [km^2]     18511620     19645772
-## 6    13     Georgia    South 152725.21 [km^2]      9468815     10006693
-##                         geometry  growth growthPer
-## 1 MULTIPOLYGON (((-88.20006 3...  117969  2.503241
-## 2 MULTIPOLYGON (((-114.7196 3...  395112  6.325014
-## 3 MULTIPOLYGON (((-109.0501 4...  391845  8.018009
-## 4 MULTIPOLYGON (((-73.48731 4...   47385  1.336356
-## 5 MULTIPOLYGON (((-81.81169 2... 1134152  6.126703
-## 6 MULTIPOLYGON (((-85.60516 3...  537878  5.680521
+## Bounding box:  xmin: -71.34071 ymin: 44.59213 xmax: -67.69059 ymax: 47.31557
+## Geodetic CRS:  GCS_unknown
+##    hru_id ann_P   lon_cen  lat_cen       AREA elev_mean ave_T july_T Perimeter
+## 1 1013500     0 -68.56551 47.01169 2303988087  277.4935    NA     NA    647993
+## 2 1022500     0 -68.07313 44.79691  620387273  103.6042    NA     NA    312624
+## 3 1030500     0 -68.14985 45.80527 3676154745  174.4339    NA     NA    662248
+## 4 1031500     0 -69.58119 45.23568  766544703  304.7435    NA     NA    309614
+## 5 1047000     0 -70.16213 44.98744  904956194  379.7800    NA     NA    310157
+## 6 1052500     0 -71.17197 44.96168  396110305  646.0736    NA     NA    172588
+##    GAGE_ID HUC_02                                    GAGE_NAME      LAT
+## 1 01013500     01             Fish River near Fort Kent, Maine 47.23739
+## 2 01022500     01      Narraguagus River at Cherryfield, Maine 44.60797
+## 3 01030500     01  Mattawamkeag River near Mattawamkeag, Maine 45.50097
+## 4 01031500     01 Piscataquis River near Dover-Foxcroft, Maine 45.17501
+## 5 01047000     01   Carrabassett River near North Anson, Maine 44.86920
+## 6 01052500     01    Diamond River near Wentworth Location, NH 44.87739
+##        LONG DRAINAGE_AREA_KM2 Elevation_m                       geometry
+## 1 -68.58264           2252.70      250.31 MULTIPOLYGON (((-68.06259 4...
+## 2 -67.93524            573.60       92.68 MULTIPOLYGON (((-67.97836 4...
+## 3 -68.30596           3676.17      143.80 MULTIPOLYGON (((-68.09162 4...
+## 4 -69.31470            769.05      247.80 MULTIPOLYGON (((-69.31629 4...
+## 5 -69.95510            909.10      310.38 MULTIPOLYGON (((-70.10847 4...
+## 6 -71.05749            383.82      615.70 MULTIPOLYGON (((-71.10862 4...
+\end{verbatim}
+
+And now we can plot this formerly non-spatial data on our map.
+
+In this case, we can now add the name of the watershed to the map rather than the number.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#now the gageinfo columns are available for us to use when mapping}
+\NormalTok{watersheds\_info }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(hru\_id }\SpecialCharTok{==} \StringTok{"3164000"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tm\_shape}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{tm\_fill}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{tm\_borders}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{tm\_text}\NormalTok{(}\StringTok{"GAGE\_NAME"}\NormalTok{, }\AttributeTok{size =} \DecValTok{1}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-130-1.pdf}
+We can also subset vector data to create new datasets or plot. Below we will use filter statements to grab all the polygons in Virginia from the watersheds shapefile and then the Virginia state outline from the states shapefile.
+
+The method we will use for getting the Virginia watersheds is a little new. We are going to use the grepl() function to grab any gages that include the text ``, VA'' since there isn't a state column, but the watershed names include the state.
+
+Why are we doing ``, VA'' and not just ``VA''? Good question!
+
+``, VA'' will most likely only show up in gage names that are in Virginia because they'll be in the format ``Gage name, VA''. If we just say ``VA'' we might get some gages that have ``VA'' as part of their name but are not in Virginia.
+
+Once we successfully filter to Virginia, we will then make a nice map of the CAMELS watersheds in Virginia!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{va\_watersheds }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(watersheds\_info, }\FunctionTok{grepl}\NormalTok{(}\StringTok{", VA"}\NormalTok{, GAGE\_NAME))}
+\NormalTok{va\_outline }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(states, NAME }\SpecialCharTok{==} \StringTok{"Virginia"}\NormalTok{)}
+
+\NormalTok{va\_outline }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tm\_shape}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{tm\_borders}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{tm\_shape}\NormalTok{(va\_watersheds) }\SpecialCharTok{+}
+  \FunctionTok{tm\_fill}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{tm\_borders}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{tm\_layout}\NormalTok{(}\AttributeTok{inner.margins =} \FloatTok{0.1}\NormalTok{,}
+            \AttributeTok{title =} \StringTok{"VA CAMELS Watersheds"}\NormalTok{, }
+            \AttributeTok{title.position =} \FunctionTok{c}\NormalTok{(}\StringTok{"left"}\NormalTok{, }\StringTok{"TOP"}\NormalTok{))}\SpecialCharTok{+}
+  \FunctionTok{tm\_compass}\NormalTok{(}\AttributeTok{type =} \StringTok{"8star"}\NormalTok{, }\AttributeTok{position =} \FunctionTok{c}\NormalTok{(}\StringTok{"right"}\NormalTok{, }\StringTok{"top"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{tm\_scale\_bar}\NormalTok{(}\AttributeTok{position =} \FunctionTok{c}\NormalTok{(}\StringTok{"left"}\NormalTok{, }\StringTok{"top"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-131-1.pdf}
+
+In addition to filtering, we can use the data in the attribute table to calculate additional parameters, just like with a normal object. Below we calculate the ratio of Area to Perimeter by changing the perimeter datatype to numeric and then dividing area by perimeter.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{va\_watersheds }\OtherTok{\textless{}{-}}\NormalTok{ va\_watersheds }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{PerimeterNum =} \FunctionTok{as.numeric}\NormalTok{(Perimeter),}
+         \AttributeTok{Area\_Perimeter =}\NormalTok{ AREA }\SpecialCharTok{/}\NormalTok{ PerimeterNum) }
+
+\FunctionTok{head}\NormalTok{(va\_watersheds)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Simple feature collection with 6 features and 18 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -79.32293 ymin: 38.31301 xmax: -77.55629 ymax: 39.2801
+## Geodetic CRS:  GCS_unknown
+##    hru_id ann_P   lon_cen  lat_cen      AREA elev_mean ave_T july_T Perimeter
+## 1 1620500     0 -79.27321 38.37592  61339485  913.1406    NA     NA     69535
+## 2 1632000     0 -78.96078 38.70073 547286614  605.6940    NA     NA    175812
+## 3 1632900     0 -78.72713 38.54450 249206633  410.4016    NA     NA    134796
+## 4 1634500     0 -78.44939 39.06919 264494917  441.7808    NA     NA    151377
+## 5 1638480     0 -77.67379 39.20060 233835164  175.1224    NA     NA    112488
+## 6 1644000     0 -77.80391 38.99276 859599217  187.0871    NA     NA    237588
+##    GAGE_ID HUC_02                                GAGE_NAME      LAT      LONG
+## 1 01620500     02         NORTH RIVER NEAR STOKESVILLE, VA 38.33763 -79.24004
+## 2 01632000     02 N F SHENANDOAH RIVER AT COOTES STORE, VA 38.63706 -78.85280
+## 3 01632900     02          SMITH CREEK NEAR NEW MARKET, VA 38.69345 -78.64279
+## 4 01634500     02          CEDAR CREEK NEAR WINCHESTER, VA 39.08122 -78.32945
+## 5 01638480     02        CATOCTIN CREEK AT TAYLORSTOWN, VA 39.25455 -77.57638
+## 6 01644000     02            GOOSE CREEK NEAR LEESBURG, VA 39.01955 -77.57749
+##   DRAINAGE_AREA_KM2 Elevation_m                       geometry PerimeterNum
+## 1             44.74      786.35 MULTIPOLYGON (((-79.24689 3...        69535
+## 2            543.36      543.76 MULTIPOLYGON (((-78.98026 3...       175812
+## 3            245.05      417.29 MULTIPOLYGON (((-78.85841 3...       134796
+## 4            263.98      344.44 MULTIPOLYGON (((-78.37821 3...       151377
+## 5            232.00      155.98 MULTIPOLYGON (((-77.62354 3...       112488
+## 6            859.17      187.25 MULTIPOLYGON (((-77.62354 3...       237588
+##   Area_Perimeter
+## 1       882.1383
+## 2      3112.9082
+## 3      1848.7688
+## 4      1747.2596
+## 5      2078.7565
+## 6      3618.0245
 \end{verbatim}
 
 Now we can plot our newly calculated data by controlling color with that new column name.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{tm\_shape}\NormalTok{(us\_states) }\SpecialCharTok{+} 
-  \FunctionTok{tm\_polygons}\NormalTok{(}\AttributeTok{col =} \StringTok{"growthPer"}\NormalTok{, }\AttributeTok{n =} \DecValTok{7}\NormalTok{, }
-              \AttributeTok{palette =} \StringTok{"Blues"}\NormalTok{, }\AttributeTok{title =} \StringTok{"\% of 2010 Pop"}\NormalTok{)}\SpecialCharTok{+} \CommentTok{\#do growth and growth per}
-  \FunctionTok{tm\_layout}\NormalTok{(}\AttributeTok{legend.position =} \FunctionTok{c}\NormalTok{(}\StringTok{"right"}\NormalTok{, }\StringTok{"bottom"}\NormalTok{), }
-            \AttributeTok{inner.margins =} \FloatTok{0.1}\NormalTok{,}
-            \AttributeTok{title =} \StringTok{"United States Population Growth 2010{-}2015"}\NormalTok{, }
-            \AttributeTok{title.position =} \FunctionTok{c}\NormalTok{(}\StringTok{"center"}\NormalTok{, }\StringTok{"TOP"}\NormalTok{))}\SpecialCharTok{+}
-  \FunctionTok{tm\_compass}\NormalTok{(}\AttributeTok{type =} \StringTok{"8star"}\NormalTok{, }\AttributeTok{position =} \FunctionTok{c}\NormalTok{(}\StringTok{"left"}\NormalTok{, }\StringTok{"bottom"}\NormalTok{)) }\SpecialCharTok{+}
-  \FunctionTok{tm\_scale\_bar}\NormalTok{(}\AttributeTok{position =} \FunctionTok{c}\NormalTok{(}\StringTok{"left"}\NormalTok{, }\StringTok{"bottom"}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Scale bar set for latitude km and will be different at the top and bottom of the map.
-\end{verbatim}
-
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-130-1.pdf}
-
-\hypertarget{add-non-spatial-data-to-spatial-data-with-a-join}{%
-\section{Add non-spatial data to spatial data with a join}\label{add-non-spatial-data-to-spatial-data-with-a-join}}
-
-We have been using us\_states. There is another dataset called us\_states\_df that has even more data, but it is just a regular tibble, not a geospatial file.
-
-We need to attach data from us\_states\_df to the us\_states geospatial file based on state name. How in the world will we do that?
-
-A JOIN!!
-
-In us\_states the state names are in a column called \emph{NAME} and in us\_states\_df they are in a column called \emph{state}. So when we do the join, we need to tell R that these columns are the same and we want to use them to match the values. We will do a left join to accomplish this.
-
-To review joins, check out chapter \ref{getdata}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#this says: join us\_states and us\_states\_df by using the NAME and state columns}
-\NormalTok{st\_income }\OtherTok{\textless{}{-}} \FunctionTok{left\_join}\NormalTok{(us\_states, us\_states\_df, }\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"NAME"} \OtherTok{=} \StringTok{"state"}\NormalTok{))}
-
-\FunctionTok{head}\NormalTok{(st\_income)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Simple feature collection with 6 features and 12 fields
-## Geometry type: MULTIPOLYGON
-## Dimension:     XY
-## Bounding box:  xmin: -114.8136 ymin: 24.55868 xmax: -71.78699 ymax: 42.04964
-## Geodetic CRS:  NAD83
-##   GEOID        NAME   REGION             AREA total_pop_10 total_pop_15  growth
-## 1    01     Alabama    South 133709.27 [km^2]      4712651      4830620  117969
-## 2    04     Arizona     West 295281.25 [km^2]      6246816      6641928  395112
-## 3    08    Colorado     West 269573.06 [km^2]      4887061      5278906  391845
-## 4    09 Connecticut Norteast  12976.59 [km^2]      3545837      3593222   47385
-## 5    12     Florida    South 151052.01 [km^2]     18511620     19645772 1134152
-## 6    13     Georgia    South 152725.21 [km^2]      9468815     10006693  537878
-##   growthPer median_income_10 median_income_15 poverty_level_10 poverty_level_15
-## 1  2.503241            21746            22890           786544           887260
-## 2  6.325014            26412            26156           933113          1180690
-## 3  8.018009            29365            30752           584184           653969
-## 4  1.336356            32258            33226           314306           366351
-## 5  6.126703            24812            24654          2502365          3180109
-## 6  5.680521            25596            25588          1445752          1788947
-##                         geometry
-## 1 MULTIPOLYGON (((-88.20006 3...
-## 2 MULTIPOLYGON (((-114.7196 3...
-## 3 MULTIPOLYGON (((-109.0501 4...
-## 4 MULTIPOLYGON (((-73.48731 4...
-## 5 MULTIPOLYGON (((-81.81169 2...
-## 6 MULTIPOLYGON (((-85.60516 3...
-\end{verbatim}
-
-And now we can plot this formerly non-spatial data on our map.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#now the us\_states\_df columns are available for us to use when mapping}
-\FunctionTok{tm\_shape}\NormalTok{(st\_income) }\SpecialCharTok{+} 
-  \FunctionTok{tm\_polygons}\NormalTok{(}\AttributeTok{col =} \StringTok{"median\_income\_10"}\NormalTok{, }\AttributeTok{n =} \DecValTok{7}\NormalTok{)}\SpecialCharTok{+} 
-  \FunctionTok{tm\_compass}\NormalTok{(}\AttributeTok{type =} \StringTok{"8star"}\NormalTok{, }\AttributeTok{position =} \FunctionTok{c}\NormalTok{(}\StringTok{"right"}\NormalTok{, }\StringTok{"bottom"}\NormalTok{)) }\SpecialCharTok{+}
+\NormalTok{va\_outline }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tm\_shape}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{tm\_borders}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{tm\_shape}\NormalTok{(va\_watersheds) }\SpecialCharTok{+}
+  \FunctionTok{tm\_fill}\NormalTok{(}\AttributeTok{col =} \StringTok{"Area\_Perimeter"}\NormalTok{, }\AttributeTok{n =} \DecValTok{10}\NormalTok{, }\AttributeTok{palette =} \StringTok{"Reds"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{tm\_borders}\NormalTok{()}\SpecialCharTok{+}
+  \FunctionTok{tm\_layout}\NormalTok{(}\AttributeTok{inner.margins =} \FloatTok{0.12}\NormalTok{,}
+            \AttributeTok{title =} \StringTok{"VA CAMELS Watersheds"}\NormalTok{, }
+            \AttributeTok{title.position =} \FunctionTok{c}\NormalTok{(}\StringTok{"left"}\NormalTok{, }\StringTok{"TOP"}\NormalTok{))}\SpecialCharTok{+}
+  \FunctionTok{tm\_compass}\NormalTok{(}\AttributeTok{type =} \StringTok{"8star"}\NormalTok{, }\AttributeTok{position =} \FunctionTok{c}\NormalTok{(}\StringTok{"right"}\NormalTok{, }\StringTok{"top"}\NormalTok{)) }\SpecialCharTok{+}
   \FunctionTok{tm\_scale\_bar}\NormalTok{(}\AttributeTok{position =} \FunctionTok{c}\NormalTok{(}\StringTok{"right"}\NormalTok{, }\StringTok{"bottom"}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-132-1.pdf}
-
-\hypertarget{plot-maps-side-by-side}{%
-\section{Plot maps side by side}\label{plot-maps-side-by-side}}
-
-Just like we can use facets in ggplot, we can use facets to show multiple maps. Below we show median income in 2010 and 2015 next to each other using tm\_facets.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{facets }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"median\_income\_10"}\NormalTok{, }\StringTok{"median\_income\_15"}\NormalTok{)}
-
-\FunctionTok{tm\_shape}\NormalTok{(st\_income) }\SpecialCharTok{+} 
-  \FunctionTok{tm\_polygons}\NormalTok{(facets) }\SpecialCharTok{+} 
-  \FunctionTok{tm\_facets}\NormalTok{(}\AttributeTok{ncol =} \DecValTok{1}\NormalTok{, }\AttributeTok{sync =} \ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-133-1.pdf}
 
-\hypertarget{built-in-styles-like-themes-in-ggplot}{%
-\section{Built in styles, like themes in ggplot}\label{built-in-styles-like-themes-in-ggplot}}
+\hypertarget{plot-maps-side-by-side}{%
+\section{Plot maps side by side}\label{plot-maps-side-by-side}}
 
-We can use these styles with tm\_style. Try ``classic'', ``coblat'', or ``col\_blind'' below.
+Just like we can use facets in ggplot, we can use facets to show multiple maps. Below we color our map by AREA and elev\_mean and put them next to each other using tm\_facets.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{tm\_shape}\NormalTok{(us\_states)}\SpecialCharTok{+}
-  \FunctionTok{tm\_polygons}\NormalTok{(}\AttributeTok{col =} \StringTok{"growthPer"}\NormalTok{, }\AttributeTok{n =} \DecValTok{7}\NormalTok{, }
-              \AttributeTok{palette =} \StringTok{"Blues"}\NormalTok{, }\AttributeTok{title =} \StringTok{"\% of 2010 Pop"}\NormalTok{)}\SpecialCharTok{+} \CommentTok{\#do growth and growth per}
-  \FunctionTok{tm\_style}\NormalTok{(}\StringTok{"classic"}\NormalTok{) }\CommentTok{\#try cobalt, bw, col\_blind}
+\NormalTok{facets }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"AREA"}\NormalTok{, }\StringTok{"elev\_mean"}\NormalTok{)}
+
+\FunctionTok{tm\_shape}\NormalTok{(va\_watersheds) }\SpecialCharTok{+} 
+  \FunctionTok{tm\_polygons}\NormalTok{(facets) }\SpecialCharTok{+} 
+  \FunctionTok{tm\_facets}\NormalTok{(}\AttributeTok{ncol =} \DecValTok{2}\NormalTok{, }\AttributeTok{sync =} \ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-134-1.pdf}
+
+\hypertarget{built-in-styles-like-themes-in-ggplot}{%
+\section{Built in styles, like themes in ggplot}\label{built-in-styles-like-themes-in-ggplot}}
+
+Tmap also has built in styles, which are like themes in ggplot. We can use these styles with tm\_style. Try ``classic'', ``coblat'', or ``col\_blind'' below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{va\_outline }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tm\_shape}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{tm\_borders}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{tm\_shape}\NormalTok{(va\_watersheds) }\SpecialCharTok{+}
+  \FunctionTok{tm\_fill}\NormalTok{(}\AttributeTok{col =} \StringTok{"Area\_Perimeter"}\NormalTok{, }\AttributeTok{n =} \DecValTok{10}\NormalTok{, }\AttributeTok{palette =} \StringTok{"Reds"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{tm\_borders}\NormalTok{()}\SpecialCharTok{+}
+  \FunctionTok{tm\_layout}\NormalTok{(}\AttributeTok{inner.margins =} \FloatTok{0.12}\NormalTok{,}
+            \AttributeTok{title =} \StringTok{"VA CAMELS Watersheds"}\NormalTok{, }
+            \AttributeTok{title.position =} \FunctionTok{c}\NormalTok{(}\StringTok{"left"}\NormalTok{, }\StringTok{"TOP"}\NormalTok{))}\SpecialCharTok{+}
+  \FunctionTok{tm\_compass}\NormalTok{(}\AttributeTok{type =} \StringTok{"8star"}\NormalTok{, }\AttributeTok{position =} \FunctionTok{c}\NormalTok{(}\StringTok{"right"}\NormalTok{, }\StringTok{"top"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{tm\_scale\_bar}\NormalTok{(}\AttributeTok{position =} \FunctionTok{c}\NormalTok{(}\StringTok{"right"}\NormalTok{, }\StringTok{"bottom"}\NormalTok{))}\SpecialCharTok{+}
+  \FunctionTok{tm\_style}\NormalTok{(}\StringTok{"classic"}\NormalTok{) }\CommentTok{\#try cobalt, bw, col\_blind}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Note that tm_style("classic") resets all options set with tm_layout, tm_view, tm_format, or tm_legend. It is therefore recommended to place the tm_style element prior to the other tm_layout/tm_view/tm_format/tm_legend elements.
+\end{verbatim}
+
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-135-1.pdf}
 
 \hypertarget{interactive-maps}{%
 \section{Interactive Maps}\label{interactive-maps}}
@@ -3841,7 +3999,7 @@ You can also generate maps that you can interact with, as opposed to static maps
 
 In tmap all you have to do is run tmap\_mode(``view'') and it will create an interactive map with the exact same syntax! To switch back to a static map, run tmap\_mode(``plot'')
 
-Also in this chunk we see how to add a basemap to a tmap object.
+Also in this chunk we see how to add a basemap to a tmap object, using tm\_basemap.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3855,27 +4013,20 @@ Also in this chunk we see how to add a basemap to a tmap object.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{popgrowth }\OtherTok{\textless{}{-}} \FunctionTok{tm\_shape}\NormalTok{(us\_states) }\SpecialCharTok{+} 
-  \FunctionTok{tm\_polygons}\NormalTok{(}\AttributeTok{col =} \StringTok{"growthPer"}\NormalTok{, }\AttributeTok{n =} \DecValTok{7}\NormalTok{, }
-              \AttributeTok{palette =} \StringTok{"Blues"}\NormalTok{, }\AttributeTok{title =} \StringTok{"\% of 2010 Pop"}\NormalTok{,}
-              \AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{)}\SpecialCharTok{+} \CommentTok{\#mess with alpha}
-  \FunctionTok{tm\_layout}\NormalTok{(}\AttributeTok{legend.position =} \FunctionTok{c}\NormalTok{(}\StringTok{"right"}\NormalTok{, }\StringTok{"bottom"}\NormalTok{), }
-            \AttributeTok{inner.margins =} \FloatTok{0.1}\NormalTok{,}
-            \AttributeTok{title =} \StringTok{"United States Population Growth 2010{-}2015"}\NormalTok{, }
-            \AttributeTok{title.position =} \FunctionTok{c}\NormalTok{(}\StringTok{"center"}\NormalTok{, }\StringTok{"TOP"}\NormalTok{))}\SpecialCharTok{+}
-  \FunctionTok{tm\_compass}\NormalTok{(}\AttributeTok{type =} \StringTok{"8star"}\NormalTok{, }\AttributeTok{position =} \FunctionTok{c}\NormalTok{(}\StringTok{"left"}\NormalTok{, }\StringTok{"bottom"}\NormalTok{)) }\SpecialCharTok{+}
-  \FunctionTok{tm\_scale\_bar}\NormalTok{(}\AttributeTok{position =} \FunctionTok{c}\NormalTok{(}\StringTok{"left"}\NormalTok{, }\StringTok{"bottom"}\NormalTok{))}
+\NormalTok{usa }\OtherTok{\textless{}{-}} \FunctionTok{tm\_shape}\NormalTok{(watersheds\_info) }\SpecialCharTok{+}
+  \FunctionTok{tm\_fill}\NormalTok{(}\AttributeTok{col =} \StringTok{"lightblue"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.3}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{tm\_borders}\NormalTok{()}\SpecialCharTok{+}
+  \FunctionTok{tm\_shape}\NormalTok{(states)}\SpecialCharTok{+}
+  \FunctionTok{tm\_borders}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{tm\_layout}\NormalTok{(}\AttributeTok{title =} \StringTok{"CAMELS Watersheds"}\NormalTok{, }\AttributeTok{title.position =} \FunctionTok{c}\NormalTok{(}\StringTok{"right"}\NormalTok{, }\StringTok{"TOP"}\NormalTok{))}
 
-\NormalTok{popgrowth }\SpecialCharTok{+} \FunctionTok{tm\_basemap}\NormalTok{(}\AttributeTok{server =} \StringTok{"OpenTopoMap"}\NormalTok{)}
+\NormalTok{usa }\SpecialCharTok{+} \FunctionTok{tm\_basemap}\NormalTok{(}\AttributeTok{server =} \StringTok{"OpenTopoMap"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## Compass not supported in view mode.
-\end{verbatim}
-
-\begin{verbatim}
-## legend.postion is used for plot mode. Use view.legend.position in tm_view to set the legend position in view mode.
+## Warning: The shape watersheds_info is invalid (after reprojection). See
+## sf::st_is_valid
 \end{verbatim}
 
 \hypertarget{leaflet}{%
@@ -3885,16 +4036,16 @@ Leaflet is another way to make interactive maps. It's syntax is very different, 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{leaflet}\NormalTok{(us\_states) }\SpecialCharTok{\%\textgreater{}\%} 
+\FunctionTok{leaflet}\NormalTok{(watersheds\_info) }\SpecialCharTok{\%\textgreater{}\%} 
   \FunctionTok{addTiles}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{addPolygons}\NormalTok{(}\AttributeTok{color =} \StringTok{"\#444444"}\NormalTok{, }\AttributeTok{weight =} \DecValTok{1}\NormalTok{, }\AttributeTok{smoothFactor =} \FloatTok{0.5}\NormalTok{,}
     \AttributeTok{opacity =} \FloatTok{1.0}\NormalTok{, }\AttributeTok{fillOpacity =} \FloatTok{0.5}\NormalTok{,}
-    \AttributeTok{fillColor =} \SpecialCharTok{\textasciitilde{}}\FunctionTok{colorQuantile}\NormalTok{(}\StringTok{"YlOrRd"}\NormalTok{, total\_pop\_10)(total\_pop\_10))}
+    \AttributeTok{fillColor =} \SpecialCharTok{\textasciitilde{}}\FunctionTok{colorQuantile}\NormalTok{(}\StringTok{"YlOrRd"}\NormalTok{, elev\_mean)(elev\_mean))}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## Warning: sf layer has inconsistent datum (+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs).
+## Warning: sf layer has inconsistent datum (+proj=longlat +datum=NAD83 +no_defs).
 ## Need '+proj=longlat +datum=WGS84'
 \end{verbatim}
 
@@ -4381,7 +4532,7 @@ Then we will plot the points just to make sure they show up where we expect.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-148-1.pdf}
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-149-1.pdf}
 \#\#\# Extract values from a single raster
 
 We can extract values from any raster using the extract() function in the raster package. We give this funciton the raster we want to pull data from (x) and the points where we want data (y). Then we specify how we want it to grab data from the raster. ``Simple'' just grabs the value at the locaitons specified. If we specify ``bilinear'' it will return an interpolated value based on the four nearest raster cells.
@@ -4460,7 +4611,7 @@ It would be very difficult to accurately describe the differences in slope betwe
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-151-1.pdf}
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-152-1.pdf}
 
 \hypertarget{subsetting-a-raster-for-visualization}{%
 \section{Subsetting a raster for visualization}\label{subsetting-a-raster-for-visualization}}
@@ -4480,7 +4631,7 @@ At it's heart this is a reclassification. You could use the same strategy to cla
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-152-1.pdf}
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-153-1.pdf}
 
 \hypertarget{raster-math}{%
 \section{Raster Math}\label{raster-math}}
@@ -4501,7 +4652,7 @@ Here's a super simple example to just illustate that you can do this: we will ju
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-153-1.pdf}
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-154-1.pdf}
 
 \hypertarget{extra-plot-topo-characteristics-against-one-another}{%
 \section{Extra: plot topo characteristics against one another}\label{extra-plot-topo-characteristics-against-one-another}}
@@ -4527,7 +4678,7 @@ Here we convert slope and elevation each to a dataframe, join them, and them plo
 ## (stat_density2d_filled).
 \end{verbatim}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-154-1.pdf}
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-155-1.pdf}
 
 \hypertarget{rgeowatersheds}{%
 \chapter{Geospatial R Raster - Watershed Delineation}\label{rgeowatersheds}}
@@ -4835,7 +4986,7 @@ Just like in last chapter you could do this for any of the topographic measures 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-164-1.pdf}
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-165-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4892,7 +5043,7 @@ The following code is here just because it is cool. We clip the DEM to the water
 ## requires the webshot2 package and Chrome browser; using rgl.snapshot() instead
 \end{verbatim}
 
-\includegraphics[width=6.5in]{../../../../../../private/var/folders/rl/dzfg1s7j2zv_5xqhl3ls1yl80000gn/T/RtmpTyW6M5/file432c1cb01fc3}
+\includegraphics[width=6.5in]{../../../../../../private/var/folders/rl/dzfg1s7j2zv_5xqhl3ls1yl80000gn/T/RtmpEiuekU/filec1236543c8ab}
 
 \hypertarget{modelingintro}{%
 \chapter{Intro to Modeling - Getting Started with HBV}\label{modelingintro}}
@@ -5217,7 +5368,7 @@ When you are looking at results like this, it is often helpful to look at the fu
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-173-1.pdf}
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-174-1.pdf}
 
 \hypertarget{compare-observed-and-modelled-discharge-with-interactive-graph}{%
 \section{Compare observed and modelled discharge with interactive graph}\label{compare-observed-and-modelled-discharge-with-interactive-graph}}
@@ -5853,7 +6004,7 @@ How much difference was there in NSE in the top 100 runs of the 100,000 run set?
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 \end{verbatim}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-187-1.pdf}
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-188-1.pdf}
 
 The chunk below creates a parallel coordinate plot. Each parameter is shown, but normalized, where 1 is it's maximum value from our random sets, and 0 is the minimum value.
 
@@ -5898,7 +6049,7 @@ What does this plot tell you about the model's representation of the real world?
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-188-1.pdf}
+\includegraphics{Hydroinformatics_Bookdown_files/figure-latex/unnamed-chunk-189-1.pdf}
 
   \bibliography{book.bib,packages.bib}
 

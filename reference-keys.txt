@@ -122,7 +122,6 @@ rgeospatial
 goals
 intro-to-tmap
 data-wrangling-with-tidyverse-principles
-add-non-spatial-data-to-spatial-data-with-a-join
 plot-maps-side-by-side
 built-in-styles-like-themes-in-ggplot
 interactive-maps
