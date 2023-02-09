@@ -23,7 +23,7 @@
 <meta name="author" content="JP Gannon" />
 
 
-<meta name="date" content="2023-02-06" />
+<meta name="date" content="2023-02-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -596,7 +596,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.7" data-path="getdata.html"><a href="getdata.html#pivoting-wide-and-long-data"><i class="fa fa-check"></i><b>7.7</b> Pivoting: wide and long data</a></li>
 <li class="chapter" data-level="7.8" data-path="getdata.html"><a href="getdata.html#pivot-examples"><i class="fa fa-check"></i><b>7.8</b> Pivot Examples</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="joinpivotDR.html"><a href="joinpivotDR.html"><i class="fa fa-check"></i><b>8</b> ACTIVITY Joins Pivots dataRetrieval</a>
+<li class="chapter" data-level="8" data-path="joinpivotDR.html"><a href="joinpivotDR.html"><i class="fa fa-check"></i><b>8</b> ACTIVITY: Joins Pivots dataRetrieval</a>
 <ul>
 <li class="chapter" data-level="8.1" data-path="joinpivotDR.html"><a href="joinpivotDR.html#load-the-tidyverse-dataretrieval-and-patchwork-packages."><i class="fa fa-check"></i><b>8.1</b> Load the tidyverse, dataRetrieval, and patchwork packages.</a></li>
 <li class="chapter" data-level="8.2" data-path="joinpivotDR.html"><a href="joinpivotDR.html#problem-1-2"><i class="fa fa-check"></i><b>8.2</b> Problem 1</a></li>
@@ -806,7 +806,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4           dv   00095   00003 145685         NA           wat        &lt;NA&gt;
 ##    srs_id access_cd begin_date   end_date count_nu
 ## 2 1645597         0 2006-12-20 2009-03-18      704
-## 3 1645423         0 1907-10-01 2023-02-05    33365
+## 3 1645423         0 1907-10-01 2023-02-08    33368
 ## 4 1646694         0 2006-12-20 2008-09-29      534</code></pre>
 </div>
 <div id="joins" class="section level2 hasAnchor" number="7.3">
@@ -876,7 +876,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3           dv   00095   00003 145685         NA           wat        &lt;NA&gt;
 ##    srs_id access_cd begin_date   end_date count_nu parameter_group_nm
 ## 1 1645597         0 2006-12-20 2009-03-18      704           Physical
-## 2 1645423         0 1907-10-01 2023-02-05    33365           Physical
+## 2 1645423         0 1907-10-01 2023-02-08    33368           Physical
 ## 3 1646694         0 2006-12-20 2008-09-29      534           Physical
 ##                                                                                 parameter_nm
 ## 1                                                        Temperature, water, degrees Celsius
@@ -902,7 +902,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3 03171000 NEW RIVER AT RADFORD, VA   00095     Specific conductance
 ##   parameter_units begin_date   end_date
 ## 1           deg C 2006-12-20 2009-03-18
-## 2           ft3/s 1907-10-01 2023-02-05
+## 2           ft3/s 1907-10-01 2023-02-08
 ## 3      uS/cm @25C 2006-12-20 2008-09-29</code></pre>
 </div>
 <div id="finding-ids-to-download-usgs-data" class="section level2 hasAnchor" number="7.5">
@@ -942,27 +942,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 20      USGS 03170000                 LITTLE RIVER AT GRAYSONTOWN, VA
 ## 21      USGS 03169500             LITTLE RIVER NEAR COPPER VALLEY, VA
 ##    site_tp_cd dec_lat_va dec_long_va colocated           queryTime
-## 1          ST   36.88873   -81.34733     FALSE 2023-02-06 14:48:00
-## 2          ST   37.18428   -81.32982     FALSE 2023-02-06 14:48:00
-## 3          ST   37.27151   -81.30482     FALSE 2023-02-06 14:48:00
-## 4          ST   37.25595   -81.28177     FALSE 2023-02-06 14:48:00
-## 5          ST   36.85984   -80.98036     FALSE 2023-02-06 14:48:00
-## 6          ST   36.75985   -80.95619     FALSE 2023-02-06 14:48:00
-## 7          ST   36.83485   -80.95258     FALSE 2023-02-06 14:48:00
-## 8          SP   36.93429   -80.90313     FALSE 2023-02-06 14:48:00
-## 9          ST   36.93095   -80.90036     FALSE 2023-02-06 14:48:00
-## 10         SP   36.93068   -80.89619     FALSE 2023-02-06 14:48:00
-## 11         ST   36.93901   -80.88730     FALSE 2023-02-06 14:48:00
-## 12         ST   37.30568   -80.84980     FALSE 2023-02-06 14:48:00
-## 13         ST   37.04721   -80.78472     FALSE 2023-02-06 14:48:00
-## 14         ST   36.93762   -80.74563     FALSE 2023-02-06 14:48:00
-## 15         ST   36.88901   -80.72757     FALSE 2023-02-06 14:48:00
-## 16         ST   37.24179   -80.71090     FALSE 2023-02-06 14:48:00
-## 17         ST   37.26818   -80.70951     FALSE 2023-02-06 14:48:00
-## 18         ST   37.28957   -80.61673     FALSE 2023-02-06 14:48:00
-## 19         ST   37.14179   -80.56922     FALSE 2023-02-06 14:48:00
-## 20         ST   37.03763   -80.55672     FALSE 2023-02-06 14:48:00
-## 21         ST   36.99652   -80.52144     FALSE 2023-02-06 14:48:00</code></pre>
+## 1          ST   36.88873   -81.34733     FALSE 2023-02-09 11:20:29
+## 2          ST   37.18428   -81.32982     FALSE 2023-02-09 11:20:29
+## 3          ST   37.27151   -81.30482     FALSE 2023-02-09 11:20:29
+## 4          ST   37.25595   -81.28177     FALSE 2023-02-09 11:20:29
+## 5          ST   36.85984   -80.98036     FALSE 2023-02-09 11:20:29
+## 6          ST   36.75985   -80.95619     FALSE 2023-02-09 11:20:29
+## 7          ST   36.83485   -80.95258     FALSE 2023-02-09 11:20:29
+## 8          SP   36.93429   -80.90313     FALSE 2023-02-09 11:20:29
+## 9          ST   36.93095   -80.90036     FALSE 2023-02-09 11:20:29
+## 10         SP   36.93068   -80.89619     FALSE 2023-02-09 11:20:29
+## 11         ST   36.93901   -80.88730     FALSE 2023-02-09 11:20:29
+## 12         ST   37.30568   -80.84980     FALSE 2023-02-09 11:20:29
+## 13         ST   37.04721   -80.78472     FALSE 2023-02-09 11:20:29
+## 14         ST   36.93762   -80.74563     FALSE 2023-02-09 11:20:29
+## 15         ST   36.88901   -80.72757     FALSE 2023-02-09 11:20:29
+## 16         ST   37.24179   -80.71090     FALSE 2023-02-09 11:20:29
+## 17         ST   37.26818   -80.70951     FALSE 2023-02-09 11:20:29
+## 18         ST   37.28957   -80.61673     FALSE 2023-02-09 11:20:29
+## 19         ST   37.14179   -80.56922     FALSE 2023-02-09 11:20:29
+## 20         ST   37.03763   -80.55672     FALSE 2023-02-09 11:20:29
+## 21         ST   36.99652   -80.52144     FALSE 2023-02-09 11:20:29</code></pre>
 <div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="getdata.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co">#find sites with other criteria, VA, less than 20 sqmi, other criteria can be used..</span></span>
 <span id="cb122-2"><a href="getdata.html#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="co">#check out the CRAN documentation</span></span>
 <span id="cb122-3"><a href="getdata.html#cb122-3" aria-hidden="true" tabindex="-1"></a>smallVA <span class="ot">&lt;-</span> <span class="fu">readNWISdata</span>(<span class="at">service =</span> <span class="st">&quot;dv&quot;</span>,</span>

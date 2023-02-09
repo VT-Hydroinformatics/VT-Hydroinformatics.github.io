@@ -117,7 +117,7 @@
 
 \title{Hydroinformatics at VT}
 \author{JP Gannon}
-\date{2023-02-06}
+\date{2023-02-09}
 
 \begin{document}
 \maketitle
@@ -162,7 +162,7 @@ Chapters called ACTIVITY are either homework or class-period-long in-class activ
 \ref{stats} \textbf{\protect\hyperlink{stats}{Introduction to Basic Statistics}}: \emph{Introcutiong to basic ways to measure a data distribution.}\\
 \ref{statsactivity} \textbf{\protect\hyperlink{statsactivity}{ACTIVITY Intro Stats}}: \emph{Activity to practice basic statistics concepts.}\\
 \ref{getdata} \textbf{\protect\hyperlink{getdata}{Joins, Pivots, and USGS dataRetrieval}}: \emph{Joins and Pivots, using USGS dataRetrieval to generate examples.}\\
-\ref{joinpivotDR} \textbf{\protect\hyperlink{joinpivotDR}{ACTIVITY Joins Pivots dataRetrieval}}: \emph{Activity to practice Joins, Pivots, and dataRetrieval.}\\
+\ref{joinpivotDR} \textbf{{[}ACTIVITY Joins Pivots dataRetrieval{]}}: \emph{Activity to practice Joins, Pivots, and dataRetrieval.}\\
 \ref{Summative1} \textbf{\protect\hyperlink{Summative1}{ACTIVITY Summative 1}}: \emph{First summative assessment/practice.}\\
 \ref{fdcs} \textbf{\protect\hyperlink{fdcs}{Flow Duration Curves}}: \emph{Building and exploring flow duration curves.}\\
 \ref{lfas} \textbf{\protect\hyperlink{lfas}{Low Flow Analysis}}: \emph{How to calculate low-flow statistics (ex: 7Q10, 1Q10).}\\
@@ -1673,7 +1673,7 @@ Which one is more skewed?
 
 \begin{verbatim}
 ##       50% 
-## -1.933978
+## -2.098461
 \end{verbatim}
 
 \hypertarget{what-is-a-normal-distribution-and-how-can-we-determine-if-we-have-one}{%
@@ -1850,7 +1850,7 @@ Remember, all the parameter codes and site names get passed to dataRetrieval fun
 ## 4           dv   00095   00003 145685         NA           wat        <NA>
 ##    srs_id access_cd begin_date   end_date count_nu
 ## 2 1645597         0 2006-12-20 2009-03-18      704
-## 3 1645423         0 1907-10-01 2023-02-05    33365
+## 3 1645423         0 1907-10-01 2023-02-08    33368
 ## 4 1646694         0 2006-12-20 2008-09-29      534
 \end{verbatim}
 
@@ -1958,7 +1958,7 @@ So in the chunk below let's get add information about the parameters in dataAvai
 ## 3           dv   00095   00003 145685         NA           wat        <NA>
 ##    srs_id access_cd begin_date   end_date count_nu parameter_group_nm
 ## 1 1645597         0 2006-12-20 2009-03-18      704           Physical
-## 2 1645423         0 1907-10-01 2023-02-05    33365           Physical
+## 2 1645423         0 1907-10-01 2023-02-08    33368           Physical
 ## 3 1646694         0 2006-12-20 2008-09-29      534           Physical
 ##                                                                                 parameter_nm
 ## 1                                                        Temperature, water, degrees Celsius
@@ -1992,7 +1992,7 @@ So in the chunk below let's get add information about the parameters in dataAvai
 ## 3 03171000 NEW RIVER AT RADFORD, VA   00095     Specific conductance
 ##   parameter_units begin_date   end_date
 ## 1           deg C 2006-12-20 2009-03-18
-## 2           ft3/s 1907-10-01 2023-02-05
+## 2           ft3/s 1907-10-01 2023-02-08
 ## 3      uS/cm @25C 2006-12-20 2008-09-29
 \end{verbatim}
 
@@ -2042,27 +2042,27 @@ Below we will look at two other ways to get sites: using a bounding box of a geo
 ## 20      USGS 03170000                 LITTLE RIVER AT GRAYSONTOWN, VA
 ## 21      USGS 03169500             LITTLE RIVER NEAR COPPER VALLEY, VA
 ##    site_tp_cd dec_lat_va dec_long_va colocated           queryTime
-## 1          ST   36.88873   -81.34733     FALSE 2023-02-06 14:55:03
-## 2          ST   37.18428   -81.32982     FALSE 2023-02-06 14:55:03
-## 3          ST   37.27151   -81.30482     FALSE 2023-02-06 14:55:03
-## 4          ST   37.25595   -81.28177     FALSE 2023-02-06 14:55:03
-## 5          ST   36.85984   -80.98036     FALSE 2023-02-06 14:55:03
-## 6          ST   36.75985   -80.95619     FALSE 2023-02-06 14:55:03
-## 7          ST   36.83485   -80.95258     FALSE 2023-02-06 14:55:03
-## 8          SP   36.93429   -80.90313     FALSE 2023-02-06 14:55:03
-## 9          ST   36.93095   -80.90036     FALSE 2023-02-06 14:55:03
-## 10         SP   36.93068   -80.89619     FALSE 2023-02-06 14:55:03
-## 11         ST   36.93901   -80.88730     FALSE 2023-02-06 14:55:03
-## 12         ST   37.30568   -80.84980     FALSE 2023-02-06 14:55:03
-## 13         ST   37.04721   -80.78472     FALSE 2023-02-06 14:55:03
-## 14         ST   36.93762   -80.74563     FALSE 2023-02-06 14:55:03
-## 15         ST   36.88901   -80.72757     FALSE 2023-02-06 14:55:03
-## 16         ST   37.24179   -80.71090     FALSE 2023-02-06 14:55:03
-## 17         ST   37.26818   -80.70951     FALSE 2023-02-06 14:55:03
-## 18         ST   37.28957   -80.61673     FALSE 2023-02-06 14:55:03
-## 19         ST   37.14179   -80.56922     FALSE 2023-02-06 14:55:03
-## 20         ST   37.03763   -80.55672     FALSE 2023-02-06 14:55:03
-## 21         ST   36.99652   -80.52144     FALSE 2023-02-06 14:55:03
+## 1          ST   36.88873   -81.34733     FALSE 2023-02-09 11:27:37
+## 2          ST   37.18428   -81.32982     FALSE 2023-02-09 11:27:37
+## 3          ST   37.27151   -81.30482     FALSE 2023-02-09 11:27:37
+## 4          ST   37.25595   -81.28177     FALSE 2023-02-09 11:27:37
+## 5          ST   36.85984   -80.98036     FALSE 2023-02-09 11:27:37
+## 6          ST   36.75985   -80.95619     FALSE 2023-02-09 11:27:37
+## 7          ST   36.83485   -80.95258     FALSE 2023-02-09 11:27:37
+## 8          SP   36.93429   -80.90313     FALSE 2023-02-09 11:27:37
+## 9          ST   36.93095   -80.90036     FALSE 2023-02-09 11:27:37
+## 10         SP   36.93068   -80.89619     FALSE 2023-02-09 11:27:37
+## 11         ST   36.93901   -80.88730     FALSE 2023-02-09 11:27:37
+## 12         ST   37.30568   -80.84980     FALSE 2023-02-09 11:27:37
+## 13         ST   37.04721   -80.78472     FALSE 2023-02-09 11:27:37
+## 14         ST   36.93762   -80.74563     FALSE 2023-02-09 11:27:37
+## 15         ST   36.88901   -80.72757     FALSE 2023-02-09 11:27:37
+## 16         ST   37.24179   -80.71090     FALSE 2023-02-09 11:27:37
+## 17         ST   37.26818   -80.70951     FALSE 2023-02-09 11:27:37
+## 18         ST   37.28957   -80.61673     FALSE 2023-02-09 11:27:37
+## 19         ST   37.14179   -80.56922     FALSE 2023-02-09 11:27:37
+## 20         ST   37.03763   -80.55672     FALSE 2023-02-09 11:27:37
+## 21         ST   36.99652   -80.52144     FALSE 2023-02-09 11:27:37
 \end{verbatim}
 
 \begin{Shaded}
@@ -2322,9 +2322,7 @@ Finally, use pivot\_longer to transform the data back into a long format. Often 
 \end{Shaded}
 
 \hypertarget{joinpivotDR}{%
-\chapter{ACTIVITY Joins Pivots dataRetrieval}\label{joinpivotDR}}
-
-Get this document at the template repository on github: \url{https://github.com/VT-Hydroinformatics/7-Activity-Joins-Pivots_dataRetrieval}
+\chapter{ACTIVITY: Joins Pivots dataRetrieval}\label{joinpivotDR}}
 
 \hypertarget{load-the-tidyverse-dataretrieval-and-patchwork-packages.}{%
 \section{Load the tidyverse, dataRetrieval, and patchwork packages.}\label{load-the-tidyverse-dataretrieval-and-patchwork-packages.}}
@@ -2340,7 +2338,7 @@ Get this document at the template repository on github: \url{https://github.com/
 \hypertarget{problem-1-2}{%
 \section{Problem 1}\label{problem-1-2}}
 
-Using readNWISqw(), read all the chloride (00940) data for the New River at Radford (03171000). Use the head() function to print the beginning of the output from readNWISqw.
+Using readWQPqw(), read all the chloride (00940) data for the New River at Radford (03171000, must add USGS- to gage id). Use the head() function to print the beginning of the output from readNWISqw.
 
 \hypertarget{problem-2-2}{%
 \section{Problem 2}\label{problem-2-2}}
@@ -5043,7 +5041,7 @@ The following code is here just because it is cool. We clip the DEM to the water
 ## requires the webshot2 package and Chrome browser; using rgl.snapshot() instead
 \end{verbatim}
 
-\includegraphics[width=6.5in]{../../../../../../private/var/folders/rl/dzfg1s7j2zv_5xqhl3ls1yl80000gn/T/RtmpEiuekU/filec1236543c8ab}
+\includegraphics[width=6.5in]{../../../../../../private/var/folders/rl/dzfg1s7j2zv_5xqhl3ls1yl80000gn/T/Rtmpmf4te3/file1238a28b37ff}
 
 \hypertarget{modelingintro}{%
 \chapter{Intro to Modeling - Getting Started with HBV}\label{modelingintro}}
